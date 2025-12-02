@@ -63,23 +63,16 @@
 	$effect(() => {
 		if (!browser) return;
 
-		const observer = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
-						revealsMap.set(entry.target.id, true);
-						revealsMap = revealsMap; // Trigger reactivity
-					}
-				});
-			},
-			{ threshold: 0.1, rootMargin: '-50px' }
-		);
-
-		// Observe all sections with data-reveal
+		// Immediately reveal all sections on mount - fixes visibility bug
 		const sections = document.querySelectorAll('[data-reveal]');
-		sections.forEach((section) => observer.observe(section));
+		sections.forEach((section) => {
+			if (section.id) {
+				revealsMap.set(section.id, true);
+			}
+		});
+		revealsMap = revealsMap; // Trigger reactivity
 
-		return () => observer.disconnect();
+		return () => {};
 	});
 
 	// Helper to check if section is revealed
