@@ -102,7 +102,7 @@
 		baseDelay: 0,
 		staggerDelay: 0,
 		duration: 0,
-		easing,
+		easing: EASING.cinematic,
 		isVisible: false
 	});
 

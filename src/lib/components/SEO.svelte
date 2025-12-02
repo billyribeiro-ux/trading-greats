@@ -24,8 +24,8 @@
 		noindex = false
 	}: Props = $props();
 
-	const fullTitle = title === PUBLIC_SITE_NAME ? title : `${title} | ${PUBLIC_SITE_NAME}`;
-	const canonicalUrl = $page.url.href;
+	const fullTitle = $derived(title === PUBLIC_SITE_NAME ? title : `${title} | ${PUBLIC_SITE_NAME}`);
+	const canonicalUrl = $derived($page.url.href);
 </script>
 
 <svelte:head>

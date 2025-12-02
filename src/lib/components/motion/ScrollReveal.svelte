@@ -54,6 +54,8 @@
 		id?: string;
 		/** Element tag */
 		as?: 'div' | 'section' | 'article' | 'aside' | 'header' | 'footer' | 'main' | 'span';
+		/** Element ID for anchor links */
+		id?: string;
 		/** Children */
 		children: import('svelte').Snippet;
 	}
@@ -69,6 +71,7 @@
 		class: className = '',
 		id,
 		as = 'div',
+		id,
 		children
 	}: Props = $props();
 

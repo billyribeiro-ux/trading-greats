@@ -1,7 +1,8 @@
 <script lang="ts">
 	import '../app.css';
 	import { page } from '$app/stores';
-	import { browser } from '$app/environment';
+	import { browser, dev } from '$app/environment';
+	import { RenderScan } from 'svelte-render-scan';
 	import JsonLd from '$lib/components/JsonLd.svelte';
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
@@ -41,6 +42,10 @@
 
 {#if !isAdmin}
 	<Footer />
+{/if}
+
+{#if dev}
+	<RenderScan />
 {/if}
 
 <style>
