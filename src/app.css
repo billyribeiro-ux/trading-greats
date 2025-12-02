@@ -1,0 +1,125 @@
+@import 'tailwindcss';
+@config '../tailwind.config.ts';
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--color-midnight-900);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--color-midnight-700);
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--color-midnight-600);
+}
+
+/* Selection */
+::selection {
+	background: oklch(from var(--color-gold-500) l c h / 30%);
+	color: var(--color-gold-100);
+}
+
+/* Focus styles */
+:focus-visible {
+	outline: 2px solid var(--color-gold-500);
+	outline-offset: 2px;
+}
+
+/* Smooth scroll */
+html {
+	scroll-behavior: smooth;
+}
+
+/* Typography */
+.prose {
+	--tw-prose-body: var(--color-midnight-200);
+	--tw-prose-headings: var(--color-midnight-50);
+	--tw-prose-links: var(--color-gold-400);
+	--tw-prose-bold: var(--color-midnight-50);
+	--tw-prose-quotes: var(--color-midnight-300);
+	--tw-prose-quote-borders: var(--color-gold-500);
+	--tw-prose-code: var(--color-gold-300);
+	--tw-prose-hr: var(--color-midnight-700);
+}
+
+/* Noise overlay */
+.noise-overlay {
+	position: relative;
+}
+
+.noise-overlay::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+	opacity: 0.03;
+	pointer-events: none;
+	z-index: 1;
+}
+
+/* Gradient text */
+.gradient-text {
+	background: linear-gradient(135deg, var(--color-gold-300), var(--color-gold-500), var(--color-gold-300));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+/* Card hover effect */
+.card-hover {
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 20px 40px -12px oklch(from var(--color-gold-500) l c h / 15%);
+}
+
+/* Stagger animation delays */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+
+/* Animation classes that start hidden */
+.animate-fade-in,
+.animate-slide-up,
+.animate-slide-in-left {
+	opacity: 0;
+	animation-fill-mode: forwards;
+}
+
+/* Glow effect */
+.glow {
+	box-shadow: 
+		0 0 20px oklch(from var(--color-gold-500) l c h / 20%),
+		0 0 40px oklch(from var(--color-gold-500) l c h / 10%);
+}
+
+/* Border gradient */
+.border-gradient {
+	position: relative;
+	background: var(--color-midnight-900);
+	border-radius: 12px;
+}
+
+.border-gradient::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	padding: 1px;
+	border-radius: inherit;
+	background: linear-gradient(135deg, oklch(from var(--color-gold-500) l c h / 50%), transparent, oklch(from var(--color-gold-500) l c h / 50%));
+	-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+	mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+	-webkit-mask-composite: xor;
+	mask-composite: exclude;
+}
