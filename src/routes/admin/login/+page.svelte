@@ -49,8 +49,9 @@
 			</button>
 		</form>
 
-		<p class="mt-8 text-center text-sm text-midnight-500">
+		<div class="mt-8 flex items-center justify-between text-sm text-midnight-500">
 			<a href="/" class="text-gold-400 hover:text-gold-300">← Back to site</a>
-		</p>
+			<a href="/admin/reset-password" class="text-midnight-400 hover:text-midnight-200">Forgot password?</a>
+		</div>
 	</div>
 </main>

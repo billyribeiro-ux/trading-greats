@@ -5,6 +5,7 @@ declare global {
 		interface Locals {
 			user?: {
 				isAdmin: boolean;
+				sessionId?: string;
 			};
 		}
 		interface Error {

@@ -1,6 +1,6 @@
 import type { PageServerLoad, Actions } from './$types';
 import { db } from '$lib/server/db';
-import { blogPosts, traders, BLOG_CATEGORIES } from '$lib/server/schema';
+import { blogPosts, traders, BLOG_CATEGORIES, type BlogCategory } from '$lib/server/schema';
 import { fail, redirect } from '@sveltejs/kit';
 import { slugify } from '$lib/utils';
 import { eq } from 'drizzle-orm';
@@ -43,7 +43,7 @@ export const actions: Actions = {
 		const heroImageAlt = formData.get('heroImageAlt') as string;
 		const heroImageCaption = formData.get('heroImageCaption') as string;
 		const author = formData.get('author') as string;
-		const category = formData.get('category') as string;
+		const category = formData.get('category') as BlogCategory | null;
 		const tagsRaw = formData.get('tags') as string;
 		const seoTitle = formData.get('seoTitle') as string;
 		const seoDescription = formData.get('seoDescription') as string;

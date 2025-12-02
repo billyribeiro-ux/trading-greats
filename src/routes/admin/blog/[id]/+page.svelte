@@ -20,10 +20,14 @@
 
 	let { data, form } = $props();
 
+	// Type for form data with optional fields
+	type FormData = { error?: string; title?: string; excerpt?: string; content?: string };
+	const formData = form as FormData | null;
+
 	// Form state - pre-populated with existing post data
-	let title = $state(form?.title || data.post.title || '');
-	let excerpt = $state(form?.excerpt || data.post.excerpt || '');
-	let content = $state(form?.content || data.post.content || '');
+	let title = $state(formData?.title || data.post.title || '');
+	let excerpt = $state(formData?.excerpt || data.post.excerpt || '');
+	let content = $state(formData?.content || data.post.content || '');
 	let heroImage = $state(data.post.heroImage || '');
 	let heroImageAlt = $state(data.post.heroImageAlt || '');
 	let heroImageCaption = $state(data.post.heroImageCaption || '');
@@ -127,10 +131,10 @@
 		class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8"
 	>
 		<!-- Error Message -->
-		{#if form?.error}
+		{#if formData?.error}
 			<div class="mb-6 rounded-xl border border-red-500/30 bg-red-500/10 p-4 flex items-center gap-3">
 				<AlertCircle class="h-5 w-5 text-red-400 flex-shrink-0" />
-				<p class="text-red-400">{form.error}</p>
+				<p class="text-red-400">{formData.error}</p>
 			</div>
 		{/if}
 
