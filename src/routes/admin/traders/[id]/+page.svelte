@@ -11,8 +11,13 @@
 	let { data, form }: { data: PageData; form: ActionData } = $props();
 	const trader = $derived(data.trader);
 
-	let quotes = $state<LocalQuote[]>(data.trader.quotes?.map((q) => ({ text: q.text, source: q.source || '' })) || [{ text: '', source: '' }]);
-	let achievements = $state<string[]>(data.trader.achievements || ['']);
+	// svelte-ignore state_referenced_locally
+	const initialQuotes: LocalQuote[] = data.trader.quotes?.map((q) => ({ text: q.text, source: q.source || '' })) || [{ text: '', source: '' }];
+	// svelte-ignore state_referenced_locally
+	const initialAchievements: string[] = data.trader.achievements || [''];
+	
+	let quotes = $state<LocalQuote[]>(initialQuotes);
+	let achievements = $state<string[]>(initialAchievements);
 
 	function addQuote() {
 		quotes = [...quotes, { text: '', source: '' }];
