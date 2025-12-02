@@ -9,7 +9,8 @@
 		Eye,
 		Edit,
 		PenTool,
-		BarChart3
+		BarChart3,
+		Settings
 	} from 'lucide-svelte';
 
 	let { data } = $props();
@@ -41,6 +42,13 @@
 				>
 					<Eye class="h-4 w-4" />
 					View Site
+				</a>
+				<a
+					href="/admin/settings"
+					class="inline-flex items-center gap-2 text-sm text-midnight-400 hover:text-midnight-200 transition-colors"
+				>
+					<Settings class="h-4 w-4" />
+					Settings
 				</a>
 				<form method="POST" action="/admin/logout">
 					<button

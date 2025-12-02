@@ -23,23 +23,26 @@ export const load: PageServerLoad = async ({ params }) => {
 			throw error(404, 'Post not found');
 		}
 
+		// Store in local constant for type narrowing in callbacks
+		const currentPost = post;
+
 		// Fetch related posts (same category or manually linked)
 		const allPublished = await db
 			.select()
 			.from(blogPosts)
-			.where(and(eq(blogPosts.status, 'published'), ne(blogPosts.id, post.id)))
+			.where(and(eq(blogPosts.status, 'published'), ne(blogPosts.id, currentPost.id)))
 			.orderBy(desc(blogPosts.publishedAt))
 			.limit(10);
 
 		// Prioritize manually linked posts, then same category
-		if (post?.relatedPostIds && post.relatedPostIds.length > 0) {
-			const linked = allPublished.filter((p) => post?.relatedPostIds?.includes(p.id));
+		if (currentPost.relatedPostIds && currentPost.relatedPostIds.length > 0) {
+			const linked = allPublished.filter((p) => currentPost.relatedPostIds?.includes(p.id));
 			relatedPosts = linked.slice(0, 3);
 		}
 
-		if (relatedPosts.length < 3 && post?.category) {
+		if (relatedPosts.length < 3 && currentPost.category) {
 			const sameCategory = allPublished.filter(
-				(p) => p.category === post?.category && !relatedPosts.find((r) => r.id === p.id)
+				(p) => p.category === currentPost.category && !relatedPosts.find((r) => r.id === p.id)
 			);
 			relatedPosts = [...relatedPosts, ...sameCategory].slice(0, 3);
 		}

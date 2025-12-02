@@ -50,6 +50,8 @@
 		once?: boolean;
 		/** Additional classes */
 		class?: string;
+		/** Element id for anchor links */
+		id?: string;
 		/** Element tag */
 		as?: 'div' | 'section' | 'article' | 'aside' | 'header' | 'footer' | 'main' | 'span';
 		/** Element ID for anchor links */
@@ -67,6 +69,7 @@
 		rootMargin = '0px 0px -80px 0px',
 		once = true,
 		class: className = '',
+		id,
 		as = 'div',
 		id,
 		children

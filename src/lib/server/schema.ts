@@ -129,11 +129,61 @@ export const BLOG_CATEGORIES: { value: BlogCategory; label: string; description:
 export const adminSessions = sqliteTable('admin_sessions', {
 	id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
 	token: text('token').notNull().unique(),
+	tokenHash: text('token_hash').notNull(), // SHA-256 hash of token for secure lookup
 	createdAt: text('created_at').$defaultFn(() => new Date().toISOString()),
 	expiresAt: text('expires_at').notNull(),
+	lastActivityAt: text('last_activity_at').$defaultFn(() => new Date().toISOString()),
 	ipAddress: text('ip_address'),
-	userAgent: text('user_agent')
+	userAgent: text('user_agent'),
+	isRevoked: integer('is_revoked', { mode: 'boolean' }).default(false)
 });
 
 export type AdminSession = typeof adminSessions.$inferSelect;
 export type NewAdminSession = typeof adminSessions.$inferInsert;
+
+// ============================================================================
+// LOGIN ATTEMPTS TABLE (Rate Limiting & Brute Force Protection)
+// ============================================================================
+
+export const loginAttempts = sqliteTable('login_attempts', {
+	id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
+	ipAddress: text('ip_address').notNull(),
+	attemptedAt: text('attempted_at').$defaultFn(() => new Date().toISOString()),
+	successful: integer('successful', { mode: 'boolean' }).default(false),
+	userAgent: text('user_agent')
+});
+
+export type LoginAttempt = typeof loginAttempts.$inferSelect;
+export type NewLoginAttempt = typeof loginAttempts.$inferInsert;
+
+// ============================================================================
+// IP BLOCKLIST TABLE (Auto-block malicious IPs)
+// ============================================================================
+
+export const ipBlocklist = sqliteTable('ip_blocklist', {
+	id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
+	ipAddress: text('ip_address').notNull().unique(),
+	reason: text('reason').notNull(),
+	blockedAt: text('blocked_at').$defaultFn(() => new Date().toISOString()),
+	expiresAt: text('expires_at'), // null = permanent
+	failedAttempts: integer('failed_attempts').default(0)
+});
+
+export type IpBlock = typeof ipBlocklist.$inferSelect;
+export type NewIpBlock = typeof ipBlocklist.$inferInsert;
+
+// ============================================================================
+// SECURITY AUDIT LOG TABLE
+// ============================================================================
+
+export const securityAuditLog = sqliteTable('security_audit_log', {
+	id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
+	action: text('action').notNull(), // login, logout, failed_login, session_revoked, etc.
+	ipAddress: text('ip_address'),
+	userAgent: text('user_agent'),
+	details: text('details', { mode: 'json' }).$type<Record<string, unknown>>(),
+	timestamp: text('timestamp').$defaultFn(() => new Date().toISOString())
+});
+
+export type SecurityAuditLog = typeof securityAuditLog.$inferSelect;
+export type NewSecurityAuditLog = typeof securityAuditLog.$inferInsert;
