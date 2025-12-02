@@ -80,7 +80,7 @@
 		return revealsMap.get(id) ?? false;
 	}
 
-	// Trading strategies data
+	// Trading strategies data - matches actual trading styles in seed data
 	const strategies = [
 		{ 
 			name: 'Value Investing', 
@@ -88,7 +88,7 @@
 			color: 'text-green-400', 
 			bg: 'bg-green-500/10', 
 			border: 'border-green-500/20',
-			traders: ['Warren Buffett', 'Benjamin Graham', 'Peter Lynch'],
+			traders: ['Warren Buffett'],
 			description: 'Long-term wealth through undervalued assets'
 		},
 		{ 
@@ -97,26 +97,26 @@
 			color: 'text-purple-400', 
 			bg: 'bg-purple-500/10', 
 			border: 'border-purple-500/20',
-			traders: ['Mark Minervini', 'William O\'Neil'],
+			traders: ['Mark Minervini'],
 			description: 'Ride powerful trends with precision timing'
 		},
 		{ 
-			name: 'Macro Trading', 
+			name: 'Macro & Currency', 
 			iconType: 'globe' as const, 
 			color: 'text-blue-400', 
 			bg: 'bg-blue-500/10', 
 			border: 'border-blue-500/20',
-			traders: ['George Soros', 'Paul Tudor Jones'],
+			traders: ['George Soros'],
 			description: 'Global markets through economic forces'
 		},
 		{ 
-			name: 'Technical Analysis', 
+			name: 'Options & Technical Analysis', 
 			iconType: 'book' as const, 
 			color: 'text-orange-400', 
 			bg: 'bg-orange-500/10', 
 			border: 'border-orange-500/20',
-			traders: ['Jesse Livermore', 'Richard Dennis'],
-			description: 'Chart patterns and price action mastery'
+			traders: ['John Carter'],
+			description: 'Chart patterns and options mastery'
 		}
 	];
 

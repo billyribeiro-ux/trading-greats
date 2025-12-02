@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { PUBLIC_SITE_URL, PUBLIC_SITE_NAME } from '$env/static/public';
-	import type { Trader } from '$server/schema';
+	import type { Trader } from '$lib/server/schema';
 
 	type SchemaType = 'WebSite' | 'Person' | 'BreadcrumbList' | 'Article';
 

@@ -183,7 +183,22 @@
 						<div class="grid gap-4">
 							{#each trader.famousTrades as trade}
 								<div class="group rounded-xl border border-white/5 bg-midnight-900/30 p-6 transition-all hover:border-gold-500/30 hover:bg-midnight-800/50">
-									<h3 class="font-bold text-white group-hover:text-gold-400 transition-colors">{trade}</h3>
+									<div class="flex items-start justify-between gap-4">
+										<div class="flex-1">
+											<div class="flex items-center gap-3 mb-2">
+												<span class="text-xs font-medium text-midnight-400">{trade.date}</span>
+												<span class="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium {trade.position === 'long' ? 'bg-green-500/10 text-green-400' : 'bg-red-500/10 text-red-400'}">
+													{trade.position.toUpperCase()}
+												</span>
+											</div>
+											<h3 class="font-bold text-white group-hover:text-gold-400 transition-colors">{trade.asset}</h3>
+											<p class="mt-2 text-sm text-midnight-300">{trade.description}</p>
+										</div>
+										<div class="text-right">
+											<p class="text-xs text-midnight-400">{trade.outcome}</p>
+											<p class="text-lg font-bold {trade.profitLoss.startsWith('+') ? 'text-green-400' : 'text-red-400'}">{trade.profitLoss}</p>
+										</div>
+									</div>
 								</div>
 							{/each}
 						</div>
@@ -202,9 +217,41 @@
 								<figure class="relative rounded-2xl bg-white/5 p-8">
 									<Quote class="absolute top-4 left-4 h-8 w-8 text-white/10 rotate-180" />
 									<blockquote class="relative z-10 text-lg font-medium italic text-midnight-100">
-										"{quote}"
+										"{quote.text}"
 									</blockquote>
+									{#if quote.source}
+										<figcaption class="mt-4 text-sm text-midnight-400">
+											— {quote.source}
+										</figcaption>
+									{/if}
 								</figure>
+							{/each}
+						</div>
+					</section>
+				{/if}
+
+				<!-- Books -->
+				{#if trader.books && trader.books.length > 0}
+					<section>
+						<h2 class="mb-6 flex items-center gap-3 font-display text-2xl font-bold text-white">
+							<BookOpen class="h-6 w-6 text-gold-500" />
+							Recommended Reading
+						</h2>
+						<div class="grid gap-4">
+							{#each trader.books as book}
+								<div class="group rounded-xl border border-white/5 bg-midnight-900/30 p-6 transition-all hover:border-gold-500/30 hover:bg-midnight-800/50">
+									<div class="flex items-start justify-between gap-4">
+										<div>
+											<h3 class="font-bold text-white group-hover:text-gold-400 transition-colors">{book.title}</h3>
+											{#if book.description}
+												<p class="mt-2 text-sm text-midnight-300">{book.description}</p>
+											{/if}
+										</div>
+										{#if book.year}
+											<span class="text-sm text-midnight-400">{book.year}</span>
+										{/if}
+									</div>
+								</div>
 							{/each}
 						</div>
 					</section>

@@ -1,22 +1,27 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import Navbar from '$lib/components/Navbar.svelte';
-	import Footer from '$lib/components/Footer.svelte';
 	import { Home, ArrowLeft } from 'lucide-svelte';
+
+	// Get the error status code
+	const status = $derived($page.status);
+	const message = $derived($page.error?.message || 'Something went wrong');
 </script>
 
 <svelte:head>
-	<title>Page Not Found | Trading Greats</title>
+	<title>{status === 404 ? 'Page Not Found' : 'Error'} | Trading Greats</title>
 </svelte:head>
 
-<Navbar />
-
-<main class="flex min-h-screen items-center justify-center px-4 pt-16">
+<!-- Navbar and Footer are rendered by the layout, so we don't need them here -->
+<main class="flex min-h-screen items-center justify-center px-4">
 	<div class="text-center">
-		<p class="text-8xl font-bold text-gold-500">404</p>
-		<h1 class="mt-4 font-display text-3xl font-bold text-midnight-50">Page Not Found</h1>
+		<p class="text-8xl font-bold text-gold-500">{status}</p>
+		<h1 class="mt-4 font-display text-3xl font-bold text-midnight-50">
+			{status === 404 ? 'Page Not Found' : 'Oops!'}
+		</h1>
 		<p class="mt-4 text-lg text-midnight-400">
-			The page you're looking for doesn't exist or has been moved.
+			{status === 404 
+				? "The page you're looking for doesn't exist or has been moved."
+				: message}
 		</p>
 		<div class="mt-8 flex flex-wrap items-center justify-center gap-4">
 			<a
@@ -36,5 +41,3 @@
 		</div>
 	</div>
 </main>
-
-<Footer />

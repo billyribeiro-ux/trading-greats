@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Trader } from '$server/schema';
+	import type { Trader } from '$lib/server/schema';
 	import { cn } from '$lib/utils';
 	import { TrendingUp, Globe, DollarSign, ArrowRight } from 'lucide-svelte';
 

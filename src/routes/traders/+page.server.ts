@@ -1,6 +1,8 @@
 import type { PageServerLoad } from './$types';
+import { sanity } from '$lib/sanity';
 import { seedTraders } from '$lib/server/seed';
 import type { Trader, NewTrader } from '$lib/server/schema';
+import { PUBLIC_SANITY_PROJECT_ID } from '$env/static/public';
 
 function seedToTrader(t: NewTrader, id: string): Trader {
 	return {
@@ -29,19 +31,38 @@ function seedToTrader(t: NewTrader, id: string): Trader {
 
 export const load: PageServerLoad = async ({ url }) => {
 	const styleFilter = url.searchParams.get('style');
+	let traders: Trader[];
+	let tradingStyles: string[];
 
-	// For now, using seed data. In production:
-	// const allTraders = await db.select().from(traders).where(eq(traders.status, 'published'));
-	
-	let traders: Trader[] = seedTraders.map((t, i) => seedToTrader(t, `trader-${i}`));
-
-	if (styleFilter) {
-		traders = traders.filter(t => 
-			t.tradingStyle?.toLowerCase().includes(styleFilter.toLowerCase())
-		);
+	if (PUBLIC_SANITY_PROJECT_ID) {
+		try {
+			// Fetch from Sanity
+			if (styleFilter) {
+				traders = await sanity.getTradersByStyle(styleFilter);
+			} else {
+				traders = await sanity.getAllTraders();
+			}
+			tradingStyles = await sanity.getTradingStyles();
+		} catch (error) {
+			console.error('Sanity fetch failed, falling back to seed data:', error);
+			traders = seedTraders.map((t, i) => seedToTrader(t, `trader-${i}`));
+			if (styleFilter) {
+				traders = traders.filter(t => 
+					t.tradingStyle?.toLowerCase().includes(styleFilter.toLowerCase())
+				);
+			}
+			tradingStyles = [...new Set(seedTraders.map(t => t.tradingStyle).filter((s): s is string => !!s))];
+		}
+	} else {
+		// Fallback to seed data
+		traders = seedTraders.map((t, i) => seedToTrader(t, `trader-${i}`));
+		if (styleFilter) {
+			traders = traders.filter(t => 
+				t.tradingStyle?.toLowerCase().includes(styleFilter.toLowerCase())
+			);
+		}
+		tradingStyles = [...new Set(seedTraders.map(t => t.tradingStyle).filter((s): s is string => !!s))];
 	}
-
-	const tradingStyles = [...new Set(seedTraders.map(t => t.tradingStyle).filter(Boolean))];
 
 	return {
 		traders,

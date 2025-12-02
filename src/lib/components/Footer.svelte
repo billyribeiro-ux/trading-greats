@@ -29,9 +29,9 @@
 				<h3 class="font-display text-sm font-semibold tracking-wider uppercase text-midnight-100">Explore</h3>
 				<ul class="mt-6 space-y-4">
 					<li><a href="/traders" class="text-sm text-midnight-400 transition-colors hover:text-gold-400">All Traders</a></li>
-					<li><a href="/traders?style=macro" class="text-sm text-midnight-400 transition-colors hover:text-gold-400">Macro Traders</a></li>
-					<li><a href="/traders?style=value" class="text-sm text-midnight-400 transition-colors hover:text-gold-400">Value Investors</a></li>
-					<li><a href="/traders?style=momentum" class="text-sm text-midnight-400 transition-colors hover:text-gold-400">Momentum Traders</a></li>
+					<li><a href="/traders?style=Macro" class="text-sm text-midnight-400 transition-colors hover:text-gold-400">Macro Traders</a></li>
+					<li><a href="/traders?style=Value" class="text-sm text-midnight-400 transition-colors hover:text-gold-400">Value Investors</a></li>
+					<li><a href="/traders?style=Momentum" class="text-sm text-midnight-400 transition-colors hover:text-gold-400">Momentum Traders</a></li>
 				</ul>
 			</div>
 

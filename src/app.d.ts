@@ -20,6 +20,9 @@ declare global {
 declare module '$env/static/public' {
 	export const PUBLIC_SITE_URL: string;
 	export const PUBLIC_SITE_NAME: string;
+	export const PUBLIC_SANITY_PROJECT_ID: string;
+	export const PUBLIC_SANITY_DATASET: string;
+	export const PUBLIC_SANITY_API_VERSION: string;
 }
 
 declare module '$env/static/private' {

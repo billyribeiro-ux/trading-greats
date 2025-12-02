@@ -1,7 +1,9 @@
 import type { PageServerLoad } from './$types';
 import { error } from '@sveltejs/kit';
+import { sanity } from '$lib/sanity';
 import { seedTraders } from '$lib/server/seed';
 import type { Trader, NewTrader } from '$lib/server/schema';
+import { PUBLIC_SANITY_PROJECT_ID } from '$env/static/public';
 
 function seedToTrader(t: NewTrader, id: string): Trader {
 	return {
@@ -30,23 +32,37 @@ function seedToTrader(t: NewTrader, id: string): Trader {
 
 export const load: PageServerLoad = async ({ params }) => {
 	const { slug } = params;
+	let trader: Trader | null = null;
+	let relatedTraders: Trader[] = [];
 
-	// For now, using seed data. In production:
-	// const [trader] = await db.select().from(traders).where(eq(traders.slug, slug));
-	
-	const traderData = seedTraders.find(t => t.slug === slug);
-
-	if (!traderData) {
-		throw error(404, 'Trader not found');
+	if (PUBLIC_SANITY_PROJECT_ID) {
+		try {
+			trader = await sanity.getTraderBySlug(slug);
+			if (trader && trader.tradingStyle) {
+				relatedTraders = await sanity.getRelatedTraders(trader.tradingStyle, slug);
+			}
+		} catch (err) {
+			console.error('Sanity fetch failed, falling back to seed data:', err);
+			trader = null;
+		}
 	}
 
-	const trader: Trader = seedToTrader(traderData, `trader-${slug}`);
+	// Fallback to seed data
+	if (!trader) {
+		const traderData = seedTraders.find(t => t.slug === slug);
+		if (!traderData) {
+			throw error(404, 'Trader not found');
+		}
+		trader = seedToTrader(traderData, `trader-${slug}`);
+		relatedTraders = seedTraders
+			.filter(t => t.slug !== slug && t.tradingStyle === trader!.tradingStyle)
+			.slice(0, 3)
+			.map((t, i) => seedToTrader(t, `trader-related-${i}`));
+	}
 
-	// Get related traders (same trading style)
-	const relatedTraders: Trader[] = seedTraders
-		.filter(t => t.slug !== slug && t.tradingStyle === trader.tradingStyle)
-		.slice(0, 3)
-		.map((t, i) => seedToTrader(t, `trader-related-${i}`));
+	if (!trader) {
+		throw error(404, 'Trader not found');
+	}
 
 	return {
 		trader,

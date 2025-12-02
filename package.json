@@ -12,7 +12,10 @@
     "format": "prettier --write .",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
-    "db:generate": "drizzle-kit generate"
+    "db:generate": "drizzle-kit generate",
+    "sanity:dev": "npm run dev --prefix sanity",
+    "sanity:build": "npm run build --prefix sanity",
+    "sanity:deploy": "npm run deploy --prefix sanity"
   },
   "devDependencies": {
     "@sveltejs/adapter-vercel": "^6.2.0",
@@ -45,6 +48,8 @@
     "@internationalized/date": "^3.10.0",
     "@libsql/client": "^0.15.15",
     "@melt-ui/svelte": "^0.86.6",
+    "@sanity/client": "^7.13.1",
+    "@sanity/image-url": "^2.0.1",
     "@svelte-put/clickoutside": "^4.0.0",
     "@svelte-put/copy": "^4.0.0",
     "@svelte-put/shortcut": "^4.1.0",
@@ -58,6 +63,7 @@
     "drizzle-orm": "^0.44.7",
     "embla-carousel-svelte": "^8.6.0",
     "formsnap": "^2.0.1",
+    "groq": "^4.20.0",
     "lucide-svelte": "^0.555.0",
     "marked": "^17.0.1",
     "mode-watcher": "^1.1.0",

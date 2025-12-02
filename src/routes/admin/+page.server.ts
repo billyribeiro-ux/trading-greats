@@ -1,6 +1,8 @@
 import type { PageServerLoad } from './$types';
+import { sanity } from '$lib/sanity';
 import { seedTraders } from '$lib/server/seed';
 import type { Trader, NewTrader } from '$lib/server/schema';
+import { PUBLIC_SANITY_PROJECT_ID } from '$env/static/public';
 
 function seedToTrader(t: NewTrader, id: string): Trader {
 	return {
@@ -28,18 +30,41 @@ function seedToTrader(t: NewTrader, id: string): Trader {
 }
 
 export const load: PageServerLoad = async () => {
-	// For now, using seed data. In production:
-	// const traders = await db.select().from(traders);
-	
-	const traders: Trader[] = seedTraders.map((t, i) => seedToTrader(t, `trader-${i}`));
+	let traderCount = 0;
+	let publishedCount = 0;
+	let draftCount = 0;
+	let recentTraders: Trader[] = [];
 
-	const publishedCount = traders.filter(t => t.status === 'published').length;
-	const draftCount = traders.filter(t => t.status === 'draft').length;
+	if (PUBLIC_SANITY_PROJECT_ID) {
+		try {
+			const [stats, recent] = await Promise.all([
+				sanity.getTraderStats(),
+				sanity.getRecentTraders()
+			]);
+			traderCount = stats.total;
+			publishedCount = stats.published;
+			draftCount = stats.drafts;
+			recentTraders = recent;
+		} catch (error) {
+			console.error('Sanity fetch failed, falling back to seed data:', error);
+			const traders = seedTraders.map((t, i) => seedToTrader(t, `trader-${i}`));
+			traderCount = traders.length;
+			publishedCount = traders.filter(t => t.status === 'published').length;
+			draftCount = traders.filter(t => t.status === 'draft').length;
+			recentTraders = traders.slice(0, 5);
+		}
+	} else {
+		const traders = seedTraders.map((t, i) => seedToTrader(t, `trader-${i}`));
+		traderCount = traders.length;
+		publishedCount = traders.filter(t => t.status === 'published').length;
+		draftCount = traders.filter(t => t.status === 'draft').length;
+		recentTraders = traders.slice(0, 5);
+	}
 
 	return {
-		traderCount: traders.length,
+		traderCount,
 		publishedCount,
 		draftCount,
-		recentTraders: traders.slice(0, 5)
+		recentTraders
 	};
 };

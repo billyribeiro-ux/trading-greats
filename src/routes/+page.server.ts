@@ -1,7 +1,10 @@
 import type { PageServerLoad } from './$types';
+import { sanity } from '$lib/sanity';
 import { seedTraders } from '$lib/server/seed';
 import type { Trader, NewTrader } from '$lib/server/schema';
+import { PUBLIC_SANITY_PROJECT_ID } from '$env/static/public';
 
+// Fallback: Convert seed data to Trader type
 function seedToTrader(t: NewTrader, id: string): Trader {
 	return {
 		id,
@@ -28,13 +31,29 @@ function seedToTrader(t: NewTrader, id: string): Trader {
 }
 
 export const load: PageServerLoad = async () => {
-	// For now, using seed data. In production, this would be:
-	// const traders = await db.select().from(traders).where(eq(traders.status, 'published'));
-	
-	const traders: Trader[] = seedTraders.map((t, i) => seedToTrader(t, `trader-${i}`));
+	let traders: Trader[];
+	let featuredTrader: Trader | null;
+
+	// Use Sanity if configured, otherwise fall back to seed data
+	if (PUBLIC_SANITY_PROJECT_ID) {
+		try {
+			[traders, featuredTrader] = await Promise.all([
+				sanity.getAllTraders(),
+				sanity.getFeaturedTrader()
+			]);
+		} catch (error) {
+			console.error('Sanity fetch failed, falling back to seed data:', error);
+			traders = seedTraders.map((t, i) => seedToTrader(t, `trader-${i}`));
+			featuredTrader = traders[0] ?? null;
+		}
+	} else {
+		// Fallback to seed data
+		traders = seedTraders.map((t, i) => seedToTrader(t, `trader-${i}`));
+		featuredTrader = traders[0] ?? null;
+	}
 
 	return {
-		featuredTrader: traders[0],
+		featuredTrader,
 		traders
 	};
 };
