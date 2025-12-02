@@ -1,4 +1,4 @@
-import { createClient } from '@sanity/client';
+import { createClient, type SanityClient } from '@sanity/client';
 import { createImageUrlBuilder } from '@sanity/image-url';
 import {
 	PUBLIC_SANITY_PROJECT_ID,
@@ -9,33 +9,39 @@ import {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type SanityImageSource = any;
 
-// Validate required environment variables
-if (!PUBLIC_SANITY_PROJECT_ID) {
-	console.warn('Missing PUBLIC_SANITY_PROJECT_ID - Sanity client will not work');
+// Check if Sanity is configured
+export const isSanityConfigured = Boolean(PUBLIC_SANITY_PROJECT_ID);
+
+// Create clients only if Sanity is configured
+let client: SanityClient | null = null;
+let previewClient: SanityClient | null = null;
+
+if (isSanityConfigured) {
+	client = createClient({
+		projectId: PUBLIC_SANITY_PROJECT_ID,
+		dataset: PUBLIC_SANITY_DATASET || 'production',
+		apiVersion: PUBLIC_SANITY_API_VERSION || '2024-01-01',
+		useCdn: true,
+		perspective: 'published'
+	});
+
+	previewClient = createClient({
+		projectId: PUBLIC_SANITY_PROJECT_ID,
+		dataset: PUBLIC_SANITY_DATASET || 'production',
+		apiVersion: PUBLIC_SANITY_API_VERSION || '2024-01-01',
+		useCdn: false,
+		perspective: 'previewDrafts',
+		token: undefined
+	});
 }
 
-export const client = createClient({
-	projectId: PUBLIC_SANITY_PROJECT_ID,
-	dataset: PUBLIC_SANITY_DATASET || 'production',
-	apiVersion: PUBLIC_SANITY_API_VERSION || '2024-01-01',
-	useCdn: true, // Enable CDN for faster reads in production
-	perspective: 'published' // Only fetch published documents
-});
+export { client, previewClient };
 
-// Preview client for draft content (used in admin/preview mode)
-export const previewClient = createClient({
-	projectId: PUBLIC_SANITY_PROJECT_ID,
-	dataset: PUBLIC_SANITY_DATASET || 'production',
-	apiVersion: PUBLIC_SANITY_API_VERSION || '2024-01-01',
-	useCdn: false,
-	perspective: 'previewDrafts',
-	token: undefined // Will be set dynamically when needed
-});
-
-// Image URL builder
-const builder = createImageUrlBuilder(client);
+// Image URL builder (only works if Sanity is configured)
+const builder = client ? createImageUrlBuilder(client) : null;
 
 export function urlFor(source: SanityImageSource) {
+	if (!builder) return null;
 	return builder.image(source);
 }
 
@@ -44,7 +50,7 @@ export function getImageUrl(
 	source: SanityImageSource | null | undefined,
 	options: { width?: number; height?: number; quality?: number } = {}
 ): string | null {
-	if (!source) return null;
+	if (!source || !builder) return null;
 
 	const { width = 800, height, quality = 85 } = options;
 

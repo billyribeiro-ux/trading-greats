@@ -1,7 +1,10 @@
 import type { PageServerLoad } from './$types';
 import { sanity } from '$lib/sanity';
 import { seedTraders } from '$lib/server/seed';
-import type { Trader, NewTrader } from '$lib/server/schema';
+import type { Trader, NewTrader, BlogPost } from '$lib/server/schema';
+import { db } from '$lib/server/db';
+import { blogPosts } from '$lib/server/schema';
+import { desc, eq, sql } from 'drizzle-orm';
 import { PUBLIC_SANITY_PROJECT_ID } from '$env/static/public';
 
 function seedToTrader(t: NewTrader, id: string): Trader {
@@ -35,6 +38,7 @@ export const load: PageServerLoad = async () => {
 	let draftCount = 0;
 	let recentTraders: Trader[] = [];
 
+	// Fetch trader data from Sanity
 	if (PUBLIC_SANITY_PROJECT_ID) {
 		try {
 			const [stats, recent] = await Promise.all([
@@ -54,15 +58,33 @@ export const load: PageServerLoad = async () => {
 	if (traderCount === 0) {
 		const traders = seedTraders.map((t, i) => seedToTrader(t, `trader-${i}`));
 		traderCount = traders.length;
-		publishedCount = traders.filter(t => t.status === 'published').length;
-		draftCount = traders.filter(t => t.status === 'draft').length;
+		publishedCount = traders.filter((t) => t.status === 'published').length;
+		draftCount = traders.filter((t) => t.status === 'draft').length;
 		recentTraders = traders.slice(0, 5);
+	}
+
+	// Fetch blog data from database
+	let blogCount = 0;
+	let recentPosts: BlogPost[] = [];
+
+	try {
+		const [countResult, postsResult] = await Promise.all([
+			db.select({ count: sql<number>`count(*)` }).from(blogPosts),
+			db.select().from(blogPosts).orderBy(desc(blogPosts.createdAt)).limit(5)
+		]);
+		blogCount = countResult[0]?.count ?? 0;
+		recentPosts = postsResult;
+	} catch (error) {
+		// Blog table might not exist yet - that's ok
+		console.log('Blog posts table not yet created');
 	}
 
 	return {
 		traderCount,
 		publishedCount,
 		draftCount,
-		recentTraders
+		blogCount,
+		recentTraders,
+		recentPosts
 	};
 };

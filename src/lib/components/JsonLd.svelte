@@ -1,6 +1,10 @@
 <script lang="ts">
-	import { PUBLIC_SITE_URL, PUBLIC_SITE_NAME } from '$env/static/public';
+	import { page } from '$app/stores';
 	import type { Trader } from '$lib/server/schema';
+
+	// Default values that can be overridden by environment variables
+	const SITE_NAME = 'Trading Greats';
+	const SITE_URL = $derived($page.url.origin || 'https://tradinggreats.com');
 
 	type SchemaType = 'WebSite' | 'Person' | 'BreadcrumbList' | 'Article';
 
@@ -18,12 +22,12 @@
 				return {
 					'@context': 'https://schema.org',
 					'@type': 'WebSite',
-					name: PUBLIC_SITE_NAME,
-					url: PUBLIC_SITE_URL,
+					name: SITE_NAME,
+					url: SITE_URL,
 					description: 'Explore the minds that moved markets. Discover legendary traders, their strategies, and timeless wisdom from the greatest investors in history.',
 					potentialAction: {
 						'@type': 'SearchAction',
-						target: `${PUBLIC_SITE_URL}/search?q={search_term_string}`,
+						target: `${SITE_URL}/search?q={search_term_string}`,
 						'query-input': 'required name=search_term_string'
 					}
 				};
@@ -34,7 +38,7 @@
 					'@context': 'https://schema.org',
 					'@type': 'Person',
 					name: trader.name,
-					url: `${PUBLIC_SITE_URL}/traders/${trader.slug}`,
+					url: `${SITE_URL}/traders/${trader.slug}`,
 					image: trader.photoUrl,
 					description: trader.oneLiner,
 					jobTitle: trader.tradingStyle ? `${trader.tradingStyle} Trader` : 'Trader',
@@ -68,18 +72,18 @@
 					image: trader.photoUrl,
 					author: {
 						'@type': 'Organization',
-						name: PUBLIC_SITE_NAME
+						name: SITE_NAME
 					},
 					publisher: {
 						'@type': 'Organization',
-						name: PUBLIC_SITE_NAME,
-						url: PUBLIC_SITE_URL
+						name: SITE_NAME,
+						url: SITE_URL
 					},
 					datePublished: trader.createdAt,
 					dateModified: trader.updatedAt,
 					mainEntityOfPage: {
 						'@type': 'WebPage',
-						'@id': `${PUBLIC_SITE_URL}/traders/${trader.slug}`
+						'@id': `${SITE_URL}/traders/${trader.slug}`
 					}
 				};
 
