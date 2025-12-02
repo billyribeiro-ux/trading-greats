@@ -17,13 +17,21 @@
 		ExternalLink
 	} from 'lucide-svelte';
 	import { slugify } from '$lib/utils';
+	import type { PageData } from './$types';
 
-	let { data, form } = $props();
+	interface FormResult {
+		error?: string;
+		title?: string;
+		excerpt?: string;
+		content?: string;
+	}
+
+	let { data, form }: { data: PageData; form: FormResult | null } = $props();
 
 	// Form state - pre-populated with existing post data
-	let title = $state(form?.title || data.post.title || '');
-	let excerpt = $state(form?.excerpt || data.post.excerpt || '');
-	let content = $state(form?.content || data.post.content || '');
+	let title = $state(form?.title ?? data.post.title ?? '');
+	let excerpt = $state(form?.excerpt ?? data.post.excerpt ?? '');
+	let content = $state(form?.content ?? data.post.content ?? '');
 	let heroImage = $state(data.post.heroImage || '');
 	let heroImageAlt = $state(data.post.heroImageAlt || '');
 	let heroImageCaption = $state(data.post.heroImageCaption || '');

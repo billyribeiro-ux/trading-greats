@@ -3,18 +3,23 @@
 	import { ArrowLeft, Save, Plus, X } from 'lucide-svelte';
 	import type { PageData, ActionData } from './$types';
 
-	let { data, form }: { data: PageData; form: ActionData } = $props();
-	const { trader } = data;
+	interface LocalQuote {
+		text: string;
+		source: string;
+	}
 
-	let quotes = $state(trader.quotes?.map(q => ({ text: q.text, source: q.source || '' })) || [{ text: '', source: '' }]);
-	let achievements = $state(trader.achievements || ['']);
+	let { data, form }: { data: PageData; form: ActionData } = $props();
+	const trader = $derived(data.trader);
+
+	let quotes = $state<LocalQuote[]>(data.trader.quotes?.map((q) => ({ text: q.text, source: q.source || '' })) || [{ text: '', source: '' }]);
+	let achievements = $state<string[]>(data.trader.achievements || ['']);
 
 	function addQuote() {
 		quotes = [...quotes, { text: '', source: '' }];
 	}
 
 	function removeQuote(index: number) {
-		quotes = quotes.filter((_, i) => i !== index);
+		quotes = quotes.filter((_: LocalQuote, i: number) => i !== index);
 	}
 
 	function addAchievement() {
@@ -22,7 +27,7 @@
 	}
 
 	function removeAchievement(index: number) {
-		achievements = achievements.filter((_, i) => i !== index);
+		achievements = achievements.filter((_: string, i: number) => i !== index);
 	}
 </script>
 

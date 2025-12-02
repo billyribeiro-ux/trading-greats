@@ -52,6 +52,8 @@
 		class?: string;
 		/** Element tag */
 		as?: 'div' | 'section' | 'article' | 'aside' | 'header' | 'footer' | 'main' | 'span';
+		/** Element ID for anchor links */
+		id?: string;
 		/** Children */
 		children: import('svelte').Snippet;
 	}
@@ -66,6 +68,7 @@
 		once = true,
 		class: className = '',
 		as = 'div',
+		id,
 		children
 	}: Props = $props();
 
@@ -179,6 +182,7 @@
 {#if as === 'section'}
 	<section
 		bind:this={element}
+		{id}
 		class={cn('will-change-[opacity,transform]', currentClasses, className)}
 		style={transitionStyle}
 	>
@@ -187,6 +191,7 @@
 {:else if as === 'article'}
 	<article
 		bind:this={element}
+		{id}
 		class={cn('will-change-[opacity,transform]', currentClasses, className)}
 		style={transitionStyle}
 	>
@@ -195,6 +200,7 @@
 {:else if as === 'aside'}
 	<aside
 		bind:this={element}
+		{id}
 		class={cn('will-change-[opacity,transform]', currentClasses, className)}
 		style={transitionStyle}
 	>
@@ -203,6 +209,7 @@
 {:else if as === 'header'}
 	<header
 		bind:this={element}
+		{id}
 		class={cn('will-change-[opacity,transform]', currentClasses, className)}
 		style={transitionStyle}
 	>
@@ -211,6 +218,7 @@
 {:else if as === 'footer'}
 	<footer
 		bind:this={element}
+		{id}
 		class={cn('will-change-[opacity,transform]', currentClasses, className)}
 		style={transitionStyle}
 	>
@@ -219,6 +227,7 @@
 {:else if as === 'main'}
 	<main
 		bind:this={element}
+		{id}
 		class={cn('will-change-[opacity,transform]', currentClasses, className)}
 		style={transitionStyle}
 	>
@@ -227,6 +236,7 @@
 {:else if as === 'span'}
 	<span
 		bind:this={element}
+		{id}
 		class={cn('will-change-[opacity,transform]', currentClasses, className)}
 		style={transitionStyle}
 	>
@@ -235,6 +245,7 @@
 {:else}
 	<div
 		bind:this={element}
+		{id}
 		class={cn('will-change-[opacity,transform]', currentClasses, className)}
 		style={transitionStyle}
 	>

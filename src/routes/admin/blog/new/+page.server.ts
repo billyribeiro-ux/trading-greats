@@ -102,7 +102,7 @@ export const actions: Actions = {
 				heroImageCaption: heroImageCaption?.trim() || null,
 				author: author?.trim() || 'Trading Greats Team',
 				readingTime,
-				category: category || null,
+				category: (category || null) as import('$lib/server/schema').BlogCategory | null,
 				tags,
 				seoTitle: seoTitle?.trim() || null,
 				seoDescription: seoDescription?.trim() || null,

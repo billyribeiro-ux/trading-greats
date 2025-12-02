@@ -1,14 +1,14 @@
 import type { PageServerLoad } from './$types';
 import { db } from '$lib/server/db';
-import { blogPosts, BLOG_CATEGORIES } from '$lib/server/schema';
+import { blogPosts, BLOG_CATEGORIES, type BlogPost } from '$lib/server/schema';
 import { eq, and, ne, desc } from 'drizzle-orm';
 import { error } from '@sveltejs/kit';
 
 export const load: PageServerLoad = async ({ params }) => {
 	const { slug } = params;
 
-	let post;
-	let relatedPosts: any[] = [];
+	let post: BlogPost | undefined;
+	let relatedPosts: BlogPost[] = [];
 
 	try {
 		// Fetch the post
@@ -32,14 +32,14 @@ export const load: PageServerLoad = async ({ params }) => {
 			.limit(10);
 
 		// Prioritize manually linked posts, then same category
-		if (post.relatedPostIds && post.relatedPostIds.length > 0) {
-			const linked = allPublished.filter((p) => post.relatedPostIds?.includes(p.id));
+		if (post?.relatedPostIds && post.relatedPostIds.length > 0) {
+			const linked = allPublished.filter((p) => post?.relatedPostIds?.includes(p.id));
 			relatedPosts = linked.slice(0, 3);
 		}
 
-		if (relatedPosts.length < 3 && post.category) {
+		if (relatedPosts.length < 3 && post?.category) {
 			const sameCategory = allPublished.filter(
-				(p) => p.category === post.category && !relatedPosts.find((r) => r.id === p.id)
+				(p) => p.category === post?.category && !relatedPosts.find((r) => r.id === p.id)
 			);
 			relatedPosts = [...relatedPosts, ...sameCategory].slice(0, 3);
 		}

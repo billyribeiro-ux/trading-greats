@@ -22,13 +22,14 @@
 	} from 'lucide-svelte';
 
 	let { data } = $props();
-	const { trader, relatedTraders } = data;
+	const trader = $derived(data.trader);
+	const relatedTraders = $derived(data.relatedTraders);
 
-	const breadcrumbs = [
+	const breadcrumbs = $derived([
 		{ name: 'Home', url: PUBLIC_SITE_URL },
 		{ name: 'Traders', url: `${PUBLIC_SITE_URL}/traders` },
 		{ name: trader.name, url: `${PUBLIC_SITE_URL}/traders/${trader.slug}` }
-	];
+	]);
 
 	// Parse markdown bio
 	const parsedBio = $derived(trader.bio ? marked.parse(trader.bio) : '');
