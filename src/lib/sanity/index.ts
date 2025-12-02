@@ -1,11 +1,11 @@
 // Sanity CMS integration
 // Re-export everything for clean imports
 
-export { client, previewClient, urlFor, getImageUrl } from './client';
+export { client, previewClient, urlFor, getImageUrl, isSanityConfigured } from './client';
 export * from './queries';
 export * from './types';
 
-import { client } from './client';
+import { client, isSanityConfigured } from './client';
 import {
 	allTradersQuery,
 	allTradersAdminQuery,
@@ -23,12 +23,21 @@ import type { Trader } from '$lib/server/schema';
 
 /**
  * Sanity API - High-level functions for fetching data
+ * Returns empty arrays/null when Sanity is not configured
  */
 export const sanity = {
+	/**
+	 * Check if Sanity is configured
+	 */
+	isConfigured(): boolean {
+		return isSanityConfigured;
+	},
+
 	/**
 	 * Get all published traders
 	 */
 	async getAllTraders(): Promise<Trader[]> {
+		if (!client) return [];
 		const docs = await client.fetch<SanityTrader[]>(allTradersQuery);
 		return sanityToTraders(docs || []);
 	},
@@ -37,6 +46,7 @@ export const sanity = {
 	 * Get all traders including drafts (for admin)
 	 */
 	async getAllTradersAdmin(): Promise<Trader[]> {
+		if (!client) return [];
 		const docs = await client.fetch<SanityTrader[]>(allTradersAdminQuery);
 		return sanityToTraders(docs || []);
 	},
@@ -45,6 +55,7 @@ export const sanity = {
 	 * Get a single trader by slug
 	 */
 	async getTraderBySlug(slug: string): Promise<Trader | null> {
+		if (!client) return null;
 		const doc = await client.fetch<SanityTrader | null>(traderBySlugQuery, { slug });
 		return doc ? sanityToTrader(doc) : null;
 	},
@@ -53,6 +64,7 @@ export const sanity = {
 	 * Get a single trader by ID
 	 */
 	async getTraderById(id: string): Promise<Trader | null> {
+		if (!client) return null;
 		const doc = await client.fetch<SanityTrader | null>(traderByIdQuery, { id });
 		return doc ? sanityToTrader(doc) : null;
 	},
@@ -61,6 +73,7 @@ export const sanity = {
 	 * Get related traders by trading style
 	 */
 	async getRelatedTraders(tradingStyle: string, currentSlug: string): Promise<Trader[]> {
+		if (!client) return [];
 		const docs = await client.fetch<SanityTrader[]>(relatedTradersQuery, {
 			tradingStyle,
 			currentSlug
@@ -72,6 +85,7 @@ export const sanity = {
 	 * Get traders by trading style
 	 */
 	async getTradersByStyle(style: string): Promise<Trader[]> {
+		if (!client) return [];
 		const docs = await client.fetch<SanityTrader[]>(tradersByStyleQuery, { style: `*${style}*` });
 		return sanityToTraders(docs || []);
 	},
@@ -80,6 +94,7 @@ export const sanity = {
 	 * Get unique trading styles
 	 */
 	async getTradingStyles(): Promise<string[]> {
+		if (!client) return [];
 		const styles = await client.fetch<string[]>(tradingStylesQuery);
 		return styles || [];
 	},
@@ -88,6 +103,7 @@ export const sanity = {
 	 * Get featured trader
 	 */
 	async getFeaturedTrader(): Promise<Trader | null> {
+		if (!client) return null;
 		const doc = await client.fetch<SanityTrader | null>(featuredTraderQuery);
 		return doc ? sanityToTrader(doc) : null;
 	},
@@ -96,6 +112,7 @@ export const sanity = {
 	 * Get trader stats for admin
 	 */
 	async getTraderStats(): Promise<TraderStats> {
+		if (!client) return { total: 0, published: 0, drafts: 0 };
 		const stats = await client.fetch<TraderStats>(traderStatsQuery);
 		return stats || { total: 0, published: 0, drafts: 0 };
 	},
@@ -104,6 +121,7 @@ export const sanity = {
 	 * Get recent traders for admin dashboard
 	 */
 	async getRecentTraders(): Promise<Trader[]> {
+		if (!client) return [];
 		const docs = await client.fetch<SanityTrader[]>(recentTradersQuery);
 		return sanityToTraders(docs || []);
 	}
