@@ -47,13 +47,11 @@ export const load: PageServerLoad = async () => {
 			recentTraders = recent;
 		} catch (error) {
 			console.error('Sanity fetch failed, falling back to seed data:', error);
-			const traders = seedTraders.map((t, i) => seedToTrader(t, `trader-${i}`));
-			traderCount = traders.length;
-			publishedCount = traders.filter(t => t.status === 'published').length;
-			draftCount = traders.filter(t => t.status === 'draft').length;
-			recentTraders = traders.slice(0, 5);
 		}
-	} else {
+	}
+
+	// Fallback to seed data if Sanity returns empty or fails
+	if (traderCount === 0) {
 		const traders = seedTraders.map((t, i) => seedToTrader(t, `trader-${i}`));
 		traderCount = traders.length;
 		publishedCount = traders.filter(t => t.status === 'published').length;

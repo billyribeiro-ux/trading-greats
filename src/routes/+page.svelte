@@ -76,8 +76,9 @@
 	});
 
 	// Helper to check if section is revealed
+	// Default to true (visible) to prevent SSR opacity-0 flash
 	function isRevealed(id: string): boolean {
-		return revealsMap.get(id) ?? false;
+		return revealsMap.get(id) ?? true;
 	}
 
 	// Trading strategies data - matches actual trading styles in seed data

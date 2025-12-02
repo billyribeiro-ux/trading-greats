@@ -31,8 +31,8 @@ function seedToTrader(t: NewTrader, id: string): Trader {
 
 export const load: PageServerLoad = async ({ url }) => {
 	const styleFilter = url.searchParams.get('style');
-	let traders: Trader[];
-	let tradingStyles: string[];
+	let traders: Trader[] = [];
+	let tradingStyles: string[] = [];
 
 	if (PUBLIC_SANITY_PROJECT_ID) {
 		try {
@@ -45,16 +45,11 @@ export const load: PageServerLoad = async ({ url }) => {
 			tradingStyles = await sanity.getTradingStyles();
 		} catch (error) {
 			console.error('Sanity fetch failed, falling back to seed data:', error);
-			traders = seedTraders.map((t, i) => seedToTrader(t, `trader-${i}`));
-			if (styleFilter) {
-				traders = traders.filter(t => 
-					t.tradingStyle?.toLowerCase().includes(styleFilter.toLowerCase())
-				);
-			}
-			tradingStyles = [...new Set(seedTraders.map(t => t.tradingStyle).filter((s): s is string => !!s))];
 		}
-	} else {
-		// Fallback to seed data
+	}
+
+	// Fallback to seed data if Sanity returns empty or fails
+	if (traders.length === 0) {
 		traders = seedTraders.map((t, i) => seedToTrader(t, `trader-${i}`));
 		if (styleFilter) {
 			traders = traders.filter(t => 

@@ -31,8 +31,8 @@ function seedToTrader(t: NewTrader, id: string): Trader {
 }
 
 export const load: PageServerLoad = async () => {
-	let traders: Trader[];
-	let featuredTrader: Trader | null;
+	let traders: Trader[] = [];
+	let featuredTrader: Trader | null = null;
 
 	// Use Sanity if configured, otherwise fall back to seed data
 	if (PUBLIC_SANITY_PROJECT_ID) {
@@ -43,11 +43,11 @@ export const load: PageServerLoad = async () => {
 			]);
 		} catch (error) {
 			console.error('Sanity fetch failed, falling back to seed data:', error);
-			traders = seedTraders.map((t, i) => seedToTrader(t, `trader-${i}`));
-			featuredTrader = traders[0] ?? null;
 		}
-	} else {
-		// Fallback to seed data
+	}
+
+	// Fallback to seed data if Sanity returns empty or fails
+	if (traders.length === 0) {
 		traders = seedTraders.map((t, i) => seedToTrader(t, `trader-${i}`));
 		featuredTrader = traders[0] ?? null;
 	}
