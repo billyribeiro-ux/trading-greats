@@ -6,7 +6,13 @@
     import { Icon, type IconName } from '$lib/components/icons';
 
     // ============================================================================
-    // STATE
+    // PROPS - Server data from +page.server.ts (Dec 2025 Hydration Model)
+    // ============================================================================
+    // Data is SSR'd and embedded in HTML, then reused during hydration (no double-fetch)
+    let { data } = $props();
+
+    // ============================================================================
+    // STATE (Svelte 5 Runes)
     // ============================================================================
     let openFaq = $state<number | null>(null);
     
@@ -15,20 +21,17 @@
     }
 
     // ============================================================================
-    // 1. DATA & CONTENT (Restored Full Data)
+    // DERIVED DATA - Transform server data for display
     // ============================================================================
-
-    // Mock Data (replacing the DB call from your original file)
-    const traders = [
-        { name: "Stanley Druckenmiller", style: "Macro", knownFor: "30% Avg Returns", returns: "30% CAGR" },
-        { name: "Jim Simons", style: "Quant", knownFor: "Medallion Fund", returns: "66% CAGR" },
-        { name: "Paul Tudor Jones", style: "Macro", knownFor: "Black Monday", returns: "100% in '87" },
-        { name: "Ed Seykota", style: "Trend", knownFor: "System Trading", returns: "60% CAGR" },
-        { name: "Warren Buffett", style: "Value", knownFor: "Berkshire Hathaway", returns: "20% CAGR" },
-        { name: "George Soros", style: "Macro", knownFor: "Breaking BoE", returns: "$1B Profit" },
-        { name: "Mark Minervini", style: "Momentum", knownFor: "US Investing Champ", returns: "220% (1997)" },
-        { name: "Jesse Livermore", style: "Speculation", knownFor: "1929 Crash", returns: "$100M Peak" }
-    ];
+    // Use server-loaded traders, with fallback display data
+    const displayTraders = $derived(
+        data.traders.slice(0, 8).map(t => ({
+            name: t.name,
+            style: t.tradingStyle || 'Trading',
+            knownFor: t.oneLiner || 'Legendary Trader',
+            returns: t.netWorth || 'Exceptional'
+        }))
+    );
 
     const strategies: { name: string; icon: IconName; color: string; traders: string[]; description: string }[] = [
         {
@@ -389,11 +392,11 @@
         </div>
 
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {#each traders.slice(0, 4) as trader, i}
+            {#each displayTraders.slice(0, 4) as trader, i}
                 <div use:reveal={{ delay: 0.15 + i * 0.1 }}>
                     <div class="group relative overflow-hidden rounded-3xl border border-white/10 bg-[#0f172a] transition-all duration-500 hover:border-[#EAB308]/40 hover:-translate-y-2 hover:shadow-2xl">
                         <div class="aspect-[4/5] w-full bg-slate-800 relative overflow-hidden">
-                            <div class="absolute inset-0 flex items-center justify-center text-7xl font-black text-white/5 select-none">{trader.name.split(' ').map(n=>n[0]).join('')}</div>
+                            <div class="absolute inset-0 flex items-center justify-center text-7xl font-black text-white/5 select-none">{trader.name.split(' ').map((n: string) => n[0]).join('')}</div>
                             <div class="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90"></div>
                             
                             <div class="absolute bottom-0 left-0 w-full p-6">
@@ -550,13 +553,13 @@
         </div>
 
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {#each traders as trader, i}
+            {#each displayTraders as trader, i}
                 <div use:reveal={{ delay: 0.1 + i * 0.08 }}>
                     <div class="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#0f172a] transition-all duration-500 hover:border-[#EAB308]/40 hover:-translate-y-2 hover:shadow-2xl">
                         <div class="p-6">
                             <div class="flex justify-between items-start mb-4">
                                 <div class="h-12 w-12 rounded-full bg-white/5 flex items-center justify-center font-bold text-slate-500 select-none">
-                                    {trader.name.split(' ').map(n=>n[0]).join('')}
+                                    {trader.name.split(' ').map((n: string) => n[0]).join('')}
                                 </div>
                                 <span class="text-[10px] font-bold uppercase tracking-wider text-[#EAB308] bg-[#EAB308]/10 px-2 py-1 rounded">
                                     {trader.style}
