@@ -186,9 +186,9 @@
     const countWorth = createCounter(500, 2000, 1200);
 
     // ============================================================================
-    // JSON-LD CONSTRUCTION
+    // JSON-LD CONSTRUCTION (Reactive to data changes)
     // ============================================================================
-    const schemaOrg = {
+    const schemaOrg = $derived({
         faq: {
             "@context": "https://schema.org",
             "@type": "FAQPage",
@@ -220,7 +220,7 @@
             "description": data.meta.description,
             "knowsAbout": ["Trading", "Investing", "Financial Markets", "Value Investing"]
         }
-    };
+    });
 </script>
 
 <SEO
