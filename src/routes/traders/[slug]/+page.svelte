@@ -4,24 +4,13 @@
 	import TraderCard from '$lib/components/TraderCard.svelte';
 	import { PUBLIC_SITE_URL } from '$env/static/public';
 	import { marked } from 'marked';
-	import {
-		TrendingUp,
-		Globe,
-		DollarSign,
-		Calendar,
-		Award,
-		Quote,
-		BookOpen,
-		ExternalLink,
-		ArrowRight,
-		ChevronRight,
-		Target,
-		Lightbulb,
-		History,
-		Share2
-	} from 'lucide-svelte';
+	import { Icon } from '$lib/components/icons';
+	import type { PageData } from './$types';
 
-	let { data } = $props();
+	// ============================================================================
+	// PROPS (Svelte 5 - SSR data hydration)
+	// ============================================================================
+	let { data }: { data: PageData } = $props();
 	const trader = $derived(data.trader);
 	const relatedTraders = $derived(data.relatedTraders);
 
@@ -68,9 +57,9 @@
 		<!-- Breadcrumbs -->
 		<nav class="mb-8 flex items-center gap-2 text-sm text-midnight-400">
 			<a href="/" class="hover:text-gold-400 transition-colors">Home</a>
-			<ChevronRight class="h-4 w-4" />
+			<Icon name="chevron-right" class="h-4 w-4" />
 			<a href="/traders" class="hover:text-gold-400 transition-colors">Traders</a>
-			<ChevronRight class="h-4 w-4" />
+			<Icon name="chevron-right" class="h-4 w-4" />
 			<span class="text-white font-medium">{trader.name}</span>
 		</nav>
 
@@ -103,7 +92,7 @@
 							{#if trader.netWorth}
 								<div class="flex items-center gap-3">
 									<div class="flex h-10 w-10 items-center justify-center rounded-full bg-green-500/10 text-green-500">
-										<DollarSign class="h-5 w-5" />
+										<Icon name="dollar-sign" class="h-5 w-5" />
 									</div>
 									<div>
 										<p class="text-xs text-midnight-400">Net Worth</p>
@@ -114,7 +103,7 @@
 							{#if trader.nationality}
 								<div class="flex items-center gap-3">
 									<div class="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/10 text-blue-500">
-										<Globe class="h-5 w-5" />
+										<Icon name="globe" class="h-5 w-5" />
 									</div>
 									<div>
 										<p class="text-xs text-midnight-400">Nationality</p>
@@ -125,7 +114,7 @@
 							{#if lifespan}
 								<div class="flex items-center gap-3">
 									<div class="flex h-10 w-10 items-center justify-center rounded-full bg-purple-500/10 text-purple-500">
-										<Calendar class="h-5 w-5" />
+										<Icon name="calendar" class="h-5 w-5" />
 									</div>
 									<div>
 										<p class="text-xs text-midnight-400">Lifespan</p>
@@ -139,7 +128,7 @@
 					<!-- Share / Actions -->
 					<div class="flex gap-3">
 						<button class="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-white/5 py-3 text-sm font-medium text-white hover:bg-white/10 transition-colors">
-							<Share2 class="h-4 w-4" />
+							<Icon name="share" class="h-4 w-4" />
 							Share Profile
 						</button>
 					</div>
@@ -152,7 +141,7 @@
 				<!-- Bio Section -->
 				<section>
 					<h2 class="mb-6 flex items-center gap-3 font-display text-2xl font-bold text-white">
-						<History class="h-6 w-6 text-gold-500" />
+						<Icon name="history" class="h-6 w-6 text-gold-500" />
 						Biography
 					</h2>
 					<div class="prose prose-invert prose-lg max-w-none prose-headings:font-display prose-a:text-gold-400 hover:prose-a:text-gold-300">
@@ -165,7 +154,7 @@
 					<section class="relative overflow-hidden rounded-3xl border border-white/10 bg-midnight-900/30 p-8 backdrop-blur-sm">
 						<div class="absolute top-0 right-0 -mt-4 -mr-4 h-32 w-32 rounded-full bg-gold-500/5 blur-3xl"></div>
 						<h2 class="mb-6 flex items-center gap-3 font-display text-2xl font-bold text-white">
-							<Lightbulb class="h-6 w-6 text-gold-500" />
+							<Icon name="lightbulb" class="h-6 w-6 text-gold-500" />
 							Trading Philosophy
 						</h2>
 						<div class="prose prose-invert max-w-none text-midnight-100">
@@ -178,7 +167,7 @@
 				{#if trader.famousTrades && trader.famousTrades.length > 0}
 					<section>
 						<h2 class="mb-6 flex items-center gap-3 font-display text-2xl font-bold text-white">
-							<TrendingUp class="h-6 w-6 text-gold-500" />
+							<Icon name="trending-up" class="h-6 w-6 text-gold-500" />
 							Famous Trades
 						</h2>
 						<div class="grid gap-4">
@@ -210,13 +199,13 @@
 				{#if trader.quotes && trader.quotes.length > 0}
 					<section>
 						<h2 class="mb-6 flex items-center gap-3 font-display text-2xl font-bold text-white">
-							<Quote class="h-6 w-6 text-gold-500" />
+							<Icon name="quote" class="h-6 w-6 text-gold-500" />
 							Legendary Quotes
 						</h2>
 						<div class="grid gap-6">
 							{#each trader.quotes as quote}
 								<figure class="relative rounded-2xl bg-white/5 p-8">
-									<Quote class="absolute top-4 left-4 h-8 w-8 text-white/10 rotate-180" />
+									<Icon name="quote" class="absolute top-4 left-4 h-8 w-8 text-white/10 rotate-180" />
 									<blockquote class="relative z-10 text-lg font-medium italic text-midnight-100">
 										"{quote.text}"
 									</blockquote>
@@ -235,7 +224,7 @@
 				{#if trader.books && trader.books.length > 0}
 					<section>
 						<h2 class="mb-6 flex items-center gap-3 font-display text-2xl font-bold text-white">
-							<BookOpen class="h-6 w-6 text-gold-500" />
+							<Icon name="book-open" class="h-6 w-6 text-gold-500" />
 							Recommended Reading
 						</h2>
 						<div class="grid gap-4">

@@ -1,10 +1,13 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import { cn } from '$lib/utils';
 	import { ScrollReveal } from '$lib/components/motion';
 	import { Icon, type IconName } from '$lib/components/icons';
+	import type { PageData } from './$types';
 
-	let { data } = $props();
+	// ============================================================================
+	// PROPS (Svelte 5 - SSR data hydration)
+	// ============================================================================
+	let { data }: { data: PageData } = $props();
 
 	// Category icons mapping
 	const categoryIcons: Record<string, IconName> = {

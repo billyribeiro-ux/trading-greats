@@ -1,40 +1,25 @@
 <script lang="ts">
-	import {
-		Calendar,
-		Clock,
-		ArrowLeft,
-		ArrowRight,
-		Share2,
-		Twitter,
-		Linkedin,
-		Link2,
-		Tag,
-		User,
-		TrendingUp,
-		Brain,
-		BarChart3,
-		GraduationCap,
-		LineChart,
-		BookMarked,
-		Check,
-		BookOpen
-	} from 'lucide-svelte';
 	import { cn } from '$lib/utils';
 	import ScrollReveal from '$lib/components/motion/ScrollReveal.svelte';
+	import { Icon, type IconName } from '$lib/components/icons';
+	import type { PageData } from './$types';
 
-	let { data } = $props();
+	// ============================================================================
+	// PROPS (Svelte 5 - SSR data hydration)
+	// ============================================================================
+	let { data }: { data: PageData } = $props();
 
 	let copied = $state(false);
 
 	// Category icons
-	const categoryIcons: Record<string, any> = {
-		strategy: TrendingUp,
-		psychology: Brain,
-		analysis: BarChart3,
-		biography: User,
-		education: GraduationCap,
-		'market-insights': LineChart,
-		'book-review': BookMarked
+	const categoryIcons: Record<string, IconName> = {
+		strategy: 'trending-up',
+		psychology: 'brain',
+		analysis: 'bar-chart',
+		biography: 'user',
+		education: 'graduation-cap',
+		'market-insights': 'line-chart',
+		'book-review': 'book-marked'
 	};
 
 	function formatDate(dateString: string | null): string {
@@ -108,8 +93,8 @@
 		);
 	}
 
-	const CategoryIcon = $derived(
-		data.post.category ? categoryIcons[data.post.category] || Tag : Tag
+	const categoryIcon = $derived<IconName>(
+		data.post.category ? categoryIcons[data.post.category] || 'tag' : 'tag'
 	);
 </script>
 
@@ -173,7 +158,7 @@
 						href="/blog"
 						class="inline-flex items-center gap-2 text-midnight-400 hover:text-white transition-colors"
 					>
-						<ArrowLeft class="h-4 w-4" />
+						<Icon name="arrow-left" class="h-4 w-4" />
 						Back to Blog
 					</a>
 				</nav>
@@ -185,19 +170,19 @@
 							href="/blog?category={data.post.category}"
 							class="inline-flex items-center gap-1.5 rounded-full bg-gold-500/10 border border-gold-500/20 px-3 py-1 text-sm font-medium text-gold-400 hover:bg-gold-500/20 transition-colors"
 						>
-							<CategoryIcon class="h-3.5 w-3.5" />
+							<Icon name={categoryIcon} class="h-3.5 w-3.5" />
 							{getCategoryLabel(data.post.category)}
 						</a>
 					{/if}
 					{#if data.post.publishedAt}
 						<span class="flex items-center gap-1.5 text-sm text-midnight-400">
-							<Calendar class="h-4 w-4" />
+							<Icon name="calendar" class="h-4 w-4" />
 							{formatDate(data.post.publishedAt)}
 						</span>
 					{/if}
 					{#if data.post.readingTime}
 						<span class="flex items-center gap-1.5 text-sm text-midnight-400">
-							<Clock class="h-4 w-4" />
+							<Icon name="clock" class="h-4 w-4" />
 							{data.post.readingTime} min read
 						</span>
 					{/if}
@@ -220,7 +205,7 @@
 					{#if data.post.author}
 						<div class="flex items-center gap-3">
 							<div class="h-10 w-10 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center">
-								<User class="h-5 w-5 text-midnight-950" />
+								<Icon name="user" class="h-5 w-5 text-midnight-950" />
 							</div>
 							<div>
 								<p class="font-medium text-white">{data.post.author}</p>
@@ -237,7 +222,7 @@
 							class="rounded-lg p-2 text-midnight-400 hover:bg-midnight-800 hover:text-white transition-colors"
 							aria-label="Share on Twitter"
 						>
-							<Twitter class="h-5 w-5" />
+							<Icon name="twitter" class="h-5 w-5" />
 						</button>
 						<button
 							type="button"
@@ -245,7 +230,7 @@
 							class="rounded-lg p-2 text-midnight-400 hover:bg-midnight-800 hover:text-white transition-colors"
 							aria-label="Share on LinkedIn"
 						>
-							<Linkedin class="h-5 w-5" />
+							<Icon name="share" class="h-5 w-5" />
 						</button>
 						<button
 							type="button"
@@ -254,9 +239,9 @@
 							aria-label="Copy link"
 						>
 							{#if copied}
-								<Check class="h-5 w-5 text-green-400" />
+								<Icon name="check" class="h-5 w-5 text-green-400" />
 							{:else}
-								<Link2 class="h-5 w-5" />
+								<Icon name="external-link" class="h-5 w-5" />
 							{/if}
 						</button>
 					</div>
@@ -301,7 +286,7 @@
 				{#if data.post.tags && data.post.tags.length > 0}
 					<div class="mt-12 pt-8 border-t border-midnight-800/50">
 						<div class="flex flex-wrap items-center gap-2">
-							<Tag class="h-4 w-4 text-midnight-500" />
+							<Icon name="tag" class="h-4 w-4 text-midnight-500" />
 							{#each data.post.tags as tag}
 								<span class="rounded-full bg-midnight-800 px-3 py-1 text-sm text-midnight-300">
 									{tag}
@@ -342,7 +327,7 @@
 										</div>
 									{:else}
 										<div class="relative aspect-[16/10] bg-midnight-800 flex items-center justify-center">
-											<BookOpen class="h-12 w-12 text-midnight-600" />
+											<Icon name="book-open" class="h-12 w-12 text-midnight-600" />
 										</div>
 									{/if}
 
@@ -353,10 +338,10 @@
 
 										<div class="mt-4 flex items-center justify-between text-xs text-midnight-500">
 											<span class="flex items-center gap-1">
-												<Clock class="h-3 w-3" />
+												<Icon name="clock" class="h-3 w-3" />
 												{post.readingTime} min read
 											</span>
-											<ArrowRight class="h-4 w-4 text-gold-500 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+											<Icon name="arrow-right" class="h-4 w-4 text-gold-500 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
 										</div>
 									</div>
 								</a>
@@ -376,7 +361,7 @@
 					href="/blog"
 					class="inline-flex items-center gap-2 rounded-xl bg-midnight-800 px-6 py-3 font-semibold text-white hover:bg-midnight-700 transition-colors"
 				>
-					<ArrowLeft class="h-5 w-5" />
+					<Icon name="arrow-left" class="h-5 w-5" />
 					Back to All Posts
 				</a>
 			</div>

@@ -6,12 +6,13 @@
 	import { PUBLIC_SITE_URL } from '$env/static/public';
 	import { cn } from '$lib/utils';
 	import { Icon, type IconName } from '$lib/components/icons';
+	import type { PageData } from './$types';
 
 	// ============================================================================
-	// DATA & STATE
+	// PROPS (Svelte 5 - SSR data hydration)
 	// ============================================================================
 
-	let { data } = $props();
+	let { data }: { data: PageData } = $props();
 
 	let searchQuery = $state('');
 	let viewMode = $state<'grid' | 'list'>('grid');
