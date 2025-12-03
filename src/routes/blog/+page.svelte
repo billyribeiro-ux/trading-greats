@@ -13,12 +13,70 @@
 		User,
 		GraduationCap,
 		LineChart,
-		BookMarked
+		BookMarked,
+		CheckCircle2,
+		Loader2,
+		AlertCircle
 	} from 'lucide-svelte';
 	import { cn } from '$lib/utils';
 	import ScrollReveal from '$lib/components/motion/ScrollReveal.svelte';
 
 	let { data } = $props();
+
+	// Newsletter subscription state
+	let email = $state('');
+	let isSubscribing = $state(false);
+	let subscribeMessage = $state('');
+	let subscribeSuccess = $state(false);
+	let subscribeError = $state(false);
+
+	async function handleSubscribe(e: Event) {
+		e.preventDefault();
+
+		if (!email || isSubscribing) return;
+
+		// Basic email validation
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		if (!emailRegex.test(email)) {
+			subscribeError = true;
+			subscribeSuccess = false;
+			subscribeMessage = 'Please enter a valid email address';
+			return;
+		}
+
+		isSubscribing = true;
+		subscribeError = false;
+		subscribeSuccess = false;
+		subscribeMessage = '';
+
+		try {
+			const response = await fetch('/api/newsletter/subscribe', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					email,
+					source: 'blog',
+					referrer: window.location.href
+				})
+			});
+
+			const result = await response.json();
+
+			if (result.success) {
+				subscribeSuccess = true;
+				subscribeMessage = result.message;
+				email = '';
+			} else {
+				subscribeError = true;
+				subscribeMessage = result.message;
+			}
+		} catch (error) {
+			subscribeError = true;
+			subscribeMessage = 'Something went wrong. Please try again.';
+		} finally {
+			isSubscribing = false;
+		}
+	}
 
 	// Category icons
 	const categoryIcons: Record<string, any> = {
@@ -308,19 +366,43 @@
 						Join thousands of traders receiving our weekly digest of strategies, analysis, and wisdom
 						from legendary traders.
 					</p>
-					<form class="mt-8 flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-						<input
-							type="email"
-							placeholder="Enter your email"
-							class="flex-1 rounded-xl border border-midnight-700 bg-midnight-800/50 px-4 py-3 text-midnight-100 placeholder-midnight-500 outline-none transition-all focus:border-gold-500/50 focus:ring-2 focus:ring-gold-500/20"
-						/>
-						<button
-							type="submit"
-							class="rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 px-6 py-3 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30"
-						>
-							Subscribe
-						</button>
-					</form>
+
+					{#if subscribeSuccess}
+						<div class="mt-8 flex items-center justify-center gap-3 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 max-w-md mx-auto">
+							<CheckCircle2 class="h-5 w-5 text-emerald-400 flex-shrink-0" />
+							<p class="text-emerald-400">{subscribeMessage}</p>
+						</div>
+					{:else}
+						<form onsubmit={handleSubscribe} class="mt-8 flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+							<input
+								type="email"
+								bind:value={email}
+								placeholder="Enter your email"
+								disabled={isSubscribing}
+								class="flex-1 rounded-xl border border-midnight-700 bg-midnight-800/50 px-4 py-3 text-midnight-100 placeholder-midnight-500 outline-none transition-all focus:border-gold-500/50 focus:ring-2 focus:ring-gold-500/20 disabled:opacity-50"
+							/>
+							<button
+								type="submit"
+								disabled={isSubscribing || !email}
+								class="rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 px-6 py-3 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+							>
+								{#if isSubscribing}
+									<Loader2 class="h-4 w-4 animate-spin" />
+									Subscribing...
+								{:else}
+									Subscribe
+								{/if}
+							</button>
+						</form>
+
+						{#if subscribeError && subscribeMessage}
+							<div class="mt-4 flex items-center justify-center gap-2 text-red-400 text-sm">
+								<AlertCircle class="h-4 w-4" />
+								{subscribeMessage}
+							</div>
+						{/if}
+					{/if}
+
 					<p class="mt-4 text-xs text-midnight-600">
 						No spam. Unsubscribe anytime.
 					</p>

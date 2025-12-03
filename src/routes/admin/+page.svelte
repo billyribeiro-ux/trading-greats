@@ -10,7 +10,8 @@
 		Edit,
 		PenTool,
 		BarChart3,
-		Settings
+		Settings,
+		Mail
 	} from 'lucide-svelte';
 
 	let { data } = $props();
@@ -42,6 +43,13 @@
 				>
 					<Eye class="h-4 w-4" />
 					View Site
+				</a>
+				<a
+					href="/admin/newsletter"
+					class="inline-flex items-center gap-2 text-sm text-midnight-400 hover:text-midnight-200 transition-colors"
+				>
+					<Mail class="h-4 w-4" />
+					Newsletter
 				</a>
 				<a
 					href="/admin/settings"
@@ -162,6 +170,19 @@
 					<div>
 						<p class="font-semibold text-midnight-100">Manage Blog</p>
 						<p class="text-sm text-midnight-400">Edit blog posts</p>
+					</div>
+				</a>
+
+				<a
+					href="/admin/newsletter"
+					class="group flex items-center gap-4 rounded-2xl border border-midnight-800/50 bg-midnight-900/50 p-5 transition-all duration-300 hover:border-pink-500/30 hover:bg-midnight-800/50 hover:shadow-lg hover:shadow-pink-500/5"
+				>
+					<div class="flex h-14 w-14 items-center justify-center rounded-xl bg-pink-500/10 transition-transform duration-300 group-hover:scale-110">
+						<Mail class="h-7 w-7 text-pink-500" />
+					</div>
+					<div>
+						<p class="font-semibold text-midnight-100">Newsletter</p>
+						<p class="text-sm text-midnight-400">Email campaigns</p>
 					</div>
 				</a>
 			</div>
