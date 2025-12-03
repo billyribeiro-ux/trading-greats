@@ -1,23 +1,84 @@
 @import 'tailwindcss';
 @config '../tailwind.config.ts';
 
-/* Custom scrollbar */
+/* ============================================================================
+   CINEMATIC DESIGN SYSTEM
+   Apple/Netflix-quality animations for Trading Greats
+   ============================================================================ */
+
+/* ============================================================================
+   CSS CUSTOM PROPERTIES - Animation Tokens
+   ============================================================================ */
+:root {
+	/* Timing */
+	--duration-instant: 50ms;
+	--duration-fast: 100ms;
+	--duration-normal: 200ms;
+	--duration-medium: 300ms;
+	--duration-slow: 400ms;
+	--duration-slower: 500ms;
+	--duration-cinematic: 600ms;
+	--duration-dramatic: 800ms;
+	--duration-epic: 1000ms;
+	
+	/* Easing - Cinematic curves */
+	--ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	--ease-spring-smooth: cubic-bezier(0.34, 1.56, 0.64, 1);
+	--ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+	--ease-cinematic-out: cubic-bezier(0, 0.55, 0.45, 1);
+	--ease-expressive: cubic-bezier(0.19, 1, 0.22, 1);
+	--ease-smooth-out: cubic-bezier(0, 0, 0.2, 1);
+	--ease-smooth-in: cubic-bezier(0.4, 0, 1, 1);
+	
+	/* Card dimensions - Consistent sizing */
+	--card-aspect-ratio: 4 / 5;
+	--card-image-aspect: 3 / 4;
+	--card-border-radius: 1rem;
+	--card-padding: 1.25rem;
+}
+
+/* ============================================================================
+   BASE STYLES
+   ============================================================================ */
+
+/* Smooth scroll with reduced motion respect */
+html {
+	scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+	
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+/* Custom scrollbar - Minimal, elegant */
 ::-webkit-scrollbar {
-	width: 8px;
-	height: 8px;
+	width: 6px;
+	height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-	background: var(--color-midnight-900);
+	background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
 	background: var(--color-midnight-700);
-	border-radius: 4px;
+	border-radius: 3px;
+	transition: background var(--duration-normal) var(--ease-smooth-out);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background: var(--color-midnight-600);
+	background: var(--color-midnight-500);
 }
 
 /* Selection */
@@ -26,18 +87,20 @@
 	color: var(--color-gold-100);
 }
 
-/* Focus styles */
+/* Focus styles - Cinematic glow */
 :focus-visible {
-	outline: 2px solid var(--color-gold-500);
-	outline-offset: 2px;
+	outline: none;
+	box-shadow: 
+		0 0 0 2px var(--color-midnight-950),
+		0 0 0 4px var(--color-gold-500),
+		0 0 20px oklch(from var(--color-gold-500) l c h / 30%);
+	transition: box-shadow var(--duration-normal) var(--ease-cinematic);
 }
 
-/* Smooth scroll */
-html {
-	scroll-behavior: smooth;
-}
+/* ============================================================================
+   TYPOGRAPHY
+   ============================================================================ */
 
-/* Typography */
 .prose {
 	--tw-prose-body: var(--color-midnight-200);
 	--tw-prose-headings: var(--color-midnight-50);
@@ -49,7 +112,401 @@ html {
 	--tw-prose-hr: var(--color-midnight-700);
 }
 
-/* Noise overlay */
+/* Gradient text with shimmer */
+.gradient-text {
+	background: linear-gradient(135deg, var(--color-gold-300), var(--color-gold-500), var(--color-gold-300));
+	background-size: 200% auto;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+.gradient-text-animated {
+	background: linear-gradient(
+		90deg,
+		var(--color-gold-400) 0%,
+		var(--color-gold-200) 25%,
+		var(--color-gold-400) 50%,
+		var(--color-gold-200) 75%,
+		var(--color-gold-400) 100%
+	);
+	background-size: 200% auto;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	animation: shimmer-text 3s linear infinite;
+}
+
+@keyframes shimmer-text {
+	to { background-position: 200% center; }
+}
+
+/* ============================================================================
+   CARD SYSTEM - Consistent, Cinematic
+   ============================================================================ */
+
+/* Base card - GPU accelerated */
+.card {
+	--card-translate-y: 0;
+	--card-scale: 1;
+	--card-rotate: 0deg;
+	--card-glow-opacity: 0;
+	--card-border-opacity: 0.05;
+	--card-bg-opacity: 0.4;
+	
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	border-radius: var(--card-border-radius);
+	background: oklch(from var(--color-midnight-900) l c h / var(--card-bg-opacity));
+	border: 1px solid oklch(from white l c h / var(--card-border-opacity));
+	backdrop-filter: blur(8px);
+	transform: 
+		translateY(var(--card-translate-y))
+		scale(var(--card-scale))
+		rotate(var(--card-rotate))
+		translateZ(0);
+	transition: 
+		transform var(--duration-cinematic) var(--ease-cinematic),
+		box-shadow var(--duration-cinematic) var(--ease-cinematic),
+		border-color var(--duration-medium) var(--ease-smooth-out);
+	will-change: transform, box-shadow;
+}
+
+.card::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	background: radial-gradient(
+		circle at 50% 0%,
+		oklch(from var(--color-gold-500) l c h / var(--card-glow-opacity)),
+		transparent 60%
+	);
+	pointer-events: none;
+	transition: opacity var(--duration-cinematic) var(--ease-cinematic);
+	z-index: 1;
+}
+
+.card:hover {
+	--card-translate-y: -8px;
+	--card-glow-opacity: 0.15;
+	--card-border-opacity: 0.2;
+	--card-bg-opacity: 0.6;
+	box-shadow: 
+		0 20px 40px -12px oklch(from var(--color-gold-500) l c h / 0.15),
+		0 8px 16px -8px oklch(from black l c h / 0.3);
+	border-color: oklch(from var(--color-gold-500) l c h / 0.3);
+}
+
+.card:active {
+	--card-translate-y: -4px;
+	--card-scale: 0.98;
+	transition-duration: var(--duration-fast);
+}
+
+/* Card image container - Consistent aspect ratio */
+.card-image {
+	position: relative;
+	aspect-ratio: var(--card-image-aspect);
+	overflow: hidden;
+	flex-shrink: 0;
+}
+
+.card-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform var(--duration-dramatic) var(--ease-cinematic);
+}
+
+.card:hover .card-image img {
+	transform: scale(1.08);
+}
+
+/* Card image overlay - Cinematic gradient */
+.card-image::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(
+		to top,
+		var(--color-midnight-950) 0%,
+		oklch(from var(--color-midnight-950) l c h / 0.6) 30%,
+		oklch(from var(--color-midnight-950) l c h / 0.2) 60%,
+		transparent 100%
+	);
+	opacity: 0.8;
+	transition: opacity var(--duration-cinematic) var(--ease-cinematic);
+}
+
+.card:hover .card-image::after {
+	opacity: 0.6;
+}
+
+/* Card content */
+.card-content {
+	position: relative;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	padding: var(--card-padding);
+	z-index: 2;
+}
+
+/* Card glow effect */
+.card-glow {
+	position: absolute;
+	top: -50%;
+	right: -50%;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background: radial-gradient(
+		circle,
+		oklch(from var(--color-gold-500) l c h / 0.1),
+		transparent 70%
+	);
+	opacity: 0;
+	transition: opacity var(--duration-cinematic) var(--ease-cinematic);
+	pointer-events: none;
+}
+
+.card:hover .card-glow {
+	opacity: 1;
+}
+
+/* ============================================================================
+   BUTTON SYSTEM - Cinematic Interactions
+   ============================================================================ */
+
+.btn {
+	--btn-scale: 1;
+	--btn-glow: 0;
+	
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	padding: 0.75rem 1.5rem;
+	font-weight: 600;
+	border-radius: 9999px;
+	transform: scale(var(--btn-scale)) translateZ(0);
+	transition: 
+		transform var(--duration-normal) var(--ease-spring),
+		box-shadow var(--duration-normal) var(--ease-cinematic),
+		background var(--duration-normal) var(--ease-smooth-out);
+	will-change: transform;
+	overflow: hidden;
+}
+
+.btn::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(
+		135deg,
+		oklch(from white l c h / 0.2),
+		transparent 50%
+	);
+	opacity: 0;
+	transition: opacity var(--duration-normal) var(--ease-smooth-out);
+}
+
+.btn:hover::before {
+	opacity: 1;
+}
+
+.btn:hover {
+	--btn-scale: 1.02;
+}
+
+.btn:active {
+	--btn-scale: 0.97;
+	transition-duration: var(--duration-fast);
+}
+
+/* Primary button - Gold gradient */
+.btn-primary {
+	background: linear-gradient(135deg, var(--color-gold-500), var(--color-gold-600));
+	color: var(--color-midnight-950);
+	box-shadow: 0 4px 12px oklch(from var(--color-gold-500) l c h / 0.25);
+}
+
+.btn-primary:hover {
+	box-shadow: 
+		0 8px 24px oklch(from var(--color-gold-500) l c h / 0.35),
+		0 0 0 1px oklch(from var(--color-gold-400) l c h / 0.5);
+}
+
+/* Ghost button */
+.btn-ghost {
+	background: oklch(from white l c h / 0.05);
+	color: white;
+	border: 1px solid oklch(from white l c h / 0.1);
+}
+
+.btn-ghost:hover {
+	background: oklch(from white l c h / 0.1);
+	border-color: oklch(from white l c h / 0.2);
+}
+
+/* ============================================================================
+   LINK ANIMATIONS
+   ============================================================================ */
+
+.link-hover {
+	position: relative;
+	color: var(--color-gold-400);
+	transition: color var(--duration-normal) var(--ease-smooth-out);
+}
+
+.link-hover::after {
+	content: '';
+	position: absolute;
+	bottom: -2px;
+	left: 0;
+	width: 100%;
+	height: 2px;
+	background: currentColor;
+	transform: scaleX(0);
+	transform-origin: right;
+	transition: transform var(--duration-medium) var(--ease-cinematic);
+}
+
+.link-hover:hover::after {
+	transform: scaleX(1);
+	transform-origin: left;
+}
+
+/* Arrow animation */
+.arrow-animate {
+	transition: transform var(--duration-normal) var(--ease-spring);
+}
+
+.group:hover .arrow-animate,
+.link-hover:hover .arrow-animate {
+	transform: translateX(4px);
+}
+
+/* ============================================================================
+   ICON ANIMATIONS
+   ============================================================================ */
+
+.icon-spin {
+	transition: transform var(--duration-medium) var(--ease-spring);
+}
+
+.group:hover .icon-spin {
+	transform: rotate(12deg) scale(1.1);
+}
+
+.icon-bounce {
+	transition: transform var(--duration-medium) var(--ease-spring);
+}
+
+.group:hover .icon-bounce {
+	animation: icon-bounce 0.5s var(--ease-spring);
+}
+
+@keyframes icon-bounce {
+	0%, 100% { transform: translateY(0); }
+	50% { transform: translateY(-4px); }
+}
+
+/* ============================================================================
+   SCROLL REVEAL ANIMATIONS
+   ============================================================================ */
+
+.reveal {
+	opacity: 0;
+	transform: translateY(32px);
+	transition: 
+		opacity var(--duration-cinematic) var(--ease-cinematic),
+		transform var(--duration-cinematic) var(--ease-cinematic);
+}
+
+.reveal.revealed {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* Stagger delays */
+.reveal-delay-1 { transition-delay: 100ms; }
+.reveal-delay-2 { transition-delay: 200ms; }
+.reveal-delay-3 { transition-delay: 300ms; }
+.reveal-delay-4 { transition-delay: 400ms; }
+.reveal-delay-5 { transition-delay: 500ms; }
+
+/* ============================================================================
+   GLOW EFFECTS
+   ============================================================================ */
+
+.glow {
+	box-shadow: 
+		0 0 20px oklch(from var(--color-gold-500) l c h / 0.2),
+		0 0 40px oklch(from var(--color-gold-500) l c h / 0.1);
+}
+
+.glow-soft {
+	box-shadow: 0 0 30px oklch(from var(--color-gold-500) l c h / 0.15);
+}
+
+.glow-intense {
+	box-shadow: 
+		0 0 30px oklch(from var(--color-gold-500) l c h / 0.3),
+		0 0 60px oklch(from var(--color-gold-500) l c h / 0.2);
+}
+
+/* Pulsing glow */
+.glow-pulse {
+	animation: glow-pulse 2s var(--ease-smooth-out) infinite alternate;
+}
+
+@keyframes glow-pulse {
+	from { box-shadow: 0 0 20px oklch(from var(--color-gold-500) l c h / 0.2); }
+	to { box-shadow: 0 0 40px oklch(from var(--color-gold-500) l c h / 0.4); }
+}
+
+/* ============================================================================
+   BORDER EFFECTS
+   ============================================================================ */
+
+.border-glow {
+	position: relative;
+}
+
+.border-glow::before {
+	content: '';
+	position: absolute;
+	inset: -1px;
+	border-radius: inherit;
+	background: linear-gradient(
+		135deg,
+		oklch(from var(--color-gold-500) l c h / 0.5),
+		transparent 40%,
+		transparent 60%,
+		oklch(from var(--color-gold-500) l c h / 0.5)
+	);
+	-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+	mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+	-webkit-mask-composite: xor;
+	mask-composite: exclude;
+	padding: 1px;
+	opacity: 0;
+	transition: opacity var(--duration-medium) var(--ease-smooth-out);
+}
+
+.border-glow:hover::before {
+	opacity: 1;
+}
+
+/* ============================================================================
+   NOISE TEXTURE OVERLAY
+   ============================================================================ */
+
 .noise-overlay {
 	position: relative;
 }
@@ -64,62 +521,122 @@ html {
 	z-index: 1;
 }
 
-/* Gradient text */
-.gradient-text {
-	background: linear-gradient(135deg, var(--color-gold-300), var(--color-gold-500), var(--color-gold-300));
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
+/* ============================================================================
+   PARALLAX BACKGROUNDS
+   ============================================================================ */
+
+.parallax-slow {
+	will-change: transform;
+	transition: transform 0.1s linear;
 }
 
-/* Card hover effect */
-.card-hover {
-	transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* ============================================================================
+   LOADING STATES
+   ============================================================================ */
+
+.skeleton {
+	background: linear-gradient(
+		90deg,
+		oklch(from white l c h / 0.03) 25%,
+		oklch(from white l c h / 0.08) 50%,
+		oklch(from white l c h / 0.03) 75%
+	);
+	background-size: 400% 100%;
+	animation: skeleton-wave 2s linear infinite;
+	border-radius: 4px;
 }
 
-.card-hover:hover {
-	transform: translateY(-4px);
-	box-shadow: 0 20px 40px -12px oklch(from var(--color-gold-500) l c h / 15%);
+@keyframes skeleton-wave {
+	from { background-position: 200% 0; }
+	to { background-position: -200% 0; }
 }
 
-/* Stagger animation delays */
-.stagger-1 { animation-delay: 0.1s; }
-.stagger-2 { animation-delay: 0.2s; }
-.stagger-3 { animation-delay: 0.3s; }
-.stagger-4 { animation-delay: 0.4s; }
-.stagger-5 { animation-delay: 0.5s; }
+/* ============================================================================
+   BACKDROP BLUR VARIANTS
+   ============================================================================ */
 
-/* Animation classes that start hidden */
-.animate-fade-in,
-.animate-slide-up,
-.animate-slide-in-left {
-	opacity: 0;
-	animation-fill-mode: forwards;
+.backdrop-blur-premium {
+	backdrop-filter: blur(16px) saturate(180%);
 }
 
-/* Glow effect */
-.glow {
+.backdrop-blur-glass {
+	backdrop-filter: blur(12px) saturate(150%);
+	background: oklch(from var(--color-midnight-950) l c h / 0.8);
+}
+
+/* ============================================================================
+   INPUT ANIMATIONS
+   ============================================================================ */
+
+.input-focus {
+	transition: 
+		border-color var(--duration-normal) var(--ease-smooth-out),
+		box-shadow var(--duration-normal) var(--ease-smooth-out);
+}
+
+.input-focus:focus {
+	border-color: oklch(from var(--color-gold-500) l c h / 0.5);
 	box-shadow: 
-		0 0 20px oklch(from var(--color-gold-500) l c h / 20%),
-		0 0 40px oklch(from var(--color-gold-500) l c h / 10%);
+		0 0 0 3px oklch(from var(--color-gold-500) l c h / 0.1),
+		0 0 20px oklch(from var(--color-gold-500) l c h / 0.1);
 }
 
-/* Border gradient */
-.border-gradient {
-	position: relative;
-	background: var(--color-midnight-900);
-	border-radius: 12px;
+/* ============================================================================
+   DETAILS/ACCORDION ANIMATION
+   ============================================================================ */
+
+details {
+	overflow: hidden;
 }
 
-.border-gradient::before {
-	content: '';
-	position: absolute;
-	inset: 0;
-	padding: 1px;
-	border-radius: inherit;
-	background: linear-gradient(135deg, oklch(from var(--color-gold-500) l c h / 50%), transparent, oklch(from var(--color-gold-500) l c h / 50%));
-	-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-	mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-	-webkit-mask-composite: xor;
-	mask-composite: exclude;
+details[open] summary ~ * {
+	animation: accordion-open var(--duration-medium) var(--ease-cinematic);
+}
+
+@keyframes accordion-open {
+	from {
+		opacity: 0;
+		transform: translateY(-8px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+details summary {
+	cursor: pointer;
+	user-select: none;
+}
+
+details summary::-webkit-details-marker {
+	display: none;
+}
+
+/* ============================================================================
+   STAGGER ANIMATION DELAYS
+   ============================================================================ */
+
+.stagger-1 { animation-delay: 50ms; }
+.stagger-2 { animation-delay: 100ms; }
+.stagger-3 { animation-delay: 150ms; }
+.stagger-4 { animation-delay: 200ms; }
+.stagger-5 { animation-delay: 250ms; }
+.stagger-6 { animation-delay: 300ms; }
+.stagger-7 { animation-delay: 350ms; }
+.stagger-8 { animation-delay: 400ms; }
+
+/* ============================================================================
+   PRINT STYLES
+   ============================================================================ */
+
+@media print {
+	* {
+		animation: none !important;
+		transition: none !important;
+	}
+	
+	.no-print {
+		display: none !important;
+	}
 }
