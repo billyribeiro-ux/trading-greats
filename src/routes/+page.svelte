@@ -4,36 +4,37 @@
     import { slide } from 'svelte/transition';
     import SEO from '$lib/components/SEO.svelte';
     import { Icon, type IconName } from '$lib/components/icons';
+    import type { PageData } from './$types';
 
     // ============================================================================
-    // PROPS - Server data from +page.server.ts (Dec 2025 Hydration Model)
+    // PROPS (Svelte 5)
     // ============================================================================
-    // Data is SSR'd and embedded in HTML, then reused during hydration (no double-fetch)
-    let { data } = $props();
+    let { data }: { data: PageData } = $props();
 
     // ============================================================================
     // STATE (Svelte 5 Runes)
     // ============================================================================
     let openFaq = $state<number | null>(null);
-    
-    function toggleFaq(index: number) {
-        openFaq = openFaq === index ? null : index;
-    }
+    let mounted = $state(false);
+    let heroRef: HTMLElement;
 
     // ============================================================================
-    // DERIVED DATA - Transform server data for display
+    // DERIVED DATA
     // ============================================================================
-    // Use server-loaded traders, with fallback display data
     const displayTraders = $derived(
         data.traders.slice(0, 8).map(t => ({
             name: t.name,
             style: t.tradingStyle || 'Trading',
             knownFor: t.oneLiner || 'Legendary Trader',
-            returns: t.netWorth || 'Exceptional'
+            returns: t.netWorth || 'Exceptional',
+            slug: t.slug
         }))
     );
 
-    const strategies: { name: string; icon: IconName; color: string; traders: string[]; description: string }[] = [
+    // ============================================================================
+    // STATIC DATA CONSTANTS
+    // ============================================================================
+    const strategies = [
         {
             name: 'Value Investing',
             icon: 'trending-up' as IconName,
@@ -43,21 +44,21 @@
         },
         {
             name: 'Momentum Growth',
-            icon: 'zap',
+            icon: 'zap' as IconName,
             color: 'text-violet-400',
             traders: ['Mark Minervini', 'William O\'Neil', 'Jesse Livermore'],
             description: 'Capture explosive moves with precision timing and trend analysis.'
         },
         {
             name: 'Macro & Currency',
-            icon: 'globe',
+            icon: 'globe' as IconName,
             color: 'text-sky-400',
             traders: ['George Soros', 'Ray Dalio', 'Paul Tudor Jones'],
             description: 'Navigate global markets through economic and geopolitical insight.'
         },
         {
             name: 'Options & Technical',
-            icon: 'line-chart',
+            icon: 'line-chart' as IconName,
             color: 'text-amber-400',
             traders: ['John Carter', 'Linda Raschke', 'Larry Williams'],
             description: 'Master chart patterns and derivatives for consistent edge.'
@@ -66,7 +67,7 @@
 
     const valueProps: { icon: IconName; title: string; description: string }[] = [
         {
-            icon: 'brain' as IconName,
+            icon: 'brain',
             title: 'Battle-Tested Frameworks',
             description: 'Every strategy profiled has survived multiple market cycles, bear markets, and black swan events.'
         },
@@ -87,7 +88,7 @@
             step: '01',
             title: 'Choose Your Path',
             description: 'Browse by trading style—value, momentum, macro, or technical—to find strategies that match your personality.',
-            icon: 'target' as IconName
+            icon: 'target'
         },
         {
             step: '02',
@@ -141,17 +142,17 @@
     ];
 
     // ============================================================================
-    // 2. LOGIC & STATE (Svelte 5)
+    // LOGIC & ACTIONS
     // ============================================================================
-    
-    let mounted = $state(false);
-    let heroRef: HTMLElement;
+    function toggleFaq(index: number) {
+        openFaq = openFaq === index ? null : index;
+    }
 
     onMount(() => {
         mounted = true;
     });
 
-    // Simple Action to trigger animations on scroll (Replaces ScrollReveal component)
+    // Interaction Observer for Scroll Reveals
     function reveal(node: HTMLElement, params: { delay?: number } = {}) {
         const delay = params.delay || 0;
         node.style.setProperty('--delay', delay.toString());
@@ -170,11 +171,12 @@
         return { destroy() { observer.disconnect(); } };
     }
 
-    // Animated Counter Logic
+    // Animated Counter Logic (Hydration Safe via $effect)
     function createCounter(target: number, duration: number = 2000, delay: number = 0) {
         const value = spring(0, { stiffness: 0.05, damping: 0.5 });
-        onMount(() => {
-            setTimeout(() => value.set(target), delay);
+        $effect(() => {
+            const timer = setTimeout(() => value.set(target), delay);
+            return () => clearTimeout(timer);
         });
         return value;
     }
@@ -183,20 +185,55 @@
     const countYears = createCounter(200, 2000, 1000);
     const countWorth = createCounter(500, 2000, 1200);
 
+    // ============================================================================
+    // JSON-LD CONSTRUCTION
+    // ============================================================================
+    const schemaOrg = {
+        faq: {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqItems.map(item => ({
+                "@type": "Question",
+                "name": item.question,
+                "acceptedAnswer": { "@type": "Answer", "text": item.answer }
+            }))
+        },
+        list: {
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "name": "Featured Trading Legends",
+            "description": "Profiles of the worlds greatest traders and their proven strategies",
+            "numberOfItems": data.traders.length,
+            "itemListElement": data.traders.map((t, i) => ({
+                "@type": "ListItem",
+                "position": i + 1,
+                "name": t.name,
+                "url": `https://tradinggreats.com/traders/${t.slug}` 
+            }))
+        },
+        org: {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Trading Greats",
+            "url": "https://tradinggreats.com",
+            "logo": "https://tradinggreats.com/favicon.svg",
+            "description": data.meta.description,
+            "knowsAbout": ["Trading", "Investing", "Financial Markets", "Value Investing"]
+        }
+    };
 </script>
 
 <SEO
-    title="Trading Greats - Study Strategies From The World's Greatest Traders"
-    description="Master proven trading methodologies from legendary investors. Study value investing from Buffett, momentum trading from Minervini, and macro strategies from Soros. Free, evidence-based trading education."
+    title={data.meta.title}
+    description={data.meta.description}
     keywords={['trading strategies', 'Warren Buffett', 'value investing', 'momentum trading', 'George Soros', 'trading education', 'stock market', 'investment strategies', 'legendary traders', 'trading methodology']}
     preloadImage={true}
 />
 
-<!-- Google Nov 2025: Structured Data for Rich Snippets -->
 <svelte:head>
-    {@html '<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is Trading Greats free to use?","acceptedAnswer":{"@type":"Answer","text":"Yes. All trader profiles, strategies, and educational content are completely free to access. Our mission is to democratize access to world-class trading education."}},{"@type":"Question","name":"How do you select which traders to feature?","acceptedAnswer":{"@type":"Answer","text":"We feature traders with documented, verifiable track records spanning multiple market cycles. Each profile represents decades of proven methodology, not short-term luck."}},{"@type":"Question","name":"Can I suggest a trader to be featured?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. We are always expanding our library. If you know of a legendary trader with a verified track record and unique methodology, let us know."}},{"@type":"Question","name":"Is this financial advice?","acceptedAnswer":{"@type":"Answer","text":"No. Trading Greats is educational content only. All trading involves risk, and past performance does not guarantee future results. Always do your own research."}}]}</script>'}
-    {@html '<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Featured Trading Legends","description":"Profiles of the worlds greatest traders and their proven strategies","numberOfItems":8,"itemListElement":[{"@type":"ListItem","position":1,"name":"Warren Buffett","url":"https://tradinggreats.com/traders/warren-buffett"},{"@type":"ListItem","position":2,"name":"George Soros","url":"https://tradinggreats.com/traders/george-soros"},{"@type":"ListItem","position":3,"name":"Paul Tudor Jones","url":"https://tradinggreats.com/traders/paul-tudor-jones"},{"@type":"ListItem","position":4,"name":"Mark Minervini","url":"https://tradinggreats.com/traders/mark-minervini"},{"@type":"ListItem","position":5,"name":"Jesse Livermore","url":"https://tradinggreats.com/traders/jesse-livermore"},{"@type":"ListItem","position":6,"name":"Ray Dalio","url":"https://tradinggreats.com/traders/ray-dalio"},{"@type":"ListItem","position":7,"name":"Stanley Druckenmiller","url":"https://tradinggreats.com/traders/stanley-druckenmiller"},{"@type":"ListItem","position":8,"name":"Jim Simons","url":"https://tradinggreats.com/traders/jim-simons"}]}</script>'}
-    {@html '<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Trading Greats","url":"https://tradinggreats.com","logo":"https://tradinggreats.com/favicon.svg","description":"The premier trading education library featuring strategies from legendary investors","knowsAbout":["Trading","Investing","Financial Markets","Value Investing","Technical Analysis"]}</script>'}
+    {@html `<script type="application/ld+json">${JSON.stringify(schemaOrg.faq)}</script>`}
+    {@html `<script type="application/ld+json">${JSON.stringify(schemaOrg.list)}</script>`}
+    {@html `<script type="application/ld+json">${JSON.stringify(schemaOrg.org)}</script>`}
 </svelte:head>
 
 <section
@@ -396,7 +433,9 @@
                 <div use:reveal={{ delay: 0.15 + i * 0.1 }}>
                     <div class="group relative overflow-hidden rounded-3xl border border-white/10 bg-[#0f172a] transition-all duration-500 hover:border-[#EAB308]/40 hover:-translate-y-2 hover:shadow-2xl">
                         <div class="aspect-[4/5] w-full bg-slate-800 relative overflow-hidden">
-                            <div class="absolute inset-0 flex items-center justify-center text-7xl font-black text-white/5 select-none">{trader.name.split(' ').map((n: string) => n[0]).join('')}</div>
+                            <div class="absolute inset-0 flex items-center justify-center text-7xl font-black text-white/5 select-none">
+                                {trader.name.split(' ').map((n: string) => n[0]).join('')}
+                            </div>
                             <div class="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90"></div>
                             
                             <div class="absolute bottom-0 left-0 w-full p-6">
@@ -608,7 +647,7 @@
                         <Icon name="quote" class="absolute top-6 right-6 h-8 w-8 text-[#EAB308]/20" />
 
                         <div class="flex gap-1 mb-6">
-                            {#each Array(5) as _, starIndex}
+                            {#each Array(5) as _}
                                 <Icon name="star" class="h-4 w-4 fill-[#EAB308] text-[#EAB308]" />
                             {/each}
                         </div>
@@ -729,6 +768,7 @@
         filter: blur(10px);
         transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
         transition-delay: calc(var(--delay) * 1s + 0.2s);
+        will-change: transform, opacity, filter;
     }
     
     .cinematic-reveal.visible {

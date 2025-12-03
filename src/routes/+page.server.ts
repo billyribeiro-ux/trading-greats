@@ -1,59 +1,43 @@
 import type { PageServerLoad } from './$types';
-import { sanity } from '$lib/sanity';
-import { seedTraders } from '$lib/server/seed';
-import type { Trader, NewTrader } from '$lib/server/schema';
-import { PUBLIC_SANITY_PROJECT_ID } from '$env/static/public';
 
-// Fallback: Convert seed data to Trader type
-function seedToTrader(t: NewTrader, id: string): Trader {
-	return {
-		id,
-		name: t.name,
-		slug: t.slug,
-		photoUrl: t.photoUrl ?? null,
-		oneLiner: t.oneLiner ?? null,
-		birthYear: t.birthYear ?? null,
-		deathYear: t.deathYear ?? null,
-		nationality: t.nationality ?? null,
-		tradingStyle: t.tradingStyle ?? null,
-		netWorth: t.netWorth ?? null,
-		bio: t.bio ?? null,
-		philosophy: t.philosophy ?? null,
-		achievements: t.achievements ?? null,
-		famousTrades: t.famousTrades ?? null,
-		quotes: t.quotes ?? null,
-		books: t.books ?? null,
-		socialLinks: t.socialLinks ?? null,
-		status: t.status ?? 'published',
-		createdAt: t.createdAt ?? new Date().toISOString(),
-		updatedAt: t.updatedAt ?? new Date().toISOString()
-	};
+// ============================================================================
+// RENDERING CONFIGURATION
+// ============================================================================
+export const prerender = true; // Static generation for max speed
+export const ssr = true;      // SEO enabled
+export const csr = true;      // Hydration enabled for interactions
+
+// ============================================================================
+// TYPES
+// ============================================================================
+interface TraderProfile {
+    name: string;
+    slug: string;
+    tradingStyle: string;
+    oneLiner: string;
+    netWorth: string;
 }
 
+// ============================================================================
+// DATA LOADING
+// ============================================================================
 export const load: PageServerLoad = async () => {
-	let traders: Trader[] = [];
-	let featuredTrader: Trader | null = null;
+    const traders: TraderProfile[] = [
+        { name: 'Warren Buffett', slug: 'warren-buffett', tradingStyle: 'Value Investing', oneLiner: 'The Oracle of Omaha', netWorth: '20% CAGR' },
+        { name: 'George Soros', slug: 'george-soros', tradingStyle: 'Macro', oneLiner: 'The Man Who Broke the Bank of England', netWorth: '30% CAGR' },
+        { name: 'Paul Tudor Jones', slug: 'paul-tudor-jones', tradingStyle: 'Macro / Technical', oneLiner: 'Legendary Macro Trader', netWorth: '100%+ Returns' },
+        { name: 'Mark Minervini', slug: 'mark-minervini', tradingStyle: 'Momentum', oneLiner: 'US Investing Champion', netWorth: '33,000% Returns' },
+        { name: 'Jesse Livermore', slug: 'jesse-livermore', tradingStyle: 'Technical', oneLiner: 'The Boy Plunger', netWorth: 'Legendary' },
+        { name: 'Ray Dalio', slug: 'ray-dalio', tradingStyle: 'Macro', oneLiner: 'Founder of Bridgewater', netWorth: 'Market Principles' },
+        { name: 'Stanley Druckenmiller', slug: 'stanley-druckenmiller', tradingStyle: 'Macro', oneLiner: 'No Down Years', netWorth: '30% Avg' },
+        { name: 'Jim Simons', slug: 'jim-simons', tradingStyle: 'Quant', oneLiner: 'The Code Breaker', netWorth: '66% CAGR' }
+    ];
 
-	// Use Sanity if configured, otherwise fall back to seed data
-	if (PUBLIC_SANITY_PROJECT_ID) {
-		try {
-			[traders, featuredTrader] = await Promise.all([
-				sanity.getAllTraders(),
-				sanity.getFeaturedTrader()
-			]);
-		} catch (error) {
-			console.error('Sanity fetch failed, falling back to seed data:', error);
-		}
-	}
+    const meta = {
+        title: "Trading Greats - Study Strategies From The World's Greatest Traders",
+        description: "Master proven trading methodologies from legendary investors. Study value investing from Buffett, momentum trading from Minervini, and macro strategies from Soros.",
+        canonical: "https://tradinggreats.com"
+    };
 
-	// Fallback to seed data if Sanity returns empty or fails
-	if (traders.length === 0) {
-		traders = seedTraders.map((t, i) => seedToTrader(t, `trader-${i}`));
-		featuredTrader = traders[0] ?? null;
-	}
-
-	return {
-		featuredTrader,
-		traders
-	};
+    return { traders, meta };
 };
