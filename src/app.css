@@ -2,12 +2,13 @@
 @config '../tailwind.config.ts';
 
 /* ============================================================================
-   CINEMATIC DESIGN SYSTEM
+   CINEMATIC DESIGN SYSTEM - MOBILE-FIRST
    Apple/Netflix-quality animations for Trading Greats
+   Optimized for mobile-first, touch-friendly interactions
    ============================================================================ */
 
 /* ============================================================================
-   CSS CUSTOM PROPERTIES - Animation Tokens
+   CSS CUSTOM PROPERTIES - Animation & Mobile Tokens
    ============================================================================ */
 :root {
 	/* Timing */
@@ -20,7 +21,7 @@
 	--duration-cinematic: 600ms;
 	--duration-dramatic: 800ms;
 	--duration-epic: 1000ms;
-	
+
 	/* Easing - Cinematic curves */
 	--ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 	--ease-spring-smooth: cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -29,28 +30,192 @@
 	--ease-expressive: cubic-bezier(0.19, 1, 0.22, 1);
 	--ease-smooth-out: cubic-bezier(0, 0, 0.2, 1);
 	--ease-smooth-in: cubic-bezier(0.4, 0, 1, 1);
-	
+
 	/* Card dimensions - Consistent sizing */
 	--card-aspect-ratio: 4 / 5;
 	--card-image-aspect: 3 / 4;
 	--card-border-radius: 1rem;
 	--card-padding: 1.25rem;
+
+	/* MOBILE-FIRST: Touch & Accessibility */
+	--touch-target-min: 44px;
+	--touch-target-comfortable: 48px;
+	--safe-area-inset-top: env(safe-area-inset-top, 0px);
+	--safe-area-inset-right: env(safe-area-inset-right, 0px);
+	--safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+	--safe-area-inset-left: env(safe-area-inset-left, 0px);
+
+	/* MOBILE-FIRST: Container & Spacing */
+	--container-padding: 1rem;
+	--section-spacing: 4rem;
+
+	/* MOBILE-FIRST: Typography Scale (fluid) */
+	--font-size-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+	--font-size-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+	--font-size-base: clamp(1rem, 0.925rem + 0.375vw, 1.125rem);
+	--font-size-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
+	--font-size-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+	--font-size-2xl: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);
+	--font-size-3xl: clamp(1.875rem, 1.5rem + 1.875vw, 2.5rem);
+	--font-size-4xl: clamp(2.25rem, 1.75rem + 2.5vw, 3rem);
+	--font-size-5xl: clamp(2.75rem, 2rem + 3.75vw, 4rem);
+	--font-size-hero: clamp(2.5rem, 1.5rem + 5vw, 5rem);
+}
+
+/* Larger spacing on tablet+ */
+@media (min-width: 640px) {
+	:root {
+		--container-padding: 1.5rem;
+		--section-spacing: 6rem;
+	}
+}
+
+@media (min-width: 1024px) {
+	:root {
+		--container-padding: 2rem;
+		--section-spacing: 8rem;
+	}
 }
 
 /* ============================================================================
-   BASE STYLES
+   BASE STYLES - MOBILE-FIRST
    ============================================================================ */
 
-/* Smooth scroll with reduced motion respect */
+/* MOBILE-FIRST: Core document setup */
 html {
 	scroll-behavior: smooth;
+	/* Prevent font size adjustment on iOS */
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+	/* Smoother font rendering */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	/* Prevent horizontal scroll */
+	overflow-x: hidden;
 }
 
+/* MOBILE-FIRST: Body optimizations */
+body {
+	/* Prevent horizontal scroll */
+	overflow-x: hidden;
+	/* Better touch scrolling */
+	-webkit-overflow-scrolling: touch;
+	/* Minimum height with dynamic viewport for mobile browsers */
+	min-height: 100vh;
+	min-height: 100dvh;
+}
+
+/* MOBILE-FIRST: Remove tap highlight on iOS/Android */
+* {
+	-webkit-tap-highlight-color: transparent;
+}
+
+/* MOBILE-FIRST: Touch-friendly interactive elements */
+a,
+button,
+input,
+select,
+textarea,
+[role="button"],
+[tabindex]:not([tabindex="-1"]) {
+	/* Ensure minimum touch target size */
+	min-height: var(--touch-target-min);
+	/* Improve touch responsiveness */
+	touch-action: manipulation;
+}
+
+/* MOBILE-FIRST: Better button defaults */
+button {
+	cursor: pointer;
+	/* Prevent text selection on double-tap */
+	user-select: none;
+	-webkit-user-select: none;
+}
+
+/* MOBILE-FIRST: Prevent zoom on input focus (iOS) */
+@media screen and (max-width: 767px) {
+	input[type="text"],
+	input[type="email"],
+	input[type="search"],
+	input[type="password"],
+	input[type="tel"],
+	input[type="url"],
+	textarea,
+	select {
+		font-size: 16px !important;
+	}
+}
+
+/* MOBILE-FIRST: Safe area padding utility classes */
+.safe-top {
+	padding-top: var(--safe-area-inset-top);
+}
+
+.safe-bottom {
+	padding-bottom: var(--safe-area-inset-bottom);
+}
+
+.safe-left {
+	padding-left: var(--safe-area-inset-left);
+}
+
+.safe-right {
+	padding-right: var(--safe-area-inset-right);
+}
+
+.safe-x {
+	padding-left: var(--safe-area-inset-left);
+	padding-right: var(--safe-area-inset-right);
+}
+
+.safe-y {
+	padding-top: var(--safe-area-inset-top);
+	padding-bottom: var(--safe-area-inset-bottom);
+}
+
+.safe-all {
+	padding: var(--safe-area-inset-top) var(--safe-area-inset-right) var(--safe-area-inset-bottom) var(--safe-area-inset-left);
+}
+
+/* MOBILE-FIRST: Container with responsive padding */
+.container-mobile {
+	width: 100%;
+	max-width: 80rem;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: var(--container-padding);
+	padding-right: var(--container-padding);
+}
+
+/* MOBILE-FIRST: Touch feedback for interactive elements */
+.touch-feedback {
+	transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+}
+
+.touch-feedback:active {
+	transform: scale(0.97);
+	opacity: 0.9;
+}
+
+/* MOBILE-FIRST: Hide elements on touch vs non-touch */
+@media (hover: none) and (pointer: coarse) {
+	.hide-touch {
+		display: none !important;
+	}
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.hide-desktop {
+		display: none !important;
+	}
+}
+
+/* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
 	html {
 		scroll-behavior: auto;
 	}
-	
+
 	*,
 	*::before,
 	*::after {

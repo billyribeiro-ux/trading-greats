@@ -128,9 +128,10 @@
 	class={cn(
 		'fixed top-0 left-0 right-0 z-50',
 		'transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]',
+		'safe-top', /* MOBILE-FIRST: Support notched devices */
 		scrolled
-			? 'border-b border-white/[0.08] bg-midnight-950/85 py-3 shadow-2xl shadow-black/20 backdrop-blur-2xl backdrop-saturate-150'
-			: 'border-b border-transparent bg-transparent py-5'
+			? 'border-b border-white/[0.08] bg-midnight-950/85 py-2 sm:py-3 shadow-2xl shadow-black/20 backdrop-blur-2xl backdrop-saturate-150'
+			: 'border-b border-transparent bg-transparent py-3 sm:py-5'
 	)}
 >
 	<nav 
@@ -227,17 +228,17 @@
 		</div>
 
 		<!-- Actions -->
-		<div class="flex items-center gap-2">
-			<!-- Search Button with pulse animation -->
+		<div class="flex items-center gap-1 sm:gap-2">
+			<!-- Search Button - MOBILE-FIRST: 44px touch target -->
 			<button
 				type="button"
 				class={cn(
-					'group flex h-10 w-10 items-center justify-center rounded-full',
+					'group flex h-11 w-11 items-center justify-center rounded-full', /* MOBILE-FIRST: 44px touch target */
 					'text-midnight-400 outline-none ring-gold-500/50',
 					'transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]',
 					'hover:bg-white/5 hover:text-white',
 					'focus-visible:ring-2',
-					'active:scale-90'
+					'active:scale-95 active:bg-white/10' /* MOBILE-FIRST: Touch feedback */
 				)}
 				aria-label="Search traders"
 			>
@@ -269,17 +270,17 @@
 				<Icon name="arrow-right" class="relative h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" strokeWidth={2.5} />
 			</a>
 
-			<!-- Mobile Menu Toggle with rotation -->
+			<!-- Mobile Menu Toggle - MOBILE-FIRST: 44px touch target -->
 			<button
 				bind:this={menuButtonRef}
 				type="button"
 				class={cn(
-					'flex h-10 w-10 items-center justify-center rounded-full',
+					'flex h-11 w-11 items-center justify-center rounded-full', /* MOBILE-FIRST: 44px minimum touch target */
 					'text-midnight-400 outline-none ring-gold-500/50',
 					'transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]',
 					'hover:bg-white/5 hover:text-white',
 					'focus-visible:ring-2',
-					'active:scale-90',
+					'active:scale-95 active:bg-white/10', /* MOBILE-FIRST: Touch feedback */
 					'md:hidden'
 				)}
 				aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
@@ -301,17 +302,17 @@
 		</div>
 	</nav>
 
-	<!-- Mobile Menu Overlay with cinematic animation -->
+	<!-- Mobile Menu Overlay - MOBILE-FIRST: Full screen with safe areas -->
 	{#if mobileMenuOpen}
-		<div 
+		<div
 			id="mobile-menu"
-			class="fixed inset-x-0 top-[72px] bottom-0 z-40 overflow-y-auto overscroll-contain bg-midnight-950/98 backdrop-blur-3xl md:hidden"
+			class="fixed inset-x-0 top-[68px] sm:top-[72px] bottom-0 z-40 overflow-y-auto overscroll-contain bg-midnight-950/98 backdrop-blur-3xl md:hidden safe-bottom"
 			transition:fade={{ duration: 200, easing: cubicOut }}
 			role="dialog"
 			aria-modal="true"
 			aria-label="Mobile navigation menu"
 		>
-			<nav class="flex flex-col p-4" aria-label="Mobile navigation">
+			<nav class="flex flex-col p-4 pb-8" aria-label="Mobile navigation">
 				{#each NAV_LINKS as link, index (link.href)}
 					{@const active = isActive(link.href)}
 					<div 
@@ -381,5 +382,5 @@
 	{/if}
 </header>
 
-<!-- Spacer -->
-<div class="h-[72px]" aria-hidden="true"></div>
+<!-- Spacer - MOBILE-FIRST: Match header height -->
+<div class="h-[68px] sm:h-[72px]" aria-hidden="true"></div>
