@@ -10,7 +10,8 @@
 		Edit,
 		PenTool,
 		BarChart3,
-		Settings
+		Settings,
+		Image as ImageIcon
 	} from 'lucide-svelte';
 
 	let { data } = $props();
@@ -71,7 +72,7 @@
 		</div>
 
 		<!-- Stats Grid -->
-		<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+		<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
 			<div class="rounded-2xl border border-midnight-800/50 bg-gradient-to-br from-midnight-900/80 to-midnight-900/40 p-6 backdrop-blur-sm">
 				<div class="flex items-center justify-between">
 					<Users class="h-8 w-8 text-gold-500" />
@@ -107,12 +108,21 @@
 				<p class="mt-4 text-4xl font-bold text-midnight-50">{data.draftCount}</p>
 				<p class="text-sm text-midnight-400">Pending review</p>
 			</div>
+
+			<div class="rounded-2xl border border-midnight-800/50 bg-gradient-to-br from-midnight-900/80 to-midnight-900/40 p-6 backdrop-blur-sm">
+				<div class="flex items-center justify-between">
+					<ImageIcon class="h-8 w-8 text-pink-500" />
+					<span class="text-xs font-medium text-midnight-500 uppercase tracking-wider">Media</span>
+				</div>
+				<p class="mt-4 text-4xl font-bold text-midnight-50">{data.mediaCount ?? 0}</p>
+				<p class="text-sm text-midnight-400">Uploaded files</p>
+			</div>
 		</div>
 
 		<!-- Quick Actions -->
 		<div class="mt-10">
 			<h2 class="text-lg font-semibold text-midnight-100 mb-4">Quick Actions</h2>
-			<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+			<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
 				<a
 					href="/admin/traders/new"
 					class="group flex items-center gap-4 rounded-2xl border border-midnight-800/50 bg-midnight-900/50 p-5 transition-all duration-300 hover:border-gold-500/30 hover:bg-midnight-800/50 hover:shadow-lg hover:shadow-gold-500/5"
@@ -162,6 +172,19 @@
 					<div>
 						<p class="font-semibold text-midnight-100">Manage Blog</p>
 						<p class="text-sm text-midnight-400">Edit blog posts</p>
+					</div>
+				</a>
+
+				<a
+					href="/admin/media"
+					class="group flex items-center gap-4 rounded-2xl border border-midnight-800/50 bg-midnight-900/50 p-5 transition-all duration-300 hover:border-pink-500/30 hover:bg-midnight-800/50 hover:shadow-lg hover:shadow-pink-500/5"
+				>
+					<div class="flex h-14 w-14 items-center justify-center rounded-xl bg-pink-500/10 transition-transform duration-300 group-hover:scale-110">
+						<ImageIcon class="h-7 w-7 text-pink-500" />
+					</div>
+					<div>
+						<p class="font-semibold text-midnight-100">Media Library</p>
+						<p class="text-sm text-midnight-400">Manage images & SEO</p>
 					</div>
 				</a>
 			</div>

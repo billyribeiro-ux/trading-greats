@@ -1,6 +1,54 @@
 import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
 
 // ============================================================================
+// MEDIA LIBRARY TABLE (Full SEO Metadata)
+// ============================================================================
+
+export const media = sqliteTable('media', {
+	id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
+
+	// File info
+	filename: text('filename').notNull(),
+	originalFilename: text('original_filename').notNull(),
+	mimeType: text('mime_type').notNull(),
+	fileSize: integer('file_size').notNull(), // in bytes
+	width: integer('width'),
+	height: integer('height'),
+
+	// Storage URLs
+	url: text('url').notNull(), // Main optimized URL
+	thumbnailUrl: text('thumbnail_url'), // 150x150
+	mediumUrl: text('medium_url'), // 400x400
+	largeUrl: text('large_url'), // 800x800
+	originalUrl: text('original_url'), // Unoptimized original
+
+	// Storage keys (for R2/S3)
+	storageKey: text('storage_key').notNull(), // Path in R2
+	storageProvider: text('storage_provider').$type<'r2' | 'local' | 's3'>().default('r2'),
+
+	// SEO Metadata - THE IMPORTANT STUFF!
+	title: text('title'), // SEO title
+	altText: text('alt_text'), // Alt text for accessibility & SEO
+	description: text('description'), // Detailed description
+	caption: text('caption'), // Display caption
+
+	// Organization
+	folder: text('folder').default('uploads'), // Organize by folder
+	tags: text('tags', { mode: 'json' }).$type<string[]>(),
+
+	// Usage tracking
+	usageCount: integer('usage_count').default(0),
+	lastUsedAt: text('last_used_at'),
+
+	// Timestamps
+	createdAt: text('created_at').$defaultFn(() => new Date().toISOString()),
+	updatedAt: text('updated_at').$defaultFn(() => new Date().toISOString())
+});
+
+export type Media = typeof media.$inferSelect;
+export type NewMedia = typeof media.$inferInsert;
+
+// ============================================================================
 // TRADERS TABLE
 // ============================================================================
 

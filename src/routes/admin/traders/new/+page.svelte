@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import { ArrowLeft, Save, Plus, X, TrendingUp, TrendingDown } from 'lucide-svelte';
-	import ImageUpload from '$lib/components/ImageUpload.svelte';
+	import MediaUpload from '$lib/components/MediaUpload.svelte';
+	import type { Media } from '$lib/server/schema';
 
 	let { form } = $props();
 
@@ -96,14 +97,14 @@
 			<!-- Photo Upload -->
 			<section class="rounded-xl border border-midnight-800/50 bg-midnight-900/50 p-4 sm:p-6">
 				<h2 class="font-display text-lg sm:text-xl font-semibold text-midnight-100">Trader Photo</h2>
-				<p class="mt-1 text-xs sm:text-sm text-midnight-500">Upload a high-quality photo of the trader</p>
+				<p class="mt-1 text-xs sm:text-sm text-midnight-500">Upload a high-quality photo with SEO metadata</p>
 
 				<div class="mt-4">
-					<ImageUpload
+					<MediaUpload
 						value={photoUrl}
 						name="photoUrl"
 						folder="traders"
-						onUpload={(url) => photoUrl = url}
+						onSelect={(media: Media) => photoUrl = media.url}
 						onRemove={() => photoUrl = ''}
 					/>
 				</div>
