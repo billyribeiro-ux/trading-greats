@@ -187,3 +187,195 @@ export const securityAuditLog = sqliteTable('security_audit_log', {
 
 export type SecurityAuditLog = typeof securityAuditLog.$inferSelect;
 export type NewSecurityAuditLog = typeof securityAuditLog.$inferInsert;
+
+// ============================================================================
+// NEWSLETTER SUBSCRIBERS TABLE
+// ============================================================================
+
+export const newsletterSubscribers = sqliteTable('newsletter_subscribers', {
+	id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
+	email: text('email').notNull().unique(),
+
+	// Status management
+	status: text('status').$type<SubscriberStatus>().default('pending'),
+
+	// Verification
+	verificationToken: text('verification_token'),
+	verifiedAt: text('verified_at'),
+
+	// Unsubscribe
+	unsubscribeToken: text('unsubscribe_token').$defaultFn(() => crypto.randomUUID()),
+	unsubscribedAt: text('unsubscribed_at'),
+	unsubscribeReason: text('unsubscribe_reason'),
+
+	// Preferences
+	preferences: text('preferences', { mode: 'json' }).$type<SubscriberPreferences>(),
+
+	// Source tracking
+	source: text('source'), // blog, homepage, footer, etc.
+	referrer: text('referrer'), // URL they came from
+
+	// Engagement metrics
+	totalEmailsSent: integer('total_emails_sent').default(0),
+	totalOpens: integer('total_opens').default(0),
+	totalClicks: integer('total_clicks').default(0),
+	lastOpenedAt: text('last_opened_at'),
+	lastClickedAt: text('last_clicked_at'),
+
+	// Metadata
+	ipAddress: text('ip_address'),
+	userAgent: text('user_agent'),
+
+	// Timestamps
+	createdAt: text('created_at').$defaultFn(() => new Date().toISOString()),
+	updatedAt: text('updated_at').$defaultFn(() => new Date().toISOString())
+});
+
+export type NewsletterSubscriber = typeof newsletterSubscribers.$inferSelect;
+export type NewNewsletterSubscriber = typeof newsletterSubscribers.$inferInsert;
+
+export type SubscriberStatus = 'pending' | 'verified' | 'unsubscribed' | 'bounced' | 'complained';
+
+export interface SubscriberPreferences {
+	weeklyDigest: boolean;
+	newTraderAlerts: boolean;
+	blogPostAlerts: boolean;
+	marketInsights: boolean;
+}
+
+export const DEFAULT_SUBSCRIBER_PREFERENCES: SubscriberPreferences = {
+	weeklyDigest: true,
+	newTraderAlerts: true,
+	blogPostAlerts: true,
+	marketInsights: false
+};
+
+// ============================================================================
+// NEWSLETTER CAMPAIGNS TABLE
+// ============================================================================
+
+export const newsletterCampaigns = sqliteTable('newsletter_campaigns', {
+	id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
+
+	// Content
+	subject: text('subject').notNull(),
+	previewText: text('preview_text'),
+	content: text('content').notNull(), // HTML content
+	contentText: text('content_text'), // Plain text version
+
+	// Campaign type
+	type: text('type').$type<CampaignType>().default('manual'),
+
+	// Status
+	status: text('status').$type<CampaignStatus>().default('draft'),
+
+	// Scheduling
+	scheduledFor: text('scheduled_for'),
+	sentAt: text('sent_at'),
+	completedAt: text('completed_at'),
+
+	// Targeting
+	targetPreferences: text('target_preferences', { mode: 'json' }).$type<Partial<SubscriberPreferences>>(),
+
+	// Stats (updated in real-time)
+	totalRecipients: integer('total_recipients').default(0),
+	totalSent: integer('total_sent').default(0),
+	totalDelivered: integer('total_delivered').default(0),
+	totalOpens: integer('total_opens').default(0),
+	uniqueOpens: integer('unique_opens').default(0),
+	totalClicks: integer('total_clicks').default(0),
+	uniqueClicks: integer('unique_clicks').default(0),
+	totalUnsubscribes: integer('total_unsubscribes').default(0),
+	totalBounces: integer('total_bounces').default(0),
+	totalComplaints: integer('total_complaints').default(0),
+
+	// Timestamps
+	createdAt: text('created_at').$defaultFn(() => new Date().toISOString()),
+	updatedAt: text('updated_at').$defaultFn(() => new Date().toISOString())
+});
+
+export type NewsletterCampaign = typeof newsletterCampaigns.$inferSelect;
+export type NewNewsletterCampaign = typeof newsletterCampaigns.$inferInsert;
+
+export type CampaignType = 'manual' | 'weekly_digest' | 'new_trader' | 'blog_post';
+export type CampaignStatus = 'draft' | 'scheduled' | 'sending' | 'sent' | 'cancelled';
+
+// ============================================================================
+// NEWSLETTER EVENTS TABLE (Tracking opens, clicks, etc.)
+// ============================================================================
+
+export const newsletterEvents = sqliteTable('newsletter_events', {
+	id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
+
+	// Foreign keys
+	subscriberId: text('subscriber_id').notNull(),
+	campaignId: text('campaign_id').notNull(),
+
+	// Event type
+	eventType: text('event_type').$type<NewsletterEventType>().notNull(),
+
+	// Event details
+	linkUrl: text('link_url'), // For click events
+	linkText: text('link_text'), // For click events
+
+	// Metadata
+	ipAddress: text('ip_address'),
+	userAgent: text('user_agent'),
+	country: text('country'),
+	city: text('city'),
+	device: text('device'), // mobile, desktop, tablet
+	emailClient: text('email_client'), // gmail, outlook, apple mail, etc.
+
+	// Timestamp
+	timestamp: text('timestamp').$defaultFn(() => new Date().toISOString())
+});
+
+export type NewsletterEvent = typeof newsletterEvents.$inferSelect;
+export type NewNewsletterEvent = typeof newsletterEvents.$inferInsert;
+
+export type NewsletterEventType =
+	| 'sent'
+	| 'delivered'
+	| 'opened'
+	| 'clicked'
+	| 'unsubscribed'
+	| 'bounced'
+	| 'complained';
+
+// ============================================================================
+// NEWSLETTER SEND LOG TABLE (Individual email tracking)
+// ============================================================================
+
+export const newsletterSendLog = sqliteTable('newsletter_send_log', {
+	id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
+
+	// Foreign keys
+	subscriberId: text('subscriber_id').notNull(),
+	campaignId: text('campaign_id').notNull(),
+
+	// Email provider tracking
+	providerMessageId: text('provider_message_id'), // Resend message ID
+
+	// Status
+	status: text('status').$type<SendStatus>().default('pending'),
+
+	// Tracking flags (for unique counts)
+	hasOpened: integer('has_opened', { mode: 'boolean' }).default(false),
+	hasClicked: integer('has_clicked', { mode: 'boolean' }).default(false),
+
+	// Error tracking
+	errorMessage: text('error_message'),
+	errorCode: text('error_code'),
+
+	// Timestamps
+	sentAt: text('sent_at'),
+	deliveredAt: text('delivered_at'),
+	openedAt: text('opened_at'),
+	clickedAt: text('clicked_at'),
+	createdAt: text('created_at').$defaultFn(() => new Date().toISOString())
+});
+
+export type NewsletterSendLog = typeof newsletterSendLog.$inferSelect;
+export type NewNewsletterSendLog = typeof newsletterSendLog.$inferInsert;
+
+export type SendStatus = 'pending' | 'sent' | 'delivered' | 'bounced' | 'failed';
