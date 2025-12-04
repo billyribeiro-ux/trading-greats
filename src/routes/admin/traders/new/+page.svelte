@@ -315,8 +315,9 @@
 							</div>
 							<div class="grid gap-4 sm:grid-cols-2">
 								<div>
-									<label class="block text-xs text-midnight-400 mb-1">Date/Period</label>
+									<label for="tradeDate-{i}" class="block text-xs text-midnight-400 mb-1">Date/Period</label>
 									<input
+										id="tradeDate-{i}"
 										type="text"
 										name="tradeDate"
 										bind:value={famousTrades[i].date}
@@ -325,8 +326,9 @@
 									/>
 								</div>
 								<div>
-									<label class="block text-xs text-midnight-400 mb-1">Asset</label>
+									<label for="tradeAsset-{i}" class="block text-xs text-midnight-400 mb-1">Asset</label>
 									<input
+										id="tradeAsset-{i}"
 										type="text"
 										name="tradeAsset"
 										bind:value={famousTrades[i].asset}
@@ -335,7 +337,7 @@
 									/>
 								</div>
 								<div>
-									<label class="block text-xs text-midnight-400 mb-1">Position</label>
+									<span class="block text-xs text-midnight-400 mb-1">Position</span>
 									<div class="flex gap-2 mt-1">
 										<button
 											type="button"
@@ -357,8 +359,9 @@
 									<input type="hidden" name="tradePosition" value={famousTrades[i].position} />
 								</div>
 								<div>
-									<label class="block text-xs text-midnight-400 mb-1">Profit/Loss</label>
+									<label for="tradeProfitLoss-{i}" class="block text-xs text-midnight-400 mb-1">Profit/Loss</label>
 									<input
+										id="tradeProfitLoss-{i}"
 										type="text"
 										name="tradeProfitLoss"
 										bind:value={famousTrades[i].profitLoss}
@@ -367,8 +370,9 @@
 									/>
 								</div>
 								<div class="sm:col-span-2">
-									<label class="block text-xs text-midnight-400 mb-1">Outcome</label>
+									<label for="tradeOutcome-{i}" class="block text-xs text-midnight-400 mb-1">Outcome</label>
 									<input
+										id="tradeOutcome-{i}"
 										type="text"
 										name="tradeOutcome"
 										bind:value={famousTrades[i].outcome}
@@ -377,8 +381,9 @@
 									/>
 								</div>
 								<div class="sm:col-span-2">
-									<label class="block text-xs text-midnight-400 mb-1">Description</label>
+									<label for="tradeDescription-{i}" class="block text-xs text-midnight-400 mb-1">Description</label>
 									<textarea
+										id="tradeDescription-{i}"
 										name="tradeDescription"
 										bind:value={famousTrades[i].description}
 										rows="2"
