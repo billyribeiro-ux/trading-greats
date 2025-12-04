@@ -2,6 +2,13 @@
   "name": "trading-greats",
   "version": "1.0.0",
   "type": "module",
+  "overrides": {
+    "@melt-ui/svelte": "^0.86.6",
+    "bits-ui": "^2.14.4",
+    "cookie": "^1.0.2",
+    "valibot": "^1.2.0",
+    "esbuild": "^0.25.0"
+  },
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
