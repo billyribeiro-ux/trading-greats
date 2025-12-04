@@ -4,6 +4,13 @@ import { blogPosts, BLOG_CATEGORIES, type BlogPost } from '$lib/server/schema';
 import { eq, desc } from 'drizzle-orm';
 import { seedBlogPosts } from '$lib/server/seedBlog';
 
+// ============================================================================
+// RENDERING CONFIGURATION (Dec 2025 Best Practices)
+// ============================================================================
+export const prerender = true;  // SSG for blog listing
+export const ssr = true;        // SEO enabled
+export const csr = true;        // Hydration for interactivity
+
 // Convert seed post to BlogPost format
 function seedToPost(post: typeof seedBlogPosts[0], id: string): BlogPost {
 	return {
@@ -87,10 +94,24 @@ export const load: PageServerLoad = async ({ url }) => {
 		}
 	}
 
+	// SEO Meta for blog listing
+	const meta = {
+		title: category 
+			? `${category.charAt(0).toUpperCase() + category.slice(1)} Articles | Trading Greats Blog`
+			: "Trading Greats Blog - Insights from Legendary Traders",
+		description: category
+			? `Explore ${category} articles featuring trading strategies, psychology insights, and lessons from the world's greatest traders.`
+			: "Discover trading strategies, psychology insights, and lessons from the world's greatest traders. Expert analysis and educational content for serious traders.",
+		canonical: category 
+			? `https://tradinggreats.com/blog?category=${category}`
+			: "https://tradinggreats.com/blog"
+	};
+
 	return {
 		posts,
 		featuredPost,
 		categories: BLOG_CATEGORIES,
-		currentCategory: category
+		currentCategory: category,
+		meta
 	};
 };

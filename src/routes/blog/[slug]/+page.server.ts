@@ -4,6 +4,13 @@ import { blogPosts, BLOG_CATEGORIES, type BlogPost } from '$lib/server/schema';
 import { eq, and, ne, desc } from 'drizzle-orm';
 import { error } from '@sveltejs/kit';
 
+// ============================================================================
+// RENDERING CONFIGURATION (Dec 2025 Best Practices)
+// ============================================================================
+export const prerender = 'auto';  // SSG for blog posts (auto-discover slugs)
+export const ssr = true;          // SEO enabled
+export const csr = true;          // Hydration for interactivity
+
 export const load: PageServerLoad = async ({ params }) => {
 	const { slug } = params;
 

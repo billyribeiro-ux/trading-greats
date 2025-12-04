@@ -2,6 +2,7 @@
 	import { cn } from '$lib/utils';
 	import { ScrollReveal } from '$lib/components/motion';
 	import { Icon, type IconName } from '$lib/components/icons';
+	import SEO from '$lib/components/SEO.svelte';
 	import type { PageData } from './$types';
 
 	// ============================================================================
@@ -9,7 +10,9 @@
 	// ============================================================================
 	let { data }: { data: PageData } = $props();
 
-	// Category icons mapping
+	// ============================================================================
+	// CATEGORY ICONS
+	// ============================================================================
 	const categoryIcons: Record<string, IconName> = {
 		strategy: 'trending-up',
 		psychology: 'brain',
@@ -20,6 +23,9 @@
 		'book-review': 'book-marked'
 	};
 
+	// ============================================================================
+	// HELPER FUNCTIONS
+	// ============================================================================
 	function formatDate(dateString: string | null): string {
 		if (!dateString) return '';
 		return new Date(dateString).toLocaleDateString('en-US', {
@@ -39,14 +45,65 @@
 		if (!category) return 'tag';
 		return categoryIcons[category] || 'tag';
 	}
+
+	// ============================================================================
+	// JSON-LD STRUCTURED DATA (Dec 2025 SEO Best Practices)
+	// ============================================================================
+	const schemaOrg = $derived({
+		blog: {
+			"@context": "https://schema.org",
+			"@type": "Blog",
+			"name": "Trading Greats Blog",
+			"description": data.meta.description,
+			"url": "https://tradinggreats.com/blog",
+			"publisher": {
+				"@type": "Organization",
+				"name": "Trading Greats",
+				"logo": "https://tradinggreats.com/favicon.svg"
+			}
+		},
+		itemList: {
+			"@context": "https://schema.org",
+			"@type": "ItemList",
+			"name": "Trading Greats Blog Articles",
+			"description": "Expert trading insights and strategies from legendary traders",
+			"numberOfItems": data.posts.length + (data.featuredPost ? 1 : 0),
+			"itemListElement": [
+				...(data.featuredPost ? [{
+					"@type": "ListItem",
+					"position": 1,
+					"name": data.featuredPost.title,
+					"url": `https://tradinggreats.com/blog/${data.featuredPost.slug}`
+				}] : []),
+				...data.posts.map((post, i) => ({
+					"@type": "ListItem",
+					"position": (data.featuredPost ? 2 : 1) + i,
+					"name": post.title,
+					"url": `https://tradinggreats.com/blog/${post.slug}`
+				}))
+			]
+		},
+		breadcrumb: {
+			"@context": "https://schema.org",
+			"@type": "BreadcrumbList",
+			"itemListElement": [
+				{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tradinggreats.com" },
+				{ "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://tradinggreats.com/blog" }
+			]
+		}
+	});
 </script>
 
+<SEO
+	title={data.meta.title}
+	description={data.meta.description}
+	keywords={['trading blog', 'trading strategies', 'market psychology', 'trading education', 'legendary traders', 'investment insights', 'trading analysis']}
+/>
+
 <svelte:head>
-	<title>Blog | Trading Greats - Insights from Legendary Traders</title>
-	<meta
-		name="description"
-		content="Discover trading strategies, psychology insights, and lessons from the world's greatest traders. Expert analysis and educational content for serious traders."
-	/>
+	{@html `<script type="application/ld+json">${JSON.stringify(schemaOrg.blog)}</script>`}
+	{@html `<script type="application/ld+json">${JSON.stringify(schemaOrg.itemList)}</script>`}
+	{@html `<script type="application/ld+json">${JSON.stringify(schemaOrg.breadcrumb)}</script>`}
 </svelte:head>
 
 <div class="min-h-screen bg-midnight-950">
