@@ -275,7 +275,7 @@
 				bind:this={menuButtonRef}
 				type="button"
 				class={cn(
-					'flex h-11 w-11 items-center justify-center rounded-full', /* MOBILE-FIRST: 44px minimum touch target */
+					'relative flex h-11 w-11 items-center justify-center rounded-full', /* MOBILE-FIRST: 44px minimum touch target */
 					'text-midnight-400 outline-none ring-gold-500/50',
 					'transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]',
 					'hover:bg-white/5 hover:text-white',
@@ -286,18 +286,13 @@
 				aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
 				aria-expanded={mobileMenuOpen}
 				aria-controls="mobile-menu"
-				onclick={toggleMenu}
+				onclick={() => { mobileMenuOpen = !mobileMenuOpen; }}
 			>
-				<div class={cn(
-					'transition-transform duration-300',
-					mobileMenuOpen && 'rotate-90'
-				)}>
-					{#if mobileMenuOpen}
-						<Icon name="x" class="h-6 w-6" strokeWidth={2} />
-					{:else}
-						<Icon name="menu" class="h-6 w-6" strokeWidth={2} />
-					{/if}
-				</div>
+				{#if mobileMenuOpen}
+					<Icon name="x" class="h-6 w-6 transition-transform duration-300" strokeWidth={2} />
+				{:else}
+					<Icon name="menu" class="h-6 w-6 transition-transform duration-300" strokeWidth={2} />
+				{/if}
 			</button>
 		</div>
 	</nav>
@@ -332,7 +327,7 @@
 									: 'text-midnight-200 hover:bg-white/5 hover:text-white border border-transparent'
 							)}
 							aria-current={active ? 'page' : undefined}
-							onclick={handleNavClick}
+							onclick={() => { mobileMenuOpen = false; }}
 						>
 							<div 
 								class={cn(
@@ -370,7 +365,7 @@
 							'active:scale-[0.98]',
 							'relative overflow-hidden'
 						)}
-						onclick={handleNavClick}
+						onclick={() => { mobileMenuOpen = false; }}
 					>
 						<div class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full"></div>
 						<span class="relative">Learn More</span>

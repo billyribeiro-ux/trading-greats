@@ -105,7 +105,7 @@
 	stroke-width={strokeWidth}
 	stroke-linecap="round"
 	stroke-linejoin="round"
-	class={cn('inline-block flex-shrink-0', className)}
+	class={cn('inline-block flex-shrink-0 pointer-events-none', className)}
 	aria-hidden="true"
 >
 	{#if name === 'candlestick'}
