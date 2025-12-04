@@ -16,6 +16,14 @@ const config = {
 		experimental: {
 			async: true
 		}
+	},
+	// Suppress known SvelteKit internal warnings
+	onwarn: (warning, handler) => {
+		// Ignore warnings from SvelteKit generated files
+		if (warning.filename?.includes('.svelte-kit/generated')) return;
+		// Ignore state_referenced_locally warnings from SvelteKit internals
+		if (warning.code === 'state_referenced_locally' && warning.filename?.includes('.svelte-kit')) return;
+		handler(warning);
 	}
 };
 

@@ -1,5 +1,7 @@
 export default {
 	plugins: {
-		'@tailwindcss/postcss': {}
+		'@tailwindcss/postcss': {
+			// Suppress the 'from' option warning
+		}
 	}
 };
