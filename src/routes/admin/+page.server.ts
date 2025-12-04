@@ -3,7 +3,7 @@ import { sanity } from '$lib/sanity';
 import { seedTraders } from '$lib/server/seed';
 import type { Trader, NewTrader, BlogPost } from '$lib/server/schema';
 import { db } from '$lib/server/db';
-import { blogPosts } from '$lib/server/schema';
+import { blogPosts, media } from '$lib/server/schema';
 import { desc, eq, sql } from 'drizzle-orm';
 import { PUBLIC_SANITY_PROJECT_ID } from '$env/static/public';
 
@@ -79,11 +79,22 @@ export const load: PageServerLoad = async () => {
 		console.log('Blog posts table not yet created');
 	}
 
+	// Fetch media count
+	let mediaCount = 0;
+	try {
+		const [mediaCountResult] = await db.select({ count: sql<number>`count(*)` }).from(media);
+		mediaCount = mediaCountResult?.count ?? 0;
+	} catch (error) {
+		// Media table might not exist yet
+		console.log('Media table not yet created');
+	}
+
 	return {
 		traderCount,
 		publishedCount,
 		draftCount,
 		blogCount,
+		mediaCount,
 		recentTraders,
 		recentPosts
 	};

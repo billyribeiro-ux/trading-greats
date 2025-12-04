@@ -2,6 +2,7 @@ import type { Actions } from './$types';
 import { fail, redirect } from '@sveltejs/kit';
 import { db } from '$lib/server/db';
 import { traders } from '$lib/server/schema';
+import type { FamousTrade, Quote, Book, SocialLink } from '$lib/server/schema';
 import { slugify } from '$lib/utils';
 
 export const actions: Actions = {
@@ -27,9 +28,49 @@ export const actions: Actions = {
 		// Get quotes
 		const quoteTexts = formData.getAll('quoteText') as string[];
 		const quoteSources = formData.getAll('quoteSource') as string[];
-		const quotes = quoteTexts
+		const quotes: Quote[] = quoteTexts
 			.map((text, i) => ({ text, source: quoteSources[i] || '' }))
 			.filter(q => q.text.trim() !== '');
+
+		// Get famous trades
+		const tradeDates = formData.getAll('tradeDate') as string[];
+		const tradeAssets = formData.getAll('tradeAsset') as string[];
+		const tradePositions = formData.getAll('tradePosition') as string[];
+		const tradeOutcomes = formData.getAll('tradeOutcome') as string[];
+		const tradeProfitLosses = formData.getAll('tradeProfitLoss') as string[];
+		const tradeDescriptions = formData.getAll('tradeDescription') as string[];
+		const famousTrades: FamousTrade[] = tradeDates
+			.map((date, i) => ({
+				date,
+				asset: tradeAssets[i] || '',
+				position: (tradePositions[i] || 'long') as 'long' | 'short',
+				outcome: tradeOutcomes[i] || '',
+				profitLoss: tradeProfitLosses[i] || '',
+				description: tradeDescriptions[i] || ''
+			}))
+			.filter(t => t.date.trim() !== '' || t.asset.trim() !== '');
+
+		// Get books
+		const bookTitles = formData.getAll('bookTitle') as string[];
+		const bookYears = formData.getAll('bookYear') as string[];
+		const bookDescriptions = formData.getAll('bookDescription') as string[];
+		const books: Book[] = bookTitles
+			.map((title, i) => ({
+				title,
+				year: bookYears[i] ? parseInt(bookYears[i]) : undefined,
+				description: bookDescriptions[i] || undefined
+			}))
+			.filter(b => b.title.trim() !== '');
+
+		// Get social links
+		const socialPlatforms = formData.getAll('socialPlatform') as string[];
+		const socialUrls = formData.getAll('socialUrl') as string[];
+		const socialLinks: SocialLink[] = socialPlatforms
+			.map((platform, i) => ({
+				platform,
+				url: socialUrls[i] || ''
+			}))
+			.filter(s => s.platform.trim() !== '' && s.url.trim() !== '');
 
 		// Validation
 		if (!name || !oneLiner) {
@@ -53,6 +94,9 @@ export const actions: Actions = {
 				philosophy: philosophy || null,
 				achievements: achievements.length > 0 ? achievements : null,
 				quotes: quotes.length > 0 ? quotes : null,
+				famousTrades: famousTrades.length > 0 ? famousTrades : null,
+				books: books.length > 0 ? books : null,
+				socialLinks: socialLinks.length > 0 ? socialLinks : null,
 				status: status || 'draft'
 			});
 		} catch (error) {
