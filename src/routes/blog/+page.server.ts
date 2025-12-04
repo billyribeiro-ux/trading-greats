@@ -4,13 +4,6 @@ import { blogPosts, BLOG_CATEGORIES, type BlogPost } from '$lib/server/schema';
 import { eq, desc } from 'drizzle-orm';
 import { seedBlogPosts } from '$lib/server/seedBlog';
 
-// ============================================================================
-// RENDERING CONFIGURATION (Dec 2025 Best Practices)
-// ============================================================================
-export const prerender = true;  // SSG for blog listing
-export const ssr = true;        // SEO enabled
-export const csr = true;        // Hydration for interactivity
-
 // Convert seed post to BlogPost format
 function seedToPost(post: typeof seedBlogPosts[0], id: string): BlogPost {
 	return {

@@ -27,7 +27,8 @@
             style: t.tradingStyle || 'Trading',
             knownFor: t.oneLiner || 'Legendary Trader',
             returns: t.netWorth || 'Exceptional',
-            slug: t.slug
+            slug: t.slug,
+            photoUrl: t.photoUrl
         }))
     );
 
@@ -431,18 +432,27 @@
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {#each displayTraders.slice(0, 4) as trader, i}
                 <div use:reveal={{ delay: 0.15 + i * 0.1 }}>
-                    <div class="group relative overflow-hidden rounded-3xl border border-white/10 bg-[#0f172a] transition-all duration-500 hover:border-[#EAB308]/40 hover:-translate-y-2 hover:shadow-2xl">
+                    <a href="/traders/{trader.slug}" class="group relative overflow-hidden rounded-3xl border border-white/10 bg-[#0f172a] transition-all duration-500 hover:border-[#EAB308]/40 hover:-translate-y-2 hover:shadow-2xl block">
                         <div class="aspect-[4/5] w-full bg-slate-800 relative overflow-hidden">
-                            <div class="absolute inset-0 flex items-center justify-center text-7xl font-black text-white/5 select-none">
-                                {trader.name.split(' ').map((n: string) => n[0]).join('')}
-                            </div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90"></div>
+                            {#if trader.photoUrl}
+                                <img 
+                                    src={trader.photoUrl} 
+                                    alt={trader.name}
+                                    class="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
+                                    loading="lazy"
+                                />
+                            {:else}
+                                <div class="absolute inset-0 flex items-center justify-center text-7xl font-black text-white/5 select-none">
+                                    {trader.name.split(' ').map((n: string) => n[0]).join('')}
+                                </div>
+                            {/if}
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/50 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90"></div>
                             
                             <div class="absolute bottom-0 left-0 w-full p-6">
                                 <span class="mb-2 inline-block rounded bg-[#EAB308] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#020617]">
                                     {trader.style}
                                 </span>
-                                <h3 class="mb-1 text-xl font-bold text-white">{trader.name}</h3>
+                                <h3 class="mb-1 text-xl font-bold text-white group-hover:text-[#EAB308] transition-colors">{trader.name}</h3>
                                 <p class="text-sm text-slate-400 mb-3">{trader.knownFor}</p>
                                 <div class="flex items-center gap-2 border-t border-white/10 pt-3 text-xs font-medium text-slate-400">
                                     <Icon name="trending-up" class="h-3 w-3 text-emerald-400" />
@@ -450,7 +460,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             {/each}
         </div>

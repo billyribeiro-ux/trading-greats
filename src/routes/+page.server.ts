@@ -1,9 +1,9 @@
 import type { PageServerLoad } from './$types';
+import { seedTraders } from '$lib/server/seed';
 
 // ============================================================================
 // RENDERING CONFIGURATION
 // ============================================================================
-export const prerender = true; // Static generation for max speed
 export const ssr = true;      // SEO enabled
 export const csr = true;      // Hydration enabled for interactions
 
@@ -16,22 +16,25 @@ interface TraderProfile {
     tradingStyle: string;
     oneLiner: string;
     netWorth: string;
+    photoUrl: string | null;
 }
 
 // ============================================================================
 // DATA LOADING
 // ============================================================================
 export const load: PageServerLoad = async () => {
-    const traders: TraderProfile[] = [
-        { name: 'Warren Buffett', slug: 'warren-buffett', tradingStyle: 'Value Investing', oneLiner: 'The Oracle of Omaha', netWorth: '20% CAGR' },
-        { name: 'George Soros', slug: 'george-soros', tradingStyle: 'Macro', oneLiner: 'The Man Who Broke the Bank of England', netWorth: '30% CAGR' },
-        { name: 'Paul Tudor Jones', slug: 'paul-tudor-jones', tradingStyle: 'Macro / Technical', oneLiner: 'Legendary Macro Trader', netWorth: '100%+ Returns' },
-        { name: 'Mark Minervini', slug: 'mark-minervini', tradingStyle: 'Momentum', oneLiner: 'US Investing Champion', netWorth: '33,000% Returns' },
-        { name: 'Jesse Livermore', slug: 'jesse-livermore', tradingStyle: 'Technical', oneLiner: 'The Boy Plunger', netWorth: 'Legendary' },
-        { name: 'Ray Dalio', slug: 'ray-dalio', tradingStyle: 'Macro', oneLiner: 'Founder of Bridgewater', netWorth: 'Market Principles' },
-        { name: 'Stanley Druckenmiller', slug: 'stanley-druckenmiller', tradingStyle: 'Macro', oneLiner: 'No Down Years', netWorth: '30% Avg' },
-        { name: 'Jim Simons', slug: 'jim-simons', tradingStyle: 'Quant', oneLiner: 'The Code Breaker', netWorth: '66% CAGR' }
-    ];
+    // Get featured traders from seed data (first 8 with photos)
+    const traders: TraderProfile[] = seedTraders
+        .filter(t => t.photoUrl) // Only traders with photos
+        .slice(0, 8)
+        .map(t => ({
+            name: t.name,
+            slug: t.slug,
+            tradingStyle: t.tradingStyle || 'Trading',
+            oneLiner: t.oneLiner || 'Legendary Trader',
+            netWorth: t.netWorth || 'Exceptional Returns',
+            photoUrl: t.photoUrl || null
+        }));
 
     const meta = {
         title: "Trading Greats - Study Strategies From The World's Greatest Traders",
