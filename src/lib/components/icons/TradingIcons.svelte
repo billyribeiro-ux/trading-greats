@@ -92,7 +92,7 @@
 
 	let { name, class: className = '', size = 24, strokeWidth = 2 }: Props = $props();
 
-	const sizeValue = typeof size === 'number' ? `${size}px` : size;
+	const sizeValue = $derived(typeof size === 'number' ? `${size}px` : size);
 </script>
 
 <svg

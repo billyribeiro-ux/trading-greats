@@ -1,0 +1,110 @@
+CREATE TABLE `media` (
+	`id` text PRIMARY KEY NOT NULL,
+	`filename` text NOT NULL,
+	`original_filename` text NOT NULL,
+	`mime_type` text NOT NULL,
+	`file_size` integer NOT NULL,
+	`width` integer,
+	`height` integer,
+	`url` text NOT NULL,
+	`thumbnail_url` text,
+	`medium_url` text,
+	`large_url` text,
+	`original_url` text,
+	`storage_key` text NOT NULL,
+	`storage_provider` text DEFAULT 'r2',
+	`title` text,
+	`alt_text` text,
+	`description` text,
+	`caption` text,
+	`folder` text DEFAULT 'uploads',
+	`tags` text,
+	`usage_count` integer DEFAULT 0,
+	`last_used_at` text,
+	`created_at` text,
+	`updated_at` text
+);
+--> statement-breakpoint
+CREATE TABLE `newsletter_campaigns` (
+	`id` text PRIMARY KEY NOT NULL,
+	`subject` text NOT NULL,
+	`preview_text` text,
+	`content` text NOT NULL,
+	`content_text` text,
+	`type` text DEFAULT 'manual',
+	`status` text DEFAULT 'draft',
+	`scheduled_for` text,
+	`sent_at` text,
+	`completed_at` text,
+	`target_preferences` text,
+	`total_recipients` integer DEFAULT 0,
+	`total_sent` integer DEFAULT 0,
+	`total_delivered` integer DEFAULT 0,
+	`total_opens` integer DEFAULT 0,
+	`unique_opens` integer DEFAULT 0,
+	`total_clicks` integer DEFAULT 0,
+	`unique_clicks` integer DEFAULT 0,
+	`total_unsubscribes` integer DEFAULT 0,
+	`total_bounces` integer DEFAULT 0,
+	`total_complaints` integer DEFAULT 0,
+	`created_at` text,
+	`updated_at` text
+);
+--> statement-breakpoint
+CREATE TABLE `newsletter_events` (
+	`id` text PRIMARY KEY NOT NULL,
+	`subscriber_id` text NOT NULL,
+	`campaign_id` text NOT NULL,
+	`event_type` text NOT NULL,
+	`link_url` text,
+	`link_text` text,
+	`ip_address` text,
+	`user_agent` text,
+	`country` text,
+	`city` text,
+	`device` text,
+	`email_client` text,
+	`timestamp` text
+);
+--> statement-breakpoint
+CREATE TABLE `newsletter_send_log` (
+	`id` text PRIMARY KEY NOT NULL,
+	`subscriber_id` text NOT NULL,
+	`campaign_id` text NOT NULL,
+	`provider_message_id` text,
+	`status` text DEFAULT 'pending',
+	`has_opened` integer DEFAULT false,
+	`has_clicked` integer DEFAULT false,
+	`error_message` text,
+	`error_code` text,
+	`sent_at` text,
+	`delivered_at` text,
+	`opened_at` text,
+	`clicked_at` text,
+	`created_at` text
+);
+--> statement-breakpoint
+CREATE TABLE `newsletter_subscribers` (
+	`id` text PRIMARY KEY NOT NULL,
+	`email` text NOT NULL,
+	`status` text DEFAULT 'pending',
+	`verification_token` text,
+	`verified_at` text,
+	`unsubscribe_token` text,
+	`unsubscribed_at` text,
+	`unsubscribe_reason` text,
+	`preferences` text,
+	`source` text,
+	`referrer` text,
+	`total_emails_sent` integer DEFAULT 0,
+	`total_opens` integer DEFAULT 0,
+	`total_clicks` integer DEFAULT 0,
+	`last_opened_at` text,
+	`last_clicked_at` text,
+	`ip_address` text,
+	`user_agent` text,
+	`created_at` text,
+	`updated_at` text
+);
+--> statement-breakpoint
+CREATE UNIQUE INDEX `newsletter_subscribers_email_unique` ON `newsletter_subscribers` (`email`);
