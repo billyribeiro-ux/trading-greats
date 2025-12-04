@@ -2,6 +2,7 @@
 	import { cn } from '$lib/utils';
 	import ScrollReveal from '$lib/components/motion/ScrollReveal.svelte';
 	import { Icon, type IconName } from '$lib/components/icons';
+	import SEO from '$lib/components/SEO.svelte';
 	import type { PageData } from './$types';
 
 	// ============================================================================
@@ -9,9 +10,14 @@
 	// ============================================================================
 	let { data }: { data: PageData } = $props();
 
+	// ============================================================================
+	// REACTIVE STATE
+	// ============================================================================
 	let copied = $state(false);
 
-	// Category icons
+	// ============================================================================
+	// CATEGORY ICONS
+	// ============================================================================
 	const categoryIcons: Record<string, IconName> = {
 		strategy: 'trending-up',
 		psychology: 'brain',
@@ -96,25 +102,65 @@
 	const categoryIcon = $derived<IconName>(
 		data.post.category ? categoryIcons[data.post.category] || 'tag' : 'tag'
 	);
+
+	// ============================================================================
+	// JSON-LD STRUCTURED DATA (Dec 2025 SEO Best Practices)
+	// ============================================================================
+	const schemaOrg = $derived({
+		article: {
+			"@context": "https://schema.org",
+			"@type": "Article",
+			"headline": data.post.title,
+			"description": data.post.seoDescription || data.post.excerpt || '',
+			"image": data.post.ogImage || data.post.heroImage || "https://tradinggreats.com/favicon.svg",
+			"datePublished": data.post.publishedAt || new Date().toISOString(),
+			"dateModified": data.post.updatedAt || data.post.publishedAt || new Date().toISOString(),
+			"author": {
+				"@type": "Person",
+				"name": data.post.author || "Trading Greats Team"
+			},
+			"publisher": {
+				"@type": "Organization",
+				"name": "Trading Greats",
+				"logo": {
+					"@type": "ImageObject",
+					"url": "https://tradinggreats.com/favicon.svg"
+				}
+			},
+			"mainEntityOfPage": {
+				"@type": "WebPage",
+				"@id": `https://tradinggreats.com/blog/${data.post.slug}`
+			},
+			"articleSection": data.post.category ? getCategoryLabel(data.post.category) : "Trading",
+			"keywords": data.post.tags?.join(', ') || "trading, investing, finance"
+		},
+		breadcrumb: {
+			"@context": "https://schema.org",
+			"@type": "BreadcrumbList",
+			"itemListElement": [
+				{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tradinggreats.com" },
+				{ "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://tradinggreats.com/blog" },
+				{ "@type": "ListItem", "position": 3, "name": data.post.title, "item": `https://tradinggreats.com/blog/${data.post.slug}` }
+			]
+		}
+	});
 </script>
 
+<SEO
+	title={`${data.post.seoTitle || data.post.title} | Trading Greats`}
+	description={data.post.seoDescription || data.post.excerpt || `Read ${data.post.title} on Trading Greats`}
+	image={data.post.ogImage || data.post.heroImage || undefined}
+	keywords={data.post.tags || ['trading', 'investing', 'finance']}
+/>
+
 <svelte:head>
-	<title>{data.post.seoTitle || data.post.title} | Trading Greats</title>
-	<meta
-		name="description"
-		content={data.post.seoDescription || data.post.excerpt || `Read ${data.post.title} on Trading Greats`}
-	/>
-	<meta property="og:title" content={data.post.seoTitle || data.post.title} />
-	<meta
-		property="og:description"
-		content={data.post.seoDescription || data.post.excerpt || ''}
-	/>
-	{#if data.post.ogImage || data.post.heroImage}
-		<meta property="og:image" content={data.post.ogImage || data.post.heroImage} />
-	{/if}
+	<!-- Article-specific meta tags -->
 	<meta property="og:type" content="article" />
 	{#if data.post.publishedAt}
 		<meta property="article:published_time" content={data.post.publishedAt} />
+	{/if}
+	{#if data.post.updatedAt}
+		<meta property="article:modified_time" content={data.post.updatedAt} />
 	{/if}
 	{#if data.post.author}
 		<meta property="article:author" content={data.post.author} />
@@ -127,6 +173,10 @@
 			<meta property="article:tag" content={tag} />
 		{/each}
 	{/if}
+	
+	<!-- JSON-LD Structured Data -->
+	{@html `<script type="application/ld+json">${JSON.stringify(schemaOrg.article)}</script>`}
+	{@html `<script type="application/ld+json">${JSON.stringify(schemaOrg.breadcrumb)}</script>`}
 </svelte:head>
 
 <div class="min-h-screen bg-midnight-950">
