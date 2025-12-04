@@ -34,7 +34,12 @@
 	const trader = $derived(data.trader);
 
 	// Initialize state from trader data
-	let photoUrl = $state(data.trader.photoUrl || '');
+	let photoUrl = $state('');
+
+	// Sync photoUrl from trader data
+	$effect(() => {
+		photoUrl = data.trader.photoUrl || '';
+	});
 
 	// svelte-ignore state_referenced_locally
 	const initialQuotes: LocalQuote[] = data.trader.quotes?.map((q) => ({ text: q.text, source: q.source || '' })) || [{ text: '', source: '' }];
@@ -354,9 +359,10 @@
 							</div>
 							<div class="grid gap-4 sm:grid-cols-2">
 								<div>
-									<label class="block text-xs text-midnight-400 mb-1">Date/Period</label>
+									<label for="tradeDate-{i}" class="block text-xs text-midnight-400 mb-1">Date/Period</label>
 									<input
 										type="text"
+										id="tradeDate-{i}"
 										name="tradeDate"
 										bind:value={famousTrades[i].date}
 										class="block w-full rounded-lg border border-midnight-700 bg-midnight-800/50 px-3 py-2 text-sm text-midnight-100 outline-none focus:border-gold-500/50 min-h-[44px]"
@@ -364,17 +370,18 @@
 									/>
 								</div>
 								<div>
-									<label class="block text-xs text-midnight-400 mb-1">Asset</label>
+									<label for="tradeAsset-{i}" class="block text-xs text-midnight-400 mb-1">Asset</label>
 									<input
 										type="text"
+										id="tradeAsset-{i}"
 										name="tradeAsset"
 										bind:value={famousTrades[i].asset}
 										class="block w-full rounded-lg border border-midnight-700 bg-midnight-800/50 px-3 py-2 text-sm text-midnight-100 outline-none focus:border-gold-500/50 min-h-[44px]"
 										placeholder="e.g., British Pound"
 									/>
 								</div>
-								<div>
-									<label class="block text-xs text-midnight-400 mb-1">Position</label>
+								<fieldset>
+									<legend class="block text-xs text-midnight-400 mb-1">Position</legend>
 									<div class="flex gap-2 mt-1">
 										<button
 											type="button"
@@ -394,11 +401,12 @@
 										</button>
 									</div>
 									<input type="hidden" name="tradePosition" value={famousTrades[i].position} />
-								</div>
+								</fieldset>
 								<div>
-									<label class="block text-xs text-midnight-400 mb-1">Profit/Loss</label>
+									<label for="tradeProfitLoss-{i}" class="block text-xs text-midnight-400 mb-1">Profit/Loss</label>
 									<input
 										type="text"
+										id="tradeProfitLoss-{i}"
 										name="tradeProfitLoss"
 										bind:value={famousTrades[i].profitLoss}
 										class="block w-full rounded-lg border border-midnight-700 bg-midnight-800/50 px-3 py-2 text-sm text-midnight-100 outline-none focus:border-gold-500/50 min-h-[44px]"
@@ -406,9 +414,10 @@
 									/>
 								</div>
 								<div class="sm:col-span-2">
-									<label class="block text-xs text-midnight-400 mb-1">Outcome</label>
+									<label for="tradeOutcome-{i}" class="block text-xs text-midnight-400 mb-1">Outcome</label>
 									<input
 										type="text"
+										id="tradeOutcome-{i}"
 										name="tradeOutcome"
 										bind:value={famousTrades[i].outcome}
 										class="block w-full rounded-lg border border-midnight-700 bg-midnight-800/50 px-3 py-2 text-sm text-midnight-100 outline-none focus:border-gold-500/50 min-h-[44px]"
@@ -416,8 +425,9 @@
 									/>
 								</div>
 								<div class="sm:col-span-2">
-									<label class="block text-xs text-midnight-400 mb-1">Description</label>
+									<label for="tradeDescription-{i}" class="block text-xs text-midnight-400 mb-1">Description</label>
 									<textarea
+										id="tradeDescription-{i}"
 										name="tradeDescription"
 										bind:value={famousTrades[i].description}
 										rows="2"

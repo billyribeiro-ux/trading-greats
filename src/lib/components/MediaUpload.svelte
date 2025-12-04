@@ -31,8 +31,8 @@
 	let showSeoModal = $state(false);
 	let showLibraryModal = $state(false);
 
-	// Current media state
-	let currentMedia = $state<Partial<Media> | null>(value ? { url: value, id: mediaId } : null);
+	// Current media state - initialized empty, synced via $effect
+	let currentMedia = $state<Partial<Media> | null>(null);
 
 	// SEO fields for new uploads
 	let seoTitle = $state('');
@@ -45,10 +45,12 @@
 
 	let fileInput: HTMLInputElement;
 
-	// Sync value prop
+	// Sync value/mediaId props to currentMedia
 	$effect(() => {
-		if (value && (!currentMedia || currentMedia.url !== value)) {
+		if (value) {
 			currentMedia = { url: value, id: mediaId };
+		} else {
+			currentMedia = null;
 		}
 	});
 

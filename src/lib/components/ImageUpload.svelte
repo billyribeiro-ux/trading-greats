@@ -16,10 +16,10 @@
 	let uploading = $state(false);
 	let dragOver = $state(false);
 	let error = $state<string | null>(null);
-	let currentUrl = $state(value);
+	let currentUrl = $state('');
 	let fileInput: HTMLInputElement;
 
-	// Sync value prop to currentUrl
+	// Sync value prop to currentUrl (runs on mount and when value changes)
 	$effect(() => {
 		currentUrl = value;
 	});

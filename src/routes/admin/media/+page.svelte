@@ -22,8 +22,14 @@
 
 	let { data } = $props();
 
-	let searchQuery = $state(data.filters.search || '');
-	let selectedFolder = $state(data.filters.folder || '');
+	let searchQuery = $state('');
+	let selectedFolder = $state('');
+
+	// Sync filters from URL/data
+	$effect(() => {
+		searchQuery = data.filters.search || '';
+		selectedFolder = data.filters.folder || '';
+	});
 	let showUploadModal = $state(false);
 	let editingMedia = $state<Media | null>(null);
 	let deleteConfirm = $state<string | null>(null);

@@ -16,9 +16,9 @@
 		GraduationCap,
 		LineChart,
 		BookMarked,
-		CheckCircle2,
+		CircleCheck,
 		Loader2,
-		AlertCircle
+		CircleAlert
 	} from 'lucide-svelte';
 	import { cn } from '$lib/utils';
 	import ScrollReveal from '$lib/components/motion/ScrollReveal.svelte';
@@ -494,7 +494,7 @@
 
 					{#if subscribeSuccess}
 						<div class="mt-8 flex items-center justify-center gap-3 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 max-w-md mx-auto">
-							<CheckCircle2 class="h-5 w-5 text-emerald-400 flex-shrink-0" />
+							<CircleCheck class="h-5 w-5 text-emerald-400 flex-shrink-0" />
 							<p class="text-emerald-400">{subscribeMessage}</p>
 						</div>
 					{:else}
@@ -522,7 +522,7 @@
 
 						{#if subscribeError && subscribeMessage}
 							<div class="mt-4 flex items-center justify-center gap-2 text-red-400 text-sm">
-								<AlertCircle class="h-4 w-4" />
+								<CircleAlert class="h-4 w-4" />
 								{subscribeMessage}
 							</div>
 						{/if}

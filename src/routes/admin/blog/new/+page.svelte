@@ -11,7 +11,7 @@
 		Users,
 		Settings,
 		Sparkles,
-		AlertCircle
+		CircleAlert
 	} from 'lucide-svelte';
 	import { slugify } from '$lib/utils';
 	import type { PageData } from './$types';
@@ -25,10 +25,22 @@
 
 	let { data, form }: { data: PageData; form: FormResult | null } = $props();
 
-	// Form state
-	let title = $state(form?.title ?? '');
-	let excerpt = $state(form?.excerpt ?? '');
-	let content = $state(form?.content ?? '');
+	// Derived form data for error recovery
+	const formData = $derived(form);
+
+	// Form state - initialized empty, synced via $effect for form errors
+	let title = $state('');
+	let excerpt = $state('');
+	let content = $state('');
+
+	// Sync form error values back to state
+	$effect(() => {
+		if (formData) {
+			if (formData.title) title = formData.title;
+			if (formData.excerpt) excerpt = formData.excerpt;
+			if (formData.content) content = formData.content;
+		}
+	});
 	let heroImage = $state('');
 	let heroImageAlt = $state('');
 	let heroImageCaption = $state('');
@@ -103,7 +115,7 @@
 		<!-- Error Message -->
 		{#if form?.error}
 			<div class="mb-6 rounded-xl border border-red-500/30 bg-red-500/10 p-4 flex items-center gap-3">
-				<AlertCircle class="h-5 w-5 text-red-400 flex-shrink-0" />
+				<CircleAlert class="h-5 w-5 text-red-400 flex-shrink-0" />
 				<p class="text-red-400">{form.error}</p>
 			</div>
 		{/if}

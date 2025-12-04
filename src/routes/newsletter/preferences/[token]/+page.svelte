@@ -2,17 +2,27 @@
 	import type { PageData, ActionData } from './$types';
 	import SEO from '$lib/components/SEO.svelte';
 	import { enhance } from '$app/forms';
-	import { CheckCircle2, XCircle, Settings, Mail, Bell, BookOpen, TrendingUp, ArrowRight } from 'lucide-svelte';
+	import { CircleCheck, CircleX, Settings, Mail, Bell, BookOpen, TrendingUp, ArrowRight } from 'lucide-svelte';
 
 	let { data, form }: { data: PageData; form: ActionData } = $props();
 
 	let isSubmitting = $state(false);
 
-	// Local state for preferences (reactive)
-	let weeklyDigest = $state(data.preferences?.weeklyDigest ?? true);
-	let newTraderAlerts = $state(data.preferences?.newTraderAlerts ?? true);
-	let blogPostAlerts = $state(data.preferences?.blogPostAlerts ?? true);
-	let marketInsights = $state(data.preferences?.marketInsights ?? false);
+	// Local state for preferences - initialized with defaults, synced via $effect
+	let weeklyDigest = $state(true);
+	let newTraderAlerts = $state(true);
+	let blogPostAlerts = $state(true);
+	let marketInsights = $state(false);
+
+	// Sync preferences from data
+	$effect(() => {
+		if (data.preferences) {
+			weeklyDigest = data.preferences.weeklyDigest ?? true;
+			newTraderAlerts = data.preferences.newTraderAlerts ?? true;
+			blogPostAlerts = data.preferences.blogPostAlerts ?? true;
+			marketInsights = data.preferences.marketInsights ?? false;
+		}
+	});
 
 	const preferenceOptions = [
 		{
@@ -72,7 +82,7 @@
 			<!-- Invalid token -->
 			<div class="bg-midnight-900/50 border border-midnight-800 rounded-2xl p-8 text-center">
 				<div class="mx-auto w-16 h-16 bg-red-500/10 rounded-full flex items-center justify-center mb-6">
-					<XCircle class="w-8 h-8 text-red-400" />
+					<CircleX class="w-8 h-8 text-red-400" />
 				</div>
 				<h1 class="text-2xl font-bold text-white mb-3">Invalid Link</h1>
 				<p class="text-midnight-400 mb-8">
@@ -90,7 +100,7 @@
 			<!-- Unsubscribed -->
 			<div class="bg-midnight-900/50 border border-midnight-800 rounded-2xl p-8 text-center">
 				<div class="mx-auto w-16 h-16 bg-emerald-500/10 rounded-full flex items-center justify-center mb-6">
-					<CheckCircle2 class="w-8 h-8 text-emerald-400" />
+					<CircleCheck class="w-8 h-8 text-emerald-400" />
 				</div>
 				<h1 class="text-2xl font-bold text-white mb-3">You're Unsubscribed</h1>
 				<p class="text-midnight-400 mb-8">
@@ -119,7 +129,7 @@
 
 				{#if form?.action === 'updatePreferences' && form?.success}
 					<div class="mb-6 p-4 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm flex items-center gap-3">
-						<CheckCircle2 class="w-5 h-5 flex-shrink-0" />
+						<CircleCheck class="w-5 h-5 flex-shrink-0" />
 						{form.message}
 					</div>
 				{/if}

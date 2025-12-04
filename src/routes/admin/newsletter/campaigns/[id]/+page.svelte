@@ -8,7 +8,7 @@
 		MousePointer,
 		Users,
 		Clock,
-		CheckCircle2,
+		CircleCheck,
 		Play,
 		Edit,
 		Save,
@@ -24,13 +24,21 @@
 	let isSubmitting = $state(false);
 	let sendConfirm = $state(false);
 
-	// Editable fields
-	let subject = $state(data.campaign.subject);
-	let previewText = $state(data.campaign.previewText || '');
-	let content = $state(data.campaign.content);
+	// Editable fields - initialized empty, synced via $effect
+	let subject = $state('');
+	let previewText = $state('');
+	let content = $state('');
 
-	const isDraft = data.campaign.status === 'draft';
-	const isSent = data.campaign.status === 'sent';
+	// Derived status checks
+	const isDraft = $derived(data.campaign.status === 'draft');
+	const isSent = $derived(data.campaign.status === 'sent');
+
+	// Sync campaign data to editable fields
+	$effect(() => {
+		subject = data.campaign.subject ?? '';
+		previewText = data.campaign.previewText || '';
+		content = data.campaign.content ?? '';
+	});
 
 	function formatDate(dateStr: string | null): string {
 		if (!dateStr) return 'N/A';
@@ -52,7 +60,7 @@
 	function getEventIcon(eventType: string) {
 		switch (eventType) {
 			case 'sent': return Send;
-			case 'delivered': return CheckCircle2;
+			case 'delivered': return CircleCheck;
 			case 'opened': return Eye;
 			case 'clicked': return MousePointer;
 			default: return Activity;
@@ -70,7 +78,7 @@
 		}
 	}
 
-	function getStatusColor(status: string): string {
+	function getStatusColor(status: string | null): string {
 		switch (status) {
 			case 'sent': return 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20';
 			case 'draft': return 'bg-midnight-700 text-midnight-400 border-midnight-600';
@@ -305,7 +313,7 @@
 					{/if}
 
 					<h3 class="text-sm font-medium text-midnight-400 mt-4 mb-2">Type</h3>
-					<p class="text-midnight-300 capitalize">{data.campaign.type.replace('_', ' ')}</p>
+					<p class="text-midnight-300 capitalize">{data.campaign.type?.replace('_', ' ') ?? 'N/A'}</p>
 				</div>
 			{/if}
 
@@ -327,8 +335,8 @@
 						</div>
 						<div class="p-6 text-center border-t border-[rgba(255,255,255,0.1)]">
 							<p class="text-xs text-[#6b7280]">
-								<a href="#" class="text-[#d4af37]">Manage preferences</a> ·
-								<a href="#" class="text-[#6b7280]">Unsubscribe</a>
+								<span class="text-[#d4af37] cursor-default">Manage preferences</span> ·
+								<span class="text-[#6b7280] cursor-default">Unsubscribe</span>
 							</p>
 						</div>
 					</div>

@@ -11,14 +11,14 @@
 		Plus,
 		ArrowRight,
 		Clock,
-		CheckCircle2,
-		XCircle,
+		CircleCheck,
+		CircleX,
 		BarChart3
 	} from 'lucide-svelte';
 
 	let { data }: { data: PageData } = $props();
 
-	const stats = [
+	const stats = $derived([
 		{
 			label: 'Total Subscribers',
 			value: data.stats.totalSubscribers,
@@ -29,7 +29,7 @@
 		{
 			label: 'Verified',
 			value: data.stats.verifiedSubscribers,
-			icon: CheckCircle2,
+			icon: CircleCheck,
 			color: 'text-emerald-400',
 			bg: 'bg-emerald-500/10'
 		},
@@ -61,7 +61,7 @@
 			color: 'text-emerald-400',
 			bg: 'bg-emerald-500/10'
 		}
-	];
+	]);
 
 	function formatDate(dateStr: string | null): string {
 		if (!dateStr) return 'N/A';
@@ -72,7 +72,7 @@
 		});
 	}
 
-	function getCampaignStatusColor(status: string): string {
+	function getCampaignStatusColor(status: string | null): string {
 		switch (status) {
 			case 'sent': return 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20';
 			case 'draft': return 'bg-midnight-700 text-midnight-400 border-midnight-600';

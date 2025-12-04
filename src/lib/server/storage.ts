@@ -3,7 +3,7 @@ import { env } from '$env/dynamic/private';
 import sharp from 'sharp';
 
 // R2 Configuration
-const isR2Configured = env.R2_ACCOUNT_ID && env.R2_ACCESS_KEY_ID && env.R2_SECRET_ACCESS_KEY && env.R2_BUCKET_NAME;
+const isR2Configured = Boolean(env.R2_ACCOUNT_ID && env.R2_ACCESS_KEY_ID && env.R2_SECRET_ACCESS_KEY && env.R2_BUCKET_NAME);
 
 let s3Client: S3Client | null = null;
 

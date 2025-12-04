@@ -2,7 +2,7 @@
 	import type { PageData, ActionData } from './$types';
 	import SEO from '$lib/components/SEO.svelte';
 	import { enhance } from '$app/forms';
-	import { CheckCircle2, XCircle, Mail, ArrowRight } from 'lucide-svelte';
+	import { CircleCheck, CircleX, Mail, ArrowRight } from 'lucide-svelte';
 
 	let { data, form }: { data: PageData; form: ActionData } = $props();
 
@@ -29,7 +29,7 @@
 				<!-- Invalid token -->
 				<div class="text-center">
 					<div class="mx-auto w-16 h-16 bg-red-500/10 rounded-full flex items-center justify-center mb-6">
-						<XCircle class="w-8 h-8 text-red-400" />
+						<CircleX class="w-8 h-8 text-red-400" />
 					</div>
 					<h1 class="text-2xl font-bold text-white mb-3">Invalid Link</h1>
 					<p class="text-midnight-400 mb-8">
@@ -47,7 +47,7 @@
 				<!-- Already unsubscribed or just unsubscribed -->
 				<div class="text-center">
 					<div class="mx-auto w-16 h-16 bg-emerald-500/10 rounded-full flex items-center justify-center mb-6">
-						<CheckCircle2 class="w-8 h-8 text-emerald-400" />
+						<CircleCheck class="w-8 h-8 text-emerald-400" />
 					</div>
 					<h1 class="text-2xl font-bold text-white mb-3">You're Unsubscribed</h1>
 					<p class="text-midnight-400 mb-8">
@@ -83,10 +83,10 @@
 						};
 					}}
 				>
-					<div class="mb-6">
-						<label class="block text-sm font-medium text-midnight-300 mb-3">
+					<fieldset class="mb-6">
+						<legend class="block text-sm font-medium text-midnight-300 mb-3">
 							Why are you unsubscribing? (optional)
-						</label>
+						</legend>
 						<div class="space-y-2">
 							{#each unsubscribeReasons as reasonOption}
 								<label class="flex items-center gap-3 p-3 rounded-lg border border-midnight-700 bg-midnight-800/50 cursor-pointer hover:border-midnight-600 transition-colors">
@@ -101,7 +101,7 @@
 								</label>
 							{/each}
 						</div>
-					</div>
+					</fieldset>
 
 					{#if form?.message && !form?.success}
 						<div class="mb-4 p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm">

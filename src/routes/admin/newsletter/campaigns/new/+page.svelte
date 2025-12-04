@@ -5,12 +5,30 @@
 
 	let { form }: { form: ActionData } = $props();
 
+	// Derived form data for error recovery
+	const formData = $derived(form?.data);
+
 	let isSubmitting = $state(false);
-	let subject = $state(form?.data?.subject || '');
-	let previewText = $state(form?.data?.previewText || '');
-	let content = $state(form?.data?.content || getDefaultTemplate());
-	let campaignType = $state(form?.data?.type || 'manual');
+	let subject = $state('');
+	let previewText = $state('');
+	let content = $state('');
+	let campaignType = $state('manual');
 	let showPreview = $state(false);
+	let initialized = $state(false);
+
+	// Initialize content and sync form error values
+	$effect(() => {
+		if (!initialized) {
+			content = getDefaultTemplate();
+			initialized = true;
+		}
+		if (formData) {
+			if (formData.subject) subject = formData.subject;
+			if (formData.previewText) previewText = formData.previewText;
+			if (formData.content) content = formData.content;
+			if (formData.type) campaignType = formData.type;
+		}
+	});
 
 	const campaignTypes = [
 		{ value: 'manual', label: 'Manual Campaign', description: 'One-time email campaign' },
@@ -83,8 +101,8 @@
 				class="space-y-6"
 			>
 				<!-- Campaign Type -->
-				<div class="rounded-xl border border-midnight-800 bg-midnight-900/50 p-6">
-					<label class="block text-sm font-medium text-white mb-4">Campaign Type</label>
+				<fieldset class="rounded-xl border border-midnight-800 bg-midnight-900/50 p-6">
+					<legend class="block text-sm font-medium text-white mb-4">Campaign Type</legend>
 					<div class="grid gap-3 sm:grid-cols-2">
 						{#each campaignTypes as type}
 							<label class="relative flex cursor-pointer rounded-lg border p-4 transition-colors {
@@ -109,7 +127,7 @@
 							</label>
 						{/each}
 					</div>
-				</div>
+				</fieldset>
 
 				<!-- Subject & Preview -->
 				<div class="rounded-xl border border-midnight-800 bg-midnight-900/50 p-6 space-y-4">
@@ -230,8 +248,8 @@
 						<!-- Footer -->
 						<div class="p-6 text-center border-t border-[rgba(255,255,255,0.1)]">
 							<p class="text-xs text-[#6b7280]">
-								<a href="#" class="text-[#d4af37]">Manage preferences</a> ·
-								<a href="#" class="text-[#6b7280]">Unsubscribe</a>
+								<span class="text-[#d4af37] cursor-default">Manage preferences</span> ·
+								<span class="text-[#6b7280] cursor-default">Unsubscribe</span>
 							</p>
 						</div>
 					</div>

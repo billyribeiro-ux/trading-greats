@@ -12,7 +12,7 @@
 		Users,
 		Settings,
 		Sparkles,
-		AlertCircle,
+		CircleAlert,
 		Trash2,
 		ExternalLink
 	} from 'lucide-svelte';
@@ -28,25 +28,46 @@
 
 	let { data, form }: { data: PageData; form: FormResult | null } = $props();
 
-	// Type for form data with optional fields
-	type FormData = { error?: string; title?: string; excerpt?: string; content?: string };
-	const formData = form as FormData | null;
+	// Derived form data for error handling
+	const formData = $derived(form as { error?: string; title?: string; excerpt?: string; content?: string } | null);
 
-	// Form state - pre-populated with existing post data
-	let title = $state(formData?.title || data.post.title || '');
-	let excerpt = $state(formData?.excerpt || data.post.excerpt || '');
-	let content = $state(formData?.content || data.post.content || '');
-	let heroImage = $state(data.post.heroImage || '');
-	let heroImageAlt = $state(data.post.heroImageAlt || '');
-	let heroImageCaption = $state(data.post.heroImageCaption || '');
-	let author = $state(data.post.author || 'Trading Greats Team');
-	let category = $state(data.post.category || '');
-	let tags = $state(data.post.tags?.join(', ') || '');
-	let seoTitle = $state(data.post.seoTitle || '');
-	let seoDescription = $state(data.post.seoDescription || '');
-	let ogImage = $state(data.post.ogImage || '');
-	let relatedTraderIds = $state(data.post.relatedTraderIds?.join(',') || '');
-	let status = $state<'draft' | 'published'>(data.post.status === 'published' ? 'published' : 'draft');
+	// Form state - initialized empty, populated via $effect
+	let title = $state('');
+	let excerpt = $state('');
+	let content = $state('');
+	let heroImage = $state('');
+	let heroImageAlt = $state('');
+	let heroImageCaption = $state('');
+	let author = $state('Trading Greats Team');
+	let category = $state('');
+	let tags = $state('');
+	let seoTitle = $state('');
+	let seoDescription = $state('');
+	let ogImage = $state('');
+	let relatedTraderIds = $state('');
+	let status = $state<'draft' | 'published'>('draft');
+	let initialized = $state(false);
+
+	// Initialize form state from data on mount (runs once)
+	$effect(() => {
+		if (!initialized && data.post) {
+			title = formData?.title || data.post.title || '';
+			excerpt = formData?.excerpt || data.post.excerpt || '';
+			content = formData?.content || data.post.content || '';
+			heroImage = data.post.heroImage || '';
+			heroImageAlt = data.post.heroImageAlt || '';
+			heroImageCaption = data.post.heroImageCaption || '';
+			author = data.post.author || 'Trading Greats Team';
+			category = data.post.category || '';
+			tags = data.post.tags?.join(', ') || '';
+			seoTitle = data.post.seoTitle || '';
+			seoDescription = data.post.seoDescription || '';
+			ogImage = data.post.ogImage || '';
+			relatedTraderIds = data.post.relatedTraderIds?.join(',') || '';
+			status = data.post.status === 'published' ? 'published' : 'draft';
+			initialized = true;
+		}
+	});
 
 	// UI state
 	let activeTab = $state<'content' | 'media' | 'seo' | 'settings'>('content');
@@ -141,7 +162,7 @@
 		<!-- Error Message -->
 		{#if formData?.error}
 			<div class="mb-6 rounded-xl border border-red-500/30 bg-red-500/10 p-4 flex items-center gap-3">
-				<AlertCircle class="h-5 w-5 text-red-400 flex-shrink-0" />
+				<CircleAlert class="h-5 w-5 text-red-400 flex-shrink-0" />
 				<p class="text-red-400">{formData.error}</p>
 			</div>
 		{/if}

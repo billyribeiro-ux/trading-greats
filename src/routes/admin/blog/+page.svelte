@@ -16,8 +16,8 @@
 
 	let { data } = $props();
 
-	// Use categories from data (passed from server)
-	const BLOG_CATEGORIES = data.categories;
+	// Use categories from data (passed from server) - reactive
+	const BLOG_CATEGORIES = $derived(data.categories);
 	let searchQuery = $state('');
 	let filterStatus = $state<'all' | 'published' | 'draft'>('all');
 	let filterCategory = $state<string>('all');

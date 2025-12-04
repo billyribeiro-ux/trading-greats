@@ -12,7 +12,7 @@
 		Eye,
 		MousePointer,
 		Clock,
-		CheckCircle2,
+		CircleCheck,
 		ChevronLeft,
 		ChevronRight,
 		Play,
@@ -43,7 +43,7 @@
 		});
 	}
 
-	function getStatusColor(status: string): string {
+	function getStatusColor(status: string | null): string {
 		switch (status) {
 			case 'sent': return 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20';
 			case 'draft': return 'bg-midnight-700 text-midnight-400 border-midnight-600';

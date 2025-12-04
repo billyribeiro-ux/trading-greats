@@ -9,10 +9,10 @@
 		Filter,
 		Trash2,
 		Mail,
-		CheckCircle2,
+		CircleCheck,
 		Clock,
-		XCircle,
-		AlertCircle,
+		CircleX,
+		CircleAlert,
 		ChevronLeft,
 		ChevronRight,
 		Eye,
@@ -26,10 +26,10 @@
 
 	const statusFilters = [
 		{ value: '', label: 'All', icon: Users },
-		{ value: 'verified', label: 'Verified', icon: CheckCircle2 },
+		{ value: 'verified', label: 'Verified', icon: CircleCheck },
 		{ value: 'pending', label: 'Pending', icon: Clock },
-		{ value: 'unsubscribed', label: 'Unsubscribed', icon: XCircle },
-		{ value: 'bounced', label: 'Bounced', icon: AlertCircle }
+		{ value: 'unsubscribed', label: 'Unsubscribed', icon: CircleX },
+		{ value: 'bounced', label: 'Bounced', icon: CircleAlert }
 	];
 
 	function formatDate(dateStr: string | null): string {
@@ -43,7 +43,7 @@
 		});
 	}
 
-	function getStatusColor(status: string): string {
+	function getStatusColor(status: string | null): string {
 		switch (status) {
 			case 'verified': return 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20';
 			case 'pending': return 'bg-amber-500/10 text-amber-400 border-amber-500/20';
