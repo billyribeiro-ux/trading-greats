@@ -1,26 +1,92 @@
 <script lang="ts">
+	import { page } from '$app/stores';
+	import {
+		Calendar,
+		Clock,
+		ArrowRight,
+		Tag,
+		Filter,
+		BookOpen,
+		TrendingUp,
+		Brain,
+		BarChart3,
+		User,
+		GraduationCap,
+		LineChart,
+		BookMarked,
+		CheckCircle2,
+		Loader2,
+		AlertCircle
+	} from 'lucide-svelte';
 	import { cn } from '$lib/utils';
-	import { ScrollReveal } from '$lib/components/motion';
-	import { Icon, type IconName } from '$lib/components/icons';
-	import SEO from '$lib/components/SEO.svelte';
-	import type { PageData } from './$types';
+	import ScrollReveal from '$lib/components/motion/ScrollReveal.svelte';
 
-	// ============================================================================
-	// PROPS (Svelte 5 - SSR data hydration)
-	// ============================================================================
-	let { data }: { data: PageData } = $props();
+	let { data } = $props();
 
-	// ============================================================================
-	// CATEGORY ICONS
-	// ============================================================================
-	const categoryIcons: Record<string, IconName> = {
-		strategy: 'trending-up',
-		psychology: 'brain',
-		analysis: 'bar-chart',
-		biography: 'user',
-		education: 'graduation-cap',
-		'market-insights': 'line-chart',
-		'book-review': 'book-marked'
+	// Newsletter subscription state
+	let email = $state('');
+	let isSubscribing = $state(false);
+	let subscribeMessage = $state('');
+	let subscribeSuccess = $state(false);
+	let subscribeError = $state(false);
+
+	async function handleSubscribe(e: Event) {
+		e.preventDefault();
+
+		if (!email || isSubscribing) return;
+
+		// Basic email validation
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		if (!emailRegex.test(email)) {
+			subscribeError = true;
+			subscribeSuccess = false;
+			subscribeMessage = 'Please enter a valid email address';
+			return;
+		}
+
+		isSubscribing = true;
+		subscribeError = false;
+		subscribeSuccess = false;
+		subscribeMessage = '';
+
+		try {
+			const response = await fetch('/api/newsletter/subscribe', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					email,
+					source: 'blog',
+					referrer: window.location.href
+				})
+			});
+
+			const result = await response.json();
+
+			if (result.success) {
+				subscribeSuccess = true;
+				subscribeMessage = result.message;
+				email = '';
+			} else {
+				subscribeError = true;
+				subscribeMessage = result.message;
+			}
+		} catch (error) {
+			subscribeError = true;
+			subscribeMessage = 'Something went wrong. Please try again.';
+		} finally {
+			isSubscribing = false;
+		}
+	}
+
+	// Category icons
+	const categoryIcons: Record<string, any> = {
+		strategy: TrendingUp,
+		psychology: Brain,
+		analysis: BarChart3,
+		biography: User,
+		education: GraduationCap,
+		'market-insights': LineChart,
+		'book-review': BookMarked
 	};
 
 	// ============================================================================
@@ -424,24 +490,43 @@
 						from legendary traders.
 					</p>
 
-					<form class="mt-6 sm:mt-8 lg:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-md mx-auto">
-						<input
-							type="email"
-							placeholder="Enter your email"
-							class="flex-1 rounded-lg sm:rounded-xl border border-white/10 bg-white/5 px-4 sm:px-5 py-3 sm:py-4 text-base text-white placeholder-midnight-500 outline-none transition-all duration-300 focus:border-gold-500/50 focus:ring-2 focus:ring-gold-500/20 focus:bg-white/10"
-						/>
-						<button
-							type="submit"
-							class="group rounded-lg sm:rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 px-6 sm:px-8 py-3 sm:py-4 font-bold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all duration-300 hover:shadow-xl hover:shadow-gold-500/30 md:hover:scale-[1.02] active:scale-[0.98]"
-						>
-							<span class="flex items-center justify-center gap-2">
-								Subscribe
-								<Icon name="arrow-right" class="h-4 w-4 transition-transform group-hover:translate-x-1" />
-							</span>
-						</button>
-					</form>
+					{#if subscribeSuccess}
+						<div class="mt-8 flex items-center justify-center gap-3 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 max-w-md mx-auto">
+							<CheckCircle2 class="h-5 w-5 text-emerald-400 flex-shrink-0" />
+							<p class="text-emerald-400">{subscribeMessage}</p>
+						</div>
+					{:else}
+						<form onsubmit={handleSubscribe} class="mt-8 flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+							<input
+								type="email"
+								bind:value={email}
+								placeholder="Enter your email"
+								disabled={isSubscribing}
+								class="flex-1 rounded-xl border border-midnight-700 bg-midnight-800/50 px-4 py-3 text-midnight-100 placeholder-midnight-500 outline-none transition-all focus:border-gold-500/50 focus:ring-2 focus:ring-gold-500/20 disabled:opacity-50"
+							/>
+							<button
+								type="submit"
+								disabled={isSubscribing || !email}
+								class="rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 px-6 py-3 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+							>
+								{#if isSubscribing}
+									<Loader2 class="h-4 w-4 animate-spin" />
+									Subscribing...
+								{:else}
+									Subscribe
+								{/if}
+							</button>
+						</form>
 
-					<p class="mt-4 sm:mt-6 text-[10px] sm:text-xs text-midnight-600">
+						{#if subscribeError && subscribeMessage}
+							<div class="mt-4 flex items-center justify-center gap-2 text-red-400 text-sm">
+								<AlertCircle class="h-4 w-4" />
+								{subscribeMessage}
+							</div>
+						{/if}
+					{/if}
+
+					<p class="mt-4 text-xs text-midnight-600">
 						No spam. Unsubscribe anytime.
 					</p>
 				</div>
