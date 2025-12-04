@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import SEO from '$lib/components/SEO.svelte';
+	import { Icon, type IconName } from '$lib/components/icons';
 	import {
 		Calendar,
 		Clock,
