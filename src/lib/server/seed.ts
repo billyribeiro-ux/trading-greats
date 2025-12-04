@@ -483,7 +483,7 @@ Dalio is famous for his company culture based on "radical transparency" and "rad
 			{
 				date: '2008',
 				asset: 'Credit Default Swaps',
-				position: 'long protection',
+				position: 'long',
 				outcome: 'Crisis Profit',
 				profitLoss: '+9.5%',
 				description: 'Bridgewater\'s Pure Alpha fund gained 9.5% in 2008 while most funds lost heavily.'
@@ -725,7 +725,7 @@ Simons pioneered the use of:
 			{
 				date: '1988-Present',
 				asset: 'Multiple Markets',
-				position: 'systematic',
+				position: 'long',
 				outcome: 'Consistent Alpha',
 				profitLoss: '+66% annually',
 				description: 'Medallion Fund has generated unmatched returns using quantitative strategies across markets.'
@@ -996,7 +996,7 @@ Ed has mentored many successful traders, including Michael Marcus, who went on t
 			{
 				date: '1972-1984',
 				asset: 'Commodities',
-				position: 'trend following',
+				position: 'long',
 				outcome: 'Legendary Returns',
 				profitLoss: '+250,000%',
 				description: 'Turned $5,000 into $15 million using systematic trend following strategies.'
@@ -1053,7 +1053,7 @@ Dennis's system was based on:
 			{
 				date: '1970s-1980s',
 				asset: 'Commodities',
-				position: 'trend following',
+				position: 'long',
 				outcome: 'Career Returns',
 				profitLoss: '+50,000,000%',
 				description: 'Built a fortune from almost nothing using trend following breakout strategies.'
@@ -1252,7 +1252,7 @@ Citadel employs:
 			{
 				date: '2022',
 				asset: 'Multiple strategies',
-				position: 'multi-strategy',
+				position: 'long',
 				outcome: 'Record Year',
 				profitLoss: '+38%',
 				description: 'Citadel\'s flagship fund returned 38% in 2022 while most funds struggled.'
@@ -1414,7 +1414,7 @@ Larry has been trading since the 1960s and continues to trade and teach today. H
 			{
 				date: '1987',
 				asset: 'Futures',
-				position: 'various',
+				position: 'long',
 				outcome: 'World Cup Win',
 				profitLoss: '+11,376%',
 				description: 'Turned $10,000 into $1.1 million in the Robbins World Cup Championship.'
