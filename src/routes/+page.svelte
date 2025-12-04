@@ -801,83 +801,8 @@
     </div>
 </section>
 
-<style>
-    /* =========================================================================
-       CINEMATIC ANIMATIONS (Restored Exact Keyframes)
-       ========================================================================= */
-    
-    .cinematic-reveal {
-        opacity: 0;
-        transform: translateY(60px) scale(0.95);
-        filter: blur(10px);
-        transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-        transition-delay: calc(var(--delay) * 1s + 0.2s);
-        will-change: transform, opacity, filter;
-    }
-    
-    .cinematic-reveal.visible {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        filter: blur(0);
-    }
-
-    @keyframes heroFade {
-        0% { opacity: 0; transform: translateY(20px); }
-        100% { opacity: 1; transform: translateY(0); }
-    }
-    
-    @keyframes heroSlide {
-        0% { opacity: 0; transform: translateY(40px); filter: blur(10px); }
-        100% { opacity: 1; transform: translateY(0); filter: blur(0); }
-    }
-
-    @keyframes fadeIn {
-        to { opacity: 1; }
-    }
-
-    /* Apply animations via class names */
-    .animate-hero-fade {
-        animation: heroFade 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-    
-    .animate-hero-slide {
-        animation: heroSlide 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-    
-    .animate-fade-in {
-        animation: fadeIn 1s ease-out forwards;
-    }
-
-    /* Pulse Animations */
-    @keyframes pulseSlow {
-        0%, 100% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.8; transform: scale(1.05); }
-    }
-
-    @keyframes pulseSlower {
-        0%, 100% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.7; transform: scale(1.1); }
-    }
-
-    .animate-pulse-slow {
-        animation: pulseSlow 4s ease-in-out infinite;
-    }
-    
-    .animate-pulse-slower {
-        animation: pulseSlower 6s ease-in-out infinite;
-    }
-
-    /* Reduced motion support */
-    @media (prefers-reduced-motion: reduce) {
-        .animate-hero-fade,
-        .animate-hero-slide,
-        .animate-fade-in,
-        .cinematic-reveal {
-            animation: none !important;
-            opacity: 1 !important;
-            transform: none !important;
-            filter: none !important;
-            transition: none !important;
-        }
-    }
-</style>
+<!-- 
+    Animation styles moved to global app.css for consistency across all pages.
+    Classes available: animate-hero-fade, animate-hero-slide, animate-fade-in,
+    animate-pulse-slow, animate-pulse-slower, cinematic-reveal
+-->

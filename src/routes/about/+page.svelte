@@ -181,13 +181,4 @@
 	</section>
 </div>
 
-<style>
-	@media (prefers-reduced-motion: reduce) {
-		.animate-hero-fade,
-		.animate-hero-slide {
-			animation: none !important;
-			opacity: 1 !important;
-			transform: none !important;
-		}
-	}
-</style>
+<!-- Animation styles defined globally in app.css -->
