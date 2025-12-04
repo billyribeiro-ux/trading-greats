@@ -77,7 +77,8 @@
 	// ============================================================================
 
 	let element: HTMLElement | undefined = $state(undefined);
-	let isVisible = $state(false);
+	// SSR-first: Start visible for SEO/accessibility
+	let isVisible = $state(!browser);
 	let hasAnimated = $state(false);
 
 	// ============================================================================
@@ -145,12 +146,27 @@
 	// ============================================================================
 
 	$effect(() => {
-		if (!browser || !element || !shouldAnimate) {
-			// If reduced motion or no animation, mark as visible immediately
+		if (!browser || !element) return;
+
+		if (!shouldAnimate) {
 			isVisible = true;
 			return;
 		}
 
+		// Check if element is already in viewport on mount
+		const rect = element.getBoundingClientRect();
+		const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
+		
+		if (isInViewport) {
+			// Already visible - animate immediately
+			isVisible = true;
+			hasAnimated = true;
+			return;
+		}
+
+		// Not in viewport - set up observer
+		isVisible = false;
+		
 		const observer = new IntersectionObserver(
 			(entries) => {
 				entries.forEach((entry) => {

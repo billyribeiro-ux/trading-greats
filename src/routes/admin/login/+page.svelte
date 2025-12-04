@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import { Lock, AlertCircle } from 'lucide-svelte';
+	import { Icon } from '$lib/components/icons';
 
 	let { form } = $props();
 </script>
@@ -13,7 +13,7 @@
 	<div class="w-full max-w-md">
 		<div class="text-center">
 			<div class="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-gold-500 to-gold-600 shadow-lg shadow-gold-500/20">
-				<Lock class="h-8 w-8 text-midnight-950" />
+				<Icon name="lock" class="h-8 w-8 text-midnight-950" />
 			</div>
 			<h1 class="mt-6 font-display text-3xl font-bold text-midnight-50">Admin Access</h1>
 			<p class="mt-2 text-midnight-400">Enter your password to continue</p>
@@ -21,7 +21,7 @@
 
 		{#if form?.message}
 			<div class="mt-6 flex items-center gap-3 rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-red-400">
-				<AlertCircle class="h-5 w-5 flex-shrink-0" />
+				<Icon name="alert-circle" class="h-5 w-5 flex-shrink-0" />
 				<p class="text-sm">{form.message}</p>
 			</div>
 		{/if}

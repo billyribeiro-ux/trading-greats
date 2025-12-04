@@ -17,8 +17,16 @@
 		ExternalLink
 	} from 'lucide-svelte';
 	import { slugify } from '$lib/utils';
+	import type { PageData } from './$types';
 
-	let { data, form } = $props();
+	interface FormResult {
+		error?: string;
+		title?: string;
+		excerpt?: string;
+		content?: string;
+	}
+
+	let { data, form }: { data: PageData; form: FormResult | null } = $props();
 
 	// Type for form data with optional fields
 	type FormData = { error?: string; title?: string; excerpt?: string; content?: string };

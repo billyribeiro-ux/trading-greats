@@ -5,26 +5,14 @@
 	import { ScrollReveal } from '$lib/components/motion';
 	import { PUBLIC_SITE_URL } from '$env/static/public';
 	import { cn } from '$lib/utils';
-	import {
-		Search,
-		X,
-		TrendingUp,
-		Users,
-		Sparkles,
-		ChevronRight,
-		ArrowRight,
-		Globe,
-		Zap,
-		LineChart,
-		LayoutGrid,
-		List
-	} from 'lucide-svelte';
+	import { Icon, type IconName } from '$lib/components/icons';
+	import type { PageData } from './$types';
 
 	// ============================================================================
-	// DATA & STATE
+	// PROPS (Svelte 5 - SSR data hydration)
 	// ============================================================================
 
-	let { data } = $props();
+	let { data }: { data: PageData } = $props();
 
 	let searchQuery = $state('');
 	let viewMode = $state<'grid' | 'list'>('grid');
@@ -67,17 +55,17 @@
 	// STYLE METADATA
 	// ============================================================================
 
-	const styleMetadata: Record<string, { icon: typeof TrendingUp; color: string; bg: string }> = {
-		'Value Investing': { icon: TrendingUp, color: 'text-emerald-400', bg: 'bg-emerald-500/10' },
-		'Momentum Growth': { icon: Zap, color: 'text-violet-400', bg: 'bg-violet-500/10' },
-		'Macro & Currency': { icon: Globe, color: 'text-sky-400', bg: 'bg-sky-500/10' },
-		'Options & Technical Analysis': { icon: LineChart, color: 'text-amber-400', bg: 'bg-amber-500/10' },
-		'Options & Price Action': { icon: LineChart, color: 'text-orange-400', bg: 'bg-orange-500/10' }
+	const styleMetadata: Record<string, { icon: IconName; color: string; bg: string }> = {
+		'Value Investing': { icon: 'trending-up', color: 'text-emerald-400', bg: 'bg-emerald-500/10' },
+		'Momentum Growth': { icon: 'zap', color: 'text-violet-400', bg: 'bg-violet-500/10' },
+		'Macro & Currency': { icon: 'globe', color: 'text-sky-400', bg: 'bg-sky-500/10' },
+		'Options & Technical Analysis': { icon: 'line-chart', color: 'text-amber-400', bg: 'bg-amber-500/10' },
+		'Options & Price Action': { icon: 'line-chart', color: 'text-orange-400', bg: 'bg-orange-500/10' }
 	};
 
-	function getStyleMeta(style: string | null) {
-		if (!style) return { icon: TrendingUp, color: 'text-gold-400', bg: 'bg-gold-500/10' };
-		return styleMetadata[style] || { icon: TrendingUp, color: 'text-gold-400', bg: 'bg-gold-500/10' };
+	function getStyleMeta(style: string | null): { icon: IconName; color: string; bg: string } {
+		if (!style) return { icon: 'trending-up', color: 'text-gold-400', bg: 'bg-gold-500/10' };
+		return styleMetadata[style] || { icon: 'trending-up', color: 'text-gold-400', bg: 'bg-gold-500/10' };
 	}
 </script>
 
@@ -90,97 +78,97 @@
 
 <div class="min-h-screen bg-midnight-950">
 	<!-- ========================================================================
-	     HERO HEADER
+	     HERO HEADER - MOBILE-FIRST
 	======================================================================== -->
-	<section class="relative pt-28 pb-16 overflow-hidden">
-		<!-- Background Elements -->
+	<section class="relative pt-20 sm:pt-24 lg:pt-28 pb-10 sm:pb-12 lg:pb-16 overflow-hidden">
+		<!-- Background Elements - MOBILE-FIRST: Smaller orbs on mobile -->
 		<div class="absolute inset-0">
-			<div class="absolute top-[-20%] right-[-10%] h-[600px] w-[600px] rounded-full bg-gradient-radial from-gold-500/10 via-gold-500/5 to-transparent blur-3xl"></div>
-			<div class="absolute bottom-[-20%] left-[-10%] h-[500px] w-[500px] rounded-full bg-gradient-radial from-violet-500/10 via-violet-500/5 to-transparent blur-3xl"></div>
-			<div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_50%,transparent_100%)]"></div>
+			<div class="absolute top-[-20%] right-[-10%] h-[300px] w-[300px] sm:h-[450px] sm:w-[450px] lg:h-[600px] lg:w-[600px] rounded-full bg-gradient-radial from-gold-500/10 via-gold-500/5 to-transparent blur-3xl"></div>
+			<div class="absolute bottom-[-20%] left-[-10%] h-[250px] w-[250px] sm:h-[400px] sm:w-[400px] lg:h-[500px] lg:w-[500px] rounded-full bg-gradient-radial from-violet-500/10 via-violet-500/5 to-transparent blur-3xl"></div>
+			<div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:2rem_2rem] sm:bg-[size:3rem_3rem] lg:bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_50%,transparent_100%)]"></div>
 		</div>
 
-		<div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-			<!-- Breadcrumb -->
-			<nav class="mb-8 flex items-center gap-2 text-sm text-midnight-400">
+		<div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+			<!-- Breadcrumb - MOBILE-FIRST -->
+			<nav class="mb-6 sm:mb-8 flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-midnight-400">
 				<a href="/" class="hover:text-gold-400 transition-colors">Home</a>
-				<ChevronRight class="h-4 w-4" />
+				<Icon name="chevron-right" class="h-3 w-3 sm:h-4 sm:w-4" />
 				<span class="text-white font-medium">Legends</span>
 			</nav>
 
 			<div class="text-center max-w-4xl mx-auto">
-				<span class="inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-gold-400 mb-6">
-					<Sparkles class="h-3.5 w-3.5" />
+				<span class="inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-white/5 border border-white/10 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-gold-400 mb-4 sm:mb-6">
+					<Icon name="sparkles" class="h-3 w-3 sm:h-3.5 sm:w-3.5" />
 					The Complete Library
 				</span>
 
-				<h1 class="font-display text-4xl font-bold text-white sm:text-5xl lg:text-6xl mb-6 tracking-tight">
+				<h1 class="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 tracking-tight">
 					The <span class="text-gold-400">Legends</span> of Trading
 				</h1>
 
-				<p class="mx-auto max-w-2xl text-lg text-midnight-300 leading-relaxed">
+				<p class="mx-auto max-w-2xl text-sm sm:text-base lg:text-lg text-midnight-300 leading-relaxed px-2 sm:px-0">
 					Discover the masterminds who beat the market. Explore their strategies,
 					learn their philosophies, and understand the psychology behind their greatest trades.
 				</p>
 			</div>
 
-			<!-- Search & Filter Container -->
-			<div class="mt-12 max-w-3xl mx-auto">
+			<!-- Search & Filter Container - MOBILE-FIRST -->
+			<div class="mt-8 sm:mt-10 lg:mt-12 max-w-3xl mx-auto">
 				<div class="relative group">
-					<!-- Glow effect -->
-					<div class="absolute -inset-1 bg-gradient-to-r from-gold-500/20 via-violet-500/20 to-gold-500/20 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-500"></div>
+					<!-- Glow effect - hidden on mobile for performance -->
+					<div class="hidden sm:block absolute -inset-1 bg-gradient-to-r from-gold-500/20 via-violet-500/20 to-gold-500/20 rounded-xl sm:rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-500"></div>
 
-					<div class="relative flex items-center bg-midnight-900/80 backdrop-blur-xl border border-white/10 rounded-xl p-2 shadow-2xl">
-						<Search class="ml-4 h-5 w-5 text-midnight-400" />
+					<div class="relative flex items-center bg-midnight-900/80 backdrop-blur-xl border border-white/10 rounded-xl p-1.5 sm:p-2 shadow-2xl">
+						<Icon name="search" class="ml-3 sm:ml-4 h-4 w-4 sm:h-5 sm:w-5 text-midnight-400" />
 						<input
 							type="text"
-							placeholder="Search by name, strategy, or nationality..."
+							placeholder="Search traders..."
 							bind:value={searchQuery}
-							class="w-full bg-transparent border-none px-4 py-3 text-white placeholder-midnight-500 focus:ring-0 focus:outline-none text-lg"
+							class="w-full bg-transparent border-none px-3 sm:px-4 py-2.5 sm:py-3 text-white placeholder-midnight-500 focus:ring-0 focus:outline-none text-sm sm:text-base lg:text-lg"
 						/>
 						{#if searchQuery}
 							<button
 								onclick={() => (searchQuery = '')}
-								class="p-2 hover:bg-white/10 rounded-lg transition-colors mr-2"
+								class="p-2 hover:bg-white/10 rounded-lg transition-colors mr-1 sm:mr-2 active:bg-white/20"
 								aria-label="Clear search"
 							>
-								<X class="h-5 w-5 text-midnight-400" />
+								<Icon name="x" class="h-4 w-4 sm:h-5 sm:w-5 text-midnight-400" />
 							</button>
 						{/if}
 					</div>
 				</div>
 
-				<!-- Quick Filters -->
-				<div class="mt-6 flex flex-wrap justify-center gap-2">
+				<!-- Quick Filters - MOBILE-FIRST: Horizontal scroll on mobile -->
+				<div class="mt-4 sm:mt-6 flex flex-nowrap sm:flex-wrap justify-start sm:justify-center gap-2 overflow-x-auto pb-2 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide">
 					<a
 						href="/traders"
 						class={cn(
-							'group inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border',
+							'group inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 border whitespace-nowrap flex-shrink-0 active:scale-95',
 							!data.currentFilter
 								? 'bg-gold-500 text-midnight-950 border-gold-500 shadow-lg shadow-gold-500/20'
 								: 'bg-white/5 text-midnight-300 border-white/10 hover:bg-white/10 hover:text-white hover:border-white/20'
 						)}
 					>
-						<Users class="h-4 w-4" />
-						All Legends
-						<span class="ml-1 text-xs opacity-70">({data.traders.length})</span>
+						<Icon name="users" class="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+						All
+						<span class="text-[10px] sm:text-xs opacity-70">({data.traders.length})</span>
 					</a>
 
 					{#each data.tradingStyles as style}
 						{@const meta = getStyleMeta(style)}
-						{@const StyleIcon = meta.icon}
 						<a
 							href="/traders?style={encodeURIComponent(style || '')}"
 							class={cn(
-								'group inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border',
+								'group inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 border whitespace-nowrap flex-shrink-0 active:scale-95',
 								data.currentFilter === style
 									? 'bg-gold-500 text-midnight-950 border-gold-500 shadow-lg shadow-gold-500/20'
 									: 'bg-white/5 text-midnight-300 border-white/10 hover:bg-white/10 hover:text-white hover:border-white/20'
 							)}
 						>
-							<StyleIcon class="h-4 w-4" />
-							{style}
-							<span class="ml-1 text-xs opacity-70">({tradingStyleCounts()[style || ''] || 0})</span>
+							<Icon name={meta.icon} class="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+							<span class="hidden sm:inline">{style}</span>
+							<span class="sm:hidden">{style.split(' ')[0]}</span>
+							<span class="text-[10px] sm:text-xs opacity-70">({tradingStyleCounts()[style || ''] || 0})</span>
 						</a>
 					{/each}
 				</div>
@@ -189,24 +177,24 @@
 	</section>
 
 	<!-- ========================================================================
-	     RESULTS HEADER
+	     RESULTS HEADER - MOBILE-FIRST
 	======================================================================== -->
-	<section class="relative z-20 px-6 lg:px-8 pb-6">
+	<section class="relative z-20 px-4 sm:px-6 lg:px-8 pb-4 sm:pb-6">
 		<div class="mx-auto max-w-7xl">
-			<div class="flex items-center justify-between border-b border-white/5 pb-6">
-				<div class="flex items-center gap-4">
-					<p class="text-sm text-midnight-400">
+			<div class="flex items-center justify-between border-b border-white/5 pb-4 sm:pb-6">
+				<div class="flex items-center gap-2 sm:gap-4">
+					<p class="text-xs sm:text-sm text-midnight-400">
 						{#if searchQuery}
 							<span class="text-white font-medium">{filteredTraders.length}</span> results for "<span class="text-gold-400">{searchQuery}</span>"
 						{:else if data.currentFilter}
-							<span class="text-white font-medium">{filteredTraders.length}</span> traders in <span class="text-gold-400">{data.currentFilter}</span>
+							<span class="text-white font-medium">{filteredTraders.length}</span> in <span class="text-gold-400 hidden sm:inline">{data.currentFilter}</span><span class="text-gold-400 sm:hidden">{data.currentFilter.split(' ')[0]}</span>
 						{:else}
-							Showing <span class="text-white font-medium">{filteredTraders.length}</span> legendary traders
+							<span class="text-white font-medium">{filteredTraders.length}</span> legends
 						{/if}
 					</p>
 				</div>
 
-				<!-- View Toggle -->
+				<!-- View Toggle - MOBILE-FIRST -->
 				<div class="hidden sm:flex items-center gap-1 bg-white/5 rounded-lg p-1 border border-white/5">
 					<button
 						onclick={() => (viewMode = 'grid')}
@@ -218,7 +206,7 @@
 						)}
 						aria-label="Grid view"
 					>
-						<LayoutGrid class="h-4 w-4" />
+						<Icon name="layout-grid" class="h-4 w-4" />
 					</button>
 					<button
 						onclick={() => (viewMode = 'list')}
@@ -230,7 +218,7 @@
 						)}
 						aria-label="List view"
 					>
-						<List class="h-4 w-4" />
+						<Icon name="list" class="h-4 w-4" />
 					</button>
 				</div>
 			</div>
@@ -238,16 +226,16 @@
 	</section>
 
 	<!-- ========================================================================
-	     TRADERS GRID
+	     TRADERS GRID - MOBILE-FIRST
 	======================================================================== -->
-	<section class="relative z-20 pb-24 px-6 lg:px-8">
+	<section class="relative z-20 pb-16 sm:pb-20 lg:pb-24 px-4 sm:px-6 lg:px-8">
 		<div class="mx-auto max-w-7xl">
 			{#if filteredTraders.length === 0}
 				<!-- Empty State -->
 				<ScrollReveal class="py-20">
 					<div class="text-center">
 						<div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-midnight-800/50 border border-white/5 mb-6">
-							<Search class="h-10 w-10 text-midnight-500" />
+							<Icon name="search" class="h-10 w-10 text-midnight-500" />
 						</div>
 						<h3 class="text-2xl font-display font-bold text-white mb-3">No legends found</h3>
 						<p class="text-midnight-400 max-w-md mx-auto mb-8">
@@ -259,17 +247,17 @@
 							class="inline-flex items-center gap-2 rounded-full bg-gold-500 px-6 py-3 text-sm font-bold text-midnight-950 transition-all hover:bg-gold-400"
 						>
 							Clear Search
-							<ArrowRight class="h-4 w-4" />
+							<Icon name="arrow-right" class="h-4 w-4" />
 						</button>
 					</div>
 				</ScrollReveal>
 			{:else}
-				<!-- Grid View -->
+				<!-- Grid View - MOBILE-FIRST: 2-col on mobile -->
 				{#if viewMode === 'grid'}
-					<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+					<div class="trader-grid grid gap-3 sm:gap-4 lg:gap-6 grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 auto-rows-fr">
 						{#each filteredTraders as trader, i (trader.id)}
-							<ScrollReveal delay={Math.min(i * 50, 400)}>
-								<TraderCard {trader} index={i} />
+							<ScrollReveal delay={Math.min(i * 50, 400)} class="h-full">
+								<TraderCard {trader} index={i} class="h-full" />
 							</ScrollReveal>
 						{/each}
 					</div>
@@ -301,9 +289,8 @@
 											</h3>
 											{#if trader.tradingStyle}
 												{@const meta = getStyleMeta(trader.tradingStyle)}
-												{@const TraderStyleIcon = meta.icon}
 												<span class={cn('inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium', meta.bg, meta.color)}>
-													<TraderStyleIcon class="h-3 w-3" />
+													<Icon name={meta.icon} class="h-3 w-3" />
 													{trader.tradingStyle}
 												</span>
 											{/if}
@@ -314,7 +301,7 @@
 										<div class="flex items-center gap-4 mt-2 text-xs text-midnight-500">
 											{#if trader.nationality}
 												<span class="flex items-center gap-1">
-													<Globe class="h-3 w-3" />
+													<Icon name="globe" class="h-3 w-3" />
 													{trader.nationality}
 												</span>
 											{/if}
@@ -325,7 +312,7 @@
 									</div>
 
 									<!-- Arrow -->
-									<ArrowRight class="h-5 w-5 text-midnight-600 transition-all duration-300 group-hover:text-gold-500 group-hover:translate-x-1 flex-shrink-0" />
+									<Icon name="arrow-right" class="h-5 w-5 text-midnight-600 transition-all duration-300 group-hover:text-gold-500 group-hover:translate-x-1 flex-shrink-0" />
 								</a>
 							</ScrollReveal>
 						{/each}
@@ -358,7 +345,7 @@
 							class="inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-white/10 hover:border-white/20"
 						>
 							Suggest a Legend
-							<ArrowRight class="h-4 w-4" />
+							<Icon name="arrow-right" class="h-4 w-4" />
 						</a>
 					</div>
 				</div>

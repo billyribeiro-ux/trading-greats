@@ -48,16 +48,23 @@ export const load: PageServerLoad = async ({ url }) => {
 		}
 	}
 
-	// Fallback to seed data if Sanity returns empty or fails
-	if (traders.length === 0) {
-		traders = seedTraders.map((t, i) => seedToTrader(t, `trader-${i}`));
-		if (styleFilter) {
-			traders = traders.filter(t => 
-				t.tradingStyle?.toLowerCase().includes(styleFilter.toLowerCase())
-			);
-		}
-		tradingStyles = [...new Set(seedTraders.map(t => t.tradingStyle).filter((s): s is string => !!s))];
+	// Always include seed data (merge with Sanity data if available)
+	const seedData = seedTraders.map((t, i) => seedToTrader(t, `seed-trader-${i}`));
+	
+	// Merge: Sanity traders first, then seed traders not already in Sanity (by slug)
+	const sanitySlugSet = new Set(traders.map(t => t.slug));
+	const uniqueSeedTraders = seedData.filter(t => !sanitySlugSet.has(t.slug));
+	traders = [...traders, ...uniqueSeedTraders];
+	
+	// Apply style filter if needed
+	if (styleFilter) {
+		traders = traders.filter(t => 
+			t.tradingStyle?.toLowerCase().includes(styleFilter.toLowerCase())
+		);
 	}
+	
+	// Get all unique trading styles
+	tradingStyles = [...new Set(traders.map(t => t.tradingStyle).filter((s): s is string => !!s))];
 
 	return {
 		traders,

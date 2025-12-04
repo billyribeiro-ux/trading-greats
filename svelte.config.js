@@ -10,6 +10,12 @@ const config = {
 			$components: 'src/lib/components',
 			$server: 'src/lib/server'
 		}
+	},
+	// Svelte 5.44+ Dec 2025: Enable async SSR for better hydration
+	compilerOptions: {
+		experimental: {
+			async: true
+		}
 	}
 };
 

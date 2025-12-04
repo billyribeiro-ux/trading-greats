@@ -14,13 +14,21 @@
 		AlertCircle
 	} from 'lucide-svelte';
 	import { slugify } from '$lib/utils';
+	import type { PageData } from './$types';
 
-	let { data, form } = $props();
+	interface FormResult {
+		error?: string;
+		title?: string;
+		excerpt?: string;
+		content?: string;
+	}
+
+	let { data, form }: { data: PageData; form: FormResult | null } = $props();
 
 	// Form state
-	let title = $state(form?.title || '');
-	let excerpt = $state(form?.excerpt || '');
-	let content = $state(form?.content || '');
+	let title = $state(form?.title ?? '');
+	let excerpt = $state(form?.excerpt ?? '');
+	let content = $state(form?.content ?? '');
 	let heroImage = $state('');
 	let heroImageAlt = $state('');
 	let heroImageCaption = $state('');
