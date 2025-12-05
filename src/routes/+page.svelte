@@ -3,6 +3,7 @@
     import { spring } from 'svelte/motion';
     import { slide } from 'svelte/transition';
     import SEO from '$lib/components/SEO.svelte';
+    import QuoteOfTheDay from '$lib/components/QuoteOfTheDay.svelte';
     import { Icon, type IconName } from '$lib/components/icons';
     import type { PageData } from './$types';
 
@@ -409,6 +410,9 @@
         </div>
     </div>
 </section>
+
+<!-- Quote of the Day -->
+<QuoteOfTheDay quotes={data.allQuotes} />
 
 <!-- MOBILE-FIRST: Featured Legends section -->
 <section class="relative z-20 bg-gradient-to-b from-[#020617] via-[#0f172a]/50 to-[#020617] py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">

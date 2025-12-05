@@ -2,6 +2,7 @@
 	import type { Trader } from '$lib/server/schema';
 	import { cn } from '$lib/utils';
 	import { Icon } from '$lib/components/icons';
+	import FavoriteButton from './FavoriteButton.svelte';
 
 	interface Props {
 		trader: Trader;
@@ -126,6 +127,11 @@
 				</span>
 			</div>
 		{/if}
+
+		<!-- Favorite button -->
+		<div class="absolute top-3 right-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200 sm:opacity-100">
+			<FavoriteButton slug={trader.slug} size="sm" />
+		</div>
 	</div>
 
 	<!-- Content Section - Fixed layout -->

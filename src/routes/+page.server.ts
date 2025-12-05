@@ -19,6 +19,13 @@ interface TraderProfile {
     photoUrl: string | null;
 }
 
+interface QuoteWithTrader {
+    text: string;
+    source?: string;
+    traderName: string;
+    traderSlug: string;
+}
+
 // ============================================================================
 // DATA LOADING
 // ============================================================================
@@ -36,11 +43,22 @@ export const load: PageServerLoad = async () => {
             photoUrl: t.photoUrl || null
         }));
 
+    // Extract all quotes from all traders for Quote of the Day
+    const allQuotes: QuoteWithTrader[] = seedTraders
+        .flatMap(trader =>
+            (trader.quotes || []).map(quote => ({
+                text: quote.text,
+                source: quote.source,
+                traderName: trader.name,
+                traderSlug: trader.slug
+            }))
+        );
+
     const meta = {
         title: "Trading Greats - Study Strategies From The World's Greatest Traders",
         description: "Master proven trading methodologies from legendary investors. Study value investing from Buffett, momentum trading from Minervini, and macro strategies from Soros.",
         canonical: "https://tradinggreats.com"
     };
 
-    return { traders, meta };
+    return { traders, allQuotes, meta };
 };

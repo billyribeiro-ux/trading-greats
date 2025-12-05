@@ -5,6 +5,7 @@
 	import JsonLd from '$lib/components/JsonLd.svelte';
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import NewsletterPopup from '$lib/components/NewsletterPopup.svelte';
 	import { PUBLIC_SITE_NAME } from '$env/static/public';
 	import { onNavigate } from '$app/navigation';
 
@@ -28,6 +29,7 @@
 <svelte:head>
 	<meta name="author" content={PUBLIC_SITE_NAME} />
 	<meta name="theme-color" content="#020617" />
+	<link rel="alternate" type="application/rss+xml" title="{PUBLIC_SITE_NAME} Blog RSS Feed" href="/rss.xml" />
 </svelte:head>
 
 {#if !isAdmin}
@@ -41,6 +43,7 @@
 
 {#if !isAdmin}
 	<Footer />
+	<NewsletterPopup delay={15000} showOnScroll={true} scrollThreshold={60} />
 {/if}
 
 <style>

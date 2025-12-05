@@ -6,16 +6,22 @@
 	const SITE_NAME = 'Trading Greats';
 	const SITE_URL = $derived($page.url.origin || 'https://tradinggreats.com');
 
-	type SchemaType = 'WebSite' | 'Person' | 'BreadcrumbList' | 'Article' | 'TraderArticle';
+	type SchemaType = 'WebSite' | 'Person' | 'BreadcrumbList' | 'Article' | 'TraderArticle' | 'FAQPage';
+
+	interface FAQItem {
+		question: string;
+		answer: string;
+	}
 
 	interface Props {
 		type: SchemaType;
 		trader?: Trader;
 		article?: BlogPost;
 		breadcrumbs?: { name: string; url: string }[];
+		faqItems?: FAQItem[];
 	}
 
-	let { type, trader, article, breadcrumbs }: Props = $props();
+	let { type, trader, article, breadcrumbs, faqItems }: Props = $props();
 
 	function generateSchema() {
 		switch (type) {
@@ -132,6 +138,21 @@
 						'@type': 'SpeakableSpecification',
 						cssSelector: ['h1', '.article-excerpt', '.article-content p:first-of-type']
 					}
+				};
+
+			case 'FAQPage':
+				if (!faqItems || faqItems.length === 0) return null;
+				return {
+					'@context': 'https://schema.org',
+					'@type': 'FAQPage',
+					mainEntity: faqItems.map(item => ({
+						'@type': 'Question',
+						name: item.question,
+						acceptedAnswer: {
+							'@type': 'Answer',
+							text: item.answer
+						}
+					}))
 				};
 
 			default:

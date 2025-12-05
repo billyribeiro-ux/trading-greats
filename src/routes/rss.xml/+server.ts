@@ -1,10 +1,12 @@
 import type { RequestHandler } from './$types';
 import { db } from '$lib/server/db';
 import { blogPosts } from '$lib/server/schema';
+import { seedBlogPosts } from '$lib/server/seedBlog';
 import { eq, desc } from 'drizzle-orm';
+import { PUBLIC_SITE_URL, PUBLIC_SITE_NAME } from '$env/static/public';
 
-const SITE_URL = 'https://tradinggreats.com';
-const SITE_TITLE = 'Trading Greats Blog';
+const SITE_URL = PUBLIC_SITE_URL || 'https://tradinggreats.com';
+const SITE_TITLE = `${PUBLIC_SITE_NAME || 'Trading Greats'} Blog`;
 const SITE_DESCRIPTION = 'Insights, strategies, and wisdom from legendary traders. Expert analysis and educational content for serious traders.';
 
 function escapeXml(unsafe: string): string {
@@ -27,7 +29,19 @@ export const GET: RequestHandler = async () => {
 			.orderBy(desc(blogPosts.publishedAt))
 			.limit(50);
 	} catch (e) {
-		console.error('Failed to fetch posts for RSS:', e);
+		console.error('Failed to fetch posts for RSS, using seed data:', e);
+	}
+
+	// Fallback to seed data if database is empty or unavailable
+	if (posts.length === 0) {
+		posts = seedBlogPosts
+			.filter((post) => post.status === 'published')
+			.sort((a, b) => {
+				const dateA = a.publishedAt ? new Date(a.publishedAt).getTime() : 0;
+				const dateB = b.publishedAt ? new Date(b.publishedAt).getTime() : 0;
+				return dateB - dateA;
+			})
+			.slice(0, 50);
 	}
 
 	const items = posts
