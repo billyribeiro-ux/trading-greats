@@ -4,8 +4,10 @@
 	import TraderCard from '$lib/components/TraderCard.svelte';
 	import TraderArticleCard from '$lib/components/TraderArticleCard.svelte';
 	import SocialShareButtons from '$lib/components/SocialShareButtons.svelte';
-	import { PUBLIC_SITE_URL } from '$env/static/public';
+	import { env } from '$env/dynamic/public';
 	import { parse } from 'marked';
+
+	const PUBLIC_SITE_URL = env.PUBLIC_SITE_URL || 'https://tradinggreats.com';
 	import { Icon } from '$lib/components/icons';
 	import type { PageData } from './$types';
 

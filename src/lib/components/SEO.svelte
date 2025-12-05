@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { PUBLIC_SITE_URL, PUBLIC_SITE_NAME } from '$env/static/public';
+	import { env } from '$env/dynamic/public';
+
+	const PUBLIC_SITE_URL = env.PUBLIC_SITE_URL || 'https://tradinggreats.com';
+	const PUBLIC_SITE_NAME = env.PUBLIC_SITE_NAME || 'Trading Greats';
 
 	interface Props {
 		title: string;

@@ -3,8 +3,10 @@
 	import TraderCard from '$lib/components/TraderCard.svelte';
 	import JsonLd from '$lib/components/JsonLd.svelte';
 	import { ScrollReveal } from '$lib/components/motion';
-	import { PUBLIC_SITE_URL } from '$env/static/public';
+	import { env } from '$env/dynamic/public';
 	import { cn } from '$lib/utils';
+
+	const PUBLIC_SITE_URL = env.PUBLIC_SITE_URL || 'https://tradinggreats.com';
 	import { Icon, type IconName } from '$lib/components/icons';
 	import type { PageData } from './$types';
 

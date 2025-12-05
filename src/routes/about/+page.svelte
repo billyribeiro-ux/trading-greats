@@ -1,10 +1,12 @@
 <script lang="ts">
 	import SEO from '$lib/components/SEO.svelte';
-	import { PUBLIC_SITE_URL } from '$env/static/public';
+	import { env } from '$env/dynamic/public';
 	import JsonLd from '$lib/components/JsonLd.svelte';
 	import { Icon } from '$lib/components/icons';
 	import { ScrollReveal } from '$lib/components/motion';
 	import { cn } from '$lib/utils';
+
+	const PUBLIC_SITE_URL = env.PUBLIC_SITE_URL || 'https://tradinggreats.com';
 
 	const breadcrumbs = [
 		{ name: 'Home', url: PUBLIC_SITE_URL },

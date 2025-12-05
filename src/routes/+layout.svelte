@@ -6,7 +6,9 @@
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import NewsletterPopup from '$lib/components/NewsletterPopup.svelte';
-	import { PUBLIC_SITE_NAME } from '$env/static/public';
+	import { env } from '$env/dynamic/public';
+
+	const PUBLIC_SITE_NAME = env.PUBLIC_SITE_NAME || 'Trading Greats';
 	import { onNavigate } from '$app/navigation';
 	import { theme } from '$lib/stores/theme.svelte';
 
@@ -81,7 +83,7 @@
 <svelte:head>
 	<meta name="author" content={PUBLIC_SITE_NAME} />
 	<meta name="theme-color" content={themeColor} />
-	<link rel="alternate" type="application/rss+xml" title="{PUBLIC_SITE_NAME} Blog RSS Feed" href="/rss.xml" />
+	<link rel="alternate" type="application/rss+xml" title="Trading Greats Blog RSS Feed" href="/rss.xml" />
 </svelte:head>
 
 <!-- Skip to main content link (WCAG 2.1 Level A) -->

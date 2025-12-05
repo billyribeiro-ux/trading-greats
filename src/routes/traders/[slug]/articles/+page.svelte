@@ -3,8 +3,10 @@
 	import ScrollReveal from '$lib/components/motion/ScrollReveal.svelte';
 	import TraderArticleCard from '$lib/components/TraderArticleCard.svelte';
 	import { Icon } from '$lib/components/icons';
-	import { PUBLIC_SITE_URL } from '$env/static/public';
+	import { env } from '$env/dynamic/public';
 	import type { PageData } from './$types';
+
+	const PUBLIC_SITE_URL = env.PUBLIC_SITE_URL || 'https://tradinggreats.com';
 
 	// ============================================================================
 	// PROPS (Svelte 5 - SSR data hydration)
