@@ -504,7 +504,7 @@
 								bind:value={email}
 								placeholder="Enter your email"
 								disabled={isSubscribing}
-								class="flex-1 rounded-xl border border-midnight-700 bg-midnight-800/50 px-4 py-3 text-midnight-100 placeholder-midnight-500 outline-none transition-all focus:border-gold-500/50 focus:ring-2 focus:ring-gold-500/20 disabled:opacity-50"
+								aria-label="Email address for newsletter subscription" class="flex-1 rounded-xl border border-midnight-700 bg-midnight-800/50 px-4 py-3 text-midnight-100 placeholder-midnight-500 outline-none transition-all focus:border-gold-500/50 focus:ring-2 focus:ring-gold-500/20 disabled:opacity-50"
 							/>
 							<button
 								type="submit"

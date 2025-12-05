@@ -3,7 +3,6 @@
 	import JsonLd from '$lib/components/JsonLd.svelte';
 	import TraderCard from '$lib/components/TraderCard.svelte';
 	import { PUBLIC_SITE_URL } from '$env/static/public';
-	// @ts-ignore - marked v17 types issue
 	import { parse } from 'marked';
 	import { Icon } from '$lib/components/icons';
 	import type { PageData } from './$types';

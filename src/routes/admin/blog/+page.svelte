@@ -23,7 +23,7 @@
 	let filterCategory = $state<string>('all');
 	let deleteConfirm = $state<string | null>(null);
 
-	const filteredPosts = $derived(() => {
+	const filteredPosts = $derived.by(() => {
 		let filtered = data.posts;
 
 		// Search filter
@@ -113,7 +113,7 @@
 					type="text"
 					placeholder="Search posts..."
 					bind:value={searchQuery}
-					class="w-full rounded-xl border border-midnight-700 bg-midnight-800/50 py-3 pl-12 pr-4 text-midnight-100 placeholder-midnight-500 outline-none transition-all focus:border-gold-500/50 focus:ring-2 focus:ring-gold-500/20"
+					aria-label="Search blog posts" class="w-full rounded-xl border border-midnight-700 bg-midnight-800/50 py-3 pl-12 pr-4 text-midnight-100 placeholder-midnight-500 outline-none transition-all focus:border-gold-500/50 focus:ring-2 focus:ring-gold-500/20"
 				/>
 			</div>
 
@@ -140,7 +140,7 @@
 		</div>
 
 		<!-- Posts Table -->
-		{#if filteredPosts().length === 0}
+		{#if filteredPosts.length === 0}
 			<div class="rounded-2xl border border-midnight-800/50 bg-midnight-900/30 p-12 text-center">
 				<BookOpen class="h-16 w-16 text-midnight-600 mx-auto mb-4" />
 				<h3 class="text-xl font-semibold text-midnight-100 mb-2">No blog posts yet</h3>
@@ -176,7 +176,7 @@
 						</tr>
 					</thead>
 					<tbody class="divide-y divide-midnight-800/50">
-						{#each filteredPosts() as post (post.id)}
+						{#each filteredPosts as post (post.id)}
 							<tr class="bg-midnight-950/50 hover:bg-midnight-900/30 transition-colors">
 								<td class="px-4 py-4">
 									<div class="flex items-center gap-4">
@@ -292,7 +292,7 @@
 			<!-- Stats Footer -->
 			<div class="mt-4 flex items-center justify-between text-sm text-midnight-500">
 				<p>
-					Showing {filteredPosts().length} of {data.posts.length} posts
+					Showing {filteredPosts.length} of {data.posts.length} posts
 				</p>
 				<div class="flex items-center gap-4">
 					<span class="flex items-center gap-1.5">
