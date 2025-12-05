@@ -3,10 +3,10 @@ import { db } from '$lib/server/db';
 import { blogPosts } from '$lib/server/schema';
 import { seedBlogPosts } from '$lib/server/seedBlog';
 import { eq, desc } from 'drizzle-orm';
-import { PUBLIC_SITE_URL, PUBLIC_SITE_NAME } from '$env/static/public';
+import { env } from '$env/dynamic/public';
 
-const SITE_URL = PUBLIC_SITE_URL || 'https://tradinggreats.com';
-const SITE_TITLE = `${PUBLIC_SITE_NAME || 'Trading Greats'} Blog`;
+const SITE_URL = env.PUBLIC_SITE_URL || 'https://tradinggreats.com';
+const SITE_TITLE = `${env.PUBLIC_SITE_NAME || 'Trading Greats'} Blog`;
 const SITE_DESCRIPTION = 'Insights, strategies, and wisdom from legendary traders. Expert analysis and educational content for serious traders.';
 
 function escapeXml(unsafe: string): string {
