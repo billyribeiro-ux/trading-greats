@@ -2,6 +2,7 @@
  * Comparison Store
  *
  * Manages traders selected for comparison using localStorage for persistence.
+ * Apple-style reactive store with proper Svelte 5 runes support.
  */
 
 import { browser } from '$app/environment';
@@ -34,63 +35,68 @@ function saveComparison(slugs: string[]): void {
 	}
 }
 
-class ComparisonStore {
-	#slugs = $state<string[]>([]);
+// Use a reactive object with public state for proper Svelte 5 reactivity
+function createComparisonStore() {
+	let slugs = $state<string[]>(browser ? loadComparison() : []);
 
-	constructor() {
-		if (browser) {
-			this.#slugs = loadComparison();
+	return {
+		get all(): string[] {
+			return slugs;
+		},
+
+		get count(): number {
+			return slugs.length;
+		},
+
+		get isFull(): boolean {
+			return slugs.length >= MAX_COMPARE;
+		},
+
+		get maxCompare(): number {
+			return MAX_COMPARE;
+		},
+
+		isInComparison(slug: string): boolean {
+			return slugs.includes(slug);
+		},
+
+		toggle(slug: string): boolean {
+			if (slugs.includes(slug)) {
+				slugs = slugs.filter(s => s !== slug);
+			} else if (slugs.length < MAX_COMPARE) {
+				slugs = [...slugs, slug];
+			}
+			saveComparison(slugs);
+			return slugs.includes(slug);
+		},
+
+		add(slug: string): boolean {
+			if (!slugs.includes(slug) && slugs.length < MAX_COMPARE) {
+				slugs = [...slugs, slug];
+				saveComparison(slugs);
+				return true;
+			}
+			return false;
+		},
+
+		remove(slug: string): void {
+			slugs = slugs.filter(s => s !== slug);
+			saveComparison(slugs);
+		},
+
+		clear(): void {
+			slugs = [];
+			saveComparison(slugs);
+			// Also clear localStorage directly to ensure sync
+			if (browser) {
+				try {
+					localStorage.removeItem(STORAGE_KEY);
+				} catch {
+					// Silent fail
+				}
+			}
 		}
-	}
-
-	get all(): string[] {
-		return [...this.#slugs];
-	}
-
-	get count(): number {
-		return this.#slugs.length;
-	}
-
-	get isFull(): boolean {
-		return this.#slugs.length >= MAX_COMPARE;
-	}
-
-	get maxCompare(): number {
-		return MAX_COMPARE;
-	}
-
-	isInComparison(slug: string): boolean {
-		return this.#slugs.includes(slug);
-	}
-
-	toggle(slug: string): boolean {
-		if (this.#slugs.includes(slug)) {
-			this.#slugs = this.#slugs.filter(s => s !== slug);
-		} else if (this.#slugs.length < MAX_COMPARE) {
-			this.#slugs = [...this.#slugs, slug];
-		}
-		saveComparison(this.#slugs);
-		return this.#slugs.includes(slug);
-	}
-
-	add(slug: string): boolean {
-		if (!this.#slugs.includes(slug) && this.#slugs.length < MAX_COMPARE) {
-			this.#slugs = [...this.#slugs, slug];
-			saveComparison(this.#slugs);
-			return true;
-		}
-		return false;
-	}
-
-	remove(slug: string): void {
-		this.#slugs = this.#slugs.filter(s => s !== slug);
-		saveComparison(this.#slugs);
-	}
-
-	clear(): void {
-		this.#slugs = [];
-		saveComparison(this.#slugs);
-	}
+	};
 }
 
-export const comparison = new ComparisonStore();
+export const comparison = createComparisonStore();

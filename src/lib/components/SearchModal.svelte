@@ -138,32 +138,32 @@
 		if (searchQuery) {
 			// Navigate to selected trader
 			if (filteredTraders[selectedIndex]) {
-				goto(`/traders/${filteredTraders[selectedIndex].slug}`);
 				onClose();
+				goto(`/traders/${filteredTraders[selectedIndex].slug}`);
 			}
 		} else {
 			// Handle quick actions or traders
 			if (selectedIndex < quickActions.length) {
-				goto(quickActions[selectedIndex].href);
 				onClose();
+				goto(quickActions[selectedIndex].href);
 			} else {
 				const traderIndex = selectedIndex - quickActions.length;
 				if (filteredTraders[traderIndex]) {
-					goto(`/traders/${filteredTraders[traderIndex].slug}`);
 					onClose();
+					goto(`/traders/${filteredTraders[traderIndex].slug}`);
 				}
 			}
 		}
 	}
 
 	function handleTraderClick(slug: string) {
-		goto(`/traders/${slug}`);
 		onClose();
+		goto(`/traders/${slug}`);
 	}
 
 	function handleActionClick(href: string) {
-		goto(href);
 		onClose();
+		goto(href);
 	}
 
 	function handleBackdropClick(event: MouseEvent) {

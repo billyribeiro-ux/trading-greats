@@ -86,37 +86,33 @@
 
 <div class="min-h-screen bg-midnight-950">
 	<!-- Header -->
-	<section class="relative pt-20 sm:pt-24 lg:pt-28 pb-8 sm:pb-10 overflow-hidden">
+	<section class="relative pt-6 sm:pt-8 pb-4 sm:pb-6 overflow-hidden">
 		<div class="absolute inset-0">
 			<div class="absolute top-[-20%] right-[-10%] h-[400px] w-[400px] rounded-full bg-gradient-radial from-violet-500/10 via-violet-500/5 to-transparent blur-3xl"></div>
 		</div>
 
 		<div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-			<nav class="mb-6 flex items-center gap-2 text-sm text-midnight-400">
-				<a href="/" class="hover:text-gold-400 transition-colors">Home</a>
-				<Icon name="chevron-right" class="h-4 w-4" />
-				<a href="/traders" class="hover:text-gold-400 transition-colors">Traders</a>
-				<Icon name="chevron-right" class="h-4 w-4" />
-				<span class="text-white font-medium">Compare</span>
-			</nav>
-
-			<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-				<div>
-					<h1 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
-						Compare <span class="text-violet-400">Traders</span>
-					</h1>
-					<p class="mt-2 text-midnight-300">
-						Select up to {comparison.maxCompare} traders to compare side-by-side
-					</p>
-				</div>
+			<div class="flex flex-col items-center text-center">
+				<h1 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
+					Compare <span class="text-violet-400">Traders</span>
+				</h1>
+				<p class="mt-2 text-midnight-300">
+					Select up to {comparison.maxCompare} traders to compare side-by-side
+				</p>
 
 				{#if selectedTraders.length > 0}
 					<button
 						onclick={clearAll}
-						class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-white/10 bg-white/5 text-sm text-midnight-300 hover:bg-white/10 hover:text-white transition-colors"
+						class={cn(
+							'group inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium mt-4',
+							'border border-red-500/20 bg-red-500/10 text-red-400',
+							'hover:bg-red-500/20 hover:border-red-500/30 hover:text-red-300',
+							'active:scale-95',
+							'transition-all duration-200 ease-out'
+						)}
 					>
-						<Icon name="x" class="h-4 w-4" />
-						Clear All
+						<Icon name="x" class="h-4 w-4 transition-transform duration-200 group-hover:rotate-90" />
+						Clear All ({selectedTraders.length})
 					</button>
 				{/if}
 			</div>
@@ -126,12 +122,12 @@
 	<div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
 		{#if selectedTraders.length === 0}
 			<!-- Empty State -->
-			<div class="text-center py-16">
-				<div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-midnight-800/50 border border-white/5 mb-6">
-					<Icon name="bar-chart" class="h-10 w-10 text-midnight-500" />
+			<div class="text-center py-8">
+				<div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-midnight-800/50 border border-white/5 mb-4">
+					<Icon name="bar-chart" class="h-7 w-7 text-midnight-500" />
 				</div>
-				<h2 class="text-2xl font-display font-bold text-white mb-3">No traders selected</h2>
-				<p class="text-midnight-400 max-w-md mx-auto mb-8">
+				<h2 class="text-xl font-display font-bold text-white mb-2">No traders selected</h2>
+				<p class="text-midnight-400 text-sm max-w-md mx-auto">
 					Add traders to compare their strategies, philosophies, and achievements.
 				</p>
 			</div>
@@ -156,20 +152,20 @@
 											<Icon name="x" class="h-3 w-3" />
 										</button>
 										<a href="/traders/{trader.slug}" class="group block">
-											<div class="w-16 h-16 mx-auto rounded-xl overflow-hidden mb-2 bg-midnight-800">
+											<div class="w-16 h-16 mx-auto rounded-2xl overflow-hidden mb-3 ring-2 ring-white/10 group-hover:ring-violet-500/40 transition-all shadow-lg">
 												{#if trader.photoUrl}
 													<img
 														src={trader.photoUrl}
 														alt={trader.name}
-														class="w-full h-full object-cover group-hover:scale-105 transition-transform"
+														class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
 													/>
 												{:else}
-													<div class="w-full h-full flex items-center justify-center text-2xl font-bold text-midnight-600">
+													<div class="w-full h-full flex items-center justify-center text-xl font-bold bg-gradient-to-br from-midnight-700 to-midnight-800 text-midnight-400 group-hover:from-violet-900/50 group-hover:to-midnight-800 group-hover:text-violet-300 transition-all duration-300">
 														{trader.name.split(' ').map(n => n[0]).join('')}
 													</div>
 												{/if}
 											</div>
-											<span class="font-display font-bold text-white group-hover:text-gold-400 transition-colors">
+											<span class="font-display font-bold text-white group-hover:text-violet-400 transition-colors">
 												{trader.name}
 											</span>
 										</a>
@@ -266,46 +262,46 @@
 
 		<!-- Add Trader Section -->
 		{#if selectedTraders.length < comparison.maxCompare}
-			<div class="mt-8">
-				<h3 class="font-display text-lg font-bold text-white mb-4">
+			<div class="mt-6">
+				<h3 class="font-display text-base font-bold text-white mb-3">
 					Add Traders to Compare
 				</h3>
 
 				<!-- Search -->
-				<div class="relative mb-4">
-					<Icon name="search" class="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-midnight-500" />
+				<div class="relative mb-3">
+					<Icon name="search" class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-midnight-500" />
 					<input
 						type="text"
 						placeholder="Search traders..."
 						bind:value={searchQuery}
-						class="w-full bg-midnight-900/50 border border-white/10 rounded-xl pl-11 pr-4 py-3 text-white placeholder-midnight-500 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50"
+						class="w-full bg-midnight-900/50 border border-white/10 rounded-lg pl-10 pr-4 py-2.5 text-sm text-white placeholder-midnight-500 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50"
 					/>
 				</div>
 
 				<!-- Trader Grid -->
-				<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+				<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
 					{#each availableTraders.slice(0, 12) as trader}
 						<button
 							onclick={() => addTrader(trader.slug)}
-							class="group p-3 rounded-xl border border-white/10 bg-midnight-900/30 hover:border-violet-500/30 hover:bg-midnight-800/50 transition-all text-left"
+							class="group p-3 rounded-lg border border-white/10 bg-midnight-900/30 hover:border-violet-500/30 hover:bg-midnight-800/50 transition-all text-center flex flex-col items-center"
 						>
-							<div class="w-12 h-12 rounded-lg overflow-hidden mb-2 bg-midnight-800">
+							<div class="w-11 h-11 rounded-full overflow-hidden mb-2 ring-2 ring-white/10 group-hover:ring-violet-500/40 transition-all">
 								{#if trader.photoUrl}
 									<img
 										src={trader.photoUrl}
 										alt={trader.name}
-										class="w-full h-full object-cover"
+										class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
 									/>
 								{:else}
-									<div class="w-full h-full flex items-center justify-center text-lg font-bold text-midnight-600">
+									<div class="w-full h-full flex items-center justify-center text-sm font-bold bg-gradient-to-br from-midnight-700 to-midnight-800 text-midnight-400 group-hover:from-violet-900/50 group-hover:to-midnight-800 group-hover:text-violet-300 transition-all duration-300">
 										{trader.name.split(' ').map(n => n[0]).join('')}
 									</div>
 								{/if}
 							</div>
-							<p class="font-medium text-sm text-white group-hover:text-violet-400 transition-colors line-clamp-1">
+							<p class="font-medium text-xs text-white group-hover:text-violet-400 transition-colors line-clamp-1 w-full">
 								{trader.name}
 							</p>
-							<p class="text-[10px] text-midnight-500 line-clamp-1">
+							<p class="text-[10px] text-midnight-500 line-clamp-1 leading-tight w-full">
 								{trader.tradingStyle || 'Trader'}
 							</p>
 						</button>
@@ -313,7 +309,7 @@
 				</div>
 
 				{#if availableTraders.length > 12}
-					<p class="mt-4 text-sm text-midnight-500 text-center">
+					<p class="mt-3 text-xs text-midnight-500 text-center">
 						{availableTraders.length - 12} more traders available. Use search to find specific traders.
 					</p>
 				{/if}
