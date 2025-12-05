@@ -2,6 +2,145 @@
 @config '../tailwind.config.ts';
 
 /* ============================================================================
+   LIGHT MODE THEME OVERRIDES (Dec 2025 Best Practice)
+   Uses CSS class-based theming for seamless theme switching
+   Default: dark mode (site's primary theme)
+   ============================================================================ */
+
+/* Color scheme declarations */
+:root {
+	color-scheme: dark;
+}
+
+:root:not(.dark) {
+	color-scheme: light;
+}
+
+/* Light mode specific overrides */
+:root:not(.dark) body,
+:root:not(.dark) main,
+:root:not(.dark) #main-content {
+	background-color: #f8fafc !important;
+	color: #0f172a !important;
+}
+
+:root:not(.dark) .bg-midnight-950 {
+	background-color: #ffffff !important;
+}
+
+:root:not(.dark) .bg-midnight-900 {
+	background-color: #f8fafc !important;
+}
+
+:root:not(.dark) .bg-midnight-900\/80,
+:root:not(.dark) .bg-midnight-900\/50,
+:root:not(.dark) .bg-midnight-900\/30 {
+	background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+:root:not(.dark) .bg-midnight-800 {
+	background-color: #f1f5f9 !important;
+}
+
+:root:not(.dark) .text-white {
+	color: #0f172a !important;
+}
+
+:root:not(.dark) .text-midnight-50 {
+	color: #0f172a !important;
+}
+
+:root:not(.dark) .text-midnight-100,
+:root:not(.dark) .text-midnight-200 {
+	color: #1e293b !important;
+}
+
+:root:not(.dark) .text-midnight-300,
+:root:not(.dark) .text-midnight-400 {
+	color: #475569 !important;
+}
+
+:root:not(.dark) .text-midnight-500 {
+	color: #64748b !important;
+}
+
+:root:not(.dark) .border-white\/5,
+:root:not(.dark) .border-white\/10,
+:root:not(.dark) .border-white\/\[0\.08\] {
+	border-color: rgba(15, 23, 42, 0.1) !important;
+}
+
+:root:not(.dark) .border-midnight-800,
+:root:not(.dark) .border-midnight-800\/50 {
+	border-color: rgba(15, 23, 42, 0.1) !important;
+}
+
+/* Light mode navbar */
+:root:not(.dark) .bg-midnight-950\/85 {
+	background-color: rgba(255, 255, 255, 0.95) !important;
+	border-color: rgba(15, 23, 42, 0.1) !important;
+}
+
+/* Light mode cards and containers */
+:root:not(.dark) .bg-midnight-950\/50 {
+	background-color: rgba(248, 250, 252, 0.95) !important;
+}
+
+:root:not(.dark) .bg-\[#0f172a\] {
+	background-color: #ffffff !important;
+}
+
+/* Light mode backdrop */
+:root:not(.dark) .backdrop-blur-xl,
+:root:not(.dark) .backdrop-blur-2xl,
+:root:not(.dark) .backdrop-blur-3xl {
+	background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Light mode selection */
+:root:not(.dark) ::selection {
+	background: rgba(234, 179, 8, 0.25);
+	color: #713f12;
+}
+
+/* Light mode scrollbar */
+:root:not(.dark) ::-webkit-scrollbar-thumb {
+	background: #cbd5e1;
+}
+
+:root:not(.dark) ::-webkit-scrollbar-thumb:hover {
+	background: #94a3b8;
+}
+
+/* Light mode focus ring */
+:root:not(.dark) :focus-visible {
+	box-shadow:
+		0 0 0 2px #ffffff,
+		0 0 0 4px #eab308,
+		0 0 15px rgba(234, 179, 8, 0.2) !important;
+}
+
+/* Light mode shadows - softer */
+:root:not(.dark) .shadow-2xl {
+	box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.15) !important;
+}
+
+:root:not(.dark) .shadow-xl {
+	box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.1) !important;
+}
+
+/* Light mode gradient adjustments */
+:root:not(.dark) .from-midnight-950 {
+	--tw-gradient-from: #f8fafc !important;
+}
+
+:root:not(.dark) .via-midnight-950\/80,
+:root:not(.dark) .via-midnight-950\/60,
+:root:not(.dark) .via-midnight-950\/40 {
+	--tw-gradient-via: rgba(248, 250, 252, 0.6) !important;
+}
+
+/* ============================================================================
    CINEMATIC DESIGN SYSTEM - MOBILE-FIRST
    Apple/Netflix-quality animations for Trading Greats
    Optimized for mobile-first, touch-friendly interactions
@@ -870,16 +1009,105 @@ details summary::-webkit-details-marker {
 .stagger-8 { animation-delay: 400ms; }
 
 /* ============================================================================
-   PRINT STYLES
+   PRINT STYLES - Trader Profile Optimized
    ============================================================================ */
 
 @media print {
+	/* Disable animations and transitions */
 	* {
 		animation: none !important;
 		transition: none !important;
 	}
-	
-	.no-print {
+
+	/* Hide non-essential elements */
+	.no-print,
+	nav,
+	footer,
+	.newsletter-popup,
+	button:not(.print-show),
+	[data-no-print],
+	.fixed,
+	.sticky {
 		display: none !important;
+	}
+
+	/* Reset backgrounds for printing */
+	body,
+	.bg-midnight-950,
+	.bg-midnight-900,
+	.bg-midnight-800,
+	[class*="bg-gradient"] {
+		background: white !important;
+		color: black !important;
+	}
+
+	/* Optimize text colors for printing */
+	h1, h2, h3, h4, h5, h6 {
+		color: black !important;
+		page-break-after: avoid;
+	}
+
+	p, li, span, div {
+		color: #333 !important;
+	}
+
+	a {
+		color: #1a0dab !important;
+		text-decoration: underline !important;
+	}
+
+	/* Add URL after links for reference */
+	a[href^="http"]:after {
+		content: " (" attr(href) ")";
+		font-size: 0.8em;
+		color: #666;
+	}
+
+	/* Ensure images print properly */
+	img {
+		max-width: 100% !important;
+		page-break-inside: avoid;
+	}
+
+	/* Page break optimization */
+	section {
+		page-break-inside: avoid;
+	}
+
+	article {
+		page-break-before: auto;
+	}
+
+	/* Trader profile specific */
+	.trader-profile-image {
+		max-height: 300px !important;
+		object-fit: contain !important;
+	}
+
+	/* Optimize grid layouts for single column */
+	.grid {
+		display: block !important;
+	}
+
+	.grid > * {
+		margin-bottom: 1rem;
+	}
+
+	/* Quote styling for print */
+	blockquote {
+		border-left: 3px solid #ccc !important;
+		padding-left: 1rem !important;
+		background: none !important;
+		font-style: italic;
+		color: #444 !important;
+	}
+
+	/* Add print header */
+	@page {
+		margin: 1.5cm;
+	}
+
+	@page :first {
+		margin-top: 2cm;
 	}
 }

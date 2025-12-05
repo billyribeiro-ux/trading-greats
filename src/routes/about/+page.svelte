@@ -36,8 +36,9 @@
 <div class="min-h-screen bg-midnight-950">
 	<!-- Hero Section - MOBILE-FIRST -->
 	<section class="relative pt-20 sm:pt-24 lg:pt-32 pb-16 sm:pb-20 lg:pb-24 overflow-hidden">
-		<!-- Background -->
-		<div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2670&auto=format&fit=crop')] bg-cover bg-center opacity-10"></div>
+		<!-- Background - Decorative gradient pattern (no external images) -->
+		<div class="absolute inset-0 bg-gradient-to-br from-midnight-900/50 via-midnight-950 to-midnight-900/50"></div>
+		<div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 25% 25%, rgba(212, 175, 55, 0.1) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);"></div>
 		<div class="absolute inset-0 bg-gradient-to-b from-midnight-950/80 via-midnight-950/90 to-midnight-950"></div>
 
 		<!-- Ambient glow - MOBILE-FIRST: Smaller on mobile -->

@@ -3,6 +3,7 @@
 	import JsonLd from '$lib/components/JsonLd.svelte';
 	import TraderCard from '$lib/components/TraderCard.svelte';
 	import TraderArticleCard from '$lib/components/TraderArticleCard.svelte';
+	import SocialShareButtons from '$lib/components/SocialShareButtons.svelte';
 	import { PUBLIC_SITE_URL } from '$env/static/public';
 	import { parse } from 'marked';
 	import { Icon } from '$lib/components/icons';
@@ -34,6 +35,51 @@
 		const age = new Date().getFullYear() - trader.birthYear;
 		return `Born ${trader.birthYear} (${age} years old)`;
 	});
+
+	// Page URL for sharing
+	const pageUrl = $derived(`${PUBLIC_SITE_URL}/traders/${trader.slug}`);
+
+	// Generate FAQ items for structured data
+	const faqItems = $derived.by(() => {
+		const faqs: { question: string; answer: string }[] = [];
+
+		// Basic info questions
+		faqs.push({
+			question: `Who is ${trader.name}?`,
+			answer: trader.bio?.split('\n')[0] || `${trader.name} is a legendary trader known for ${trader.oneLiner?.toLowerCase() || 'their exceptional trading strategies'}.`
+		});
+
+		if (trader.tradingStyle) {
+			faqs.push({
+				question: `What is ${trader.name}'s trading style?`,
+				answer: `${trader.name} is known for ${trader.tradingStyle}. ${trader.philosophy ? trader.philosophy.substring(0, 200) + '...' : ''}`
+			});
+		}
+
+		if (trader.netWorth) {
+			faqs.push({
+				question: `What is ${trader.name}'s net worth?`,
+				answer: `${trader.name}'s estimated net worth is ${trader.netWorth}. This wealth was accumulated through their successful ${trader.tradingStyle?.toLowerCase() || 'trading'} strategies.`
+			});
+		}
+
+		if (trader.books && trader.books.length > 0) {
+			const bookTitles = trader.books.map(b => b.title).join(', ');
+			faqs.push({
+				question: `What books has ${trader.name} written?`,
+				answer: `${trader.name} has authored several books on trading and investing, including: ${bookTitles}.`
+			});
+		}
+
+		if (trader.quotes && trader.quotes.length > 0) {
+			faqs.push({
+				question: `What are ${trader.name}'s most famous quotes?`,
+				answer: `One of ${trader.name}'s most famous quotes is: "${trader.quotes[0].text}". This reflects their core philosophy on trading and markets.`
+			});
+		}
+
+		return faqs;
+	});
 </script>
 
 <SEO
@@ -46,6 +92,7 @@
 <JsonLd type="Person" {trader} />
 <JsonLd type="BreadcrumbList" {breadcrumbs} />
 <JsonLd type="Article" {trader} />
+<JsonLd type="FAQPage" {faqItems} />
 
 <div class="min-h-screen bg-midnight-950 pb-16 sm:pb-20 lg:pb-24">
 	<!-- Hero Background - MOBILE-FIRST: Smaller orbs on mobile -->
@@ -78,6 +125,9 @@
 								alt={trader.name}
 								class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
 								style:view-transition-name="trader-image-{trader.slug}"
+								loading="eager"
+								fetchpriority="high"
+								decoding="async"
 							/>
 							<div class="absolute inset-0 bg-gradient-to-t from-midnight-950 via-transparent to-transparent opacity-60"></div>
 						</div>
@@ -129,11 +179,13 @@
 					</div>
 
 					<!-- Share / Actions - MOBILE-FIRST -->
-					<div class="flex gap-2 sm:gap-3">
-						<button class="flex-1 inline-flex items-center justify-center gap-2 rounded-lg sm:rounded-xl bg-white/5 py-2.5 sm:py-3 text-xs sm:text-sm font-medium text-white hover:bg-white/10 transition-colors active:scale-95">
-							<Icon name="share" class="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-							Share Profile
-						</button>
+					<div class="rounded-xl sm:rounded-2xl border border-white/5 bg-midnight-900/30 p-4 sm:p-5 backdrop-blur-sm">
+						<SocialShareButtons
+							url={pageUrl}
+							title="{trader.name} - {trader.oneLiner}"
+							description={trader.bio?.substring(0, 160) || ''}
+							variant="compact"
+						/>
 					</div>
 				</div>
 			</div>

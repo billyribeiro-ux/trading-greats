@@ -5,6 +5,7 @@
 	import { Icon } from '$lib/components/icons';
 	import { fade, fly, scale } from 'svelte/transition';
 	import { cubicOut, backOut } from 'svelte/easing';
+	import ThemeToggle from './ThemeToggle.svelte';
 
 	// ============================================================================
 	// STATE
@@ -22,6 +23,7 @@
 	const NAV_LINKS = [
 		{ href: '/', label: 'Home', iconType: 'home' as const },
 		{ href: '/traders', label: 'Legends', iconType: 'users' as const },
+		{ href: '/compare', label: 'Compare', iconType: 'bar-chart' as const },
 		{ href: '/blog', label: 'Blog', iconType: 'book-open' as const },
 	] as const;
 
@@ -229,6 +231,9 @@
 
 		<!-- Actions -->
 		<div class="flex items-center gap-1 sm:gap-2">
+			<!-- Theme Toggle -->
+			<ThemeToggle class="hidden sm:flex" />
+
 			<!-- Search Button - MOBILE-FIRST: 44px touch target -->
 			<button
 				type="button"

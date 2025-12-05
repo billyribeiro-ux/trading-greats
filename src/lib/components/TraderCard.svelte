@@ -2,6 +2,8 @@
 	import type { Trader } from '$lib/server/schema';
 	import { cn } from '$lib/utils';
 	import { Icon } from '$lib/components/icons';
+	import FavoriteButton from './FavoriteButton.svelte';
+	import CompareButton from './CompareButton.svelte';
 
 	interface Props {
 		trader: Trader;
@@ -89,7 +91,9 @@
 					'md:group-hover:scale-105',
 					imageLoaded ? 'opacity-100' : 'opacity-0'
 				)}
-				loading="lazy"
+				loading={index === 0 ? 'eager' : 'lazy'}
+				fetchpriority={index === 0 ? 'high' : 'auto'}
+				decoding="async"
 				onload={() => imageLoaded = true}
 				onerror={() => imageError = true}
 			/>
@@ -126,6 +130,12 @@
 				</span>
 			</div>
 		{/if}
+
+		<!-- Action buttons -->
+		<div class="absolute top-3 right-3 z-10 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200 sm:opacity-100">
+			<CompareButton slug={trader.slug} size="sm" />
+			<FavoriteButton slug={trader.slug} size="sm" />
+		</div>
 	</div>
 
 	<!-- Content Section - Fixed layout -->

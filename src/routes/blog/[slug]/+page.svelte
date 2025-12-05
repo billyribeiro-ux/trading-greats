@@ -1,19 +1,16 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
+	import { cn, calculateReadingTime } from '$lib/utils';
 	import ScrollReveal from '$lib/components/motion/ScrollReveal.svelte';
 	import { Icon, type IconName } from '$lib/components/icons';
+	import SocialShareButtons from '$lib/components/SocialShareButtons.svelte';
 	import SEO from '$lib/components/SEO.svelte';
+	import { PUBLIC_SITE_URL } from '$env/static/public';
 	import type { PageData } from './$types';
 
 	// ============================================================================
 	// PROPS (Svelte 5 - SSR data hydration)
 	// ============================================================================
 	let { data }: { data: PageData } = $props();
-
-	// ============================================================================
-	// REACTIVE STATE
-	// ============================================================================
-	let copied = $state(false);
 
 	// ============================================================================
 	// CATEGORY ICONS
@@ -43,26 +40,8 @@
 		return cat?.label || value;
 	}
 
-	async function copyLink() {
-		try {
-			await navigator.clipboard.writeText(window.location.href);
-			copied = true;
-			setTimeout(() => (copied = false), 2000);
-		} catch (e) {
-			console.error('Failed to copy link');
-		}
-	}
-
-	function shareTwitter() {
-		const url = encodeURIComponent(window.location.href);
-		const text = encodeURIComponent(data.post.title);
-		window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
-	}
-
-	function shareLinkedIn() {
-		const url = encodeURIComponent(window.location.href);
-		window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
-	}
+	// Page URL for sharing
+	const pageUrl = $derived(`${PUBLIC_SITE_URL}/blog/${data.post.slug}`);
 
 	// Simple markdown to HTML conversion for content
 	function renderMarkdown(content: string): string {
@@ -101,6 +80,11 @@
 
 	const categoryIcon = $derived<IconName>(
 		data.post.category ? categoryIcons[data.post.category] || 'tag' : 'tag'
+	);
+
+	// Compute reading time from content if not set in database
+	const readingTime = $derived(
+		data.post.readingTime || calculateReadingTime(data.post.content || '').minutes
 	);
 
 	// ============================================================================
@@ -189,6 +173,9 @@
 					src={data.post.heroImage}
 					alt={data.post.heroImageAlt || data.post.title}
 					class="h-full w-full object-cover"
+					loading="eager"
+					fetchpriority="high"
+					decoding="async"
 				/>
 				<div class="absolute inset-0 bg-gradient-to-t from-midnight-950 via-midnight-950/80 to-midnight-950/40"></div>
 			</div>
@@ -230,12 +217,10 @@
 							{formatDate(data.post.publishedAt)}
 						</span>
 					{/if}
-					{#if data.post.readingTime}
-						<span class="flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm text-midnight-400">
-							<Icon name="clock" class="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-							{data.post.readingTime} min read
-						</span>
-					{/if}
+					<span class="flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm text-midnight-400">
+						<Icon name="clock" class="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+						{readingTime} min read
+					</span>
 				</div>
 
 				<!-- Title - MOBILE-FIRST -->
@@ -264,37 +249,12 @@
 						</div>
 					{/if}
 
-					<div class="flex items-center gap-1 sm:gap-2">
-						<span class="text-xs sm:text-sm text-midnight-500 mr-1 sm:mr-2">Share:</span>
-						<button
-							type="button"
-							onclick={shareTwitter}
-							class="rounded-lg p-2 sm:p-2.5 text-midnight-400 hover:bg-midnight-800 hover:text-white transition-colors active:scale-95 min-h-[44px] min-w-[44px] flex items-center justify-center"
-							aria-label="Share on Twitter"
-						>
-							<Icon name="twitter" class="h-5 w-5" />
-						</button>
-						<button
-							type="button"
-							onclick={shareLinkedIn}
-							class="rounded-lg p-2 sm:p-2.5 text-midnight-400 hover:bg-midnight-800 hover:text-white transition-colors active:scale-95 min-h-[44px] min-w-[44px] flex items-center justify-center"
-							aria-label="Share on LinkedIn"
-						>
-							<Icon name="share" class="h-5 w-5" />
-						</button>
-						<button
-							type="button"
-							onclick={copyLink}
-							class="rounded-lg p-2 sm:p-2.5 text-midnight-400 hover:bg-midnight-800 hover:text-white transition-colors active:scale-95 min-h-[44px] min-w-[44px] flex items-center justify-center"
-							aria-label="Copy link"
-						>
-							{#if copied}
-								<Icon name="check" class="h-5 w-5 text-green-400" />
-							{:else}
-								<Icon name="external-link" class="h-5 w-5" />
-							{/if}
-						</button>
-					</div>
+					<SocialShareButtons
+						url={pageUrl}
+						title={data.post.title}
+						description={data.post.excerpt || ''}
+						variant="icons-only"
+					/>
 				</div>
 			</ScrollReveal>
 		</div>

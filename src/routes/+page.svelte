@@ -3,6 +3,7 @@
     import { spring } from 'svelte/motion';
     import { slide } from 'svelte/transition';
     import SEO from '$lib/components/SEO.svelte';
+    import QuoteOfTheDay from '$lib/components/QuoteOfTheDay.svelte';
     import { Icon, type IconName } from '$lib/components/icons';
     import type { PageData } from './$types';
 
@@ -410,6 +411,9 @@
     </div>
 </section>
 
+<!-- Quote of the Day -->
+<QuoteOfTheDay quotes={data.allQuotes} />
+
 <!-- MOBILE-FIRST: Featured Legends section -->
 <section class="relative z-20 bg-gradient-to-b from-[#020617] via-[#0f172a]/50 to-[#020617] py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
     <div class="absolute inset-0">
@@ -448,7 +452,9 @@
                                     src={trader.photoUrl}
                                     alt={trader.name}
                                     class="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
-                                    loading="lazy"
+                                    loading={i === 0 ? 'eager' : 'lazy'}
+                                    fetchpriority={i === 0 ? 'high' : 'auto'}
+                                    decoding="async"
                                 />
                             {:else}
                                 <div class="absolute inset-0 flex items-center justify-center text-4xl sm:text-5xl lg:text-7xl font-black text-white/5 select-none">
