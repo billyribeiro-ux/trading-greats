@@ -151,7 +151,7 @@
         },
         {
             question: 'Do you cover modern traders or just historical figures?',
-            answer: 'We cover both. Our library includes historical legends like Jesse Livermore and Benjamin Graham, as well as contemporary masters like Mark Minervini and Ray Dalio.'
+            answer: 'We cover both. Our library includes historical legends like Jesse Livermore and Benjamin Graham, as well as contemporary masters like Billy Ribeiro, Mark Minervini, and Ray Dalio.'
         },
         {
             question: 'How can I apply these strategies to my own trading?',
