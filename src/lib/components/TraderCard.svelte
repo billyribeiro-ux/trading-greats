@@ -3,6 +3,7 @@
 	import { cn } from '$lib/utils';
 	import { Icon } from '$lib/components/icons';
 	import FavoriteButton from './FavoriteButton.svelte';
+	import CompareButton from './CompareButton.svelte';
 
 	interface Props {
 		trader: Trader;
@@ -128,8 +129,9 @@
 			</div>
 		{/if}
 
-		<!-- Favorite button -->
-		<div class="absolute top-3 right-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200 sm:opacity-100">
+		<!-- Action buttons -->
+		<div class="absolute top-3 right-3 z-10 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200 sm:opacity-100">
+			<CompareButton slug={trader.slug} size="sm" />
 			<FavoriteButton slug={trader.slug} size="sm" />
 		</div>
 	</div>

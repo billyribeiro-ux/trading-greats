@@ -22,6 +22,7 @@
 	const NAV_LINKS = [
 		{ href: '/', label: 'Home', iconType: 'home' as const },
 		{ href: '/traders', label: 'Legends', iconType: 'users' as const },
+		{ href: '/compare', label: 'Compare', iconType: 'bar-chart' as const },
 		{ href: '/blog', label: 'Blog', iconType: 'book-open' as const },
 	] as const;
 
