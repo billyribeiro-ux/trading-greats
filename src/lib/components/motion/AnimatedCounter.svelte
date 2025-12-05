@@ -60,7 +60,7 @@
 	// DERIVED
 	// ============================================================================
 
-	const displayValue = $derived(() => {
+	const displayValue = $derived.by(() => {
 		const num = currentValue.toFixed(decimals);
 		if (formatNumber) {
 			const [intPart, decPart] = num.split('.');
@@ -149,5 +149,5 @@
 	class={cn('tabular-nums', className)}
 	aria-label="{prefix}{value}{suffix}"
 >
-	{prefix}{displayValue()}{suffix}
+	{prefix}{displayValue}{suffix}
 </span>

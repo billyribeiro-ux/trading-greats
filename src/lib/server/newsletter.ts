@@ -22,7 +22,7 @@ import {
 	type CampaignStatus,
 	type SendStatus
 } from './schema';
-import { eq, and, desc, sql, count, gte, lte } from 'drizzle-orm';
+import { eq, and, desc, sql, count, gte } from 'drizzle-orm';
 import { env } from '$env/dynamic/private';
 import { env as publicEnv } from '$env/dynamic/public';
 

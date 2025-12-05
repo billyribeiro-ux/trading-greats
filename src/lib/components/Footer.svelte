@@ -52,7 +52,7 @@
 							<li>
 								<a
 									href={link.href}
-									class="group inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-midnight-400 transition-all duration-300 hover:text-gold-400 active:scale-95 min-h-[44px] sm:min-h-0 flex items-center"
+									class="group inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-midnight-400 transition-all duration-300 hover:text-gold-400 active:scale-95 min-h-[44px] sm:min-h-0"
 								>
 									<span class="w-0 h-px bg-gold-500 transition-all duration-300 group-hover:w-2 sm:group-hover:w-3"></span>
 									{link.label}
@@ -74,7 +74,7 @@
 							<li>
 								<a
 									href={link.href}
-									class="group inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-midnight-400 transition-all duration-300 hover:text-gold-400 active:scale-95 min-h-[44px] sm:min-h-0 flex items-center"
+									class="group inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-midnight-400 transition-all duration-300 hover:text-gold-400 active:scale-95 min-h-[44px] sm:min-h-0"
 								>
 									<span class="w-0 h-px bg-gold-500 transition-all duration-300 group-hover:w-2 sm:group-hover:w-3"></span>
 									{link.label}

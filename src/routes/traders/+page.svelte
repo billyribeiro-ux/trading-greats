@@ -32,7 +32,7 @@
 			: data.traders
 	);
 
-	const tradingStyleCounts = $derived(() => {
+	const tradingStyleCounts = $derived.by(() => {
 		const counts: Record<string, number> = {};
 		data.traders.forEach((trader) => {
 			if (trader.tradingStyle) {
@@ -124,7 +124,7 @@
 							type="text"
 							placeholder="Search traders..."
 							bind:value={searchQuery}
-							class="w-full bg-transparent border-none px-3 sm:px-4 py-2.5 sm:py-3 text-white placeholder-midnight-500 focus:ring-0 focus:outline-none text-sm sm:text-base lg:text-lg"
+							aria-label="Search traders" class="w-full bg-transparent border-none px-3 sm:px-4 py-2.5 sm:py-3 text-white placeholder-midnight-500 focus:ring-0 focus:outline-none text-sm sm:text-base lg:text-lg"
 						/>
 						{#if searchQuery}
 							<button
@@ -168,7 +168,7 @@
 							<Icon name={meta.icon} class="h-3.5 w-3.5 sm:h-4 sm:w-4" />
 							<span class="hidden sm:inline">{style}</span>
 							<span class="sm:hidden">{style.split(' ')[0]}</span>
-							<span class="text-[10px] sm:text-xs opacity-70">({tradingStyleCounts()[style || ''] || 0})</span>
+							<span class="text-[10px] sm:text-xs opacity-70">({tradingStyleCounts[style || ''] || 0})</span>
 						</a>
 					{/each}
 				</div>
