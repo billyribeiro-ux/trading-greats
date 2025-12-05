@@ -30,9 +30,8 @@ interface QuoteWithTrader {
 // DATA LOADING
 // ============================================================================
 export const load: PageServerLoad = async () => {
-    // Get featured traders from seed data (first 8 with photos)
+    // Get featured traders from seed data (first 8)
     const traders: TraderProfile[] = seedTraders
-        .filter(t => t.photoUrl) // Only traders with photos
         .slice(0, 8)
         .map(t => ({
             name: t.name,

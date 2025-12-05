@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Icon } from '$lib/components/icons';
-	import { favorites } from '$lib/stores/favorites';
+	import { favorites } from '$lib/stores/favorites.svelte';
 	import { cn } from '$lib/utils';
 	import { browser } from '$app/environment';
 

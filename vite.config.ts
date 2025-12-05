@@ -11,11 +11,6 @@ export default defineConfig({
 	ssr: {
 		noExternal: ['lucide-svelte']
 	},
-	css: {
-		postcss: {
-			// Suppress PostCSS 'from' option warning
-		}
-	},
 	// Suppress specific warnings in console
 	logLevel: 'info'
 });

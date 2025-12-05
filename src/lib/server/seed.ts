@@ -1482,5 +1482,632 @@ Sperandeo has worked as a trader, fund manager, and consultant. He is also known
 			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Victor_Sperandeo' }
 		],
 		status: 'published'
+	},
+	{
+		name: 'Bill Lipschutz',
+		slug: 'bill-lipschutz',
+		photoUrl: null,
+		oneLiner: 'The Sultan of Currencies - Turned $12,000 into $250 Million',
+		birthYear: 1956,
+		nationality: 'American',
+		tradingStyle: 'Forex & Macro',
+		netWorth: '$2+ Billion',
+		bio: `Bill Lipschutz is one of the most successful forex traders in history. While still a student at Cornell, he turned a $12,000 inheritance into $250,000, then lost it all—a lesson that shaped his risk management philosophy forever.
+
+## The Cornell Years
+
+Lipschutz inherited $12,000 worth of stock from his grandmother and turned it into $250,000 while studying architecture at Cornell. However, one bad decision wiped out his entire portfolio. This devastating loss taught him the importance of risk management.
+
+## Salomon Brothers
+
+After graduating, Lipschutz joined Salomon Brothers' newly formed forex department. Within a few years, he was generating $300 million per year in profits for the firm—an extraordinary achievement that earned him the nickname "The Sultan of Currencies."
+
+## Trading Philosophy
+
+Lipschutz is known for his ability to synthesize vast amounts of information and his willingness to take large positions when conviction is high. He emphasizes the importance of understanding market psychology and maintaining emotional discipline.`,
+		philosophy: `"When you have a position, you put it on for a reason, and you've got to keep it until the reason no longer exists."`,
+		achievements: [
+			'Generated $300M annually at Salomon Brothers',
+			'Turned $12,000 into $250,000 as a student',
+			'Co-founder of Hathersage Capital',
+			'Featured in "The New Market Wizards"',
+			'One of the most successful forex traders ever',
+			'Pioneer in institutional forex trading'
+		],
+		famousTrades: [
+			{
+				date: '1980s',
+				asset: 'Currency Pairs',
+				position: 'long',
+				outcome: 'Consistent Profits',
+				profitLoss: '+$300M/year',
+				description: 'Generated approximately $300 million per year for Salomon Brothers through forex trading.'
+			}
+		],
+		quotes: [
+			{ text: 'When you have a position, you put it on for a reason, and you\'ve got to keep it until the reason no longer exists.', source: 'The New Market Wizards' },
+			{ text: 'I don\'t think you can consistently be a winning trader if you\'re banking on being right more than 50% of the time.', source: 'Interview' }
+		],
+		books: [],
+		socialLinks: [
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Bill_Lipschutz' }
+		],
+		status: 'published'
+	},
+	{
+		name: 'Jim Rogers',
+		slug: 'jim-rogers',
+		photoUrl: null,
+		oneLiner: 'Co-founder of Quantum Fund with 4,200% Returns',
+		birthYear: 1942,
+		nationality: 'American',
+		tradingStyle: 'Macro & Commodities',
+		netWorth: '$300+ Million',
+		bio: `Jim Rogers is a legendary investor who co-founded the Quantum Fund with George Soros. The fund returned an astounding 4,200% over 10 years while the S&P 500 rose only 47%. Rogers retired at 37 and has since become famous for his global investment adventures.
+
+## The Quantum Fund
+
+Rogers and Soros founded the Quantum Fund in 1973. Their partnership produced one of the most successful hedge fund track records in history. Rogers handled the research while Soros executed the trades.
+
+## Global Adventures
+
+After retiring, Rogers embarked on two record-setting trips around the world—once by motorcycle and once by car—to research investment opportunities firsthand. These journeys resulted in bestselling books and unique investment insights.
+
+## Commodities Bull
+
+Rogers has been one of the most vocal advocates for commodities investing. He created the Rogers International Commodity Index and has consistently predicted major moves in agricultural and energy markets.`,
+		philosophy: `"I just wait until there is money lying in the corner, and all I have to do is go over there and pick it up. I do nothing in the meantime."`,
+		achievements: [
+			'Co-founded Quantum Fund with Soros',
+			'4,200% returns over 10 years',
+			'Retired at age 37',
+			'Created Rogers International Commodity Index',
+			'Two Guinness World Record trips',
+			'Bestselling author'
+		],
+		famousTrades: [
+			{
+				date: '1973-1980',
+				asset: 'Quantum Fund',
+				position: 'long',
+				outcome: 'Legendary Returns',
+				profitLoss: '+4,200%',
+				description: 'Co-managed Quantum Fund to extraordinary returns while S&P 500 gained only 47%.'
+			}
+		],
+		quotes: [
+			{ text: 'I just wait until there is money lying in the corner, and all I have to do is go over there and pick it up.', source: 'Interview' },
+			{ text: 'If you want to be rich, you must learn to be patient.', source: 'Investment Biker' }
+		],
+		books: [
+			{ title: 'Investment Biker', year: 1994, description: 'Around the world on a motorcycle' },
+			{ title: 'Adventure Capitalist', year: 2003, description: 'The ultimate road trip' },
+			{ title: 'Hot Commodities', year: 2004, description: 'How anyone can invest profitably in commodities' }
+		],
+		socialLinks: [
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Jim_Rogers' }
+		],
+		status: 'published'
+	},
+	{
+		name: 'John Paulson',
+		slug: 'john-paulson',
+		photoUrl: null,
+		oneLiner: 'Made $15 Billion Betting Against Subprime Mortgages',
+		birthYear: 1955,
+		nationality: 'American',
+		tradingStyle: 'Event-Driven & Macro',
+		netWorth: '$3+ Billion',
+		bio: `John Paulson made the greatest trade in financial history by betting against subprime mortgages before the 2008 financial crisis. His fund made $15 billion in profits, with Paulson personally earning $4 billion in a single year.
+
+## The Greatest Trade Ever
+
+In 2005-2006, Paulson recognized that the housing market was a bubble built on unsustainable subprime lending. He created a fund specifically to short subprime mortgage securities through credit default swaps.
+
+## Historic Profits
+
+When the housing market collapsed in 2007-2008, Paulson's bet paid off spectacularly. His funds gained $15 billion, making it the largest one-year profit in financial history. The trade was chronicled in Gregory Zuckerman's book "The Greatest Trade Ever."
+
+## Investment Philosophy
+
+Paulson's approach combines deep fundamental research with the patience to wait for asymmetric opportunities. He looks for situations where the downside is limited but the upside is enormous.`,
+		philosophy: `"Many investors make the mistake of buying high and selling low while the exact opposite is the right strategy."`,
+		achievements: [
+			'$15 billion profit from subprime short',
+			'$4 billion personal earnings in 2007',
+			'Subject of "The Greatest Trade Ever"',
+			'Founded Paulson & Co. in 1994',
+			'Peak AUM of $38 billion',
+			'One of the most successful macro trades ever'
+		],
+		famousTrades: [
+			{
+				date: '2007-2008',
+				asset: 'Subprime Mortgages (CDS)',
+				position: 'short',
+				outcome: 'Historic Profit',
+				profitLoss: '+$15 Billion',
+				description: 'Shorted subprime mortgage securities through credit default swaps, generating the largest single-year profit in hedge fund history.'
+			}
+		],
+		quotes: [
+			{ text: 'Many investors make the mistake of buying high and selling low while the exact opposite is the right strategy.', source: 'Interview' },
+			{ text: 'The key to success is to identify trends early and position yourself accordingly.', source: 'Conference' }
+		],
+		books: [],
+		socialLinks: [
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/John_Paulson' }
+		],
+		status: 'published'
+	},
+	{
+		name: 'Michael Marcus',
+		slug: 'michael-marcus',
+		photoUrl: null,
+		oneLiner: 'Turned $30,000 into $80 Million in 20 Years',
+		birthYear: 1949,
+		nationality: 'American',
+		tradingStyle: 'Commodities & Futures',
+		netWorth: '$100+ Million',
+		bio: `Michael Marcus is a legendary commodities trader who turned $30,000 into $80 million over a 20-year period. He was one of the original "Market Wizards" and mentored many successful traders including Bruce Kovner.
+
+## Early Career
+
+Marcus started trading while working as an analyst at a commodities research firm. His early years were marked by both spectacular gains and devastating losses, teaching him crucial lessons about risk management.
+
+## Commodities Corporation
+
+Marcus joined Commodities Corporation, a legendary trading firm that incubated many future trading stars. There, he developed his approach to trend following and position sizing.
+
+## Mentorship Legacy
+
+Beyond his own trading success, Marcus is known for mentoring Bruce Kovner, who went on to become one of the world's most successful macro traders. This mentorship chain demonstrates the importance of learning from experienced traders.`,
+		philosophy: `"Every trader has strengths and weaknesses. Some are good holders of winners but may hold their losers a little too long. Others may cut their losses well but sell their winners too quickly."`,
+		achievements: [
+			'Turned $30,000 into $80 million',
+			'Featured in original "Market Wizards"',
+			'Mentored Bruce Kovner',
+			'Pioneer at Commodities Corporation',
+			'20+ years of successful trading',
+			'Influential in commodities trading'
+		],
+		famousTrades: [
+			{
+				date: '1970s-1990s',
+				asset: 'Commodities',
+				position: 'long',
+				outcome: 'Exceptional Returns',
+				profitLoss: '+$80 Million',
+				description: 'Built $30,000 into $80 million through disciplined commodities trading over two decades.'
+			}
+		],
+		quotes: [
+			{ text: 'Every trader has strengths and weaknesses. Some are good holders of winners but may hold their losers a little too long.', source: 'Market Wizards' },
+			{ text: 'The best trades are the ones in which you have all three things going for you: fundamentals, technicals, and market tone.', source: 'Interview' }
+		],
+		books: [],
+		socialLinks: [
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Michael_Marcus_(trader)' }
+		],
+		status: 'published'
+	},
+	{
+		name: 'Andy Krieger',
+		slug: 'andy-krieger',
+		photoUrl: null,
+		oneLiner: 'Made $300 Million Shorting the New Zealand Dollar',
+		birthYear: 1956,
+		nationality: 'American',
+		tradingStyle: 'Forex & Macro',
+		netWorth: '$100+ Million',
+		bio: `Andy Krieger is famous for one of the most aggressive currency trades in history. In 1987, he shorted the New Zealand dollar with such size that his position exceeded New Zealand's entire money supply.
+
+## The Kiwi Trade
+
+After the 1987 stock market crash, Krieger identified the New Zealand dollar as overvalued. Working at Bankers Trust, he took a massive short position using options—reportedly worth more than New Zealand's entire money supply.
+
+## Legendary Profits
+
+The trade generated approximately $300 million in profits for Bankers Trust. Krieger's bonus of $3 million was considered inadequate given his contribution, leading him to leave the firm.
+
+## Trading Approach
+
+Krieger is known for his aggressive use of leverage and options to express macro views. His willingness to take enormous positions when conviction is high sets him apart from more conservative traders.`,
+		philosophy: `"When you see an opportunity, you have to be willing to bet big. The biggest mistake is not sizing up when you're right."`,
+		achievements: [
+			'$300 million profit on NZD short',
+			'Position exceeded NZ money supply',
+			'Worked at Bankers Trust and Soros Fund',
+			'Pioneer in currency options trading',
+			'One of the most aggressive forex trades ever',
+			'Featured in trading literature'
+		],
+		famousTrades: [
+			{
+				date: '1987',
+				asset: 'New Zealand Dollar',
+				position: 'short',
+				outcome: 'Massive Profit',
+				profitLoss: '+$300 Million',
+				description: 'Shorted the New Zealand dollar with a position larger than the country\'s entire money supply after the 1987 crash.'
+			}
+		],
+		quotes: [
+			{ text: 'When you see an opportunity, you have to be willing to bet big.', source: 'Interview' },
+			{ text: 'The currency markets are the most efficient way to express a macro view.', source: 'Trading Conference' }
+		],
+		books: [],
+		socialLinks: [
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Andy_Krieger' }
+		],
+		status: 'published'
+	},
+	{
+		name: 'Bruce Kovner',
+		slug: 'bruce-kovner',
+		photoUrl: null,
+		oneLiner: 'From Taxi Driver to Billionaire Macro Trader',
+		birthYear: 1945,
+		nationality: 'American',
+		tradingStyle: 'Macro & Forex',
+		netWorth: '$6.6 Billion',
+		bio: `Bruce Kovner went from driving a taxi to becoming one of the world's most successful macro traders. He founded Caxton Associates, which at its peak managed over $14 billion and generated average annual returns of 21% over 28 years.
+
+## Humble Beginnings
+
+Kovner was driving a taxi and taking odd jobs when he made his first trade—a soybean futures contract purchased with a $3,000 cash advance on his credit card. That trade eventually turned into $45,000.
+
+## Caxton Associates
+
+In 1983, Kovner founded Caxton Associates. The fund became one of the most successful macro hedge funds in history, known for its ability to profit in any market environment through currency, interest rate, and commodity trades.
+
+## Mentorship
+
+Kovner was mentored by Michael Marcus at Commodities Corporation. He has since become a mentor himself and is known for his analytical approach to global macro trading.`,
+		philosophy: `"Undertake each trade with a clear plan for getting out if you're wrong. The inability to deal with losses is the most common cause of trading failure."`,
+		achievements: [
+			'Founded Caxton Associates',
+			'21% average annual returns over 28 years',
+			'Peak AUM of $14 billion',
+			'Turned $3,000 into billions',
+			'Featured in "Market Wizards"',
+			'Major philanthropist'
+		],
+		famousTrades: [
+			{
+				date: '1977',
+				asset: 'Soybean Futures',
+				position: 'long',
+				outcome: 'First Big Win',
+				profitLoss: '+$45,000',
+				description: 'First trade using $3,000 credit card advance eventually grew to $45,000, launching his trading career.'
+			}
+		],
+		quotes: [
+			{ text: 'Undertake each trade with a clear plan for getting out if you\'re wrong.', source: 'Market Wizards' },
+			{ text: 'The inability to deal with losses is the most common cause of trading failure.', source: 'Interview' }
+		],
+		books: [],
+		socialLinks: [
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Bruce_Kovner' }
+		],
+		status: 'published'
+	},
+	{
+		name: 'Nick Leeson',
+		slug: 'nick-leeson',
+		photoUrl: null,
+		oneLiner: 'The Rogue Trader Who Broke Barings Bank',
+		birthYear: 1967,
+		nationality: 'British',
+		tradingStyle: 'Derivatives & Arbitrage',
+		netWorth: 'N/A',
+		bio: `Nick Leeson is the infamous trader whose unauthorized speculative trades caused the collapse of Barings Bank, Britain's oldest merchant bank. His story serves as a cautionary tale about risk management and oversight failures.
+
+## Rise at Barings
+
+Leeson joined Barings Bank and was sent to Singapore to manage arbitrage operations. Initially successful, he began hiding losses in a secret account numbered 88888.
+
+## The Collapse
+
+After the 1995 Kobe earthquake, Leeson's hidden losses spiraled out of control. His positions lost £827 million ($1.3 billion), exceeding Barings' entire capital and causing the 233-year-old bank to collapse.
+
+## Lessons Learned
+
+Leeson's story highlights the dangers of inadequate risk controls, the importance of separating trading from back-office functions, and how small losses can compound into catastrophic ones when hidden.`,
+		philosophy: `"I was gambling, not trading. The moment you start hiding losses, you've already lost."`,
+		achievements: [
+			'Cautionary tale in risk management',
+			'Subject of book and film "Rogue Trader"',
+			'Caused collapse of 233-year-old bank',
+			'£827 million in losses',
+			'Changed banking risk management globally',
+			'Now a speaker on risk and ethics'
+		],
+		famousTrades: [
+			{
+				date: '1995',
+				asset: 'Nikkei Futures',
+				position: 'long',
+				outcome: 'Catastrophic Loss',
+				profitLoss: '-£827 Million',
+				description: 'Unauthorized positions in Nikkei futures collapsed after the Kobe earthquake, destroying Barings Bank.'
+			}
+		],
+		quotes: [
+			{ text: 'I was gambling, not trading. The moment you start hiding losses, you\'ve already lost.', source: 'Rogue Trader' },
+			{ text: 'The physical act of hiding the losses was easy. Living with it was the hard part.', source: 'Interview' }
+		],
+		books: [
+			{ title: 'Rogue Trader', year: 1996, description: 'His account of the Barings collapse' }
+		],
+		socialLinks: [
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Nick_Leeson' }
+		],
+		status: 'published'
+	},
+	{
+		name: 'Bill Gross',
+		slug: 'bill-gross',
+		photoUrl: null,
+		oneLiner: 'The Bond King - Built PIMCO into $2 Trillion Giant',
+		birthYear: 1944,
+		nationality: 'American',
+		tradingStyle: 'Fixed Income & Bonds',
+		netWorth: '$1.5 Billion',
+		bio: `Bill Gross is known as "The Bond King" for his unparalleled success in fixed income investing. He co-founded PIMCO and built it into the world's largest bond fund manager with over $2 trillion in assets.
+
+## PIMCO Years
+
+Gross co-founded Pacific Investment Management Company (PIMCO) in 1971. Under his leadership, the PIMCO Total Return Fund became the world's largest mutual fund, and Gross became the most influential voice in bond markets.
+
+## Investment Approach
+
+Gross pioneered "total return" bond investing, which focuses on capital appreciation in addition to yield. His monthly investment outlooks became required reading for fixed income investors worldwide.
+
+## Later Career
+
+After leaving PIMCO in 2014, Gross joined Janus Henderson. He retired from active fund management in 2019, leaving behind a legacy as the most successful bond investor in history.`,
+		philosophy: `"Finding the best person or the best organization to invest your money is one of the most important financial decisions you'll ever make."`,
+		achievements: [
+			'Co-founded PIMCO',
+			'Built largest bond fund ($2T+ AUM)',
+			'Known as "The Bond King"',
+			'Pioneered total return investing',
+			'Morningstar Fixed Income Manager of Decade',
+			'Influential market commentator'
+		],
+		famousTrades: [
+			{
+				date: '2011',
+				asset: 'US Treasuries',
+				position: 'short',
+				outcome: 'Missed Rally',
+				profitLoss: 'Underperformed',
+				description: 'Famously bet against US Treasuries expecting rates to rise, but QE2 pushed bonds higher.'
+			}
+		],
+		quotes: [
+			{ text: 'Finding the best person or the best organization to invest your money is one of the most important financial decisions you\'ll ever make.', source: 'Investment Outlook' },
+			{ text: 'The bond market is far more important than the stock market.', source: 'Interview' }
+		],
+		books: [
+			{ title: 'Bill Gross on Investing', year: 1998, description: 'His approach to bond investing' }
+		],
+		socialLinks: [
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Bill_Gross' }
+		],
+		status: 'published'
+	},
+	{
+		name: 'Joe Lewis',
+		slug: 'joe-lewis',
+		photoUrl: null,
+		oneLiner: 'Partnered with Soros to Break the Bank of England',
+		birthYear: 1937,
+		nationality: 'British',
+		tradingStyle: 'Forex & Macro',
+		netWorth: '$6+ Billion',
+		bio: `Joe Lewis is a British businessman and currency trader who partnered with George Soros in the famous 1992 trade that broke the Bank of England. He built his fortune through currency trading and has since diversified into numerous businesses.
+
+## Black Wednesday
+
+In 1992, Lewis worked alongside George Soros to short the British pound. When the UK was forced to withdraw from the European Exchange Rate Mechanism, Lewis reportedly made over $1 billion in profits.
+
+## Business Empire
+
+Lewis has used his trading profits to build a diverse business empire including the Tavistock Group, which owns hotels, restaurants, and sports teams including Tottenham Hotspur Football Club.
+
+## Private Trader
+
+Unlike many famous traders, Lewis maintains an extremely low profile. He conducts most of his trading from his yacht and rarely gives interviews.`,
+		philosophy: `"Stay patient, stay private, and strike when the opportunity is overwhelming."`,
+		achievements: [
+			'Partnered with Soros on pound short',
+			'$1+ billion from Black Wednesday',
+			'Owner of Tottenham Hotspur',
+			'Built Tavistock Group empire',
+			'One of UK\'s wealthiest individuals',
+			'Successful currency trader for decades'
+		],
+		famousTrades: [
+			{
+				date: '1992',
+				asset: 'British Pound',
+				position: 'short',
+				outcome: 'Massive Profit',
+				profitLoss: '+$1 Billion',
+				description: 'Partnered with George Soros to short the British pound on Black Wednesday.'
+			}
+		],
+		quotes: [
+			{ text: 'Stay patient, stay private, and strike when the opportunity is overwhelming.', source: 'Attributed' },
+			{ text: 'The best trades are the ones where the risk-reward is so obvious that you have to act.', source: 'Interview' }
+		],
+		books: [],
+		socialLinks: [
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Joe_Lewis_(businessman)' }
+		],
+		status: 'published'
+	},
+	{
+		name: 'Michael Burry',
+		slug: 'michael-burry',
+		photoUrl: null,
+		oneLiner: 'The Big Short - Predicted the 2008 Housing Crash',
+		birthYear: 1971,
+		nationality: 'American',
+		tradingStyle: 'Value Investing & Macro',
+		netWorth: '$300+ Million',
+		bio: `Michael Burry is the hedge fund manager who famously predicted and profited from the 2008 subprime mortgage crisis. His story was chronicled in Michael Lewis's book "The Big Short" and the subsequent Academy Award-winning film.
+
+## Scion Capital
+
+Burry founded Scion Capital in 2000 after working as a physician. His deep-value investing approach and independent research led him to discover the housing bubble before almost anyone else.
+
+## The Big Short
+
+Starting in 2005, Burry began purchasing credit default swaps against subprime mortgage bonds. Despite pressure from investors to abandon the trade, he held firm. When the housing market collapsed, Scion Capital's returns exceeded 489%.
+
+## Unique Perspective
+
+Burry has Asperger's syndrome, which he credits for his ability to focus intensely on data and see patterns others miss. He continues to make contrarian calls that often prove prescient.`,
+		philosophy: `"I look for value wherever it can be found. I don't care what the crowd thinks."`,
+		achievements: [
+			'489% returns from subprime short',
+			'Subject of "The Big Short"',
+			'Founded Scion Capital',
+			'Predicted 2008 financial crisis',
+			'Pioneered CDS against mortgage bonds',
+			'Continues making prescient calls'
+		],
+		famousTrades: [
+			{
+				date: '2005-2008',
+				asset: 'Subprime Mortgage CDS',
+				position: 'short',
+				outcome: 'Legendary Profit',
+				profitLoss: '+489%',
+				description: 'Purchased credit default swaps against subprime mortgages years before the housing crash, generating extraordinary returns.'
+			}
+		],
+		quotes: [
+			{ text: 'I look for value wherever it can be found. I don\'t care what the crowd thinks.', source: 'Interview' },
+			{ text: 'The late 90s almost forced me to identify myself as a value investor.', source: 'Letter to Investors' }
+		],
+		books: [],
+		socialLinks: [
+			{ platform: 'Twitter', url: 'https://twitter.com/michaeljburry' },
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Michael_Burry' }
+		],
+		status: 'published'
+	},
+	{
+		name: 'Peter Schiff',
+		slug: 'peter-schiff',
+		photoUrl: null,
+		oneLiner: 'Predicted 2008 Crisis - Gold Bug & Austrian Economist',
+		birthYear: 1963,
+		nationality: 'American',
+		tradingStyle: 'Macro & Commodities',
+		netWorth: '$70+ Million',
+		bio: `Peter Schiff is an economist, financial commentator, and CEO of Euro Pacific Capital. He gained fame for accurately predicting the 2008 financial crisis and is known for his bearish views on the US dollar and bullish stance on gold.
+
+## Prescient Predictions
+
+Schiff became famous for his appearances on financial television in 2006-2007 where he predicted the housing bubble and subsequent financial crisis. His warnings were often mocked by other commentators who later proved wrong.
+
+## Investment Philosophy
+
+Schiff advocates for Austrian economics and believes in hard assets like gold and foreign stocks over US dollar-denominated assets. He has consistently warned about US debt levels and monetary policy.
+
+## Media Presence
+
+Through his podcast, books, and frequent media appearances, Schiff has become one of the most recognized voices in contrarian investing and sound money advocacy.`,
+		philosophy: `"The government can't give you anything it doesn't first take from someone else."`,
+		achievements: [
+			'Predicted 2008 financial crisis',
+			'CEO of Euro Pacific Capital',
+			'Bestselling author',
+			'Popular financial commentator',
+			'Advocate for sound money',
+			'Ran for US Senate in 2010'
+		],
+		famousTrades: [
+			{
+				date: '2006-2008',
+				asset: 'Gold & Foreign Stocks',
+				position: 'long',
+				outcome: 'Crisis Protection',
+				profitLoss: 'Outperformed',
+				description: 'Positioned clients in gold and foreign assets ahead of the 2008 crisis, protecting against dollar weakness.'
+			}
+		],
+		quotes: [
+			{ text: 'The government can\'t give you anything it doesn\'t first take from someone else.', source: 'The Peter Schiff Show' },
+			{ text: 'Gold is money. Everything else is credit.', source: 'Interview' }
+		],
+		books: [
+			{ title: 'Crash Proof', year: 2007, description: 'How to profit from the coming economic collapse' },
+			{ title: 'The Real Crash', year: 2012, description: 'America\'s coming bankruptcy' }
+		],
+		socialLinks: [
+			{ platform: 'Twitter', url: 'https://twitter.com/PeterSchiff' },
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Peter_Schiff' }
+		],
+		status: 'published'
+	},
+	{
+		name: 'Simon Cawkwell',
+		slug: 'simon-cawkwell',
+		photoUrl: null,
+		oneLiner: 'Evil Knievil - Britain\'s Most Famous Short Seller',
+		birthYear: 1946,
+		nationality: 'British',
+		tradingStyle: 'Short Selling',
+		netWorth: '$50+ Million',
+		bio: `Simon Cawkwell, known by his trading pseudonym "Evil Knievil," is Britain's most famous short seller. He has made millions by identifying overvalued and fraudulent companies, often facing legal threats and public criticism for his bearish calls.
+
+## The Evil Knievil Persona
+
+Cawkwell adopted the "Evil Knievil" moniker as a play on the famous stuntman's name. The persona reflects his willingness to take dangerous positions against popular stocks and face the wrath of company management.
+
+## Famous Shorts
+
+Cawkwell has successfully shorted numerous companies that later collapsed, including Northern Rock before the 2008 crisis. His research often uncovers accounting irregularities and business model flaws.
+
+## Controversial Figure
+
+Short sellers are often vilified, and Cawkwell has faced his share of criticism. However, he argues that short sellers perform a valuable service by identifying overvalued and fraudulent companies.`,
+		philosophy: `"The market is full of overvalued rubbish. My job is to find it and profit when reality catches up."`,
+		achievements: [
+			'Britain\'s most famous short seller',
+			'Shorted Northern Rock before collapse',
+			'Decades of successful short selling',
+			'Uncovered numerous frauds',
+			'Known as "Evil Knievil"',
+			'Influential market commentator'
+		],
+		famousTrades: [
+			{
+				date: '2007',
+				asset: 'Northern Rock',
+				position: 'short',
+				outcome: 'Major Profit',
+				profitLoss: 'Significant',
+				description: 'Shorted Northern Rock before its collapse and subsequent nationalization during the financial crisis.'
+			}
+		],
+		quotes: [
+			{ text: 'The market is full of overvalued rubbish. My job is to find it and profit when reality catches up.', source: 'Interview' },
+			{ text: 'Short sellers are the market\'s immune system.', source: 'Financial Times' }
+		],
+		books: [
+			{ title: 'Evil\'s Good: A Worse-Selling Book', year: 2012, description: 'His approach to short selling' }
+		],
+		socialLinks: [
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Simon_Cawkwell' }
+		],
+		status: 'published'
 	}
 ];

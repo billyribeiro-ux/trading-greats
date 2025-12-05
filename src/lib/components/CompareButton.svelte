@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Icon } from '$lib/components/icons';
-	import { comparison } from '$lib/stores/comparison';
+	import { comparison } from '$lib/stores/comparison.svelte';
 	import { cn } from '$lib/utils';
 	import { browser } from '$app/environment';
 

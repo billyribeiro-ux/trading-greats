@@ -1,7 +1,7 @@
 <script lang="ts">
 	import SEO from '$lib/components/SEO.svelte';
 	import { Icon } from '$lib/components/icons';
-	import { comparison } from '$lib/stores/comparison';
+	import { comparison } from '$lib/stores/comparison.svelte';
 	import { goto } from '$app/navigation';
 	import { browser } from '$app/environment';
 	import { cn } from '$lib/utils';

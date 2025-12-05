@@ -2,6 +2,42 @@
 @config '../tailwind.config.ts';
 
 /* ============================================================================
+   TAILWIND V4 CUSTOM THEME - Gold & Midnight Palette
+   ============================================================================ */
+@theme {
+	/* Gold palette */
+	--color-gold-50: #fefce8;
+	--color-gold-100: #fef9c3;
+	--color-gold-200: #fef08a;
+	--color-gold-300: #fde047;
+	--color-gold-400: #facc15;
+	--color-gold-500: #eab308;
+	--color-gold-600: #ca8a04;
+	--color-gold-700: #a16207;
+	--color-gold-800: #854d0e;
+	--color-gold-900: #713f12;
+	--color-gold-950: #422006;
+
+	/* Midnight palette */
+	--color-midnight-50: #f8fafc;
+	--color-midnight-100: #f1f5f9;
+	--color-midnight-200: #e2e8f0;
+	--color-midnight-300: #cbd5e1;
+	--color-midnight-400: #94a3b8;
+	--color-midnight-500: #64748b;
+	--color-midnight-600: #475569;
+	--color-midnight-700: #334155;
+	--color-midnight-800: #1e293b;
+	--color-midnight-900: #0f172a;
+	--color-midnight-950: #020617;
+
+	/* Typography */
+	--font-display: 'Playfair Display', Georgia, serif;
+	--font-sans: 'DM Sans', system-ui, sans-serif;
+	--font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* ============================================================================
    LIGHT MODE THEME OVERRIDES (Dec 2025 Best Practice)
    Uses CSS class-based theming for seamless theme switching
    Default: dark mode (site's primary theme)

@@ -8,7 +8,7 @@
 	import NewsletterPopup from '$lib/components/NewsletterPopup.svelte';
 	import { PUBLIC_SITE_NAME } from '$env/static/public';
 	import { onNavigate } from '$app/navigation';
-	import { theme } from '$lib/stores/theme';
+	import { theme } from '$lib/stores/theme.svelte';
 
 	let { children } = $props();
 

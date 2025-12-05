@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { theme } from '$lib/stores/theme';
+	import { theme } from '$lib/stores/theme.svelte';
 	import { Icon } from '$lib/components/icons';
 	import { cn } from '$lib/utils';
 
