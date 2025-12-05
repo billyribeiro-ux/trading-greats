@@ -2,6 +2,7 @@
 	import SEO from '$lib/components/SEO.svelte';
 	import JsonLd from '$lib/components/JsonLd.svelte';
 	import TraderCard from '$lib/components/TraderCard.svelte';
+	import TraderArticleCard from '$lib/components/TraderArticleCard.svelte';
 	import { PUBLIC_SITE_URL } from '$env/static/public';
 	import { parse } from 'marked';
 	import { Icon } from '$lib/components/icons';
@@ -13,6 +14,7 @@
 	let { data }: { data: PageData } = $props();
 	const trader = $derived(data.trader);
 	const relatedTraders = $derived(data.relatedTraders);
+	const articles = $derived(data.articles);
 
 	const breadcrumbs = $derived([
 		{ name: 'Home', url: PUBLIC_SITE_URL },
@@ -243,6 +245,30 @@
 										{/if}
 									</div>
 								</div>
+							{/each}
+						</div>
+					</section>
+				{/if}
+
+				<!-- Articles Section - MOBILE-FIRST -->
+				{#if articles && articles.length > 0}
+					<section class="pt-8 sm:pt-10 lg:pt-12 border-t border-white/5">
+						<div class="flex items-center justify-between mb-4 sm:mb-6 lg:mb-8">
+							<h2 class="flex items-center gap-2 sm:gap-3 font-display text-lg sm:text-xl lg:text-2xl font-bold text-white">
+								<Icon name="book-open" class="h-5 w-5 sm:h-6 sm:w-6 text-gold-500" />
+								Latest Articles
+							</h2>
+							<a
+								href="/traders/{trader.slug}/articles"
+								class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-gold-400 hover:text-gold-300 transition-colors"
+							>
+								View All
+								<Icon name="arrow-right" class="h-3.5 w-3.5" />
+							</a>
+						</div>
+						<div class="grid gap-3 sm:gap-4 lg:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+							{#each articles as article, i}
+								<TraderArticleCard {article} {trader} variant="compact" />
 							{/each}
 						</div>
 					</section>

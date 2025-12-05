@@ -134,7 +134,12 @@ export const blogPosts = sqliteTable('blog_posts', {
 	seoDescription: text('seo_description'),
 	ogImage: text('og_image'),
 
-	// Related content
+	// Primary trader association (for trader-specific articles)
+	// Dec 2025: Denormalized slug for efficient route matching without joins
+	traderId: text('trader_id'), // Foreign key to traders table (nullable for general blog posts)
+	traderSlug: text('trader_slug'), // Denormalized for /traders/[slug]/articles/[articleSlug] routes
+
+	// Related content (for articles mentioning multiple traders)
 	relatedTraderIds: text('related_trader_ids', { mode: 'json' }).$type<string[]>(),
 	relatedPostIds: text('related_post_ids', { mode: 'json' }).$type<string[]>(),
 

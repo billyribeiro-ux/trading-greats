@@ -1,20 +1,21 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import type { Trader } from '$lib/server/schema';
+	import type { Trader, BlogPost } from '$lib/server/schema';
 
 	// Default values that can be overridden by environment variables
 	const SITE_NAME = 'Trading Greats';
 	const SITE_URL = $derived($page.url.origin || 'https://tradinggreats.com');
 
-	type SchemaType = 'WebSite' | 'Person' | 'BreadcrumbList' | 'Article';
+	type SchemaType = 'WebSite' | 'Person' | 'BreadcrumbList' | 'Article' | 'TraderArticle';
 
 	interface Props {
 		type: SchemaType;
 		trader?: Trader;
+		article?: BlogPost;
 		breadcrumbs?: { name: string; url: string }[];
 	}
 
-	let { type, trader, breadcrumbs }: Props = $props();
+	let { type, trader, article, breadcrumbs }: Props = $props();
 
 	function generateSchema() {
 		switch (type) {
@@ -84,6 +85,52 @@
 					mainEntityOfPage: {
 						'@type': 'WebPage',
 						'@id': `${SITE_URL}/traders/${trader.slug}`
+					}
+				};
+
+			case 'TraderArticle':
+				// Dec 2025: Enhanced article schema with trader as subject
+				if (!article || !trader) return null;
+				return {
+					'@context': 'https://schema.org',
+					'@type': 'Article',
+					headline: article.title,
+					description: article.seoDescription || article.excerpt || '',
+					image: article.ogImage || article.heroImage || trader.photoUrl,
+					datePublished: article.publishedAt || new Date().toISOString(),
+					dateModified: article.updatedAt || article.publishedAt || new Date().toISOString(),
+					author: {
+						'@type': 'Organization',
+						name: SITE_NAME
+					},
+					publisher: {
+						'@type': 'Organization',
+						name: SITE_NAME,
+						url: SITE_URL,
+						logo: {
+							'@type': 'ImageObject',
+							url: `${SITE_URL}/favicon.svg`
+						}
+					},
+					mainEntityOfPage: {
+						'@type': 'WebPage',
+						'@id': `${SITE_URL}/traders/${trader.slug}/articles/${article.slug}`
+					},
+					// Link to trader as the subject of the article
+					about: {
+						'@type': 'Person',
+						name: trader.name,
+						url: `${SITE_URL}/traders/${trader.slug}`,
+						image: trader.photoUrl,
+						jobTitle: trader.tradingStyle ? `${trader.tradingStyle} Trader` : 'Trader',
+						knowsAbout: ['Trading', 'Financial Markets', trader.tradingStyle].filter(Boolean)
+					},
+					articleSection: article.category || 'Trading',
+					keywords: article.tags?.join(', ') || trader.tradingStyle || 'trading',
+					// Dec 2025: Voice search optimization
+					speakable: {
+						'@type': 'SpeakableSpecification',
+						cssSelector: ['h1', '.article-excerpt', '.article-content p:first-of-type']
 					}
 				};
 

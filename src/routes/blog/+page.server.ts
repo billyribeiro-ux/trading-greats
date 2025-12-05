@@ -22,6 +22,9 @@ function seedToPost(post: typeof seedBlogPosts[0], id: string): BlogPost {
 		seoTitle: post.seoTitle ?? null,
 		seoDescription: post.seoDescription ?? null,
 		ogImage: post.ogImage ?? null,
+		// Dec 2025: Trader association fields
+		traderId: post.traderId ?? null,
+		traderSlug: post.traderSlug ?? null,
 		relatedTraderIds: post.relatedTraderIds ?? null,
 		relatedPostIds: post.relatedPostIds ?? null,
 		status: post.status ?? 'published',
