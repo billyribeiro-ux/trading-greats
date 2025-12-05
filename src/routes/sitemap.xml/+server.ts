@@ -1,14 +1,16 @@
 import type { RequestHandler } from './$types';
 import { seedTraders } from '$lib/server/seed';
+import { seedBlogPosts } from '$lib/server/seedBlog';
 
 const PUBLIC_SITE_URL = 'https://tradinggreats.com';
 
-// Google Nov 2025: Enhanced sitemap with image and news extensions
+// Google Dec 2025: Enhanced sitemap with image extensions and trader articles
 export const GET: RequestHandler = async () => {
 	// For now, using seed data. In production:
 	// const traders = await db.select().from(traders).where(eq(traders.status, 'published'));
-	
+
 	const traders = seedTraders.filter(t => t.status === 'published');
+	const blogPosts = seedBlogPosts.filter(p => p.status === 'published');
 	const now = new Date().toISOString().split('T')[0];
 
 	interface SitemapPage {
@@ -22,6 +24,7 @@ export const GET: RequestHandler = async () => {
 	const staticPages: SitemapPage[] = [
 		{ url: '', priority: '1.0', changefreq: 'daily', lastmod: now },
 		{ url: '/traders', priority: '0.9', changefreq: 'daily', lastmod: now },
+		{ url: '/blog', priority: '0.8', changefreq: 'daily', lastmod: now },
 		{ url: '/about', priority: '0.7', changefreq: 'monthly' },
 		{ url: '/privacy', priority: '0.3', changefreq: 'yearly' },
 		{ url: '/terms', priority: '0.3', changefreq: 'yearly' }
@@ -35,7 +38,41 @@ export const GET: RequestHandler = async () => {
 		image: trader.photoUrl ? { url: trader.photoUrl, title: trader.name } : undefined
 	}));
 
-	const allPages: SitemapPage[] = [...staticPages, ...traderPages];
+	// Trader article list pages
+	const traderArticleListPages: SitemapPage[] = traders.map(trader => ({
+		url: `/traders/${trader.slug}/articles`,
+		priority: '0.7',
+		changefreq: 'weekly',
+		lastmod: now
+	}));
+
+	// General blog post pages
+	const blogPages: SitemapPage[] = blogPosts.map(post => ({
+		url: `/blog/${post.slug}`,
+		priority: '0.7',
+		changefreq: 'monthly',
+		lastmod: post.updatedAt?.split('T')[0] || post.publishedAt?.split('T')[0] || now,
+		image: post.heroImage ? { url: post.heroImage, title: post.title } : undefined
+	}));
+
+	// Trader-specific article pages (for articles associated with traders)
+	const traderArticlePages: SitemapPage[] = blogPosts
+		.filter(post => post.traderSlug)
+		.map(post => ({
+			url: `/traders/${post.traderSlug}/articles/${post.slug}`,
+			priority: '0.75',
+			changefreq: 'monthly',
+			lastmod: post.updatedAt?.split('T')[0] || post.publishedAt?.split('T')[0] || now,
+			image: post.heroImage ? { url: post.heroImage, title: post.title } : undefined
+		}));
+
+	const allPages: SitemapPage[] = [
+		...staticPages,
+		...traderPages,
+		...traderArticleListPages,
+		...blogPages,
+		...traderArticlePages
+	];
 
 	// Google Nov 2025: Include image sitemap extension for better image indexing
 	const sitemap = `<?xml version="1.0" encoding="UTF-8"?>

@@ -1,12 +1,23 @@
 import type { PageServerLoad } from './$types';
 import { error } from '@sveltejs/kit';
+import { db } from '$lib/server/db';
+import { blogPosts, traders, type Trader, type BlogPost } from '$lib/server/schema';
+import { eq, and, desc } from 'drizzle-orm';
 import { sanity } from '$lib/sanity';
 import { seedTraders } from '$lib/server/seed';
 import { seedBlogPosts } from '$lib/server/seedBlog';
-import { db } from '$lib/server/db';
-import { blogPosts, type Trader, type NewTrader, type BlogPost } from '$lib/server/schema';
-import { eq, and, desc } from 'drizzle-orm';
+import type { NewTrader } from '$lib/server/schema';
 import { PUBLIC_SANITY_PROJECT_ID } from '$env/static/public';
+
+// ============================================================================
+// Dec 2025 SvelteKit: ISR Configuration for Vercel
+// Revalidate every 30 minutes for article list pages
+// ============================================================================
+export const config = {
+	isr: {
+		expiration: 1800 // 30 minutes
+	}
+};
 
 function seedToTrader(t: NewTrader, id: string): Trader {
 	return {
@@ -36,15 +47,14 @@ function seedToTrader(t: NewTrader, id: string): Trader {
 export const load: PageServerLoad = async ({ params }) => {
 	const { slug } = params;
 	let trader: Trader | null = null;
-	let relatedTraders: Trader[] = [];
 	let articles: BlogPost[] = [];
 
+	// ============================================================================
+	// 1. Fetch trader data (from Sanity or seed data)
+	// ============================================================================
 	if (PUBLIC_SANITY_PROJECT_ID && PUBLIC_SANITY_PROJECT_ID !== 'your-project-id') {
 		try {
 			trader = await sanity.getTraderBySlug(slug);
-			if (trader && trader.tradingStyle) {
-				relatedTraders = await sanity.getRelatedTraders(trader.tradingStyle, slug);
-			}
 		} catch (err) {
 			console.error('Sanity fetch failed, falling back to seed data:', err);
 			trader = null;
@@ -58,18 +68,17 @@ export const load: PageServerLoad = async ({ params }) => {
 			throw error(404, 'Trader not found');
 		}
 		trader = seedToTrader(traderData, `trader-${slug}`);
-		relatedTraders = seedTraders
-			.filter(t => t.slug !== slug && t.tradingStyle === trader!.tradingStyle)
-			.slice(0, 3)
-			.map((t, i) => seedToTrader(t, `trader-related-${i}`));
 	}
 
 	if (!trader) {
 		throw error(404, 'Trader not found');
 	}
 
-	// Fetch articles for this trader
+	// ============================================================================
+	// 2. Fetch articles for this trader
+	// ============================================================================
 	try {
+		// Try database first
 		const dbArticles = await db
 			.select()
 			.from(blogPosts)
@@ -79,8 +88,7 @@ export const load: PageServerLoad = async ({ params }) => {
 					eq(blogPosts.status, 'published')
 				)
 			)
-			.orderBy(desc(blogPosts.publishedAt))
-			.limit(3);
+			.orderBy(desc(blogPosts.publishedAt));
 
 		if (dbArticles.length > 0) {
 			articles = dbArticles;
@@ -89,33 +97,53 @@ export const load: PageServerLoad = async ({ params }) => {
 		console.error('DB fetch failed for trader articles:', err);
 	}
 
-	// Fallback: Use seed blog posts relevant to this trader
+	// Fallback: Use seed blog posts that mention this trader (via relatedTraderIds or matching trading style)
 	if (articles.length === 0) {
 		const traderName = trader.name.toLowerCase();
 		const tradingStyle = trader.tradingStyle?.toLowerCase() || '';
 
+		// Filter seed posts that are relevant to this trader
 		articles = seedBlogPosts
 			.filter(post => {
+				// Check if post mentions trader by name in title, content, or tags
 				const titleMatch = post.title?.toLowerCase().includes(traderName.split(' ')[1] || traderName);
 				const contentMatch = post.content?.toLowerCase().includes(traderName);
 				const styleMatch = tradingStyle && (
 					post.tags?.some(tag => tag.toLowerCase().includes(tradingStyle)) ||
 					post.content?.toLowerCase().includes(tradingStyle)
 				);
-				return post.status === 'published' && (titleMatch || contentMatch || styleMatch);
+				const categoryMatch = post.category === 'biography' || post.category === 'strategy';
+
+				return post.status === 'published' && (titleMatch || contentMatch || styleMatch || categoryMatch);
 			})
-			.slice(0, 3)
+			.slice(0, 6)
 			.map((post, index) => ({
 				...post,
 				id: post.id || `seed-article-${index}`,
-				traderSlug: slug,
+				traderSlug: slug, // Associate with this trader for URL generation
 				traderId: trader!.id
 			})) as BlogPost[];
 	}
 
+	// ============================================================================
+	// 3. SEO Metadata
+	// ============================================================================
+	const meta = {
+		title: `${trader.name} Articles - Trading Insights & Analysis`,
+		description: `Read in-depth articles about ${trader.name}'s trading strategies, philosophy, and market insights. Learn from ${trader.tradingStyle || 'legendary'} trading wisdom.`,
+		keywords: [
+			trader.name,
+			trader.tradingStyle,
+			'trading articles',
+			'trading strategy',
+			'market analysis',
+			'trading education'
+		].filter(Boolean) as string[]
+	};
+
 	return {
 		trader,
-		relatedTraders,
-		articles
+		articles,
+		meta
 	};
 };
