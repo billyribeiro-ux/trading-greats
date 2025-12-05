@@ -80,66 +80,96 @@ Today, Mark is dedicated to teaching his methodology through his books, workshop
 		name: 'Billy Ribeiro',
 		slug: 'billy-ribeiro',
 		photoUrl: null,
-		oneLiner: 'Options Trading Educator & Price Action Specialist',
+		oneLiner: 'Master Price Action, Options, and Market Structure Trader',
 		birthYear: 1985,
 		nationality: 'American',
-		tradingStyle: 'Options & Price Action',
-		netWorth: '$10+ Million',
-		bio: `Billy Ribeiro is a renowned options trader and educator who has built a massive following through his transparent approach to trading and teaching. Known for his focus on price action and options strategies, Billy has helped thousands of traders understand the mechanics of profitable trading.
+		tradingStyle: 'Price Action & Options',
+		netWorth: 'Private',
+		bio: `Billy Ribeiro is a stock and options trader known for his exceptional command of price action and his ability to call major market turning points with unusual precision. He was personally mentored by the late Wall Street legend Mark McGoldrick, the former Goldman Sachs powerhouse investor widely known as "GoldFinger". McGoldrick referred to Billy as "the future of trading", a description that stayed with traders who watched Billy work.
 
-## Journey to Trading
+## The Move Prior to The Move™
 
-Billy's path to trading wasn't conventional. Coming from a humble background, he discovered the markets as a way to create financial freedom. After years of trial and error, he developed a systematic approach to reading price action and executing options trades.
+Billy is the creator of The Move Prior to The Move™, a proprietary system built around anticipating where price is going before the majority of market participants see it. His framework rests on three pillars: deep macro understanding of economic cycles and capital flows, refined micro reading of intraday structure and liquidity, and a disciplined focus on pure price action on the chart. He applies the same principles across all timeframes, from one minute to monthly, so that every decision is grounded in both the broader environment and the immediate tape.
+
+## Options Mastery
+
+Although he is widely respected for his index and equity trading, Billy is equally known as a high level options trader. Rather than simply using textbook strategies, he studies existing options structures and then systematically tweaks them into his own versions. According to traders who have worked with him, the result is a set of highly specialized, tightly controlled options plays that can be extremely efficient when used within his rules and market context. This blend of precise directional read and carefully engineered options structure became a hallmark of his style.
 
 ## Trading Philosophy
 
-What sets Billy apart is his emphasis on:
+Billy's philosophy is simple and consistent. He is known for saying, "I trade the charts and not the noise" and "I do not watch the news, I watch the charts". He often reminds traders, "I do not use indicators, I use my system" and "I buy into weakness and sell into strength". These statements reflect his belief that price and structure tell the real story long before headlines or popular narratives catch up.
 
-- **Price Action Mastery**: Reading the raw story that charts tell
-- **Options Strategy**: Using options for defined risk and leveraged returns
-- **Risk Management**: Never risking more than you can afford to lose
-- **Consistency Over Home Runs**: Building wealth through repeatable setups
+## Historic Market Calls
 
-## Educational Impact
+During the Covid crash, Billy publicly called both the top and the bottom to remarkably precise levels. He later repeated this in the 2022 bear market, again identifying both the top and the bottom in advance. These calls were made live, in real time, and became defining reference points for traders who followed him. For many who watched, they were a clear demonstration of how his macro view and micro execution fit together.
 
-Billy has become one of the most influential trading educators of his generation. His straightforward teaching style breaks down complex concepts into actionable strategies. He's particularly known for his work with:
+## The OXY Trade
 
-- SPY and QQQ options trading
-- 0DTE (zero days to expiration) strategies
-- Support and resistance trading
-- Volume analysis
+Billy's legend grew even further after a widely discussed trade in 2022 on Occidental Petroleum (OXY). Around the time that Warren Buffett was building a large long position in the stock, Billy had already taken the opposite side, going short through put options only minutes before Buffett's buying activity became known. According to former colleagues, Billy did not know about Buffett's position at the time. He built the trade purely from what he saw in the chart and the surrounding market context. Some of those colleagues questioned his decision to short what they viewed as a "Buffett name". Overnight, that put position returned more than 600 percent. When asked how he had the conviction to take that trade, Billy gave a simple answer that he has repeated many times: "I trade the charts, not the news."
 
-## Community Building
+## Institutional Work
 
-Beyond trading, Billy has built a thriving community of traders who support each other's growth. His live trading sessions and real-time analysis have set a new standard for transparency in trading education.`,
-		philosophy: `"Trade what you see, not what you think." Billy emphasizes that the chart tells you everything you need to know if you learn to read it properly. He believes in keeping strategies simple, managing risk religiously, and focusing on high-probability setups rather than predictions.`,
+Billy has also spent time working inside an institution. According to former colleagues, he did not go there to learn a ready made system. Instead, he quickly became the one calling levels in advance, often to the penny, and sharing limited pieces of his own approach. He helped teams there design and develop algorithmic strategies that were partially informed by concepts from his framework, but he never revealed his full process or the complete structure of The Move Prior to The Move™. The core of his system has remained his own private edge.
+
+## Industry Recognition
+
+Stories of his trades and live calls moved through prop firms, trading desks, and private trader networks. They helped establish Billy in the minds of many professionals as one of the most gifted price action, options, and market structure traders of his generation. In the period that followed, he drew interest from large banks, institutions, and hedge funds that wanted to bring him in. Billy declined those offers and chose to remain independent, focused on refining his own system rather than stepping fully into the institutional spotlight.
+
+## Simpler Trading
+
+Billy also made a significant impact during a stint as a guest trader at Simpler Trading. He joined at a time when many traders there were struggling with heavy drawdowns and long sequences of losing trades. Over roughly four months, he executed more than 950 trades, including day trades, swing trades, and scalps, while maintaining an approximate 98.7 percent win rate using his Move Prior to The Move™ framework. He consistently started from the macro backdrop and then drilled down into micro structure for execution. Beyond the statistics, traders noted his ability to explain complex macro drivers, micro structure, options positioning, and price behavior in simple, practical language that made the market feel understandable again.
+
+## Legacy
+
+Among traders who witnessed him call levels with near tick precision, align macro and micro context, engineer options structures around those levels, manage risk in real time, and consistently anticipate the next move, Billy Ribeiro is often spoken of as the best trader they have ever seen. That reputation has grown quietly and organically, built on live calls and actual trades rather than marketing or public promotion.
+
+In recent years, Billy has stepped away from the public eye and keeps a very low profile. He is not active on social media, and several profiles that claim to be him have been confirmed as fake. The last widely shared reports suggested that he was working on launching his own hedge fund. As of now, there are no official courses, no official website, and no verified public offerings under his name.
+
+For many serious market participants, Billy Ribeiro represents a rare combination of macro insight, micro precision, price action clarity, and engineered options strategy. He is regarded by those who know his work as one of the greatest traders they have encountered in their careers.`,
+		philosophy: `"I trade the charts and not the noise." Billy believes that price and structure tell the real story long before headlines or popular narratives catch up. His framework rests on three pillars: deep macro understanding, refined micro reading, and disciplined focus on pure price action.`,
 		achievements: [
-			'Built one of the largest options trading communities',
-			'Pioneered accessible 0DTE options education',
-			'Thousands of students trained worldwide',
-			'Consistent documented trading results',
-			'Innovative approach to price action trading'
+			'Creator of The Move Prior to The Move™ system',
+			'Mentored by Goldman Sachs legend Mark McGoldrick "GoldFinger"',
+			'Called Covid crash top and bottom with precision',
+			'Called 2022 bear market top and bottom in advance',
+			'98.7% win rate over 950+ trades at Simpler Trading',
+			'600%+ overnight return on OXY put trade',
+			'Developed algorithmic strategies for institutional teams'
 		],
 		famousTrades: [
 			{
-				date: '2023',
-				asset: 'SPY 0DTE Options',
-				position: 'long',
-				outcome: 'Documented Win',
-				profitLoss: '+200%+',
-				description: 'Multiple documented 0DTE trades using support/resistance levels and volume analysis.'
+				date: '2022',
+				asset: 'Occidental Petroleum (OXY)',
+				position: 'short',
+				outcome: 'Legendary Win',
+				profitLoss: '+600%',
+				description: 'Shorted OXY through put options minutes before Buffett buying became known, purely from chart analysis. Position returned over 600% overnight.'
+			},
+			{
+				date: '2020',
+				asset: 'S&P 500 / Market Indices',
+				position: 'short',
+				outcome: 'Historic Call',
+				profitLoss: 'Precise Levels',
+				description: 'Publicly called both the Covid crash top and bottom to remarkably precise levels, live and in real time.'
+			},
+			{
+				date: '2022',
+				asset: 'S&P 500 / Market Indices',
+				position: 'short',
+				outcome: 'Historic Call',
+				profitLoss: 'Precise Levels',
+				description: 'Called both the 2022 bear market top and bottom in advance, again with remarkable precision.'
 			}
 		],
 		quotes: [
-			{ text: 'Trade what you see, not what you think.', source: 'Trading Room' },
-			{ text: 'The market will always tell you what to do. You just have to listen.', source: 'Educational Content' },
-			{ text: 'Risk management is not optional. It is the foundation of everything.', source: 'Course Material' }
+			{ text: 'I trade the charts and not the noise.', source: 'Trading Philosophy' },
+			{ text: 'I do not watch the news, I watch the charts.', source: 'Trading Philosophy' },
+			{ text: 'I do not use indicators, I use my system.', source: 'Trading Philosophy' },
+			{ text: 'I buy into weakness and sell into strength.', source: 'Trading Philosophy' }
 		],
 		books: [],
-		socialLinks: [
-			{ platform: 'YouTube', url: 'https://youtube.com/@billyribeiro' },
-			{ platform: 'Twitter', url: 'https://twitter.com/billyribeiro' }
-		],
+		socialLinks: [],
 		status: 'published'
 	},
 	{

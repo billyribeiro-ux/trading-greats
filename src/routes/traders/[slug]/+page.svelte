@@ -102,15 +102,39 @@
 		<div class="absolute top-[20%] left-[-10%] h-[200px] w-[200px] sm:h-[300px] sm:w-[300px] lg:h-[400px] lg:w-[400px] rounded-full bg-blue-500/5 blur-[80px] sm:blur-[100px]"></div>
 	</div>
 
-	<div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-32">
-		<!-- Breadcrumbs - MOBILE-FIRST -->
-		<nav class="mb-6 sm:mb-8 flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-midnight-400 flex-wrap">
-			<a href="/" class="hover:text-gold-400 transition-colors">Home</a>
-			<Icon name="chevron-right" class="h-3 w-3 sm:h-4 sm:w-4" />
-			<a href="/traders" class="hover:text-gold-400 transition-colors">Traders</a>
-			<Icon name="chevron-right" class="h-3 w-3 sm:h-4 sm:w-4" />
-			<span class="text-white font-medium">{trader.name}</span>
-		</nav>
+	<div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 lg:pt-16">
+		<!-- Hero Header Section -->
+		<header class="mb-12 sm:mb-16 lg:mb-20">
+			<div class="flex flex-col items-center text-center">
+				<h1 class="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-4 sm:mb-6">
+					{trader.name}
+				</h1>
+				<p class="text-lg sm:text-xl lg:text-2xl text-midnight-200 leading-relaxed mb-6 sm:mb-8 max-w-3xl">
+					{trader.oneLiner}
+				</p>
+				<div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+					{#if trader.tradingStyle}
+						<div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-gold-500/10 border border-gold-500/20">
+							<span class="h-1.5 w-1.5 rounded-full bg-gold-500 animate-pulse"></span>
+							<span class="text-sm font-medium text-gold-400">{trader.tradingStyle}</span>
+						</div>
+					{/if}
+					{#if trader.netWorth}
+						<div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-midnight-800/50 border border-white/5">
+							<Icon name="trending-up" class="h-4 w-4 text-green-400" />
+							<span class="text-sm font-medium text-white">{trader.netWorth}</span>
+						</div>
+					{/if}
+					{#if trader.nationality}
+						<div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-midnight-800/50 border border-white/5">
+							<Icon name="globe" class="h-4 w-4 text-blue-400" />
+							<span class="text-sm font-medium text-white">{trader.nationality}</span>
+						</div>
+					{/if}
+				</div>
+			</div>
+			<div class="mt-8 sm:mt-10 h-px bg-gradient-to-r from-transparent via-gold-500/30 to-transparent"></div>
+		</header>
 
 		<!-- MOBILE-FIRST: Stack on mobile, 2-column on desktop -->
 		<div class="grid gap-8 sm:gap-10 lg:gap-12 lg:grid-cols-12">

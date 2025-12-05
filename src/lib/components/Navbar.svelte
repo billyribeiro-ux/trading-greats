@@ -6,6 +6,7 @@
 	import { fade, fly, scale } from 'svelte/transition';
 	import { cubicOut, backOut } from 'svelte/easing';
 	import ThemeToggle from './ThemeToggle.svelte';
+	import SearchModal from './SearchModal.svelte';
 
 	// ============================================================================
 	// STATE
@@ -13,6 +14,7 @@
 	
 	let mobileMenuOpen = $state(false);
 	let scrolled = $state(false);
+	let searchOpen = $state(false);
 	let menuButtonRef = $state<HTMLButtonElement | undefined>(undefined);
 	let mobileNavRefs = $state<(HTMLAnchorElement | undefined)[]>([]);
 
@@ -93,9 +95,16 @@
 		if (!browser) return;
 
 		const handleKeydown = (event: KeyboardEvent): void => {
+			// Close mobile menu on Escape
 			if (event.key === 'Escape' && mobileMenuOpen) {
 				event.preventDefault();
 				closeMenu();
+			}
+			
+			// Open search with Cmd/Ctrl + K (Apple style)
+			if ((event.metaKey || event.ctrlKey) && event.key === 'k') {
+				event.preventDefault();
+				searchOpen = true;
 			}
 		};
 
@@ -238,20 +247,24 @@
 			<button
 				type="button"
 				class={cn(
-					'group flex h-11 w-11 items-center justify-center rounded-full', /* MOBILE-FIRST: 44px touch target */
+					'group relative flex h-11 items-center justify-center rounded-full px-3', /* MOBILE-FIRST: 44px touch target */
 					'text-midnight-400 outline-none ring-gold-500/50',
 					'transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]',
 					'hover:bg-white/5 hover:text-white',
 					'focus-visible:ring-2',
 					'active:scale-95 active:bg-white/10' /* MOBILE-FIRST: Touch feedback */
 				)}
-				aria-label="Search traders"
+				aria-label="Search traders (⌘K)"
+				onclick={() => { searchOpen = true; }}
 			>
 				<Icon 
 					name="search"
 					class="h-5 w-5 transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:scale-110" 
 					strokeWidth={2}
 				/>
+				<kbd class="ml-2 hidden lg:inline-flex h-5 items-center justify-center rounded bg-white/10 px-1.5 text-[10px] font-medium text-midnight-400 group-hover:bg-white/15 group-hover:text-midnight-300">
+					⌘K
+				</kbd>
 			</button>
 
 			<!-- Desktop CTA with shimmer -->
@@ -384,3 +397,6 @@
 
 <!-- Spacer - MOBILE-FIRST: Match header height -->
 <div class="h-[68px] sm:h-[72px]" aria-hidden="true"></div>
+
+<!-- Search Modal -->
+<SearchModal bind:open={searchOpen} onClose={() => { searchOpen = false; }} />
