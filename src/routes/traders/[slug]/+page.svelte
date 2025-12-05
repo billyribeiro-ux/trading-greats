@@ -125,6 +125,9 @@
 								alt={trader.name}
 								class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
 								style:view-transition-name="trader-image-{trader.slug}"
+								loading="eager"
+								fetchpriority="high"
+								decoding="async"
 							/>
 							<div class="absolute inset-0 bg-gradient-to-t from-midnight-950 via-transparent to-transparent opacity-60"></div>
 						</div>

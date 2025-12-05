@@ -91,7 +91,9 @@
 					'md:group-hover:scale-105',
 					imageLoaded ? 'opacity-100' : 'opacity-0'
 				)}
-				loading="lazy"
+				loading={index === 0 ? 'eager' : 'lazy'}
+				fetchpriority={index === 0 ? 'high' : 'auto'}
+				decoding="async"
 				onload={() => imageLoaded = true}
 				onerror={() => imageError = true}
 			/>

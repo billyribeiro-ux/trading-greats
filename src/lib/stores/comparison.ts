@@ -18,8 +18,8 @@ function loadComparison(): string[] {
 			const parsed = JSON.parse(stored);
 			return Array.isArray(parsed) ? parsed.slice(0, MAX_COMPARE) : [];
 		}
-	} catch (e) {
-		console.error('Failed to load comparison:', e);
+	} catch {
+		// Silent fail - localStorage may be unavailable
 	}
 	return [];
 }
@@ -29,8 +29,8 @@ function saveComparison(slugs: string[]): void {
 
 	try {
 		localStorage.setItem(STORAGE_KEY, JSON.stringify(slugs.slice(0, MAX_COMPARE)));
-	} catch (e) {
-		console.error('Failed to save comparison:', e);
+	} catch {
+		// Silent fail - localStorage may be full or unavailable
 	}
 }
 

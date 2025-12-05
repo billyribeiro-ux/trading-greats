@@ -452,7 +452,9 @@
                                     src={trader.photoUrl}
                                     alt={trader.name}
                                     class="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
-                                    loading="lazy"
+                                    loading={i === 0 ? 'eager' : 'lazy'}
+                                    fetchpriority={i === 0 ? 'high' : 'auto'}
+                                    decoding="async"
                                 />
                             {:else}
                                 <div class="absolute inset-0 flex items-center justify-center text-4xl sm:text-5xl lg:text-7xl font-black text-white/5 select-none">

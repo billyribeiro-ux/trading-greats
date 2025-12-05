@@ -9,7 +9,7 @@ import { browser } from '$app/environment';
 
 const STORAGE_KEY = 'trading_greats_favorites';
 
-// Load favorites from localStorage
+// Load favorites from localStorage (silent fail for resilience)
 function loadFavorites(): Set<string> {
 	if (!browser) return new Set();
 
@@ -19,20 +19,20 @@ function loadFavorites(): Set<string> {
 			const parsed = JSON.parse(stored);
 			return new Set(Array.isArray(parsed) ? parsed : []);
 		}
-	} catch (e) {
-		console.error('Failed to load favorites:', e);
+	} catch {
+		// Silent fail - localStorage may be unavailable (private browsing, etc.)
 	}
 	return new Set();
 }
 
-// Save favorites to localStorage
+// Save favorites to localStorage (silent fail for resilience)
 function saveFavorites(favorites: Set<string>): void {
 	if (!browser) return;
 
 	try {
 		localStorage.setItem(STORAGE_KEY, JSON.stringify([...favorites]));
-	} catch (e) {
-		console.error('Failed to save favorites:', e);
+	} catch {
+		// Silent fail - localStorage may be full or unavailable
 	}
 }
 

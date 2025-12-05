@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
+	import { cn, calculateReadingTime } from '$lib/utils';
 	import ScrollReveal from '$lib/components/motion/ScrollReveal.svelte';
 	import { Icon, type IconName } from '$lib/components/icons';
 	import SocialShareButtons from '$lib/components/SocialShareButtons.svelte';
@@ -80,6 +80,11 @@
 
 	const categoryIcon = $derived<IconName>(
 		data.post.category ? categoryIcons[data.post.category] || 'tag' : 'tag'
+	);
+
+	// Compute reading time from content if not set in database
+	const readingTime = $derived(
+		data.post.readingTime || calculateReadingTime(data.post.content || '').minutes
 	);
 
 	// ============================================================================
@@ -168,6 +173,9 @@
 					src={data.post.heroImage}
 					alt={data.post.heroImageAlt || data.post.title}
 					class="h-full w-full object-cover"
+					loading="eager"
+					fetchpriority="high"
+					decoding="async"
 				/>
 				<div class="absolute inset-0 bg-gradient-to-t from-midnight-950 via-midnight-950/80 to-midnight-950/40"></div>
 			</div>
@@ -209,12 +217,10 @@
 							{formatDate(data.post.publishedAt)}
 						</span>
 					{/if}
-					{#if data.post.readingTime}
-						<span class="flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm text-midnight-400">
-							<Icon name="clock" class="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-							{data.post.readingTime} min read
-						</span>
-					{/if}
+					<span class="flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm text-midnight-400">
+						<Icon name="clock" class="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+						{readingTime} min read
+					</span>
 				</div>
 
 				<!-- Title - MOBILE-FIRST -->
