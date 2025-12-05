@@ -135,11 +135,27 @@
         },
         {
             question: 'Can I suggest a trader to be featured?',
-            answer: 'Absolutely. We\'re always expanding our library. If you know of a legendary trader with a verified track record and unique methodology, let us know.'
+            answer: 'Absolutely. We\'re always expanding our library. If you know of a legendary trader with a verified track record and unique methodology, contact us through our suggestion form.'
         },
         {
             question: 'Is this financial advice?',
-            answer: 'No. Trading Greats is educational content only. All trading involves risk, and past performance does not guarantee future results. Always do your own research.'
+            answer: 'No. Trading Greats is educational content only. All trading involves risk, and past performance does not guarantee future results. Always do your own research and consult with a financial advisor.'
+        },
+        {
+            question: 'How often do you add new traders?',
+            answer: 'We add new trader profiles regularly, typically 2-4 new legends per month. Each profile undergoes extensive research to ensure accuracy and depth of content.'
+        },
+        {
+            question: 'Can I compare different trading strategies?',
+            answer: 'Yes! Our Compare feature allows you to view up to 4 traders side-by-side, comparing their trading styles, philosophies, net worth, and key achievements.'
+        },
+        {
+            question: 'Do you cover modern traders or just historical figures?',
+            answer: 'We cover both. Our library includes historical legends like Jesse Livermore and Benjamin Graham, as well as contemporary masters like Mark Minervini and Ray Dalio.'
+        },
+        {
+            question: 'How can I apply these strategies to my own trading?',
+            answer: 'Each trader profile includes actionable lessons and key principles. Start by identifying a trading style that matches your personality, then study the specific methodologies and risk management approaches used by masters of that style.'
         }
     ];
 
@@ -415,14 +431,14 @@
 <QuoteOfTheDay quotes={data.allQuotes} />
 
 <!-- MOBILE-FIRST: Featured Legends section -->
-<section class="relative z-20 bg-gradient-to-b from-[#020617] via-[#0f172a]/50 to-[#020617] py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
+<section class="relative z-20 bg-gradient-to-b from-[#020617] via-[#0f172a]/50 to-[#020617] py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
     <div class="absolute inset-0">
         <div class="absolute top-1/3 left-0 w-[300px] sm:w-[400px] lg:w-[500px] h-[300px] sm:h-[400px] lg:h-[500px] bg-[radial-gradient(circle,rgba(234,179,8,0.05)_0%,transparent_70%)] blur-3xl"></div>
         <div class="absolute bottom-0 right-0 w-[250px] sm:w-[350px] lg:w-[400px] h-[250px] sm:h-[350px] lg:h-[400px] bg-[radial-gradient(circle,rgba(139,92,246,0.05)_0%,transparent_70%)] blur-3xl"></div>
     </div>
 
     <div class="relative mx-auto max-w-7xl">
-        <div class="mb-8 sm:mb-12 lg:mb-16 flex flex-col items-center justify-between gap-4 sm:gap-6 sm:flex-row sm:items-end" use:reveal={{ delay: 0 }}>
+        <div class="mb-6 sm:mb-8 lg:mb-10 flex flex-col items-center justify-between gap-4 sm:gap-6 sm:flex-row sm:items-end" use:reveal={{ delay: 0 }}>
             <div class="text-center sm:text-left">
                 <span class="inline-block rounded-full bg-white/5 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-[#FACC15] mb-3 sm:mb-4 border border-white/10">
                     Featured Legends
@@ -483,10 +499,10 @@
 </section>
 
 <!-- MOBILE-FIRST: How It Works section -->
-<section id="how-it-works" class="relative z-20 bg-[#020617] py-16 sm:py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
+<section id="how-it-works" class="relative z-20 bg-[#020617] py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-7xl">
-        <div class="mb-10 sm:mb-16 lg:mb-20 text-center" use:reveal>
-            <span class="inline-block rounded-full bg-white/5 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-[#FACC15] mb-4 sm:mb-6">
+        <div class="mb-8 sm:mb-10 lg:mb-12 text-center" use:reveal>
+            <span class="inline-block rounded-full bg-white/5 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-[#FACC15] mb-3 sm:mb-4">
                 How It Works
             </span>
             <h2 class="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
@@ -545,15 +561,15 @@
 </section>
 
 <!-- MOBILE-FIRST: Trading Styles section -->
-<section class="relative z-20 bg-gradient-to-b from-[#020617] via-[#0f172a]/30 to-[#020617] py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
+<section class="relative z-20 bg-gradient-to-b from-[#020617] via-[#0f172a]/30 to-[#020617] py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
     <div class="absolute inset-0">
         <div class="absolute top-0 left-1/4 w-[400px] sm:w-[500px] lg:w-[600px] h-[300px] sm:h-[350px] lg:h-[400px] bg-[radial-gradient(circle,rgba(139,92,246,0.05)_0%,transparent_70%)] blur-3xl"></div>
         <div class="absolute bottom-0 right-1/4 w-[350px] sm:w-[450px] lg:w-[500px] h-[200px] sm:h-[250px] lg:h-[300px] bg-[radial-gradient(circle,rgba(234,179,8,0.05)_0%,transparent_70%)] blur-3xl"></div>
     </div>
 
     <div class="relative mx-auto max-w-7xl">
-        <div class="mb-10 sm:mb-16 lg:mb-20 text-center" use:reveal={{ delay: 0 }}>
-            <span class="inline-block rounded-full bg-white/5 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-[#FACC15] mb-4 sm:mb-6 border border-white/10">
+        <div class="mb-8 sm:mb-10 text-center" use:reveal={{ delay: 0 }}>
+            <span class="inline-block rounded-full bg-white/5 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-[#FACC15] mb-3 sm:mb-4 border border-white/10">
                 Trading Styles
             </span>
             <h2 class="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-[1.15]">
@@ -617,10 +633,10 @@
 </section>
 
 <!-- MOBILE-FIRST: The Library section -->
-<section class="relative z-20 bg-[#020617] py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
+<section class="relative z-20 bg-[#020617] py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
     <div class="relative mx-auto max-w-7xl">
-        <div class="mb-10 sm:mb-12 lg:mb-16 text-center" use:reveal={{ delay: 0 }}>
-            <span class="inline-block rounded-full bg-white/5 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-[#FACC15] mb-4 sm:mb-6 border border-white/10">
+        <div class="mb-8 sm:mb-10 text-center" use:reveal={{ delay: 0 }}>
+            <span class="inline-block rounded-full bg-white/5 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-[#FACC15] mb-3 sm:mb-4 border border-white/10">
                 The Library
             </span>
             <h2 class="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
@@ -660,7 +676,7 @@
         </div>
 
         <!-- MOBILE-FIRST: Full-width button on mobile -->
-        <div class="mt-12 sm:mt-16 lg:mt-20 text-center px-4 sm:px-0" use:reveal={{ delay: 0.8 }}>
+        <div class="mt-8 sm:mt-10 lg:mt-12 text-center px-4 sm:px-0" use:reveal={{ delay: 0.8 }}>
             <a
                 href="/traders"
                 class="group inline-flex w-full sm:w-auto items-center justify-center gap-2 sm:gap-3 rounded-full bg-white/5 border border-white/10 px-8 sm:px-12 py-4 sm:py-5 text-sm sm:text-base font-bold text-white backdrop-blur-xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-white/10 hover:border-[#EAB308]/30 hover:shadow-[0_20px_60px_-15px_rgba(234,179,8,0.2)] hover:scale-[1.02] active:scale-[0.98]"
@@ -673,10 +689,10 @@
 </section>
 
 <!-- MOBILE-FIRST: Community/Testimonials section -->
-<section class="relative z-20 bg-gradient-to-b from-[#020617] via-[#0f172a]/30 to-[#020617] py-16 sm:py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
+<section class="relative z-20 bg-gradient-to-b from-[#020617] via-[#0f172a]/30 to-[#020617] py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-7xl">
-        <div class="mb-10 sm:mb-12 lg:mb-16 text-center">
-            <span class="inline-block rounded-full bg-white/5 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-[#FACC15] mb-4 sm:mb-6">
+        <div class="mb-8 sm:mb-10 text-center">
+            <span class="inline-block rounded-full bg-white/5 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-[#FACC15] mb-3 sm:mb-4">
                 Community
             </span>
             <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-white">
@@ -684,33 +700,33 @@
             </h2>
         </div>
 
-        <!-- MOBILE-FIRST: Stack on mobile, 3-col on desktop -->
-        <div class="grid gap-4 sm:gap-6 lg:gap-8 lg:grid-cols-3">
+        <!-- MOBILE-FIRST: Stack on mobile, 3-col on desktop - EQUAL HEIGHT CARDS -->
+        <div class="grid gap-4 sm:gap-5 lg:gap-6 lg:grid-cols-3">
             {#each testimonials as testimonial, i}
-                <div use:reveal={{ delay: i * 0.1 }}>
-                    <!-- MOBILE-FIRST: Compact testimonial card -->
-                    <div class="relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/5 bg-gradient-to-b from-[#0f172a]/60 to-[#0f172a]/30 p-5 sm:p-6 lg:p-8 backdrop-blur-sm">
-                        <Icon name="quote" class="absolute top-4 right-4 sm:top-6 sm:right-6 h-6 w-6 sm:h-8 sm:w-8 text-[#EAB308]/20" />
+                <div use:reveal={{ delay: i * 0.1 }} class="h-full">
+                    <!-- MOBILE-FIRST: Equal height testimonial card -->
+                    <div class="relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/5 bg-gradient-to-b from-[#0f172a]/60 to-[#0f172a]/30 p-5 sm:p-6 backdrop-blur-sm h-full flex flex-col">
+                        <Icon name="quote" class="absolute top-4 right-4 h-6 w-6 sm:h-7 sm:w-7 text-[#EAB308]/20" />
 
-                        <div class="flex gap-0.5 sm:gap-1 mb-4 sm:mb-6">
+                        <div class="flex gap-0.5 sm:gap-1 mb-3 sm:mb-4">
                             {#each Array(5) as _}
-                                <Icon name="star" class="h-3 w-3 sm:h-4 sm:w-4 fill-[#EAB308] text-[#EAB308]" />
+                                <Icon name="star" class="h-3 w-3 sm:h-3.5 sm:w-3.5 fill-[#EAB308] text-[#EAB308]" />
                             {/each}
                         </div>
 
-                        <blockquote class="relative z-10 text-sm sm:text-base lg:text-lg text-slate-200 leading-relaxed mb-4 sm:mb-6">
+                        <blockquote class="relative z-10 text-sm sm:text-base text-slate-200 leading-relaxed mb-4 flex-1">
                             "{testimonial.quote}"
                         </blockquote>
 
-                        <div class="flex items-center gap-2 sm:gap-3">
-                            <div class="h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-gradient-to-br from-[#EAB308]/20 to-[#CA8A04]/20 flex items-center justify-center flex-shrink-0">
+                        <div class="flex items-center gap-2 sm:gap-3 mt-auto">
+                            <div class="h-8 w-8 sm:h-9 sm:w-9 rounded-full bg-gradient-to-br from-[#EAB308]/20 to-[#CA8A04]/20 flex items-center justify-center flex-shrink-0">
                                 <span class="text-xs sm:text-sm font-bold text-[#FACC15]">
                                     {testimonial.author[0]}
                                 </span>
                             </div>
                             <div>
-                                <p class="font-medium text-white text-sm sm:text-base">{testimonial.author}</p>
-                                <p class="text-xs sm:text-sm text-slate-400">{testimonial.role}</p>
+                                <p class="font-medium text-white text-sm">{testimonial.author}</p>
+                                <p class="text-xs text-slate-400">{testimonial.role}</p>
                             </div>
                         </div>
                     </div>
@@ -721,10 +737,10 @@
 </section>
 
 <!-- MOBILE-FIRST: FAQ section -->
-<section class="relative z-20 bg-[#020617] py-16 sm:py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
+<section class="relative z-20 bg-[#020617] py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-4xl">
-        <div class="mb-10 sm:mb-12 lg:mb-16 text-center">
-            <span class="inline-block rounded-full bg-white/5 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-[#FACC15] mb-4 sm:mb-6">
+        <div class="mb-8 sm:mb-10 text-center">
+            <span class="inline-block rounded-full bg-white/5 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-[#FACC15] mb-3 sm:mb-4">
                 FAQ
             </span>
             <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-white">
@@ -734,15 +750,21 @@
 
         <div class="space-y-3 sm:space-y-4">
             {#each faqItems as faq, i}
-                <div use:reveal={{ delay: i * 0.08 }}>
+                <div use:reveal={{ delay: Math.min(i * 0.05, 0.3) }}>
                     <!-- MOBILE-FIRST: Touch-friendly FAQ accordion -->
-                    <div class="group rounded-xl sm:rounded-2xl border border-white/5 bg-[#0f172a]/30 backdrop-blur-sm overflow-hidden">
-                        <button class="flex w-full cursor-pointer items-center justify-between p-4 sm:p-5 lg:p-6 text-left font-medium text-white hover:text-[#FACC15] transition-colors active:bg-white/5" onclick={() => toggleFaq(i)}>
+                    <div class="rounded-xl sm:rounded-2xl border border-white/10 bg-[#0f172a]/50 backdrop-blur-sm overflow-hidden transition-all duration-300 {openFaq === i ? 'border-[#EAB308]/30 bg-[#0f172a]/70' : 'hover:border-white/20'}">
+                        <button 
+                            type="button"
+                            class="flex w-full items-center justify-between p-4 sm:p-5 lg:p-6 text-left font-medium text-white hover:text-[#FACC15] transition-colors"
+                            onclick={() => { openFaq = openFaq === i ? null : i; }}
+                        >
                             <span class="pr-4 sm:pr-6 text-sm sm:text-base">{faq.question}</span>
-                            <Icon name="chevron-right" class="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0 text-slate-500 transition-transform {openFaq === i ? 'rotate-90' : ''}" />
+                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-white/5 flex items-center justify-center transition-all duration-300 {openFaq === i ? 'bg-[#EAB308]/20 rotate-90' : ''}">
+                                <Icon name="chevron-right" class="h-4 w-4 text-slate-400 {openFaq === i ? 'text-[#FACC15]' : ''}" />
+                            </div>
                         </button>
                         {#if openFaq === i}
-                            <div transition:slide class="px-4 sm:px-5 lg:px-6 pb-4 sm:pb-5 lg:pb-6 text-slate-300 leading-relaxed text-sm sm:text-base">
+                            <div transition:slide={{ duration: 300 }} class="px-4 sm:px-5 lg:px-6 pb-4 sm:pb-5 lg:pb-6 text-slate-300 leading-relaxed text-sm sm:text-base border-t border-white/5">
                                 {faq.answer}
                             </div>
                         {/if}
@@ -754,7 +776,7 @@
 </section>
 
 <!-- MOBILE-FIRST: Final CTA section -->
-<section class="relative z-20 py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
+<section class="relative z-20 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-[#020617] via-[#0f172a] to-[#020617]"></div>
     <div class="absolute top-0 left-1/2 -translate-x-1/2 h-px w-3/4 sm:w-2/3 bg-gradient-to-r from-transparent via-[#EAB308]/50 to-transparent"></div>
 
