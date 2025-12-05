@@ -1,11 +1,10 @@
 import type { PageServerLoad } from './$types';
-import { sanity } from '$lib/sanity';
+import { sanity, isSanityConfigured } from '$lib/sanity';
 import { seedTraders } from '$lib/server/seed';
 import type { Trader, NewTrader, BlogPost } from '$lib/server/schema';
 import { db } from '$lib/server/db';
 import { blogPosts, media } from '$lib/server/schema';
 import { desc, eq, sql } from 'drizzle-orm';
-import { PUBLIC_SANITY_PROJECT_ID } from '$env/static/public';
 
 function seedToTrader(t: NewTrader, id: string): Trader {
 	return {
@@ -39,7 +38,7 @@ export const load: PageServerLoad = async () => {
 	let recentTraders: Trader[] = [];
 
 	// Fetch trader data from Sanity
-	if (PUBLIC_SANITY_PROJECT_ID) {
+	if (isSanityConfigured) {
 		try {
 			const [stats, recent] = await Promise.all([
 				sanity.getTraderStats(),

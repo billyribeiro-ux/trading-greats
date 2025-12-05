@@ -1,16 +1,20 @@
 import { createClient, type SanityClient } from '@sanity/client';
 import { createImageUrlBuilder } from '@sanity/image-url';
-import {
-	PUBLIC_SANITY_PROJECT_ID,
-	PUBLIC_SANITY_DATASET,
-	PUBLIC_SANITY_API_VERSION
-} from '$env/static/public';
+import { env } from '$env/dynamic/public';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type SanityImageSource = any;
 
+// Get env vars with fallbacks
+const projectId = env.PUBLIC_SANITY_PROJECT_ID || '';
+const dataset = env.PUBLIC_SANITY_DATASET || 'production';
+const apiVersion = env.PUBLIC_SANITY_API_VERSION || '2024-01-01';
+
+// Validate projectId format (only a-z, 0-9, and dashes allowed)
+const isValidProjectId = /^[a-z0-9-]+$/.test(projectId);
+
 // Check if Sanity is configured
-export const isSanityConfigured = Boolean(PUBLIC_SANITY_PROJECT_ID);
+export const isSanityConfigured = Boolean(projectId) && isValidProjectId;
 
 // Create clients only if Sanity is configured
 let client: SanityClient | null = null;
@@ -18,17 +22,17 @@ let previewClient: SanityClient | null = null;
 
 if (isSanityConfigured) {
 	client = createClient({
-		projectId: PUBLIC_SANITY_PROJECT_ID,
-		dataset: PUBLIC_SANITY_DATASET || 'production',
-		apiVersion: PUBLIC_SANITY_API_VERSION || '2024-01-01',
+		projectId,
+		dataset,
+		apiVersion,
 		useCdn: true,
 		perspective: 'published'
 	});
 
 	previewClient = createClient({
-		projectId: PUBLIC_SANITY_PROJECT_ID,
-		dataset: PUBLIC_SANITY_DATASET || 'production',
-		apiVersion: PUBLIC_SANITY_API_VERSION || '2024-01-01',
+		projectId,
+		dataset,
+		apiVersion,
 		useCdn: false,
 		perspective: 'previewDrafts',
 		token: undefined

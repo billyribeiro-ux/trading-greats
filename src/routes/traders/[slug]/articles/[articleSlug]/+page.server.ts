@@ -3,11 +3,10 @@ import { error } from '@sveltejs/kit';
 import { db } from '$lib/server/db';
 import { blogPosts, traders, type Trader, type BlogPost } from '$lib/server/schema';
 import { eq, and, ne, desc } from 'drizzle-orm';
-import { sanity } from '$lib/sanity';
+import { sanity, isSanityConfigured } from '$lib/sanity';
 import { seedTraders } from '$lib/server/seed';
 import { seedBlogPosts } from '$lib/server/seedBlog';
 import type { NewTrader } from '$lib/server/schema';
-import { PUBLIC_SANITY_PROJECT_ID } from '$env/static/public';
 
 // ============================================================================
 // Dec 2025 SvelteKit: ISR Configuration for Vercel
@@ -53,7 +52,7 @@ export const load: PageServerLoad = async ({ params }) => {
 	// ============================================================================
 	// 1. Fetch trader data
 	// ============================================================================
-	if (PUBLIC_SANITY_PROJECT_ID && PUBLIC_SANITY_PROJECT_ID !== 'your-project-id') {
+	if (isSanityConfigured) {
 		try {
 			trader = await sanity.getTraderBySlug(traderSlug);
 		} catch (err) {

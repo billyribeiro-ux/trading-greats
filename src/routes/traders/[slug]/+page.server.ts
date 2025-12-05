@@ -1,12 +1,11 @@
 import type { PageServerLoad } from './$types';
 import { error } from '@sveltejs/kit';
-import { sanity } from '$lib/sanity';
+import { sanity, isSanityConfigured } from '$lib/sanity';
 import { seedTraders } from '$lib/server/seed';
 import { seedBlogPosts } from '$lib/server/seedBlog';
 import { db } from '$lib/server/db';
 import { blogPosts, type Trader, type NewTrader, type BlogPost } from '$lib/server/schema';
 import { eq, and, desc } from 'drizzle-orm';
-import { PUBLIC_SANITY_PROJECT_ID } from '$env/static/public';
 
 function seedToTrader(t: NewTrader, id: string): Trader {
 	return {
@@ -39,7 +38,7 @@ export const load: PageServerLoad = async ({ params }) => {
 	let relatedTraders: Trader[] = [];
 	let articles: BlogPost[] = [];
 
-	if (PUBLIC_SANITY_PROJECT_ID && PUBLIC_SANITY_PROJECT_ID !== 'your-project-id') {
+	if (isSanityConfigured) {
 		try {
 			trader = await sanity.getTraderBySlug(slug);
 			if (trader && trader.tradingStyle) {

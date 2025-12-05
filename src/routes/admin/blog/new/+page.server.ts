@@ -4,15 +4,14 @@ import { blogPosts, traders, BLOG_CATEGORIES, type BlogCategory } from '$lib/ser
 import { fail, redirect } from '@sveltejs/kit';
 import { slugify } from '$lib/utils';
 import { eq } from 'drizzle-orm';
-import { sanity } from '$lib/sanity';
+import { sanity, isSanityConfigured } from '$lib/sanity';
 import { seedTraders } from '$lib/server/seed';
-import { PUBLIC_SANITY_PROJECT_ID } from '$env/static/public';
 
 export const load: PageServerLoad = async () => {
 	// Fetch traders for relation selection
 	let traderList: { id: string; name: string }[] = [];
 
-	if (PUBLIC_SANITY_PROJECT_ID) {
+	if (isSanityConfigured) {
 		try {
 			const traders = await sanity.getAllTraders();
 			traderList = traders.map((t) => ({ id: t.id, name: t.name }));

@@ -1,8 +1,7 @@
 import type { PageServerLoad } from './$types';
-import { sanity } from '$lib/sanity';
+import { sanity, isSanityConfigured } from '$lib/sanity';
 import { seedTraders } from '$lib/server/seed';
 import type { Trader, NewTrader } from '$lib/server/schema';
-import { PUBLIC_SANITY_PROJECT_ID } from '$env/static/public';
 
 function seedToTrader(t: NewTrader, id: string): Trader {
 	return {
@@ -34,7 +33,7 @@ export const load: PageServerLoad = async ({ url }) => {
 	let traders: Trader[] = [];
 	let tradingStyles: string[] = [];
 
-	if (PUBLIC_SANITY_PROJECT_ID) {
+	if (isSanityConfigured) {
 		try {
 			// Fetch from Sanity
 			if (styleFilter) {
