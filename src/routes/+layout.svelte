@@ -22,6 +22,49 @@
 		browser ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false
 	);
 
+	// Smart history management - prevent excessive history entries
+	// When browsing within the same section, replace history instead of pushing
+	$effect(() => {
+		if (!browser) return;
+
+		function getSection(path: string): string {
+			const parts = path.split('/').filter(Boolean);
+			return parts[0] || 'home';
+		}
+
+		// Intercept all internal link clicks
+		function handleClick(event: MouseEvent) {
+			const target = event.target as HTMLElement;
+			const anchor = target.closest('a');
+			
+			if (!anchor) return;
+			
+			const href = anchor.getAttribute('href');
+			if (!href || href.startsWith('http') || href.startsWith('#') || href.startsWith('mailto:')) return;
+			
+			const currentSection = getSection(window.location.pathname);
+			const targetSection = getSection(href);
+			
+			// If navigating within the same section (e.g., /traders/x to /traders/y)
+			// and it's a detail page (has more than one segment), use replaceState
+			const currentParts = window.location.pathname.split('/').filter(Boolean);
+			const targetParts = href.split('/').filter(Boolean);
+			
+			if (currentSection === targetSection && currentParts.length > 1 && targetParts.length > 1) {
+				event.preventDefault();
+				// Use replaceState to avoid history buildup
+				window.history.replaceState({}, '', href);
+				// Trigger SvelteKit navigation
+				import('$app/navigation').then(({ goto }) => {
+					goto(href, { replaceState: true });
+				});
+			}
+		}
+
+		document.addEventListener('click', handleClick);
+		return () => document.removeEventListener('click', handleClick);
+	});
+
 	// View Transitions for cinematic page navigation (respects reduced motion)
 	onNavigate((navigation) => {
 		if (!browser || !document.startViewTransition || prefersReducedMotion) return;
