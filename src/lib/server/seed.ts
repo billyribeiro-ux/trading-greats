@@ -2139,5 +2139,753 @@ Short sellers are often vilified, and Cawkwell has faced his share of criticism.
 			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Simon_Cawkwell' }
 		],
 		status: 'published'
+	},
+	{
+		name: 'T. Boone Pickens',
+		slug: 't-boone-pickens',
+		photoUrl: null,
+		oneLiner: 'The Oracle of Oil - Corporate Raider Turned Energy Titan',
+		birthYear: 1928,
+		deathYear: 2019,
+		nationality: 'American',
+		tradingStyle: 'Value Investing',
+		netWorth: '$500 Million (Peak: $1.4 Billion)',
+		bio: `T. Boone Pickens was an American business magnate and financier who made his fortune in the oil industry. He founded Mesa Petroleum and became famous as a corporate raider in the 1980s, later becoming an advocate for alternative energy.
+
+## Early Career
+
+Pickens started his career as a geologist for Phillips Petroleum before founding Mesa Petroleum in 1956 with just $2,500. Through aggressive acquisition strategies, he built Mesa into one of the largest independent oil companies in America.
+
+## Corporate Raider Era
+
+In the 1980s, Pickens became one of the most feared corporate raiders on Wall Street. His hostile takeover attempts of Gulf Oil, Phillips Petroleum, and Unocal, while not always successful, generated billions in profits for shareholders and changed how corporate America operated.
+
+## Energy Advocacy
+
+Later in life, Pickens became a vocal advocate for American energy independence and invested heavily in wind power through his "Pickens Plan." He donated over $1 billion to various causes, including $500 million to Oklahoma State University.
+
+## Trading Philosophy
+
+Pickens was known for his contrarian bets on energy prices and his willingness to take massive positions when he saw value. He made and lost several fortunes, demonstrating remarkable resilience throughout his career.`,
+		philosophy: `"The older I get, the more I see a straight path where I want to go. If you're going to hunt elephants, don't get off the trail for a rabbit."`,
+		achievements: [
+			'Founded Mesa Petroleum',
+			'Pioneer of shareholder activism',
+			'Made billions in corporate raids',
+			'Donated over $1 billion to charity',
+			'Advocate for energy independence',
+			'Built and lost multiple fortunes'
+		],
+		famousTrades: [
+			{
+				date: '1984',
+				asset: 'Gulf Oil',
+				position: 'long',
+				outcome: 'Major Profit',
+				profitLoss: '+$760 Million',
+				description: 'His takeover attempt of Gulf Oil led to its acquisition by Chevron, generating massive profits for shareholders.'
+			}
+		],
+		quotes: [
+			{ text: 'The older I get, the more I see a straight path where I want to go. If you\'re going to hunt elephants, don\'t get off the trail for a rabbit.', source: 'Interview' },
+			{ text: 'A fool with a plan can beat a genius without one.', source: 'The First Billion Is the Hardest' }
+		],
+		books: [
+			{ title: 'The First Billion Is the Hardest', year: 2008, description: 'Reflections on a life of comebacks and America\'s energy future' }
+		],
+		socialLinks: [
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/T._Boone_Pickens' }
+		],
+		status: 'published'
+	},
+	{
+		name: 'John Templeton',
+		slug: 'john-templeton',
+		photoUrl: null,
+		oneLiner: 'Pioneer of Global Investing and Maximum Pessimism',
+		birthYear: 1912,
+		deathYear: 2008,
+		nationality: 'American/British',
+		tradingStyle: 'Value Investing',
+		netWorth: '$500 Million',
+		bio: `Sir John Templeton was a legendary investor and mutual fund pioneer who created some of the world's largest and most successful international investment funds. He was known for his contrarian approach and his famous strategy of buying at the "point of maximum pessimism."
+
+## Early Brilliance
+
+In 1939, at the outbreak of World War II, Templeton borrowed $10,000 and bought 100 shares each of every stock trading below $1 on the New York Stock Exchange. He made substantial profits on 100 of the 104 companies, quadrupling his money.
+
+## Templeton Growth Fund
+
+In 1954, Templeton founded the Templeton Growth Fund, which became one of the most successful mutual funds in history. A $10,000 investment in 1954 would have grown to over $2 million by 1992 when he sold the Templeton Funds.
+
+## Global Pioneer
+
+Templeton was one of the first investors to look beyond U.S. borders, investing heavily in Japan in the 1960s when most Americans ignored foreign markets. This global perspective gave him a significant edge.
+
+## Philanthropy
+
+After selling his funds to Franklin Resources in 1992, Templeton devoted his wealth to philanthropy, particularly through the Templeton Foundation, which supports research on the intersection of science and spirituality.`,
+		philosophy: `"The time of maximum pessimism is the best time to buy, and the time of maximum optimism is the best time to sell."`,
+		achievements: [
+			'Created Templeton Growth Fund',
+			'Pioneer of international investing',
+			'Knighted by Queen Elizabeth II',
+			'Turned $10,000 into $2 million for investors',
+			'Founded Templeton Foundation',
+			'Named "greatest stock picker of the century" by Money magazine'
+		],
+		famousTrades: [
+			{
+				date: '1939',
+				asset: '104 Stocks Under $1',
+				position: 'long',
+				outcome: 'Major Profit',
+				profitLoss: '+400%',
+				description: 'Bought every NYSE stock under $1 at the outbreak of WWII, quadrupling his money as the economy recovered.'
+			}
+		],
+		quotes: [
+			{ text: 'The time of maximum pessimism is the best time to buy, and the time of maximum optimism is the best time to sell.', source: 'Investment Philosophy' },
+			{ text: 'Bull markets are born on pessimism, grow on skepticism, mature on optimism, and die on euphoria.', source: 'Interview' }
+		],
+		books: [
+			{ title: 'Investing the Templeton Way', year: 2008, description: 'The market-beating strategies of value investing\'s legendary bargain hunter' }
+		],
+		socialLinks: [
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/John_Templeton' }
+		],
+		status: 'published'
+	},
+	{
+		name: 'Philip Fisher',
+		slug: 'philip-fisher',
+		photoUrl: null,
+		oneLiner: 'Father of Growth Investing and Scuttlebutt Research',
+		birthYear: 1907,
+		deathYear: 2004,
+		nationality: 'American',
+		tradingStyle: 'Momentum Growth',
+		netWorth: '$100+ Million',
+		bio: `Philip Fisher was one of the most influential investors of all time and the father of growth stock investing. His book "Common Stocks and Uncommon Profits" is considered essential reading for serious investors, and Warren Buffett credits Fisher as a major influence on his investment philosophy.
+
+## The Scuttlebutt Method
+
+Fisher pioneered the "scuttlebutt" approach to investment research, which involves gathering information about a company by talking to customers, suppliers, competitors, and employees. This qualitative research method was revolutionary in an era focused purely on financial statements.
+
+## 15 Points to Look for in a Common Stock
+
+Fisher developed a famous checklist of 15 points to evaluate potential investments, focusing on factors like management quality, research and development, profit margins, and growth potential. This framework influenced generations of growth investors.
+
+## Motorola Investment
+
+Fisher's most famous investment was Motorola, which he bought in 1955 and held until his death in 2004. This single investment multiplied many times over, demonstrating his philosophy of buying great companies and holding them for the long term.
+
+## Influence on Buffett
+
+Warren Buffett has said he is "85% Benjamin Graham and 15% Philip Fisher." While Graham taught Buffett about value, Fisher taught him about quality—the importance of buying great businesses, not just cheap stocks.`,
+		philosophy: `"The stock market is filled with individuals who know the price of everything, but the value of nothing."`,
+		achievements: [
+			'Father of growth investing',
+			'Author of "Common Stocks and Uncommon Profits"',
+			'Pioneered scuttlebutt research method',
+			'Major influence on Warren Buffett',
+			'Held Motorola for 50+ years',
+			'Founded Fisher & Company in 1931'
+		],
+		famousTrades: [
+			{
+				date: '1955-2004',
+				asset: 'Motorola',
+				position: 'long',
+				outcome: 'Legendary Hold',
+				profitLoss: 'Multi-thousand %',
+				description: 'Bought Motorola in 1955 and held until his death, demonstrating the power of long-term growth investing.'
+			}
+		],
+		quotes: [
+			{ text: 'The stock market is filled with individuals who know the price of everything, but the value of nothing.', source: 'Common Stocks and Uncommon Profits' },
+			{ text: 'I don\'t want a lot of good investments; I want a few outstanding ones.', source: 'Interview' }
+		],
+		books: [
+			{ title: 'Common Stocks and Uncommon Profits', year: 1958, description: 'The classic guide to growth stock investing' }
+		],
+		socialLinks: [
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Philip_Fisher' }
+		],
+		status: 'published'
+	},
+	{
+		name: 'Seth Klarman',
+		slug: 'seth-klarman',
+		photoUrl: null,
+		oneLiner: 'The Oracle of Boston - Value Investing\'s Quiet Giant',
+		birthYear: 1957,
+		nationality: 'American',
+		tradingStyle: 'Value Investing',
+		netWorth: '$1.5 Billion',
+		bio: `Seth Klarman is the founder and CEO of Baupost Group, one of the largest and most successful hedge funds in the world. Known for his patient, value-oriented approach and his willingness to hold large cash positions, Klarman has generated exceptional returns while taking below-average risk.
+
+## Baupost Group
+
+Founded in 1982 with $27 million, Baupost has grown to manage over $30 billion. The fund has generated average annual returns of approximately 20% since inception, with only a handful of down years. Remarkably, Klarman has achieved this while often holding 30-50% of the portfolio in cash.
+
+## Margin of Safety
+
+Klarman's book "Margin of Safety" has become one of the most sought-after investment books ever written. Originally published in 1991, copies now sell for thousands of dollars. The book outlines his philosophy of buying securities at significant discounts to intrinsic value.
+
+## Contrarian Approach
+
+Klarman is known for investing in distressed debt, liquidations, and other complex situations that most investors avoid. He has said that he looks for investments that are "hated, neglected, or unknown."
+
+## Risk Management
+
+Unlike many hedge fund managers who use leverage to amplify returns, Klarman focuses obsessively on avoiding losses. His willingness to hold cash when opportunities are scarce has been key to his long-term success.`,
+		philosophy: `"The stock market is the story of cycles and of the human behavior that is responsible for overreactions in both directions."`,
+		achievements: [
+			'Founded Baupost Group',
+			'Manages $30+ billion',
+			'~20% annual returns since 1982',
+			'Author of "Margin of Safety"',
+			'One of the most respected value investors',
+			'Known for holding large cash positions'
+		],
+		famousTrades: [
+			{
+				date: '2008-2009',
+				asset: 'Distressed Debt',
+				position: 'long',
+				outcome: 'Major Profit',
+				profitLoss: 'Exceptional',
+				description: 'Deployed cash reserves into distressed securities during the financial crisis, generating exceptional returns.'
+			}
+		],
+		quotes: [
+			{ text: 'The stock market is the story of cycles and of the human behavior that is responsible for overreactions in both directions.', source: 'Margin of Safety' },
+			{ text: 'Value investing is at its core the marriage of a contrarian streak and a calculator.', source: 'Baupost Letters' }
+		],
+		books: [
+			{ title: 'Margin of Safety', year: 1991, description: 'Risk-averse value investing strategies for the thoughtful investor' }
+		],
+		socialLinks: [
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Seth_Klarman' }
+		],
+		status: 'published'
+	},
+	{
+		name: 'Howard Marks',
+		slug: 'howard-marks',
+		photoUrl: null,
+		oneLiner: 'Master of Market Cycles and Risk Assessment',
+		birthYear: 1946,
+		nationality: 'American',
+		tradingStyle: 'Value Investing',
+		netWorth: '$2.2 Billion',
+		bio: `Howard Marks is the co-founder and co-chairman of Oaktree Capital Management, one of the largest investors in distressed securities worldwide. He is renowned for his insightful memos to clients, which have become must-read material for investors globally.
+
+## Oaktree Capital
+
+Marks co-founded Oaktree in 1995, and the firm has grown to manage over $150 billion in assets. Oaktree specializes in less efficient markets, including distressed debt, corporate debt, and real estate.
+
+## The Memos
+
+Since 1990, Marks has written memos to Oaktree clients sharing his thoughts on markets, investing, and risk. These memos have gained a cult following, with Warren Buffett saying, "When I see memos from Howard Marks in my mail, they're the first thing I open and read."
+
+## Second-Level Thinking
+
+Marks popularized the concept of "second-level thinking"—the idea that successful investing requires thinking differently and better than the consensus. First-level thinking is simplistic; second-level thinking is deep, complex, and convoluted.
+
+## Market Cycles
+
+His book "Mastering the Market Cycle" explains how understanding where we are in various cycles can improve investment results. Marks emphasizes that while we can't predict cycles, we can prepare for them.`,
+		philosophy: `"The most important thing is to be aware of the pendulum of investor psychology and to position yourself accordingly."`,
+		achievements: [
+			'Co-founded Oaktree Capital',
+			'Manages $150+ billion',
+			'Author of influential investor memos',
+			'Bestselling author',
+			'Pioneer in distressed debt investing',
+			'Trusted advisor to major institutions'
+		],
+		famousTrades: [
+			{
+				date: '2008',
+				asset: 'Distressed Debt',
+				position: 'long',
+				outcome: 'Exceptional Returns',
+				profitLoss: '+50%+ in 2009',
+				description: 'Aggressively deployed capital into distressed securities during the financial crisis, capturing the recovery.'
+			}
+		],
+		quotes: [
+			{ text: 'The most important thing is to be aware of the pendulum of investor psychology and to position yourself accordingly.', source: 'The Most Important Thing' },
+			{ text: 'You can\'t predict. You can prepare.', source: 'Mastering the Market Cycle' }
+		],
+		books: [
+			{ title: 'The Most Important Thing', year: 2011, description: 'Uncommon sense for the thoughtful investor' },
+			{ title: 'Mastering the Market Cycle', year: 2018, description: 'Getting the odds on your side' }
+		],
+		socialLinks: [
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Howard_Marks_(investor)' }
+		],
+		status: 'published'
+	},
+	{
+		name: 'Joel Greenblatt',
+		slug: 'joel-greenblatt',
+		photoUrl: null,
+		oneLiner: 'Creator of the Magic Formula and Gotham Capital Legend',
+		birthYear: 1957,
+		nationality: 'American',
+		tradingStyle: 'Value Investing',
+		netWorth: '$500 Million',
+		bio: `Joel Greenblatt is an American investor, hedge fund manager, and professor at Columbia Business School. He is best known for his "Magic Formula" investing strategy and for generating extraordinary returns at Gotham Capital.
+
+## Gotham Capital
+
+Greenblatt founded Gotham Capital in 1985 and achieved one of the best track records in hedge fund history. From 1985 to 2005, Gotham Capital generated annualized returns of approximately 40%, turning $7 million into $1 billion before returning capital to outside investors.
+
+## The Magic Formula
+
+In his book "The Little Book That Beats the Market," Greenblatt introduced the Magic Formula—a simple, systematic approach to finding good companies at bargain prices. The formula ranks stocks based on earnings yield and return on capital.
+
+## Teaching
+
+Greenblatt has taught at Columbia Business School for over 20 years, sharing his investment wisdom with the next generation of investors. He is known for making complex concepts accessible and actionable.
+
+## Special Situations
+
+Much of Gotham's success came from special situations investing—spinoffs, restructurings, and other corporate events that create mispricings. Greenblatt's book "You Can Be a Stock Market Genius" details these strategies.`,
+		philosophy: `"Choosing individual stocks without any idea of what you're looking for is like running through a dynamite factory with a burning match."`,
+		achievements: [
+			'40% annual returns at Gotham Capital',
+			'Created the Magic Formula',
+			'Professor at Columbia Business School',
+			'Bestselling author',
+			'Turned $7 million into $1 billion',
+			'Pioneer in special situations investing'
+		],
+		famousTrades: [
+			{
+				date: '1985-2005',
+				asset: 'Special Situations',
+				position: 'long',
+				outcome: 'Legendary Returns',
+				profitLoss: '+40% annually',
+				description: 'Generated 40% annual returns through spinoffs, restructurings, and other special situations.'
+			}
+		],
+		quotes: [
+			{ text: 'Choosing individual stocks without any idea of what you\'re looking for is like running through a dynamite factory with a burning match.', source: 'The Little Book That Beats the Market' },
+			{ text: 'Prices fluctuate more than values—so therein lies opportunity.', source: 'You Can Be a Stock Market Genius' }
+		],
+		books: [
+			{ title: 'You Can Be a Stock Market Genius', year: 1997, description: 'Uncover the secret hiding places of stock market profits' },
+			{ title: 'The Little Book That Beats the Market', year: 2005, description: 'The Magic Formula for investing' }
+		],
+		socialLinks: [
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Joel_Greenblatt' }
+		],
+		status: 'published'
+	},
+	{
+		name: 'David Einhorn',
+		slug: 'david-einhorn',
+		photoUrl: null,
+		oneLiner: 'Greenlight Capital Founder and Legendary Short Seller',
+		birthYear: 1968,
+		nationality: 'American',
+		tradingStyle: 'Value Investing',
+		netWorth: '$600 Million',
+		bio: `David Einhorn is the founder and president of Greenlight Capital, a long-short value-oriented hedge fund. He is known for his detailed research, his willingness to take controversial positions, and his famous short of Lehman Brothers before its collapse.
+
+## Greenlight Capital
+
+Einhorn founded Greenlight Capital in 1996 with $900,000. The fund grew to manage over $12 billion at its peak, generating annualized returns of approximately 16% through 2018.
+
+## Lehman Brothers Short
+
+Einhorn's most famous trade was his short position in Lehman Brothers, which he publicly criticized in 2008 for accounting irregularities. When Lehman collapsed, Greenlight profited enormously, and Einhorn's reputation as a forensic analyst was cemented.
+
+## Allied Capital
+
+Before Lehman, Einhorn waged a years-long battle against Allied Capital, a business development company he accused of fraud. His book "Fooling Some of the People All of the Time" chronicles this fight.
+
+## Poker Player
+
+Einhorn is also an accomplished poker player, finishing 18th in the 2006 World Series of Poker Main Event and donating his $659,730 winnings to charity.`,
+		philosophy: `"The key to long-term survival and prosperity has a lot to do with the money management techniques incorporated into the technical system."`,
+		achievements: [
+			'Founded Greenlight Capital',
+			'Famous Lehman Brothers short',
+			'Exposed Allied Capital fraud',
+			'Bestselling author',
+			'Professional poker player',
+			'16% annualized returns'
+		],
+		famousTrades: [
+			{
+				date: '2008',
+				asset: 'Lehman Brothers',
+				position: 'short',
+				outcome: 'Major Profit',
+				profitLoss: 'Exceptional',
+				description: 'Publicly shorted Lehman Brothers months before its collapse, citing accounting concerns.'
+			}
+		],
+		quotes: [
+			{ text: 'The key to long-term survival and prosperity has a lot to do with the money management techniques incorporated into the technical system.', source: 'Interview' },
+			{ text: 'Sometimes the market gives you lemons. The key is to make lemonade.', source: 'Greenlight Letters' }
+		],
+		books: [
+			{ title: 'Fooling Some of the People All of the Time', year: 2008, description: 'A long short story about Allied Capital' }
+		],
+		socialLinks: [
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/David_Einhorn_(businessman)' }
+		],
+		status: 'published'
+	},
+	{
+		name: 'Bill Ackman',
+		slug: 'bill-ackman',
+		photoUrl: null,
+		oneLiner: 'Pershing Square Activist and High-Conviction Investor',
+		birthYear: 1966,
+		nationality: 'American',
+		tradingStyle: 'Value Investing',
+		netWorth: '$3.6 Billion',
+		bio: `Bill Ackman is the founder and CEO of Pershing Square Capital Management, a hedge fund known for taking large, concentrated positions in companies and pushing for changes to unlock value. He is one of the most prominent activist investors of his generation.
+
+## Pershing Square
+
+Ackman founded Pershing Square in 2004 after his previous fund, Gotham Partners, wound down. The fund has had spectacular wins and painful losses, reflecting Ackman's high-conviction, concentrated approach.
+
+## Famous Wins
+
+Ackman's greatest trade came in March 2020 when he turned a $27 million hedge into $2.6 billion in just three weeks by betting on a market crash due to COVID-19. His investment in Canadian Pacific Railway also generated billions in profits.
+
+## Herbalife Battle
+
+Ackman's $1 billion short of Herbalife became one of the most public hedge fund battles in history. His five-year fight against the company, which he called a pyramid scheme, ultimately resulted in losses.
+
+## Transparency
+
+Unlike most hedge fund managers, Ackman is unusually public about his positions and reasoning. He regularly presents his investment theses at conferences and on social media.`,
+		philosophy: `"I look for simple businesses with high barriers to entry, predictable growth, and strong free cash flow."`,
+		achievements: [
+			'Founded Pershing Square Capital',
+			'$2.6 billion COVID hedge profit',
+			'Successful Canadian Pacific investment',
+			'Prominent activist investor',
+			'Transparent investment approach',
+			'Major philanthropist'
+		],
+		famousTrades: [
+			{
+				date: 'March 2020',
+				asset: 'Credit Default Swaps',
+				position: 'long',
+				outcome: 'Legendary Trade',
+				profitLoss: '+$2.6 Billion',
+				description: 'Turned $27 million into $2.6 billion in three weeks by hedging against COVID market crash.'
+			}
+		],
+		quotes: [
+			{ text: 'I look for simple businesses with high barriers to entry, predictable growth, and strong free cash flow.', source: 'Interview' },
+			{ text: 'Activism is really about buying a stake in a company and working to improve it.', source: 'CNBC' }
+		],
+		books: [
+			{ title: 'Confidence Game', year: 2010, description: 'How a hedge fund manager called Wall Street\'s bluff (about Ackman)' }
+		],
+		socialLinks: [
+			{ platform: 'Twitter', url: 'https://twitter.com/BillAckman' },
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Bill_Ackman' }
+		],
+		status: 'published'
+	},
+	{
+		name: 'Dan Loeb',
+		slug: 'dan-loeb',
+		photoUrl: null,
+		oneLiner: 'Third Point Founder and Activist Investor Extraordinaire',
+		birthYear: 1961,
+		nationality: 'American',
+		tradingStyle: 'Value Investing',
+		netWorth: '$4.4 Billion',
+		bio: `Daniel Loeb is the founder and CEO of Third Point LLC, a New York-based hedge fund with approximately $15 billion in assets under management. He is known for his activist campaigns, his sharp pen in investor letters, and his ability to generate strong returns across market cycles.
+
+## Third Point
+
+Loeb founded Third Point in 1995 with $3 million. The fund has generated annualized returns of approximately 15% since inception, making it one of the most successful hedge funds of its era.
+
+## Activist Campaigns
+
+Loeb has waged successful activist campaigns against companies including Yahoo, Sony, Nestlé, and Campbell Soup. His campaigns typically focus on operational improvements, capital allocation, and management changes.
+
+## Famous Letters
+
+Loeb is known for his colorful, sometimes scathing letters to company management. His missives have become legendary on Wall Street for their directness and wit.
+
+## Investment Style
+
+Third Point employs an event-driven, value-oriented strategy, investing in equities, credit, and structured products. Loeb is known for his ability to identify catalysts that will unlock value.`,
+		philosophy: `"We seek to invest in companies where we can identify a catalyst that will unlock value."`,
+		achievements: [
+			'Founded Third Point LLC',
+			'Manages $15+ billion',
+			'~15% annualized returns',
+			'Successful activist campaigns',
+			'Famous investor letters',
+			'Yahoo board seat victory'
+		],
+		famousTrades: [
+			{
+				date: '2011-2012',
+				asset: 'Yahoo',
+				position: 'long',
+				outcome: 'Major Profit',
+				profitLoss: '+100%+',
+				description: 'Activist campaign led to CEO change and board seats, unlocking significant value.'
+			}
+		],
+		quotes: [
+			{ text: 'We seek to invest in companies where we can identify a catalyst that will unlock value.', source: 'Third Point Letters' },
+			{ text: 'The best investments are often the most uncomfortable.', source: 'Interview' }
+		],
+		books: [],
+		socialLinks: [
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Daniel_Loeb' }
+		],
+		status: 'published'
+	},
+	{
+		name: 'John Neff',
+		slug: 'john-neff',
+		photoUrl: null,
+		oneLiner: 'Windsor Fund Legend with 31 Years of Market-Beating Returns',
+		birthYear: 1931,
+		deathYear: 2019,
+		nationality: 'American',
+		tradingStyle: 'Value Investing',
+		netWorth: '$100+ Million',
+		bio: `John Neff was one of the greatest mutual fund managers in history, managing the Vanguard Windsor Fund for 31 years and beating the S&P 500 in 22 of those years. His low P/E, contrarian approach made him a legend among value investors.
+
+## Windsor Fund
+
+Neff took over the Windsor Fund in 1964 when it had $75 million in assets. When he retired in 1995, the fund had grown to $11 billion. A $10,000 investment at the start of his tenure would have grown to over $564,000.
+
+## Low P/E Investing
+
+Neff was famous for buying stocks with low price-to-earnings ratios that were out of favor with Wall Street. He looked for companies with solid fundamentals that were temporarily depressed due to short-term problems.
+
+## Contrarian Approach
+
+Neff often bought stocks that others were selling, including Citicorp during the Latin American debt crisis and Ford during the auto industry's struggles. His willingness to go against the crowd was key to his success.
+
+## Quiet Legend
+
+Unlike many star fund managers, Neff shunned publicity and focused on his craft. He was known for his disciplined approach and his refusal to chase hot stocks or trends.`,
+		philosophy: `"It's not always easy to do what's not popular, but that's where you make your money."`,
+		achievements: [
+			'Managed Windsor Fund for 31 years',
+			'Beat S&P 500 in 22 of 31 years',
+			'Grew fund from $75M to $11B',
+			'5,546% total return vs 2,230% for S&P',
+			'Pioneer of low P/E investing',
+			'Vanguard legend'
+		],
+		famousTrades: [
+			{
+				date: '1991',
+				asset: 'Citicorp',
+				position: 'long',
+				outcome: 'Major Profit',
+				profitLoss: 'Multi-bagger',
+				description: 'Bought Citicorp during the Latin American debt crisis when others were fleeing, capturing the recovery.'
+			}
+		],
+		quotes: [
+			{ text: 'It\'s not always easy to do what\'s not popular, but that\'s where you make your money.', source: 'John Neff on Investing' },
+			{ text: 'Get \'em while they\'re cold.', source: 'Investment Philosophy' }
+		],
+		books: [
+			{ title: 'John Neff on Investing', year: 1999, description: 'Lessons from a legendary investor' }
+		],
+		socialLinks: [
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/John_Neff' }
+		],
+		status: 'published'
+	},
+	{
+		name: 'Walter Schloss',
+		slug: 'walter-schloss',
+		photoUrl: null,
+		oneLiner: 'Ben Graham\'s Disciple with 50 Years of Value Investing',
+		birthYear: 1916,
+		deathYear: 2012,
+		nationality: 'American',
+		tradingStyle: 'Value Investing',
+		netWorth: '$100+ Million',
+		bio: `Walter Schloss was a legendary value investor who worked for Benjamin Graham and later ran his own partnership for nearly 50 years. His simple, disciplined approach to buying cheap stocks generated remarkable returns with minimal risk.
+
+## Graham-Newman
+
+Schloss worked at Graham-Newman Corporation alongside Warren Buffett in the early 1950s. He learned directly from Benjamin Graham, the father of value investing, and applied those principles throughout his career.
+
+## WJS Partnership
+
+In 1955, Schloss started his own investment partnership with just $100,000. Over the next 45 years, he generated compound annual returns of approximately 16%, compared to 10% for the S&P 500. He never had a down year of more than 10%.
+
+## Simple Approach
+
+Schloss's approach was remarkably simple: buy stocks trading below book value, diversify broadly, and be patient. He didn't use computers, didn't meet with management, and worked from a small office with just his son.
+
+## Warren Buffett's Endorsement
+
+In his famous 1984 essay "The Superinvestors of Graham-and-Doddsville," Buffett highlighted Schloss as proof that value investing works. Schloss was one of the "superinvestors" who consistently beat the market using Graham's principles.`,
+		philosophy: `"Try to buy assets at a discount rather than buying earnings. Earnings can change dramatically in a short time. Usually assets change slowly."`,
+		achievements: [
+			'Worked for Benjamin Graham',
+			'50 years of successful investing',
+			'16% annual returns vs 10% S&P',
+			'Featured in Buffett\'s Superinvestors essay',
+			'Never lost more than 10% in a year',
+			'Simple, disciplined approach'
+		],
+		famousTrades: [
+			{
+				date: '1955-2000',
+				asset: 'Diversified Value Stocks',
+				position: 'long',
+				outcome: 'Consistent Outperformance',
+				profitLoss: '+16% annually',
+				description: 'Consistently bought stocks below book value, generating market-beating returns for 45 years.'
+			}
+		],
+		quotes: [
+			{ text: 'Try to buy assets at a discount rather than buying earnings. Earnings can change dramatically in a short time. Usually assets change slowly.', source: 'Interview' },
+			{ text: 'I try to buy stocks that are unpopular. I like to buy stocks that nobody wants.', source: 'Outstanding Investor Digest' }
+		],
+		books: [],
+		socialLinks: [
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Walter_Schloss' }
+		],
+		status: 'published'
+	},
+	{
+		name: 'Mohnish Pabrai',
+		slug: 'mohnish-pabrai',
+		photoUrl: null,
+		oneLiner: 'The Dhandho Investor - Buffett Disciple and Philanthropist',
+		birthYear: 1964,
+		nationality: 'American/Indian',
+		tradingStyle: 'Value Investing',
+		netWorth: '$200 Million',
+		bio: `Mohnish Pabrai is a value investor, author, and philanthropist who has achieved remarkable returns by following the investment principles of Warren Buffett and Charlie Munger. He is known for his "Dhandho" approach and his charitable work through the Dakshana Foundation.
+
+## Pabrai Investment Funds
+
+Pabrai founded his investment funds in 1999 with $1 million. Using a concentrated, value-oriented approach, he generated returns of over 1,100% from 2000 to 2018, significantly outperforming the S&P 500.
+
+## The Dhandho Framework
+
+Pabrai's book "The Dhandho Investor" outlines his investment philosophy, inspired by the Gujarati Patel community's approach to business: "Heads I win, tails I don't lose much." He looks for low-risk, high-uncertainty situations.
+
+## Lunch with Buffett
+
+In 2007, Pabrai and Guy Spier paid $650,100 at a charity auction to have lunch with Warren Buffett. This experience deepened his commitment to Buffett's principles and philanthropy.
+
+## Dakshana Foundation
+
+Pabrai founded the Dakshana Foundation to help underprivileged students in India gain admission to top engineering schools. The foundation has helped thousands of students transform their lives.`,
+		philosophy: `"Heads I win, tails I don't lose much. That's the Dhandho framework."`,
+		achievements: [
+			'1,100%+ returns from 2000-2018',
+			'Author of "The Dhandho Investor"',
+			'Paid $650,100 for lunch with Buffett',
+			'Founded Dakshana Foundation',
+			'Helped thousands of students',
+			'Prominent Buffett disciple'
+		],
+		famousTrades: [
+			{
+				date: '2002-2007',
+				asset: 'Various Value Stocks',
+				position: 'long',
+				outcome: 'Exceptional Returns',
+				profitLoss: '+600%+',
+				description: 'Concentrated portfolio of undervalued stocks generated exceptional returns during this period.'
+			}
+		],
+		quotes: [
+			{ text: 'Heads I win, tails I don\'t lose much. That\'s the Dhandho framework.', source: 'The Dhandho Investor' },
+			{ text: 'Investing is simple, but not easy.', source: 'Interview' }
+		],
+		books: [
+			{ title: 'The Dhandho Investor', year: 2007, description: 'The low-risk value method to high returns' },
+			{ title: 'Mosaic: Perspectives on Investing', year: 2004, description: 'Collection of investment insights' }
+		],
+		socialLinks: [
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Mohnish_Pabrai' }
+		],
+		status: 'published'
+	},
+	{
+		name: 'Charlie Munger',
+		slug: 'charlie-munger',
+		photoUrl: null,
+		oneLiner: 'Berkshire Hathaway Vice Chairman and Buffett\'s Partner',
+		birthYear: 1924,
+		deathYear: 2023,
+		nationality: 'American',
+		tradingStyle: 'Value Investing',
+		netWorth: '$2.6 Billion',
+		bio: `Charlie Munger was the Vice Chairman of Berkshire Hathaway and Warren Buffett's longtime business partner. Known for his wit, wisdom, and multidisciplinary approach to investing, Munger was instrumental in transforming Buffett's investment philosophy from pure Graham-style value investing to buying wonderful businesses at fair prices.
+
+## Partnership with Buffett
+
+Munger met Buffett in 1959, and their partnership became one of the most successful in business history. Munger convinced Buffett to move beyond "cigar butt" investing toward buying quality businesses, famously advising: "It's far better to buy a wonderful company at a fair price than a fair company at a wonderful price."
+
+## Mental Models
+
+Munger was famous for his "latticework of mental models" approach—drawing insights from multiple disciplines including psychology, economics, physics, and biology to make better decisions. He believed that understanding cognitive biases was essential to successful investing.
+
+## Daily Journal Corporation
+
+Beyond Berkshire, Munger served as Chairman of Daily Journal Corporation, where he generated exceptional returns through concentrated investments in companies like BYD, the Chinese electric vehicle manufacturer.
+
+## Wisdom and Wit
+
+Munger was celebrated for his sharp wit and memorable quotes. His annual speeches at Berkshire meetings and Daily Journal meetings became must-attend events for investors seeking wisdom on business, life, and investing.`,
+		philosophy: `"It's far better to buy a wonderful company at a fair price than a fair company at a wonderful price."`,
+		achievements: [
+			'Vice Chairman of Berkshire Hathaway',
+			'Buffett\'s partner for 60+ years',
+			'Popularized mental models approach',
+			'Chairman of Daily Journal Corporation',
+			'Early investor in BYD',
+			'One of the most quoted investors ever'
+		],
+		famousTrades: [
+			{
+				date: '2008',
+				asset: 'BYD Company',
+				position: 'long',
+				outcome: 'Major Profit',
+				profitLoss: '+3,000%+',
+				description: 'Invested in Chinese EV maker BYD at $1 per share through Daily Journal, shares later traded above $30.'
+			}
+		],
+		quotes: [
+			{ text: 'It\'s far better to buy a wonderful company at a fair price than a fair company at a wonderful price.', source: 'Berkshire Annual Meeting' },
+			{ text: 'Invert, always invert.', source: 'Poor Charlie\'s Almanack' },
+			{ text: 'The big money is not in the buying and selling, but in the waiting.', source: 'Interview' }
+		],
+		books: [
+			{ title: 'Poor Charlie\'s Almanack', year: 2005, description: 'The wit and wisdom of Charles T. Munger' }
+		],
+		socialLinks: [
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Charlie_Munger' }
+		],
+		status: 'published'
 	}
 ];

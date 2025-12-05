@@ -48,23 +48,49 @@ export const load: PageServerLoad = async ({ url }) => {
 		}
 	}
 
-	// Always include seed data (merge with Sanity data if available)
-	const seedData = seedTraders.map((t, i) => seedToTrader(t, `seed-trader-${i}`));
+	// Use ONLY seed data - this ensures all 37 traders show
+	const allTraders = seedTraders.map((t, i) => seedToTrader(t, `seed-trader-${i}`));
 	
-	// Merge: Sanity traders first, then seed traders not already in Sanity (by slug)
-	const sanitySlugSet = new Set(traders.map(t => t.slug));
-	const uniqueSeedTraders = seedData.filter(t => !sanitySlugSet.has(t.slug));
-	traders = [...traders, ...uniqueSeedTraders];
+	// Custom sort: Billy Ribeiro first, Mark Minervini second, John Carter last
+	const priorityFirst = ['billy-ribeiro', 'mark-minervini'];
+	const priorityLast = ['john-carter'];
 	
-	// Apply style filter if needed
+	// Separate into priority groups
+	const firstTraders = priorityFirst
+		.map(slug => allTraders.find(t => t.slug === slug))
+		.filter((t): t is Trader => t !== undefined);
+	
+	const lastTraders = priorityLast
+		.map(slug => allTraders.find(t => t.slug === slug))
+		.filter((t): t is Trader => t !== undefined);
+	
+	const middleTraders = allTraders.filter(
+		t => !priorityFirst.includes(t.slug) && !priorityLast.includes(t.slug)
+	);
+	
+	// Combine: first + middle + last
+	traders = [...firstTraders, ...middleTraders, ...lastTraders];
+	
+	// Get all unique trading styles and count them BEFORE filtering
+	const styleCounts: Record<string, number> = {};
+	traders.forEach(t => {
+		if (t.tradingStyle) {
+			styleCounts[t.tradingStyle] = (styleCounts[t.tradingStyle] || 0) + 1;
+		}
+	});
+	
+	// Sort trading styles by count (most popular first), only include styles with 2+ traders for filter buttons
+	tradingStyles = Object.entries(styleCounts)
+		.filter(([_, count]) => count >= 2)
+		.sort((a, b) => b[1] - a[1])
+		.map(([style]) => style);
+	
+	// Apply style filter AFTER calculating style counts (so all traders show when no filter)
 	if (styleFilter) {
 		traders = traders.filter(t => 
 			t.tradingStyle?.toLowerCase().includes(styleFilter.toLowerCase())
 		);
 	}
-	
-	// Get all unique trading styles
-	tradingStyles = [...new Set(traders.map(t => t.tradingStyle).filter((s): s is string => !!s))];
 
 	return {
 		traders,

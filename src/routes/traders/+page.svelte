@@ -131,38 +131,40 @@
 					</div>
 				</div>
 
-				<!-- Quick Filters - MOBILE-FIRST: Horizontal scroll on mobile -->
-				<div class="mt-4 sm:mt-6 flex flex-nowrap sm:flex-wrap justify-start sm:justify-center gap-2 overflow-x-auto pb-2 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide">
+				<!-- Quick Filters - Clean grid layout -->
+				<div class="mt-6 sm:mt-8 flex flex-wrap justify-center gap-2 sm:gap-3 max-w-3xl mx-auto">
 					<a
 						href="/traders"
 						class={cn(
-							'group inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 border whitespace-nowrap flex-shrink-0 active:scale-95',
+							'inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border',
 							!data.currentFilter
-								? 'bg-gold-500 text-midnight-950 border-gold-500 shadow-lg shadow-gold-500/20'
+								? 'bg-gold-500 text-midnight-950 border-gold-500 shadow-lg shadow-gold-500/25'
 								: 'bg-white/5 text-midnight-300 border-white/10 hover:bg-white/10 hover:text-white hover:border-white/20'
 						)}
 					>
-						<Icon name="users" class="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-						All
-						<span class="text-[10px] sm:text-xs opacity-70">({data.traders.length})</span>
+						<Icon name="users" class="h-4 w-4" />
+						All Traders
+						<span class="text-xs opacity-70 bg-black/10 px-1.5 py-0.5 rounded-full">{data.traders.length}</span>
 					</a>
 
-					{#each data.tradingStyles as style}
+					{#each data.tradingStyles.slice(0, 6) as style}
 						{@const meta = getStyleMeta(style)}
-						<a
-							href="/traders?style={encodeURIComponent(style || '')}"
-							class={cn(
-								'group inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 border whitespace-nowrap flex-shrink-0 active:scale-95',
-								data.currentFilter === style
-									? 'bg-gold-500 text-midnight-950 border-gold-500 shadow-lg shadow-gold-500/20'
-									: 'bg-white/5 text-midnight-300 border-white/10 hover:bg-white/10 hover:text-white hover:border-white/20'
-							)}
-						>
-							<Icon name={meta.icon} class="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-							<span class="hidden sm:inline">{style}</span>
-							<span class="sm:hidden">{style.split(' ')[0]}</span>
-							<span class="text-[10px] sm:text-xs opacity-70">({tradingStyleCounts[style || ''] || 0})</span>
-						</a>
+						{@const count = tradingStyleCounts[style || ''] || 0}
+						{#if count >= 2}
+							<a
+								href="/traders?style={encodeURIComponent(style || '')}"
+								class={cn(
+									'inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border',
+									data.currentFilter === style
+										? 'bg-gold-500 text-midnight-950 border-gold-500 shadow-lg shadow-gold-500/25'
+										: 'bg-white/5 text-midnight-300 border-white/10 hover:bg-white/10 hover:text-white hover:border-white/20'
+								)}
+							>
+								<Icon name={meta.icon} class="h-4 w-4" />
+								{style}
+								<span class="text-xs opacity-70 bg-black/10 px-1.5 py-0.5 rounded-full">{count}</span>
+							</a>
+						{/if}
 					{/each}
 				</div>
 			</div>
@@ -187,31 +189,33 @@
 					</p>
 				</div>
 
-				<!-- View Toggle - MOBILE-FIRST -->
-				<div class="hidden sm:flex items-center gap-1 bg-white/5 rounded-lg p-1 border border-white/5">
+				<!-- View Toggle -->
+				<div class="flex items-center gap-1 bg-white/5 rounded-lg p-1 border border-white/10">
 					<button
-						onclick={() => (viewMode = 'grid')}
+						type="button"
+						onclick={() => { viewMode = 'grid'; }}
 						class={cn(
-							'p-2 rounded-md transition-all duration-200',
+							'p-2.5 rounded-md transition-all duration-200',
 							viewMode === 'grid'
-								? 'bg-white/10 text-white'
-								: 'text-midnight-500 hover:text-white'
+								? 'bg-white/15 text-white'
+								: 'text-midnight-400 hover:text-white hover:bg-white/5'
 						)}
 						aria-label="Grid view"
 					>
-						<Icon name="layout-grid" class="h-4 w-4" />
+						<Icon name="layout-grid" class="h-5 w-5" />
 					</button>
 					<button
-						onclick={() => (viewMode = 'list')}
+						type="button"
+						onclick={() => { viewMode = 'list'; }}
 						class={cn(
-							'p-2 rounded-md transition-all duration-200',
+							'p-2.5 rounded-md transition-all duration-200',
 							viewMode === 'list'
-								? 'bg-white/10 text-white'
-								: 'text-midnight-500 hover:text-white'
+								? 'bg-white/15 text-white'
+								: 'text-midnight-400 hover:text-white hover:bg-white/5'
 						)}
 						aria-label="List view"
 					>
-						<Icon name="list" class="h-4 w-4" />
+						<Icon name="list" class="h-5 w-5" />
 					</button>
 				</div>
 			</div>
@@ -245,69 +249,73 @@
 					</div>
 				</ScrollReveal>
 			{:else}
-				<!-- Grid View - MOBILE-FIRST: 2-col on mobile -->
+				<!-- Grid View -->
 				{#if viewMode === 'grid'}
-					<div class="trader-grid grid gap-3 sm:gap-4 lg:gap-6 grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 auto-rows-fr">
+					<div class="grid gap-4 sm:gap-5 lg:gap-6 grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 						{#each filteredTraders as trader, i (trader.id)}
-							<ScrollReveal delay={Math.min(i * 50, 400)} class="h-full">
+							<div class="h-full">
 								<TraderCard {trader} index={i} class="h-full" />
-							</ScrollReveal>
+							</div>
 						{/each}
 					</div>
 				{:else}
 					<!-- List View -->
-					<div class="space-y-4">
+					<div class="space-y-3">
 						{#each filteredTraders as trader, i (trader.id)}
-							<ScrollReveal delay={Math.min(i * 30, 300)}>
-								<a
-									href="/traders/{trader.slug}"
-									class="group flex items-center gap-6 p-4 rounded-2xl border border-white/5 bg-midnight-900/30 backdrop-blur-sm transition-all duration-300 hover:border-gold-500/30 hover:bg-midnight-800/50"
-								>
-									<!-- Image -->
-									<div class="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-xl">
+							<a
+								href="/traders/{trader.slug}"
+								class="group flex items-center gap-4 sm:gap-6 p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-white/5 bg-midnight-900/30 backdrop-blur-sm transition-all duration-300 hover:border-gold-500/30 hover:bg-midnight-800/50"
+							>
+								<!-- Image -->
+								<div class="relative h-14 w-14 sm:h-20 sm:w-20 flex-shrink-0 overflow-hidden rounded-lg sm:rounded-xl">
+									{#if trader.photoUrl}
 										<img
 											src={trader.photoUrl}
 											alt={trader.name}
 											class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
 											loading="lazy"
 										/>
-										<div class="absolute inset-0 bg-gradient-to-t from-midnight-950/60 to-transparent"></div>
-									</div>
-
-									<!-- Content -->
-									<div class="flex-1 min-w-0">
-										<div class="flex items-center gap-3 mb-1">
-											<h3 class="font-display text-lg font-bold text-white group-hover:text-gold-400 transition-colors truncate">
-												{trader.name}
-											</h3>
-											{#if trader.tradingStyle}
-												{@const meta = getStyleMeta(trader.tradingStyle)}
-												<span class={cn('inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium', meta.bg, meta.color)}>
-													<Icon name={meta.icon} class="h-3 w-3" />
-													{trader.tradingStyle}
-												</span>
-											{/if}
+									{:else}
+										<div class="h-full w-full bg-midnight-800 flex items-center justify-center text-lg font-bold text-midnight-500">
+											{trader.name.split(' ').map((n) => n[0]).join('')}
 										</div>
-										<p class="text-sm text-midnight-300 line-clamp-1">
-											{trader.oneLiner}
-										</p>
-										<div class="flex items-center gap-4 mt-2 text-xs text-midnight-500">
-											{#if trader.nationality}
-												<span class="flex items-center gap-1">
-													<Icon name="globe" class="h-3 w-3" />
-													{trader.nationality}
-												</span>
-											{/if}
-											{#if trader.netWorth}
-												<span>{trader.netWorth}</span>
-											{/if}
-										</div>
-									</div>
+									{/if}
+									<div class="absolute inset-0 bg-gradient-to-t from-midnight-950/60 to-transparent"></div>
+								</div>
 
-									<!-- Arrow -->
-									<Icon name="arrow-right" class="h-5 w-5 text-midnight-600 transition-all duration-300 group-hover:text-gold-500 group-hover:translate-x-1 flex-shrink-0" />
-								</a>
-							</ScrollReveal>
+								<!-- Content -->
+								<div class="flex-1 min-w-0">
+									<div class="flex items-center gap-2 sm:gap-3 mb-1">
+										<h3 class="font-display text-base sm:text-lg font-bold text-white group-hover:text-gold-400 transition-colors truncate">
+											{trader.name}
+										</h3>
+										{#if trader.tradingStyle}
+											{@const meta = getStyleMeta(trader.tradingStyle)}
+											<span class={cn('hidden sm:inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium', meta.bg, meta.color)}>
+												<Icon name={meta.icon} class="h-3 w-3" />
+												{trader.tradingStyle}
+											</span>
+										{/if}
+									</div>
+									<p class="text-xs sm:text-sm text-midnight-300 line-clamp-1">
+										{trader.oneLiner}
+									</p>
+									<div class="flex items-center gap-3 sm:gap-4 mt-1 sm:mt-2 text-xs text-midnight-500">
+										{#if trader.nationality}
+											<span class="flex items-center gap-1">
+												<Icon name="globe" class="h-3 w-3" />
+												{trader.nationality}
+											</span>
+										{/if}
+										{#if trader.netWorth}
+											<span class="text-emerald-400">{trader.netWorth}</span>
+										{/if}
+									</div>
+								</div>
+
+								<!-- Arrow -->
+								<Icon name="arrow-right" class="h-4 w-4 sm:h-5 sm:w-5 text-midnight-600 transition-all duration-300 group-hover:text-gold-500 group-hover:translate-x-1 flex-shrink-0" />
+							</a>
 						{/each}
 					</div>
 				{/if}
