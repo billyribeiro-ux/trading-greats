@@ -53,7 +53,7 @@ The genius of CANSLIM is that it's not based on theory or gut feelings. It's a r
 ## Implementing CANSLIM Today
 
 Modern traders can apply CANSLIM using stock screeners, IBD ratings, and technical analysis tools. The key is discipline—following the rules even when it's uncomfortable.`,
-		heroImage: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&h=630&fit=crop',
+		heroImage: null,
 		heroImageAlt: 'Stock trading chart analysis',
 		author: 'Trading Greats Team',
 		readingTime: 8,
@@ -127,7 +127,7 @@ Here's why position sizing matters:
 | 75%  | 300%                   |
 
 A 50% loss requires a 100% gain just to break even. This is why preservation of capital is paramount.`,
-		heroImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+		heroImage: null,
 		heroImageAlt: 'Trading risk management charts',
 		author: 'Trading Greats Team',
 		readingTime: 6,
@@ -205,7 +205,7 @@ In contrast, losing traders typically:
 Mark Douglas wrote: "The best traders have evolved to the point where they believe, without a shred of doubt or internal conflict, that anything can happen."
 
 Can you truly accept that anything can happen on any trade? That's the goal.`,
-		heroImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=630&fit=crop',
+		heroImage: null,
 		heroImageAlt: 'Trader analyzing market psychology',
 		author: 'Trading Greats Team',
 		readingTime: 7,
@@ -285,7 +285,7 @@ He waited for the right moment. The fundamentals had been misaligned for months,
 What made Soros unique wasn't just his capital—it was his intellectual framework. He approached markets as a student of human fallibility:
 
 "Markets are constantly in a state of uncertainty and flux, and money is made by discounting the obvious and betting on the unexpected."`,
-		heroImage: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=1200&h=630&fit=crop',
+		heroImage: null,
 		heroImageAlt: 'British pound sterling currency',
 		author: 'Trading Greats Team',
 		readingTime: 9,
@@ -377,7 +377,7 @@ Howard Marks has written extensively about market cycles, calling them "the most
 > "There is no way to know what cycle you are in while you are in it. You can only know what cycle you were in after the fact." — Howard Marks
 
 This is why you must have a plan for every stage. Position sizing and risk management matter more than perfect timing.`,
-		heroImage: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=1200&h=630&fit=crop',
+		heroImage: null,
 		heroImageAlt: 'Market cycle chart analysis',
 		author: 'Trading Greats Team',
 		readingTime: 7,
@@ -451,7 +451,7 @@ This book should be on every trader's shelf. Read it once a year. Each time you'
 The prose is beautiful, the stories are gripping, and the lessons are eternal. There's a reason this book has been in print for 100 years.
 
 **Essential reading. No exceptions.**`,
-		heroImage: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=1200&h=630&fit=crop',
+		heroImage: null,
 		heroImageAlt: 'Classic trading book on desk',
 		author: 'Trading Greats Team',
 		readingTime: 5,

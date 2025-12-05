@@ -2,7 +2,14 @@ import { json, error } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { db } from '$lib/server/db';
 import { media } from '$lib/server/schema';
-import { uploadToR2, deleteFromR2, isStorageConfigured } from '$lib/server/storage';
+import {
+	uploadImage,
+	deleteImage,
+	isStorageConfigured,
+	getActiveProvider,
+	getStorageInfo,
+	type StorageProvider
+} from '$lib/server/storage';
 import { eq, desc, like, or } from 'drizzle-orm';
 
 /**
@@ -22,8 +29,6 @@ export const GET: RequestHandler = async ({ url, cookies }) => {
 	const offset = (page - 1) * limit;
 
 	try {
-		let query = db.select().from(media);
-
 		// Apply filters
 		const conditions = [];
 		if (search) {
@@ -51,6 +56,9 @@ export const GET: RequestHandler = async ({ url, cookies }) => {
 		const allItems = await db.select({ id: media.id }).from(media);
 		const total = allItems.length;
 
+		// Include storage info in response
+		const storageInfo = getStorageInfo();
+
 		return json({
 			items,
 			pagination: {
@@ -58,6 +66,10 @@ export const GET: RequestHandler = async ({ url, cookies }) => {
 				limit,
 				total,
 				totalPages: Math.ceil(total / limit)
+			},
+			storage: {
+				provider: storageInfo.provider,
+				configured: storageInfo.configured
 			}
 		});
 	} catch (err) {
@@ -78,7 +90,8 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 
 	// Check if storage is configured
 	if (!isStorageConfigured()) {
-		throw error(503, 'Storage is not configured. Please add R2 credentials to your environment variables.');
+		const provider = getActiveProvider();
+		throw error(503, `Storage provider "${provider}" is not properly configured.`);
 	}
 
 	try {
@@ -110,8 +123,8 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 			throw error(400, 'File too large. Maximum size is 10MB.');
 		}
 
-		// Upload to R2 with Sharp optimization
-		const processed = await uploadToR2(file, folder);
+		// Upload using the configured storage provider (local or R2)
+		const processed = await uploadImage(file, folder);
 
 		// Save to database with SEO metadata
 		const [newMedia] = await db.insert(media).values({
@@ -127,7 +140,7 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 			largeUrl: processed.variants.large,
 			originalUrl: processed.variants.original,
 			storageKey: processed.storageKey,
-			storageProvider: 'r2',
+			storageProvider: processed.storageProvider,
 			title: title || file.name.replace(/\.[^.]+$/, ''),
 			altText,
 			description,
@@ -139,6 +152,7 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 		return json({
 			success: true,
 			media: newMedia,
+			storageProvider: processed.storageProvider,
 			// For backwards compatibility with existing ImageUpload component
 			url: newMedia.url,
 			urls: {
@@ -181,9 +195,12 @@ export const DELETE: RequestHandler = async ({ request, cookies }) => {
 			throw error(404, 'Media not found');
 		}
 
-		// Delete from R2
+		// Delete from storage (uses the provider stored with the media item)
 		if (mediaItem.storageKey) {
-			await deleteFromR2(mediaItem.storageKey);
+			await deleteImage(
+				mediaItem.storageKey,
+				(mediaItem.storageProvider as StorageProvider) || undefined
+			);
 		}
 
 		// Delete from database

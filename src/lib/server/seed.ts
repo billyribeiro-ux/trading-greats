@@ -4,7 +4,7 @@ export const seedTraders: NewTrader[] = [
 	{
 		name: 'Mark Minervini',
 		slug: 'mark-minervini',
-		photoUrl: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=500&fit=crop&crop=faces&fp-y=0.35',
+		photoUrl: null,
 		oneLiner: 'U.S. Investing Champion with 220% Annual Returns',
 		birthYear: 1960,
 		nationality: 'American',
@@ -79,7 +79,7 @@ Today, Mark is dedicated to teaching his methodology through his books, workshop
 	{
 		name: 'Billy Ribeiro',
 		slug: 'billy-ribeiro',
-		photoUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=500&fit=crop&crop=faces&fp-y=0.35',
+		photoUrl: null,
 		oneLiner: 'Options Trading Educator & Price Action Specialist',
 		birthYear: 1985,
 		nationality: 'American',
@@ -145,7 +145,7 @@ Beyond trading, Billy has built a thriving community of traders who support each
 	{
 		name: 'John Carter',
 		slug: 'john-carter',
-		photoUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&crop=faces&fp-y=0.35',
+		photoUrl: null,
 		oneLiner: 'Squeeze Indicator Creator & Options Trading Legend',
 		birthYear: 1969,
 		nationality: 'American',
@@ -224,7 +224,7 @@ Through Simpler Trading, John has trained tens of thousands of traders. The plat
 	{
 		name: 'George Soros',
 		slug: 'george-soros',
-		photoUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=500&fit=crop&crop=faces&fp-y=0.35',
+		photoUrl: null,
 		oneLiner: 'The Man Who Broke the Bank of England',
 		birthYear: 1930,
 		nationality: 'Hungarian-American',
@@ -301,7 +301,7 @@ Soros has given away over $32 billion to philanthropic causes through his Open S
 	{
 		name: 'Warren Buffett',
 		slug: 'warren-buffett',
-		photoUrl: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=500&fit=crop&crop=faces&fp-y=0.35',
+		photoUrl: null,
 		oneLiner: 'The Oracle of Omaha',
 		birthYear: 1930,
 		nationality: 'American',
@@ -390,7 +390,7 @@ Before Berkshire, Buffett ran private investment partnerships from 1956 to 1969,
 	{
 		name: 'Paul Tudor Jones',
 		slug: 'paul-tudor-jones',
-		photoUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=500&fit=crop&crop=faces&fp-y=0.35',
+		photoUrl: null,
 		oneLiner: 'Predicted the 1987 Crash & Macro Trading Pioneer',
 		birthYear: 1954,
 		nationality: 'American',
@@ -447,7 +447,7 @@ Jones is known for his:
 	{
 		name: 'Ray Dalio',
 		slug: 'ray-dalio',
-		photoUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&crop=faces&fp-y=0.35',
+		photoUrl: null,
 		oneLiner: 'Founder of World\'s Largest Hedge Fund',
 		birthYear: 1949,
 		nationality: 'American',
@@ -507,7 +507,7 @@ Dalio is famous for his company culture based on "radical transparency" and "rad
 	{
 		name: 'Stanley Druckenmiller',
 		slug: 'stanley-druckenmiller',
-		photoUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=500&fit=crop&crop=faces&fp-y=0.35',
+		photoUrl: null,
 		oneLiner: 'Soros\'s Right Hand with 30% Annual Returns',
 		birthYear: 1953,
 		nationality: 'American',
@@ -562,7 +562,7 @@ Druckenmiller is known for:
 	{
 		name: 'Jesse Livermore',
 		slug: 'jesse-livermore',
-		photoUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=500&fit=crop&crop=faces&fp-y=0.35',
+		photoUrl: null,
 		oneLiner: 'The Greatest Stock Speculator Who Ever Lived',
 		birthYear: 1877,
 		nationality: 'American',
@@ -629,7 +629,7 @@ Livermore pioneered many concepts still used today:
 	{
 		name: 'Peter Lynch',
 		slug: 'peter-lynch',
-		photoUrl: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=500&fit=crop&crop=faces&fp-y=0.35',
+		photoUrl: null,
 		oneLiner: 'Grew Fidelity Magellan Fund from $18M to $14B',
 		birthYear: 1944,
 		nationality: 'American',
@@ -685,7 +685,7 @@ Lynch popularized the concept of "invest in what you know":
 	{
 		name: 'Jim Simons',
 		slug: 'jim-simons',
-		photoUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&crop=faces&fp-y=0.35',
+		photoUrl: null,
 		oneLiner: 'Mathematician Who Built the Most Profitable Hedge Fund Ever',
 		birthYear: 1938,
 		nationality: 'American',
@@ -745,7 +745,7 @@ Simons pioneered the use of:
 	{
 		name: 'Carl Icahn',
 		slug: 'carl-icahn',
-		photoUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=500&fit=crop&crop=faces&fp-y=0.35',
+		photoUrl: null,
 		oneLiner: 'The Most Feared Activist Investor on Wall Street',
 		birthYear: 1936,
 		nationality: 'American',
@@ -802,7 +802,7 @@ Some of his most notable activist investments include:
 	{
 		name: 'Benjamin Graham',
 		slug: 'benjamin-graham',
-		photoUrl: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=500&fit=crop&crop=faces&fp-y=0.35',
+		photoUrl: null,
 		oneLiner: 'The Father of Value Investing',
 		birthYear: 1894,
 		nationality: 'British-American',
@@ -857,7 +857,7 @@ Graham taught at Columbia Business School for nearly three decades, where his st
 	{
 		name: 'William O\'Neil',
 		slug: 'william-oneil',
-		photoUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&crop=faces&fp-y=0.35',
+		photoUrl: null,
 		oneLiner: 'Creator of CANSLIM & Investor\'s Business Daily',
 		birthYear: 1933,
 		nationality: 'American',
@@ -915,7 +915,7 @@ In 1984, O'Neil founded Investor's Business Daily to compete with The Wall Stree
 	{
 		name: 'Linda Raschke',
 		slug: 'linda-raschke',
-		photoUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=500&fit=crop&crop=faces&fp-y=0.35',
+		photoUrl: null,
 		oneLiner: 'Champion Day Trader & Pattern Recognition Expert',
 		birthYear: 1959,
 		nationality: 'American',
@@ -964,7 +964,7 @@ Linda runs LBR Group, teaching traders her systematic approach to the markets. S
 	{
 		name: 'Ed Seykota',
 		slug: 'ed-seykota',
-		photoUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=500&fit=crop&crop=faces&fp-y=0.35',
+		photoUrl: null,
 		oneLiner: 'Trend Following Pioneer with 250,000% Returns',
 		birthYear: 1946,
 		nationality: 'American',
@@ -1017,7 +1017,7 @@ Ed has mentored many successful traders, including Michael Marcus, who went on t
 	{
 		name: 'Richard Dennis',
 		slug: 'richard-dennis',
-		photoUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=500&fit=crop&crop=faces&fp-y=0.35',
+		photoUrl: null,
 		oneLiner: 'The Prince of the Pit & Creator of the Turtle Traders',
 		birthYear: 1949,
 		nationality: 'American',
@@ -1072,7 +1072,7 @@ Dennis's system was based on:
 	{
 		name: 'Michael Steinhardt',
 		slug: 'michael-steinhardt',
-		photoUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&crop=faces&fp-y=0.35',
+		photoUrl: null,
 		oneLiner: 'Hedge Fund Pioneer with 24% Average Returns',
 		birthYear: 1940,
 		nationality: 'American',
@@ -1116,7 +1116,7 @@ Steinhardt was known for:
 	{
 		name: 'Julian Robertson',
 		slug: 'julian-robertson',
-		photoUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=500&fit=crop&crop=faces&fp-y=0.35',
+		photoUrl: null,
 		oneLiner: 'Legendary Tiger Management Founder',
 		birthYear: 1932,
 		nationality: 'American',
@@ -1162,7 +1162,7 @@ Robertson combined deep fundamental research with macro awareness, going long be
 	{
 		name: 'David Tepper',
 		slug: 'david-tepper',
-		photoUrl: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=500&fit=crop&crop=faces&fp-y=0.35',
+		photoUrl: null,
 		oneLiner: 'Distressed Debt King with 40% Annual Returns',
 		birthYear: 1957,
 		nationality: 'American',
@@ -1216,7 +1216,7 @@ Tepper combines macro views with deep research on individual securities, often t
 	{
 		name: 'Ken Griffin',
 		slug: 'ken-griffin',
-		photoUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=500&fit=crop&crop=faces&fp-y=0.35',
+		photoUrl: null,
 		oneLiner: 'Citadel Founder & Highest Paid Hedge Fund Manager',
 		birthYear: 1968,
 		nationality: 'American',
@@ -1272,7 +1272,7 @@ Citadel employs:
 	{
 		name: 'Steve Cohen',
 		slug: 'steve-cohen',
-		photoUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&crop=faces&fp-y=0.35',
+		photoUrl: null,
 		oneLiner: 'SAC Capital Legend & Point72 Founder',
 		birthYear: 1956,
 		nationality: 'American',
@@ -1325,7 +1325,7 @@ Cohen is known for his ability to:
 	{
 		name: 'Nicolas Darvas',
 		slug: 'nicolas-darvas',
-		photoUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=500&fit=crop&crop=faces&fp-y=0.35',
+		photoUrl: null,
 		oneLiner: 'Dancer Who Made $2 Million with the Box System',
 		birthYear: 1920,
 		nationality: 'Hungarian-American',
@@ -1378,7 +1378,7 @@ Between 1957 and 1958, Darvas turned $25,000 into over $2 million—equivalent t
 	{
 		name: 'Larry Williams',
 		slug: 'larry-williams',
-		photoUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=500&fit=crop&crop=faces&fp-y=0.35',
+		photoUrl: null,
 		oneLiner: 'World Cup Trading Champion with 11,376% Return',
 		birthYear: 1942,
 		nationality: 'American',
@@ -1437,7 +1437,7 @@ Larry has been trading since the 1960s and continues to trade and teach today. H
 	{
 		name: 'Victor Sperandeo',
 		slug: 'victor-sperandeo',
-		photoUrl: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=500&fit=crop&crop=faces&fp-y=0.35',
+		photoUrl: null,
 		oneLiner: 'Trader Vic - 18 Consecutive Profitable Years',
 		birthYear: 1945,
 		nationality: 'American',
