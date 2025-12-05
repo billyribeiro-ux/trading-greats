@@ -89,13 +89,6 @@
 		</div>
 
 		<div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-			<!-- Breadcrumb - MOBILE-FIRST -->
-			<nav class="mb-6 sm:mb-8 flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-midnight-400">
-				<a href="/" class="hover:text-gold-400 transition-colors">Home</a>
-				<Icon name="chevron-right" class="h-3 w-3 sm:h-4 sm:w-4" />
-				<span class="text-white font-medium">Legends</span>
-			</nav>
-
 			<div class="text-center max-w-4xl mx-auto">
 				<span class="inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-white/5 border border-white/10 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-gold-400 mb-4 sm:mb-6">
 					<Icon name="sparkles" class="h-3 w-3 sm:h-3.5 sm:w-3.5" />

@@ -60,12 +60,19 @@
 	color: #0f172a !important;
 }
 
+/* ============================================================================
+   LIGHT MODE - Background Colors
+   ============================================================================ */
 :root:not(.dark) .bg-midnight-950 {
 	background-color: #ffffff !important;
 }
 
 :root:not(.dark) .bg-midnight-900 {
 	background-color: #f8fafc !important;
+}
+
+:root:not(.dark) .bg-midnight-900\/95 {
+	background-color: rgba(248, 250, 252, 0.98) !important;
 }
 
 :root:not(.dark) .bg-midnight-900\/80,
@@ -78,6 +85,22 @@
 	background-color: #f1f5f9 !important;
 }
 
+:root:not(.dark) .bg-midnight-800\/50 {
+	background-color: rgba(241, 245, 249, 0.8) !important;
+}
+
+:root:not(.dark) .bg-midnight-700 {
+	background-color: #e2e8f0 !important;
+}
+
+:root:not(.dark) .bg-\[#020617\],
+:root:not(.dark) .bg-\[#0f172a\] {
+	background-color: #ffffff !important;
+}
+
+/* ============================================================================
+   LIGHT MODE - Text Colors
+   ============================================================================ */
 :root:not(.dark) .text-white {
 	color: #0f172a !important;
 }
@@ -91,7 +114,10 @@
 	color: #1e293b !important;
 }
 
-:root:not(.dark) .text-midnight-300,
+:root:not(.dark) .text-midnight-300 {
+	color: #334155 !important;
+}
+
 :root:not(.dark) .text-midnight-400 {
 	color: #475569 !important;
 }
@@ -100,6 +126,38 @@
 	color: #64748b !important;
 }
 
+:root:not(.dark) .text-midnight-600 {
+	color: #94a3b8 !important;
+}
+
+/* Gold colors - darken for light mode visibility */
+:root:not(.dark) .text-gold-400 {
+	color: #b45309 !important;
+}
+
+:root:not(.dark) .text-gold-500 {
+	color: #a16207 !important;
+}
+
+:root:not(.dark) .text-\[#FACC15\],
+:root:not(.dark) .text-\[#EAB308\] {
+	color: #a16207 !important;
+}
+
+/* Violet colors for compare page */
+:root:not(.dark) .text-violet-400 {
+	color: #7c3aed !important;
+}
+
+/* Slate colors */
+:root:not(.dark) .text-slate-400,
+:root:not(.dark) .text-slate-500 {
+	color: #64748b !important;
+}
+
+/* ============================================================================
+   LIGHT MODE - Border Colors
+   ============================================================================ */
 :root:not(.dark) .border-white\/5,
 :root:not(.dark) .border-white\/10,
 :root:not(.dark) .border-white\/\[0\.08\] {
@@ -111,35 +169,225 @@
 	border-color: rgba(15, 23, 42, 0.1) !important;
 }
 
-/* Light mode navbar */
+:root:not(.dark) .ring-white\/10 {
+	--tw-ring-color: rgba(15, 23, 42, 0.1) !important;
+}
+
+:root:not(.dark) .ring-gold-500\/20,
+:root:not(.dark) .ring-gold-500\/30,
+:root:not(.dark) .ring-gold-500\/40 {
+	--tw-ring-color: rgba(180, 83, 9, 0.3) !important;
+}
+
+:root:not(.dark) .border-gold-500\/20,
+:root:not(.dark) .border-gold-500\/30 {
+	border-color: rgba(180, 83, 9, 0.25) !important;
+}
+
+:root:not(.dark) .border-violet-500\/30,
+:root:not(.dark) .border-violet-500\/40 {
+	border-color: rgba(124, 58, 237, 0.3) !important;
+}
+
+:root:not(.dark) .border-red-500\/20 {
+	border-color: rgba(239, 68, 68, 0.25) !important;
+}
+
+/* ============================================================================
+   LIGHT MODE - Navbar
+   ============================================================================ */
 :root:not(.dark) .bg-midnight-950\/85 {
 	background-color: rgba(255, 255, 255, 0.95) !important;
 	border-color: rgba(15, 23, 42, 0.1) !important;
 }
 
-/* Light mode cards and containers */
+:root:not(.dark) header {
+	background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* ============================================================================
+   LIGHT MODE - Cards and Containers
+   ============================================================================ */
 :root:not(.dark) .bg-midnight-950\/50 {
 	background-color: rgba(248, 250, 252, 0.95) !important;
 }
 
-:root:not(.dark) .bg-\[#0f172a\] {
-	background-color: #ffffff !important;
+:root:not(.dark) .bg-gold-500\/10 {
+	background-color: rgba(180, 83, 9, 0.1) !important;
 }
 
-/* Light mode backdrop */
+:root:not(.dark) .bg-violet-500\/10,
+:root:not(.dark) .bg-violet-900\/50 {
+	background-color: rgba(124, 58, 237, 0.1) !important;
+}
+
+:root:not(.dark) .bg-red-500\/10,
+:root:not(.dark) .bg-red-500\/20 {
+	background-color: rgba(239, 68, 68, 0.1) !important;
+}
+
+:root:not(.dark) .bg-green-500\/10 {
+	background-color: rgba(34, 197, 94, 0.1) !important;
+}
+
+:root:not(.dark) .bg-blue-500\/10 {
+	background-color: rgba(59, 130, 246, 0.1) !important;
+}
+
+:root:not(.dark) .bg-white\/5,
+:root:not(.dark) .bg-white\/10 {
+	background-color: rgba(15, 23, 42, 0.05) !important;
+}
+
+/* ============================================================================
+   LIGHT MODE - Backdrop and Blur
+   ============================================================================ */
 :root:not(.dark) .backdrop-blur-xl,
 :root:not(.dark) .backdrop-blur-2xl,
 :root:not(.dark) .backdrop-blur-3xl {
-	background-color: rgba(255, 255, 255, 0.8) !important;
+	background-color: rgba(255, 255, 255, 0.85) !important;
 }
 
-/* Light mode selection */
+:root:not(.dark) .bg-midnight-950\/80 {
+	background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* ============================================================================
+   LIGHT MODE - Gradients
+   ============================================================================ */
+:root:not(.dark) .from-midnight-950 {
+	--tw-gradient-from: #f8fafc !important;
+}
+
+:root:not(.dark) .from-midnight-900 {
+	--tw-gradient-from: #ffffff !important;
+}
+
+:root:not(.dark) .to-midnight-950 {
+	--tw-gradient-to: #f8fafc !important;
+}
+
+:root:not(.dark) .to-midnight-800 {
+	--tw-gradient-to: #f1f5f9 !important;
+}
+
+:root:not(.dark) .via-midnight-950\/80,
+:root:not(.dark) .via-midnight-950\/60,
+:root:not(.dark) .via-midnight-950\/40,
+:root:not(.dark) .via-transparent {
+	--tw-gradient-via: rgba(248, 250, 252, 0.6) !important;
+}
+
+:root:not(.dark) .from-midnight-700,
+:root:not(.dark) .from-midnight-800 {
+	--tw-gradient-from: #e2e8f0 !important;
+}
+
+:root:not(.dark) .from-gold-500 {
+	--tw-gradient-from: #b45309 !important;
+}
+
+:root:not(.dark) .to-gold-600 {
+	--tw-gradient-to: #a16207 !important;
+}
+
+/* Gradient backgrounds */
+:root:not(.dark) .bg-gradient-to-b.from-midnight-900,
+:root:not(.dark) .bg-gradient-to-t.from-midnight-950 {
+	background: linear-gradient(to bottom, #ffffff, #f8fafc) !important;
+}
+
+:root:not(.dark) .bg-gradient-to-br.from-midnight-700 {
+	background: linear-gradient(to bottom right, #e2e8f0, #f1f5f9) !important;
+}
+
+/* ============================================================================
+   LIGHT MODE - Quote of the Day Section
+   ============================================================================ */
+:root:not(.dark) section.bg-\[#020617\] {
+	background-color: #f8fafc !important;
+}
+
+:root:not(.dark) .from-\[#EAB308\]\/20,
+:root:not(.dark) .to-\[#CA8A04\]\/10 {
+	--tw-gradient-from: rgba(180, 83, 9, 0.15) !important;
+	--tw-gradient-to: rgba(161, 98, 7, 0.1) !important;
+}
+
+:root:not(.dark) .ring-\[#EAB308\]\/30 {
+	--tw-ring-color: rgba(180, 83, 9, 0.3) !important;
+}
+
+/* ============================================================================
+   LIGHT MODE - Search Modal
+   ============================================================================ */
+:root:not(.dark) .bg-midnight-900\/95 {
+	background-color: rgba(255, 255, 255, 0.98) !important;
+}
+
+:root:not(.dark) .placeholder-midnight-500::placeholder {
+	color: #94a3b8 !important;
+}
+
+/* ============================================================================
+   LIGHT MODE - Footer
+   ============================================================================ */
+:root:not(.dark) footer {
+	background-color: #f1f5f9 !important;
+}
+
+:root:not(.dark) footer .text-white {
+	color: #0f172a !important;
+}
+
+:root:not(.dark) footer .text-midnight-400 {
+	color: #64748b !important;
+}
+
+/* ============================================================================
+   LIGHT MODE - Hover States
+   ============================================================================ */
+:root:not(.dark) .hover\:bg-white\/5:hover,
+:root:not(.dark) .hover\:bg-white\/10:hover {
+	background-color: rgba(15, 23, 42, 0.05) !important;
+}
+
+:root:not(.dark) .hover\:text-white:hover {
+	color: #0f172a !important;
+}
+
+:root:not(.dark) .hover\:text-gold-400:hover {
+	color: #b45309 !important;
+}
+
+:root:not(.dark) .hover\:text-violet-400:hover {
+	color: #7c3aed !important;
+}
+
+:root:not(.dark) .group:hover .group-hover\:text-gold-400,
+:root:not(.dark) .group:hover .group-hover\:text-violet-400 {
+	color: #7c3aed !important;
+}
+
+:root:not(.dark) .group:hover .group-hover\:text-violet-300 {
+	color: #8b5cf6 !important;
+}
+
+:root:not(.dark) .group:hover .group-hover\:from-violet-900\/50 {
+	--tw-gradient-from: rgba(124, 58, 237, 0.15) !important;
+}
+
+/* ============================================================================
+   LIGHT MODE - Selection
+   ============================================================================ */
 :root:not(.dark) ::selection {
-	background: rgba(234, 179, 8, 0.25);
+	background: rgba(180, 83, 9, 0.25);
 	color: #713f12;
 }
 
-/* Light mode scrollbar */
+/* ============================================================================
+   LIGHT MODE - Scrollbar
+   ============================================================================ */
 :root:not(.dark) ::-webkit-scrollbar-thumb {
 	background: #cbd5e1;
 }
@@ -148,15 +396,19 @@
 	background: #94a3b8;
 }
 
-/* Light mode focus ring */
+/* ============================================================================
+   LIGHT MODE - Focus Ring
+   ============================================================================ */
 :root:not(.dark) :focus-visible {
 	box-shadow:
 		0 0 0 2px #ffffff,
-		0 0 0 4px #eab308,
-		0 0 15px rgba(234, 179, 8, 0.2) !important;
+		0 0 0 4px #b45309,
+		0 0 15px rgba(180, 83, 9, 0.2) !important;
 }
 
-/* Light mode shadows - softer */
+/* ============================================================================
+   LIGHT MODE - Shadows
+   ============================================================================ */
 :root:not(.dark) .shadow-2xl {
 	box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.15) !important;
 }
@@ -165,15 +417,38 @@
 	box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.1) !important;
 }
 
-/* Light mode gradient adjustments */
-:root:not(.dark) .from-midnight-950 {
-	--tw-gradient-from: #f8fafc !important;
+:root:not(.dark) .shadow-lg {
+	box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.08) !important;
 }
 
-:root:not(.dark) .via-midnight-950\/80,
-:root:not(.dark) .via-midnight-950\/60,
-:root:not(.dark) .via-midnight-950\/40 {
-	--tw-gradient-via: rgba(248, 250, 252, 0.6) !important;
+:root:not(.dark) .shadow-gold-500\/20,
+:root:not(.dark) .shadow-gold-500\/25 {
+	--tw-shadow-color: rgba(180, 83, 9, 0.15) !important;
+}
+
+/* ============================================================================
+   LIGHT MODE - Glow Effects (reduce/remove)
+   ============================================================================ */
+:root:not(.dark) .bg-gold-500\/5,
+:root:not(.dark) .bg-blue-500\/5 {
+	background-color: transparent !important;
+}
+
+:root:not(.dark) [class*="blur-\[80px\]"],
+:root:not(.dark) [class*="blur-\[100px\]"],
+:root:not(.dark) .blur-3xl {
+	opacity: 0.3 !important;
+}
+
+/* ============================================================================
+   LIGHT MODE - Radial Gradients
+   ============================================================================ */
+:root:not(.dark) .bg-\[radial-gradient\(circle\,rgba\(234\,179\,8\,0\.08\)_0\%\,transparent_60\%\)\] {
+	background: radial-gradient(circle, rgba(180, 83, 9, 0.06) 0%, transparent 60%) !important;
+}
+
+:root:not(.dark) .bg-gradient-radial {
+	opacity: 0.5 !important;
 }
 
 /* ============================================================================

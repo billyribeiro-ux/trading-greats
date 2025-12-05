@@ -204,16 +204,6 @@
 
 		<div class="relative mx-auto max-w-4xl px-4 pt-20 sm:pt-24 lg:pt-32 pb-10 sm:pb-12 sm:px-6 lg:px-8">
 			<ScrollReveal>
-				<!-- Breadcrumbs - MOBILE-FIRST -->
-				<nav class="mb-5 sm:mb-6 flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-midnight-400">
-					<a href="/traders/{trader.slug}" class="hover:text-gold-400 transition-colors flex items-center gap-1">
-						<Icon name="arrow-left" class="h-3.5 w-3.5" />
-						{trader.name}
-					</a>
-					<Icon name="chevron-right" class="h-3 w-3" />
-					<a href="/traders/{trader.slug}/articles" class="hover:text-gold-400 transition-colors">Articles</a>
-				</nav>
-
 				<!-- Meta badges -->
 				<div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
 					{#if article.category}

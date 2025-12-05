@@ -83,17 +83,6 @@
 
 		<div class="relative mx-auto max-w-7xl px-4 pt-20 sm:pt-24 lg:pt-28 pb-10 sm:pb-12 sm:px-6 lg:px-8">
 			<ScrollReveal>
-				<!-- Breadcrumbs - MOBILE-FIRST -->
-				<nav class="mb-5 sm:mb-6 flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-midnight-400">
-					<a href="/" class="hover:text-gold-400 transition-colors">Home</a>
-					<Icon name="chevron-right" class="h-3 w-3 sm:h-4 sm:w-4" />
-					<a href="/traders" class="hover:text-gold-400 transition-colors">Traders</a>
-					<Icon name="chevron-right" class="h-3 w-3 sm:h-4 sm:w-4" />
-					<a href="/traders/{trader.slug}" class="hover:text-gold-400 transition-colors">{trader.name}</a>
-					<Icon name="chevron-right" class="h-3 w-3 sm:h-4 sm:w-4" />
-					<span class="text-white font-medium">Articles</span>
-				</nav>
-
 				<!-- Trader info header -->
 				<div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 mb-6 sm:mb-8">
 					{#if trader.photoUrl}
