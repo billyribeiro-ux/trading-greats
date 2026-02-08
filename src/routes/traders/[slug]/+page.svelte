@@ -18,6 +18,31 @@
 	const trader = $derived(data.trader);
 	const relatedTraders = $derived(data.relatedTraders);
 	const articles = $derived(data.articles);
+	const gallery = $derived(data.gallery ?? []);
+
+	// Lightbox state
+	let lightboxIndex = $state<number | null>(null);
+	const lightboxImage = $derived(lightboxIndex !== null ? gallery[lightboxIndex] : null);
+
+	function openLightbox(index: number) {
+		lightboxIndex = index;
+	}
+
+	function closeLightbox() {
+		lightboxIndex = null;
+	}
+
+	function lightboxNext() {
+		if (lightboxIndex !== null && lightboxIndex < gallery.length - 1) {
+			lightboxIndex = lightboxIndex + 1;
+		}
+	}
+
+	function lightboxPrev() {
+		if (lightboxIndex !== null && lightboxIndex > 0) {
+			lightboxIndex = lightboxIndex - 1;
+		}
+	}
 
 	const breadcrumbs = $derived([
 		{ name: 'Home', url: PUBLIC_SITE_URL },
@@ -244,8 +269,41 @@
 					</section>
 				{/if}
 
-				<!-- Famous Trades - MOBILE-FIRST -->
-				{#if trader.famousTrades && trader.famousTrades.length > 0}
+				<!-- Photo Gallery - MOBILE-FIRST -->
+			{#if gallery.length > 0}
+				<section>
+					<h2 class="mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3 font-display text-lg sm:text-xl lg:text-2xl font-bold text-white">
+						<Icon name="layout-grid" class="h-5 w-5 sm:h-6 sm:w-6 text-gold-500" />
+						Photo Gallery
+					</h2>
+					<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3">
+						{#each gallery as image, i}
+							<button
+								type="button"
+								onclick={() => openLightbox(i)}
+								class="group relative aspect-square rounded-lg sm:rounded-xl overflow-hidden border border-white/5 hover:border-gold-500/30 transition-all focus:outline-none focus:ring-2 focus:ring-gold-500/40"
+							>
+								<img
+									src={image.mediumUrl || image.url}
+									alt={image.altText || image.title || `${trader.name} photo ${i + 1}`}
+									class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+									loading="lazy"
+									decoding="async"
+								/>
+								<div class="absolute inset-0 bg-gradient-to-t from-midnight-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+								{#if image.caption}
+									<div class="absolute bottom-0 left-0 right-0 p-2 sm:p-3 opacity-0 group-hover:opacity-100 transition-opacity">
+										<p class="text-[10px] sm:text-xs text-white/90 line-clamp-2">{image.caption}</p>
+									</div>
+								{/if}
+							</button>
+						{/each}
+					</div>
+				</section>
+			{/if}
+
+			<!-- Famous Trades - MOBILE-FIRST -->
+			{#if trader.famousTrades && trader.famousTrades.length > 0}
 					<section>
 						<h2 class="mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3 font-display text-lg sm:text-xl lg:text-2xl font-bold text-white">
 							<Icon name="trending-up" class="h-5 w-5 sm:h-6 sm:w-6 text-gold-500" />
@@ -367,3 +425,84 @@
 		</div>
 	</div>
 </div>
+
+<!-- Lightbox Modal -->
+{#if lightboxImage}
+	<div
+		class="fixed inset-0 z-50 flex items-center justify-center bg-midnight-950/95 backdrop-blur-md"
+		role="dialog"
+		aria-modal="true"
+		aria-label="Image lightbox"
+	>
+		<!-- Close button -->
+		<button
+			type="button"
+			onclick={closeLightbox}
+			class="absolute top-4 right-4 z-10 rounded-full bg-white/10 p-2.5 text-white hover:bg-white/20 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
+			aria-label="Close lightbox"
+		>
+			<Icon name="x" class="h-6 w-6" />
+		</button>
+
+		<!-- Previous button -->
+		{#if lightboxIndex !== null && lightboxIndex > 0}
+			<button
+				type="button"
+				onclick={lightboxPrev}
+				class="absolute left-4 top-1/2 -translate-y-1/2 z-10 rounded-full bg-white/10 p-2.5 text-white hover:bg-white/20 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
+				aria-label="Previous image"
+			>
+				<Icon name="arrow-left" class="h-6 w-6" />
+			</button>
+		{/if}
+
+		<!-- Next button -->
+		{#if lightboxIndex !== null && lightboxIndex < gallery.length - 1}
+			<button
+				type="button"
+				onclick={lightboxNext}
+				class="absolute right-4 top-1/2 -translate-y-1/2 z-10 rounded-full bg-white/10 p-2.5 text-white hover:bg-white/20 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
+				aria-label="Next image"
+			>
+				<Icon name="arrow-right" class="h-6 w-6" />
+			</button>
+		{/if}
+
+		<!-- Image -->
+		<div class="max-w-5xl max-h-[85vh] w-full mx-4 flex flex-col items-center">
+			<img
+				src={lightboxImage.largeUrl || lightboxImage.originalUrl || lightboxImage.url}
+				alt={lightboxImage.altText || lightboxImage.title || 'Gallery image'}
+				class="max-h-[75vh] w-auto max-w-full rounded-lg object-contain"
+				decoding="async"
+			/>
+
+			<!-- Caption & metadata -->
+			{#if lightboxImage.title || lightboxImage.caption}
+				<div class="mt-4 text-center max-w-2xl">
+					{#if lightboxImage.title}
+						<p class="text-base sm:text-lg font-medium text-white">{lightboxImage.title}</p>
+					{/if}
+					{#if lightboxImage.caption}
+						<p class="mt-1 text-sm text-midnight-400">{lightboxImage.caption}</p>
+					{/if}
+				</div>
+			{/if}
+
+			<!-- Counter -->
+			{#if lightboxIndex !== null}
+				<p class="mt-3 text-xs text-midnight-500">
+					{lightboxIndex + 1} / {gallery.length}
+				</p>
+			{/if}
+		</div>
+
+		<!-- Click backdrop to close -->
+		<button
+			type="button"
+			onclick={closeLightbox}
+			class="absolute inset-0 -z-10 cursor-default"
+			aria-label="Close lightbox"
+		></button>
+	</div>
+{/if}

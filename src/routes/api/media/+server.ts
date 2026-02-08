@@ -10,7 +10,7 @@ import {
 	getStorageInfo,
 	type StorageProvider
 } from '$lib/server/storage';
-import { eq, desc, like, or } from 'drizzle-orm';
+import { eq, desc, asc, like, or, and } from 'drizzle-orm';
 
 /**
  * GET /api/media - List all media with optional filtering
@@ -24,6 +24,7 @@ export const GET: RequestHandler = async ({ url, cookies }) => {
 
 	const search = url.searchParams.get('search') || '';
 	const folder = url.searchParams.get('folder') || '';
+	const traderId = url.searchParams.get('traderId') || '';
 	const page = parseInt(url.searchParams.get('page') || '1');
 	const limit = parseInt(url.searchParams.get('limit') || '24');
 	const offset = (page - 1) * limit;
@@ -43,12 +44,22 @@ export const GET: RequestHandler = async ({ url, cookies }) => {
 		if (folder) {
 			conditions.push(eq(media.folder, folder));
 		}
+		if (traderId) {
+			conditions.push(eq(media.traderId, traderId));
+		}
+
+		const whereClause = conditions.length > 0
+			? conditions.length === 1 ? conditions[0] : and(...conditions)
+			: undefined;
+
+		// When filtering by trader, order by displayOrder; otherwise by createdAt
+		const orderClause = traderId ? asc(media.displayOrder) : desc(media.createdAt);
 
 		const items = await db
 			.select()
 			.from(media)
-			.where(conditions.length > 0 ? conditions[0] : undefined)
-			.orderBy(desc(media.createdAt))
+			.where(whereClause)
+			.orderBy(orderClause)
 			.limit(limit)
 			.offset(offset);
 
@@ -98,6 +109,8 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 		const formData = await request.formData();
 		const file = formData.get('file') as File;
 		const folder = (formData.get('folder') as string) || 'uploads';
+		const traderId = (formData.get('traderId') as string) || null;
+		const displayOrder = parseInt((formData.get('displayOrder') as string) || '0') || 0;
 
 		// SEO Metadata
 		const title = formData.get('title') as string || '';
@@ -146,7 +159,9 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 			description,
 			caption,
 			folder,
-			tags: tags.length > 0 ? tags : null
+			tags: tags.length > 0 ? tags : null,
+			traderId,
+			displayOrder
 		}).returning();
 
 		return json({

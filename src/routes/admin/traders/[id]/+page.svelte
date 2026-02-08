@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import { ArrowLeft, Save, Plus, X, TrendingUp, TrendingDown, Trash2 } from 'lucide-svelte';
+	import { goto } from '$app/navigation';
+	import { ArrowLeft, Save, Plus, X, TrendingUp, TrendingDown, Trash2, Edit2, ChevronUp, ChevronDown, Image as ImageIcon, Loader2 } from 'lucide-svelte';
 	import MediaUpload from '$lib/components/MediaUpload.svelte';
 	import type { PageData, ActionData } from './$types';
 	import type { Media } from '$lib/server/schema';
@@ -32,6 +33,103 @@
 
 	let { data, form }: { data: PageData; form: ActionData } = $props();
 	const trader = $derived(data.trader);
+
+	// ============================================================================
+	// TRADER MEDIA GALLERY STATE
+	// ============================================================================
+	let galleryItems = $state<Media[]>([]);
+	let showGalleryUpload = $state(false);
+	let editingGalleryItem = $state<Media | null>(null);
+	let editGalleryTitle = $state('');
+	let editGalleryAltText = $state('');
+	let galleryLoading = $state(false);
+	let galleryDeleteConfirm = $state<string | null>(null);
+
+	// Sync gallery items from server data
+	$effect(() => {
+		galleryItems = [...(data.traderMedia ?? [])];
+	});
+
+	function openGalleryEdit(item: Media) {
+		editingGalleryItem = item;
+		editGalleryTitle = item.title || '';
+		editGalleryAltText = item.altText || '';
+	}
+
+	function closeGalleryEdit() {
+		editingGalleryItem = null;
+	}
+
+	async function saveGalleryMetadata() {
+		if (!editingGalleryItem) return;
+		galleryLoading = true;
+		try {
+			const res = await fetch(`/api/media/${editingGalleryItem.id}`, {
+				method: 'PATCH',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ title: editGalleryTitle, altText: editGalleryAltText })
+			});
+			if (res.ok) {
+				const { media } = await res.json();
+				galleryItems = galleryItems.map(g => g.id === media.id ? media : g);
+				closeGalleryEdit();
+			}
+		} catch (err) {
+			console.error('Failed to update gallery item:', err);
+		} finally {
+			galleryLoading = false;
+		}
+	}
+
+	async function deleteGalleryItem(id: string) {
+		galleryLoading = true;
+		try {
+			const res = await fetch('/api/media', {
+				method: 'DELETE',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ id })
+			});
+			if (res.ok) {
+				galleryItems = galleryItems.filter(g => g.id !== id);
+				galleryDeleteConfirm = null;
+			}
+		} catch (err) {
+			console.error('Failed to delete gallery item:', err);
+		} finally {
+			galleryLoading = false;
+		}
+	}
+
+	async function moveGalleryItem(id: string, direction: 'up' | 'down') {
+		const idx = galleryItems.findIndex(g => g.id === id);
+		if (idx === -1) return;
+		const swapIdx = direction === 'up' ? idx - 1 : idx + 1;
+		if (swapIdx < 0 || swapIdx >= galleryItems.length) return;
+
+		// Swap locally
+		const items = [...galleryItems];
+		[items[idx], items[swapIdx]] = [items[swapIdx], items[idx]];
+		galleryItems = items;
+
+		// Persist new display orders
+		await Promise.all([
+			fetch(`/api/media/${items[idx].id}`, {
+				method: 'PATCH',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ displayOrder: idx })
+			}),
+			fetch(`/api/media/${items[swapIdx].id}`, {
+				method: 'PATCH',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ displayOrder: swapIdx })
+			})
+		]);
+	}
+
+	function handleGalleryUpload(media: Media) {
+		galleryItems = [...galleryItems, media];
+		showGalleryUpload = false;
+	}
 
 	// Initialize state from trader data
 	let photoUrl = $state('');
@@ -159,10 +257,163 @@
 						value={photoUrl}
 						name="photoUrl"
 						folder="traders"
+						traderId={trader.id}
 						onSelect={(media: Media) => photoUrl = media.url}
 						onRemove={() => photoUrl = ''}
 					/>
 				</div>
+			</section>
+
+			<!-- Trader Media Gallery -->
+			<section class="rounded-xl border border-midnight-800/50 bg-midnight-900/50 p-4 sm:p-6">
+				<div class="flex items-center justify-between">
+					<div>
+						<h2 class="font-display text-lg sm:text-xl font-semibold text-midnight-100">Media Gallery</h2>
+						<p class="mt-1 text-xs sm:text-sm text-midnight-500">
+							Manage multiple images for this trader with SEO metadata
+							{#if galleryItems.length > 0}
+								<span class="ml-1 text-midnight-400">({galleryItems.length} image{galleryItems.length !== 1 ? 's' : ''})</span>
+							{/if}
+						</p>
+					</div>
+					<button
+						type="button"
+						onclick={() => showGalleryUpload = !showGalleryUpload}
+						class="flex items-center gap-1.5 text-sm text-gold-400 hover:text-gold-300 min-h-[44px] px-2"
+					>
+						<Plus class="h-4 w-4" />
+						Add Image
+					</button>
+				</div>
+
+				{#if showGalleryUpload}
+					<div class="mt-4 rounded-lg border border-midnight-700 bg-midnight-800/30 p-4">
+						<MediaUpload
+							folder="traders"
+							traderId={trader.id}
+							showLibrary={false}
+							onSelect={handleGalleryUpload}
+						/>
+						<button
+							type="button"
+							onclick={() => showGalleryUpload = false}
+							class="mt-3 w-full rounded-lg border border-midnight-700 bg-midnight-800/50 px-4 py-2 text-sm text-midnight-400 hover:bg-midnight-800 hover:text-midnight-200 transition-colors min-h-[44px]"
+						>
+							Cancel
+						</button>
+					</div>
+				{/if}
+
+				{#if galleryItems.length > 0}
+					<div class="mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+						{#each galleryItems as item, i (item.id)}
+							<div class="group relative rounded-lg overflow-hidden border border-midnight-800/50 bg-midnight-800/30 hover:border-midnight-700 transition-all">
+								<div class="aspect-square relative">
+									<img
+										src={item.thumbnailUrl || item.url}
+										alt={item.altText || item.filename}
+										class="w-full h-full object-cover"
+										loading="lazy"
+									/>
+
+									{#if item.altText}
+										<div class="absolute top-1.5 left-1.5 px-1.5 py-0.5 bg-green-500/80 text-white text-[10px] rounded-full font-medium">
+											SEO
+										</div>
+									{:else}
+										<div class="absolute top-1.5 left-1.5 px-1.5 py-0.5 bg-yellow-500/80 text-white text-[10px] rounded-full font-medium">
+											No Alt
+										</div>
+									{/if}
+
+									<div class="absolute inset-0 bg-midnight-950/70 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1.5">
+										<button
+											type="button"
+											onclick={() => openGalleryEdit(item)}
+											class="rounded-md bg-white/10 p-1.5 text-white backdrop-blur-sm hover:bg-white/20 transition-colors"
+											title="Edit title & alt text"
+										>
+											<Edit2 class="h-3.5 w-3.5" />
+										</button>
+										{#if i > 0}
+											<button
+												type="button"
+												onclick={() => moveGalleryItem(item.id, 'up')}
+												class="rounded-md bg-white/10 p-1.5 text-white backdrop-blur-sm hover:bg-white/20 transition-colors"
+												title="Move up"
+											>
+												<ChevronUp class="h-3.5 w-3.5" />
+											</button>
+										{/if}
+										{#if i < galleryItems.length - 1}
+											<button
+												type="button"
+												onclick={() => moveGalleryItem(item.id, 'down')}
+												class="rounded-md bg-white/10 p-1.5 text-white backdrop-blur-sm hover:bg-white/20 transition-colors"
+												title="Move down"
+											>
+												<ChevronDown class="h-3.5 w-3.5" />
+											</button>
+										{/if}
+										{#if galleryDeleteConfirm === item.id}
+											<button
+												type="button"
+												onclick={() => deleteGalleryItem(item.id)}
+												class="rounded-md bg-red-500 px-2 py-1.5 text-[10px] font-medium text-white hover:bg-red-600 transition-colors"
+											>
+												Confirm
+											</button>
+											<button
+												type="button"
+												onclick={() => galleryDeleteConfirm = null}
+												class="rounded-md bg-midnight-700 px-2 py-1.5 text-[10px] font-medium text-midnight-300 hover:bg-midnight-600 transition-colors"
+											>
+												Cancel
+											</button>
+										{:else}
+											<button
+												type="button"
+												onclick={() => galleryDeleteConfirm = item.id}
+												class="rounded-md bg-red-500/20 p-1.5 text-red-400 backdrop-blur-sm hover:bg-red-500/30 transition-colors"
+												title="Delete"
+											>
+												<Trash2 class="h-3.5 w-3.5" />
+											</button>
+										{/if}
+									</div>
+								</div>
+
+								<div class="p-2">
+									<p class="text-xs font-medium text-midnight-200 truncate" title={item.title || item.filename}>
+										{item.title || item.filename}
+									</p>
+									{#if item.altText}
+										<p class="text-[10px] text-midnight-500 truncate" title={item.altText}>
+											Alt: {item.altText}
+										</p>
+									{/if}
+								</div>
+							</div>
+						{/each}
+					</div>
+
+					<div class="mt-3 flex items-center gap-3 text-xs text-midnight-500">
+						<span class="flex items-center gap-1">
+							<span class="h-1.5 w-1.5 rounded-full bg-green-500"></span>
+							{galleryItems.filter(g => g.altText).length} with alt text
+						</span>
+						<span class="flex items-center gap-1">
+							<span class="h-1.5 w-1.5 rounded-full bg-yellow-500"></span>
+							{galleryItems.filter(g => !g.altText).length} missing alt text
+						</span>
+					</div>
+				{:else if !showGalleryUpload}
+					<div class="mt-4 rounded-lg border border-dashed border-midnight-700 bg-midnight-800/20 p-8 text-center">
+						<ImageIcon class="h-10 w-10 text-midnight-600 mx-auto mb-3" />
+						<p class="text-sm text-midnight-400 mb-1">No gallery images yet</p>
+						<p class="text-xs text-midnight-500">Add images to create a photo gallery for this trader</p>
+					</div>
+				{/if}
 			</section>
 
 			<!-- Basic Info -->
@@ -630,3 +881,81 @@
 		</form>
 	</main>
 </div>
+
+<!-- Gallery Edit Modal -->
+{#if editingGalleryItem}
+	<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-midnight-950/80 backdrop-blur-sm">
+		<div class="w-full max-w-lg rounded-2xl border border-midnight-700 bg-midnight-900 p-6 shadow-2xl">
+			<div class="flex items-center justify-between mb-6">
+				<h3 class="font-display text-xl font-bold text-white">Edit Image Metadata</h3>
+				<button
+					type="button"
+					onclick={closeGalleryEdit}
+					class="rounded-lg p-2 text-midnight-400 hover:bg-midnight-800 hover:text-white transition-colors"
+				>
+					<X class="h-5 w-5" />
+				</button>
+			</div>
+
+			<div class="mb-6 rounded-lg overflow-hidden border border-midnight-700">
+				<img
+					src={editingGalleryItem.mediumUrl || editingGalleryItem.url}
+					alt={editingGalleryItem.altText || 'Preview'}
+					class="w-full h-32 object-cover"
+				/>
+			</div>
+
+			<div class="space-y-4">
+				<div>
+					<label for="gallery-edit-title" class="block text-sm font-medium text-midnight-300 mb-1">
+						Title <span class="text-midnight-500">(for SEO)</span>
+					</label>
+					<input
+						id="gallery-edit-title"
+						type="text"
+						bind:value={editGalleryTitle}
+						class="w-full rounded-lg border border-midnight-700 bg-midnight-800/50 px-4 py-2.5 text-midnight-100 outline-none focus:border-gold-500/50 focus:ring-2 focus:ring-gold-500/20 min-h-[44px]"
+						placeholder="e.g., Warren Buffett at Annual Meeting"
+					/>
+				</div>
+
+				<div>
+					<label for="gallery-edit-alt" class="block text-sm font-medium text-midnight-300 mb-1">
+						Alt Text <span class="text-gold-400">*</span>
+						<span class="text-midnight-500 font-normal">(required for accessibility)</span>
+					</label>
+					<input
+						id="gallery-edit-alt"
+						type="text"
+						bind:value={editGalleryAltText}
+						class="w-full rounded-lg border border-midnight-700 bg-midnight-800/50 px-4 py-2.5 text-midnight-100 outline-none focus:border-gold-500/50 focus:ring-2 focus:ring-gold-500/20 min-h-[44px]"
+						placeholder="e.g., Warren Buffett smiling at Berkshire Hathaway annual meeting"
+					/>
+					<p class="mt-1 text-xs text-midnight-500">Describe what's in the image for screen readers</p>
+				</div>
+			</div>
+
+			<div class="mt-6 flex gap-3">
+				<button
+					type="button"
+					onclick={closeGalleryEdit}
+					class="flex-1 rounded-lg border border-midnight-700 bg-midnight-800/50 px-4 py-2.5 text-sm font-medium text-midnight-300 hover:bg-midnight-800 transition-colors min-h-[44px]"
+				>
+					Cancel
+				</button>
+				<button
+					type="button"
+					onclick={saveGalleryMetadata}
+					disabled={galleryLoading}
+					class="flex-1 rounded-lg bg-gradient-to-r from-gold-500 to-gold-600 px-4 py-2.5 text-sm font-semibold text-midnight-950 hover:shadow-lg hover:shadow-gold-500/25 transition-all min-h-[44px] disabled:opacity-50"
+				>
+					{#if galleryLoading}
+						<Loader2 class="h-4 w-4 animate-spin mx-auto" />
+					{:else}
+						Save Changes
+					{/if}
+				</button>
+			</div>
+		</div>
+	</div>
+{/if}

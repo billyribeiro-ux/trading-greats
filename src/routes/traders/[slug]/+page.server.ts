@@ -4,8 +4,8 @@ import { sanity, isSanityConfigured } from '$lib/sanity';
 import { seedTraders } from '$lib/server/seed';
 import { seedBlogPosts } from '$lib/server/seedBlog';
 import { db } from '$lib/server/db';
-import { blogPosts, type Trader, type NewTrader, type BlogPost } from '$lib/server/schema';
-import { eq, and, desc } from 'drizzle-orm';
+import { blogPosts, media, type Trader, type NewTrader, type BlogPost, type Media } from '$lib/server/schema';
+import { eq, and, desc, asc } from 'drizzle-orm';
 
 function seedToTrader(t: NewTrader, id: string): Trader {
 	return {
@@ -112,9 +112,22 @@ export const load: PageServerLoad = async ({ params }) => {
 			})) as BlogPost[];
 	}
 
+	// Fetch gallery media for this trader
+	let gallery: Media[] = [];
+	try {
+		gallery = await db
+			.select()
+			.from(media)
+			.where(eq(media.traderId, trader.id))
+			.orderBy(asc(media.displayOrder));
+	} catch (err) {
+		console.error('Failed to fetch trader gallery:', err);
+	}
+
 	return {
 		trader,
 		relatedTraders,
-		articles
+		articles,
+		gallery
 	};
 };

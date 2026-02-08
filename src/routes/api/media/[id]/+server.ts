@@ -49,7 +49,7 @@ export const PATCH: RequestHandler = async ({ params, request, cookies }) => {
 		const updates = await request.json();
 
 		// Only allow updating specific fields
-		const allowedFields = ['title', 'altText', 'description', 'caption', 'folder', 'tags'];
+		const allowedFields = ['title', 'altText', 'description', 'caption', 'folder', 'tags', 'traderId', 'displayOrder'];
 		const sanitizedUpdates: Record<string, unknown> = {};
 
 		for (const [key, value] of Object.entries(updates)) {

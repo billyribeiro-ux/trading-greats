@@ -1,9 +1,9 @@
 import type { PageServerLoad, Actions } from './$types';
 import { error, fail, redirect } from '@sveltejs/kit';
 import { db } from '$lib/server/db';
-import { traders } from '$lib/server/schema';
+import { traders, media } from '$lib/server/schema';
 import type { FamousTrade, Quote, Book, SocialLink } from '$lib/server/schema';
-import { eq } from 'drizzle-orm';
+import { eq, asc } from 'drizzle-orm';
 import { slugify } from '$lib/utils';
 import { seedTraders } from '$lib/server/seed';
 import type { Trader, NewTrader } from '$lib/server/schema';
@@ -41,7 +41,13 @@ export const load: PageServerLoad = async ({ params }) => {
 	const [dbTrader] = await db.select().from(traders).where(eq(traders.id, id));
 
 	if (dbTrader) {
-		return { trader: dbTrader };
+		const traderMedia = await db
+			.select()
+			.from(media)
+			.where(eq(media.traderId, id))
+			.orderBy(asc(media.displayOrder));
+
+		return { trader: dbTrader, traderMedia };
 	}
 
 	// Fallback to seed data for development
@@ -51,7 +57,7 @@ export const load: PageServerLoad = async ({ params }) => {
 		const traderData = seedTraders[index];
 
 		if (traderData) {
-			return { trader: seedToTrader(traderData, id) };
+			return { trader: seedToTrader(traderData, id), traderMedia: [] };
 		}
 	}
 

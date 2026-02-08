@@ -36,6 +36,10 @@ export const media = sqliteTable('media', {
 	folder: text('folder').default('uploads'), // Organize by folder
 	tags: text('tags', { mode: 'json' }).$type<string[]>(),
 
+	// Trader association
+	traderId: text('trader_id'), // FK to traders table (nullable — media can exist independently)
+	displayOrder: integer('display_order').default(0), // Gallery sort order within a trader
+
 	// Usage tracking
 	usageCount: integer('usage_count').default(0),
 	lastUsedAt: text('last_used_at'),

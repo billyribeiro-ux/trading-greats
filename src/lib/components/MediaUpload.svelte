@@ -10,6 +10,7 @@
 		onSelect?: (media: Media) => void;
 		onRemove?: () => void;
 		folder?: string;
+		traderId?: string;
 		showLibrary?: boolean;
 		class?: string;
 	}
@@ -21,6 +22,7 @@
 		onSelect,
 		onRemove,
 		folder = 'uploads',
+		traderId,
 		showLibrary = true,
 		class: className
 	}: Props = $props();
@@ -107,6 +109,7 @@
 			const formData = new FormData();
 			formData.append('file', pendingFile);
 			formData.append('folder', folder);
+			if (traderId) formData.append('traderId', traderId);
 			formData.append('title', seoTitle);
 			formData.append('altText', seoAltText);
 			formData.append('description', seoDescription);
