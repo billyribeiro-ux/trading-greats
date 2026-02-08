@@ -16,7 +16,6 @@
 	} from 'lucide-svelte';
 	import { enhance } from '$app/forms';
 	import { goto } from '$app/navigation';
-	import { page } from '$app/stores';
 	import MediaUpload from '$lib/components/MediaUpload.svelte';
 	import type { Media } from '$lib/server/schema';
 

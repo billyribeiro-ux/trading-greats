@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { env } from '$env/dynamic/public';
 
 	const PUBLIC_SITE_URL = env.PUBLIC_SITE_URL || 'https://tradinggreats.com';
@@ -35,7 +35,7 @@
 	const fullTitle = $derived(title === PUBLIC_SITE_NAME ? title : `${title} | ${PUBLIC_SITE_NAME}`);
 	// Normalize canonical URL - remove trailing slashes and query params for consistency
 	const canonicalUrl = $derived.by(() => {
-		const url = new URL($page.url.href);
+		const url = new URL(page.url.href);
 		url.search = ''; // Remove query params from canonical
 		return url.href.replace(/\/$/, '') || url.href;
 	});

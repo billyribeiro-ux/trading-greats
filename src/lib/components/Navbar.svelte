@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { browser } from '$app/environment';
 	import { cn } from '$lib/utils';
 	import { Icon } from '$lib/components/icons';
@@ -36,7 +36,7 @@
 	// DERIVED STATE
 	// ============================================================================
 
-	const currentPath = $derived($page.url.pathname);
+	const currentPath = $derived(page.url.pathname);
 
 	// ============================================================================
 	// EFFECTS

@@ -6,27 +6,28 @@
  */
 
 import { browser } from '$app/environment';
+import { SvelteSet } from 'svelte/reactivity';
 
 const STORAGE_KEY = 'trading_greats_favorites';
 
 // Load favorites from localStorage (silent fail for resilience)
-function loadFavorites(): Set<string> {
-	if (!browser) return new Set();
+function loadFavorites(): SvelteSet<string> {
+	if (!browser) return new SvelteSet();
 
 	try {
 		const stored = localStorage.getItem(STORAGE_KEY);
 		if (stored) {
 			const parsed = JSON.parse(stored);
-			return new Set(Array.isArray(parsed) ? parsed : []);
+			return new SvelteSet(Array.isArray(parsed) ? parsed : []);
 		}
 	} catch {
 		// Silent fail - localStorage may be unavailable (private browsing, etc.)
 	}
-	return new Set();
+	return new SvelteSet();
 }
 
 // Save favorites to localStorage (silent fail for resilience)
-function saveFavorites(favorites: Set<string>): void {
+function saveFavorites(favorites: SvelteSet<string>): void {
 	if (!browser) return;
 
 	try {
@@ -38,7 +39,7 @@ function saveFavorites(favorites: Set<string>): void {
 
 // Create the reactive favorites store
 class FavoritesStore {
-	#favorites = $state<Set<string>>(new Set());
+	#favorites = $state<SvelteSet<string>>(new SvelteSet());
 
 	constructor() {
 		// Initialize from localStorage when in browser
@@ -65,8 +66,6 @@ class FavoritesStore {
 		} else {
 			this.#favorites.add(slug);
 		}
-		// Create a new Set to trigger reactivity
-		this.#favorites = new Set(this.#favorites);
 		saveFavorites(this.#favorites);
 		return this.#favorites.has(slug);
 	}
@@ -74,7 +73,6 @@ class FavoritesStore {
 	add(slug: string): void {
 		if (!this.#favorites.has(slug)) {
 			this.#favorites.add(slug);
-			this.#favorites = new Set(this.#favorites);
 			saveFavorites(this.#favorites);
 		}
 	}
@@ -82,13 +80,12 @@ class FavoritesStore {
 	remove(slug: string): void {
 		if (this.#favorites.has(slug)) {
 			this.#favorites.delete(slug);
-			this.#favorites = new Set(this.#favorites);
 			saveFavorites(this.#favorites);
 		}
 	}
 
 	clear(): void {
-		this.#favorites = new Set();
+		this.#favorites.clear();
 		saveFavorites(this.#favorites);
 	}
 }

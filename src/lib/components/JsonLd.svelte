@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import type { Trader, BlogPost } from '$lib/server/schema';
 
 	// Default values that can be overridden by environment variables
 	const SITE_NAME = 'Trading Greats';
-	const SITE_URL = $derived($page.url.origin || 'https://tradinggreats.com');
+	const SITE_URL = $derived(page.url.origin || 'https://tradinggreats.com');
 
 	type SchemaType = 'WebSite' | 'Person' | 'BreadcrumbList' | 'Article' | 'TraderArticle' | 'FAQPage';
 

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../app.css';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { browser } from '$app/environment';
 	import JsonLd from '$lib/components/JsonLd.svelte';
 	import Navbar from '$lib/components/Navbar.svelte';
@@ -14,7 +14,7 @@
 
 	let { children } = $props();
 
-	const isAdmin = $derived($page.url.pathname.startsWith('/admin'));
+	const isAdmin = $derived(page.url.pathname.startsWith('/admin'));
 
 	// Dynamic theme-color meta tag based on current theme
 	const themeColor = $derived(theme.isDark ? '#020617' : '#f8fafc');

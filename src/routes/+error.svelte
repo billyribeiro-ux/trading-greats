@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { Icon } from '$lib/components/icons';
 
 	// Get the error status code
-	const status = $derived($page.status);
-	const message = $derived($page.error?.message || 'Something went wrong');
+	const status = $derived(page.status);
+	const message = $derived(page.error?.message || 'Something went wrong');
 </script>
 
 <svelte:head>

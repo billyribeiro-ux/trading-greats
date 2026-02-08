@@ -85,25 +85,13 @@
 	// ============================================================================
 
 	// Provide context to StaggerItem children
-	const contextValue = $derived<StaggerContext>({
-		baseDelay: prefersReducedMotion() ? 0 : baseDelay,
-		staggerDelay: prefersReducedMotion() ? 0 : staggerDelay,
-		duration: prefersReducedMotion() ? 0 : duration,
-		easing,
-		isVisible: isVisible || hasAnimated
-	});
-
-	$effect(() => {
-		setContext<StaggerContext>(STAGGER_CTX, contextValue);
-	});
-
-	// Also set it initially
+	// Context must be set synchronously during init — use getters so children read latest values
 	setContext<StaggerContext>(STAGGER_CTX, {
-		baseDelay: 0,
-		staggerDelay: 0,
-		duration: 0,
-		easing: EASING.cinematic,
-		isVisible: false
+		get baseDelay() { return prefersReducedMotion() ? 0 : baseDelay; },
+		get staggerDelay() { return prefersReducedMotion() ? 0 : staggerDelay; },
+		get duration() { return prefersReducedMotion() ? 0 : duration; },
+		get easing() { return easing; },
+		get isVisible() { return isVisible || hasAnimated; }
 	});
 
 	// ============================================================================
