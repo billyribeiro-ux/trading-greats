@@ -4,7 +4,6 @@ import { blogPosts, BLOG_CATEGORIES, type BlogCategory } from '$lib/server/schem
 import { fail, redirect, error } from '@sveltejs/kit';
 import { slugify } from '$lib/utils';
 import { eq, ne, and } from 'drizzle-orm';
-import { sanity, isSanityConfigured } from '$lib/sanity';
 import { seedTraders } from '$lib/server/seed';
 
 export const load: PageServerLoad = async ({ params }) => {
@@ -24,21 +23,7 @@ export const load: PageServerLoad = async ({ params }) => {
 		throw error(404, 'Post not found');
 	}
 
-	// Fetch traders for relation selection
-	let traderList: { id: string; name: string }[] = [];
-
-	if (isSanityConfigured) {
-		try {
-			const traders = await sanity.getAllTraders();
-			traderList = traders.map((t) => ({ id: t.id, name: t.name }));
-		} catch {
-			// Fallback to seed data
-		}
-	}
-
-	if (traderList.length === 0) {
-		traderList = seedTraders.map((t, i) => ({ id: `trader-${i}`, name: t.name }));
-	}
+	const traderList = seedTraders.map((t, i) => ({ id: `trader-${i}`, name: t.name }));
 
 	return {
 		post,

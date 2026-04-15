@@ -22,7 +22,7 @@ A stunning showcase website featuring legendary traders from around the world. B
 ### Prerequisites
 
 - Node.js 18+
-- npm or pnpm
+- [pnpm](https://pnpm.io/installation) (Corepack: `corepack enable`)
 
 ### Installation
 
@@ -32,13 +32,13 @@ git clone https://github.com/yourusername/world-traders.git
 cd world-traders
 
 # Install dependencies
-npm install
+pnpm install
 
 # Copy environment variables
 cp .env.example .env
 
 # Start development server
-npm run dev
+pnpm dev
 ```
 
 ### Environment Variables
@@ -70,7 +70,7 @@ PUBLIC_SITE_NAME=World Traders
 5. Run migrations:
 
 ```bash
-npm run db:push
+pnpm db:push
 ```
 
 ### Option 2: Local SQLite (Development)

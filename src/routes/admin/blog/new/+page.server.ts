@@ -1,28 +1,13 @@
 import type { PageServerLoad, Actions } from './$types';
 import { db } from '$lib/server/db';
-import { blogPosts, traders, BLOG_CATEGORIES, type BlogCategory } from '$lib/server/schema';
+import { blogPosts, BLOG_CATEGORIES, type BlogCategory } from '$lib/server/schema';
 import { fail, redirect } from '@sveltejs/kit';
 import { slugify } from '$lib/utils';
 import { eq } from 'drizzle-orm';
-import { sanity, isSanityConfigured } from '$lib/sanity';
 import { seedTraders } from '$lib/server/seed';
 
 export const load: PageServerLoad = async () => {
-	// Fetch traders for relation selection
-	let traderList: { id: string; name: string }[] = [];
-
-	if (isSanityConfigured) {
-		try {
-			const traders = await sanity.getAllTraders();
-			traderList = traders.map((t) => ({ id: t.id, name: t.name }));
-		} catch {
-			// Fallback to seed data
-		}
-	}
-
-	if (traderList.length === 0) {
-		traderList = seedTraders.map((t, i) => ({ id: `trader-${i}`, name: t.name }));
-	}
+	const traderList = seedTraders.map((t, i) => ({ id: `trader-${i}`, name: t.name }));
 
 	return {
 		traders: traderList,

@@ -1,9 +1,8 @@
 import type { PageServerLoad } from './$types';
 import { error } from '@sveltejs/kit';
 import { db } from '$lib/server/db';
-import { blogPosts, traders, type Trader, type BlogPost } from '$lib/server/schema';
+import { blogPosts, type Trader, type BlogPost } from '$lib/server/schema';
 import { eq, and, desc } from 'drizzle-orm';
-import { sanity, isSanityConfigured } from '$lib/sanity';
 import { seedTraders } from '$lib/server/seed';
 import { seedBlogPosts } from '$lib/server/seedBlog';
 import type { NewTrader } from '$lib/server/schema';
@@ -45,33 +44,13 @@ function seedToTrader(t: NewTrader, id: string): Trader {
 
 export const load: PageServerLoad = async ({ params }) => {
 	const { slug } = params;
-	let trader: Trader | null = null;
 	let articles: BlogPost[] = [];
 
-	// ============================================================================
-	// 1. Fetch trader data (from Sanity or seed data)
-	// ============================================================================
-	if (isSanityConfigured) {
-		try {
-			trader = await sanity.getTraderBySlug(slug);
-		} catch (err) {
-			console.error('Sanity fetch failed, falling back to seed data:', err);
-			trader = null;
-		}
-	}
-
-	// Fallback to seed data
-	if (!trader) {
-		const traderData = seedTraders.find(t => t.slug === slug);
-		if (!traderData) {
-			throw error(404, 'Trader not found');
-		}
-		trader = seedToTrader(traderData, `trader-${slug}`);
-	}
-
-	if (!trader) {
+	const traderData = seedTraders.find(t => t.slug === slug);
+	if (!traderData) {
 		throw error(404, 'Trader not found');
 	}
+	const trader = seedToTrader(traderData, `trader-${slug}`);
 
 	// ============================================================================
 	// 2. Fetch articles for this trader

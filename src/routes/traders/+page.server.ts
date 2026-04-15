@@ -1,5 +1,4 @@
 import type { PageServerLoad } from './$types';
-import { sanity, isSanityConfigured } from '$lib/sanity';
 import { seedTraders } from '$lib/server/seed';
 import type { Trader, NewTrader } from '$lib/server/schema';
 
@@ -33,21 +32,7 @@ export const load: PageServerLoad = async ({ url }) => {
 	let traders: Trader[] = [];
 	let tradingStyles: string[] = [];
 
-	if (isSanityConfigured) {
-		try {
-			// Fetch from Sanity
-			if (styleFilter) {
-				traders = await sanity.getTradersByStyle(styleFilter);
-			} else {
-				traders = await sanity.getAllTraders();
-			}
-			tradingStyles = await sanity.getTradingStyles();
-		} catch (error) {
-			console.error('Sanity fetch failed, falling back to seed data:', error);
-		}
-	}
-
-	// Use ONLY seed data - this ensures all 37 traders show
+	// Seed catalog (single source for public trader list)
 	const allTraders = seedTraders.map((t, i) => seedToTrader(t, `seed-trader-${i}`));
 	
 	// Custom sort: Billy Ribeiro first, Mark Minervini second, John Carter last

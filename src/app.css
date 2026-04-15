@@ -93,8 +93,8 @@
 	background-color: #e2e8f0 !important;
 }
 
-:root:not(.dark) .bg-\[#020617\],
-:root:not(.dark) .bg-\[#0f172a\] {
+:root:not(.dark) [class*='bg-[#020617]'],
+:root:not(.dark) [class*='bg-[#0f172a]'] {
 	background-color: #ffffff !important;
 }
 
@@ -304,7 +304,7 @@
 /* ============================================================================
    LIGHT MODE - Quote of the Day Section
    ============================================================================ */
-:root:not(.dark) section.bg-\[#020617\] {
+:root:not(.dark) section[class*='bg-[#020617]'] {
 	background-color: #f8fafc !important;
 }
 

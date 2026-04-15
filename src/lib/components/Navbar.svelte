@@ -90,31 +90,20 @@
 		}
 	});
 
-	// Keyboard handler
-	$effect(() => {
-		if (!browser) return;
-
-		const handleKeydown = (event: KeyboardEvent): void => {
-			// Close mobile menu on Escape
-			if (event.key === 'Escape' && mobileMenuOpen) {
-				event.preventDefault();
-				closeMenu();
-			}
-			
-			// Open search with Cmd/Ctrl + K (Apple style)
-			if ((event.metaKey || event.ctrlKey) && event.key === 'k') {
-				event.preventDefault();
-				searchOpen = true;
-			}
-		};
-
-		window.addEventListener('keydown', handleKeydown);
-		return () => window.removeEventListener('keydown', handleKeydown);
-	});
-
 	// ============================================================================
 	// HANDLERS
 	// ============================================================================
+
+	function handleWindowKeydown(event: KeyboardEvent): void {
+		if (event.key === 'Escape' && mobileMenuOpen) {
+			event.preventDefault();
+			closeMenu();
+		}
+		if ((event.metaKey || event.ctrlKey) && event.key === 'k') {
+			event.preventDefault();
+			searchOpen = true;
+		}
+	}
 
 	function isActive(href: string): boolean {
 		if (href === '/') return currentPath === '/';
@@ -134,6 +123,8 @@
 		closeMenu();
 	}
 </script>
+
+<svelte:window onkeydown={handleWindowKeydown} />
 
 <header
 	class={cn(
@@ -213,6 +204,17 @@
 					{:else if link.iconType === 'users'}
 						<Icon 
 							name="users"
+							class={cn(
+								'relative h-4 w-4 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]',
+								active 
+									? 'text-gold-400' 
+									: 'text-midnight-400 group-hover:text-gold-400 group-hover:scale-110'
+							)} 
+							strokeWidth={2}
+						/>
+					{:else if link.iconType === 'bar-chart'}
+						<Icon 
+							name="bar-chart"
 							class={cn(
 								'relative h-4 w-4 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]',
 								active 
@@ -358,6 +360,8 @@
 									<Icon name="candlestick" class="h-5 w-5" strokeWidth={2} />
 								{:else if link.iconType === 'users'}
 									<Icon name="users" class="h-5 w-5" strokeWidth={2} />
+								{:else if link.iconType === 'bar-chart'}
+									<Icon name="bar-chart" class="h-5 w-5" strokeWidth={2} />
 								{:else if link.iconType === 'book-open'}
 									<Icon name="book-open" class="h-5 w-5" strokeWidth={2} />
 								{/if}
