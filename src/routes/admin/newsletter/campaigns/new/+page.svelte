@@ -243,7 +243,7 @@
 						{/if}
 						<!-- Content -->
 						<div class="p-8">
-							{@html content}
+							{@html content}<!-- admin-only preview, content is HTML email template -->
 						</div>
 						<!-- Footer -->
 						<div class="p-6 text-center border-t border-[rgba(255,255,255,0.1)]">

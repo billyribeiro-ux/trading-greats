@@ -40,7 +40,7 @@
 	let editDescription = $state('');
 	let editCaption = $state('');
 
-	function handleIconSearch() {
+	function handleSearch() {
 		const params = new URLSearchParams();
 		if (searchQuery) params.set('search', searchQuery);
 		if (selectedFolder) params.set('folder', selectedFolder);
@@ -137,11 +137,11 @@
 		<!-- IconFilters -->
 		<div class="flex flex-col sm:flex-row gap-4 mb-6">
 			<!-- IconSearch -->
-			<form onsubmit={(e) => { e.preventDefault(); handleIconSearch(); }} class="relative flex-1">
+			<form onsubmit={(e) => { e.preventDefault(); handleSearch(); }} class="relative flex-1">
 				<IconSearch class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-midnight-500" />
 				<input
 					type="text"
-					placeholder="IconSearch by title, alt text, filename..."
+					placeholder="Search by title, alt text, filename..."
 					bind:value={searchQuery}
 					class="w-full rounded-xl border border-midnight-700 bg-midnight-800/50 py-3 pl-12 pr-4 text-midnight-100 placeholder-midnight-500 outline-none transition-all focus:border-gold-500/50 focus:ring-2 focus:ring-gold-500/20 min-h-[44px]"
 				/>

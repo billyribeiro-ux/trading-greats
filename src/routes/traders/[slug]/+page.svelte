@@ -287,7 +287,7 @@
 						Biography
 					</h2>
 					<div class="prose prose-invert prose-sm sm:prose-base lg:prose-lg max-w-none prose-headings:font-display prose-a:text-gold-400 hover:prose-a:text-gold-300">
-						{@html parsedBio}
+						{@html parsedBio}<!-- bio is markdown rendered server-side via marked, admin-controlled content only -->
 					</div>
 				</section>
 

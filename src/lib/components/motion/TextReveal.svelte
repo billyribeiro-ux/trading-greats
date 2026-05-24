@@ -143,7 +143,7 @@
 >
 	{#each items as item, i (i)}
 		{#if item.isSpace}
-			{' '}
+			&nbsp;
 		{:else}
 			<span
 				class={cn(
@@ -152,7 +152,7 @@
 				)}
 				style={getItemStyle(i)}
 				aria-hidden="true"
-			>{item.content}</span>{#if mode === 'words' && i < items.length - 1}{' '}{/if}
+			>{item.content}</span>{#if mode === 'words' && i < items.length - 1}&nbsp;{/if}
 		{/if}
 	{/each}
 </svelte:element>

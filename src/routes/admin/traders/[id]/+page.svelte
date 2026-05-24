@@ -66,7 +66,7 @@
 		try {
 			const res = await fetch(`/api/media/${editingGalleryItem.id}`, {
 				method: 'PATCH',
-				headers: { 'Content-IconTypography': 'application/json' },
+				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({ title: editGalleryTitle, altText: editGalleryAltText })
 			});
 			if (res.ok) {
@@ -86,7 +86,7 @@
 		try {
 			const res = await fetch('/api/media', {
 				method: 'DELETE',
-				headers: { 'Content-IconTypography': 'application/json' },
+				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({ id })
 			});
 			if (res.ok) {
@@ -115,12 +115,12 @@
 		await Promise.all([
 			fetch(`/api/media/${items[idx].id}`, {
 				method: 'PATCH',
-				headers: { 'Content-IconTypography': 'application/json' },
+				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({ displayOrder: idx })
 			}),
 			fetch(`/api/media/${items[swapIdx].id}`, {
 				method: 'PATCH',
-				headers: { 'Content-IconTypography': 'application/json' },
+				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({ displayOrder: swapIdx })
 			})
 		]);

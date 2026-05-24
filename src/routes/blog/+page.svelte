@@ -53,7 +53,7 @@
 		try {
 			const response = await fetch('/api/newsletter/subscribe', {
 				method: 'POST',
-				headers: { 'Content-IconTypography': 'application/json' },
+				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({
 					email,
 					source: 'blog',

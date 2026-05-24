@@ -272,7 +272,7 @@
 					<Icon name="search" class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-midnight-500" />
 					<input
 						type="text"
-						placeholder="IconSearch traders..."
+						placeholder="Search traders..."
 						bind:value={searchQuery}
 						class="w-full bg-midnight-900/50 border border-white/10 rounded-lg pl-10 pr-4 py-2.5 text-sm text-white placeholder-midnight-500 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50"
 					/>

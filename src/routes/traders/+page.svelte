@@ -117,9 +117,9 @@
 						<Icon name="search" class="ml-3 sm:ml-4 h-4 w-4 sm:h-5 sm:w-5 text-midnight-400" />
 						<input
 							type="text"
-							placeholder="IconSearch traders..."
+							placeholder="Search traders..."
 							bind:value={searchQuery}
-							aria-label="IconSearch traders" class="w-full bg-transparent border-none px-3 sm:px-4 py-2.5 sm:py-3 text-white placeholder-midnight-500 focus:ring-0 focus:outline-none text-sm sm:text-base lg:text-lg"
+							aria-label="Search traders" class="w-full bg-transparent border-none px-3 sm:px-4 py-2.5 sm:py-3 text-white placeholder-midnight-500 focus:ring-0 focus:outline-none text-sm sm:text-base lg:text-lg"
 						/>
 						{#if searchQuery}
 							<button

@@ -111,9 +111,9 @@
 				<IconSearch class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-midnight-500" />
 				<input
 					type="text"
-					placeholder="IconSearch posts..."
+					placeholder="Search posts..."
 					bind:value={searchQuery}
-					aria-label="IconSearch blog posts" class="w-full rounded-xl border border-midnight-700 bg-midnight-800/50 py-3 pl-12 pr-4 text-midnight-100 placeholder-midnight-500 outline-none transition-all focus:border-gold-500/50 focus:ring-2 focus:ring-gold-500/20"
+					aria-label="Search blog posts" class="w-full rounded-xl border border-midnight-700 bg-midnight-800/50 py-3 pl-12 pr-4 text-midnight-100 placeholder-midnight-500 outline-none transition-all focus:border-gold-500/50 focus:ring-2 focus:ring-gold-500/20"
 				/>
 			</div>
 

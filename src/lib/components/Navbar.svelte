@@ -256,7 +256,7 @@
 					'focus-visible:ring-2',
 					'active:scale-95 active:bg-white/10' /* MOBILE-FIRST: Touch feedback */
 				)}
-				aria-label="IconSearch traders (⌘K)"
+				aria-label="Search traders (⌘K)"
 				onclick={() => { searchOpen = true; }}
 			>
 				<Icon 

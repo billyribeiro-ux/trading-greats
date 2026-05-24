@@ -331,7 +331,7 @@
 							<h1 class="text-2xl font-bold text-[#d4af37]">Trading Greats</h1>
 						</div>
 						<div class="p-8">
-							{@html isEditing ? content : data.campaign.content}
+							{@html isEditing ? content : data.campaign.content}<!-- admin-only preview, content is HTML email template -->
 						</div>
 						<div class="p-6 text-center border-t border-[rgba(255,255,255,0.1)]">
 							<p class="text-xs text-[#6b7280]">
