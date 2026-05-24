@@ -114,7 +114,7 @@
 
 	<!-- Stats Grid -->
 	<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
-		{#each stats as stat}
+		{#each stats as stat (stat.label)}
 			<div class="rounded-xl border border-midnight-800 bg-midnight-900/50 p-5">
 				<div class="flex items-center gap-3">
 					<div class="flex h-10 w-10 items-center justify-center rounded-lg {stat.bg}">
@@ -159,7 +159,7 @@
 						</a>
 					</div>
 				{:else}
-					{#each data.recentCampaigns as campaign}
+					{#each data.recentCampaigns as campaign (campaign.id)}
 						<a href="/admin/newsletter/campaigns/{campaign.id}" class="block p-4 hover:bg-midnight-800/30 transition-colors">
 							<div class="flex items-start justify-between gap-4">
 								<div class="min-w-0 flex-1">
@@ -214,7 +214,7 @@
 						</p>
 					</div>
 				{:else}
-					{#each data.recentSubscribers as subscriber}
+					{#each data.recentSubscribers as subscriber (subscriber.id)}
 						<div class="p-4">
 							<div class="flex items-center justify-between gap-4">
 								<div class="min-w-0 flex-1">

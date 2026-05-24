@@ -141,7 +141,7 @@
 							<th class="p-4 text-left text-sm font-medium text-midnight-400 w-40">
 								Trader
 							</th>
-							{#each selectedTraders as trader}
+							{#each selectedTraders as trader (trader.slug)}
 								<th class="p-4 text-center">
 									<div class="relative">
 										<button
@@ -178,7 +178,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						{#each comparisonFields as field}
+						{#each comparisonFields as field (field.key)}
 							<tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
 								<td class="p-4">
 									<div class="flex items-center gap-2 text-sm text-midnight-300">
@@ -186,7 +186,7 @@
 										{field.label}
 									</div>
 								</td>
-								{#each selectedTraders as trader}
+								{#each selectedTraders as trader (trader.slug)}
 									<td class="p-4 text-center">
 										{#if field.key === 'philosophy'}
 											<p class="text-xs text-midnight-300 line-clamp-3 max-w-[200px] mx-auto">
@@ -216,7 +216,7 @@
 									Famous Quote
 								</div>
 							</td>
-							{#each selectedTraders as trader}
+							{#each selectedTraders as trader (trader.slug)}
 								<td class="p-4 text-center">
 									{#if trader.quotes && trader.quotes.length > 0}
 										<p class="text-xs text-midnight-300 italic line-clamp-3 max-w-[200px] mx-auto">
@@ -240,7 +240,7 @@
 									Key Achievement
 								</div>
 							</td>
-							{#each selectedTraders as trader}
+							{#each selectedTraders as trader (trader.slug)}
 								<td class="p-4 text-center">
 									{#if trader.achievements && trader.achievements.length > 0}
 										<span class="text-xs text-gold-400 font-medium">
@@ -280,7 +280,7 @@
 
 				<!-- Trader Grid -->
 				<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
-					{#each availableTraders.slice(0, 12) as trader}
+					{#each availableTraders.slice(0, 12) as trader (trader.slug)}
 						<button
 							onclick={() => addTrader(trader.slug)}
 							class="group p-3 rounded-lg border border-white/10 bg-midnight-900/30 hover:border-violet-500/30 hover:bg-midnight-800/50 transition-all text-center flex flex-col items-center"

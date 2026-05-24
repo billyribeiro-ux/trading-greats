@@ -108,7 +108,7 @@
 
 	<!-- IconFilters -->
 	<div class="flex flex-wrap gap-2">
-		{#each statusIconFilters as filter}
+		{#each statusIconFilters as filter (filter.value)}
 			<button
 				onclick={() => filterByStatus(filter.value)}
 				class="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors {
@@ -143,7 +143,7 @@
 				</a>
 			</div>
 		{:else}
-			{#each data.campaigns as campaign}
+			{#each data.campaigns as campaign (campaign.id)}
 				<div class="rounded-xl border border-midnight-800 bg-midnight-900/50 p-6 hover:border-midnight-700 transition-colors">
 					<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
 						<div class="flex-1 min-w-0">

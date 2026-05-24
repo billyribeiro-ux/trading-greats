@@ -88,7 +88,7 @@
 							Why are you unsubscribing? (optional)
 						</legend>
 						<div class="space-y-2">
-							{#each unsubscribeReasons as reasonOption}
+							{#each unsubscribeReasons as reasonOption (reasonOption)}
 								<label class="flex items-center gap-3 p-3 rounded-lg border border-midnight-700 bg-midnight-800/50 cursor-pointer hover:border-midnight-600 transition-colors">
 									<input
 										type="radio"

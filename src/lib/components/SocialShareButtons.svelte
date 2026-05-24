@@ -84,7 +84,7 @@
 
 {#if variant === 'icons-only'}
 	<div class={cn('flex items-center gap-1', className)}>
-		{#each platforms as platform}
+		{#each platforms as platform (platform.name)}
 			<button
 				type="button"
 				onclick={() => openShareWindow(platform.getUrl())}
@@ -115,7 +115,7 @@
 {:else if variant === 'compact'}
 	<div class={cn('flex items-center gap-2', className)}>
 		<span class="text-xs text-midnight-500">Share:</span>
-		{#each platforms as platform}
+		{#each platforms as platform (platform.name)}
 			<button
 				type="button"
 				onclick={() => openShareWindow(platform.getUrl())}
@@ -152,7 +152,7 @@
 		</div>
 
 		<div class="flex flex-wrap gap-2">
-			{#each platforms as platform}
+			{#each platforms as platform (platform.name)}
 				<button
 					type="button"
 					onclick={() => openShareWindow(platform.getUrl())}

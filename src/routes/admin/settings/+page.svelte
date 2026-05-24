@@ -391,7 +391,7 @@
 						</tr>
 					</thead>
 					<tbody class="divide-y divide-midnight-800/50">
-						{#each data.sessions as session}
+						{#each data.sessions as session (session.id)}
 							<tr class="hover:bg-midnight-800/30 transition-colors {session.id === data.currentSessionId ? 'bg-gold-500/5' : ''}">
 								<td class="px-4 py-3">
 									<div class="flex items-center gap-2">
@@ -461,7 +461,7 @@
 							</tr>
 						</thead>
 						<tbody class="divide-y divide-midnight-800/50">
-							{#each data.blockedIps as block}
+							{#each data.blockedIps as block (block.ipAddress)}
 								<tr class="hover:bg-midnight-800/30 transition-colors">
 									<td class="px-4 py-3">
 										<span class="text-sm text-midnight-200 font-mono">{block.ipAddress}</span>
@@ -513,7 +513,7 @@
 						</tr>
 					</thead>
 					<tbody class="divide-y divide-midnight-800/50">
-						{#each data.securityEvents as event}
+						{#each data.securityEvents as event, i (i)}
 							<tr class="hover:bg-midnight-800/30 transition-colors">
 								<td class="px-4 py-3">
 									<span class="text-sm text-midnight-400">{formatDate(event.timestamp)}</span>

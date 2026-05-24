@@ -229,6 +229,42 @@
 						</div>
 					</div>
 
+					<!-- Social / External Links -->
+					{#if trader.socialLinks && trader.socialLinks.length > 0}
+						<div class="rounded-xl sm:rounded-2xl border border-white/5 bg-midnight-900/30 p-4 sm:p-5 lg:p-6 backdrop-blur-sm">
+							<h3 class="mb-3 sm:mb-4 text-xs sm:text-sm font-bold uppercase tracking-wider text-midnight-400">Links & Resources</h3>
+							<div class="flex flex-col gap-2">
+								{#each trader.socialLinks as link (link.url)}
+									{@const platform = link.platform.toLowerCase()}
+									{@const icon = platform === 'twitter' || platform === 'x' ? 'twitter'
+										: platform === 'linkedin' ? 'linkedin'
+										: platform === 'facebook' ? 'facebook'
+										: platform === 'github' ? 'github'
+										: platform === 'website' || platform === 'profile' ? 'globe'
+										: 'external-link'}
+									{@const label = platform === 'website' ? 'Official Website'
+										: platform === 'profile' ? 'Trader Profile'
+										: platform === 'twitter' || platform === 'x' ? 'Twitter / X'
+										: platform === 'youtube' ? 'YouTube Channel'
+										: platform === 'medium' ? 'Medium Blog'
+										: platform === 'amazon' ? 'Books on Amazon'
+										: platform === 'wikipedia' ? 'Wikipedia'
+										: link.platform}
+									<a
+										href={link.url}
+										target="_blank"
+										rel="noopener noreferrer"
+										class="group flex items-center gap-3 rounded-lg border border-white/5 bg-midnight-800/30 px-3 py-2.5 text-sm text-midnight-200 transition-all hover:border-gold-500/30 hover:bg-midnight-800/60 hover:text-gold-400 active:scale-[0.98]"
+									>
+										<Icon name={icon} class="h-4 w-4 shrink-0 text-midnight-400 group-hover:text-gold-400 transition-colors" />
+										<span class="flex-1 truncate font-medium">{label}</span>
+										<Icon name="external-link" class="h-3.5 w-3.5 shrink-0 text-midnight-600 group-hover:text-gold-500 transition-colors" />
+									</a>
+								{/each}
+							</div>
+						</div>
+					{/if}
+
 					<!-- Share / Actions - MOBILE-FIRST -->
 					<div class="rounded-xl sm:rounded-2xl border border-white/5 bg-midnight-900/30 p-4 sm:p-5 backdrop-blur-sm">
 						<SocialShareButtons
@@ -310,7 +346,7 @@
 							Famous Trades
 						</h2>
 						<div class="grid gap-3 sm:gap-4">
-							{#each trader.famousTrades as trade}
+							{#each trader.famousTrades as trade, i (i)}
 								<div class="group rounded-lg sm:rounded-xl border border-white/5 bg-midnight-900/30 p-4 sm:p-5 lg:p-6 transition-all hover:border-gold-500/30 hover:bg-midnight-800/50 active:scale-[0.99]">
 									<div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2 sm:gap-4">
 										<div class="flex-1">
@@ -342,7 +378,7 @@
 							Legendary Quotes
 						</h2>
 						<div class="grid gap-4 sm:gap-6">
-							{#each trader.quotes as quote}
+							{#each trader.quotes as quote, i (i)}
 								<figure class="relative rounded-xl sm:rounded-2xl bg-white/5 p-5 sm:p-6 lg:p-8">
 									<Icon name="quote" class="absolute top-3 left-3 sm:top-4 sm:left-4 h-6 w-6 sm:h-8 sm:w-8 text-white/10 rotate-180" />
 									<blockquote class="relative z-10 text-base sm:text-lg font-medium italic text-midnight-100">
@@ -367,7 +403,7 @@
 							Recommended Reading
 						</h2>
 						<div class="grid gap-3 sm:gap-4">
-							{#each trader.books as book}
+							{#each trader.books as book, i (i)}
 								<div class="group rounded-lg sm:rounded-xl border border-white/5 bg-midnight-900/30 p-4 sm:p-5 lg:p-6 transition-all hover:border-gold-500/30 hover:bg-midnight-800/50 active:scale-[0.99]">
 									<div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
 										<div class="flex-1">

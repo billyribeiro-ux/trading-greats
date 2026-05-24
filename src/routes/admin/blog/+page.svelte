@@ -133,7 +133,7 @@
 				class="rounded-xl border border-midnight-700 bg-midnight-800/50 px-4 py-3 text-midnight-100 outline-none transition-all focus:border-gold-500/50 focus:ring-2 focus:ring-gold-500/20"
 			>
 				<option value="all">All Categories</option>
-				{#each BLOG_CATEGORIES as cat}
+				{#each BLOG_CATEGORIES as cat (cat)}
 					<option value={cat.value}>{cat.label}</option>
 				{/each}
 			</select>

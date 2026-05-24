@@ -104,7 +104,7 @@
 				<fieldset class="rounded-xl border border-midnight-800 bg-midnight-900/50 p-6">
 					<legend class="block text-sm font-medium text-white mb-4">Campaign IconTypography</legend>
 					<div class="grid gap-3 sm:grid-cols-2">
-						{#each campaignIconTypographys as type}
+						{#each campaignIconTypographys as type (type.value)}
 							<label class="relative flex cursor-pointer rounded-lg border p-4 transition-colors {
 								campaignIconTypography === type.value
 									? 'border-gold-500/50 bg-gold-500/5'

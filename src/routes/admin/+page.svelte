@@ -231,7 +231,7 @@
 							</tr>
 						</thead>
 						<tbody class="divide-y divide-midnight-800/50">
-							{#each data.recentTraders.slice(0, 5) as trader}
+							{#each data.recentTraders.slice(0, 5) as trader (trader.slug)}
 								<tr class="hover:bg-midnight-800/30 transition-colors">
 									<td class="px-4 py-3">
 										<div class="flex items-center gap-3">
@@ -282,7 +282,7 @@
 								</tr>
 							</thead>
 							<tbody class="divide-y divide-midnight-800/50">
-								{#each data.recentPosts.slice(0, 5) as post}
+								{#each data.recentPosts.slice(0, 5) as post (post.slug)}
 									<tr class="hover:bg-midnight-800/30 transition-colors">
 										<td class="px-4 py-3">
 											<p class="font-medium text-midnight-100 text-sm line-clamp-1">{post.title}</p>

@@ -2,14 +2,14 @@
 	import { browser } from '$app/environment';
 	import { goto } from '$app/navigation';
 	import { Icon } from '$lib/components/icons';
-	import { fade, fly, scale } from 'svelte/transition';
+	import { fade, scale } from 'svelte/transition';
 	import { cubicOut, backOut } from 'svelte/easing';
 	import { cn } from '$lib/utils';
 
 	// ============================================================================
 	// PROPS
 	// ============================================================================
-	
+
 	interface Props {
 		open: boolean;
 		onClose: () => void;
@@ -20,42 +20,12 @@
 	// ============================================================================
 	// STATE
 	// ============================================================================
-	
+
 	let searchQuery = $state('');
 	let searchInputRef = $state<HTMLInputElement | undefined>(undefined);
 	let selectedIndex = $state(0);
 	let isLoading = $state(false);
-
-	// ============================================================================
-	// TRADERS DATA (from seed - in production this would be an API call)
-	// ============================================================================
-	
-	const allTraders = [
-		{ name: 'Billy Ribeiro', slug: 'billy-ribeiro', style: 'Price Action & Options' },
-		{ name: 'George Soros', slug: 'george-soros', style: 'Macro & Currency' },
-		{ name: 'Warren Buffett', slug: 'warren-buffett', style: 'Value Investing' },
-		{ name: 'Paul Tudor Jones', slug: 'paul-tudor-jones', style: 'Macro Trading' },
-		{ name: 'Ray Dalio', slug: 'ray-dalio', style: 'Macro & Systematic' },
-		{ name: 'Jesse Livermore', slug: 'jesse-livermore', style: 'Speculation & Tape Reading' },
-		{ name: 'Stanley Druckenmiller', slug: 'stanley-druckenmiller', style: 'Macro Trading' },
-		{ name: 'Mark Minervini', slug: 'mark-minervini', style: 'Momentum Growth' },
-		{ name: 'Michael Burry', slug: 'michael-burry', style: 'Value Investing & Macro' },
-		{ name: 'John Paulson', slug: 'john-paulson', style: 'Event-Driven & Macro' },
-		{ name: 'Ed Seykota', slug: 'ed-seykota', style: 'Systematic & Trend Following' },
-		{ name: 'Bruce Kovner', slug: 'bruce-kovner', style: 'Macro & Forex' },
-		{ name: 'Richard Dennis', slug: 'richard-dennis', style: 'Trend Following' },
-		{ name: 'Steve Cohen', slug: 'steve-cohen', style: 'Short-Term Trading' },
-		{ name: 'Carl Icahn', slug: 'carl-icahn', style: 'Activist Investing' },
-		{ name: 'David Tepper', slug: 'david-tepper', style: 'Distressed Debt' },
-		{ name: 'Jim Rogers', slug: 'jim-rogers', style: 'Macro & Commodities' },
-		{ name: 'Bill Lipschutz', slug: 'bill-lipschutz', style: 'Forex & Macro' },
-		{ name: 'Andy Krieger', slug: 'andy-krieger', style: 'Forex & Macro' },
-		{ name: 'Nick Leeson', slug: 'nick-leeson', style: 'Derivatives & Arbitrage' },
-		{ name: 'Bill Gross', slug: 'bill-gross', style: 'Fixed Income & Bonds' },
-		{ name: 'Peter Schiff', slug: 'peter-schiff', style: 'Macro & Commodities' },
-		{ name: 'Nicolas Darvas', slug: 'nicolas-darvas', style: 'Momentum & Box Theory' },
-		{ name: 'John Carter', slug: 'john-carter', style: 'Options & Technical Analysis' },
-	];
+	let traders = $state<{ name: string; slug: string; tradingStyle: string | null; oneLiner: string | null }[]>([]);
 
 	// Quick actions
 	const quickActions = [
@@ -67,24 +37,36 @@
 	// ============================================================================
 	// DERIVED
 	// ============================================================================
-	
-	const filteredTraders = $derived.by(() => {
-		if (!searchQuery.trim()) return allTraders.slice(0, 6);
-		const query = searchQuery.toLowerCase();
-		return allTraders
-			.filter(t => 
-				t.name.toLowerCase().includes(query) || 
-				t.style.toLowerCase().includes(query)
-			)
-			.slice(0, 8);
-	});
 
-	const totalResults = $derived(filteredTraders.length + (searchQuery ? 0 : quickActions.length));
+	const totalResults = $derived(traders.length + (searchQuery ? 0 : quickActions.length));
 
 	// ============================================================================
 	// EFFECTS
 	// ============================================================================
-	
+
+	let debounceTimer: ReturnType<typeof setTimeout>;
+
+	// Fetch traders from API whenever query or open state changes
+	$effect(() => {
+		if (!open) {
+			traders = [];
+			return;
+		}
+		clearTimeout(debounceTimer);
+		isLoading = true;
+		debounceTimer = setTimeout(async () => {
+			try {
+				const params = new URLSearchParams();
+				if (searchQuery.trim()) params.set('q', searchQuery.trim());
+				params.set('limit', searchQuery.trim() ? '8' : '6');
+				const res = await fetch(`/api/traders?${params}`);
+				if (res.ok) traders = await res.json();
+			} finally {
+				isLoading = false;
+			}
+		}, searchQuery.trim() ? 200 : 0);
+	});
+
 	// Focus input when modal opens
 	$effect(() => {
 		if (open && browser) {
@@ -105,7 +87,6 @@
 	// Lock body scroll when open
 	$effect(() => {
 		if (!browser) return;
-		
 		if (open) {
 			document.body.style.overflow = 'hidden';
 			return () => {
@@ -117,7 +98,7 @@
 	// ============================================================================
 	// HANDLERS
 	// ============================================================================
-	
+
 	function handleKeydown(event: KeyboardEvent) {
 		if (event.key === 'Escape') {
 			event.preventDefault();
@@ -136,21 +117,19 @@
 
 	function selectCurrentItem() {
 		if (searchQuery) {
-			// Navigate to selected trader
-			if (filteredTraders[selectedIndex]) {
+			if (traders[selectedIndex]) {
 				onClose();
-				goto(`/traders/${filteredTraders[selectedIndex].slug}`);
+				goto(`/traders/${traders[selectedIndex].slug}`);
 			}
 		} else {
-			// Handle quick actions or traders
 			if (selectedIndex < quickActions.length) {
 				onClose();
 				goto(quickActions[selectedIndex].href);
 			} else {
 				const traderIndex = selectedIndex - quickActions.length;
-				if (filteredTraders[traderIndex]) {
+				if (traders[traderIndex]) {
 					onClose();
-					goto(`/traders/${filteredTraders[traderIndex].slug}`);
+					goto(`/traders/${traders[traderIndex].slug}`);
 				}
 			}
 		}
@@ -175,7 +154,6 @@
 
 {#if open}
 	<!-- Backdrop -->
-	<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 	<div
 		class="fixed inset-0 z-100 flex items-start justify-center pt-[10vh] sm:pt-[15vh] px-4"
 		transition:fade={{ duration: 200, easing: cubicOut }}
@@ -183,18 +161,18 @@
 		onkeydown={handleKeydown}
 		role="dialog"
 		aria-modal="true"
-		aria-label="IconSearch traders"
+		aria-label="Search traders"
 		tabindex="-1"
 	>
 		<!-- Backdrop blur -->
 		<div class="absolute inset-0 bg-midnight-950/80 backdrop-blur-xl"></div>
 
-		<!-- IconSearch Modal -->
+		<!-- Search Modal -->
 		<div
 			class="relative w-full max-w-2xl overflow-hidden rounded-2xl border border-white/10 bg-midnight-900/95 shadow-2xl shadow-black/50 backdrop-blur-2xl"
 			transition:scale={{ duration: 300, easing: backOut, start: 0.95 }}
 		>
-			<!-- IconSearch Input -->
+			<!-- Search Input -->
 			<div class="relative border-b border-white/10">
 				<div class="absolute left-5 top-1/2 -translate-y-1/2">
 					<Icon name="search" class="h-5 w-5 text-midnight-400" strokeWidth={2} />
@@ -203,7 +181,7 @@
 					bind:this={searchInputRef}
 					bind:value={searchQuery}
 					type="text"
-					placeholder="IconSearch legendary traders..."
+					placeholder="Search legendary traders..."
 					class={cn(
 						'w-full bg-transparent py-5 pl-14 pr-14 text-lg text-white placeholder-midnight-500',
 						'outline-none focus:ring-0',
@@ -269,7 +247,7 @@
 					<div class="mb-2 px-3 py-2">
 						<p class="text-xs font-semibold uppercase tracking-wider text-midnight-500">Popular Legends</p>
 					</div>
-				{:else if filteredTraders.length === 0}
+				{:else if traders.length === 0 && !isLoading}
 					<!-- No Results -->
 					<div class="flex flex-col items-center justify-center py-12 text-center">
 						<div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-white/5">
@@ -281,7 +259,7 @@
 				{/if}
 
 				<!-- Trader Results -->
-				{#each filteredTraders as trader, i (trader.slug)}
+				{#each traders as trader, i (trader.slug)}
 					{@const index = searchQuery ? i : i + quickActions.length}
 					<button
 						type="button"
@@ -305,7 +283,7 @@
 						</div>
 						<div class="flex-1 min-w-0">
 							<p class="font-medium truncate">{trader.name}</p>
-							<p class="text-sm text-midnight-400 truncate">{trader.style}</p>
+							<p class="text-sm text-midnight-400 truncate">{trader.tradingStyle ?? ''}</p>
 						</div>
 						<Icon name="arrow-right" class="h-4 w-4 text-midnight-500 shrink-0" strokeWidth={2} />
 					</button>
@@ -327,7 +305,11 @@
 						</span>
 					</div>
 					<span class="hidden sm:inline">
-						{filteredTraders.length} {filteredTraders.length === 1 ? 'result' : 'results'}
+						{#if isLoading}
+					Searching...
+				{:else}
+					{traders.length} {traders.length === 1 ? 'result' : 'results'}
+				{/if}
 					</span>
 				</div>
 			</div>

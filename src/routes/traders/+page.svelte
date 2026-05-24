@@ -149,7 +149,7 @@
 						<span class="text-xs opacity-70 bg-black/10 px-1.5 py-0.5 rounded-full">{data.traders.length}</span>
 					</a>
 
-					{#each data.tradingStyles.slice(0, 6) as style}
+					{#each data.tradingStyles.slice(0, 6) as style (style)}
 						{@const meta = getStyleMeta(style)}
 						{@const count = tradingStyleCounts[style || ''] || 0}
 						{#if count >= 2}

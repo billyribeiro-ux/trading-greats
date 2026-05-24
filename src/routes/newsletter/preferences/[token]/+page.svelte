@@ -152,7 +152,7 @@
 					}}
 				>
 					<div class="space-y-4 mb-8">
-						{#each preferenceOptions as pref}
+						{#each preferenceOptions as pref (pref.key)}
 							<label class="flex items-start gap-4 p-4 rounded-xl border border-midnight-700 bg-midnight-800/30 cursor-pointer hover:border-midnight-600 transition-colors">
 								<div class="relative flex items-center">
 									<input

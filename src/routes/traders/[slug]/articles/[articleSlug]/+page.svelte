@@ -173,7 +173,7 @@
 		<meta property="article:section" content={article.category} />
 	{/if}
 	{#if article.tags}
-		{#each article.tags as tag}
+		{#each article.tags as tag (tag)}
 			<meta property="article:tag" content={tag} />
 		{/each}
 	{/if}
@@ -329,7 +329,7 @@
 					<div class="mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-midnight-800/50">
 						<div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
 							<Icon name="tag" class="h-3.5 w-3.5 sm:h-4 sm:w-4 text-midnight-500" />
-							{#each article.tags as tag}
+							{#each article.tags as tag (tag)}
 								<span class="rounded-full bg-midnight-800 px-2.5 sm:px-3 py-0.5 sm:py-1 text-xs sm:text-sm text-midnight-300">
 									{tag}
 								</span>

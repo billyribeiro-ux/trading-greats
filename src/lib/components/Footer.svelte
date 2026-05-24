@@ -48,7 +48,7 @@
 							{ href: '/traders?style=Macro', label: 'Macro Traders' },
 							{ href: '/traders?style=Value', label: 'Value Investors' },
 							{ href: '/traders?style=Momentum', label: 'Momentum Traders' }
-						] as link}
+						] as link (link.href)}
 							<li>
 								<a
 									href={link.href}
@@ -70,7 +70,7 @@
 							{ href: '/about', label: 'About' },
 							{ href: '/privacy', label: 'Privacy' },
 							{ href: '/terms', label: 'Terms' }
-						] as link}
+						] as link (link.href)}
 							<li>
 								<a
 									href={link.href}
@@ -95,7 +95,7 @@
 					{ href: 'https://twitter.com', icon: 'twitter' as const, label: 'Twitter' },
 					{ href: 'https://github.com', icon: 'github' as const, label: 'GitHub' },
 					{ href: 'mailto:hello@tradinggreats.com', icon: 'mail' as const, label: 'Email' }
-				] as social}
+				] as social (social.label)}
 					<a
 						href={social.href}
 						class={cn(

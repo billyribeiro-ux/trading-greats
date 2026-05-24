@@ -71,7 +71,7 @@
 					</tr>
 				</thead>
 				<tbody class="divide-y divide-midnight-800/50">
-					{#each filteredTraders as trader}
+					{#each filteredTraders as trader (trader.slug)}
 						<tr class="bg-midnight-950/50 hover:bg-midnight-900/30">
 							<td class="px-4 py-4">
 								<div class="flex items-center gap-3">

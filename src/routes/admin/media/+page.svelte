@@ -154,7 +154,7 @@
 				class="rounded-xl border border-midnight-700 bg-midnight-800/50 px-4 py-3 text-midnight-100 outline-none transition-all focus:border-gold-500/50 focus:ring-2 focus:ring-gold-500/20 min-h-[44px]"
 			>
 				<option value="">All Folders</option>
-				{#each data.folders as folder}
+				{#each data.folders as folder (folder)}
 					<option value={folder}>{folder}</option>
 				{/each}
 			</select>

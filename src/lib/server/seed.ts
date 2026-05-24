@@ -71,8 +71,11 @@ Today, Mark is dedicated to teaching his methodology through his books, workshop
 			{ title: 'Mindset Secrets for Winning', year: 2019, description: 'The psychological edge needed to succeed' }
 		],
 		socialLinks: [
+			{ platform: 'Website', url: 'https://www.minervini.com' },
 			{ platform: 'Twitter', url: 'https://twitter.com/markminervini' },
-			{ platform: 'Website', url: 'https://www.minervini.com' }
+			{ platform: 'Instagram', url: 'https://www.instagram.com/_mark_minervini/' },
+			{ platform: 'Amazon', url: 'https://www.amazon.com/s?k=mark+minervini+books' },
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Mark_Minervini' }
 		],
 		status: 'published'
 	},
@@ -169,7 +172,11 @@ For many serious market participants, Billy Ribeiro represents a rare combinatio
 			{ text: 'I buy into weakness and sell into strength.', source: 'Trading Philosophy' }
 		],
 		books: [],
-		socialLinks: [],
+		socialLinks: [
+			{ platform: 'Website', url: 'https://www.simplertrading.com' },
+			{ platform: 'Profile', url: 'https://www.simplertrading.com/traders/billy-ribeiro' },
+			{ platform: 'YouTube', url: 'https://www.youtube.com/@SimplerTrading' }
+		],
 		status: 'published'
 	},
 	{
@@ -246,8 +253,12 @@ Through Simpler Trading, John has trained tens of thousands of traders. The plat
 			{ title: 'Mastering the Trade (Third Edition)', year: 2019, description: 'Latest techniques including options strategies' }
 		],
 		socialLinks: [
-			{ platform: 'Twitter', url: 'https://twitter.com/johncarter' },
-			{ platform: 'Website', url: 'https://www.simplertrading.com' }
+			{ platform: 'Website', url: 'https://www.simplertrading.com' },
+			{ platform: 'Twitter', url: 'https://twitter.com/johnfcarter' },
+			{ platform: 'YouTube', url: 'https://www.youtube.com/channel/UCukKZsfpQOkj3_L47VbvvSg' },
+			{ platform: 'Medium', url: 'https://simplerjohn.medium.com' },
+			{ platform: 'Amazon', url: 'https://www.amazon.com/Mastering-Trade-Third-Proven-Techniques/dp/1260121593' },
+			{ platform: 'Profile', url: 'https://www.simplertrading.com/traders/john-carter' }
 		],
 		status: 'published'
 	},
@@ -324,6 +335,7 @@ Soros has given away over $32 billion to philanthropic causes through his Open S
 		],
 		socialLinks: [
 			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/George_Soros' },
+			{ platform: 'Website', url: 'https://www.georgesoros.com' },
 			{ platform: 'Open Society', url: 'https://www.opensocietyfoundations.org' }
 		],
 		status: 'published'
@@ -412,8 +424,10 @@ Before Berkshire, Buffett ran private investment partnerships from 1956 to 1969,
 			{ title: 'Berkshire Hathaway Letters to Shareholders', year: 2023, description: 'Complete collection of annual letters from 1965-present' }
 		],
 		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Warren_Buffett' },
-			{ platform: 'Berkshire Hathaway', url: 'https://www.berkshirehathaway.com' }
+			{ platform: 'Website', url: 'https://www.berkshirehathaway.com' },
+			{ platform: 'Letters', url: 'https://www.berkshirehathaway.com/letters/letters.html' },
+			{ platform: 'Twitter', url: 'https://twitter.com/WarrenBuffett' },
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Warren_Buffett' }
 		],
 		status: 'published'
 	},
@@ -469,8 +483,9 @@ Jones is known for his:
 		],
 		books: [],
 		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Paul_Tudor_Jones' },
-			{ platform: 'Tudor Investment Corp', url: 'https://www.tudorinvestmentcorp.com' }
+			{ platform: 'Website', url: 'https://www.tudorinvestmentcorp.com' },
+			{ platform: 'Twitter', url: 'https://twitter.com/ptj_official' },
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Paul_Tudor_Jones' }
 		],
 		status: 'published'
 	},
@@ -530,7 +545,10 @@ Dalio is famous for his company culture based on "radical transparency" and "rad
 		],
 		socialLinks: [
 			{ platform: 'Twitter', url: 'https://twitter.com/raydalio' },
-			{ platform: 'LinkedIn', url: 'https://www.linkedin.com/in/raydalio' }
+			{ platform: 'LinkedIn', url: 'https://www.linkedin.com/in/raydalio' },
+			{ platform: 'Website', url: 'https://www.bridgewater.com' },
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Ray_Dalio' },
+			{ platform: 'Amazon', url: 'https://www.amazon.com/Principles-Life-Work-Ray-Dalio/dp/1501124021' }
 		],
 		status: 'published'
 	},
@@ -585,6 +603,7 @@ Druckenmiller is known for:
 		],
 		books: [],
 		socialLinks: [
+			{ platform: 'Website', url: 'https://www.duquesne.com' },
 			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Stanley_Druckenmiller' }
 		],
 		status: 'published'
@@ -652,7 +671,8 @@ Livermore pioneered many concepts still used today:
 			{ title: 'How to Trade in Stocks', year: 1940, description: 'Livermore\'s own trading methodology' }
 		],
 		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Jesse_Livermore' }
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Jesse_Livermore' },
+			{ platform: 'Amazon', url: 'https://www.amazon.com/Reminiscences-Stock-Operator-Edwin-Lefevre/dp/0471770094' }
 		],
 		status: 'published'
 	},
@@ -708,7 +728,9 @@ Lynch popularized the concept of "invest in what you know":
 			{ title: 'Learn to Earn', year: 1995, description: 'Introduction to investing for beginners' }
 		],
 		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Peter_Lynch' }
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Peter_Lynch' },
+			{ platform: 'Fidelity', url: 'https://www.fidelity.com/learning-center/trading-investing/peter-lynch' },
+			{ platform: 'Amazon', url: 'https://www.amazon.com/s?k=peter+lynch+books' }
 		],
 		status: 'published'
 	},
@@ -768,7 +790,9 @@ Simons pioneered the use of:
 		],
 		books: [],
 		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Jim_Simons_(mathematician)' }
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Jim_Simons_(mathematician)' },
+			{ platform: 'Simons Foundation', url: 'https://www.simonsfoundation.org' },
+			{ platform: 'Renaissance Technologies', url: 'https://www.rentec.com' }
 		],
 		status: 'published'
 	},
@@ -824,6 +848,7 @@ Some of his most notable activist investments include:
 		],
 		books: [],
 		socialLinks: [
+			{ platform: 'Website', url: 'https://www.icahn.com' },
 			{ platform: 'Twitter', url: 'https://twitter.com/carlicahn' },
 			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Carl_Icahn' }
 		],
@@ -880,7 +905,8 @@ Graham taught at Columbia Business School for nearly three decades, where his st
 			{ title: 'The Intelligent Investor', year: 1949, description: 'The definitive book on value investing for individuals' }
 		],
 		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Benjamin_Graham' }
+			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Benjamin_Graham' },
+			{ platform: 'Amazon', url: 'https://www.amazon.com/Intelligent-Investor-Definitive-Investing-Essentials/dp/0060555661' }
 		],
 		status: 'published'
 	},
@@ -937,8 +963,9 @@ In 1984, O'Neil founded Investor's Business Daily to compete with The Wall Stree
 			{ title: '24 Essential Lessons for Investment Success', year: 2000, description: 'Condensed wisdom on growth investing' }
 		],
 		socialLinks: [
+			{ platform: 'Website', url: 'https://www.investors.com' },
 			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/William_O%27Neil' },
-			{ platform: 'IBD', url: 'https://www.investors.com' }
+			{ platform: 'Amazon', url: 'https://www.amazon.com/How-Make-Money-Stocks-Winning/dp/0071614133' }
 		],
 		status: 'published'
 	},

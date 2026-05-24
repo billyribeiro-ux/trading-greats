@@ -104,7 +104,7 @@
 	<div class="flex flex-col sm:flex-row gap-4">
 		<!-- Status IconFilters -->
 		<div class="flex flex-wrap gap-2">
-			{#each statusIconFilters as filter}
+			{#each statusIconFilters as filter (filter.value)}
 				<button
 					onclick={() => filterByStatus(filter.value)}
 					class="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors {
@@ -159,7 +159,7 @@
 						</tr>
 					</thead>
 					<tbody class="divide-y divide-midnight-800">
-						{#each filteredSubscribers as subscriber}
+						{#each filteredSubscribers as subscriber (subscriber.id)}
 							<tr class="hover:bg-midnight-800/30 transition-colors">
 								<td class="px-4 py-4">
 									<div class="flex items-center gap-3">

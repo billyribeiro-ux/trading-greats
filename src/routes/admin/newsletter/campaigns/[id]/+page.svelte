@@ -354,7 +354,7 @@
 					</h3>
 				</div>
 				<div class="divide-y divide-midnight-800 max-h-[600px] overflow-y-auto">
-					{#each data.events as event}
+					{#each data.events as event (event.id)}
 						{@const EventIcon = getEventIcon(event.eventType)}
 						<div class="p-4 hover:bg-midnight-800/30 transition-colors">
 							<div class="flex items-start gap-3">

@@ -263,7 +263,7 @@
 				</div>
 
 				<div class="mt-4 space-y-3">
-					{#each achievements as achievement, i}
+					{#each achievements as achievement, i (i)}
 						<div class="flex gap-2">
 							<input
 								type="text"
@@ -301,7 +301,7 @@
 				</div>
 
 				<div class="mt-4 space-y-4">
-					{#each famousTrades as trade, i}
+					{#each famousTrades as trade, i (i)}
 						<div class="rounded-lg border border-midnight-700 bg-midnight-800/30 p-4">
 							<div class="flex items-start justify-between gap-4 mb-4">
 								<h3 class="text-sm font-medium text-midnight-200">Trade #{i + 1}</h3>
@@ -415,7 +415,7 @@
 				</div>
 
 				<div class="mt-4 space-y-4">
-					{#each quotes as quote, i}
+					{#each quotes as quote, i (i)}
 						<div class="rounded-lg border border-midnight-700 bg-midnight-800/30 p-4">
 							<div class="flex items-start justify-between gap-4">
 								<div class="flex-1 space-y-3">
@@ -464,7 +464,7 @@
 				</div>
 
 				<div class="mt-4 space-y-4">
-					{#each books as book, i}
+					{#each books as book, i (i)}
 						<div class="rounded-lg border border-midnight-700 bg-midnight-800/30 p-4">
 							<div class="flex items-start justify-between gap-4">
 								<div class="flex-1 space-y-3">
@@ -523,7 +523,7 @@
 				</div>
 
 				<div class="mt-4 space-y-3">
-					{#each socialLinks as link, i}
+					{#each socialLinks as link, i (i)}
 						<div class="flex gap-2">
 							<select
 								name="socialPlatform"
