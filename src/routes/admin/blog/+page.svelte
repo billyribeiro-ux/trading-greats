@@ -187,7 +187,7 @@
 												class="h-12 w-16 rounded-lg object-cover hidden sm:block"
 											/>
 										{:else}
-											<div class="h-12 w-16 rounded-lg bg-midnight-800 flex items-center justify-center hidden sm:flex">
+											<div class="h-12 w-16 rounded-lg bg-midnight-800 items-center justify-center hidden sm:flex">
 												<IconFileText class="h-5 w-5 text-midnight-600" />
 											</div>
 										{/if}
