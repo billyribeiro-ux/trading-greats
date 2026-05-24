@@ -9,6 +9,7 @@
 <SEO
 	title={data.success ? 'Email Verified - Trading Greats' : 'Verification Failed - Trading Greats'}
 	description="Email verification for Trading Greats newsletter"
+	noindex={true}
 />
 
 <div class="min-h-screen bg-midnight-950 flex items-center justify-center px-4">

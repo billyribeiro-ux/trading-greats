@@ -7,6 +7,7 @@
 
 <svelte:head>
 	<title>Admin Login | Trading Greats</title>
+	<meta name="robots" content="noindex, nofollow" />
 </svelte:head>
 
 <main class="flex min-h-screen items-center justify-center bg-midnight-950 px-4">

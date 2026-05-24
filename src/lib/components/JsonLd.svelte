@@ -6,7 +6,7 @@
 	const SITE_NAME = 'Trading Greats';
 	const SITE_URL = $derived(page.url.origin || 'https://tradinggreats.com');
 
-	type SchemaIconTypography = 'WebSite' | 'Organization' | 'Person' | 'ProfilePage' | 'BreadcrumbList' | 'Article' | 'TraderArticle' | 'FAQPage';
+	type SchemaType = 'WebSite' | 'Organization' | 'Person' | 'ProfilePage' | 'BreadcrumbList' | 'Article' | 'TraderArticle' | 'FAQPage';
 
 	interface FAQItem {
 		question: string;
@@ -14,7 +14,7 @@
 	}
 
 	interface Props {
-		type: SchemaIconTypography;
+		type: SchemaType;
 		trader?: Trader;
 		article?: BlogPost;
 		breadcrumbs?: { name: string; url: string }[];

@@ -5,6 +5,7 @@
 	import SocialShareButtons from '$lib/components/SocialShareButtons.svelte';
 	import SEO from '$lib/components/SEO.svelte';
 	import { env } from '$env/dynamic/public';
+	import { parse } from 'marked';
 	import type { PageData } from './$types';
 
 	const PUBLIC_SITE_URL = env.PUBLIC_SITE_URL || 'https://tradinggreats.com';
@@ -48,36 +49,7 @@
 	// Simple markdown to HTML conversion for content
 	function renderMarkdown(content: string): string {
 		if (!content) return '';
-
-		return (
-			content
-				// Code blocks
-				.replace(/```(\w+)?\n([\s\S]*?)```/g, '<pre><code class="language-$1">$2</code></pre>')
-				// Inline code
-				.replace(/`([^`]+)`/g, '<code>$1</code>')
-				// Headers
-				.replace(/^### (.*$)/gim, '<h3>$1</h3>')
-				.replace(/^## (.*$)/gim, '<h2>$1</h2>')
-				.replace(/^# (.*$)/gim, '<h1>$1</h1>')
-				// Bold
-				.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-				// Italic
-				.replace(/\*(.*?)\*/g, '<em>$1</em>')
-				// Blockquotes
-				.replace(/^\> (.*$)/gim, '<blockquote>$1</blockquote>')
-				// Unordered lists
-				.replace(/^\- (.*$)/gim, '<li>$1</li>')
-				// Ordered lists
-				.replace(/^\d+\. (.*$)/gim, '<li>$1</li>')
-				// Links
-				.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
-				// Images
-				.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" loading="lazy" />')
-				// Paragraphs
-				.replace(/\n\n/g, '</p><p>')
-				// Line breaks
-				.replace(/\n/g, '<br />')
-		);
+		return parse(content) as string;
 	}
 
 	const categoryIcon = $derived<IconName>(

@@ -20,6 +20,7 @@
 <SEO
 	title="Unsubscribe - Trading Greats"
 	description="Unsubscribe from Trading Greats newsletter"
+	noindex={true}
 />
 
 <div class="min-h-screen bg-midnight-950 flex items-center justify-center px-4">

@@ -1,7 +1,6 @@
 import type { RequestHandler } from './$types';
 import { db } from '$lib/server/db';
 import { blogPosts } from '$lib/server/schema';
-import { seedBlogPosts } from '$lib/server/seedBlog';
 import { eq, desc } from 'drizzle-orm';
 import { env } from '$env/dynamic/public';
 
@@ -19,45 +18,28 @@ function escapeXml(unsafe: string): string {
 }
 
 export const GET: RequestHandler = async () => {
-	let posts: any[] = [];
-
-	try {
-		posts = await db
-			.select()
-			.from(blogPosts)
-			.where(eq(blogPosts.status, 'published'))
-			.orderBy(desc(blogPosts.publishedAt))
-			.limit(50);
-	} catch (e) {
-		console.error('Failed to fetch posts for RSS, using seed data:', e);
-	}
-
-	// Fallback to seed data if database is empty or unavailable
-	if (posts.length === 0) {
-		posts = seedBlogPosts
-			.filter((post) => post.status === 'published')
-			.sort((a, b) => {
-				const dateA = a.publishedAt ? new Date(a.publishedAt).getTime() : 0;
-				const dateB = b.publishedAt ? new Date(b.publishedAt).getTime() : 0;
-				return dateB - dateA;
-			})
-			.slice(0, 50);
-	}
+	const posts = await db
+		.select()
+		.from(blogPosts)
+		.where(eq(blogPosts.status, 'published'))
+		.orderBy(desc(blogPosts.publishedAt))
+		.limit(50);
 
 	const items = posts
 		.map((post) => {
 			const pubDate = post.publishedAt ? new Date(post.publishedAt).toUTCString() : new Date().toUTCString();
+			const postUrl = `${SITE_URL}/blog/${escapeXml(post.slug)}`;
 
 			return `
 		<item>
 			<title>${escapeXml(post.title)}</title>
-			<link>${SITE_URL}/blog/${escapeXml(post.slug)}</link>
-			<guid isPermaLink="true">${SITE_URL}/blog/${escapeXml(post.slug)}</guid>
+			<link>${postUrl}</link>
+			<guid isPermaLink="true">${postUrl}</guid>
 			<description>${escapeXml(post.excerpt || post.title)}</description>
 			<pubDate>${pubDate}</pubDate>
 			${post.author ? `<author>${escapeXml(post.author)}</author>` : ''}
 			${post.category ? `<category>${escapeXml(post.category)}</category>` : ''}
-			${post.heroImage ? `<enclosure url="${escapeXml(post.heroImage)}" type="image/jpeg" />` : ''}
+			${post.heroImage ? `<enclosure url="${escapeXml(post.heroImage)}" length="0" type="image/jpeg" />` : ''}
 		</item>`;
 		})
 		.join('\n');
@@ -82,8 +64,8 @@ export const GET: RequestHandler = async () => {
 
 	return new Response(rss.trim(), {
 		headers: {
-			'Content-Type': 'application/xml',
-			'Cache-Control': 'max-age=3600'
+			'Content-Type': 'application/xml; charset=utf-8',
+			'Cache-Control': 'public, max-age=3600, s-maxage=3600'
 		}
 	});
 };

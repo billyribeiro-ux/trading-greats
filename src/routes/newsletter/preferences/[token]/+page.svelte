@@ -74,6 +74,7 @@
 <SEO
 	title="Email Preferences - Trading Greats"
 	description="Manage your Trading Greats newsletter preferences"
+	noindex={true}
 />
 
 <div class="min-h-screen bg-midnight-950 flex items-center justify-center px-4 py-12">

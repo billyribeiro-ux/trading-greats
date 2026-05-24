@@ -5,6 +5,7 @@
 	import { Icon, type IconName } from '$lib/components/icons';
 	import SEO from '$lib/components/SEO.svelte';
 	import { env } from '$env/dynamic/public';
+	import { parse } from 'marked';
 	import type { PageData } from './$types';
 
 	const PUBLIC_SITE_URL = env.PUBLIC_SITE_URL || 'https://tradinggreats.com';
@@ -54,21 +55,7 @@
 	// Simple markdown to HTML conversion
 	function renderMarkdown(content: string): string {
 		if (!content) return '';
-		return content
-			.replace(/```(\w+)?\n([\s\S]*?)```/g, '<pre><code class="language-$1">$2</code></pre>')
-			.replace(/`([^`]+)`/g, '<code>$1</code>')
-			.replace(/^### (.*$)/gim, '<h3>$1</h3>')
-			.replace(/^## (.*$)/gim, '<h2>$1</h2>')
-			.replace(/^# (.*$)/gim, '<h1>$1</h1>')
-			.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-			.replace(/\*(.*?)\*/g, '<em>$1</em>')
-			.replace(/^\> (.*$)/gim, '<blockquote>$1</blockquote>')
-			.replace(/^\- (.*$)/gim, '<li>$1</li>')
-			.replace(/^\d+\. (.*$)/gim, '<li>$1</li>')
-			.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
-			.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" loading="lazy" />')
-			.replace(/\n\n/g, '</p><p>')
-			.replace(/\n/g, '<br />');
+		return parse(content) as string;
 	}
 
 	// Share functions

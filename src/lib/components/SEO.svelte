@@ -70,6 +70,8 @@
 	<meta property="og:title" content={fullTitle} />
 	<meta property="og:description" content={description} />
 	<meta property="og:image" content={image} />
+	<meta property="og:image:secure_url" content={image} />
+	<meta property="og:image:type" content="image/jpeg" />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta property="og:image:alt" content={fullTitle} />
@@ -86,8 +88,10 @@
 		<meta property="article:author" content={author} />
 	{/if}
 
-	<!-- Twitter -->
+	<!-- Twitter / X -->
 	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@tradinggreats" />
+	<meta name="twitter:creator" content="@tradinggreats" />
 	<meta name="twitter:url" content={canonicalUrl} />
 	<meta name="twitter:title" content={fullTitle} />
 	<meta name="twitter:description" content={description} />

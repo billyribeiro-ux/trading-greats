@@ -37,6 +37,7 @@ export const GET: RequestHandler = async () => {
 		{ url: '', priority: '1.0', changefreq: 'daily', lastmod: now },
 		{ url: '/traders', priority: '0.9', changefreq: 'daily', lastmod: now },
 		{ url: '/blog', priority: '0.8', changefreq: 'daily', lastmod: now },
+		{ url: '/compare', priority: '0.7', changefreq: 'weekly', lastmod: now },
 		{ url: '/about', priority: '0.7', changefreq: 'monthly' },
 		{ url: '/privacy', priority: '0.3', changefreq: 'yearly' },
 		{ url: '/terms', priority: '0.3', changefreq: 'yearly' }
