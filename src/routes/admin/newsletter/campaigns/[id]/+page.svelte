@@ -2,21 +2,21 @@
 	import type { PageData, ActionData } from './$types';
 	import { enhance } from '$app/forms';
 	import {
-		ArrowLeft,
-		Send,
-		Eye,
-		MousePointer,
-		Users,
-		Clock,
-		CircleCheck,
-		Play,
-		Edit,
-		Save,
-		X,
-		BarChart3,
-		Activity,
-		ExternalLink
-	} from 'lucide-svelte';
+		IconArrowLeft,
+		IconSend,
+		IconEye,
+		IconMouse,
+		IconUsers,
+		IconClock,
+		IconCircleCheck,
+		IconPlayerPlay,
+		IconEdit,
+		IconDeviceFloppy,
+		IconX,
+		IconChartBar,
+		IconActivity,
+		IconExternalLink
+	} from '@tabler/icons-svelte';
 
 	let { data, form }: { data: PageData; form: ActionData } = $props();
 
@@ -59,11 +59,11 @@
 
 	function getEventIcon(eventType: string) {
 		switch (eventType) {
-			case 'sent': return Send;
-			case 'delivered': return CircleCheck;
-			case 'opened': return Eye;
-			case 'clicked': return MousePointer;
-			default: return Activity;
+			case 'sent': return IconSend;
+			case 'delivered': return IconCircleCheck;
+			case 'opened': return IconEye;
+			case 'clicked': return IconMouse;
+			default: return IconActivity;
 		}
 	}
 
@@ -100,7 +100,7 @@
 				href="/admin/newsletter/campaigns"
 				class="flex h-10 w-10 items-center justify-center rounded-lg border border-midnight-700 bg-midnight-800/50 text-midnight-400 transition-colors hover:bg-midnight-700 hover:text-white"
 			>
-				<ArrowLeft class="h-5 w-5" />
+				<IconArrowLeft class="h-5 w-5" />
 			</a>
 			<div>
 				<div class="flex items-center gap-3">
@@ -122,7 +122,7 @@
 						onclick={() => (isEditing = true)}
 						class="inline-flex items-center gap-2 rounded-xl border border-midnight-700 bg-midnight-800/50 px-4 py-2.5 text-sm font-medium text-midnight-300 transition-colors hover:bg-midnight-700 hover:text-white"
 					>
-						<Edit class="h-4 w-4" />
+						<IconEdit class="h-4 w-4" />
 						Edit
 					</button>
 				{/if}
@@ -134,7 +134,7 @@
 								type="submit"
 								class="rounded-xl bg-emerald-500/10 px-4 py-2.5 text-sm font-semibold text-emerald-400 hover:bg-emerald-500/20"
 							>
-								Confirm Send
+								Confirm IconSend
 							</button>
 						</form>
 						<button
@@ -147,10 +147,10 @@
 				{:else}
 					<button
 						onclick={() => (sendConfirm = true)}
-						class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 px-4 py-2.5 text-sm font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30"
+						class="inline-flex items-center gap-2 rounded-xl bg-linear-to-r from-gold-500 to-gold-600 px-4 py-2.5 text-sm font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30"
 					>
-						<Play class="h-4 w-4" />
-						Send Campaign
+						<IconPlayerPlay class="h-4 w-4" />
+						IconSend Campaign
 					</button>
 				{/if}
 			</div>
@@ -169,7 +169,7 @@
 			<div class="rounded-xl border border-midnight-800 bg-midnight-900/50 p-5">
 				<div class="flex items-center gap-3">
 					<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-500/10">
-						<Send class="h-5 w-5 text-blue-400" />
+						<IconSend class="h-5 w-5 text-blue-400" />
 					</div>
 					<div>
 						<p class="text-2xl font-bold text-white">{data.campaign.totalSent || 0}</p>
@@ -180,7 +180,7 @@
 			<div class="rounded-xl border border-midnight-800 bg-midnight-900/50 p-5">
 				<div class="flex items-center gap-3">
 					<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-violet-500/10">
-						<Eye class="h-5 w-5 text-violet-400" />
+						<IconEye class="h-5 w-5 text-violet-400" />
 					</div>
 					<div>
 						<p class="text-2xl font-bold text-white">{data.campaign.uniqueOpens || 0}</p>
@@ -191,7 +191,7 @@
 			<div class="rounded-xl border border-midnight-800 bg-midnight-900/50 p-5">
 				<div class="flex items-center gap-3">
 					<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-gold-500/10">
-						<MousePointer class="h-5 w-5 text-gold-400" />
+						<IconMouse class="h-5 w-5 text-gold-400" />
 					</div>
 					<div>
 						<p class="text-2xl font-bold text-white">{data.campaign.uniqueClicks || 0}</p>
@@ -202,7 +202,7 @@
 			<div class="rounded-xl border border-midnight-800 bg-midnight-900/50 p-5">
 				<div class="flex items-center gap-3">
 					<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-red-500/10">
-						<Users class="h-5 w-5 text-red-400" />
+						<IconUsers class="h-5 w-5 text-red-400" />
 					</div>
 					<div>
 						<p class="text-2xl font-bold text-white">{data.campaign.totalUnsubscribes || 0}</p>
@@ -213,7 +213,7 @@
 			<div class="rounded-xl border border-midnight-800 bg-midnight-900/50 p-5">
 				<div class="flex items-center gap-3">
 					<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500/10">
-						<Clock class="h-5 w-5 text-emerald-400" />
+						<IconClock class="h-5 w-5 text-emerald-400" />
 					</div>
 					<div>
 						<p class="text-sm font-bold text-white">{formatDate(data.campaign.sentAt)}</p>
@@ -281,10 +281,10 @@
 						<button
 							type="submit"
 							disabled={isSubmitting}
-							class="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 px-6 py-3 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30 disabled:opacity-50"
+							class="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-gold-500 to-gold-600 px-6 py-3 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30 disabled:opacity-50"
 						>
-							<Save class="h-5 w-5" />
-							{isSubmitting ? 'Saving...' : 'Save Changes'}
+							<IconDeviceFloppy class="h-5 w-5" />
+							{isSubmitting ? 'Saving...' : 'IconDeviceFloppy Changes'}
 						</button>
 						<button
 							type="button"
@@ -296,7 +296,7 @@
 							}}
 							class="inline-flex items-center justify-center gap-2 rounded-xl border border-midnight-700 bg-midnight-800/50 px-6 py-3 font-medium text-midnight-300 transition-colors hover:bg-midnight-700 hover:text-white"
 						>
-							<X class="h-5 w-5" />
+							<IconX class="h-5 w-5" />
 							Cancel
 						</button>
 					</div>
@@ -312,7 +312,7 @@
 						<p class="text-midnight-300">{data.campaign.previewText}</p>
 					{/if}
 
-					<h3 class="text-sm font-medium text-midnight-400 mt-4 mb-2">Type</h3>
+					<h3 class="text-sm font-medium text-midnight-400 mt-4 mb-2">IconTypography</h3>
 					<p class="text-midnight-300 capitalize">{data.campaign.type?.replace('_', ' ') ?? 'N/A'}</p>
 				</div>
 			{/if}
@@ -321,7 +321,7 @@
 			<div class="rounded-xl border border-midnight-800 bg-midnight-900/50 overflow-hidden">
 				<div class="border-b border-midnight-800 p-4">
 					<h3 class="font-medium text-white flex items-center gap-2">
-						<Eye class="h-4 w-4 text-gold-400" />
+						<IconEye class="h-4 w-4 text-gold-400" />
 						Email Preview
 					</h3>
 				</div>
@@ -344,13 +344,13 @@
 			</div>
 		</div>
 
-		<!-- Activity Feed (for sent campaigns) -->
+		<!-- IconActivity Feed (for sent campaigns) -->
 		{#if isSent && data.events.length > 0}
 			<div class="rounded-xl border border-midnight-800 bg-midnight-900/50 overflow-hidden">
 				<div class="border-b border-midnight-800 p-4">
 					<h3 class="font-medium text-white flex items-center gap-2">
-						<Activity class="h-4 w-4 text-gold-400" />
-						Recent Activity
+						<IconActivity class="h-4 w-4 text-gold-400" />
+						Recent IconActivity
 					</h3>
 				</div>
 				<div class="divide-y divide-midnight-800 max-h-[600px] overflow-y-auto">
@@ -371,7 +371,7 @@
 											class="text-xs text-gold-400 hover:text-gold-300 flex items-center gap-1 truncate"
 										>
 											{event.linkUrl}
-											<ExternalLink class="h-3 w-3 flex-shrink-0" />
+											<IconExternalLink class="h-3 w-3 shrink-0" />
 										</a>
 									{/if}
 									<div class="mt-1 flex items-center gap-2 text-xs text-midnight-500">
@@ -391,7 +391,7 @@
 			</div>
 		{:else if isSent}
 			<div class="rounded-xl border border-midnight-800 bg-midnight-900/50 p-12 text-center">
-				<Activity class="mx-auto h-12 w-12 text-midnight-600" />
+				<IconActivity class="mx-auto h-12 w-12 text-midnight-600" />
 				<p class="mt-4 text-midnight-400">No activity recorded yet</p>
 				<p class="mt-2 text-sm text-midnight-500">Events will appear as recipients interact with the email</p>
 			</div>

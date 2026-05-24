@@ -38,15 +38,15 @@
 				you visit our website.
 			</p>
 
-			<h2>Information We Collect</h2>
+			<h2>IconInfoCirclermation We Collect</h2>
 			<p>We collect minimal information to provide you with the best experience:</p>
 			<ul>
 				<li>Usage Data (pages visited, time spent, etc.)</li>
-				<li>Device Information (browser type, device type)</li>
+				<li>Device IconInfoCirclermation (browser type, device type)</li>
 				<li>Cookies (for site functionality and analytics)</li>
 			</ul>
 
-			<h2>How We Use Your Information</h2>
+			<h2>How We Use Your IconInfoCirclermation</h2>
 			<p>We use this information to:</p>
 			<ul>
 				<li>Improve our website and content</li>

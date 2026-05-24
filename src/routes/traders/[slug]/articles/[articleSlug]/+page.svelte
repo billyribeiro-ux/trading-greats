@@ -194,11 +194,11 @@
 					alt={article.heroImageAlt || article.title}
 					class="h-full w-full object-cover"
 				/>
-				<div class="absolute inset-0 bg-gradient-to-t from-midnight-950 via-midnight-950/80 to-midnight-950/40"></div>
+				<div class="absolute inset-0 bg-linear-to-t from-midnight-950 via-midnight-950/80 to-midnight-950/40"></div>
 			</div>
 		{:else}
 			<div class="absolute inset-0 h-[35vh] sm:h-[40vh] min-h-[280px]">
-				<div class="absolute inset-0 bg-gradient-to-br from-midnight-900 via-midnight-950 to-midnight-900"></div>
+				<div class="absolute inset-0 bg-linear-to-br from-midnight-900 via-midnight-950 to-midnight-900"></div>
 				<div class="absolute top-0 left-1/4 h-48 w-48 sm:h-72 sm:w-72 rounded-full bg-gold-500/5 blur-3xl"></div>
 				<div class="absolute bottom-0 right-1/4 h-48 w-48 sm:h-72 sm:w-72 rounded-full bg-gold-500/5 blur-3xl"></div>
 			</div>
@@ -251,7 +251,7 @@
 								class="h-10 w-10 sm:h-12 sm:w-12 rounded-full object-cover border-2 border-gold-500/30 group-hover:border-gold-500/60 transition-colors"
 							/>
 						{:else}
-							<div class="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center">
+							<div class="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-linear-to-br from-gold-400 to-gold-600 flex items-center justify-center">
 								<Icon name="user" class="h-5 w-5 text-midnight-950" />
 							</div>
 						{/if}
@@ -352,7 +352,7 @@
 					</h2>
 
 					<div class="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-						{#each relatedArticles as relatedArticle, i}
+						{#each relatedArticles as relatedArticle, i (relatedArticle.slug)}
 							<ScrollReveal delay={i * 75}>
 								<TraderArticleCard article={relatedArticle} {trader} />
 							</ScrollReveal>

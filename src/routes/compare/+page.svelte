@@ -160,7 +160,7 @@
 														class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
 													/>
 												{:else}
-													<div class="w-full h-full flex items-center justify-center text-xl font-bold bg-gradient-to-br from-midnight-700 to-midnight-800 text-midnight-400 group-hover:from-violet-900/50 group-hover:to-midnight-800 group-hover:text-violet-300 transition-all duration-300">
+													<div class="w-full h-full flex items-center justify-center text-xl font-bold bg-linear-to-br from-midnight-700 to-midnight-800 text-midnight-400 group-hover:from-violet-900/50 group-hover:to-midnight-800 group-hover:text-violet-300 transition-all duration-300">
 														{trader.name.split(' ').map(n => n[0]).join('')}
 													</div>
 												{/if}
@@ -267,12 +267,12 @@
 					Add Traders to Compare
 				</h3>
 
-				<!-- Search -->
+				<!-- IconSearch -->
 				<div class="relative mb-3">
 					<Icon name="search" class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-midnight-500" />
 					<input
 						type="text"
-						placeholder="Search traders..."
+						placeholder="IconSearch traders..."
 						bind:value={searchQuery}
 						class="w-full bg-midnight-900/50 border border-white/10 rounded-lg pl-10 pr-4 py-2.5 text-sm text-white placeholder-midnight-500 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50"
 					/>
@@ -293,7 +293,7 @@
 										class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
 									/>
 								{:else}
-									<div class="w-full h-full flex items-center justify-center text-sm font-bold bg-gradient-to-br from-midnight-700 to-midnight-800 text-midnight-400 group-hover:from-violet-900/50 group-hover:to-midnight-800 group-hover:text-violet-300 transition-all duration-300">
+									<div class="w-full h-full flex items-center justify-center text-sm font-bold bg-linear-to-br from-midnight-700 to-midnight-800 text-midnight-400 group-hover:from-violet-900/50 group-hover:to-midnight-800 group-hover:text-violet-300 transition-all duration-300">
 										{trader.name.split(' ').map(n => n[0]).join('')}
 									</div>
 								{/if}

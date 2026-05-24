@@ -2,7 +2,7 @@
 	import type { PageData, ActionData } from './$types';
 	import SEO from '$lib/components/SEO.svelte';
 	import { enhance } from '$app/forms';
-	import { CircleCheck, CircleX, Settings, Mail, Bell, BookOpen, TrendingUp, ArrowRight } from 'lucide-svelte';
+	import { IconCircleCheck, IconCircleX, IconSettings, IconMail, IconBell, IconBook, IconTrendingUp, IconArrowRight } from '@tabler/icons-svelte';
 
 	let { data, form }: { data: PageData; form: ActionData } = $props();
 
@@ -29,25 +29,25 @@
 			key: 'weeklyDigest',
 			label: 'Weekly Digest',
 			description: 'A curated summary of the best trading insights each week',
-			icon: Mail
+			icon: IconMail
 		},
 		{
 			key: 'newTraderAlerts',
 			label: 'New Trader Profiles',
 			description: 'Get notified when we add new legendary traders',
-			icon: TrendingUp
+			icon: IconTrendingUp
 		},
 		{
 			key: 'blogPostAlerts',
 			label: 'Blog Post Updates',
 			description: 'New articles and deep dives into trading strategies',
-			icon: BookOpen
+			icon: IconBook
 		},
 		{
 			key: 'marketInsights',
 			label: 'Market Insights',
 			description: 'Occasional market analysis and commentary',
-			icon: Bell
+			icon: IconBell
 		}
 	];
 
@@ -82,7 +82,7 @@
 			<!-- Invalid token -->
 			<div class="bg-midnight-900/50 border border-midnight-800 rounded-2xl p-8 text-center">
 				<div class="mx-auto w-16 h-16 bg-red-500/10 rounded-full flex items-center justify-center mb-6">
-					<CircleX class="w-8 h-8 text-red-400" />
+					<IconCircleX class="w-8 h-8 text-red-400" />
 				</div>
 				<h1 class="text-2xl font-bold text-white mb-3">Invalid Link</h1>
 				<p class="text-midnight-400 mb-8">
@@ -93,14 +93,14 @@
 					class="inline-flex items-center gap-2 text-gold-400 hover:text-gold-300"
 				>
 					Go to Homepage
-					<ArrowRight class="w-4 h-4" />
+					<IconArrowRight class="w-4 h-4" />
 				</a>
 			</div>
 		{:else if data.status === 'unsubscribed' || form?.action === 'unsubscribe'}
 			<!-- Unsubscribed -->
 			<div class="bg-midnight-900/50 border border-midnight-800 rounded-2xl p-8 text-center">
 				<div class="mx-auto w-16 h-16 bg-emerald-500/10 rounded-full flex items-center justify-center mb-6">
-					<CircleCheck class="w-8 h-8 text-emerald-400" />
+					<IconCircleCheck class="w-8 h-8 text-emerald-400" />
 				</div>
 				<h1 class="text-2xl font-bold text-white mb-3">You're Unsubscribed</h1>
 				<p class="text-midnight-400 mb-8">
@@ -108,10 +108,10 @@
 				</p>
 				<a
 					href="/"
-					class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 px-6 py-3 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30"
+					class="inline-flex items-center gap-2 rounded-xl bg-linear-to-r from-gold-500 to-gold-600 px-6 py-3 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30"
 				>
 					Visit Trading Greats
-					<ArrowRight class="w-4 h-4" />
+					<IconArrowRight class="w-4 h-4" />
 				</a>
 			</div>
 		{:else}
@@ -119,7 +119,7 @@
 			<div class="bg-midnight-900/50 border border-midnight-800 rounded-2xl p-8">
 				<div class="text-center mb-8">
 					<div class="mx-auto w-16 h-16 bg-gold-500/10 rounded-full flex items-center justify-center mb-6">
-						<Settings class="w-8 h-8 text-gold-400" />
+						<IconSettings class="w-8 h-8 text-gold-400" />
 					</div>
 					<h1 class="text-2xl font-bold text-white mb-3">Email Preferences</h1>
 					<p class="text-midnight-400">
@@ -129,7 +129,7 @@
 
 				{#if form?.action === 'updatePreferences' && form?.success}
 					<div class="mb-6 p-4 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm flex items-center gap-3">
-						<CircleCheck class="w-5 h-5 flex-shrink-0" />
+						<IconCircleCheck class="w-5 h-5 shrink-0" />
 						{form.message}
 					</div>
 				{/if}
@@ -177,9 +177,9 @@
 					<button
 						type="submit"
 						disabled={isSubmitting}
-						class="w-full rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 px-6 py-3 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30 disabled:opacity-50 disabled:cursor-not-allowed"
+						class="w-full rounded-xl bg-linear-to-r from-gold-500 to-gold-600 px-6 py-3 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30 disabled:opacity-50 disabled:cursor-not-allowed"
 					>
-						{isSubmitting ? 'Saving...' : 'Save Preferences'}
+						{isSubmitting ? 'Saving...' : 'IconDeviceFloppy Preferences'}
 					</button>
 				</form>
 

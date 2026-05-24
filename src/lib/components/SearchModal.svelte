@@ -177,24 +177,24 @@
 	<!-- Backdrop -->
 	<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 	<div
-		class="fixed inset-0 z-[100] flex items-start justify-center pt-[10vh] sm:pt-[15vh] px-4"
+		class="fixed inset-0 z-100 flex items-start justify-center pt-[10vh] sm:pt-[15vh] px-4"
 		transition:fade={{ duration: 200, easing: cubicOut }}
 		onclick={handleBackdropClick}
 		onkeydown={handleKeydown}
 		role="dialog"
 		aria-modal="true"
-		aria-label="Search traders"
+		aria-label="IconSearch traders"
 		tabindex="-1"
 	>
 		<!-- Backdrop blur -->
 		<div class="absolute inset-0 bg-midnight-950/80 backdrop-blur-xl"></div>
 
-		<!-- Search Modal -->
+		<!-- IconSearch Modal -->
 		<div
 			class="relative w-full max-w-2xl overflow-hidden rounded-2xl border border-white/10 bg-midnight-900/95 shadow-2xl shadow-black/50 backdrop-blur-2xl"
 			transition:scale={{ duration: 300, easing: backOut, start: 0.95 }}
 		>
-			<!-- Search Input -->
+			<!-- IconSearch Input -->
 			<div class="relative border-b border-white/10">
 				<div class="absolute left-5 top-1/2 -translate-y-1/2">
 					<Icon name="search" class="h-5 w-5 text-midnight-400" strokeWidth={2} />
@@ -203,7 +203,7 @@
 					bind:this={searchInputRef}
 					bind:value={searchQuery}
 					type="text"
-					placeholder="Search legendary traders..."
+					placeholder="IconSearch legendary traders..."
 					class={cn(
 						'w-full bg-transparent py-5 pl-14 pr-14 text-lg text-white placeholder-midnight-500',
 						'outline-none focus:ring-0',
@@ -239,7 +239,7 @@
 					<div class="mb-2 px-3 py-2">
 						<p class="text-xs font-semibold uppercase tracking-wider text-midnight-500">Quick Actions</p>
 					</div>
-					{#each quickActions as action, i}
+					{#each quickActions as action, i (action.href)}
 						<button
 							type="button"
 							class={cn(
@@ -281,7 +281,7 @@
 				{/if}
 
 				<!-- Trader Results -->
-				{#each filteredTraders as trader, i}
+				{#each filteredTraders as trader, i (trader.slug)}
 					{@const index = searchQuery ? i : i + quickActions.length}
 					<button
 						type="button"
@@ -298,7 +298,7 @@
 						<div class={cn(
 							'flex h-10 w-10 items-center justify-center rounded-full font-display font-bold text-sm transition-colors',
 							selectedIndex === index 
-								? 'bg-gradient-to-br from-gold-500 to-gold-600 text-midnight-950' 
+								? 'bg-linear-to-br from-gold-500 to-gold-600 text-midnight-950' 
 								: 'bg-white/10 text-white'
 						)}>
 							{trader.name.split(' ').map(n => n[0]).join('')}

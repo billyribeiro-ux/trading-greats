@@ -1,19 +1,19 @@
 <script lang="ts">
 	import {
-		Users,
-		FileText,
-		TrendingUp,
-		Plus,
-		LogOut,
-		BookOpen,
-		Eye,
-		Edit,
-		PenTool,
-		BarChart3,
-		Settings,
-		Mail,
-		Image as ImageIcon
-	} from 'lucide-svelte';
+		IconUsers,
+		IconFileText,
+		IconTrendingUp,
+		IconPlus,
+		IconLogout,
+		IconBook,
+		IconEye,
+		IconEdit,
+		IconPencil,
+		IconChartBar,
+		IconSettings,
+		IconMail,
+		IconPhoto
+	} from '@tabler/icons-svelte';
 
 	let { data } = $props();
 </script>
@@ -27,8 +27,8 @@
 	<header class="border-b border-midnight-800/50 bg-midnight-900/50 backdrop-blur-xl sticky top-0 z-50">
 		<div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 			<div class="flex items-center gap-3">
-				<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-gold-500 to-gold-600 shadow-lg shadow-gold-500/20">
-					<TrendingUp class="h-5 w-5 text-midnight-950" />
+				<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-linear-to-br from-gold-500 to-gold-600 shadow-lg shadow-gold-500/20">
+					<IconTrendingUp class="h-5 w-5 text-midnight-950" />
 				</div>
 				<span class="font-display text-xl font-bold text-midnight-50">
 					Trading<span class="text-gold-400">Greats</span>
@@ -42,21 +42,21 @@
 					target="_blank"
 					class="inline-flex items-center gap-2 text-sm text-midnight-400 hover:text-midnight-200 transition-colors"
 				>
-					<Eye class="h-4 w-4" />
+					<IconEye class="h-4 w-4" />
 					View Site
 				</a>
 				<a
 					href="/admin/newsletter"
 					class="inline-flex items-center gap-2 text-sm text-midnight-400 hover:text-midnight-200 transition-colors"
 				>
-					<Mail class="h-4 w-4" />
+					<IconMail class="h-4 w-4" />
 					Newsletter
 				</a>
 				<a
 					href="/admin/settings"
 					class="inline-flex items-center gap-2 text-sm text-midnight-400 hover:text-midnight-200 transition-colors"
 				>
-					<Settings class="h-4 w-4" />
+					<IconSettings class="h-4 w-4" />
 					Settings
 				</a>
 				<form method="POST" action="/admin/logout">
@@ -64,7 +64,7 @@
 						type="submit"
 						class="flex items-center gap-2 text-sm text-midnight-400 hover:text-red-400 transition-colors"
 					>
-						<LogOut class="h-4 w-4" />
+						<IconLogout class="h-4 w-4" />
 						Logout
 					</button>
 				</form>
@@ -81,45 +81,45 @@
 
 		<!-- Stats Grid -->
 		<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-			<div class="rounded-2xl border border-midnight-800/50 bg-gradient-to-br from-midnight-900/80 to-midnight-900/40 p-6 backdrop-blur-sm">
+			<div class="rounded-2xl border border-midnight-800/50 bg-linear-to-br from-midnight-900/80 to-midnight-900/40 p-6 backdrop-blur-sm">
 				<div class="flex items-center justify-between">
-					<Users class="h-8 w-8 text-gold-500" />
+					<IconUsers class="h-8 w-8 text-gold-500" />
 					<span class="text-xs font-medium text-midnight-500 uppercase tracking-wider">Traders</span>
 				</div>
 				<p class="mt-4 text-4xl font-bold text-midnight-50">{data.traderCount}</p>
 				<p class="text-sm text-midnight-400">Total profiles</p>
 			</div>
 
-			<div class="rounded-2xl border border-midnight-800/50 bg-gradient-to-br from-midnight-900/80 to-midnight-900/40 p-6 backdrop-blur-sm">
+			<div class="rounded-2xl border border-midnight-800/50 bg-linear-to-br from-midnight-900/80 to-midnight-900/40 p-6 backdrop-blur-sm">
 				<div class="flex items-center justify-between">
-					<FileText class="h-8 w-8 text-green-500" />
+					<IconFileText class="h-8 w-8 text-green-500" />
 					<span class="text-xs font-medium text-midnight-500 uppercase tracking-wider">Published</span>
 				</div>
 				<p class="mt-4 text-4xl font-bold text-midnight-50">{data.publishedCount}</p>
 				<p class="text-sm text-midnight-400">Live traders</p>
 			</div>
 
-			<div class="rounded-2xl border border-midnight-800/50 bg-gradient-to-br from-midnight-900/80 to-midnight-900/40 p-6 backdrop-blur-sm">
+			<div class="rounded-2xl border border-midnight-800/50 bg-linear-to-br from-midnight-900/80 to-midnight-900/40 p-6 backdrop-blur-sm">
 				<div class="flex items-center justify-between">
-					<BookOpen class="h-8 w-8 text-violet-500" />
+					<IconBook class="h-8 w-8 text-violet-500" />
 					<span class="text-xs font-medium text-midnight-500 uppercase tracking-wider">Blog</span>
 				</div>
 				<p class="mt-4 text-4xl font-bold text-midnight-50">{data.blogCount ?? 0}</p>
 				<p class="text-sm text-midnight-400">Blog posts</p>
 			</div>
 
-			<div class="rounded-2xl border border-midnight-800/50 bg-gradient-to-br from-midnight-900/80 to-midnight-900/40 p-6 backdrop-blur-sm">
+			<div class="rounded-2xl border border-midnight-800/50 bg-linear-to-br from-midnight-900/80 to-midnight-900/40 p-6 backdrop-blur-sm">
 				<div class="flex items-center justify-between">
-					<PenTool class="h-8 w-8 text-amber-500" />
+					<IconPencil class="h-8 w-8 text-amber-500" />
 					<span class="text-xs font-medium text-midnight-500 uppercase tracking-wider">Drafts</span>
 				</div>
 				<p class="mt-4 text-4xl font-bold text-midnight-50">{data.draftCount}</p>
 				<p class="text-sm text-midnight-400">Pending review</p>
 			</div>
 
-			<div class="rounded-2xl border border-midnight-800/50 bg-gradient-to-br from-midnight-900/80 to-midnight-900/40 p-6 backdrop-blur-sm">
+			<div class="rounded-2xl border border-midnight-800/50 bg-linear-to-br from-midnight-900/80 to-midnight-900/40 p-6 backdrop-blur-sm">
 				<div class="flex items-center justify-between">
-					<ImageIcon class="h-8 w-8 text-pink-500" />
+					<IconPhoto class="h-8 w-8 text-pink-500" />
 					<span class="text-xs font-medium text-midnight-500 uppercase tracking-wider">Media</span>
 				</div>
 				<p class="mt-4 text-4xl font-bold text-midnight-50">{data.mediaCount ?? 0}</p>
@@ -136,7 +136,7 @@
 					class="group flex items-center gap-4 rounded-2xl border border-midnight-800/50 bg-midnight-900/50 p-5 transition-all duration-300 hover:border-gold-500/30 hover:bg-midnight-800/50 hover:shadow-lg hover:shadow-gold-500/5"
 				>
 					<div class="flex h-14 w-14 items-center justify-center rounded-xl bg-gold-500/10 transition-transform duration-300 group-hover:scale-110">
-						<Plus class="h-7 w-7 text-gold-500" />
+						<IconPlus class="h-7 w-7 text-gold-500" />
 					</div>
 					<div>
 						<p class="font-semibold text-midnight-100">Add Trader</p>
@@ -149,7 +149,7 @@
 					class="group flex items-center gap-4 rounded-2xl border border-midnight-800/50 bg-midnight-900/50 p-5 transition-all duration-300 hover:border-blue-500/30 hover:bg-midnight-800/50 hover:shadow-lg hover:shadow-blue-500/5"
 				>
 					<div class="flex h-14 w-14 items-center justify-center rounded-xl bg-blue-500/10 transition-transform duration-300 group-hover:scale-110">
-						<Users class="h-7 w-7 text-blue-500" />
+						<IconUsers class="h-7 w-7 text-blue-500" />
 					</div>
 					<div>
 						<p class="font-semibold text-midnight-100">Manage Traders</p>
@@ -162,7 +162,7 @@
 					class="group flex items-center gap-4 rounded-2xl border border-midnight-800/50 bg-midnight-900/50 p-5 transition-all duration-300 hover:border-violet-500/30 hover:bg-midnight-800/50 hover:shadow-lg hover:shadow-violet-500/5"
 				>
 					<div class="flex h-14 w-14 items-center justify-center rounded-xl bg-violet-500/10 transition-transform duration-300 group-hover:scale-110">
-						<PenTool class="h-7 w-7 text-violet-500" />
+						<IconPencil class="h-7 w-7 text-violet-500" />
 					</div>
 					<div>
 						<p class="font-semibold text-midnight-100">Write Post</p>
@@ -175,7 +175,7 @@
 					class="group flex items-center gap-4 rounded-2xl border border-midnight-800/50 bg-midnight-900/50 p-5 transition-all duration-300 hover:border-emerald-500/30 hover:bg-midnight-800/50 hover:shadow-lg hover:shadow-emerald-500/5"
 				>
 					<div class="flex h-14 w-14 items-center justify-center rounded-xl bg-emerald-500/10 transition-transform duration-300 group-hover:scale-110">
-						<BookOpen class="h-7 w-7 text-emerald-500" />
+						<IconBook class="h-7 w-7 text-emerald-500" />
 					</div>
 					<div>
 						<p class="font-semibold text-midnight-100">Manage Blog</p>
@@ -188,7 +188,7 @@
 					class="group flex items-center gap-4 rounded-2xl border border-midnight-800/50 bg-midnight-900/50 p-5 transition-all duration-300 hover:border-pink-500/30 hover:bg-midnight-800/50 hover:shadow-lg hover:shadow-pink-500/5"
 				>
 					<div class="flex h-14 w-14 items-center justify-center rounded-xl bg-pink-500/10 transition-transform duration-300 group-hover:scale-110">
-						<Mail class="h-7 w-7 text-pink-500" />
+						<IconMail class="h-7 w-7 text-pink-500" />
 					</div>
 					<div>
 						<p class="font-semibold text-midnight-100">Newsletter</p>
@@ -201,7 +201,7 @@
 					class="group flex items-center gap-4 rounded-2xl border border-midnight-800/50 bg-midnight-900/50 p-5 transition-all duration-300 hover:border-cyan-500/30 hover:bg-midnight-800/50 hover:shadow-lg hover:shadow-cyan-500/5"
 				>
 					<div class="flex h-14 w-14 items-center justify-center rounded-xl bg-cyan-500/10 transition-transform duration-300 group-hover:scale-110">
-						<ImageIcon class="h-7 w-7 text-cyan-500" />
+						<IconPhoto class="h-7 w-7 text-cyan-500" />
 					</div>
 					<div>
 						<p class="font-semibold text-midnight-100">Media Library</p>
@@ -253,7 +253,7 @@
 									</td>
 									<td class="px-4 py-3 text-right">
 										<a href="/admin/traders/{trader.id}" class="text-sm text-gold-400 hover:text-gold-300">
-											<Edit class="h-4 w-4" />
+											<IconEdit class="h-4 w-4" />
 										</a>
 									</td>
 								</tr>
@@ -295,7 +295,7 @@
 										</td>
 										<td class="px-4 py-3 text-right">
 											<a href="/admin/blog/{post.id}" class="text-sm text-gold-400 hover:text-gold-300">
-												<Edit class="h-4 w-4" />
+												<IconEdit class="h-4 w-4" />
 											</a>
 										</td>
 									</tr>
@@ -304,13 +304,13 @@
 						</table>
 					{:else}
 						<div class="p-8 text-center">
-							<BookOpen class="h-12 w-12 text-midnight-600 mx-auto mb-3" />
+							<IconBook class="h-12 w-12 text-midnight-600 mx-auto mb-3" />
 							<p class="text-midnight-400 mb-4">No blog posts yet</p>
 							<a
 								href="/admin/blog/new"
 								class="inline-flex items-center gap-2 rounded-full bg-violet-500/10 px-4 py-2 text-sm font-medium text-violet-400 hover:bg-violet-500/20 transition-colors"
 							>
-								<PenTool class="h-4 w-4" />
+								<IconPencil class="h-4 w-4" />
 								Write your first post
 							</a>
 						</div>

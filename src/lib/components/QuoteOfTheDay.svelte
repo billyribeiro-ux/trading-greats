@@ -32,7 +32,7 @@
 </script>
 
 {#if todayQuote}
-	<section class={cn('relative z-20 bg-[#020617] py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden', className)}>
+	<section class={cn('relative z-20 bg-midnight-950 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden', className)}>
 		<!-- Background glow -->
 		<div class="absolute inset-0 overflow-hidden">
 			<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] sm:w-[700px] lg:w-[900px] h-[300px] sm:h-[400px] lg:h-[500px] bg-[radial-gradient(circle,rgba(234,179,8,0.08)_0%,transparent_60%)] blur-3xl"></div>
@@ -40,14 +40,14 @@
 
 		<div class="relative mx-auto max-w-4xl text-center">
 			<!-- Badge -->
-			<span class="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#FACC15] mb-6 sm:mb-8 border border-white/10">
+			<span class="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-gold-400 mb-6 sm:mb-8 border border-white/10">
 				<Icon name="quote" class="h-3.5 w-3.5" />
 				Quote of the Day
 			</span>
 
 			<!-- Quote Icon -->
 			<div class="flex justify-center mb-4 sm:mb-6">
-				<div class="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full bg-gradient-to-br from-[#EAB308]/20 to-[#CA8A04]/10 text-[#FACC15] ring-1 ring-[#EAB308]/30">
+				<div class="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full bg-linear-to-br from-gold-500/20 to-gold-600/10 text-gold-400 ring-1 ring-gold-500/30">
 					<Icon name="quote" class="h-6 w-6 sm:h-7 sm:w-7 rotate-180" />
 				</div>
 			</div>
@@ -63,7 +63,7 @@
 			<div class="mt-6 sm:mt-8 flex flex-col items-center gap-2">
 				<a
 					href="/traders/{todayQuote.traderSlug}"
-					class="group flex items-center gap-2 text-lg sm:text-xl font-semibold text-[#EAB308] hover:text-[#FACC15] transition-colors"
+					class="group flex items-center gap-2 text-lg sm:text-xl font-semibold text-gold-500 hover:text-gold-400 transition-colors"
 				>
 					{todayQuote.traderName}
 					<Icon name="arrow-right" class="h-4 w-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />

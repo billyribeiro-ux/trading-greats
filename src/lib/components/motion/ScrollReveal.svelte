@@ -23,7 +23,7 @@
 	// TYPES & PROPS
 	// ============================================================================
 
-	type AnimationType =
+	type AnimationIconTypography =
 		| 'fadeIn'
 		| 'slideUp'
 		| 'slideDown'
@@ -35,7 +35,7 @@
 
 	interface Props {
 		/** Animation type */
-		animation?: AnimationType;
+		animation?: AnimationIconTypography;
 		/** Delay before animation starts (ms) */
 		delay?: number;
 		/** Animation duration (ms) */
@@ -85,7 +85,7 @@
 	// ANIMATION DEFINITIONS
 	// ============================================================================
 
-	const animations: Record<AnimationType, { initial: string; animate: string }> = {
+	const animations: Record<AnimationIconTypography, { initial: string; animate: string }> = {
 		fadeIn: {
 			initial: 'opacity-0',
 			animate: 'opacity-100',

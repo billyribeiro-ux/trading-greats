@@ -2,7 +2,7 @@
 	import type { PageData, ActionData } from './$types';
 	import SEO from '$lib/components/SEO.svelte';
 	import { enhance } from '$app/forms';
-	import { CircleCheck, CircleX, Mail, ArrowRight } from 'lucide-svelte';
+	import { IconCircleCheck, IconCircleX, IconMail, IconArrowRight } from '@tabler/icons-svelte';
 
 	let { data, form }: { data: PageData; form: ActionData } = $props();
 
@@ -29,7 +29,7 @@
 				<!-- Invalid token -->
 				<div class="text-center">
 					<div class="mx-auto w-16 h-16 bg-red-500/10 rounded-full flex items-center justify-center mb-6">
-						<CircleX class="w-8 h-8 text-red-400" />
+						<IconCircleX class="w-8 h-8 text-red-400" />
 					</div>
 					<h1 class="text-2xl font-bold text-white mb-3">Invalid Link</h1>
 					<p class="text-midnight-400 mb-8">
@@ -40,14 +40,14 @@
 						class="inline-flex items-center gap-2 text-gold-400 hover:text-gold-300"
 					>
 						Go to Homepage
-						<ArrowRight class="w-4 h-4" />
+						<IconArrowRight class="w-4 h-4" />
 					</a>
 				</div>
 			{:else if data.alreadyUnsubscribed || form?.success}
 				<!-- Already unsubscribed or just unsubscribed -->
 				<div class="text-center">
 					<div class="mx-auto w-16 h-16 bg-emerald-500/10 rounded-full flex items-center justify-center mb-6">
-						<CircleCheck class="w-8 h-8 text-emerald-400" />
+						<IconCircleCheck class="w-8 h-8 text-emerald-400" />
 					</div>
 					<h1 class="text-2xl font-bold text-white mb-3">You're Unsubscribed</h1>
 					<p class="text-midnight-400 mb-8">
@@ -55,17 +55,17 @@
 					</p>
 					<a
 						href="/"
-						class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 px-6 py-3 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30"
+						class="inline-flex items-center gap-2 rounded-xl bg-linear-to-r from-gold-500 to-gold-600 px-6 py-3 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30"
 					>
 						Visit Trading Greats
-						<ArrowRight class="w-4 h-4" />
+						<IconArrowRight class="w-4 h-4" />
 					</a>
 				</div>
 			{:else}
 				<!-- Unsubscribe form -->
 				<div class="text-center mb-8">
 					<div class="mx-auto w-16 h-16 bg-midnight-800 rounded-full flex items-center justify-center mb-6">
-						<Mail class="w-8 h-8 text-midnight-400" />
+						<IconMail class="w-8 h-8 text-midnight-400" />
 					</div>
 					<h1 class="text-2xl font-bold text-white mb-3">Unsubscribe</h1>
 					<p class="text-midnight-400">

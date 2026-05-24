@@ -1,20 +1,20 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import {
-		Mail,
-		Users,
-		Send,
-		Eye,
-		MousePointer,
-		TrendingUp,
-		TrendingDown,
-		Plus,
-		ArrowRight,
-		Clock,
-		CircleCheck,
-		CircleX,
-		BarChart3
-	} from 'lucide-svelte';
+		IconMail,
+		IconUsers,
+		IconSend,
+		IconEye,
+		IconMouse,
+		IconTrendingUp,
+		IconTrendingDown,
+		IconPlus,
+		IconArrowRight,
+		IconClock,
+		IconCircleCheck,
+		IconCircleX,
+		IconChartBar
+	} from '@tabler/icons-svelte';
 
 	let { data }: { data: PageData } = $props();
 
@@ -22,42 +22,42 @@
 		{
 			label: 'Total Subscribers',
 			value: data.stats.totalSubscribers,
-			icon: Users,
+			icon: IconUsers,
 			color: 'text-blue-400',
 			bg: 'bg-blue-500/10'
 		},
 		{
 			label: 'Verified',
 			value: data.stats.verifiedSubscribers,
-			icon: CircleCheck,
+			icon: IconCircleCheck,
 			color: 'text-emerald-400',
 			bg: 'bg-emerald-500/10'
 		},
 		{
 			label: 'Campaigns Sent',
 			value: data.stats.sentCampaigns,
-			icon: Send,
+			icon: IconSend,
 			color: 'text-violet-400',
 			bg: 'bg-violet-500/10'
 		},
 		{
 			label: 'Avg Open Rate',
 			value: `${data.stats.avgOpenRate}%`,
-			icon: Eye,
+			icon: IconEye,
 			color: 'text-gold-400',
 			bg: 'bg-gold-500/10'
 		},
 		{
 			label: 'Avg Click Rate',
 			value: `${data.stats.avgClickRate}%`,
-			icon: MousePointer,
+			icon: IconMouse,
 			color: 'text-sky-400',
 			bg: 'bg-sky-500/10'
 		},
 		{
 			label: 'New (30 days)',
 			value: data.stats.subscribersLast30Days,
-			icon: TrendingUp,
+			icon: IconTrendingUp,
 			color: 'text-emerald-400',
 			bg: 'bg-emerald-500/10'
 		}
@@ -99,14 +99,14 @@
 				href="/admin/newsletter/subscribers"
 				class="inline-flex items-center gap-2 rounded-xl border border-midnight-700 bg-midnight-800/50 px-4 py-2.5 text-sm font-medium text-midnight-300 transition-colors hover:bg-midnight-700 hover:text-white"
 			>
-				<Users class="h-4 w-4" />
+				<IconUsers class="h-4 w-4" />
 				Subscribers
 			</a>
 			<a
 				href="/admin/newsletter/campaigns/new"
-				class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 px-4 py-2.5 text-sm font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30"
+				class="inline-flex items-center gap-2 rounded-xl bg-linear-to-r from-gold-500 to-gold-600 px-4 py-2.5 text-sm font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30"
 			>
-				<Plus class="h-4 w-4" />
+				<IconPlus class="h-4 w-4" />
 				New Campaign
 			</a>
 		</div>
@@ -134,7 +134,7 @@
 		<div class="rounded-xl border border-midnight-800 bg-midnight-900/50">
 			<div class="flex items-center justify-between border-b border-midnight-800 p-5">
 				<h2 class="text-lg font-semibold text-white flex items-center gap-2">
-					<Send class="h-5 w-5 text-gold-400" />
+					<IconSend class="h-5 w-5 text-gold-400" />
 					Recent Campaigns
 				</h2>
 				<a
@@ -142,19 +142,19 @@
 					class="text-sm text-gold-400 hover:text-gold-300 flex items-center gap-1"
 				>
 					View All
-					<ArrowRight class="h-4 w-4" />
+					<IconArrowRight class="h-4 w-4" />
 				</a>
 			</div>
 			<div class="divide-y divide-midnight-800">
 				{#if data.recentCampaigns.length === 0}
 					<div class="p-8 text-center">
-						<Mail class="mx-auto h-12 w-12 text-midnight-600" />
+						<IconMail class="mx-auto h-12 w-12 text-midnight-600" />
 						<p class="mt-4 text-midnight-400">No campaigns yet</p>
 						<a
 							href="/admin/newsletter/campaigns/new"
 							class="mt-4 inline-flex items-center gap-2 text-sm text-gold-400 hover:text-gold-300"
 						>
-							<Plus class="h-4 w-4" />
+							<IconPlus class="h-4 w-4" />
 							Create your first campaign
 						</a>
 					</div>
@@ -170,7 +170,7 @@
 										</span>
 										{#if campaign.sentAt}
 											<span class="flex items-center gap-1">
-												<Clock class="h-3 w-3" />
+												<IconClock class="h-3 w-3" />
 												{formatDate(campaign.sentAt)}
 											</span>
 										{/if}
@@ -193,7 +193,7 @@
 		<div class="rounded-xl border border-midnight-800 bg-midnight-900/50">
 			<div class="flex items-center justify-between border-b border-midnight-800 p-5">
 				<h2 class="text-lg font-semibold text-white flex items-center gap-2">
-					<Users class="h-5 w-5 text-gold-400" />
+					<IconUsers class="h-5 w-5 text-gold-400" />
 					Recent Subscribers
 				</h2>
 				<a
@@ -201,13 +201,13 @@
 					class="text-sm text-gold-400 hover:text-gold-300 flex items-center gap-1"
 				>
 					View All
-					<ArrowRight class="h-4 w-4" />
+					<IconArrowRight class="h-4 w-4" />
 				</a>
 			</div>
 			<div class="divide-y divide-midnight-800">
 				{#if data.recentSubscribers.length === 0}
 					<div class="p-8 text-center">
-						<Users class="mx-auto h-12 w-12 text-midnight-600" />
+						<IconUsers class="mx-auto h-12 w-12 text-midnight-600" />
 						<p class="mt-4 text-midnight-400">No subscribers yet</p>
 						<p class="mt-2 text-sm text-midnight-500">
 							Share your newsletter signup form to get started
@@ -221,7 +221,7 @@
 									<p class="font-medium text-white truncate">{subscriber.email}</p>
 									<div class="mt-1 flex items-center gap-3 text-sm text-midnight-400">
 										<span class="flex items-center gap-1">
-											<Clock class="h-3 w-3" />
+											<IconClock class="h-3 w-3" />
 											{formatDate(subscriber.createdAt)}
 										</span>
 										{#if subscriber.source}
@@ -244,7 +244,7 @@
 	<!-- Quick Stats Summary -->
 	<div class="rounded-xl border border-midnight-800 bg-midnight-900/50 p-6">
 		<h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-			<BarChart3 class="h-5 w-5 text-gold-400" />
+			<IconChartBar class="h-5 w-5 text-gold-400" />
 			Performance Overview
 		</h2>
 		<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

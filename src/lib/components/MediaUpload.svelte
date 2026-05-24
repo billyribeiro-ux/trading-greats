@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Upload, X, Loader2, Image as ImageIcon, Library, Edit2 } from 'lucide-svelte';
+	import { IconUpload, IconX, IconLoader2, IconPhoto, IconLibrary, IconEdit } from '@tabler/icons-svelte';
 	import { cn } from '$lib/utils';
 	import type { Media } from '$lib/server/schema';
 
@@ -75,8 +75,8 @@
 
 	function prepareUpload(file: File) {
 		// Validate file type
-		const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
-		if (!allowedTypes.includes(file.type)) {
+		const allowedImageTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+		if (!allowedImageTypes.includes(file.type)) {
 			error = 'Invalid file type. Only JPEG, PNG, WebP, and GIF are allowed.';
 			return;
 		}
@@ -197,7 +197,7 @@
 					disabled={uploading}
 					class="flex items-center gap-1.5 rounded-lg bg-white/10 px-3 py-2 text-sm font-medium text-white backdrop-blur-sm hover:bg-white/20 transition-colors min-h-[44px]"
 				>
-					<Upload class="h-4 w-4" />
+					<IconUpload class="h-4 w-4" />
 					Replace
 				</button>
 				{#if showLibrary}
@@ -207,7 +207,7 @@
 						disabled={uploading}
 						class="flex items-center gap-1.5 rounded-lg bg-white/10 px-3 py-2 text-sm font-medium text-white backdrop-blur-sm hover:bg-white/20 transition-colors min-h-[44px]"
 					>
-						<Library class="h-4 w-4" />
+						<IconLibrary class="h-4 w-4" />
 						Library
 					</button>
 				{/if}
@@ -217,14 +217,14 @@
 					disabled={uploading}
 					class="flex items-center gap-1.5 rounded-lg bg-red-500/20 px-3 py-2 text-sm font-medium text-red-400 backdrop-blur-sm hover:bg-red-500/30 transition-colors min-h-[44px]"
 				>
-					<X class="h-4 w-4" />
+					<IconX class="h-4 w-4" />
 					Remove
 				</button>
 			</div>
 
 			<!-- Media Info -->
 			{#if currentMedia.title || currentMedia.altText}
-				<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-midnight-950/90 to-transparent p-3">
+				<div class="absolute bottom-0 left-0 right-0 bg-linear-to-t from-midnight-950/90 to-transparent p-3">
 					{#if currentMedia.title}
 						<p class="text-sm font-medium text-white truncate">{currentMedia.title}</p>
 					{/if}
@@ -253,11 +253,11 @@
 			)}
 		>
 			{#if uploading}
-				<Loader2 class="h-8 w-8 text-gold-500 animate-spin" />
+				<IconLoader2 class="h-8 w-8 text-gold-500 animate-spin" />
 				<span class="text-sm text-midnight-400">Uploading & optimizing...</span>
 			{:else}
 				<div class="flex h-12 w-12 items-center justify-center rounded-full bg-midnight-700/50">
-					<ImageIcon class="h-6 w-6 text-midnight-400" />
+					<IconPhoto class="h-6 w-6 text-midnight-400" />
 				</div>
 				<div class="text-center">
 					<span class="text-sm font-medium text-midnight-200">Click to upload</span>
@@ -273,7 +273,7 @@
 				onclick={() => showLibraryModal = true}
 				class="mt-2 w-full flex items-center justify-center gap-2 rounded-lg border border-midnight-700 bg-midnight-800/30 px-4 py-2.5 text-sm text-midnight-300 hover:bg-midnight-800/50 hover:text-midnight-200 transition-colors min-h-[44px]"
 			>
-				<Library class="h-4 w-4" />
+				<IconLibrary class="h-4 w-4" />
 				Choose from Media Library
 			</button>
 		{/if}
@@ -370,7 +370,7 @@
 				<button
 					type="button"
 					onclick={uploadWithSeo}
-					class="flex-1 rounded-lg bg-gradient-to-r from-gold-500 to-gold-600 px-4 py-2.5 text-sm font-semibold text-midnight-950 hover:shadow-lg hover:shadow-gold-500/25 transition-all min-h-[44px]"
+					class="flex-1 rounded-lg bg-linear-to-r from-gold-500 to-gold-600 px-4 py-2.5 text-sm font-semibold text-midnight-950 hover:shadow-lg hover:shadow-gold-500/25 transition-all min-h-[44px]"
 				>
 					Upload Image
 				</button>
@@ -390,7 +390,7 @@
 					onclick={() => showLibraryModal = false}
 					class="rounded-lg p-2 text-midnight-400 hover:bg-midnight-800 hover:text-white transition-colors"
 				>
-					<X class="h-5 w-5" />
+					<IconX class="h-5 w-5" />
 				</button>
 			</div>
 

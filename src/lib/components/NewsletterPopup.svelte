@@ -69,7 +69,7 @@
 		try {
 			const response = await fetch('/api/newsletter/subscribe', {
 				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
+				headers: { 'Content-IconTypography': 'application/json' },
 				body: JSON.stringify({ email, source: 'popup' })
 			});
 
@@ -174,7 +174,7 @@
 			</button>
 
 			<!-- Decorative gradient -->
-			<div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-gold-500 via-gold-400 to-gold-600"></div>
+			<div class="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-gold-500 via-gold-400 to-gold-600"></div>
 			<div class="absolute top-0 right-0 h-32 w-32 rounded-full bg-gold-500/10 blur-3xl" aria-hidden="true"></div>
 
 			<div class="relative p-6">
@@ -199,7 +199,7 @@
 					</div>
 				{:else}
 					<div class="flex items-start gap-4 mb-5">
-						<div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-gold-500/10 text-gold-400" aria-hidden="true">
+						<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gold-500/10 text-gold-400" aria-hidden="true">
 							<Icon name="mail" class="h-6 w-6" />
 						</div>
 						<div>
@@ -246,7 +246,7 @@
 							disabled={status === 'loading' || !email}
 							class={cn(
 								'w-full rounded-xl px-4 py-3 font-semibold transition-all duration-200 min-h-[48px]',
-								'bg-gradient-to-r from-gold-500 to-gold-600 text-midnight-950',
+								'bg-linear-to-r from-gold-500 to-gold-600 text-midnight-950',
 								'hover:shadow-lg hover:shadow-gold-500/25',
 								'disabled:opacity-50 disabled:cursor-not-allowed',
 								'focus:outline-none focus:ring-2 focus:ring-gold-400 focus:ring-offset-2 focus:ring-offset-midnight-900',

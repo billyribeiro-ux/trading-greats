@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { ActionData } from './$types';
 	import { enhance } from '$app/forms';
-	import { ArrowLeft, Send, Eye, Type, FileText, Sparkles } from 'lucide-svelte';
+	import { IconArrowLeft, IconSend, IconEye, IconTypography, IconFileText, IconSparkles } from '@tabler/icons-svelte';
 
 	let { form }: { form: ActionData } = $props();
 
@@ -12,7 +12,7 @@
 	let subject = $state('');
 	let previewText = $state('');
 	let content = $state('');
-	let campaignType = $state('manual');
+	let campaignIconTypography = $state('manual');
 	let showPreview = $state(false);
 	let initialized = $state(false);
 
@@ -26,11 +26,11 @@
 			if (formData.subject) subject = formData.subject;
 			if (formData.previewText) previewText = formData.previewText;
 			if (formData.content) content = formData.content;
-			if (formData.type) campaignType = formData.type;
+			if (formData.type) campaignIconTypography = formData.type;
 		}
 	});
 
-	const campaignTypes = [
+	const campaignIconTypographys = [
 		{ value: 'manual', label: 'Manual Campaign', description: 'One-time email campaign' },
 		{ value: 'weekly_digest', label: 'Weekly Digest', description: 'Weekly newsletter summary' },
 		{ value: 'new_trader', label: 'New Trader Alert', description: 'Notify about new trader profiles' },
@@ -72,7 +72,7 @@
 			href="/admin/newsletter/campaigns"
 			class="flex h-10 w-10 items-center justify-center rounded-lg border border-midnight-700 bg-midnight-800/50 text-midnight-400 transition-colors hover:bg-midnight-700 hover:text-white"
 		>
-			<ArrowLeft class="h-5 w-5" />
+			<IconArrowLeft class="h-5 w-5" />
 		</a>
 		<div>
 			<h1 class="text-2xl font-bold text-white">New Campaign</h1>
@@ -100,13 +100,13 @@
 				}}
 				class="space-y-6"
 			>
-				<!-- Campaign Type -->
+				<!-- Campaign IconTypography -->
 				<fieldset class="rounded-xl border border-midnight-800 bg-midnight-900/50 p-6">
-					<legend class="block text-sm font-medium text-white mb-4">Campaign Type</legend>
+					<legend class="block text-sm font-medium text-white mb-4">Campaign IconTypography</legend>
 					<div class="grid gap-3 sm:grid-cols-2">
-						{#each campaignTypes as type}
+						{#each campaignIconTypographys as type}
 							<label class="relative flex cursor-pointer rounded-lg border p-4 transition-colors {
-								campaignType === type.value
+								campaignIconTypography === type.value
 									? 'border-gold-500/50 bg-gold-500/5'
 									: 'border-midnight-700 bg-midnight-800/30 hover:border-midnight-600'
 							}">
@@ -114,14 +114,14 @@
 									type="radio"
 									name="type"
 									value={type.value}
-									bind:group={campaignType}
+									bind:group={campaignIconTypography}
 									class="sr-only"
 								/>
 								<div>
 									<p class="font-medium text-white">{type.label}</p>
 									<p class="mt-1 text-xs text-midnight-400">{type.description}</p>
 								</div>
-								{#if campaignType === type.value}
+								{#if campaignIconTypography === type.value}
 									<div class="absolute top-2 right-2 h-2 w-2 rounded-full bg-gold-500"></div>
 								{/if}
 							</label>
@@ -134,7 +134,7 @@
 					<div>
 						<label for="subject" class="block text-sm font-medium text-white mb-2">
 							<span class="flex items-center gap-2">
-								<Type class="h-4 w-4 text-gold-400" />
+								<IconTypography class="h-4 w-4 text-gold-400" />
 								Email Subject *
 							</span>
 						</label>
@@ -152,7 +152,7 @@
 					<div>
 						<label for="previewText" class="block text-sm font-medium text-white mb-2">
 							<span class="flex items-center gap-2">
-								<Eye class="h-4 w-4 text-midnight-400" />
+								<IconEye class="h-4 w-4 text-midnight-400" />
 								Preview Text
 							</span>
 						</label>
@@ -173,7 +173,7 @@
 					<div class="flex items-center justify-between mb-4">
 						<label for="content" class="block text-sm font-medium text-white">
 							<span class="flex items-center gap-2">
-								<FileText class="h-4 w-4 text-gold-400" />
+								<IconFileText class="h-4 w-4 text-gold-400" />
 								Email Content (HTML) *
 							</span>
 						</label>
@@ -182,7 +182,7 @@
 							onclick={() => (showPreview = !showPreview)}
 							class="text-sm text-gold-400 hover:text-gold-300 flex items-center gap-1"
 						>
-							<Eye class="h-4 w-4" />
+							<IconEye class="h-4 w-4" />
 							{showPreview ? 'Hide' : 'Show'} Preview
 						</button>
 					</div>
@@ -205,9 +205,9 @@
 					<button
 						type="submit"
 						disabled={isSubmitting || !subject || !content}
-						class="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 px-6 py-3 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30 disabled:opacity-50 disabled:cursor-not-allowed"
+						class="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-gold-500 to-gold-600 px-6 py-3 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30 disabled:opacity-50 disabled:cursor-not-allowed"
 					>
-						<Sparkles class="h-5 w-5" />
+						<IconSparkles class="h-5 w-5" />
 						{isSubmitting ? 'Creating...' : 'Create Campaign'}
 					</button>
 					<a
@@ -225,7 +225,7 @@
 			<div class="rounded-xl border border-midnight-800 bg-midnight-900/50 overflow-hidden">
 				<div class="border-b border-midnight-800 p-4">
 					<h3 class="font-medium text-white flex items-center gap-2">
-						<Eye class="h-4 w-4 text-gold-400" />
+						<IconEye class="h-4 w-4 text-gold-400" />
 						Email Preview
 					</h3>
 				</div>

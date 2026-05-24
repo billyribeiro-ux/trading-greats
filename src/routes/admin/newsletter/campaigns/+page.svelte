@@ -3,29 +3,29 @@
 	import { enhance } from '$app/forms';
 	import { goto } from '$app/navigation';
 	import {
-		Send,
-		ArrowLeft,
-		Plus,
-		Filter,
-		Trash2,
-		Edit,
-		Eye,
-		MousePointer,
-		Clock,
-		CircleCheck,
-		ChevronLeft,
-		ChevronRight,
-		Play,
-		FileText,
-		Users
-	} from 'lucide-svelte';
+		IconSend,
+		IconArrowLeft,
+		IconPlus,
+		IconFilter,
+		IconTrash,
+		IconEdit,
+		IconEye,
+		IconMouse,
+		IconClock,
+		IconCircleCheck,
+		IconChevronLeft,
+		IconChevronRight,
+		IconPlayerPlay,
+		IconFileText,
+		IconUsers
+	} from '@tabler/icons-svelte';
 
 	let { data, form }: { data: PageData; form: ActionData } = $props();
 
 	let deleteConfirmId = $state<string | null>(null);
 	let sendConfirmId = $state<string | null>(null);
 
-	const statusFilters = [
+	const statusIconFilters = [
 		{ value: '', label: 'All' },
 		{ value: 'draft', label: 'Drafts' },
 		{ value: 'sent', label: 'Sent' },
@@ -90,7 +90,7 @@
 				href="/admin/newsletter"
 				class="flex h-10 w-10 items-center justify-center rounded-lg border border-midnight-700 bg-midnight-800/50 text-midnight-400 transition-colors hover:bg-midnight-700 hover:text-white"
 			>
-				<ArrowLeft class="h-5 w-5" />
+				<IconArrowLeft class="h-5 w-5" />
 			</a>
 			<div>
 				<h1 class="text-2xl font-bold text-white">Campaigns</h1>
@@ -99,16 +99,16 @@
 		</div>
 		<a
 			href="/admin/newsletter/campaigns/new"
-			class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 px-4 py-2.5 text-sm font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30"
+			class="inline-flex items-center gap-2 rounded-xl bg-linear-to-r from-gold-500 to-gold-600 px-4 py-2.5 text-sm font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30"
 		>
-			<Plus class="h-4 w-4" />
+			<IconPlus class="h-4 w-4" />
 			New Campaign
 		</a>
 	</div>
 
-	<!-- Filters -->
+	<!-- IconFilters -->
 	<div class="flex flex-wrap gap-2">
-		{#each statusFilters as filter}
+		{#each statusIconFilters as filter}
 			<button
 				onclick={() => filterByStatus(filter.value)}
 				class="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors {
@@ -132,13 +132,13 @@
 	<div class="space-y-4">
 		{#if data.campaigns.length === 0}
 			<div class="rounded-xl border border-midnight-800 bg-midnight-900/50 p-12 text-center">
-				<Send class="mx-auto h-12 w-12 text-midnight-600" />
+				<IconSend class="mx-auto h-12 w-12 text-midnight-600" />
 				<p class="mt-4 text-midnight-400">No campaigns found</p>
 				<a
 					href="/admin/newsletter/campaigns/new"
 					class="mt-4 inline-flex items-center gap-2 text-sm text-gold-400 hover:text-gold-300"
 				>
-					<Plus class="h-4 w-4" />
+					<IconPlus class="h-4 w-4" />
 					Create your first campaign
 				</a>
 			</div>
@@ -159,12 +159,12 @@
 							{/if}
 							<div class="mt-3 flex flex-wrap items-center gap-4 text-sm text-midnight-500">
 								<span class="flex items-center gap-1">
-									<Clock class="h-3.5 w-3.5" />
+									<IconClock class="h-3.5 w-3.5" />
 									{campaign.sentAt ? formatDate(campaign.sentAt) : formatDate(campaign.createdAt)}
 								</span>
 								{#if campaign.status === 'sent'}
 									<span class="flex items-center gap-1">
-										<Users class="h-3.5 w-3.5" />
+										<IconUsers class="h-3.5 w-3.5" />
 										{campaign.totalSent} sent
 									</span>
 								{/if}
@@ -176,14 +176,14 @@
 							<div class="flex items-center gap-6">
 								<div class="text-center">
 									<div class="flex items-center gap-1 text-lg font-semibold text-white">
-										<Eye class="h-4 w-4 text-blue-400" />
+										<IconEye class="h-4 w-4 text-blue-400" />
 										{campaign.uniqueOpens || 0}
 									</div>
 									<p class="text-xs text-midnight-500">Opens ({calculateRate(campaign.uniqueOpens, campaign.totalSent)})</p>
 								</div>
 								<div class="text-center">
 									<div class="flex items-center gap-1 text-lg font-semibold text-white">
-										<MousePointer class="h-4 w-4 text-emerald-400" />
+										<IconMouse class="h-4 w-4 text-emerald-400" />
 										{campaign.uniqueClicks || 0}
 									</div>
 									<p class="text-xs text-midnight-500">Clicks ({calculateRate(campaign.uniqueClicks, campaign.totalSent)})</p>
@@ -202,7 +202,7 @@
 												type="submit"
 												class="rounded-lg bg-emerald-500/10 px-3 py-2 text-sm font-medium text-emerald-400 hover:bg-emerald-500/20"
 											>
-												Confirm Send
+												Confirm IconSend
 											</button>
 										</form>
 										<button
@@ -217,15 +217,15 @@
 										onclick={() => (sendConfirmId = campaign.id)}
 										class="inline-flex items-center gap-2 rounded-lg bg-emerald-500/10 px-3 py-2 text-sm font-medium text-emerald-400 hover:bg-emerald-500/20 transition-colors"
 									>
-										<Play class="h-4 w-4" />
-										Send
+										<IconPlayerPlay class="h-4 w-4" />
+										IconSend
 									</button>
 								{/if}
 								<a
 									href="/admin/newsletter/campaigns/{campaign.id}"
 									class="inline-flex items-center gap-2 rounded-lg border border-midnight-700 bg-midnight-800/50 px-3 py-2 text-sm font-medium text-midnight-300 hover:bg-midnight-700 hover:text-white transition-colors"
 								>
-									<Edit class="h-4 w-4" />
+									<IconEdit class="h-4 w-4" />
 									Edit
 								</a>
 							{:else}
@@ -233,7 +233,7 @@
 									href="/admin/newsletter/campaigns/{campaign.id}"
 									class="inline-flex items-center gap-2 rounded-lg border border-midnight-700 bg-midnight-800/50 px-3 py-2 text-sm font-medium text-midnight-300 hover:bg-midnight-700 hover:text-white transition-colors"
 								>
-									<FileText class="h-4 w-4" />
+									<IconFileText class="h-4 w-4" />
 									View
 								</a>
 							{/if}
@@ -263,7 +263,7 @@
 										class="rounded-lg p-2 text-midnight-500 hover:bg-red-500/10 hover:text-red-400 transition-colors"
 										title="Delete campaign"
 									>
-										<Trash2 class="h-4 w-4" />
+										<IconTrash class="h-4 w-4" />
 									</button>
 								{/if}
 							{/if}
@@ -286,7 +286,7 @@
 					disabled={data.page <= 1}
 					class="inline-flex items-center gap-1 rounded-lg border border-midnight-700 bg-midnight-800/50 px-3 py-1.5 text-sm text-midnight-400 transition-colors hover:bg-midnight-700 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
 				>
-					<ChevronLeft class="h-4 w-4" />
+					<IconChevronLeft class="h-4 w-4" />
 					Previous
 				</button>
 				<button
@@ -295,7 +295,7 @@
 					class="inline-flex items-center gap-1 rounded-lg border border-midnight-700 bg-midnight-800/50 px-3 py-1.5 text-sm text-midnight-400 transition-colors hover:bg-midnight-700 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
 				>
 					Next
-					<ChevronRight class="h-4 w-4" />
+					<IconChevronRight class="h-4 w-4" />
 				</button>
 			</div>
 		</div>

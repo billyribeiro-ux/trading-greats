@@ -1,17 +1,17 @@
 <script lang="ts">
 	import {
-		Plus,
-		Edit,
-		Trash2,
-		Eye,
-		Search,
-		Calendar,
-		Tag,
-		FileText,
-		ToggleLeft,
-		ToggleRight,
-		BookOpen
-	} from 'lucide-svelte';
+		IconPlus,
+		IconEdit,
+		IconTrash,
+		IconEye,
+		IconSearch,
+		IconCalendar,
+		IconTag,
+		IconFileText,
+		IconToggleLeft,
+		IconToggleRight,
+		IconBook
+	} from '@tabler/icons-svelte';
 	import { enhance } from '$app/forms';
 
 	let { data } = $props();
@@ -26,7 +26,7 @@
 	const filteredPosts = $derived.by(() => {
 		let filtered = data.posts;
 
-		// Search filter
+		// IconSearch filter
 		if (searchQuery) {
 			const query = searchQuery.toLowerCase();
 			filtered = filtered.filter(
@@ -97,27 +97,27 @@
 			</div>
 			<a
 				href="/admin/blog/new"
-				class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 px-5 py-2.5 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30 hover:scale-[1.02] active:scale-[0.98]"
+				class="inline-flex items-center gap-2 rounded-xl bg-linear-to-r from-gold-500 to-gold-600 px-5 py-2.5 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30 hover:scale-[1.02] active:scale-[0.98]"
 			>
-				<Plus class="h-5 w-5" />
+				<IconPlus class="h-5 w-5" />
 				New Post
 			</a>
 		</div>
 
-		<!-- Filters -->
+		<!-- IconFilters -->
 		<div class="flex flex-col sm:flex-row gap-4 mb-6">
-			<!-- Search -->
+			<!-- IconSearch -->
 			<div class="relative flex-1">
-				<Search class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-midnight-500" />
+				<IconSearch class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-midnight-500" />
 				<input
 					type="text"
-					placeholder="Search posts..."
+					placeholder="IconSearch posts..."
 					bind:value={searchQuery}
-					aria-label="Search blog posts" class="w-full rounded-xl border border-midnight-700 bg-midnight-800/50 py-3 pl-12 pr-4 text-midnight-100 placeholder-midnight-500 outline-none transition-all focus:border-gold-500/50 focus:ring-2 focus:ring-gold-500/20"
+					aria-label="IconSearch blog posts" class="w-full rounded-xl border border-midnight-700 bg-midnight-800/50 py-3 pl-12 pr-4 text-midnight-100 placeholder-midnight-500 outline-none transition-all focus:border-gold-500/50 focus:ring-2 focus:ring-gold-500/20"
 				/>
 			</div>
 
-			<!-- Status Filter -->
+			<!-- Status IconFilter -->
 			<select
 				bind:value={filterStatus}
 				class="rounded-xl border border-midnight-700 bg-midnight-800/50 px-4 py-3 text-midnight-100 outline-none transition-all focus:border-gold-500/50 focus:ring-2 focus:ring-gold-500/20"
@@ -127,7 +127,7 @@
 				<option value="draft">Drafts</option>
 			</select>
 
-			<!-- Category Filter -->
+			<!-- Category IconFilter -->
 			<select
 				bind:value={filterCategory}
 				class="rounded-xl border border-midnight-700 bg-midnight-800/50 px-4 py-3 text-midnight-100 outline-none transition-all focus:border-gold-500/50 focus:ring-2 focus:ring-gold-500/20"
@@ -142,14 +142,14 @@
 		<!-- Posts Table -->
 		{#if filteredPosts.length === 0}
 			<div class="rounded-2xl border border-midnight-800/50 bg-midnight-900/30 p-12 text-center">
-				<BookOpen class="h-16 w-16 text-midnight-600 mx-auto mb-4" />
+				<IconBook class="h-16 w-16 text-midnight-600 mx-auto mb-4" />
 				<h3 class="text-xl font-semibold text-midnight-100 mb-2">No blog posts yet</h3>
 				<p class="text-midnight-400 mb-6">Start creating content to build your audience</p>
 				<a
 					href="/admin/blog/new"
-					class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 px-6 py-3 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25"
+					class="inline-flex items-center gap-2 rounded-xl bg-linear-to-r from-gold-500 to-gold-600 px-6 py-3 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25"
 				>
-					<Plus class="h-5 w-5" />
+					<IconPlus class="h-5 w-5" />
 					Write Your First Post
 				</a>
 			</div>
@@ -188,7 +188,7 @@
 											/>
 										{:else}
 											<div class="h-12 w-16 rounded-lg bg-midnight-800 flex items-center justify-center hidden sm:flex">
-												<FileText class="h-5 w-5 text-midnight-600" />
+												<IconFileText class="h-5 w-5 text-midnight-600" />
 											</div>
 										{/if}
 										<div class="min-w-0">
@@ -202,7 +202,7 @@
 								<td class="px-4 py-4 hidden md:table-cell">
 									{#if post.category}
 										<span class="inline-flex items-center gap-1.5 rounded-full bg-violet-500/10 px-2.5 py-1 text-xs font-medium text-violet-400">
-											<Tag class="h-3 w-3" />
+											<IconTag class="h-3 w-3" />
 											{getCategoryLabel(post.category)}
 										</span>
 									{:else}
@@ -211,7 +211,7 @@
 								</td>
 								<td class="px-4 py-4 hidden lg:table-cell">
 									<div class="flex items-center gap-2 text-sm text-midnight-400">
-										<Calendar class="h-4 w-4" />
+										<IconCalendar class="h-4 w-4" />
 										{formatDate(post.publishedAt || post.createdAt)}
 									</div>
 								</td>
@@ -227,9 +227,9 @@
 												: 'bg-yellow-500/10 text-yellow-400 hover:bg-yellow-500/20'}"
 										>
 											{#if post.status === 'published'}
-												<ToggleRight class="h-3.5 w-3.5" />
+												<IconToggleRight class="h-3.5 w-3.5" />
 											{:else}
-												<ToggleLeft class="h-3.5 w-3.5" />
+												<IconToggleLeft class="h-3.5 w-3.5" />
 											{/if}
 											{post.status}
 										</button>
@@ -244,7 +244,7 @@
 												class="rounded-lg p-2 text-midnight-400 hover:bg-midnight-800 hover:text-midnight-200 transition-colors"
 												title="View"
 											>
-												<Eye class="h-4 w-4" />
+												<IconEye class="h-4 w-4" />
 											</a>
 										{/if}
 										<a
@@ -252,7 +252,7 @@
 											class="rounded-lg p-2 text-midnight-400 hover:bg-midnight-800 hover:text-gold-400 transition-colors"
 											title="Edit"
 										>
-											<Edit class="h-4 w-4" />
+											<IconEdit class="h-4 w-4" />
 										</a>
 										{#if deleteConfirm === post.id}
 											<form method="POST" action="?/delete" use:enhance class="flex items-center gap-1">
@@ -278,7 +278,7 @@
 												class="rounded-lg p-2 text-midnight-400 hover:bg-red-500/10 hover:text-red-400 transition-colors"
 												title="Delete"
 											>
-												<Trash2 class="h-4 w-4" />
+												<IconTrash class="h-4 w-4" />
 											</button>
 										{/if}
 									</div>

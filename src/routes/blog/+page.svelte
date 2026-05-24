@@ -2,23 +2,23 @@
 	import SEO from '$lib/components/SEO.svelte';
 	import { Icon, type IconName } from '$lib/components/icons';
 	import {
-		Calendar,
-		Clock,
-		ArrowRight,
-		Tag,
-		Filter,
-		BookOpen,
-		TrendingUp,
-		Brain,
-		BarChart3,
-		User,
-		GraduationCap,
-		LineChart,
-		BookMarked,
-		CircleCheck,
-		Loader2,
-		CircleAlert
-	} from 'lucide-svelte';
+		IconCalendar,
+		IconClock,
+		IconArrowRight,
+		IconTag,
+		IconFilter,
+		IconBook,
+		IconTrendingUp,
+		IconBrain,
+		IconChartBar,
+		IconUser,
+		IconSchool,
+		IconChartLine,
+		IconBookmark,
+		IconCircleCheck,
+		IconLoader2,
+		IconAlertCircle
+	} from '@tabler/icons-svelte';
 	import { cn } from '$lib/utils';
 	import ScrollReveal from '$lib/components/motion/ScrollReveal.svelte';
 
@@ -53,7 +53,7 @@
 		try {
 			const response = await fetch('/api/newsletter/subscribe', {
 				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
+				headers: { 'Content-IconTypography': 'application/json' },
 				body: JSON.stringify({
 					email,
 					source: 'blog',
@@ -81,13 +81,13 @@
 
 	// Category icons
 	const categoryIcons: Record<string, any> = {
-		strategy: TrendingUp,
-		psychology: Brain,
-		analysis: BarChart3,
-		biography: User,
-		education: GraduationCap,
-		'market-insights': LineChart,
-		'book-review': BookMarked
+		strategy: IconTrendingUp,
+		psychology: IconBrain,
+		analysis: IconChartBar,
+		biography: IconUser,
+		education: IconSchool,
+		'market-insights': IconChartLine,
+		'book-review': IconBookmark
 	};
 
 	// ============================================================================
@@ -180,12 +180,12 @@
 	<section class="relative overflow-hidden border-b border-midnight-800/50">
 		<!-- Animated Background - MOBILE-FIRST: Smaller orbs on mobile -->
 		<div class="absolute inset-0">
-			<div class="absolute inset-0 bg-gradient-to-br from-midnight-900 via-midnight-950 to-midnight-900"></div>
+			<div class="absolute inset-0 bg-linear-to-br from-midnight-900 via-midnight-950 to-midnight-900"></div>
 			<!-- Animated gradient orbs - smaller on mobile -->
 			<div class="absolute top-[-20%] left-[-10%] h-[300px] w-[300px] sm:h-[450px] sm:w-[450px] lg:h-[600px] lg:w-[600px] rounded-full bg-gradient-radial from-gold-500/15 via-gold-500/5 to-transparent blur-3xl animate-pulse-slower"></div>
 			<div class="absolute bottom-[-20%] right-[-10%] h-[250px] w-[250px] sm:h-[400px] sm:w-[400px] lg:h-[500px] lg:w-[500px] rounded-full bg-gradient-radial from-violet-500/10 via-violet-500/5 to-transparent blur-3xl animate-pulse-slow" style="animation-delay: 2s;"></div>
 			<!-- Grid overlay -->
-			<div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_50%,transparent_100%)]"></div>
+			<div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[4rem_4rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_50%,transparent_100%)]"></div>
 		</div>
 
 		<div class="relative mx-auto max-w-7xl px-4 py-16 sm:py-20 lg:py-24 sm:px-6 lg:px-8 lg:py-32">
@@ -207,11 +207,11 @@
 					<span class="text-white">Learn from the</span>
 					<br />
 					<span class="relative inline-block">
-						<span class="bg-gradient-to-r from-gold-300 via-gold-400 to-gold-500 bg-clip-text text-transparent">
+						<span class="bg-linear-to-r from-gold-300 via-gold-400 to-gold-500 bg-clip-text text-transparent">
 							Legends
 						</span>
 						<!-- Animated underline -->
-						<span class="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-[2px] sm:h-[3px] bg-gradient-to-r from-transparent via-gold-500 to-transparent opacity-0 animate-fade-in" style="animation-delay: 1s;"></span>
+						<span class="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-[2px] sm:h-[3px] bg-linear-to-r from-transparent via-gold-500 to-transparent opacity-0 animate-fade-in" style="animation-delay: 1s;"></span>
 					</span>
 				</h1>
 
@@ -224,7 +224,7 @@
 				</p>
 			</div>
 
-			<!-- Category Filter with staggered entrance - MOBILE-FIRST: Horizontal scroll on mobile -->
+			<!-- Category IconFilter with staggered entrance - MOBILE-FIRST: Horizontal scroll on mobile -->
 			<div
 				class="mt-8 sm:mt-10 lg:mt-14 flex flex-nowrap sm:flex-wrap items-center sm:justify-center gap-2 sm:gap-3 opacity-0 animate-hero-fade overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide pb-2 sm:pb-0"
 				style="animation-delay: 600ms;"
@@ -234,20 +234,20 @@
 					class={cn(
 						'group inline-flex items-center gap-1.5 sm:gap-2 rounded-full px-3.5 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-medium transition-all duration-300 shrink-0 active:scale-95',
 						!data.currentCategory
-							? 'bg-gradient-to-r from-gold-500 to-gold-600 text-midnight-950 shadow-lg shadow-gold-500/25'
+							? 'bg-linear-to-r from-gold-500 to-gold-600 text-midnight-950 shadow-lg shadow-gold-500/25'
 							: 'bg-white/5 text-midnight-300 border border-white/10 hover:bg-white/10 hover:text-white hover:border-white/20'
 					)}
 				>
 					<Icon name="filter" class="h-3.5 w-3.5 sm:h-4 sm:w-4" />
 					All Posts
 				</a>
-				{#each data.categories as cat, i}
+				{#each data.categories as cat, i (cat.value)}
 					<a
 						href="/blog?category={cat.value}"
 						class={cn(
 							'group inline-flex items-center gap-1.5 sm:gap-2 rounded-full px-3.5 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-medium transition-all duration-300 shrink-0 whitespace-nowrap active:scale-95',
 							data.currentCategory === cat.value
-								? 'bg-gradient-to-r from-gold-500 to-gold-600 text-midnight-950 shadow-lg shadow-gold-500/25'
+								? 'bg-linear-to-r from-gold-500 to-gold-600 text-midnight-950 shadow-lg shadow-gold-500/25'
 								: 'bg-white/5 text-midnight-300 border border-white/10 hover:bg-white/10 hover:text-white hover:border-white/20'
 						)}
 						style="animation-delay: {650 + i * 50}ms;"
@@ -268,23 +268,23 @@
 			<ScrollReveal animation="slideUp" duration={800}>
 				<a
 					href="/blog/{data.featuredPost.slug}"
-					class="group relative block overflow-hidden rounded-xl sm:rounded-2xl lg:rounded-3xl border border-white/5 bg-gradient-to-br from-midnight-900/80 to-midnight-900/40 backdrop-blur-sm transition-all duration-700 hover:border-gold-500/30 hover:shadow-2xl hover:shadow-gold-500/10 active:scale-[0.99]"
+					class="group relative block overflow-hidden rounded-xl sm:rounded-2xl lg:rounded-3xl border border-white/5 bg-linear-to-br from-midnight-900/80 to-midnight-900/40 backdrop-blur-sm transition-all duration-700 hover:border-gold-500/30 hover:shadow-2xl hover:shadow-gold-500/10 active:scale-[0.99]"
 				>
 					<!-- Hover glow effect -->
-					<div class="absolute inset-0 bg-gradient-to-br from-gold-500/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
+					<div class="absolute inset-0 bg-linear-to-br from-gold-500/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
 
 					<div class="grid lg:grid-cols-2 gap-0">
 						<!-- Image with parallax-like zoom - MOBILE-FIRST -->
 						{#if data.featuredPost.heroImage}
-							<div class="relative aspect-[16/9] sm:aspect-[16/10] lg:aspect-auto lg:min-h-[400px] xl:min-h-[500px] overflow-hidden">
+							<div class="relative aspect-video sm:aspect-16/10 lg:aspect-auto lg:min-h-[400px] xl:min-h-[500px] overflow-hidden">
 								<img
 									src={data.featuredPost.heroImage}
 									alt={data.featuredPost.heroImageAlt || data.featuredPost.title}
 									class="h-full w-full object-cover transition-transform duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
 								/>
 								<!-- Gradient overlays -->
-								<div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-midnight-950/95 hidden lg:block"></div>
-								<div class="absolute inset-0 bg-gradient-to-t from-midnight-950/90 via-midnight-950/20 to-transparent lg:hidden"></div>
+								<div class="absolute inset-0 bg-linear-to-r from-transparent via-transparent to-midnight-950/95 hidden lg:block"></div>
+								<div class="absolute inset-0 bg-linear-to-t from-midnight-950/90 via-midnight-950/20 to-transparent lg:hidden"></div>
 
 								<!-- Featured badge - MOBILE-FIRST -->
 								<div class="absolute top-3 left-3 sm:top-4 sm:left-4 lg:top-6 lg:left-6">
@@ -355,18 +355,18 @@
 	<section class="mx-auto max-w-7xl px-4 pb-16 sm:pb-20 lg:pb-24 sm:px-6 lg:px-8">
 		{#if data.posts.length > 0}
 			<div class="grid gap-4 sm:gap-6 lg:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-				{#each data.posts as post, i}
+				{#each data.posts as post, i (post.slug)}
 					<ScrollReveal delay={i * 100} animation="slideUp">
 						<a
 							href="/blog/{post.slug}"
-							class="group relative flex flex-col overflow-hidden rounded-xl sm:rounded-2xl border border-white/5 bg-gradient-to-b from-midnight-900/60 to-midnight-900/30 backdrop-blur-sm transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] md:hover:-translate-y-2 hover:border-gold-500/30 hover:shadow-2xl hover:shadow-gold-500/10 active:scale-[0.98]"
+							class="group relative flex flex-col overflow-hidden rounded-xl sm:rounded-2xl border border-white/5 bg-linear-to-b from-midnight-900/60 to-midnight-900/30 backdrop-blur-sm transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] md:hover:-translate-y-2 hover:border-gold-500/30 hover:shadow-2xl hover:shadow-gold-500/10 active:scale-[0.98]"
 						>
 							<!-- Hover glow effect - hidden on mobile for performance -->
-							<div class="hidden sm:block absolute inset-0 bg-gradient-to-br from-gold-500/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"></div>
+							<div class="hidden sm:block absolute inset-0 bg-linear-to-br from-gold-500/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"></div>
 
 							<!-- Image with zoom effect - MOBILE-FIRST -->
 							{#if post.heroImage}
-								<div class="relative aspect-[16/9] sm:aspect-[16/10] overflow-hidden">
+								<div class="relative aspect-video sm:aspect-16/10 overflow-hidden">
 									<img
 										src={post.heroImage}
 										alt={post.heroImageAlt || post.title}
@@ -374,7 +374,7 @@
 										loading="lazy"
 									/>
 									<!-- Gradient overlay -->
-									<div class="absolute inset-0 bg-gradient-to-t from-midnight-950/80 via-midnight-950/20 to-transparent"></div>
+									<div class="absolute inset-0 bg-linear-to-t from-midnight-950/80 via-midnight-950/20 to-transparent"></div>
 
 									<!-- Category badge - MOBILE-FIRST -->
 									{#if post.category}
@@ -387,7 +387,7 @@
 									{/if}
 								</div>
 							{:else}
-								<div class="relative aspect-[16/9] sm:aspect-[16/10] bg-gradient-to-br from-midnight-800 to-midnight-900 flex items-center justify-center">
+								<div class="relative aspect-video sm:aspect-16/10 bg-linear-to-br from-midnight-800 to-midnight-900 flex items-center justify-center">
 									<Icon name="book-open" class="h-12 w-12 sm:h-16 sm:w-16 text-midnight-700 transition-transform duration-500 group-hover:scale-110" />
 									{#if post.category}
 										<div class="absolute top-3 left-3 sm:top-4 sm:left-4">
@@ -442,7 +442,7 @@
 		{:else}
 			<ScrollReveal>
 				<div class="text-center py-16 sm:py-20 lg:py-24">
-					<div class="mx-auto w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-full bg-gradient-to-br from-midnight-800 to-midnight-900 flex items-center justify-center mb-4 sm:mb-6 border border-white/5">
+					<div class="mx-auto w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-full bg-linear-to-br from-midnight-800 to-midnight-900 flex items-center justify-center mb-4 sm:mb-6 border border-white/5">
 						<Icon name="book-open" class="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 text-midnight-600" />
 					</div>
 					<h2 class="font-display text-xl sm:text-2xl lg:text-3xl font-bold text-white">No Posts Yet</h2>
@@ -472,7 +472,7 @@
 	============================================================================ -->
 	<section class="relative border-t border-midnight-800/50 overflow-hidden">
 		<!-- Background effects - MOBILE-FIRST: Smaller on mobile -->
-		<div class="absolute inset-0 bg-gradient-to-b from-midnight-900/50 to-midnight-950"></div>
+		<div class="absolute inset-0 bg-linear-to-b from-midnight-900/50 to-midnight-950"></div>
 		<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] sm:w-[450px] sm:h-[450px] lg:w-[600px] lg:h-[600px] rounded-full bg-gold-500/5 blur-[100px] sm:blur-[150px]"></div>
 
 		<div class="relative mx-auto max-w-7xl px-4 py-16 sm:py-20 lg:py-24 sm:px-6 lg:px-8">
@@ -493,7 +493,7 @@
 
 					{#if subscribeSuccess}
 						<div class="mt-8 flex items-center justify-center gap-3 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 max-w-md mx-auto">
-							<CircleCheck class="h-5 w-5 text-emerald-400 flex-shrink-0" />
+							<IconCircleCheck class="h-5 w-5 text-emerald-400 shrink-0" />
 							<p class="text-emerald-400">{subscribeMessage}</p>
 						</div>
 					{:else}
@@ -508,10 +508,10 @@
 							<button
 								type="submit"
 								disabled={isSubscribing || !email}
-								class="rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 px-6 py-3 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+								class="rounded-xl bg-linear-to-r from-gold-500 to-gold-600 px-6 py-3 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
 							>
 								{#if isSubscribing}
-									<Loader2 class="h-4 w-4 animate-spin" />
+									<IconLoader2 class="h-4 w-4 animate-spin" />
 									Subscribing...
 								{:else}
 									Subscribe
@@ -521,7 +521,7 @@
 
 						{#if subscribeError && subscribeMessage}
 							<div class="mt-4 flex items-center justify-center gap-2 text-red-400 text-sm">
-								<CircleAlert class="h-4 w-4" />
+								<IconAlertCircle class="h-4 w-4" />
 								{subscribeMessage}
 							</div>
 						{/if}

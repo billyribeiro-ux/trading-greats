@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import { goto } from '$app/navigation';
-	import { ArrowLeft, Save, Plus, X, TrendingUp, TrendingDown, Trash2, Edit2, ChevronUp, ChevronDown, Image as ImageIcon, Loader2 } from 'lucide-svelte';
+	import { IconArrowLeft, IconDeviceFloppy, IconPlus, IconX, IconTrendingUp, IconTrendingDown, IconTrash, IconEdit, IconChevronUp, IconChevronDown, IconPhoto, IconLoader2 } from '@tabler/icons-svelte';
 	import MediaUpload from '$lib/components/MediaUpload.svelte';
 	import type { PageData, ActionData } from './$types';
 	import type { Media } from '$lib/server/schema';
@@ -38,7 +38,7 @@
 	// TRADER MEDIA GALLERY STATE
 	// ============================================================================
 	let galleryItems = $state<Media[]>([]);
-	let showGalleryUpload = $state(false);
+	let showGalleryIconUpload = $state(false);
 	let editingGalleryItem = $state<Media | null>(null);
 	let editGalleryTitle = $state('');
 	let editGalleryAltText = $state('');
@@ -66,7 +66,7 @@
 		try {
 			const res = await fetch(`/api/media/${editingGalleryItem.id}`, {
 				method: 'PATCH',
-				headers: { 'Content-Type': 'application/json' },
+				headers: { 'Content-IconTypography': 'application/json' },
 				body: JSON.stringify({ title: editGalleryTitle, altText: editGalleryAltText })
 			});
 			if (res.ok) {
@@ -86,7 +86,7 @@
 		try {
 			const res = await fetch('/api/media', {
 				method: 'DELETE',
-				headers: { 'Content-Type': 'application/json' },
+				headers: { 'Content-IconTypography': 'application/json' },
 				body: JSON.stringify({ id })
 			});
 			if (res.ok) {
@@ -115,20 +115,20 @@
 		await Promise.all([
 			fetch(`/api/media/${items[idx].id}`, {
 				method: 'PATCH',
-				headers: { 'Content-Type': 'application/json' },
+				headers: { 'Content-IconTypography': 'application/json' },
 				body: JSON.stringify({ displayOrder: idx })
 			}),
 			fetch(`/api/media/${items[swapIdx].id}`, {
 				method: 'PATCH',
-				headers: { 'Content-Type': 'application/json' },
+				headers: { 'Content-IconTypography': 'application/json' },
 				body: JSON.stringify({ displayOrder: swapIdx })
 			})
 		]);
 	}
 
-	function handleGalleryUpload(media: Media) {
+	function handleGalleryIconUpload(media: Media) {
 		galleryItems = [...galleryItems, media];
-		showGalleryUpload = false;
+		showGalleryIconUpload = false;
 	}
 
 	// Initialize state from trader data
@@ -227,7 +227,7 @@
 	<header class="border-b border-midnight-800/50 bg-midnight-900/50 sticky top-0 z-50">
 		<div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 			<a href="/admin/traders" class="flex items-center gap-2 text-midnight-400 hover:text-midnight-200 min-h-[44px]">
-				<ArrowLeft class="h-4 w-4" />
+				<IconArrowLeft class="h-4 w-4" />
 				Back to Traders
 			</a>
 			<a href="/traders/{trader.slug}" class="text-sm text-midnight-400 hover:text-midnight-200 min-h-[44px] flex items-center" target="_blank">
@@ -247,10 +247,10 @@
 		{/if}
 
 		<form method="POST" use:enhance class="mt-6 sm:mt-8 space-y-6 sm:space-y-8">
-			<!-- Photo Upload -->
+			<!-- Photo IconUpload -->
 			<section class="rounded-xl border border-midnight-800/50 bg-midnight-900/50 p-4 sm:p-6">
 				<h2 class="font-display text-lg sm:text-xl font-semibold text-midnight-100">Trader Photo</h2>
-				<p class="mt-1 text-xs sm:text-sm text-midnight-500">Upload a high-quality photo with SEO metadata</p>
+				<p class="mt-1 text-xs sm:text-sm text-midnight-500">IconUpload a high-quality photo with SEO metadata</p>
 
 				<div class="mt-4">
 					<MediaUpload
@@ -278,25 +278,25 @@
 					</div>
 					<button
 						type="button"
-						onclick={() => showGalleryUpload = !showGalleryUpload}
+						onclick={() => showGalleryIconUpload = !showGalleryIconUpload}
 						class="flex items-center gap-1.5 text-sm text-gold-400 hover:text-gold-300 min-h-[44px] px-2"
 					>
-						<Plus class="h-4 w-4" />
+						<IconPlus class="h-4 w-4" />
 						Add Image
 					</button>
 				</div>
 
-				{#if showGalleryUpload}
+				{#if showGalleryIconUpload}
 					<div class="mt-4 rounded-lg border border-midnight-700 bg-midnight-800/30 p-4">
 						<MediaUpload
 							folder="traders"
 							traderId={trader.id}
 							showLibrary={false}
-							onSelect={handleGalleryUpload}
+							onSelect={handleGalleryIconUpload}
 						/>
 						<button
 							type="button"
-							onclick={() => showGalleryUpload = false}
+							onclick={() => showGalleryIconUpload = false}
 							class="mt-3 w-full rounded-lg border border-midnight-700 bg-midnight-800/50 px-4 py-2 text-sm text-midnight-400 hover:bg-midnight-800 hover:text-midnight-200 transition-colors min-h-[44px]"
 						>
 							Cancel
@@ -333,7 +333,7 @@
 											class="rounded-md bg-white/10 p-1.5 text-white backdrop-blur-sm hover:bg-white/20 transition-colors"
 											title="Edit title & alt text"
 										>
-											<Edit2 class="h-3.5 w-3.5" />
+											<IconEdit class="h-3.5 w-3.5" />
 										</button>
 										{#if i > 0}
 											<button
@@ -342,7 +342,7 @@
 												class="rounded-md bg-white/10 p-1.5 text-white backdrop-blur-sm hover:bg-white/20 transition-colors"
 												title="Move up"
 											>
-												<ChevronUp class="h-3.5 w-3.5" />
+												<IconChevronUp class="h-3.5 w-3.5" />
 											</button>
 										{/if}
 										{#if i < galleryItems.length - 1}
@@ -352,7 +352,7 @@
 												class="rounded-md bg-white/10 p-1.5 text-white backdrop-blur-sm hover:bg-white/20 transition-colors"
 												title="Move down"
 											>
-												<ChevronDown class="h-3.5 w-3.5" />
+												<IconChevronDown class="h-3.5 w-3.5" />
 											</button>
 										{/if}
 										{#if galleryDeleteConfirm === item.id}
@@ -377,7 +377,7 @@
 												class="rounded-md bg-red-500/20 p-1.5 text-red-400 backdrop-blur-sm hover:bg-red-500/30 transition-colors"
 												title="Delete"
 											>
-												<Trash2 class="h-3.5 w-3.5" />
+												<IconTrash class="h-3.5 w-3.5" />
 											</button>
 										{/if}
 									</div>
@@ -407,18 +407,18 @@
 							{galleryItems.filter(g => !g.altText).length} missing alt text
 						</span>
 					</div>
-				{:else if !showGalleryUpload}
+				{:else if !showGalleryIconUpload}
 					<div class="mt-4 rounded-lg border border-dashed border-midnight-700 bg-midnight-800/20 p-8 text-center">
-						<ImageIcon class="h-10 w-10 text-midnight-600 mx-auto mb-3" />
+						<IconPhoto class="h-10 w-10 text-midnight-600 mx-auto mb-3" />
 						<p class="text-sm text-midnight-400 mb-1">No gallery images yet</p>
 						<p class="text-xs text-midnight-500">Add images to create a photo gallery for this trader</p>
 					</div>
 				{/if}
 			</section>
 
-			<!-- Basic Info -->
+			<!-- Basic IconInfoCircle -->
 			<section class="rounded-xl border border-midnight-800/50 bg-midnight-900/50 p-4 sm:p-6">
-				<h2 class="font-display text-lg sm:text-xl font-semibold text-midnight-100">Basic Information</h2>
+				<h2 class="font-display text-lg sm:text-xl font-semibold text-midnight-100">Basic IconInfoCirclermation</h2>
 
 				<div class="mt-4 sm:mt-6 grid gap-4 sm:gap-6 sm:grid-cols-2">
 					<div class="sm:col-span-2">
@@ -552,7 +552,7 @@
 						onclick={addAchievement}
 						class="flex items-center gap-1 text-sm text-gold-400 hover:text-gold-300 min-h-[44px] px-2"
 					>
-						<Plus class="h-4 w-4" />
+						<IconPlus class="h-4 w-4" />
 						Add
 					</button>
 				</div>
@@ -573,7 +573,7 @@
 									onclick={() => removeAchievement(i)}
 									class="rounded-lg p-2 text-midnight-400 hover:bg-red-500/10 hover:text-red-400 min-h-[44px] min-w-[44px] flex items-center justify-center"
 								>
-									<X class="h-5 w-5" />
+									<IconX class="h-5 w-5" />
 								</button>
 							{/if}
 						</div>
@@ -590,7 +590,7 @@
 						onclick={addFamousTrade}
 						class="flex items-center gap-1 text-sm text-gold-400 hover:text-gold-300 min-h-[44px] px-2"
 					>
-						<Plus class="h-4 w-4" />
+						<IconPlus class="h-4 w-4" />
 						Add Trade
 					</button>
 				</div>
@@ -605,7 +605,7 @@
 									onclick={() => removeFamousTrade(i)}
 									class="rounded-lg p-2 text-midnight-400 hover:bg-red-500/10 hover:text-red-400"
 								>
-									<X class="h-4 w-4" />
+									<IconX class="h-4 w-4" />
 								</button>
 							</div>
 							<div class="grid gap-4 sm:grid-cols-2">
@@ -639,7 +639,7 @@
 											onclick={() => famousTrades[i].position = 'long'}
 											class="flex-1 flex items-center justify-center gap-1 rounded-lg px-3 py-2 text-sm transition-colors min-h-[44px] {famousTrades[i].position === 'long' ? 'bg-green-500/20 text-green-400 border border-green-500/30' : 'bg-midnight-800/50 text-midnight-400 border border-midnight-700'}"
 										>
-											<TrendingUp class="h-4 w-4" />
+											<IconTrendingUp class="h-4 w-4" />
 											Long
 										</button>
 										<button
@@ -647,7 +647,7 @@
 											onclick={() => famousTrades[i].position = 'short'}
 											class="flex-1 flex items-center justify-center gap-1 rounded-lg px-3 py-2 text-sm transition-colors min-h-[44px] {famousTrades[i].position === 'short' ? 'bg-red-500/20 text-red-400 border border-red-500/30' : 'bg-midnight-800/50 text-midnight-400 border border-midnight-700'}"
 										>
-											<TrendingDown class="h-4 w-4" />
+											<IconTrendingDown class="h-4 w-4" />
 											Short
 										</button>
 									</div>
@@ -704,7 +704,7 @@
 						onclick={addQuote}
 						class="flex items-center gap-1 text-sm text-gold-400 hover:text-gold-300 min-h-[44px] px-2"
 					>
-						<Plus class="h-4 w-4" />
+						<IconPlus class="h-4 w-4" />
 						Add Quote
 					</button>
 				</div>
@@ -735,7 +735,7 @@
 										onclick={() => removeQuote(i)}
 										class="rounded-lg p-2 text-midnight-400 hover:bg-red-500/10 hover:text-red-400 min-h-[44px] min-w-[44px] flex items-center justify-center"
 									>
-										<X class="h-5 w-5" />
+										<IconX class="h-5 w-5" />
 									</button>
 								{/if}
 							</div>
@@ -753,7 +753,7 @@
 						onclick={addBook}
 						class="flex items-center gap-1 text-sm text-gold-400 hover:text-gold-300 min-h-[44px] px-2"
 					>
-						<Plus class="h-4 w-4" />
+						<IconPlus class="h-4 w-4" />
 						Add Book
 					</button>
 				</div>
@@ -792,7 +792,7 @@
 									onclick={() => removeBook(i)}
 									class="rounded-lg p-2 text-midnight-400 hover:bg-red-500/10 hover:text-red-400 min-h-[44px] min-w-[44px] flex items-center justify-center"
 								>
-									<X class="h-5 w-5" />
+									<IconX class="h-5 w-5" />
 								</button>
 							</div>
 						</div>
@@ -812,7 +812,7 @@
 						onclick={addSocialLink}
 						class="flex items-center gap-1 text-sm text-gold-400 hover:text-gold-300 min-h-[44px] px-2"
 					>
-						<Plus class="h-4 w-4" />
+						<IconPlus class="h-4 w-4" />
 						Add Link
 					</button>
 				</div>
@@ -844,7 +844,7 @@
 								onclick={() => removeSocialLink(i)}
 								class="rounded-lg p-2 text-midnight-400 hover:bg-red-500/10 hover:text-red-400 min-h-[44px] min-w-[44px] flex items-center justify-center"
 							>
-								<X class="h-5 w-5" />
+								<IconX class="h-5 w-5" />
 							</button>
 						</div>
 					{/each}
@@ -871,10 +871,10 @@
 
 					<button
 						type="submit"
-						class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 px-6 py-3 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30 active:scale-[0.98] min-h-[44px]"
+						class="inline-flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-gold-500 to-gold-600 px-6 py-3 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30 active:scale-[0.98] min-h-[44px]"
 					>
-						<Save class="h-5 w-5" />
-						Save Changes
+						<IconDeviceFloppy class="h-5 w-5" />
+						IconDeviceFloppy Changes
 					</button>
 				</div>
 			</section>
@@ -893,7 +893,7 @@
 					onclick={closeGalleryEdit}
 					class="rounded-lg p-2 text-midnight-400 hover:bg-midnight-800 hover:text-white transition-colors"
 				>
-					<X class="h-5 w-5" />
+					<IconX class="h-5 w-5" />
 				</button>
 			</div>
 
@@ -947,12 +947,12 @@
 					type="button"
 					onclick={saveGalleryMetadata}
 					disabled={galleryLoading}
-					class="flex-1 rounded-lg bg-gradient-to-r from-gold-500 to-gold-600 px-4 py-2.5 text-sm font-semibold text-midnight-950 hover:shadow-lg hover:shadow-gold-500/25 transition-all min-h-[44px] disabled:opacity-50"
+					class="flex-1 rounded-lg bg-linear-to-r from-gold-500 to-gold-600 px-4 py-2.5 text-sm font-semibold text-midnight-950 hover:shadow-lg hover:shadow-gold-500/25 transition-all min-h-[44px] disabled:opacity-50"
 				>
 					{#if galleryLoading}
-						<Loader2 class="h-4 w-4 animate-spin mx-auto" />
+						<IconLoader2 class="h-4 w-4 animate-spin mx-auto" />
 					{:else}
-						Save Changes
+						IconDeviceFloppy Changes
 					{/if}
 				</button>
 			</div>

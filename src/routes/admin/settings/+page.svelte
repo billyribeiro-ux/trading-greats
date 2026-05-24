@@ -1,23 +1,23 @@
 <script lang="ts">
 	import {
-		TrendingUp,
-		LogOut,
-		Eye,
-		Settings,
-		Key,
-		Shield,
-		Monitor,
-		AlertTriangle,
-		Trash2,
-		RefreshCw,
-		Copy,
-		Check,
-		ChevronLeft,
-		Lock,
-		Unlock,
-		Clock,
-		Globe
-	} from 'lucide-svelte';
+		IconTrendingUp,
+		IconLogout,
+		IconEye,
+		IconSettings,
+		IconKey,
+		IconShield,
+		IconDeviceDesktop,
+		IconAlertTriangle,
+		IconTrash,
+		IconRefresh,
+		IconCopy,
+		IconCheck,
+		IconChevronLeft,
+		IconLock,
+		IconLockOpen,
+		IconClock,
+		IconWorld
+	} from '@tabler/icons-svelte';
 	import { enhance } from '$app/forms';
 
 	let { data, form } = $props();
@@ -59,7 +59,7 @@
 			ip_blocked: 'IP Blocked',
 			ip_unblocked: 'IP Unblocked',
 			rate_limit_exceeded: 'Rate Limit Hit',
-			suspicious_activity: 'Suspicious Activity'
+			suspicious_activity: 'Suspicious IconActivity'
 		};
 		return labels[action] || action;
 	}
@@ -87,8 +87,8 @@
 	<header class="border-b border-midnight-800/50 bg-midnight-900/50 backdrop-blur-xl sticky top-0 z-50">
 		<div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 			<div class="flex items-center gap-3">
-				<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-gold-500 to-gold-600 shadow-lg shadow-gold-500/20">
-					<TrendingUp class="h-5 w-5 text-midnight-950" />
+				<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-linear-to-br from-gold-500 to-gold-600 shadow-lg shadow-gold-500/20">
+					<IconTrendingUp class="h-5 w-5 text-midnight-950" />
 				</div>
 				<span class="font-display text-xl font-bold text-midnight-50">
 					Trading<span class="text-gold-400">Greats</span>
@@ -102,7 +102,7 @@
 					target="_blank"
 					class="inline-flex items-center gap-2 text-sm text-midnight-400 hover:text-midnight-200 transition-colors"
 				>
-					<Eye class="h-4 w-4" />
+					<IconEye class="h-4 w-4" />
 					View Site
 				</a>
 				<form method="POST" action="/admin/logout">
@@ -110,7 +110,7 @@
 						type="submit"
 						class="flex items-center gap-2 text-sm text-midnight-400 hover:text-red-400 transition-colors"
 					>
-						<LogOut class="h-4 w-4" />
+						<IconLogout class="h-4 w-4" />
 						Logout
 					</button>
 				</form>
@@ -124,14 +124,14 @@
 			href="/admin"
 			class="inline-flex items-center gap-2 text-midnight-400 hover:text-midnight-200 transition-colors mb-6"
 		>
-			<ChevronLeft class="h-4 w-4" />
+			<IconChevronLeft class="h-4 w-4" />
 			Back to Dashboard
 		</a>
 
 		<!-- Page Header -->
 		<div class="mb-8">
 			<div class="flex items-center gap-3 mb-2">
-				<Settings class="h-8 w-8 text-gold-500" />
+				<IconSettings class="h-8 w-8 text-gold-500" />
 				<h1 class="font-display text-3xl font-bold text-midnight-50">Security Settings</h1>
 			</div>
 			<p class="text-midnight-400">Manage your password, sessions, and security settings.</p>
@@ -141,7 +141,7 @@
 			<!-- Password Change Section -->
 			<div class="rounded-2xl border border-midnight-800/50 bg-midnight-900/30 p-6">
 				<div class="flex items-center gap-3 mb-6">
-					<Key class="h-6 w-6 text-gold-500" />
+					<IconKey class="h-6 w-6 text-gold-500" />
 					<h2 class="text-xl font-semibold text-midnight-100">Change Password</h2>
 				</div>
 
@@ -159,14 +159,14 @@
 								class="shrink-0 p-2 rounded-lg bg-midnight-800 hover:bg-midnight-700 transition-colors"
 							>
 								{#if copiedHash}
-									<Check class="h-4 w-4 text-green-400" />
+									<IconCheck class="h-4 w-4 text-green-400" />
 								{:else}
-									<Copy class="h-4 w-4 text-midnight-400" />
+									<IconCopy class="h-4 w-4 text-midnight-400" />
 								{/if}
 							</button>
 						</div>
 						<p class="text-yellow-400 text-xs mt-3">
-							<AlertTriangle class="h-3 w-3 inline mr-1" />
+							<IconAlertTriangle class="h-3 w-3 inline mr-1" />
 							You've been logged out. Log in again after updating the .env file.
 						</p>
 					</div>
@@ -229,7 +229,7 @@
 
 					{#if form?.passwordError}
 						<p class="text-red-400 text-sm">
-							<AlertTriangle class="h-4 w-4 inline mr-1" />
+							<IconAlertTriangle class="h-4 w-4 inline mr-1" />
 							{form.passwordError}
 						</p>
 					{/if}
@@ -240,10 +240,10 @@
 						class="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-gold-500 px-6 py-3 text-sm font-semibold text-midnight-950 hover:bg-gold-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
 					>
 						{#if isChangingPassword}
-							<RefreshCw class="h-4 w-4 animate-spin" />
+							<IconRefresh class="h-4 w-4 animate-spin" />
 							Changing Password...
 						{:else}
-							<Key class="h-4 w-4" />
+							<IconKey class="h-4 w-4" />
 							Change Password
 						{/if}
 					</button>
@@ -264,7 +264,7 @@
 			<!-- Recovery Key Section -->
 			<div class="rounded-2xl border border-midnight-800/50 bg-midnight-900/30 p-6">
 				<div class="flex items-center gap-3 mb-6">
-					<Shield class="h-6 w-6 text-violet-500" />
+					<IconShield class="h-6 w-6 text-violet-500" />
 					<h2 class="text-xl font-semibold text-midnight-100">Recovery Key</h2>
 				</div>
 
@@ -277,8 +277,8 @@
 					<div class="mb-6 space-y-4">
 						<div class="rounded-xl bg-violet-500/10 border border-violet-500/30 p-4">
 							<p class="text-violet-400 text-sm font-medium mb-3">
-								<AlertTriangle class="h-4 w-4 inline mr-1" />
-								Save this key NOW! It won't be shown again.
+								<IconAlertTriangle class="h-4 w-4 inline mr-1" />
+								IconDeviceFloppy this key NOW! It won't be shown again.
 							</p>
 
 							<div class="space-y-3">
@@ -292,9 +292,9 @@
 											class="shrink-0 p-2 rounded-lg bg-midnight-800 hover:bg-midnight-700 transition-colors"
 										>
 											{#if copiedRecoveryKey}
-												<Check class="h-4 w-4 text-green-400" />
+												<IconCheck class="h-4 w-4 text-green-400" />
 											{:else}
-												<Copy class="h-4 w-4 text-midnight-400" />
+												<IconCopy class="h-4 w-4 text-midnight-400" />
 											{/if}
 										</button>
 									</div>
@@ -310,9 +310,9 @@
 											class="shrink-0 p-2 rounded-lg bg-midnight-800 hover:bg-midnight-700 transition-colors"
 										>
 											{#if copiedRecoveryHash}
-												<Check class="h-4 w-4 text-green-400" />
+												<IconCheck class="h-4 w-4 text-green-400" />
 											{:else}
-												<Copy class="h-4 w-4 text-midnight-400" />
+												<IconCopy class="h-4 w-4 text-midnight-400" />
 											{/if}
 										</button>
 									</div>
@@ -339,10 +339,10 @@
 						class="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-violet-500 px-6 py-3 text-sm font-semibold text-white hover:bg-violet-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
 					>
 						{#if isGeneratingKey}
-							<RefreshCw class="h-4 w-4 animate-spin" />
+							<IconRefresh class="h-4 w-4 animate-spin" />
 							Generating...
 						{:else}
-							<Shield class="h-4 w-4" />
+							<IconShield class="h-4 w-4" />
 							Generate New Recovery Key
 						{/if}
 					</button>
@@ -358,7 +358,7 @@
 		<div class="mt-8 rounded-2xl border border-midnight-800/50 bg-midnight-900/30 p-6">
 			<div class="flex items-center justify-between mb-6">
 				<div class="flex items-center gap-3">
-					<Monitor class="h-6 w-6 text-blue-500" />
+					<IconDeviceDesktop class="h-6 w-6 text-blue-500" />
 					<h2 class="text-xl font-semibold text-midnight-100">Active Sessions</h2>
 				</div>
 
@@ -367,7 +367,7 @@
 						type="submit"
 						class="inline-flex items-center gap-2 rounded-lg bg-red-500/10 px-4 py-2 text-sm font-medium text-red-400 hover:bg-red-500/20 transition-colors"
 					>
-						<Trash2 class="h-4 w-4" />
+						<IconTrash class="h-4 w-4" />
 						Revoke All
 					</button>
 				</form>
@@ -385,7 +385,7 @@
 						<tr>
 							<th class="px-4 py-3 text-left text-xs font-medium text-midnight-400 uppercase tracking-wider">Device</th>
 							<th class="px-4 py-3 text-left text-xs font-medium text-midnight-400 uppercase tracking-wider">IP Address</th>
-							<th class="px-4 py-3 text-left text-xs font-medium text-midnight-400 uppercase tracking-wider">Last Activity</th>
+							<th class="px-4 py-3 text-left text-xs font-medium text-midnight-400 uppercase tracking-wider">Last IconActivity</th>
 							<th class="px-4 py-3 text-left text-xs font-medium text-midnight-400 uppercase tracking-wider">Created</th>
 							<th class="px-4 py-3 text-right text-xs font-medium text-midnight-400 uppercase tracking-wider">Action</th>
 						</tr>
@@ -395,7 +395,7 @@
 							<tr class="hover:bg-midnight-800/30 transition-colors {session.id === data.currentSessionId ? 'bg-gold-500/5' : ''}">
 								<td class="px-4 py-3">
 									<div class="flex items-center gap-2">
-										<Monitor class="h-4 w-4 text-midnight-500" />
+										<IconDeviceDesktop class="h-4 w-4 text-midnight-500" />
 										<span class="text-sm text-midnight-200 truncate max-w-[200px]">
 											{session.userAgent || 'Unknown'}
 										</span>
@@ -445,7 +445,7 @@
 		{#if data.blockedIps.length > 0}
 			<div class="mt-8 rounded-2xl border border-red-500/30 bg-red-500/5 p-6">
 				<div class="flex items-center gap-3 mb-6">
-					<Lock class="h-6 w-6 text-red-500" />
+					<IconLock class="h-6 w-6 text-red-500" />
 					<h2 class="text-xl font-semibold text-midnight-100">Blocked IP Addresses</h2>
 				</div>
 
@@ -482,7 +482,7 @@
 												type="submit"
 												class="inline-flex items-center gap-1 text-sm text-green-400 hover:text-green-300 transition-colors"
 											>
-												<Unlock class="h-3 w-3" />
+												<IconLockOpen class="h-3 w-3" />
 												Unblock
 											</button>
 										</form>
@@ -498,7 +498,7 @@
 		<!-- Security Audit Log Section -->
 		<div class="mt-8 rounded-2xl border border-midnight-800/50 bg-midnight-900/30 p-6">
 			<div class="flex items-center gap-3 mb-6">
-				<Clock class="h-6 w-6 text-emerald-500" />
+				<IconClock class="h-6 w-6 text-emerald-500" />
 				<h2 class="text-xl font-semibold text-midnight-100">Security Audit Log</h2>
 			</div>
 

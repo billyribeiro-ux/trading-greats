@@ -23,10 +23,10 @@
 	// ============================================================================
 
 	const NAV_LINKS = [
-		{ href: '/', label: 'Home', iconType: 'home' as const },
-		{ href: '/traders', label: 'Legends', iconType: 'users' as const },
-		{ href: '/compare', label: 'Compare', iconType: 'bar-chart' as const },
-		{ href: '/blog', label: 'Blog', iconType: 'book-open' as const },
+		{ href: '/', label: 'Home', iconIconTypography: 'home' as const },
+		{ href: '/traders', label: 'Legends', iconIconTypography: 'users' as const },
+		{ href: '/compare', label: 'Compare', iconIconTypography: 'bar-chart' as const },
+		{ href: '/blog', label: 'Blog', iconIconTypography: 'book-open' as const },
 	] as const;
 
 	const SCROLL_THRESHOLD = 20;
@@ -132,7 +132,7 @@
 		'transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]',
 		'safe-top', /* MOBILE-FIRST: Support notched devices */
 		scrolled
-			? 'border-b border-white/[0.08] bg-midnight-950/85 py-2 sm:py-3 shadow-2xl shadow-black/20 backdrop-blur-2xl backdrop-saturate-150'
+			? 'border-b border-white/8 bg-midnight-950/85 py-2 sm:py-3 shadow-2xl shadow-black/20 backdrop-blur-2xl backdrop-saturate-150'
 			: 'border-b border-transparent bg-transparent py-3 sm:py-5'
 	)}
 >
@@ -149,7 +149,7 @@
 			<div 
 				class={cn(
 					'relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl',
-					'bg-gradient-to-br from-gold-500 to-gold-600',
+					'bg-linear-to-br from-gold-500 to-gold-600',
 					'shadow-lg shadow-gold-500/25',
 					'transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]',
 					'will-change-transform',
@@ -159,7 +159,7 @@
 				aria-hidden="true"
 			>
 				<!-- Shine effect -->
-				<div class="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/20 to-white/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
+				<div class="absolute inset-0 bg-linear-to-tr from-white/0 via-white/20 to-white/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
 				<Icon name="candlestick" class="relative h-5 w-5 text-midnight-950 transition-transform duration-300 group-hover:scale-110" strokeWidth={2.5} />
 			</div>
 			<span class="font-display text-xl font-bold tracking-tight text-white transition-colors duration-300 group-hover:text-gold-100">
@@ -190,7 +190,7 @@
 						></div>
 					{/if}
 					
-					{#if link.iconType === 'home'}
+					{#if link.iconIconTypography === 'home'}
 						<Icon 
 							name="candlestick"
 							class={cn(
@@ -201,7 +201,7 @@
 							)} 
 							strokeWidth={2}
 						/>
-					{:else if link.iconType === 'users'}
+					{:else if link.iconIconTypography === 'users'}
 						<Icon 
 							name="users"
 							class={cn(
@@ -212,7 +212,7 @@
 							)} 
 							strokeWidth={2}
 						/>
-					{:else if link.iconType === 'bar-chart'}
+					{:else if link.iconIconTypography === 'bar-chart'}
 						<Icon 
 							name="bar-chart"
 							class={cn(
@@ -223,7 +223,7 @@
 							)} 
 							strokeWidth={2}
 						/>
-					{:else if link.iconType === 'book-open'}
+					{:else if link.iconIconTypography === 'book-open'}
 						<Icon 
 							name="book-open"
 							class={cn(
@@ -245,7 +245,7 @@
 			<!-- Theme Toggle -->
 			<ThemeToggle class="hidden sm:flex" />
 
-			<!-- Search Button - MOBILE-FIRST: 44px touch target -->
+			<!-- IconSearch Button - MOBILE-FIRST: 44px touch target -->
 			<button
 				type="button"
 				class={cn(
@@ -256,7 +256,7 @@
 					'focus-visible:ring-2',
 					'active:scale-95 active:bg-white/10' /* MOBILE-FIRST: Touch feedback */
 				)}
-				aria-label="Search traders (⌘K)"
+				aria-label="IconSearch traders (⌘K)"
 				onclick={() => { searchOpen = true; }}
 			>
 				<Icon 
@@ -285,7 +285,7 @@
 				)}
 			>
 				<!-- Shimmer effect -->
-				<div class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-gold-200/50 to-transparent transition-transform duration-700 group-hover:translate-x-full"></div>
+				<div class="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-gold-200/50 to-transparent transition-transform duration-700 group-hover:translate-x-full"></div>
 				<span class="relative">Learn More</span>
 				<Icon name="arrow-right" class="relative h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" strokeWidth={2.5} />
 			</a>
@@ -356,13 +356,13 @@
 								)}
 								aria-hidden="true"
 							>
-								{#if link.iconType === 'home'}
+								{#if link.iconIconTypography === 'home'}
 									<Icon name="candlestick" class="h-5 w-5" strokeWidth={2} />
-								{:else if link.iconType === 'users'}
+								{:else if link.iconIconTypography === 'users'}
 									<Icon name="users" class="h-5 w-5" strokeWidth={2} />
-								{:else if link.iconType === 'bar-chart'}
+								{:else if link.iconIconTypography === 'bar-chart'}
 									<Icon name="bar-chart" class="h-5 w-5" strokeWidth={2} />
-								{:else if link.iconType === 'book-open'}
+								{:else if link.iconIconTypography === 'book-open'}
 									<Icon name="book-open" class="h-5 w-5" strokeWidth={2} />
 								{/if}
 							</div>
@@ -379,7 +379,7 @@
 						href="/about"
 						class={cn(
 							'group flex w-full items-center justify-center gap-3 rounded-2xl p-4 text-lg font-bold',
-							'bg-gradient-to-r from-gold-500 to-gold-600 text-midnight-950',
+							'bg-linear-to-r from-gold-500 to-gold-600 text-midnight-950',
 							'shadow-xl shadow-gold-500/20',
 							'outline-none ring-gold-500 ring-offset-2 ring-offset-midnight-950',
 							'transition-all duration-300',
@@ -389,7 +389,7 @@
 						)}
 						onclick={() => { mobileMenuOpen = false; }}
 					>
-						<div class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full"></div>
+						<div class="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full"></div>
 						<span class="relative">Learn More</span>
 						<Icon name="arrow-right" class="relative h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={2.5} />
 					</a>
@@ -402,5 +402,5 @@
 <!-- Spacer - MOBILE-FIRST: Match header height -->
 <div class="h-[68px] sm:h-[72px]" aria-hidden="true"></div>
 
-<!-- Search Modal -->
+<!-- IconSearch Modal -->
 <SearchModal bind:open={searchOpen} onClose={() => { searchOpen = false; }} />

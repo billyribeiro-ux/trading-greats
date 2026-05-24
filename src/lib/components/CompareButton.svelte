@@ -2,7 +2,7 @@
 	import { Icon } from '$lib/components/icons';
 	import { comparison } from '$lib/stores/comparison.svelte';
 	import { cn } from '$lib/utils';
-	import { browser } from '$app/environment';
+	import { onMount } from 'svelte';
 
 	interface Props {
 		slug: string;
@@ -13,12 +13,7 @@
 	let { slug, size = 'sm', class: className }: Props = $props();
 
 	let mounted = $state(false);
-
-	$effect(() => {
-		if (browser) {
-			mounted = true;
-		}
-	});
+	onMount(() => { mounted = true; });
 
 	const isSelected = $derived(mounted ? comparison.isInComparison(slug) : false);
 	const isFull = $derived(mounted ? comparison.isFull : false);

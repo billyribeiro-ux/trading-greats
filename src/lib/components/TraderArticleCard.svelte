@@ -65,7 +65,7 @@
 		)}
 	>
 		<!-- Thumbnail -->
-		<div class="relative h-16 w-16 sm:h-20 sm:w-20 flex-shrink-0 overflow-hidden rounded-lg bg-midnight-800">
+		<div class="relative h-16 w-16 sm:h-20 sm:w-20 shrink-0 overflow-hidden rounded-lg bg-midnight-800">
 			{#if article.heroImage && !imageError}
 				<img
 					src={article.heroImage}
@@ -112,7 +112,7 @@
 		class={cn(
 			'group relative flex flex-col overflow-hidden rounded-2xl sm:rounded-3xl',
 			'h-[320px] sm:h-[380px] lg:h-[420px]',
-			'bg-midnight-900/80 border border-white/[0.08]',
+			'bg-midnight-900/80 border border-white/8',
 			'transition-all duration-500',
 			'hover:border-gold-500/40 hover:shadow-2xl hover:shadow-gold-500/10',
 			'active:scale-[0.99]',
@@ -135,7 +135,7 @@
 					onerror={() => imageError = true}
 				/>
 			{/if}
-			<div class="absolute inset-0 bg-gradient-to-t from-midnight-950 via-midnight-950/70 to-midnight-950/20"></div>
+			<div class="absolute inset-0 bg-linear-to-t from-midnight-950 via-midnight-950/70 to-midnight-950/20"></div>
 		</div>
 
 		<!-- Content overlay -->
@@ -192,7 +192,7 @@
 		class={cn(
 			'group relative flex flex-col overflow-hidden rounded-xl sm:rounded-2xl',
 			'h-[260px] sm:h-[300px] md:h-[340px]',
-			'bg-midnight-900/80 border border-white/[0.08]',
+			'bg-midnight-900/80 border border-white/8',
 			'transition-all duration-300',
 			'hover:border-gold-500/30 hover:shadow-xl hover:shadow-gold-500/5',
 			'md:hover:-translate-y-1',
@@ -201,7 +201,7 @@
 		)}
 	>
 		<!-- Image -->
-		<div class="relative h-[120px] sm:h-[140px] md:h-[160px] flex-shrink-0 overflow-hidden bg-midnight-800">
+		<div class="relative h-[120px] sm:h-[140px] md:h-[160px] shrink-0 overflow-hidden bg-midnight-800">
 			{#if article.heroImage && !imageError}
 				<img
 					src={article.heroImage}
@@ -217,11 +217,11 @@
 				/>
 			{/if}
 			{#if !imageLoaded || imageError}
-				<div class="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-midnight-800 to-midnight-900">
+				<div class="absolute inset-0 flex items-center justify-center bg-linear-to-br from-midnight-800 to-midnight-900">
 					<Icon name="book-open" class="h-10 w-10 text-midnight-600" />
 				</div>
 			{/if}
-			<div class="absolute inset-0 bg-gradient-to-t from-midnight-900 via-transparent to-transparent"></div>
+			<div class="absolute inset-0 bg-linear-to-t from-midnight-900 via-transparent to-transparent"></div>
 
 			<!-- Category badge -->
 			{#if article.category}

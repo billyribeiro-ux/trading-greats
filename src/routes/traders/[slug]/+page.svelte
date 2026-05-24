@@ -124,7 +124,7 @@
 <div class="min-h-screen bg-midnight-950 pb-16 sm:pb-20 lg:pb-24">
 	<!-- Hero Background - MOBILE-FIRST: Smaller orbs on mobile -->
 	<div class="fixed inset-0 z-0 pointer-events-none">
-		<div class="absolute top-0 left-0 right-0 h-[40vh] sm:h-[50vh] bg-gradient-to-b from-midnight-900 to-midnight-950 opacity-50"></div>
+		<div class="absolute top-0 left-0 right-0 h-[40vh] sm:h-[50vh] bg-linear-to-b from-midnight-900 to-midnight-950 opacity-50"></div>
 		<div class="absolute top-[-10%] right-[-5%] h-[250px] w-[250px] sm:h-[400px] sm:w-[400px] lg:h-[500px] lg:w-[500px] rounded-full bg-gold-500/5 blur-[80px] sm:blur-[100px]"></div>
 		<div class="absolute top-[20%] left-[-10%] h-[200px] w-[200px] sm:h-[300px] sm:w-[300px] lg:h-[400px] lg:w-[400px] rounded-full bg-blue-500/5 blur-[80px] sm:blur-[100px]"></div>
 	</div>
@@ -160,7 +160,7 @@
 					{/if}
 				</div>
 			</div>
-			<div class="mt-8 sm:mt-10 h-px bg-gradient-to-r from-transparent via-gold-500/30 to-transparent"></div>
+			<div class="mt-8 sm:mt-10 h-px bg-linear-to-r from-transparent via-gold-500/30 to-transparent"></div>
 		</header>
 
 		<!-- MOBILE-FIRST: Stack on mobile, 2-column on desktop -->
@@ -170,7 +170,7 @@
 				<div class="lg:sticky lg:top-24 space-y-4 sm:space-y-6">
 					<!-- Profile Image Card - MOBILE-FIRST -->
 					<div class="group relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-midnight-900/50 backdrop-blur-xl shadow-2xl">
-						<div class="aspect-[3/4] sm:aspect-[4/5] w-full overflow-hidden">
+						<div class="aspect-3/4 sm:aspect-4/5 w-full overflow-hidden">
 							<img
 								src={trader.photoUrl}
 								alt={trader.name}
@@ -180,7 +180,7 @@
 								fetchpriority="high"
 								decoding="async"
 							/>
-							<div class="absolute inset-0 bg-gradient-to-t from-midnight-950 via-transparent to-transparent opacity-60"></div>
+							<div class="absolute inset-0 bg-linear-to-t from-midnight-950 via-transparent to-transparent opacity-60"></div>
 						</div>
 
 						<div class="absolute bottom-0 left-0 right-0 p-4 sm:p-5 lg:p-6">
@@ -277,7 +277,7 @@
 						Photo Gallery
 					</h2>
 					<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3">
-						{#each gallery as image, i}
+						{#each gallery as image, i (image)}
 							<button
 								type="button"
 								onclick={() => openLightbox(i)}
@@ -290,7 +290,7 @@
 									loading="lazy"
 									decoding="async"
 								/>
-								<div class="absolute inset-0 bg-gradient-to-t from-midnight-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+								<div class="absolute inset-0 bg-linear-to-t from-midnight-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
 								{#if image.caption}
 									<div class="absolute bottom-0 left-0 right-0 p-2 sm:p-3 opacity-0 group-hover:opacity-100 transition-opacity">
 										<p class="text-[10px] sm:text-xs text-white/90 line-clamp-2">{image.caption}</p>
@@ -403,7 +403,7 @@
 							</a>
 						</div>
 						<div class="grid gap-3 sm:gap-4 lg:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-							{#each articles as article, i}
+							{#each articles as article, i (article.slug)}
 								<TraderArticleCard {article} {trader} variant="compact" />
 							{/each}
 						</div>
@@ -415,7 +415,7 @@
 					<section class="pt-8 sm:pt-10 lg:pt-12 border-t border-white/5">
 						<h2 class="mb-4 sm:mb-6 lg:mb-8 font-display text-lg sm:text-xl lg:text-2xl font-bold text-white">Similar Legends</h2>
 						<div class="grid gap-3 sm:gap-4 lg:gap-6 grid-cols-2">
-							{#each relatedTraders as related, i}
+							{#each relatedTraders as related, i (related.slug)}
 								<TraderCard trader={related} index={i} />
 							{/each}
 						</div>

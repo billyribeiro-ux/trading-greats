@@ -6,7 +6,7 @@
 <!-- MOBILE-FIRST Footer with safe areas and touch targets -->
 <footer class="relative border-t border-midnight-800/50 bg-midnight-950 pt-12 sm:pt-16 lg:pt-20 pb-8 sm:pb-10 lg:pb-12 overflow-hidden safe-bottom">
 	<!-- Ambient Glow -->
-	<div class="absolute top-0 left-1/2 -translate-x-1/2 h-px w-2/3 bg-gradient-to-r from-transparent via-gold-500/50 to-transparent"></div>
+	<div class="absolute top-0 left-1/2 -translate-x-1/2 h-px w-2/3 bg-linear-to-r from-transparent via-gold-500/50 to-transparent"></div>
 
 	<!-- Background decoration - MOBILE-FIRST: Smaller on mobile -->
 	<div class="absolute bottom-0 right-0 w-[300px] h-[200px] sm:w-[450px] sm:h-[300px] lg:w-[600px] lg:h-[400px] rounded-full bg-gold-500/3 blur-[80px] sm:blur-[100px] lg:blur-[120px] pointer-events-none"></div>
@@ -21,7 +21,7 @@
 				>
 					<div class={cn(
 						'flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-lg sm:rounded-xl',
-						'bg-gradient-to-br from-gold-500 to-gold-600',
+						'bg-linear-to-br from-gold-500 to-gold-600',
 						'shadow-lg shadow-gold-500/20',
 						'transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]',
 						'group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-gold-500/30'

@@ -1,19 +1,19 @@
 <script lang="ts">
 	import {
-		Search,
-		Trash2,
-		Edit2,
-		X,
-		Upload,
-		Image as ImageIcon,
-		Copy,
-		Check,
-		ChevronLeft,
-		ChevronRight,
-		Filter,
-		FolderOpen,
-		Info
-	} from 'lucide-svelte';
+		IconSearch,
+		IconTrash,
+		IconEdit,
+		IconX,
+		IconUpload,
+		IconPhoto,
+		IconCopy,
+		IconCheck,
+		IconChevronLeft,
+		IconChevronRight,
+		IconFilter,
+		IconFolder,
+		IconInfoCircle
+	} from '@tabler/icons-svelte';
 	import { enhance } from '$app/forms';
 	import { goto } from '$app/navigation';
 	import MediaUpload from '$lib/components/MediaUpload.svelte';
@@ -29,7 +29,7 @@
 		searchQuery = data.filters.search || '';
 		selectedFolder = data.filters.folder || '';
 	});
-	let showUploadModal = $state(false);
+	let showIconUploadModal = $state(false);
 	let editingMedia = $state<Media | null>(null);
 	let deleteConfirm = $state<string | null>(null);
 	let copiedUrl = $state<string | null>(null);
@@ -40,7 +40,7 @@
 	let editDescription = $state('');
 	let editCaption = $state('');
 
-	function handleSearch() {
+	function handleIconSearch() {
 		const params = new URLSearchParams();
 		if (searchQuery) params.set('search', searchQuery);
 		if (selectedFolder) params.set('folder', selectedFolder);
@@ -88,14 +88,14 @@
 	}
 
 	function handleMediaUploaded(media: Media) {
-		showUploadModal = false;
+		showIconUploadModal = false;
 		// Refresh the page to show new media
 		goto('/admin/media', { invalidateAll: true });
 	}
 </script>
 
 <svelte:head>
-	<title>Media Library | Admin</title>
+	<title>Media IconLibrary | Admin</title>
 </svelte:head>
 
 <div class="min-h-screen bg-midnight-950">
@@ -121,33 +121,33 @@
 		<!-- Page Header -->
 		<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
 			<div>
-				<h1 class="font-display text-3xl font-bold text-midnight-50">Media Library</h1>
+				<h1 class="font-display text-3xl font-bold text-midnight-50">Media IconLibrary</h1>
 				<p class="mt-2 text-midnight-400">Manage your images with SEO metadata</p>
 			</div>
 			<button
 				type="button"
-				onclick={() => (showUploadModal = true)}
-				class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 px-5 py-2.5 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30 hover:scale-[1.02] active:scale-[0.98] min-h-[44px]"
+				onclick={() => (showIconUploadModal = true)}
+				class="inline-flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-gold-500 to-gold-600 px-5 py-2.5 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30 hover:scale-[1.02] active:scale-[0.98] min-h-[44px]"
 			>
-				<Upload class="h-5 w-5" />
-				Upload Media
+				<IconUpload class="h-5 w-5" />
+				IconUpload Media
 			</button>
 		</div>
 
-		<!-- Filters -->
+		<!-- IconFilters -->
 		<div class="flex flex-col sm:flex-row gap-4 mb-6">
-			<!-- Search -->
-			<form onsubmit={(e) => { e.preventDefault(); handleSearch(); }} class="relative flex-1">
-				<Search class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-midnight-500" />
+			<!-- IconSearch -->
+			<form onsubmit={(e) => { e.preventDefault(); handleIconSearch(); }} class="relative flex-1">
+				<IconSearch class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-midnight-500" />
 				<input
 					type="text"
-					placeholder="Search by title, alt text, filename..."
+					placeholder="IconSearch by title, alt text, filename..."
 					bind:value={searchQuery}
 					class="w-full rounded-xl border border-midnight-700 bg-midnight-800/50 py-3 pl-12 pr-4 text-midnight-100 placeholder-midnight-500 outline-none transition-all focus:border-gold-500/50 focus:ring-2 focus:ring-gold-500/20 min-h-[44px]"
 				/>
 			</form>
 
-			<!-- Folder Filter -->
+			<!-- Folder IconFilter -->
 			<select
 				bind:value={selectedFolder}
 				onchange={handleFolderChange}
@@ -163,16 +163,16 @@
 		<!-- Media Grid -->
 		{#if data.media.length === 0}
 			<div class="rounded-2xl border border-midnight-800/50 bg-midnight-900/30 p-12 text-center">
-				<ImageIcon class="h-16 w-16 text-midnight-600 mx-auto mb-4" />
+				<IconPhoto class="h-16 w-16 text-midnight-600 mx-auto mb-4" />
 				<h3 class="text-xl font-semibold text-midnight-100 mb-2">No media files yet</h3>
 				<p class="text-midnight-400 mb-6">Upload your first image to get started</p>
 				<button
 					type="button"
-					onclick={() => (showUploadModal = true)}
-					class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 px-6 py-3 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 min-h-[44px]"
+					onclick={() => (showIconUploadModal = true)}
+					class="inline-flex items-center gap-2 rounded-xl bg-linear-to-r from-gold-500 to-gold-600 px-6 py-3 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 min-h-[44px]"
 				>
-					<Upload class="h-5 w-5" />
-					Upload Your First Image
+					<IconUpload class="h-5 w-5" />
+					IconUpload Your First Image
 				</button>
 			</div>
 		{:else}
@@ -207,7 +207,7 @@
 									class="rounded-lg bg-white/10 p-2 text-white backdrop-blur-sm hover:bg-white/20 transition-colors"
 									title="Edit SEO"
 								>
-									<Edit2 class="h-4 w-4" />
+									<IconEdit class="h-4 w-4" />
 								</button>
 								<button
 									type="button"
@@ -216,9 +216,9 @@
 									title="Copy URL"
 								>
 									{#if copiedUrl === item.url}
-										<Check class="h-4 w-4 text-green-400" />
+										<IconCheck class="h-4 w-4 text-green-400" />
 									{:else}
-										<Copy class="h-4 w-4" />
+										<IconCopy class="h-4 w-4" />
 									{/if}
 								</button>
 								{#if deleteConfirm === item.id}
@@ -252,13 +252,13 @@
 										class="rounded-lg bg-red-500/20 p-2 text-red-400 backdrop-blur-sm hover:bg-red-500/30 transition-colors"
 										title="Delete"
 									>
-										<Trash2 class="h-4 w-4" />
+										<IconTrash class="h-4 w-4" />
 									</button>
 								{/if}
 							</div>
 						</div>
 
-						<!-- Info -->
+						<!-- IconInfoCircle -->
 						<div class="p-2">
 							<p class="text-xs font-medium text-midnight-200 truncate" title={item.title || item.filename}>
 								{item.title || item.filename}
@@ -279,10 +279,9 @@
 				<div class="mt-8 flex items-center justify-center gap-2">
 					<a
 						href="/admin/media?page={Math.max(1, data.pagination.page - 1)}{searchQuery ? `&search=${searchQuery}` : ''}{selectedFolder ? `&folder=${selectedFolder}` : ''}"
-						class="rounded-lg border border-midnight-700 bg-midnight-800/50 p-2 text-midnight-400 hover:bg-midnight-800 hover:text-midnight-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-h-[44px] min-w-[44px] flex items-center justify-center"
-						class:pointer-events-none={data.pagination.page === 1}
+						class={['rounded-lg border border-midnight-700 bg-midnight-800/50 p-2 text-midnight-400 hover:bg-midnight-800 hover:text-midnight-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-h-[44px] min-w-[44px] flex items-center justify-center', data.pagination.page === 1 && 'pointer-events-none']}
 					>
-						<ChevronLeft class="h-5 w-5" />
+						<IconChevronLeft class="h-5 w-5" />
 					</a>
 
 					<span class="px-4 py-2 text-sm text-midnight-400">
@@ -291,10 +290,9 @@
 
 					<a
 						href="/admin/media?page={Math.min(data.pagination.totalPages, data.pagination.page + 1)}{searchQuery ? `&search=${searchQuery}` : ''}{selectedFolder ? `&folder=${selectedFolder}` : ''}"
-						class="rounded-lg border border-midnight-700 bg-midnight-800/50 p-2 text-midnight-400 hover:bg-midnight-800 hover:text-midnight-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-h-[44px] min-w-[44px] flex items-center justify-center"
-						class:pointer-events-none={data.pagination.page === data.pagination.totalPages}
+						class={['rounded-lg border border-midnight-700 bg-midnight-800/50 p-2 text-midnight-400 hover:bg-midnight-800 hover:text-midnight-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-h-[44px] min-w-[44px] flex items-center justify-center', data.pagination.page === data.pagination.totalPages && 'pointer-events-none']}
 					>
-						<ChevronRight class="h-5 w-5" />
+						<IconChevronRight class="h-5 w-5" />
 					</a>
 				</div>
 			{/if}
@@ -319,18 +317,18 @@
 	</main>
 </div>
 
-<!-- Upload Modal -->
-{#if showUploadModal}
+<!-- IconUpload Modal -->
+{#if showIconUploadModal}
 	<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-midnight-950/80 backdrop-blur-sm">
 		<div class="w-full max-w-lg rounded-2xl border border-midnight-700 bg-midnight-900 p-6 shadow-2xl">
 			<div class="flex items-center justify-between mb-6">
-				<h3 class="font-display text-xl font-bold text-white">Upload Media</h3>
+				<h3 class="font-display text-xl font-bold text-white">IconUpload Media</h3>
 				<button
 					type="button"
-					onclick={() => (showUploadModal = false)}
+					onclick={() => (showIconUploadModal = false)}
 					class="rounded-lg p-2 text-midnight-400 hover:bg-midnight-800 hover:text-white transition-colors"
 				>
-					<X class="h-5 w-5" />
+					<IconX class="h-5 w-5" />
 				</button>
 			</div>
 
@@ -343,7 +341,7 @@
 			<div class="mt-4 pt-4 border-t border-midnight-700 flex justify-end">
 				<button
 					type="button"
-					onclick={() => (showUploadModal = false)}
+					onclick={() => (showIconUploadModal = false)}
 					class="rounded-lg border border-midnight-700 bg-midnight-800/50 px-4 py-2.5 text-sm font-medium text-midnight-300 hover:bg-midnight-800 transition-colors min-h-[44px]"
 				>
 					Close
@@ -364,7 +362,7 @@
 					onclick={closeEditModal}
 					class="rounded-lg p-2 text-midnight-400 hover:bg-midnight-800 hover:text-white transition-colors"
 				>
-					<X class="h-5 w-5" />
+					<IconX class="h-5 w-5" />
 				</button>
 			</div>
 
@@ -450,10 +448,10 @@
 					/>
 				</div>
 
-				<!-- File Info -->
+				<!-- File IconInfoCircle -->
 				<div class="p-3 rounded-lg bg-midnight-800/30 border border-midnight-700/50">
 					<div class="flex items-center gap-2 text-xs text-midnight-400">
-						<Info class="h-4 w-4" />
+						<IconInfoCircle class="h-4 w-4" />
 						<span>
 							{editingMedia.filename} • {formatFileSize(editingMedia.fileSize)}
 							{#if editingMedia.width && editingMedia.height}
@@ -473,9 +471,9 @@
 					</button>
 					<button
 						type="submit"
-						class="flex-1 rounded-lg bg-gradient-to-r from-gold-500 to-gold-600 px-4 py-2.5 text-sm font-semibold text-midnight-950 hover:shadow-lg hover:shadow-gold-500/25 transition-all min-h-[44px]"
+						class="flex-1 rounded-lg bg-linear-to-r from-gold-500 to-gold-600 px-4 py-2.5 text-sm font-semibold text-midnight-950 hover:shadow-lg hover:shadow-gold-500/25 transition-all min-h-[44px]"
 					>
-						Save Changes
+						IconDeviceFloppy Changes
 					</button>
 				</div>
 			</form>

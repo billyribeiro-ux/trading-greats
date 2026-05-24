@@ -2,7 +2,7 @@
 	import { Icon } from '$lib/components/icons';
 	import { favorites } from '$lib/stores/favorites.svelte';
 	import { cn } from '$lib/utils';
-	import { browser } from '$app/environment';
+	import { onMount } from 'svelte';
 
 	interface Props {
 		slug: string;
@@ -13,14 +13,8 @@
 
 	let { slug, size = 'md', variant = 'icon', class: className }: Props = $props();
 
-	// Track if component is mounted (for SSR)
 	let mounted = $state(false);
-
-	$effect(() => {
-		if (browser) {
-			mounted = true;
-		}
-	});
+	onMount(() => { mounted = true; });
 
 	const isFavorite = $derived(mounted ? favorites.isFavorite(slug) : false);
 

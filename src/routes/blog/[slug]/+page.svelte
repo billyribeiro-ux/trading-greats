@@ -179,11 +179,11 @@
 					fetchpriority="high"
 					decoding="async"
 				/>
-				<div class="absolute inset-0 bg-gradient-to-t from-midnight-950 via-midnight-950/80 to-midnight-950/40"></div>
+				<div class="absolute inset-0 bg-linear-to-t from-midnight-950 via-midnight-950/80 to-midnight-950/40"></div>
 			</div>
 		{:else}
 			<div class="absolute inset-0 h-[35vh] sm:h-[38vh] lg:h-[40vh] min-h-[280px] sm:min-h-[320px] lg:min-h-[400px]">
-				<div class="absolute inset-0 bg-gradient-to-br from-midnight-900 via-midnight-950 to-midnight-900"></div>
+				<div class="absolute inset-0 bg-linear-to-br from-midnight-900 via-midnight-950 to-midnight-900"></div>
 				<div class="absolute top-0 left-1/4 h-48 w-48 sm:h-72 sm:w-72 lg:h-96 lg:w-96 rounded-full bg-gold-500/5 blur-3xl"></div>
 				<div class="absolute bottom-0 right-1/4 h-48 w-48 sm:h-72 sm:w-72 lg:h-96 lg:w-96 rounded-full bg-gold-500/5 blur-3xl"></div>
 			</div>
@@ -241,7 +241,7 @@
 				<div class="mt-6 sm:mt-7 lg:mt-8 flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center justify-between gap-4 pt-6 sm:pt-7 lg:pt-8 border-t border-midnight-800/50">
 					{#if data.post.author}
 						<div class="flex items-center gap-2.5 sm:gap-3">
-							<div class="h-9 w-9 sm:h-10 sm:w-10 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center">
+							<div class="h-9 w-9 sm:h-10 sm:w-10 rounded-full bg-linear-to-br from-gold-400 to-gold-600 flex items-center justify-center">
 								<Icon name="user" class="h-4 w-4 sm:h-5 sm:w-5 text-midnight-950" />
 							</div>
 							<div>
@@ -321,24 +321,24 @@
 					</h2>
 
 					<div class="grid gap-4 sm:gap-6 lg:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-						{#each data.relatedPosts as post, i}
+						{#each data.relatedPosts as post, i (post.slug)}
 							<ScrollReveal delay={i * 75}>
 								<a
 									href="/blog/{post.slug}"
 									class="group flex flex-col overflow-hidden rounded-xl sm:rounded-2xl border border-midnight-800/50 bg-midnight-950/50 transition-all duration-300 hover:border-gold-500/30 hover:bg-midnight-800/50 md:hover:-translate-y-1 active:scale-[0.98]"
 								>
 									{#if post.heroImage}
-										<div class="relative aspect-[16/9] sm:aspect-[16/10] overflow-hidden">
+										<div class="relative aspect-video sm:aspect-16/10 overflow-hidden">
 											<img
 												src={post.heroImage}
 												alt={post.heroImageAlt || post.title}
 												class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
 												loading="lazy"
 											/>
-											<div class="absolute inset-0 bg-gradient-to-t from-midnight-950/60 to-transparent"></div>
+											<div class="absolute inset-0 bg-linear-to-t from-midnight-950/60 to-transparent"></div>
 										</div>
 									{:else}
-										<div class="relative aspect-[16/9] sm:aspect-[16/10] bg-midnight-800 flex items-center justify-center">
+										<div class="relative aspect-video sm:aspect-16/10 bg-midnight-800 flex items-center justify-center">
 											<Icon name="book-open" class="h-10 w-10 sm:h-12 sm:w-12 text-midnight-600" />
 										</div>
 									{/if}

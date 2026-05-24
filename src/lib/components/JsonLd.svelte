@@ -6,7 +6,7 @@
 	const SITE_NAME = 'Trading Greats';
 	const SITE_URL = $derived(page.url.origin || 'https://tradinggreats.com');
 
-	type SchemaType = 'WebSite' | 'Person' | 'BreadcrumbList' | 'Article' | 'TraderArticle' | 'FAQPage';
+	type SchemaIconTypography = 'WebSite' | 'Person' | 'BreadcrumbList' | 'Article' | 'TraderArticle' | 'FAQPage';
 
 	interface FAQItem {
 		question: string;
@@ -14,7 +14,7 @@
 	}
 
 	interface Props {
-		type: SchemaType;
+		type: SchemaIconTypography;
 		trader?: Trader;
 		article?: BlogPost;
 		breadcrumbs?: { name: string; url: string }[];
@@ -33,7 +33,7 @@
 					url: SITE_URL,
 					description: 'Explore the minds that moved markets. Discover legendary traders, their strategies, and timeless wisdom from the greatest investors in history.',
 					potentialAction: {
-						'@type': 'SearchAction',
+						'@type': 'IconSearchAction',
 						target: `${SITE_URL}/search?q={search_term_string}`,
 						'query-input': 'required name=search_term_string'
 					}

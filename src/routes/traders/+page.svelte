@@ -87,14 +87,14 @@
 		<div class="absolute inset-0">
 			<div class="absolute top-[-20%] right-[-10%] h-[300px] w-[300px] sm:h-[450px] sm:w-[450px] lg:h-[600px] lg:w-[600px] rounded-full bg-gradient-radial from-gold-500/10 via-gold-500/5 to-transparent blur-3xl"></div>
 			<div class="absolute bottom-[-20%] left-[-10%] h-[250px] w-[250px] sm:h-[400px] sm:w-[400px] lg:h-[500px] lg:w-[500px] rounded-full bg-gradient-radial from-violet-500/10 via-violet-500/5 to-transparent blur-3xl"></div>
-			<div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:2rem_2rem] sm:bg-[size:3rem_3rem] lg:bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_50%,transparent_100%)]"></div>
+			<div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[2rem_2rem] sm:bg-size-[3rem_3rem] lg:bg-size-[4rem_4rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_50%,transparent_100%)]"></div>
 		</div>
 
 		<div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 			<div class="text-center max-w-4xl mx-auto">
 				<span class="inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-white/5 border border-white/10 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-gold-400 mb-4 sm:mb-6">
 					<Icon name="sparkles" class="h-3 w-3 sm:h-3.5 sm:w-3.5" />
-					The Complete Library
+					The Complete IconLibrary
 				</span>
 
 				<h1 class="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 tracking-tight">
@@ -107,19 +107,19 @@
 				</p>
 			</div>
 
-			<!-- Search & Filter Container - MOBILE-FIRST -->
+			<!-- IconSearch & IconFilter Container - MOBILE-FIRST -->
 			<div class="mt-8 sm:mt-10 lg:mt-12 max-w-3xl mx-auto">
 				<div class="relative group">
 					<!-- Glow effect - hidden on mobile for performance -->
-					<div class="hidden sm:block absolute -inset-1 bg-gradient-to-r from-gold-500/20 via-violet-500/20 to-gold-500/20 rounded-xl sm:rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-500"></div>
+					<div class="hidden sm:block absolute -inset-1 bg-linear-to-r from-gold-500/20 via-violet-500/20 to-gold-500/20 rounded-xl sm:rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-500"></div>
 
 					<div class="relative flex items-center bg-midnight-900/80 backdrop-blur-xl border border-white/10 rounded-xl p-1.5 sm:p-2 shadow-2xl">
 						<Icon name="search" class="ml-3 sm:ml-4 h-4 w-4 sm:h-5 sm:w-5 text-midnight-400" />
 						<input
 							type="text"
-							placeholder="Search traders..."
+							placeholder="IconSearch traders..."
 							bind:value={searchQuery}
-							aria-label="Search traders" class="w-full bg-transparent border-none px-3 sm:px-4 py-2.5 sm:py-3 text-white placeholder-midnight-500 focus:ring-0 focus:outline-none text-sm sm:text-base lg:text-lg"
+							aria-label="IconSearch traders" class="w-full bg-transparent border-none px-3 sm:px-4 py-2.5 sm:py-3 text-white placeholder-midnight-500 focus:ring-0 focus:outline-none text-sm sm:text-base lg:text-lg"
 						/>
 						{#if searchQuery}
 							<button
@@ -133,7 +133,7 @@
 					</div>
 				</div>
 
-				<!-- Quick Filters - Clean grid layout -->
+				<!-- Quick IconFilters - Clean grid layout -->
 				<div class="mt-6 sm:mt-8 flex flex-wrap justify-center gap-2 sm:gap-3 max-w-3xl mx-auto">
 					<a
 						href="/traders"
@@ -245,7 +245,7 @@
 							onclick={() => (searchQuery = '')}
 							class="inline-flex items-center gap-2 rounded-full bg-gold-500 px-6 py-3 text-sm font-bold text-midnight-950 transition-all hover:bg-gold-400"
 						>
-							Clear Search
+							Clear IconSearch
 							<Icon name="arrow-right" class="h-4 w-4" />
 						</button>
 					</div>
@@ -269,7 +269,7 @@
 								class="group flex items-center gap-4 sm:gap-6 p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-white/5 bg-midnight-900/30 backdrop-blur-sm transition-all duration-300 hover:border-gold-500/30 hover:bg-midnight-800/50"
 							>
 								<!-- Image -->
-								<div class="relative h-14 w-14 sm:h-20 sm:w-20 flex-shrink-0 overflow-hidden rounded-lg sm:rounded-xl">
+								<div class="relative h-14 w-14 sm:h-20 sm:w-20 shrink-0 overflow-hidden rounded-lg sm:rounded-xl">
 									{#if trader.photoUrl}
 										<img
 											src={trader.photoUrl}
@@ -282,7 +282,7 @@
 											{trader.name.split(' ').map((n) => n[0]).join('')}
 										</div>
 									{/if}
-									<div class="absolute inset-0 bg-gradient-to-t from-midnight-950/60 to-transparent"></div>
+									<div class="absolute inset-0 bg-linear-to-t from-midnight-950/60 to-transparent"></div>
 								</div>
 
 								<!-- Content -->
@@ -316,7 +316,7 @@
 								</div>
 
 								<!-- Arrow -->
-								<Icon name="arrow-right" class="h-4 w-4 sm:h-5 sm:w-5 text-midnight-600 transition-all duration-300 group-hover:text-gold-500 group-hover:translate-x-1 flex-shrink-0" />
+								<Icon name="arrow-right" class="h-4 w-4 sm:h-5 sm:w-5 text-midnight-600 transition-all duration-300 group-hover:text-gold-500 group-hover:translate-x-1 shrink-0" />
 							</a>
 						{/each}
 					</div>
@@ -331,7 +331,7 @@
 	{#if filteredTraders.length > 0}
 		<ScrollReveal as="section" class="relative z-20 pb-24 px-6 lg:px-8">
 			<div class="mx-auto max-w-4xl">
-				<div class="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-midnight-900/80 to-midnight-900/40 p-8 sm:p-12 backdrop-blur-xl">
+				<div class="relative overflow-hidden rounded-3xl border border-white/10 bg-linear-to-br from-midnight-900/80 to-midnight-900/40 p-8 sm:p-12 backdrop-blur-xl">
 					<!-- Glow -->
 					<div class="absolute top-0 right-0 h-64 w-64 rounded-full bg-gold-500/10 blur-3xl"></div>
 

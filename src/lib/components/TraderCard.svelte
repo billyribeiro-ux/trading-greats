@@ -72,7 +72,7 @@
 		// MOBILE-FIRST: Consistent fixed height across all breakpoints
 		'h-[280px] sm:h-[320px] md:h-[380px]',
 		'bg-midnight-900/80',
-		'border border-white/[0.08]',
+		'border border-white/8',
 		'transition-all duration-300',
 		'active:scale-[0.98]',
 		// Desktop hover effects
@@ -81,7 +81,7 @@
 	)}
 >
 	<!-- Image Container - Responsive height -->
-	<div class="relative h-[140px] sm:h-[160px] md:h-[200px] flex-shrink-0 overflow-hidden bg-midnight-800">
+	<div class="relative h-[140px] sm:h-[160px] md:h-[200px] shrink-0 overflow-hidden bg-midnight-800">
 		{#if trader.photoUrl && !imageError}
 			<img
 				src={trader.photoUrl}
@@ -103,7 +103,7 @@
 		<div 
 			class={cn(
 				'absolute inset-0 flex items-center justify-center',
-				'bg-gradient-to-br from-midnight-800 to-midnight-900',
+				'bg-linear-to-br from-midnight-800 to-midnight-900',
 				(imageLoaded && !imageError) ? 'opacity-0' : 'opacity-100',
 				'transition-opacity duration-300'
 			)}
@@ -115,7 +115,7 @@
 		</div>
 		
 		<!-- Gradient overlay -->
-		<div class="absolute inset-0 bg-gradient-to-t from-midnight-900 via-midnight-900/40 to-transparent" aria-hidden="true"></div>
+		<div class="absolute inset-0 bg-linear-to-t from-midnight-900 via-midnight-900/40 to-transparent" aria-hidden="true"></div>
 		
 		<!-- Trading style badge -->
 		{#if trader.tradingStyle}
@@ -125,7 +125,7 @@
 					'bg-black/60 backdrop-blur-sm',
 					'text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-white'
 				)}>
-					<span class={cn("h-1.5 w-1.5 rounded-full bg-gradient-to-r", styleConfig.gradient)}></span>
+					<span class={cn("h-1.5 w-1.5 rounded-full bg-linear-to-r", styleConfig.gradient)}></span>
 					{trader.tradingStyle}
 				</span>
 			</div>

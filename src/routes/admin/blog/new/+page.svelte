@@ -1,18 +1,18 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import {
-		Save,
-		Eye,
-		ArrowLeft,
-		Image,
-		Type,
-		FileText,
-		Tag,
-		Users,
-		Settings,
-		Sparkles,
-		CircleAlert
-	} from 'lucide-svelte';
+		IconDeviceFloppy,
+		IconEye,
+		IconArrowLeft,
+		IconPhoto,
+		IconTypography,
+		IconFileText,
+		IconTag,
+		IconUsers,
+		IconSettings,
+		IconSparkles,
+		IconAlertCircle
+	} from '@tabler/icons-svelte';
 	import { slugify } from '$lib/utils';
 	import type { PageData } from './$types';
 
@@ -64,10 +64,10 @@
 	const readingTime = $derived(Math.max(1, Math.ceil(wordCount / 200)));
 
 	const tabs = [
-		{ id: 'content', label: 'Content', icon: FileText },
-		{ id: 'media', label: 'Media', icon: Image },
-		{ id: 'seo', label: 'SEO', icon: Sparkles },
-		{ id: 'settings', label: 'Settings', icon: Settings }
+		{ id: 'content', label: 'Content', icon: IconFileText },
+		{ id: 'media', label: 'Media', icon: IconPhoto },
+		{ id: 'seo', label: 'SEO', icon: IconSparkles },
+		{ id: 'settings', label: 'Settings', icon: IconSettings }
 	] as const;
 </script>
 
@@ -84,7 +84,7 @@
 					href="/admin/blog"
 					class="inline-flex items-center gap-2 text-midnight-400 hover:text-midnight-200 transition-colors"
 				>
-					<ArrowLeft class="h-4 w-4" />
+					<IconArrowLeft class="h-4 w-4" />
 					Back to Blog
 				</a>
 			</div>
@@ -94,7 +94,7 @@
 					onclick={() => (showPreview = !showPreview)}
 					class="inline-flex items-center gap-2 rounded-lg bg-midnight-800 px-4 py-2 text-sm font-medium text-midnight-300 hover:bg-midnight-700 hover:text-white transition-colors"
 				>
-					<Eye class="h-4 w-4" />
+					<IconEye class="h-4 w-4" />
 					Preview
 				</button>
 			</div>
@@ -115,7 +115,7 @@
 		<!-- Error Message -->
 		{#if form?.error}
 			<div class="mb-6 rounded-xl border border-red-500/30 bg-red-500/10 p-4 flex items-center gap-3">
-				<CircleAlert class="h-5 w-5 text-red-400 flex-shrink-0" />
+				<IconAlertCircle class="h-5 w-5 text-red-400 shrink-0" />
 				<p class="text-red-400">{form.error}</p>
 			</div>
 		{/if}
@@ -433,10 +433,10 @@ const hello = 'world';
 						<button
 							type="submit"
 							disabled={isSubmitting || !title.trim()}
-							class="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 px-4 py-3 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30 disabled:opacity-50 disabled:cursor-not-allowed"
+							class="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-gold-500 to-gold-600 px-4 py-3 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30 disabled:opacity-50 disabled:cursor-not-allowed"
 						>
-							<Save class="h-5 w-5" />
-							{isSubmitting ? 'Saving...' : status === 'published' ? 'Publish Post' : 'Save Draft'}
+							<IconDeviceFloppy class="h-5 w-5" />
+							{isSubmitting ? 'Saving...' : status === 'published' ? 'Publish Post' : 'IconDeviceFloppy Draft'}
 						</button>
 					</div>
 
@@ -445,23 +445,23 @@ const hello = 'world';
 						<h3 class="font-semibold text-midnight-100 mb-4">Writing Tips</h3>
 						<ul class="space-y-3 text-sm text-midnight-400">
 							<li class="flex items-start gap-2">
-								<Type class="h-4 w-4 text-gold-500 mt-0.5 flex-shrink-0" />
+								<IconTypography class="h-4 w-4 text-gold-500 mt-0.5 shrink-0" />
 								<span>Use clear, compelling headlines</span>
 							</li>
 							<li class="flex items-start gap-2">
-								<FileText class="h-4 w-4 text-gold-500 mt-0.5 flex-shrink-0" />
+								<IconFileText class="h-4 w-4 text-gold-500 mt-0.5 shrink-0" />
 								<span>Break content into scannable sections</span>
 							</li>
 							<li class="flex items-start gap-2">
-								<Image class="h-4 w-4 text-gold-500 mt-0.5 flex-shrink-0" />
+								<IconPhoto class="h-4 w-4 text-gold-500 mt-0.5 shrink-0" />
 								<span>Add images to increase engagement</span>
 							</li>
 							<li class="flex items-start gap-2">
-								<Tag class="h-4 w-4 text-gold-500 mt-0.5 flex-shrink-0" />
+								<IconTag class="h-4 w-4 text-gold-500 mt-0.5 shrink-0" />
 								<span>Use relevant tags for discoverability</span>
 							</li>
 							<li class="flex items-start gap-2">
-								<Users class="h-4 w-4 text-gold-500 mt-0.5 flex-shrink-0" />
+								<IconUsers class="h-4 w-4 text-gold-500 mt-0.5 shrink-0" />
 								<span>Link to related trader profiles</span>
 							</li>
 						</ul>

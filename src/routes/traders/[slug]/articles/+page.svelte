@@ -78,7 +78,7 @@
 	<section class="relative overflow-hidden">
 		<!-- Background -->
 		<div class="absolute inset-0 h-[35vh] sm:h-[40vh] min-h-[280px]">
-			<div class="absolute inset-0 bg-gradient-to-br from-midnight-900 via-midnight-950 to-midnight-900"></div>
+			<div class="absolute inset-0 bg-linear-to-br from-midnight-900 via-midnight-950 to-midnight-900"></div>
 			<div class="absolute top-0 left-1/4 h-48 w-48 sm:h-72 sm:w-72 rounded-full bg-gold-500/5 blur-3xl"></div>
 			<div class="absolute bottom-0 right-1/4 h-48 w-48 sm:h-72 sm:w-72 rounded-full bg-gold-500/5 blur-3xl"></div>
 		</div>
@@ -185,7 +185,7 @@
 							All Articles
 						</h2>
 						<div class="grid gap-4 sm:gap-5 lg:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-							{#each remainingArticles as article, i}
+							{#each remainingArticles as article, i (article.slug)}
 								<ScrollReveal delay={i * 50}>
 									<TraderArticleCard {article} trader={trader} />
 								</ScrollReveal>

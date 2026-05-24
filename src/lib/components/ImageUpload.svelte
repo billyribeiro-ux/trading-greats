@@ -1,17 +1,17 @@
 <script lang="ts">
-	import { Upload, X, Loader2, Image as ImageIcon } from 'lucide-svelte';
+	import { IconUpload, IconX, IconLoader2, IconPhoto } from '@tabler/icons-svelte';
 	import { cn } from '$lib/utils';
 
 	interface Props {
 		value?: string;
 		name?: string;
-		onUpload?: (url: string) => void;
+		onImageUpload?: (url: string) => void;
 		onRemove?: () => void;
 		folder?: string;
 		class?: string;
 	}
 
-	let { value = '', name = 'photoUrl', onUpload, onRemove, folder = 'traders', class: className }: Props = $props();
+	let { value = '', name = 'photoUrl', onImageUpload, onRemove, folder = 'traders', class: className }: Props = $props();
 
 	let uploading = $state(false);
 	let dragOver = $state(false);
@@ -28,8 +28,8 @@
 		if (!file) return;
 
 		// Validate file type
-		const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
-		if (!allowedTypes.includes(file.type)) {
+		const allowedIconTypographys = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+		if (!allowedIconTypographys.includes(file.type)) {
 			error = 'Invalid file type. Only JPEG, PNG, WebP, and GIF are allowed.';
 			return;
 		}
@@ -61,7 +61,7 @@
 
 			const data = await response.json();
 			currentUrl = data.url;
-			onUpload?.(data.url);
+			onImageUpload?.(data.url);
 		} catch (err) {
 			console.error('Upload error:', err);
 			error = err instanceof Error ? err.message : 'Failed to upload image';
@@ -131,7 +131,7 @@
 					disabled={uploading}
 					class="flex items-center gap-2 rounded-lg bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm hover:bg-white/20 transition-colors"
 				>
-					<Upload class="h-4 w-4" />
+					<IconUpload class="h-4 w-4" />
 					Replace
 				</button>
 				<button
@@ -140,7 +140,7 @@
 					disabled={uploading}
 					class="flex items-center gap-2 rounded-lg bg-red-500/20 px-4 py-2 text-sm font-medium text-red-400 backdrop-blur-sm hover:bg-red-500/30 transition-colors"
 				>
-					<X class="h-4 w-4" />
+					<IconX class="h-4 w-4" />
 					Remove
 				</button>
 			</div>
@@ -164,11 +164,11 @@
 			)}
 		>
 			{#if uploading}
-				<Loader2 class="h-8 w-8 text-gold-500 animate-spin" />
+				<IconLoader2 class="h-8 w-8 text-gold-500 animate-spin" />
 				<span class="text-sm text-midnight-400">Uploading...</span>
 			{:else}
 				<div class="flex h-12 w-12 items-center justify-center rounded-full bg-midnight-700/50">
-					<ImageIcon class="h-6 w-6 text-midnight-400" />
+					<IconPhoto class="h-6 w-6 text-midnight-400" />
 				</div>
 				<div class="text-center">
 					<span class="text-sm font-medium text-midnight-200">Click to upload</span>

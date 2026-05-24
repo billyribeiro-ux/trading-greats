@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Plus, Edit, Trash2, Eye, Search } from 'lucide-svelte';
+	import { IconPlus, IconEdit, IconTrash, IconEye, IconSearch } from '@tabler/icons-svelte';
 
 	let { data } = $props();
 	let searchQuery = $state('');
@@ -38,20 +38,20 @@
 			</div>
 			<a
 				href="/admin/traders/new"
-				class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 px-4 py-2 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30"
+				class="inline-flex items-center gap-2 rounded-xl bg-linear-to-r from-gold-500 to-gold-600 px-4 py-2 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30"
 			>
-				<Plus class="h-5 w-5" />
+				<IconPlus class="h-5 w-5" />
 				Add Trader
 			</a>
 		</div>
 
-		<!-- Search -->
+		<!-- IconSearch -->
 		<div class="mt-8">
 			<div class="relative max-w-md">
-				<Search class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-midnight-500" />
+				<IconSearch class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-midnight-500" />
 				<input
 					type="text"
-					placeholder="Search traders..."
+					placeholder="IconSearch traders..."
 					bind:value={searchQuery}
 					class="w-full rounded-xl border border-midnight-700 bg-midnight-800/50 py-3 pl-12 pr-4 text-midnight-100 placeholder-midnight-500 outline-none transition-all focus:border-gold-500/50 focus:ring-2 focus:ring-gold-500/20"
 				/>
@@ -101,21 +101,21 @@
 										class="rounded-lg p-2 text-midnight-400 hover:bg-midnight-800 hover:text-midnight-200"
 										title="View"
 									>
-										<Eye class="h-4 w-4" />
+										<IconEye class="h-4 w-4" />
 									</a>
 									<a
 										href="/admin/traders/{trader.id}"
 										class="rounded-lg p-2 text-midnight-400 hover:bg-midnight-800 hover:text-gold-400"
 										title="Edit"
 									>
-										<Edit class="h-4 w-4" />
+										<IconEdit class="h-4 w-4" />
 									</a>
 									<button
 										type="button"
 										class="rounded-lg p-2 text-midnight-400 hover:bg-red-500/10 hover:text-red-400"
 										title="Delete"
 									>
-										<Trash2 class="h-4 w-4" />
+										<IconTrash class="h-4 w-4" />
 									</button>
 								</div>
 							</td>

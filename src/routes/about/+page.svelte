@@ -39,9 +39,9 @@
 	<!-- Hero Section - MOBILE-FIRST -->
 	<section class="relative pt-20 sm:pt-24 lg:pt-32 pb-16 sm:pb-20 lg:pb-24 overflow-hidden">
 		<!-- Background - Decorative gradient pattern (no external images) -->
-		<div class="absolute inset-0 bg-gradient-to-br from-midnight-900/50 via-midnight-950 to-midnight-900/50"></div>
+		<div class="absolute inset-0 bg-linear-to-br from-midnight-900/50 via-midnight-950 to-midnight-900/50"></div>
 		<div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 25% 25%, rgba(212, 175, 55, 0.1) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);"></div>
-		<div class="absolute inset-0 bg-gradient-to-b from-midnight-950/80 via-midnight-950/90 to-midnight-950"></div>
+		<div class="absolute inset-0 bg-linear-to-b from-midnight-950/80 via-midnight-950/90 to-midnight-950"></div>
 
 		<!-- Ambient glow - MOBILE-FIRST: Smaller on mobile -->
 		<div class="absolute top-1/3 left-1/4 w-[250px] h-[250px] sm:w-[350px] sm:h-[350px] lg:w-[500px] lg:h-[500px] bg-gold-500/10 rounded-full blur-[100px] sm:blur-[120px] lg:blur-[150px] pointer-events-none"></div>
@@ -128,7 +128,7 @@
 			</ScrollReveal>
 
 			<div class="grid gap-3 sm:gap-4 lg:gap-6 grid-cols-2 lg:grid-cols-4">
-				{#each coverageItems as item, i}
+				{#each coverageItems as item, i (item.title)}
 					{@const colors = colorClasses[item.color]}
 					<ScrollReveal delay={i * 80}>
 						<div class={cn(
@@ -165,7 +165,7 @@
 						href="/traders"
 						class={cn(
 							'group inline-flex items-center justify-center gap-2 rounded-full px-6 sm:px-7 lg:px-8 py-3 sm:py-3.5 lg:py-4 text-sm font-bold w-full sm:w-auto',
-							'bg-gradient-to-r from-gold-500 to-gold-600 text-midnight-950',
+							'bg-linear-to-r from-gold-500 to-gold-600 text-midnight-950',
 							'shadow-xl shadow-gold-500/20',
 							'transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]',
 							'md:hover:scale-[1.03] hover:shadow-2xl hover:shadow-gold-500/30',
@@ -174,8 +174,8 @@
 						)}
 					>
 						<!-- Shimmer -->
-						<div class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full"></div>
-						<span class="relative">Explore the Library</span>
+						<div class="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full"></div>
+						<span class="relative">Explore the IconLibrary</span>
 						<Icon name="arrow-right" class="relative h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
 					</a>
 				</div>
