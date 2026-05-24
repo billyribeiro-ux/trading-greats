@@ -117,7 +117,7 @@
 />
 
 <JsonLd type="Person" {trader} />
-<JsonLd type="BreadcrumbList" {breadcrumbs} />
+<JsonLd type="ProfilePage" {trader} />
 <JsonLd type="Article" {trader} />
 <JsonLd type="FAQPage" {faqItems} />
 

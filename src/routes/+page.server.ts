@@ -1,5 +1,7 @@
 import type { PageServerLoad } from './$types';
-import { seedTraders } from '$lib/server/seed';
+import { db } from '$lib/server/db';
+import { traders as tradersTable } from '$lib/server/schema';
+import { eq } from 'drizzle-orm';
 
 // ============================================================================
 // RENDERING CONFIGURATION
@@ -30,28 +32,33 @@ interface QuoteWithTrader {
 // DATA LOADING
 // ============================================================================
 export const load: PageServerLoad = async () => {
-    // Custom order for "Most Studied This Month" - Billy Ribeiro first, Mark Minervini second
-    // Exclude John Carter from featured list
     const featuredOrder = ['billy-ribeiro', 'mark-minervini', 'george-soros', 'warren-buffett', 'paul-tudor-jones', 'ray-dalio', 'jesse-livermore', 'peter-lynch'];
     const excludeSlugs = ['john-carter'];
-    
-    // Filter out excluded traders and sort by featured order
-    const orderedTraders = seedTraders
+
+    const allTraders = await db
+        .select({
+            name: tradersTable.name,
+            slug: tradersTable.slug,
+            tradingStyle: tradersTable.tradingStyle,
+            oneLiner: tradersTable.oneLiner,
+            netWorth: tradersTable.netWorth,
+            photoUrl: tradersTable.photoUrl,
+            quotes: tradersTable.quotes
+        })
+        .from(tradersTable)
+        .where(eq(tradersTable.status, 'published'));
+
+    const orderedTraders = allTraders
         .filter(t => !excludeSlugs.includes(t.slug))
         .sort((a, b) => {
             const aIndex = featuredOrder.indexOf(a.slug);
             const bIndex = featuredOrder.indexOf(b.slug);
-            // If both are in featured order, sort by that order
             if (aIndex !== -1 && bIndex !== -1) return aIndex - bIndex;
-            // If only a is in featured order, a comes first
             if (aIndex !== -1) return -1;
-            // If only b is in featured order, b comes first
             if (bIndex !== -1) return 1;
-            // Otherwise keep original order
             return 0;
         });
-    
-    // Get featured traders from seed data (first 8)
+
     const traders: TraderProfile[] = orderedTraders
         .slice(0, 8)
         .map(t => ({
@@ -63,8 +70,7 @@ export const load: PageServerLoad = async () => {
             photoUrl: t.photoUrl || null
         }));
 
-    // Extract all quotes from all traders for Quote of the Day
-    const allQuotes: QuoteWithTrader[] = seedTraders
+    const allQuotes: QuoteWithTrader[] = allTraders
         .flatMap(trader =>
             (trader.quotes || []).map(quote => ({
                 text: quote.text,

@@ -4,6 +4,8 @@ import { blogPosts, BLOG_CATEGORIES, type BlogPost } from '$lib/server/schema';
 import { eq, and, ne, desc } from 'drizzle-orm';
 import { error } from '@sveltejs/kit';
 
+export const prerender = 'auto';
+
 export const load: PageServerLoad = async ({ params }) => {
 	const { slug } = params;
 

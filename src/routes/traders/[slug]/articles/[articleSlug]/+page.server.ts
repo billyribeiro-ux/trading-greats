@@ -1,11 +1,12 @@
 import type { PageServerLoad } from './$types';
 import { error } from '@sveltejs/kit';
 import { db } from '$lib/server/db';
-import { blogPosts, type Trader, type BlogPost } from '$lib/server/schema';
+import { blogPosts, type Trader, type BlogPost, type NewTrader } from '$lib/server/schema';
 import { eq, and, ne, desc } from 'drizzle-orm';
 import { seedTraders } from '$lib/server/seed';
 import { seedBlogPosts } from '$lib/server/seedBlog';
-import type { NewTrader } from '$lib/server/schema';
+
+export const prerender = 'auto';
 
 // ============================================================================
 // Dec 2025 SvelteKit: ISR Configuration for Vercel

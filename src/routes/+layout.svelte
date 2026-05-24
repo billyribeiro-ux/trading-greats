@@ -96,6 +96,7 @@
 
 {#if !isAdmin}
 	<JsonLd type="WebSite" />
+	<JsonLd type="Organization" />
 	<Navbar />
 {/if}
 

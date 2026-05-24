@@ -1,16 +1,28 @@
 import type { RequestHandler } from './$types';
-import { seedTraders } from '$lib/server/seed';
-import { seedBlogPosts } from '$lib/server/seedBlog';
+import { db } from '$lib/server/db';
+import { traders as tradersTable, blogPosts as blogPostsTable } from '$lib/server/schema';
+import { eq } from 'drizzle-orm';
 
 const PUBLIC_SITE_URL = 'https://tradinggreats.com';
 
-// Google Dec 2025: Enhanced sitemap with image extensions and trader articles
+// May 2026: Live DB sitemap with image extensions and trader articles
 export const GET: RequestHandler = async () => {
-	// For now, using seed data. In production:
-	// const traders = await db.select().from(traders).where(eq(traders.status, 'published'));
-
-	const traders = seedTraders.filter(t => t.status === 'published');
-	const blogPosts = seedBlogPosts.filter(p => p.status === 'published');
+	const [traders, blogPosts] = await Promise.all([
+		db.select({
+			slug: tradersTable.slug,
+			name: tradersTable.name,
+			photoUrl: tradersTable.photoUrl,
+			updatedAt: tradersTable.updatedAt
+		}).from(tradersTable).where(eq(tradersTable.status, 'published')),
+		db.select({
+			slug: blogPostsTable.slug,
+			title: blogPostsTable.title,
+			heroImage: blogPostsTable.heroImage,
+			traderSlug: blogPostsTable.traderSlug,
+			publishedAt: blogPostsTable.publishedAt,
+			updatedAt: blogPostsTable.updatedAt
+		}).from(blogPostsTable).where(eq(blogPostsTable.status, 'published'))
+	]);
 	const now = new Date().toISOString().split('T')[0];
 
 	interface SitemapPage {
@@ -103,5 +115,5 @@ ${allPages
 	});
 };
 
-// Enable prerendering for sitemap
-export const prerender = true;
+// May 2026: Dynamic sitemap from live DB — not prerendered
+export const prerender = false;

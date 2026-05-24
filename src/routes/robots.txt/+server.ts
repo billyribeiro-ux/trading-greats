@@ -30,7 +30,7 @@ Allow: /
 Disallow: /admin
 Crawl-delay: 1
 
-# AI Training Crawlers - Opt out (Google Nov 2025 guidance)
+# AI Training Crawlers - Opt out of training data collection
 User-agent: GPTBot
 Disallow: /
 
@@ -45,6 +45,20 @@ Disallow: /
 
 User-agent: Claude-Web
 Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+# For AI usage guidance, see: ${PUBLIC_SITE_URL}/llms.txt
 
 # Sitemap location
 Sitemap: ${PUBLIC_SITE_URL}/sitemap.xml

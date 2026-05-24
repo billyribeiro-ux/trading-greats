@@ -5,7 +5,10 @@
     import SEO from '$lib/components/SEO.svelte';
     import QuoteOfTheDay from '$lib/components/QuoteOfTheDay.svelte';
     import { Icon, type IconName } from '$lib/components/icons';
+    import { env } from '$env/dynamic/public';
     import type { PageData } from './$types';
+
+    const PUBLIC_SITE_URL = env.PUBLIC_SITE_URL || 'https://tradinggreats.com';
 
     // ============================================================================
     // PROPS (Svelte 5)
@@ -219,24 +222,17 @@
         list: {
             "@context": "https://schema.org",
             "@type": "ItemList",
+            "@id": `${PUBLIC_SITE_URL}/#featured-traders`,
             "name": "Featured Trading Legends",
             "description": "Profiles of the worlds greatest traders and their proven strategies",
             "numberOfItems": data.traders.length,
+            "isPartOf": { "@id": `${PUBLIC_SITE_URL}/#website` },
             "itemListElement": data.traders.map((t, i) => ({
                 "@type": "ListItem",
                 "position": i + 1,
                 "name": t.name,
-                "url": `https://tradinggreats.com/traders/${t.slug}` 
+                "url": `${PUBLIC_SITE_URL}/traders/${t.slug}`
             }))
-        },
-        org: {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Trading Greats",
-            "url": "https://tradinggreats.com",
-            "logo": "https://tradinggreats.com/favicon.svg",
-            "description": data.meta.description,
-            "knowsAbout": ["Trading", "Investing", "Financial Markets", "Value Investing"]
         }
     });
 </script>
@@ -251,7 +247,6 @@
 <svelte:head>
     {@html `<script type="application/ld+json">${JSON.stringify(schemaOrg.faq)}</script>`}
     {@html `<script type="application/ld+json">${JSON.stringify(schemaOrg.list)}</script>`}
-    {@html `<script type="application/ld+json">${JSON.stringify(schemaOrg.org)}</script>`}
 </svelte:head>
 
 <section

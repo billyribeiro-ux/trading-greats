@@ -92,41 +92,45 @@
 	// ============================================================================
 	// JSON-LD STRUCTURED DATA (Dec 2025 SEO Best Practices)
 	// ============================================================================
+	const SITE_URL = 'https://tradinggreats.com';
 	const schemaOrg = $derived({
 		article: {
 			"@context": "https://schema.org",
 			"@type": "Article",
+			"@id": `${SITE_URL}/blog/${data.post.slug}#article`,
 			"headline": data.post.title,
 			"description": data.post.seoDescription || data.post.excerpt || '',
-			"image": data.post.ogImage || data.post.heroImage || "https://tradinggreats.com/favicon.svg",
+			"image": data.post.ogImage || data.post.heroImage || `${SITE_URL}/favicon.svg`,
 			"datePublished": data.post.publishedAt || new Date().toISOString(),
 			"dateModified": data.post.updatedAt || data.post.publishedAt || new Date().toISOString(),
 			"author": {
-				"@type": "Person",
-				"name": data.post.author || "Trading Greats Team"
+				"@type": "Organization",
+				"@id": `${SITE_URL}/#organization`,
+				"name": "Trading Greats",
+				"url": SITE_URL
 			},
 			"publisher": {
-				"@type": "Organization",
-				"name": "Trading Greats",
-				"logo": {
-					"@type": "ImageObject",
-					"url": "https://tradinggreats.com/favicon.svg"
-				}
+				"@id": `${SITE_URL}/#organization`
 			},
+			"isPartOf": { "@id": `${SITE_URL}/#website` },
 			"mainEntityOfPage": {
 				"@type": "WebPage",
-				"@id": `https://tradinggreats.com/blog/${data.post.slug}`
+				"@id": `${SITE_URL}/blog/${data.post.slug}`
 			},
 			"articleSection": data.post.category ? getCategoryLabel(data.post.category) : "Trading",
-			"keywords": data.post.tags?.join(', ') || "trading, investing, finance"
+			"keywords": data.post.tags?.join(', ') || "trading, investing, finance",
+			"speakable": {
+				"@type": "SpeakableSpecification",
+				"cssSelector": ["h1", ".post-excerpt", ".post-content p:first-of-type"]
+			}
 		},
 		breadcrumb: {
 			"@context": "https://schema.org",
 			"@type": "BreadcrumbList",
 			"itemListElement": [
-				{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tradinggreats.com" },
-				{ "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://tradinggreats.com/blog" },
-				{ "@type": "ListItem", "position": 3, "name": data.post.title, "item": `https://tradinggreats.com/blog/${data.post.slug}` }
+				{ "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
+				{ "@type": "ListItem", "position": 2, "name": "Blog", "item": `${SITE_URL}/blog` },
+				{ "@type": "ListItem", "position": 3, "name": data.post.title, "item": `${SITE_URL}/blog/${data.post.slug}` }
 			]
 		}
 	});
@@ -307,6 +311,23 @@
 						</div>
 					</div>
 				{/if}
+
+			<!-- Author Byline — E-E-A-T visible signal (May 2026 Google requirement) -->
+			<div class="mt-8 sm:mt-10 lg:mt-12 pt-6 sm:pt-8 border-t border-midnight-800/50">
+				<div class="flex items-center gap-3 sm:gap-4">
+					<div class="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-full bg-gold-500/10 ring-1 ring-gold-500/30">
+						<Icon name="trending-up" class="h-5 w-5 sm:h-6 sm:w-6 text-gold-400" />
+					</div>
+					<div>
+						<p class="text-sm sm:text-base font-semibold text-white">
+							Trading Greats Editorial Team
+						</p>
+						<p class="text-xs sm:text-sm text-midnight-400">
+							Published by <a href="/about" class="text-gold-400 hover:text-gold-300 transition-colors">Trading Greats</a> — research-driven profiles of legendary traders and their strategies.
+						</p>
+					</div>
+				</div>
+			</div>
 			</ScrollReveal>
 		</div>
 	</article>
