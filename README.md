@@ -148,12 +148,12 @@ Or edit the seed data directly in `src/lib/server/seed.ts`.
 
 ### Changing Colors
 
-Edit `tailwind.config.ts` to customize the color palette:
+Edit the `@theme` block in `src/app.css` to customize the color palette:
 
-```typescript
-colors: {
-  gold: { ... },
-  midnight: { ... }
+```css
+@theme {
+  --color-gold-500: oklch(...);
+  --color-midnight-900: oklch(...);
 }
 ```
 
@@ -202,7 +202,7 @@ Built with:
 - [Tailwind CSS](https://tailwindcss.com)
 - [Drizzle ORM](https://orm.drizzle.team)
 - [Turso](https://turso.tech)
-- [Lucide Icons](https://lucide.dev)
+- [Tabler Icons](https://tabler.io/icons)
 
 ---
 
