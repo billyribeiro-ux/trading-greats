@@ -14,7 +14,8 @@
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
     "db:generate": "drizzle-kit generate",
-    "db:seed": "tsx scripts/seed.ts"
+    "db:seed": "tsx scripts/seed.ts",
+    "db:update-trader": "tsx scripts/update-trader.ts"
   },
   "devDependencies": {
     "@sveltejs/adapter-vercel": "^6.3.3",

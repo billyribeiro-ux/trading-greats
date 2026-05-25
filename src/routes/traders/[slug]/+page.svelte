@@ -171,15 +171,26 @@
 					<!-- Profile Image Card - MOBILE-FIRST -->
 					<div class="group relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-midnight-900/50 backdrop-blur-xl shadow-2xl">
 						<div class="aspect-3/4 sm:aspect-4/5 w-full overflow-hidden">
-							<img
-								src={trader.photoUrl}
-								alt={trader.name}
-								class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-								style:view-transition-name="trader-image-{trader.slug}"
-								loading="eager"
-								fetchpriority="high"
-								decoding="async"
-							/>
+							{#if trader.photoUrl}
+								<img
+									src={trader.photoUrl}
+									alt={trader.name}
+									class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+									style:view-transition-name="trader-image-{trader.slug}"
+									loading="eager"
+									fetchpriority="high"
+									decoding="async"
+								/>
+							{:else}
+								<div
+									class="h-full w-full flex items-center justify-center bg-linear-to-br from-midnight-800 via-midnight-900 to-midnight-950"
+									style:view-transition-name="trader-image-{trader.slug}"
+								>
+									<span class="font-display text-6xl sm:text-7xl lg:text-8xl font-bold text-gold-500/40 select-none">
+										{trader.name.split(' ').map((n: string) => n[0]).join('')}
+									</span>
+								</div>
+							{/if}
 							<div class="absolute inset-0 bg-linear-to-t from-midnight-950 via-transparent to-transparent opacity-60"></div>
 						</div>
 

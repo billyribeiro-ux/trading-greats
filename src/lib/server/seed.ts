@@ -5,78 +5,179 @@ export const seedTraders: NewTrader[] = [
 		name: 'Mark Minervini',
 		slug: 'mark-minervini',
 		photoUrl: null,
-		oneLiner: 'U.S. Investing Champion with 220% Annual Returns',
+		oneLiner: 'Two-Time U.S. Investing Champion — Creator of the SEPA Methodology',
 		birthYear: 1960,
 		nationality: 'American',
 		tradingStyle: 'Momentum Growth',
 		netWorth: '$50+ Million',
-		bio: `Mark Minervini is a legendary stock trader who turned a few thousand dollars into millions using his proprietary SEPA (Specific Entry Point Analysis) methodology. His journey from a struggling trader to a two-time U.S. Investing Champion is nothing short of remarkable.
+		bio: `Mark Minervini is one of America's most successful stock traders, a two-time U.S. Investing Championship winner, and the creator of the SEPA (Specific Entry Point Analysis) methodology — a systematic framework for identifying superperformer stocks before they make their biggest moves. His story is one of the most remarkable self-made success stories in trading history: a high school dropout from Long Island who taught himself to trade and went on to compound money at rates that rivals the best hedge funds in the world.
 
-## Early Life & Struggles
+## Early Life & The Road to the Market
 
-Mark didn't start as a natural. In fact, he lost money for years before cracking the code. He spent countless hours studying the greatest traders in history, including Jesse Livermore, Nicolas Darvas, and William O'Neil. This obsessive study of market history would become the foundation of his trading approach.
+Minervini grew up in a modest household in Huntington, New York. He left high school before graduating and spent his teenage years pursuing music, playing drums in a band. Without a college degree or any financial background, he was drawn to the stock market in his early twenties — fascinated by the idea that discipline and skill could generate extraordinary wealth independent of formal education.
 
-## The SEPA Methodology
+His early years in the market were painful. He lost money consistently, making all the classic mistakes: buying on tips, averaging down on losers, ignoring stop losses, and trading without a real system. Rather than quit, he became obsessive. He studied every great trader he could find — Jesse Livermore, Nicolas Darvas, Gerald Loeb, William O'Neil — and immersed himself in market history. He spent thousands of hours charting stocks by hand, looking for repeating patterns in how the biggest winners behaved before their largest advances.
 
-Minervini developed SEPA (Specific Entry Point Analysis), a systematic approach to identifying superperformer stocks before they make their biggest moves. The system focuses on:
+## The Birth of SEPA
 
-- **Trend Template**: Only buying stocks in confirmed uptrends
-- **Volatility Contraction Pattern (VCP)**: Identifying tight consolidations before breakouts
-- **Relative Strength**: Seeking stocks outperforming the market
-- **Fundamental Catalysts**: Earnings acceleration and revenue growth
+After years of research and refinement, Minervini developed SEPA — Specific Entry Point Analysis. The methodology is rooted in a simple but powerful observation: the greatest stock market winners share a common set of technical and fundamental characteristics *before* they make their biggest moves. By identifying these setups early, a trader can enter at low-risk entry points with predefined stops and ride the move as far as it goes.
 
-## Championship Performance
+SEPA rests on five interconnected pillars:
 
-Mark won the U.S. Investing Championship in 1997 with a stunning 155% return. He returned to competition in 2021 and won again, proving his methods remain effective across different market cycles. His compound annual growth rate over his career exceeds 30%.
+- **Trend Template**: A stock must be in a confirmed Stage 2 uptrend — above its 150-day and 200-day moving averages, with the 150-day above the 200-day, and the 200-day trending upward for at least one month.
+- **Volatility Contraction Pattern (VCP)**: As a stock consolidates, the price contractions and volume should narrow — indicating that supply is being absorbed and the stock is coiling for a breakout. Each contraction should be smaller than the last.
+- **Relative Strength**: The stock must be among the top performers in the market. Minervini only buys stocks that are outperforming the general market, measured by relative strength vs. the S&P 500.
+- **Fundamental Catalyst**: Strong earnings acceleration, revenue growth, expanding margins, and an upcoming catalyst. He looks for companies reporting dramatically improving results that justify institutional accumulation.
+- **Pivot Point Entry**: The actual entry is taken at a precise pivot point — typically a breakout from the tightest part of the VCP — with a tight stop just below the last contraction low.
+
+The result is a methodology that keeps position sizes manageable, losses small, and profits potentially unlimited — the exact asymmetry every professional trader seeks.
+
+## The U.S. Investing Championship: 1997
+
+In 1997, Minervini entered the prestigious U.S. Investing Championship — a real-money, audited competition tracking the returns of professional and semi-professional traders over a calendar year. Competing against seasoned Wall Street professionals, he posted a **155.69% return** in a single year — one of the highest returns in the competition's history at that time. The win established him as one of the premier growth stock traders in the country.
+
+## Twenty-Four Years of Refinement
+
+Rather than simply trade and accumulate wealth quietly, Minervini spent the two decades after his 1997 win continuing to refine his system, teach elite traders through his private Minervini Private Access program, and document his methodology in books that became required reading for serious growth stock traders worldwide.
+
+His annual returns throughout this period consistently exceeded 30% compounded — a rate that would turn $100,000 into over $1.7 million in 15 years and that far surpasses most institutional money managers.
+
+## The 2021 Return: Championship Win Number Two
+
+In 2021, at the age of 61, Minervini re-entered the U.S. Investing Championship for the first time since 1997. The trading environment that year was among the most volatile in recent memory — a post-pandemic melt-up followed by sudden reversals across growth stocks. Despite the difficulty, Minervini posted a **334.8% return** — more than double his 1997 championship performance — winning the competition again and silencing any suggestion that his methodology was a product of a specific market era.
+
+The back-to-back championships, separated by 24 years, placed him in a category no other trader occupies: the only two-time winner in the competition's history, and proof that his system adapts across dramatically different market conditions.
+
+## Risk Management: The Overlooked Edge
+
+Minervini emphasizes that most traders focus entirely on entries and ignore the discipline that actually separates professionals from amateurs: **cutting losses ruthlessly**. His rule is simple — if a position moves against him by 7–10% from his entry, he exits immediately without exception. This hard stop is non-negotiable.
+
+The logic is mathematical. If a trader can keep losses under 10% and let winners run to 25%, 50%, or 100%, the math works powerfully in their favor even with a win rate below 50%. Most traders do the opposite — they cut winners early and let losers run, waiting for them to "come back." This behavioral tendency destroys accounts over time.
 
 ## Teaching & Legacy
 
-Today, Mark is dedicated to teaching his methodology through his books, workshops, and Master Trader Program. He has helped thousands of traders understand that consistent profits come from having a defined strategy and the discipline to execute it.`,
-		philosophy: `"The goal of a successful trader is to make the best trades. Money is secondary." Mark believes in cutting losses quickly (typically at 7-8% below purchase price), letting winners run, and only trading stocks that meet all his criteria. He emphasizes that most traders fail because they lack a specific, repeatable methodology.`,
+Beyond his personal trading, Minervini has dedicated enormous energy to teaching. His books — *Trade Like a Stock Market Wizard*, *Think & Trade Like a Champion*, and *Mindset Secrets for Winning* — are widely regarded as among the best trading books ever written, studied by fund managers, professional traders, and serious retail traders worldwide.
+
+His Master Trader Program has produced numerous traders who went on to win the U.S. Investing Championship themselves, including David Ryan and other SEPA practitioners. Minervini has effectively built a school of thought — a methodology rigorous enough to be replicated, systematic enough to be taught, and flexible enough to work across market cycles.
+
+He remains one of the most influential figures in growth stock trading, and his work continues to shape how serious traders approach momentum investing.`,
+
+		philosophy: `Mark Minervini's philosophy rests on a simple truth that few traders internalize: making money in the market is not about being right — it's about being disciplined. He believes the edge of any great trader is not a secret indicator or privileged information, but a specific, repeatable methodology applied with unbreakable consistency.
+
+His core principles: buy only stocks that meet every criterion of his Trend Template and VCP setup — no exceptions, no "close enough." Cut every loss at 7–10% with zero hesitation. Let every winner run until the chart tells you to exit. Size positions according to your risk tolerance, never your conviction. And above all — never, ever average down on a loser.
+
+"The goal of a successful trader is to make the best trades. Money is secondary." This statement captures his entire philosophy. When a trader focuses on process — entering only the highest-quality setups, managing risk correctly, staying disciplined — the money follows. When a trader focuses on the money — trying to make back losses, pressing marginal setups, ignoring rules — the losses compound.
+
+Minervini also emphasizes the psychological dimension of trading. Most traders lose not because their system is wrong, but because they cannot execute it consistently under pressure. The discipline to honor a stop loss when a stock you believe in drops 8%, to sit on your hands when there are no setups, and to hold a winner for weeks when every instinct tells you to lock in profit — these are the real skills that separate elite traders from the rest.`,
+
 		achievements: [
-			'Two-time U.S. Investing Champion (1997, 2021)',
-			'155% return in 1997 championship',
-			'334.8% return in 2021 championship',
-			'Author of multiple bestselling trading books',
-			'Founder of Minervini Private Access',
-			'Over 30 years of consistent profitability'
+			'Two-time U.S. Investing Championship winner (1997 & 2021)',
+			'155.69% return in the 1997 championship',
+			'334.8% return in the 2021 championship — highest in modern competition history',
+			'30%+ compounded annual returns sustained over 30+ years',
+			'Author of three bestselling trading books translated worldwide',
+			'Founder of Minervini Private Access — mentor to championship-winning traders',
+			'Only trader to win the U.S. Investing Championship twice',
+			'Featured in Jack Schwager\'s Stock Market Wizards'
 		],
+
 		famousTrades: [
 			{
 				date: '1997',
-				asset: 'Multiple Growth Stocks',
+				asset: 'U.S. Investing Championship Portfolio',
 				position: 'long',
-				outcome: 'Championship Win',
-				profitLoss: '+155%',
-				description: 'Used SEPA methodology to identify and ride multiple momentum stocks to victory in the U.S. Investing Championship.'
+				outcome: 'Championship Victory',
+				profitLoss: '+155.69%',
+				description: 'Traded a diversified portfolio of SEPA-qualified momentum stocks across the full year, cutting losses rapidly and riding multi-week breakouts. Won the U.S. Investing Championship with one of the highest single-year returns in the competition\'s history at that point.'
+			},
+			{
+				date: '1998',
+				asset: 'Dell Computer (DELL)',
+				position: 'long',
+				outcome: 'Major Win',
+				profitLoss: '+300%+',
+				description: 'Identified Dell in a perfect Stage 2 uptrend with multiple VCP setups as the PC boom accelerated. Rode the position through multiple base breakouts, compounding gains as the stock became one of the defining growth stories of the late 1990s.'
+			},
+			{
+				date: 'Late 1990s',
+				asset: 'AOL (America Online)',
+				position: 'long',
+				outcome: 'Major Win',
+				profitLoss: 'Multi-bagger',
+				description: 'Caught AOL early in its explosive growth phase using the SEPA methodology — identifying the Trend Template and VCP setup before the stock became a household name. A textbook example of the kind of superperformer his system is designed to find.'
 			},
 			{
 				date: '2021',
-				asset: 'Growth & Momentum Plays',
+				asset: 'U.S. Investing Championship Portfolio',
 				position: 'long',
-				outcome: 'Championship Win',
+				outcome: 'Championship Victory',
 				profitLoss: '+334.8%',
-				description: 'Returned to competition after 24 years and dominated with his refined SEPA system, proving its timeless effectiveness.'
+				description: 'Returned to the U.S. Investing Championship after 24 years and posted more than double his 1997 return — navigating a volatile post-pandemic market with precision. The win confirmed that SEPA works across dramatically different market environments and silenced any claims it was era-dependent.'
 			}
 		],
+
 		quotes: [
-			{ text: 'The goal of a successful trader is to make the best trades. Money is secondary.', source: 'Trade Like a Stock Market Wizard' },
-			{ text: 'Losses are a cost of doing business. Take them quickly and move on.', source: 'Interview' },
-			{ text: 'I look for stocks that are acting right, in the right industry groups, at the right time.', source: 'Master Trader Program' },
-			{ text: 'Your job as a trader is not to predict. Your job is to react.', source: 'Minervini Private Access' }
+			{
+				text: 'The goal of a successful trader is to make the best trades. Money is secondary.',
+				source: 'Trade Like a Stock Market Wizard'
+			},
+			{
+				text: 'Losses are a cost of doing business. Take them quickly and move on — never let a small loss become a large one.',
+				source: 'Think & Trade Like a Champion'
+			},
+			{
+				text: 'I look for stocks that are acting right, in the right industry groups, at the right time. If a stock doesn\'t qualify on all fronts, I don\'t trade it.',
+				source: 'Master Trader Program'
+			},
+			{
+				text: 'Your job as a trader is not to predict. Your job is to react to what the market is telling you.',
+				source: 'Minervini Private Access'
+			},
+			{
+				text: 'Most traders lose money because they cut their winners and let their losers run. I do the exact opposite — and that makes all the difference.',
+				source: 'Trade Like a Stock Market Wizard'
+			},
+			{
+				text: 'A superperformer doesn\'t show up without first passing through a proper consolidation. Patience at the base is where the edge is made.',
+				source: 'Master Trader Program'
+			},
+			{
+				text: 'You don\'t need to be in the market every day. You need to be in the right stocks at the right time — and in cash the rest.',
+				source: 'Think & Trade Like a Champion'
+			},
+			{
+				text: 'Risk management isn\'t the boring part of trading. It\'s the only part that keeps you in the game long enough to win.',
+				source: 'Mindset Secrets for Winning'
+			}
 		],
+
 		books: [
-			{ title: 'Trade Like a Stock Market Wizard', year: 2013, description: 'The definitive guide to the SEPA methodology' },
-			{ title: 'Think & Trade Like a Champion', year: 2017, description: 'Advanced strategies and mindset for serious traders' },
-			{ title: 'Mindset Secrets for Winning', year: 2019, description: 'The psychological edge needed to succeed' }
+			{
+				title: 'Trade Like a Stock Market Wizard',
+				year: 2013,
+				description: 'The definitive guide to the SEPA methodology — covering the Trend Template, Volatility Contraction Pattern, and pivot point entries. Widely regarded as one of the best technical trading books ever written.'
+			},
+			{
+				title: 'Think & Trade Like a Champion',
+				year: 2017,
+				description: 'Advanced trading strategies, position sizing, and the mental frameworks that separate elite traders from the crowd. Dives deeper into the execution and psychology behind SEPA.'
+			},
+			{
+				title: 'Mindset Secrets for Winning',
+				year: 2019,
+				description: 'Minervini\'s framework for building the psychological edge required to trade consistently — addressing fear, discipline, consistency, and the habits of professional traders.'
+			}
 		],
+
 		socialLinks: [
 			{ platform: 'Website', url: 'https://www.minervini.com' },
 			{ platform: 'Twitter', url: 'https://twitter.com/markminervini' },
 			{ platform: 'Instagram', url: 'https://www.instagram.com/_mark_minervini/' },
-			{ platform: 'Amazon', url: 'https://www.amazon.com/s?k=mark+minervini+books' },
+			{ platform: 'YouTube', url: 'https://www.youtube.com/@MarkMinervini' },
+			{ platform: 'Amazon', url: 'https://www.amazon.com/s?k=mark+minervini' },
 			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Mark_Minervini' }
 		],
+
 		status: 'published'
 	},
 	{
