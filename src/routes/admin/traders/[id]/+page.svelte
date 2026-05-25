@@ -38,7 +38,7 @@
 	// TRADER MEDIA GALLERY STATE
 	// ============================================================================
 	let galleryItems = $state<Media[]>([]);
-	let showGalleryIconUpload = $state(false);
+	let showGalleryUpload = $state(false);
 	let editingGalleryItem = $state<Media | null>(null);
 	let editGalleryTitle = $state('');
 	let editGalleryAltText = $state('');
@@ -126,9 +126,9 @@
 		]);
 	}
 
-	function handleGalleryIconUpload(media: Media) {
+	function handleGalleryUpload(media: Media) {
 		galleryItems = [...galleryItems, media];
-		showGalleryIconUpload = false;
+		showGalleryUpload = false;
 	}
 
 	// Initialize state from trader data
@@ -247,10 +247,10 @@
 		{/if}
 
 		<form method="POST" use:enhance class="mt-6 sm:mt-8 space-y-6 sm:space-y-8">
-			<!-- Photo IconUpload -->
+			<!-- Photo Upload -->
 			<section class="rounded-xl border border-midnight-800/50 bg-midnight-900/50 p-4 sm:p-6">
 				<h2 class="font-display text-lg sm:text-xl font-semibold text-midnight-100">Trader Photo</h2>
-				<p class="mt-1 text-xs sm:text-sm text-midnight-500">IconUpload a high-quality photo with SEO metadata</p>
+				<p class="mt-1 text-xs sm:text-sm text-midnight-500">Upload a high-quality photo with SEO metadata</p>
 
 				<div class="mt-4">
 					<MediaUpload
@@ -278,7 +278,7 @@
 					</div>
 					<button
 						type="button"
-						onclick={() => showGalleryIconUpload = !showGalleryIconUpload}
+						onclick={() => showGalleryUpload = !showGalleryUpload}
 						class="flex items-center gap-1.5 text-sm text-gold-400 hover:text-gold-300 min-h-[44px] px-2"
 					>
 						<IconPlus class="h-4 w-4" />
@@ -286,17 +286,17 @@
 					</button>
 				</div>
 
-				{#if showGalleryIconUpload}
+				{#if showGalleryUpload}
 					<div class="mt-4 rounded-lg border border-midnight-700 bg-midnight-800/30 p-4">
 						<MediaUpload
 							folder="traders"
 							traderId={trader.id}
 							showLibrary={false}
-							onSelect={handleGalleryIconUpload}
+							onSelect={handleGalleryUpload}
 						/>
 						<button
 							type="button"
-							onclick={() => showGalleryIconUpload = false}
+							onclick={() => showGalleryUpload = false}
 							class="mt-3 w-full rounded-lg border border-midnight-700 bg-midnight-800/50 px-4 py-2 text-sm text-midnight-400 hover:bg-midnight-800 hover:text-midnight-200 transition-colors min-h-[44px]"
 						>
 							Cancel
@@ -407,7 +407,7 @@
 							{galleryItems.filter(g => !g.altText).length} missing alt text
 						</span>
 					</div>
-				{:else if !showGalleryIconUpload}
+				{:else if !showGalleryUpload}
 					<div class="mt-4 rounded-lg border border-dashed border-midnight-700 bg-midnight-800/20 p-8 text-center">
 						<IconPhoto class="h-10 w-10 text-midnight-600 mx-auto mb-3" />
 						<p class="text-sm text-midnight-400 mb-1">No gallery images yet</p>
@@ -416,9 +416,9 @@
 				{/if}
 			</section>
 
-			<!-- Basic IconInfoCircle -->
+			<!-- Basic Info -->
 			<section class="rounded-xl border border-midnight-800/50 bg-midnight-900/50 p-4 sm:p-6">
-				<h2 class="font-display text-lg sm:text-xl font-semibold text-midnight-100">Basic IconInfoCirclermation</h2>
+				<h2 class="font-display text-lg sm:text-xl font-semibold text-midnight-100">Basic Information</h2>
 
 				<div class="mt-4 sm:mt-6 grid gap-4 sm:gap-6 sm:grid-cols-2">
 					<div class="sm:col-span-2">
@@ -874,7 +874,7 @@
 						class="inline-flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-gold-500 to-gold-600 px-6 py-3 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30 active:scale-[0.98] min-h-[44px]"
 					>
 						<IconDeviceFloppy class="h-5 w-5" />
-						IconDeviceFloppy Changes
+						Save Changes
 					</button>
 				</div>
 			</section>
@@ -952,7 +952,7 @@
 					{#if galleryLoading}
 						<IconLoader2 class="h-4 w-4 animate-spin mx-auto" />
 					{:else}
-						IconDeviceFloppy Changes
+						Save Changes
 					{/if}
 				</button>
 			</div>

@@ -26,7 +26,7 @@
 	const filteredPosts = $derived.by(() => {
 		let filtered = data.posts;
 
-		// IconSearch filter
+		// Search filter
 		if (searchQuery) {
 			const query = searchQuery.toLowerCase();
 			filtered = filtered.filter(
@@ -104,9 +104,9 @@
 			</a>
 		</div>
 
-		<!-- IconFilters -->
+		<!-- Filters -->
 		<div class="flex flex-col sm:flex-row gap-4 mb-6">
-			<!-- IconSearch -->
+			<!-- Search -->
 			<div class="relative flex-1">
 				<IconSearch class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-midnight-500" />
 				<input
@@ -117,7 +117,7 @@
 				/>
 			</div>
 
-			<!-- Status IconFilter -->
+			<!-- Status Filter -->
 			<select
 				bind:value={filterStatus}
 				class="rounded-xl border border-midnight-700 bg-midnight-800/50 px-4 py-3 text-midnight-100 outline-none transition-all focus:border-gold-500/50 focus:ring-2 focus:ring-gold-500/20"
@@ -127,7 +127,7 @@
 				<option value="draft">Drafts</option>
 			</select>
 
-			<!-- Category IconFilter -->
+			<!-- Category Filter -->
 			<select
 				bind:value={filterCategory}
 				class="rounded-xl border border-midnight-700 bg-midnight-800/50 px-4 py-3 text-midnight-100 outline-none transition-all focus:border-gold-500/50 focus:ring-2 focus:ring-gold-500/20"

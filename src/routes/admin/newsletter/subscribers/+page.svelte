@@ -24,7 +24,7 @@
 	let searchQuery = $state('');
 	let deleteConfirmId = $state<string | null>(null);
 
-	const statusIconFilters = [
+	const statusFilters = [
 		{ value: '', label: 'All', icon: IconUsers },
 		{ value: 'verified', label: 'Verified', icon: IconCircleCheck },
 		{ value: 'pending', label: 'Pending', icon: IconClock },
@@ -71,7 +71,7 @@
 		goto(url.toString());
 	}
 
-	// IconFilter subscribers by search query (client-side)
+	// Filter subscribers by search query (client-side)
 	let filteredSubscribers = $derived(
 		searchQuery
 			? data.subscribers.filter(s =>
@@ -100,11 +100,11 @@
 		</div>
 	</div>
 
-	<!-- IconFilters & IconSearch -->
+	<!-- Filters & Search -->
 	<div class="flex flex-col sm:flex-row gap-4">
-		<!-- Status IconFilters -->
+		<!-- Status Filters -->
 		<div class="flex flex-wrap gap-2">
-			{#each statusIconFilters as filter (filter.value)}
+			{#each statusFilters as filter (filter.value)}
 				<button
 					onclick={() => filterByStatus(filter.value)}
 					class="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors {
@@ -119,7 +119,7 @@
 			{/each}
 		</div>
 
-		<!-- IconSearch -->
+		<!-- Search -->
 		<div class="relative flex-1 max-w-sm">
 			<IconSearch class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-midnight-500" />
 			<input

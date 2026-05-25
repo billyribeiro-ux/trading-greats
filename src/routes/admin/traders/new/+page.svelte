@@ -94,10 +94,10 @@
 		{/if}
 
 		<form method="POST" use:enhance class="mt-6 sm:mt-8 space-y-6 sm:space-y-8">
-			<!-- Photo IconUpload -->
+			<!-- Photo Upload -->
 			<section class="rounded-xl border border-midnight-800/50 bg-midnight-900/50 p-4 sm:p-6">
 				<h2 class="font-display text-lg sm:text-xl font-semibold text-midnight-100">Trader Photo</h2>
-				<p class="mt-1 text-xs sm:text-sm text-midnight-500">IconUpload a high-quality photo with SEO metadata</p>
+				<p class="mt-1 text-xs sm:text-sm text-midnight-500">Upload a high-quality photo with SEO metadata</p>
 
 				<div class="mt-4">
 					<MediaUpload
@@ -110,9 +110,9 @@
 				</div>
 			</section>
 
-			<!-- Basic IconInfoCircle -->
+			<!-- Basic Info -->
 			<section class="rounded-xl border border-midnight-800/50 bg-midnight-900/50 p-4 sm:p-6">
-				<h2 class="font-display text-lg sm:text-xl font-semibold text-midnight-100">Basic IconInfoCirclermation</h2>
+				<h2 class="font-display text-lg sm:text-xl font-semibold text-midnight-100">Basic Information</h2>
 
 				<div class="mt-4 sm:mt-6 grid gap-4 sm:gap-6 sm:grid-cols-2">
 					<div class="sm:col-span-2">
@@ -579,7 +579,7 @@
 						class="inline-flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-gold-500 to-gold-600 px-6 py-3 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30 active:scale-[0.98] min-h-[44px]"
 					>
 						<IconDeviceFloppy class="h-5 w-5" />
-						IconDeviceFloppy Trader
+						Save Trader
 					</button>
 				</div>
 			</section>

@@ -127,7 +127,7 @@
 				</div>
 			</ScrollReveal>
 
-			<div class="grid gap-3 sm:gap-4 lg:gap-6 grid-cols-2 lg:grid-cols-4">
+			<div class="grid gap-3 sm:gap-4 lg:gap-6 grid-cols-2 lg:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6">
 				{#each coverageItems as item, i (item.title)}
 					{@const colors = colorClasses[item.color]}
 					<ScrollReveal delay={i * 80}>
@@ -175,7 +175,7 @@
 					>
 						<!-- Shimmer -->
 						<div class="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full"></div>
-						<span class="relative">Explore the IconLibrary</span>
+						<span class="relative">Explore the Library</span>
 						<Icon name="arrow-right" class="relative h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
 					</a>
 				</div>

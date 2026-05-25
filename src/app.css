@@ -35,6 +35,18 @@
 	--font-display: 'Playfair Display', Georgia, serif;
 	--font-sans: 'DM Sans', system-ui, sans-serif;
 	--font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+	/* Extra-large monitor breakpoints (Tailwind v4 fluid scale).
+	   Defaults: sm 640 / md 768 / lg 1024 / xl 1280 / 2xl 1536.
+	   Adds 3xl/4xl for 4K/5K monitors where the 1280-1536px content cap
+	   leaves big empty side margins. */
+	--breakpoint-3xl: 1920px;
+	--breakpoint-4xl: 2560px;
+
+	/* Fluid container widths used by .container-fluid below */
+	--container-2xl: 1440px;
+	--container-3xl: 1680px;
+	--container-4xl: 2000px;
 }
 
 /* ============================================================================
@@ -56,103 +68,103 @@
 :root:not(.dark) body,
 :root:not(.dark) main,
 :root:not(.dark) #main-content {
-	background-color: #f8fafc !important;
-	color: #0f172a !important;
+	background-color: #f8fafc;
+	color: #0f172a;
 }
 
 /* ============================================================================
    LIGHT MODE - Background Colors
    ============================================================================ */
 :root:not(.dark) .bg-midnight-950 {
-	background-color: #ffffff !important;
+	background-color: #ffffff;
 }
 
 :root:not(.dark) .bg-midnight-900 {
-	background-color: #f8fafc !important;
+	background-color: #f8fafc;
 }
 
 :root:not(.dark) .bg-midnight-900\/95 {
-	background-color: rgba(248, 250, 252, 0.98) !important;
+	background-color: rgba(248, 250, 252, 0.98);
 }
 
 :root:not(.dark) .bg-midnight-900\/80,
 :root:not(.dark) .bg-midnight-900\/50,
 :root:not(.dark) .bg-midnight-900\/30 {
-	background-color: rgba(255, 255, 255, 0.95) !important;
+	background-color: rgba(255, 255, 255, 0.95);
 }
 
 :root:not(.dark) .bg-midnight-800 {
-	background-color: #f1f5f9 !important;
+	background-color: #f1f5f9;
 }
 
 :root:not(.dark) .bg-midnight-800\/50 {
-	background-color: rgba(241, 245, 249, 0.8) !important;
+	background-color: rgba(241, 245, 249, 0.8);
 }
 
 :root:not(.dark) .bg-midnight-700 {
-	background-color: #e2e8f0 !important;
+	background-color: #e2e8f0;
 }
 
 :root:not(.dark) [class*='bg-[#020617]'],
 :root:not(.dark) [class*='bg-[#0f172a]'] {
-	background-color: #ffffff !important;
+	background-color: #ffffff;
 }
 
 /* ============================================================================
    LIGHT MODE - Text Colors
    ============================================================================ */
 :root:not(.dark) .text-white {
-	color: #0f172a !important;
+	color: #0f172a;
 }
 
 :root:not(.dark) .text-midnight-50 {
-	color: #0f172a !important;
+	color: #0f172a;
 }
 
 :root:not(.dark) .text-midnight-100,
 :root:not(.dark) .text-midnight-200 {
-	color: #1e293b !important;
+	color: #1e293b;
 }
 
 :root:not(.dark) .text-midnight-300 {
-	color: #334155 !important;
+	color: #334155;
 }
 
 :root:not(.dark) .text-midnight-400 {
-	color: #475569 !important;
+	color: #475569;
 }
 
 :root:not(.dark) .text-midnight-500 {
-	color: #64748b !important;
+	color: #64748b;
 }
 
 :root:not(.dark) .text-midnight-600 {
-	color: #94a3b8 !important;
+	color: #94a3b8;
 }
 
 /* Gold colors - darken for light mode visibility */
 :root:not(.dark) .text-gold-400 {
-	color: #b45309 !important;
+	color: #b45309;
 }
 
 :root:not(.dark) .text-gold-500 {
-	color: #a16207 !important;
+	color: #a16207;
 }
 
 :root:not(.dark) .text-\[#FACC15\],
 :root:not(.dark) .text-\[#EAB308\] {
-	color: #a16207 !important;
+	color: #a16207;
 }
 
 /* Violet colors for compare page */
 :root:not(.dark) .text-violet-400 {
-	color: #7c3aed !important;
+	color: #7c3aed;
 }
 
 /* Slate colors */
 :root:not(.dark) .text-slate-400,
 :root:not(.dark) .text-slate-500 {
-	color: #64748b !important;
+	color: #64748b;
 }
 
 /* ============================================================================
@@ -161,82 +173,82 @@
 :root:not(.dark) .border-white\/5,
 :root:not(.dark) .border-white\/10,
 :root:not(.dark) .border-white\/\[0\.08\] {
-	border-color: rgba(15, 23, 42, 0.1) !important;
+	border-color: rgba(15, 23, 42, 0.1);
 }
 
 :root:not(.dark) .border-midnight-800,
 :root:not(.dark) .border-midnight-800\/50 {
-	border-color: rgba(15, 23, 42, 0.1) !important;
+	border-color: rgba(15, 23, 42, 0.1);
 }
 
 :root:not(.dark) .ring-white\/10 {
-	--tw-ring-color: rgba(15, 23, 42, 0.1) !important;
+	--tw-ring-color: rgba(15, 23, 42, 0.1);
 }
 
 :root:not(.dark) .ring-gold-500\/20,
 :root:not(.dark) .ring-gold-500\/30,
 :root:not(.dark) .ring-gold-500\/40 {
-	--tw-ring-color: rgba(180, 83, 9, 0.3) !important;
+	--tw-ring-color: rgba(180, 83, 9, 0.3);
 }
 
 :root:not(.dark) .border-gold-500\/20,
 :root:not(.dark) .border-gold-500\/30 {
-	border-color: rgba(180, 83, 9, 0.25) !important;
+	border-color: rgba(180, 83, 9, 0.25);
 }
 
 :root:not(.dark) .border-violet-500\/30,
 :root:not(.dark) .border-violet-500\/40 {
-	border-color: rgba(124, 58, 237, 0.3) !important;
+	border-color: rgba(124, 58, 237, 0.3);
 }
 
 :root:not(.dark) .border-red-500\/20 {
-	border-color: rgba(239, 68, 68, 0.25) !important;
+	border-color: rgba(239, 68, 68, 0.25);
 }
 
 /* ============================================================================
    LIGHT MODE - Navbar
    ============================================================================ */
 :root:not(.dark) .bg-midnight-950\/85 {
-	background-color: rgba(255, 255, 255, 0.95) !important;
-	border-color: rgba(15, 23, 42, 0.1) !important;
+	background-color: rgba(255, 255, 255, 0.95);
+	border-color: rgba(15, 23, 42, 0.1);
 }
 
 :root:not(.dark) header {
-	background-color: rgba(255, 255, 255, 0.9) !important;
+	background-color: rgba(255, 255, 255, 0.9);
 }
 
 /* ============================================================================
    LIGHT MODE - Cards and Containers
    ============================================================================ */
 :root:not(.dark) .bg-midnight-950\/50 {
-	background-color: rgba(248, 250, 252, 0.95) !important;
+	background-color: rgba(248, 250, 252, 0.95);
 }
 
 :root:not(.dark) .bg-gold-500\/10 {
-	background-color: rgba(180, 83, 9, 0.1) !important;
+	background-color: rgba(180, 83, 9, 0.1);
 }
 
 :root:not(.dark) .bg-violet-500\/10,
 :root:not(.dark) .bg-violet-900\/50 {
-	background-color: rgba(124, 58, 237, 0.1) !important;
+	background-color: rgba(124, 58, 237, 0.1);
 }
 
 :root:not(.dark) .bg-red-500\/10,
 :root:not(.dark) .bg-red-500\/20 {
-	background-color: rgba(239, 68, 68, 0.1) !important;
+	background-color: rgba(239, 68, 68, 0.1);
 }
 
 :root:not(.dark) .bg-green-500\/10 {
-	background-color: rgba(34, 197, 94, 0.1) !important;
+	background-color: rgba(34, 197, 94, 0.1);
 }
 
 :root:not(.dark) .bg-blue-500\/10 {
-	background-color: rgba(59, 130, 246, 0.1) !important;
+	background-color: rgba(59, 130, 246, 0.1);
 }
 
 :root:not(.dark) .bg-white\/5,
 :root:not(.dark) .bg-white\/10 {
-	background-color: rgba(15, 23, 42, 0.05) !important;
+	background-color: rgba(15, 23, 42, 0.05);
 }
 
 /* ============================================================================
@@ -245,103 +257,103 @@
 :root:not(.dark) .backdrop-blur-xl,
 :root:not(.dark) .backdrop-blur-2xl,
 :root:not(.dark) .backdrop-blur-3xl {
-	background-color: rgba(255, 255, 255, 0.85) !important;
+	background-color: rgba(255, 255, 255, 0.85);
 }
 
 :root:not(.dark) .bg-midnight-950\/80 {
-	background-color: rgba(255, 255, 255, 0.9) !important;
+	background-color: rgba(255, 255, 255, 0.9);
 }
 
 /* ============================================================================
    LIGHT MODE - Gradients
    ============================================================================ */
 :root:not(.dark) .from-midnight-950 {
-	--tw-gradient-from: #f8fafc !important;
+	--tw-gradient-from: #f8fafc;
 }
 
 :root:not(.dark) .from-midnight-900 {
-	--tw-gradient-from: #ffffff !important;
+	--tw-gradient-from: #ffffff;
 }
 
 :root:not(.dark) .to-midnight-950 {
-	--tw-gradient-to: #f8fafc !important;
+	--tw-gradient-to: #f8fafc;
 }
 
 :root:not(.dark) .to-midnight-800 {
-	--tw-gradient-to: #f1f5f9 !important;
+	--tw-gradient-to: #f1f5f9;
 }
 
 :root:not(.dark) .via-midnight-950\/80,
 :root:not(.dark) .via-midnight-950\/60,
 :root:not(.dark) .via-midnight-950\/40,
 :root:not(.dark) .via-transparent {
-	--tw-gradient-via: rgba(248, 250, 252, 0.6) !important;
+	--tw-gradient-via: rgba(248, 250, 252, 0.6);
 }
 
 :root:not(.dark) .from-midnight-700,
 :root:not(.dark) .from-midnight-800 {
-	--tw-gradient-from: #e2e8f0 !important;
+	--tw-gradient-from: #e2e8f0;
 }
 
 :root:not(.dark) .from-gold-500 {
-	--tw-gradient-from: #b45309 !important;
+	--tw-gradient-from: #b45309;
 }
 
 :root:not(.dark) .to-gold-600 {
-	--tw-gradient-to: #a16207 !important;
+	--tw-gradient-to: #a16207;
 }
 
 /* Gradient backgrounds */
 :root:not(.dark) .bg-gradient-to-b.from-midnight-900,
 :root:not(.dark) .bg-gradient-to-t.from-midnight-950 {
-	background: linear-gradient(to bottom, #ffffff, #f8fafc) !important;
+	background: linear-gradient(to bottom, #ffffff, #f8fafc);
 }
 
 :root:not(.dark) .bg-gradient-to-br.from-midnight-700 {
-	background: linear-gradient(to bottom right, #e2e8f0, #f1f5f9) !important;
+	background: linear-gradient(to bottom right, #e2e8f0, #f1f5f9);
 }
 
 /* ============================================================================
    LIGHT MODE - Quote of the Day Section
    ============================================================================ */
 :root:not(.dark) section[class*='bg-[#020617]'] {
-	background-color: #f8fafc !important;
+	background-color: #f8fafc;
 }
 
 :root:not(.dark) .from-\[#EAB308\]\/20,
 :root:not(.dark) .to-\[#CA8A04\]\/10 {
-	--tw-gradient-from: rgba(180, 83, 9, 0.15) !important;
-	--tw-gradient-to: rgba(161, 98, 7, 0.1) !important;
+	--tw-gradient-from: rgba(180, 83, 9, 0.15);
+	--tw-gradient-to: rgba(161, 98, 7, 0.1);
 }
 
 :root:not(.dark) .ring-\[#EAB308\]\/30 {
-	--tw-ring-color: rgba(180, 83, 9, 0.3) !important;
+	--tw-ring-color: rgba(180, 83, 9, 0.3);
 }
 
 /* ============================================================================
    LIGHT MODE - Search Modal
    ============================================================================ */
 :root:not(.dark) .bg-midnight-900\/95 {
-	background-color: rgba(255, 255, 255, 0.98) !important;
+	background-color: rgba(255, 255, 255, 0.98);
 }
 
 :root:not(.dark) .placeholder-midnight-500::placeholder {
-	color: #94a3b8 !important;
+	color: #94a3b8;
 }
 
 /* ============================================================================
    LIGHT MODE - Footer
    ============================================================================ */
 :root:not(.dark) footer {
-	background-color: #f1f5f9 !important;
+	background-color: #f1f5f9;
 }
 
 :root:not(.dark) footer .text-white {
-	color: #0f172a !important;
+	color: #0f172a;
 }
 
 :root:not(.dark) footer .text-midnight-400 {
-	color: #64748b !important;
+	color: #64748b;
 }
 
 /* ============================================================================
@@ -349,32 +361,32 @@
    ============================================================================ */
 :root:not(.dark) .hover\:bg-white\/5:hover,
 :root:not(.dark) .hover\:bg-white\/10:hover {
-	background-color: rgba(15, 23, 42, 0.05) !important;
+	background-color: rgba(15, 23, 42, 0.05);
 }
 
 :root:not(.dark) .hover\:text-white:hover {
-	color: #0f172a !important;
+	color: #0f172a;
 }
 
 :root:not(.dark) .hover\:text-gold-400:hover {
-	color: #b45309 !important;
+	color: #b45309;
 }
 
 :root:not(.dark) .hover\:text-violet-400:hover {
-	color: #7c3aed !important;
+	color: #7c3aed;
 }
 
 :root:not(.dark) .group:hover .group-hover\:text-gold-400,
 :root:not(.dark) .group:hover .group-hover\:text-violet-400 {
-	color: #7c3aed !important;
+	color: #7c3aed;
 }
 
 :root:not(.dark) .group:hover .group-hover\:text-violet-300 {
-	color: #8b5cf6 !important;
+	color: #8b5cf6;
 }
 
 :root:not(.dark) .group:hover .group-hover\:from-violet-900\/50 {
-	--tw-gradient-from: rgba(124, 58, 237, 0.15) !important;
+	--tw-gradient-from: rgba(124, 58, 237, 0.15);
 }
 
 /* ============================================================================
@@ -403,27 +415,27 @@
 	box-shadow:
 		0 0 0 2px #ffffff,
 		0 0 0 4px #b45309,
-		0 0 15px rgba(180, 83, 9, 0.2) !important;
+		0 0 15px rgba(180, 83, 9, 0.2);
 }
 
 /* ============================================================================
    LIGHT MODE - Shadows
    ============================================================================ */
 :root:not(.dark) .shadow-2xl {
-	box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.15) !important;
+	box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.15);
 }
 
 :root:not(.dark) .shadow-xl {
-	box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.1) !important;
+	box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.1);
 }
 
 :root:not(.dark) .shadow-lg {
-	box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.08) !important;
+	box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.08);
 }
 
 :root:not(.dark) .shadow-gold-500\/20,
 :root:not(.dark) .shadow-gold-500\/25 {
-	--tw-shadow-color: rgba(180, 83, 9, 0.15) !important;
+	--tw-shadow-color: rgba(180, 83, 9, 0.15);
 }
 
 /* ============================================================================
@@ -431,24 +443,24 @@
    ============================================================================ */
 :root:not(.dark) .bg-gold-500\/5,
 :root:not(.dark) .bg-blue-500\/5 {
-	background-color: transparent !important;
+	background-color: transparent;
 }
 
 :root:not(.dark) [class*="blur-\[80px\]"],
 :root:not(.dark) [class*="blur-\[100px\]"],
 :root:not(.dark) .blur-3xl {
-	opacity: 0.3 !important;
+	opacity: 0.3;
 }
 
 /* ============================================================================
    LIGHT MODE - Radial Gradients
    ============================================================================ */
 :root:not(.dark) .bg-\[radial-gradient\(circle\,rgba\(234\,179\,8\,0\.08\)_0\%\,transparent_60\%\)\] {
-	background: radial-gradient(circle, rgba(180, 83, 9, 0.06) 0%, transparent 60%) !important;
+	background: radial-gradient(circle, rgba(180, 83, 9, 0.06) 0%, transparent 60%);
 }
 
 :root:not(.dark) .bg-gradient-radial {
-	opacity: 0.5 !important;
+	opacity: 0.5;
 }
 
 /* ============================================================================
@@ -560,7 +572,11 @@ body {
 	-webkit-tap-highlight-color: transparent;
 }
 
-/* MOBILE-FIRST: Touch-friendly interactive elements */
+/* MOBILE-FIRST: Touch responsiveness on all interactive elements.
+   Note: min-height is NOT applied globally because it visually bloats inline
+   links (e.g. text-in-paragraph anchors, footer link lists). Add the
+   `.touch-target` class explicitly to elements that should hit 44px, or use
+   utility classes like `min-h-[44px]` per WCAG 2.5.5 for standalone buttons. */
 a,
 button,
 input,
@@ -568,10 +584,23 @@ select,
 textarea,
 [role="button"],
 [tabindex]:not([tabindex="-1"]) {
-	/* Ensure minimum touch target size */
-	min-height: var(--touch-target-min);
-	/* Improve touch responsiveness */
 	touch-action: manipulation;
+}
+
+/* Standalone touch targets (buttons, icon buttons, segmented controls).
+   WCAG 2.5.5 (AAA) minimum: 44x44 CSS pixels. */
+.touch-target {
+	min-height: var(--touch-target-min);
+	min-width: var(--touch-target-min);
+}
+
+@media (pointer: coarse) {
+	/* On touch devices only, give all standalone buttons (not <a>) the
+	   minimum target. Inline <a> in prose is excluded — they're not buttons. */
+	button:not(.btn-inline),
+	[role="button"]:not(.btn-inline) {
+		min-height: var(--touch-target-min);
+	}
 }
 
 /* MOBILE-FIRST: Better button defaults */
@@ -592,7 +621,7 @@ button {
 	input[type="url"],
 	textarea,
 	select {
-		font-size: 16px !important;
+		font-size: 16px;
 	}
 }
 
@@ -627,7 +656,7 @@ button {
 	padding: var(--safe-area-inset-top) var(--safe-area-inset-right) var(--safe-area-inset-bottom) var(--safe-area-inset-left);
 }
 
-/* MOBILE-FIRST: Container with responsive padding */
+/* MOBILE-FIRST: Container with responsive padding (caps at 80rem = 1280px) */
 .container-mobile {
 	width: 100%;
 	max-width: 80rem;
@@ -635,6 +664,38 @@ button {
 	margin-right: auto;
 	padding-left: var(--container-padding);
 	padding-right: var(--container-padding);
+}
+
+/* Fluid container that scales up on extra-large monitors.
+   Use in place of `mx-auto max-w-7xl` on grids and content sections that
+   should fill more of a 4K/5K monitor. */
+.container-fluid {
+	width: 100%;
+	max-width: 80rem; /* 1280px — matches Tailwind max-w-7xl */
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: var(--container-padding);
+	padding-right: var(--container-padding);
+}
+
+@media (min-width: 1536px) {
+	.container-fluid { max-width: var(--container-2xl); }
+}
+
+@media (min-width: 1920px) {
+	.container-fluid {
+		max-width: var(--container-3xl);
+		padding-left: 3rem;
+		padding-right: 3rem;
+	}
+}
+
+@media (min-width: 2560px) {
+	.container-fluid {
+		max-width: var(--container-4xl);
+		padding-left: 4rem;
+		padding-right: 4rem;
+	}
 }
 
 /* MOBILE-FIRST: Touch feedback for interactive elements */
@@ -650,13 +711,13 @@ button {
 /* MOBILE-FIRST: Hide elements on touch vs non-touch */
 @media (hover: none) and (pointer: coarse) {
 	.hide-touch {
-		display: none !important;
+		display: none;
 	}
 }
 
 @media (hover: hover) and (pointer: fine) {
 	.hide-desktop {
-		display: none !important;
+		display: none;
 	}
 }
 
@@ -669,10 +730,10 @@ button {
 	*,
 	*::before,
 	*::after {
-		animation-duration: 0.01ms !important;
-		animation-iteration-count: 1 !important;
-		transition-duration: 0.01ms !important;
-		scroll-behavior: auto !important;
+		animation-duration: 0.01ms;
+		animation-iteration-count: 1;
+		transition-duration: 0.01ms;
+		scroll-behavior: auto;
 	}
 
 	/* Ensure hero animations are visible with reduced motion */
@@ -680,13 +741,12 @@ button {
 	.animate-hero-slide,
 	.animate-fade-in,
 	.animate-pulse-slow,
-	.animate-pulse-slower,
-	.cinematic-reveal {
-		animation: none !important;
-		opacity: 1 !important;
-		transform: none !important;
-		filter: none !important;
-		transition: none !important;
+	.animate-pulse-slower {
+		animation: none;
+		opacity: 1;
+		transform: none;
+		filter: none;
+		transition: none;
 	}
 }
 
@@ -1093,45 +1153,7 @@ button {
 	animation: pulseSlower 6s ease-in-out infinite;
 }
 
-/* Cinematic reveal for scroll animations */
-.cinematic-reveal {
-	opacity: 0;
-	transform: translateY(60px) scale(0.95);
-	filter: blur(10px);
-	transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-	transition-delay: calc(var(--delay, 0) * 1s + 0.2s);
-	will-change: transform, opacity, filter;
-}
-
-.cinematic-reveal.visible {
-	opacity: 1;
-	transform: translateY(0) scale(1);
-	filter: blur(0);
-}
-
-/* ============================================================================
-   SCROLL REVEAL ANIMATIONS
-   ============================================================================ */
-
-.reveal {
-	opacity: 0;
-	transform: translateY(32px);
-	transition: 
-		opacity var(--duration-cinematic) var(--ease-cinematic),
-		transform var(--duration-cinematic) var(--ease-cinematic);
-}
-
-.reveal.revealed {
-	opacity: 1;
-	transform: translateY(0);
-}
-
-/* Stagger delays */
-.reveal-delay-1 { transition-delay: 100ms; }
-.reveal-delay-2 { transition-delay: 200ms; }
-.reveal-delay-3 { transition-delay: 300ms; }
-.reveal-delay-4 { transition-delay: 400ms; }
-.reveal-delay-5 { transition-delay: 500ms; }
+/* Scroll reveals are owned by <ScrollReveal>/<Stagger> components — no global classes needed. */
 
 /* ============================================================================
    GLOW EFFECTS
@@ -1326,8 +1348,8 @@ details summary::-webkit-details-marker {
 @media print {
 	/* Disable animations and transitions */
 	* {
-		animation: none !important;
-		transition: none !important;
+		animation: none;
+		transition: none;
 	}
 
 	/* Hide non-essential elements */
@@ -1339,7 +1361,7 @@ details summary::-webkit-details-marker {
 	[data-no-print],
 	.fixed,
 	.sticky {
-		display: none !important;
+		display: none;
 	}
 
 	/* Reset backgrounds for printing */
@@ -1348,23 +1370,23 @@ details summary::-webkit-details-marker {
 	.bg-midnight-900,
 	.bg-midnight-800,
 	[class*="bg-gradient"] {
-		background: white !important;
-		color: black !important;
+		background: white;
+		color: black;
 	}
 
 	/* Optimize text colors for printing */
 	h1, h2, h3, h4, h5, h6 {
-		color: black !important;
+		color: black;
 		page-break-after: avoid;
 	}
 
 	p, li, span, div {
-		color: #333 !important;
+		color: #333;
 	}
 
 	a {
-		color: #1a0dab !important;
-		text-decoration: underline !important;
+		color: #1a0dab;
+		text-decoration: underline;
 	}
 
 	/* Add URL after links for reference */
@@ -1376,7 +1398,7 @@ details summary::-webkit-details-marker {
 
 	/* Ensure images print properly */
 	img {
-		max-width: 100% !important;
+		max-width: 100%;
 		page-break-inside: avoid;
 	}
 
@@ -1391,13 +1413,13 @@ details summary::-webkit-details-marker {
 
 	/* Trader profile specific */
 	.trader-profile-image {
-		max-height: 300px !important;
-		object-fit: contain !important;
+		max-height: 300px;
+		object-fit: contain;
 	}
 
 	/* Optimize grid layouts for single column */
 	.grid {
-		display: block !important;
+		display: block;
 	}
 
 	.grid > * {
@@ -1406,11 +1428,11 @@ details summary::-webkit-details-marker {
 
 	/* Quote styling for print */
 	blockquote {
-		border-left: 3px solid #ccc !important;
-		padding-left: 1rem !important;
-		background: none !important;
+		border-left: 3px solid #ccc;
+		padding-left: 1rem;
+		background: none;
 		font-style: italic;
-		color: #444 !important;
+		color: #444;
 	}
 
 	/* Add print header */

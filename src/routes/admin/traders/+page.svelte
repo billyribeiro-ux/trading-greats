@@ -45,7 +45,7 @@
 			</a>
 		</div>
 
-		<!-- IconSearch -->
+		<!-- Search -->
 		<div class="mt-8">
 			<div class="relative max-w-md">
 				<IconSearch class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-midnight-500" />

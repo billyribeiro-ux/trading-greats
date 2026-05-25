@@ -91,7 +91,7 @@
 			<div class="absolute top-[-20%] right-[-10%] h-[400px] w-[400px] rounded-full bg-gradient-radial from-violet-500/10 via-violet-500/5 to-transparent blur-3xl"></div>
 		</div>
 
-		<div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+		<div class="relative z-10 mx-auto max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1680px] 4xl:max-w-[2000px] px-4 sm:px-6 lg:px-8">
 			<div class="flex flex-col items-center text-center">
 				<h1 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
 					Compare <span class="text-violet-400">Traders</span>
@@ -119,7 +119,7 @@
 		</div>
 	</section>
 
-	<div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
+	<div class="relative z-10 mx-auto max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1680px] 4xl:max-w-[2000px] px-4 sm:px-6 lg:px-8 pb-16">
 		{#if selectedTraders.length === 0}
 			<!-- Empty State -->
 			<div class="text-center py-8">
@@ -267,7 +267,7 @@
 					Add Traders to Compare
 				</h3>
 
-				<!-- IconSearch -->
+				<!-- Search -->
 				<div class="relative mb-3">
 					<Icon name="search" class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-midnight-500" />
 					<input

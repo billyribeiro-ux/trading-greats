@@ -129,7 +129,7 @@
 		<div class="absolute top-[20%] left-[-10%] h-[200px] w-[200px] sm:h-[300px] sm:w-[300px] lg:h-[400px] lg:w-[400px] rounded-full bg-blue-500/5 blur-[80px] sm:blur-[100px]"></div>
 	</div>
 
-	<div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 lg:pt-16">
+	<div class="relative z-10 mx-auto max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1680px] 4xl:max-w-[2000px] px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 lg:pt-16">
 		<!-- Hero Header Section -->
 		<header class="mb-12 sm:mb-16 lg:mb-20">
 			<div class="flex flex-col items-center text-center">

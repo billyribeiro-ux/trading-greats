@@ -29,7 +29,7 @@
 		searchQuery = data.filters.search || '';
 		selectedFolder = data.filters.folder || '';
 	});
-	let showIconUploadModal = $state(false);
+	let showUploadModal = $state(false);
 	let editingMedia = $state<Media | null>(null);
 	let deleteConfirm = $state<string | null>(null);
 	let copiedUrl = $state<string | null>(null);
@@ -88,14 +88,14 @@
 	}
 
 	function handleMediaUploaded(media: Media) {
-		showIconUploadModal = false;
+		showUploadModal = false;
 		// Refresh the page to show new media
 		goto('/admin/media', { invalidateAll: true });
 	}
 </script>
 
 <svelte:head>
-	<title>Media IconLibrary | Admin</title>
+	<title>Media Library | Admin</title>
 </svelte:head>
 
 <div class="min-h-screen bg-midnight-950">
@@ -121,22 +121,22 @@
 		<!-- Page Header -->
 		<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
 			<div>
-				<h1 class="font-display text-3xl font-bold text-midnight-50">Media IconLibrary</h1>
+				<h1 class="font-display text-3xl font-bold text-midnight-50">Media Library</h1>
 				<p class="mt-2 text-midnight-400">Manage your images with SEO metadata</p>
 			</div>
 			<button
 				type="button"
-				onclick={() => (showIconUploadModal = true)}
+				onclick={() => (showUploadModal = true)}
 				class="inline-flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-gold-500 to-gold-600 px-5 py-2.5 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30 hover:scale-[1.02] active:scale-[0.98] min-h-[44px]"
 			>
 				<IconUpload class="h-5 w-5" />
-				IconUpload Media
+				Upload Media
 			</button>
 		</div>
 
-		<!-- IconFilters -->
+		<!-- Filters -->
 		<div class="flex flex-col sm:flex-row gap-4 mb-6">
-			<!-- IconSearch -->
+			<!-- Search -->
 			<form onsubmit={(e) => { e.preventDefault(); handleSearch(); }} class="relative flex-1">
 				<IconSearch class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-midnight-500" />
 				<input
@@ -147,7 +147,7 @@
 				/>
 			</form>
 
-			<!-- Folder IconFilter -->
+			<!-- Folder Filter -->
 			<select
 				bind:value={selectedFolder}
 				onchange={handleFolderChange}
@@ -168,11 +168,11 @@
 				<p class="text-midnight-400 mb-6">Upload your first image to get started</p>
 				<button
 					type="button"
-					onclick={() => (showIconUploadModal = true)}
+					onclick={() => (showUploadModal = true)}
 					class="inline-flex items-center gap-2 rounded-xl bg-linear-to-r from-gold-500 to-gold-600 px-6 py-3 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 min-h-[44px]"
 				>
 					<IconUpload class="h-5 w-5" />
-					IconUpload Your First Image
+					Upload Your First Image
 				</button>
 			</div>
 		{:else}
@@ -258,7 +258,7 @@
 							</div>
 						</div>
 
-						<!-- IconInfoCircle -->
+						<!-- Info -->
 						<div class="p-2">
 							<p class="text-xs font-medium text-midnight-200 truncate" title={item.title || item.filename}>
 								{item.title || item.filename}
@@ -317,15 +317,15 @@
 	</main>
 </div>
 
-<!-- IconUpload Modal -->
-{#if showIconUploadModal}
+<!-- Upload Modal -->
+{#if showUploadModal}
 	<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-midnight-950/80 backdrop-blur-sm">
 		<div class="w-full max-w-lg rounded-2xl border border-midnight-700 bg-midnight-900 p-6 shadow-2xl">
 			<div class="flex items-center justify-between mb-6">
-				<h3 class="font-display text-xl font-bold text-white">IconUpload Media</h3>
+				<h3 class="font-display text-xl font-bold text-white">Upload Media</h3>
 				<button
 					type="button"
-					onclick={() => (showIconUploadModal = false)}
+					onclick={() => (showUploadModal = false)}
 					class="rounded-lg p-2 text-midnight-400 hover:bg-midnight-800 hover:text-white transition-colors"
 				>
 					<IconX class="h-5 w-5" />
@@ -341,7 +341,7 @@
 			<div class="mt-4 pt-4 border-t border-midnight-700 flex justify-end">
 				<button
 					type="button"
-					onclick={() => (showIconUploadModal = false)}
+					onclick={() => (showUploadModal = false)}
 					class="rounded-lg border border-midnight-700 bg-midnight-800/50 px-4 py-2.5 text-sm font-medium text-midnight-300 hover:bg-midnight-800 transition-colors min-h-[44px]"
 				>
 					Close
@@ -448,7 +448,7 @@
 					/>
 				</div>
 
-				<!-- File IconInfoCircle -->
+				<!-- File Info -->
 				<div class="p-3 rounded-lg bg-midnight-800/30 border border-midnight-700/50">
 					<div class="flex items-center gap-2 text-xs text-midnight-400">
 						<IconInfoCircle class="h-4 w-4" />
@@ -473,7 +473,7 @@
 						type="submit"
 						class="flex-1 rounded-lg bg-linear-to-r from-gold-500 to-gold-600 px-4 py-2.5 text-sm font-semibold text-midnight-950 hover:shadow-lg hover:shadow-gold-500/25 transition-all min-h-[44px]"
 					>
-						IconDeviceFloppy Changes
+						Save Changes
 					</button>
 				</div>
 			</form>

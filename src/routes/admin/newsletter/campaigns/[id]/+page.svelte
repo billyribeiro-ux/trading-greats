@@ -134,7 +134,7 @@
 								type="submit"
 								class="rounded-xl bg-emerald-500/10 px-4 py-2.5 text-sm font-semibold text-emerald-400 hover:bg-emerald-500/20"
 							>
-								Confirm IconSend
+								Confirm Send
 							</button>
 						</form>
 						<button
@@ -150,7 +150,7 @@
 						class="inline-flex items-center gap-2 rounded-xl bg-linear-to-r from-gold-500 to-gold-600 px-4 py-2.5 text-sm font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30"
 					>
 						<IconPlayerPlay class="h-4 w-4" />
-						IconSend Campaign
+						Send Campaign
 					</button>
 				{/if}
 			</div>
@@ -284,7 +284,7 @@
 							class="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-gold-500 to-gold-600 px-6 py-3 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30 disabled:opacity-50"
 						>
 							<IconDeviceFloppy class="h-5 w-5" />
-							{isSubmitting ? 'Saving...' : 'IconDeviceFloppy Changes'}
+							{isSubmitting ? 'Saving...' : 'Save Changes'}
 						</button>
 						<button
 							type="button"
@@ -312,7 +312,7 @@
 						<p class="text-midnight-300">{data.campaign.previewText}</p>
 					{/if}
 
-					<h3 class="text-sm font-medium text-midnight-400 mt-4 mb-2">IconTypography</h3>
+					<h3 class="text-sm font-medium text-midnight-400 mt-4 mb-2">Type</h3>
 					<p class="text-midnight-300 capitalize">{data.campaign.type?.replace('_', ' ') ?? 'N/A'}</p>
 				</div>
 			{/if}
@@ -344,13 +344,13 @@
 			</div>
 		</div>
 
-		<!-- IconActivity Feed (for sent campaigns) -->
+		<!-- Activity Feed (for sent campaigns) -->
 		{#if isSent && data.events.length > 0}
 			<div class="rounded-xl border border-midnight-800 bg-midnight-900/50 overflow-hidden">
 				<div class="border-b border-midnight-800 p-4">
 					<h3 class="font-medium text-white flex items-center gap-2">
 						<IconActivity class="h-4 w-4 text-gold-400" />
-						Recent IconActivity
+						Recent Activity
 					</h3>
 				</div>
 				<div class="divide-y divide-midnight-800 max-h-[600px] overflow-y-auto">

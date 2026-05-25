@@ -25,7 +25,7 @@
 	let deleteConfirmId = $state<string | null>(null);
 	let sendConfirmId = $state<string | null>(null);
 
-	const statusIconFilters = [
+	const statusFilters = [
 		{ value: '', label: 'All' },
 		{ value: 'draft', label: 'Drafts' },
 		{ value: 'sent', label: 'Sent' },
@@ -106,9 +106,9 @@
 		</a>
 	</div>
 
-	<!-- IconFilters -->
+	<!-- Filters -->
 	<div class="flex flex-wrap gap-2">
-		{#each statusIconFilters as filter (filter.value)}
+		{#each statusFilters as filter (filter.value)}
 			<button
 				onclick={() => filterByStatus(filter.value)}
 				class="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors {
@@ -202,7 +202,7 @@
 												type="submit"
 												class="rounded-lg bg-emerald-500/10 px-3 py-2 text-sm font-medium text-emerald-400 hover:bg-emerald-500/20"
 											>
-												Confirm IconSend
+												Confirm Send
 											</button>
 										</form>
 										<button

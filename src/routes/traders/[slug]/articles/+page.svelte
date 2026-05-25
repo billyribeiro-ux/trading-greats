@@ -2,6 +2,7 @@
 	import SEO from '$lib/components/SEO.svelte';
 	import ScrollReveal from '$lib/components/motion/ScrollReveal.svelte';
 	import TraderArticleCard from '$lib/components/TraderArticleCard.svelte';
+	import JsonLdScript from '$lib/components/JsonLdScript.svelte';
 	import { Icon } from '$lib/components/icons';
 	import { env } from '$env/dynamic/public';
 	import type { PageData } from './$types';
@@ -69,8 +70,8 @@
 />
 
 <svelte:head>
-	{@html `<script type="application/ld+json">${JSON.stringify(schemaOrg.breadcrumb)}</script>`}
-	{@html `<script type="application/ld+json">${JSON.stringify(schemaOrg.collection)}</script>`}
+	<JsonLdScript data={schemaOrg.breadcrumb} />
+	<JsonLdScript data={schemaOrg.collection} />
 </svelte:head>
 
 <div class="min-h-screen bg-midnight-950">

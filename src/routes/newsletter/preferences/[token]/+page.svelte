@@ -180,7 +180,7 @@
 						disabled={isSubmitting}
 						class="w-full rounded-xl bg-linear-to-r from-gold-500 to-gold-600 px-6 py-3 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30 disabled:opacity-50 disabled:cursor-not-allowed"
 					>
-						{isSubmitting ? 'Saving...' : 'IconDeviceFloppy Preferences'}
+						{isSubmitting ? 'Saving...' : 'Save Preferences'}
 					</button>
 				</form>
 

@@ -3,6 +3,7 @@
 	import ScrollReveal from '$lib/components/motion/ScrollReveal.svelte';
 	import { Icon, type IconName } from '$lib/components/icons';
 	import SocialShareButtons from '$lib/components/SocialShareButtons.svelte';
+	import JsonLdScript from '$lib/components/JsonLdScript.svelte';
 	import SEO from '$lib/components/SEO.svelte';
 	import { env } from '$env/dynamic/public';
 	import { parse } from 'marked';
@@ -137,8 +138,8 @@
 	{/if}
 	
 	<!-- JSON-LD Structured Data -->
-	{@html `<script type="application/ld+json">${JSON.stringify(schemaOrg.article)}</script>`}
-	{@html `<script type="application/ld+json">${JSON.stringify(schemaOrg.breadcrumb)}</script>`}
+	<JsonLdScript data={schemaOrg.article} />
+	<JsonLdScript data={schemaOrg.breadcrumb} />
 </svelte:head>
 
 <div class="min-h-screen bg-midnight-950">
@@ -307,13 +308,13 @@
 	<!-- Related Posts - MOBILE-FIRST -->
 	{#if data.relatedPosts.length > 0}
 		<section class="border-t border-midnight-800/50 bg-midnight-900/30">
-			<div class="mx-auto max-w-7xl px-4 py-10 sm:py-12 lg:py-16 sm:px-6 lg:px-8">
+			<div class="mx-auto max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1680px] 4xl:max-w-[2000px] px-4 py-10 sm:py-12 lg:py-16 sm:px-6 lg:px-8">
 				<ScrollReveal>
 					<h2 class="font-display text-xl sm:text-2xl font-bold text-white mb-5 sm:mb-6 lg:mb-8">
 						Continue Reading
 					</h2>
 
-					<div class="grid gap-4 sm:gap-6 lg:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+					<div class="grid gap-4 sm:gap-6 lg:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5">
 						{#each data.relatedPosts as post, i (post.slug)}
 							<ScrollReveal delay={i * 75}>
 								<a
@@ -360,7 +361,7 @@
 
 	<!-- Back to Blog CTA - MOBILE-FIRST -->
 	<section class="border-t border-midnight-800/50">
-		<div class="mx-auto max-w-7xl px-4 py-8 sm:py-10 lg:py-12 sm:px-6 lg:px-8">
+		<div class="mx-auto max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1680px] 4xl:max-w-[2000px] px-4 py-8 sm:py-10 lg:py-12 sm:px-6 lg:px-8">
 			<div class="flex items-center justify-center">
 				<a
 					href="/blog"

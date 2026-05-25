@@ -1,5 +1,6 @@
 <script lang="ts">
 	import SEO from '$lib/components/SEO.svelte';
+	import JsonLdScript from '$lib/components/JsonLdScript.svelte';
 	import { Icon, type IconName } from '$lib/components/icons';
 	import {
 		IconCalendar,
@@ -168,9 +169,9 @@
 />
 
 <svelte:head>
-	{@html `<script type="application/ld+json">${JSON.stringify(schemaOrg.blog)}</script>`}
-	{@html `<script type="application/ld+json">${JSON.stringify(schemaOrg.itemList)}</script>`}
-	{@html `<script type="application/ld+json">${JSON.stringify(schemaOrg.breadcrumb)}</script>`}
+	<JsonLdScript data={schemaOrg.blog} />
+	<JsonLdScript data={schemaOrg.itemList} />
+	<JsonLdScript data={schemaOrg.breadcrumb} />
 </svelte:head>
 
 <div class="min-h-screen bg-midnight-950">
@@ -188,7 +189,7 @@
 			<div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[4rem_4rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_50%,transparent_100%)]"></div>
 		</div>
 
-		<div class="relative mx-auto max-w-7xl px-4 py-16 sm:py-20 lg:py-24 sm:px-6 lg:px-8 lg:py-32">
+		<div class="relative mx-auto max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1680px] 4xl:max-w-[2000px] px-4 py-16 sm:py-20 lg:py-24 sm:px-6 lg:px-8 lg:py-32">
 			<div class="text-center max-w-4xl mx-auto">
 				<!-- Badge with cinematic entrance - MOBILE-FIRST -->
 				<div
@@ -224,7 +225,7 @@
 				</p>
 			</div>
 
-			<!-- Category IconFilter with staggered entrance - MOBILE-FIRST: Horizontal scroll on mobile -->
+			<!-- Category Filter with staggered entrance - MOBILE-FIRST: Horizontal scroll on mobile -->
 			<div
 				class="mt-8 sm:mt-10 lg:mt-14 flex flex-nowrap sm:flex-wrap items-center sm:justify-center gap-2 sm:gap-3 opacity-0 animate-hero-fade overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide pb-2 sm:pb-0"
 				style="animation-delay: 600ms;"
@@ -264,7 +265,7 @@
 	     FEATURED POST - Netflix-style hero card (MOBILE-FIRST)
 	============================================================================ -->
 	{#if data.featuredPost && !data.currentCategory}
-		<section class="mx-auto max-w-7xl px-4 py-10 sm:py-14 lg:py-16 sm:px-6 lg:px-8 lg:py-20">
+		<section class="mx-auto max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1680px] 4xl:max-w-[2000px] px-4 py-10 sm:py-14 lg:py-16 sm:px-6 lg:px-8 lg:py-20">
 			<ScrollReveal animation="slideUp" duration={800}>
 				<a
 					href="/blog/{data.featuredPost.slug}"
@@ -352,9 +353,9 @@
 	<!-- ============================================================================
 	     POSTS GRID - Cinematic card animations (MOBILE-FIRST)
 	============================================================================ -->
-	<section class="mx-auto max-w-7xl px-4 pb-16 sm:pb-20 lg:pb-24 sm:px-6 lg:px-8">
+	<section class="mx-auto max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1680px] 4xl:max-w-[2000px] px-4 pb-16 sm:pb-20 lg:pb-24 sm:px-6 lg:px-8">
 		{#if data.posts.length > 0}
-			<div class="grid gap-4 sm:gap-6 lg:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+			<div class="grid gap-4 sm:gap-6 lg:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5">
 				{#each data.posts as post, i (post.slug)}
 					<ScrollReveal delay={i * 100} animation="slideUp">
 						<a
@@ -475,7 +476,7 @@
 		<div class="absolute inset-0 bg-linear-to-b from-midnight-900/50 to-midnight-950"></div>
 		<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] sm:w-[450px] sm:h-[450px] lg:w-[600px] lg:h-[600px] rounded-full bg-gold-500/5 blur-[100px] sm:blur-[150px]"></div>
 
-		<div class="relative mx-auto max-w-7xl px-4 py-16 sm:py-20 lg:py-24 sm:px-6 lg:px-8">
+		<div class="relative mx-auto max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1680px] 4xl:max-w-[2000px] px-4 py-16 sm:py-20 lg:py-24 sm:px-6 lg:px-8">
 			<ScrollReveal animation="scaleIn">
 				<div class="text-center max-w-2xl mx-auto">
 					<div class="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-gold-500/30 bg-gold-500/10 px-3 sm:px-4 py-1 sm:py-1.5 mb-4 sm:mb-6">

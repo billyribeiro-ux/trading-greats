@@ -28,8 +28,8 @@
 		if (!file) return;
 
 		// Validate file type
-		const allowedIconTypographys = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
-		if (!allowedIconTypographys.includes(file.type)) {
+		const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+		if (!allowedTypes.includes(file.type)) {
 			error = 'Invalid file type. Only JPEG, PNG, WebP, and GIF are allowed.';
 			return;
 		}

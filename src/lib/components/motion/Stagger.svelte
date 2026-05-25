@@ -138,20 +138,6 @@
 	});
 </script>
 
-{#if as === 'ul'}
-	<ul bind:this={element} class={cn(className)}>
-		{@render children()}
-	</ul>
-{:else if as === 'ol'}
-	<ol bind:this={element} class={cn(className)}>
-		{@render children()}
-	</ol>
-{:else if as === 'section'}
-	<section bind:this={element} class={cn(className)}>
-		{@render children()}
-	</section>
-{:else}
-	<div bind:this={element} class={cn(className)}>
-		{@render children()}
-	</div>
-{/if}
+<svelte:element this={as} bind:this={element} class={cn(className)}>
+	{@render children()}
+</svelte:element>

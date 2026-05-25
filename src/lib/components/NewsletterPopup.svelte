@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { Icon } from '$lib/components/icons';
 	import { cn } from '$lib/utils';
 	import { browser } from '$app/environment';
@@ -103,7 +102,8 @@
 		}
 	});
 
-	onMount(() => {
+	// $effect runs client-side after mount; cleanup runs on destroy.
+	$effect(() => {
 		if (isDismissed()) return;
 
 		let timeoutId: ReturnType<typeof setTimeout>;

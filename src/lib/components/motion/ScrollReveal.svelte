@@ -23,7 +23,7 @@
 	// TYPES & PROPS
 	// ============================================================================
 
-	type AnimationIconTypography =
+	type AnimationType =
 		| 'fadeIn'
 		| 'slideUp'
 		| 'slideDown'
@@ -35,7 +35,7 @@
 
 	interface Props {
 		/** Animation type */
-		animation?: AnimationIconTypography;
+		animation?: AnimationType;
 		/** Delay before animation starts (ms) */
 		delay?: number;
 		/** Animation duration (ms) */
@@ -85,7 +85,7 @@
 	// ANIMATION DEFINITIONS
 	// ============================================================================
 
-	const animations: Record<AnimationIconTypography, { initial: string; animate: string }> = {
+	const animations: Record<AnimationType, { initial: string; animate: string }> = {
 		fadeIn: {
 			initial: 'opacity-0',
 			animate: 'opacity-100',
@@ -195,76 +195,12 @@
 	});
 </script>
 
-{#if as === 'section'}
-	<section
-		bind:this={element}
-		{id}
-		class={cn('will-change-[opacity,transform]', currentClasses, className)}
-		style={transitionStyle}
-	>
-		{@render children()}
-	</section>
-{:else if as === 'article'}
-	<article
-		bind:this={element}
-		{id}
-		class={cn('will-change-[opacity,transform]', currentClasses, className)}
-		style={transitionStyle}
-	>
-		{@render children()}
-	</article>
-{:else if as === 'aside'}
-	<aside
-		bind:this={element}
-		{id}
-		class={cn('will-change-[opacity,transform]', currentClasses, className)}
-		style={transitionStyle}
-	>
-		{@render children()}
-	</aside>
-{:else if as === 'header'}
-	<header
-		bind:this={element}
-		{id}
-		class={cn('will-change-[opacity,transform]', currentClasses, className)}
-		style={transitionStyle}
-	>
-		{@render children()}
-	</header>
-{:else if as === 'footer'}
-	<footer
-		bind:this={element}
-		{id}
-		class={cn('will-change-[opacity,transform]', currentClasses, className)}
-		style={transitionStyle}
-	>
-		{@render children()}
-	</footer>
-{:else if as === 'main'}
-	<main
-		bind:this={element}
-		{id}
-		class={cn('will-change-[opacity,transform]', currentClasses, className)}
-		style={transitionStyle}
-	>
-		{@render children()}
-	</main>
-{:else if as === 'span'}
-	<span
-		bind:this={element}
-		{id}
-		class={cn('will-change-[opacity,transform]', currentClasses, className)}
-		style={transitionStyle}
-	>
-		{@render children()}
-	</span>
-{:else}
-	<div
-		bind:this={element}
-		{id}
-		class={cn('will-change-[opacity,transform]', currentClasses, className)}
-		style={transitionStyle}
-	>
-		{@render children()}
-	</div>
-{/if}
+<svelte:element
+	this={as}
+	bind:this={element}
+	{id}
+	class={cn('will-change-[opacity,transform]', currentClasses, className)}
+	style={transitionStyle}
+>
+	{@render children()}
+</svelte:element>

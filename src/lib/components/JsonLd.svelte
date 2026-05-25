@@ -212,10 +212,12 @@
 	}
 
 	const schema = $derived(generateSchema());
+	// Escape angle brackets so any closing-tag-like substring cannot break out.
+	const safe = $derived(schema ? JSON.stringify(schema).replace(/</g, '\\u003c').replace(/>/g, '\\u003e') : '');
 </script>
 
 <svelte:head>
 	{#if schema}
-		{@html `<script type="application/ld+json">${JSON.stringify(schema)}</script>`}
+		{@html `<script type="application/ld+json">${safe}</script>`}
 	{/if}
 </svelte:head>

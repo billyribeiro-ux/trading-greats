@@ -4,6 +4,7 @@
 	import TraderArticleCard from '$lib/components/TraderArticleCard.svelte';
 	import { Icon, type IconName } from '$lib/components/icons';
 	import SEO from '$lib/components/SEO.svelte';
+	import JsonLdScript from '$lib/components/JsonLdScript.svelte';
 	import { env } from '$env/dynamic/public';
 	import { parse } from 'marked';
 	import type { PageData } from './$types';
@@ -166,8 +167,8 @@
 	{/if}
 
 	<!-- JSON-LD Structured Data -->
-	{@html `<script type="application/ld+json">${JSON.stringify(schemaOrg.article)}</script>`}
-	{@html `<script type="application/ld+json">${JSON.stringify(schemaOrg.breadcrumb)}</script>`}
+	<JsonLdScript data={schemaOrg.article} />
+	<JsonLdScript data={schemaOrg.breadcrumb} />
 </svelte:head>
 
 <div class="min-h-screen bg-midnight-950">

@@ -436,7 +436,7 @@ const hello = 'world';
 							class="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-gold-500 to-gold-600 px-4 py-3 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30 disabled:opacity-50 disabled:cursor-not-allowed"
 						>
 							<IconDeviceFloppy class="h-5 w-5" />
-							{isSubmitting ? 'Saving...' : status === 'published' ? 'Publish Post' : 'IconDeviceFloppy Draft'}
+							{isSubmitting ? 'Saving...' : status === 'published' ? 'Publish Post' : 'Save Draft'}
 						</button>
 					</div>
 

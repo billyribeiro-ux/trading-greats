@@ -1,26 +1,18 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
-    import { spring } from 'svelte/motion';
     import { slide } from 'svelte/transition';
     import SEO from '$lib/components/SEO.svelte';
     import QuoteOfTheDay from '$lib/components/QuoteOfTheDay.svelte';
     import { Icon, type IconName } from '$lib/components/icons';
+    import { ScrollReveal, AnimatedCounter } from '$lib/components/motion';
+    import JsonLdScript from '$lib/components/JsonLdScript.svelte';
     import { env } from '$env/dynamic/public';
     import type { PageData } from './$types';
 
     const PUBLIC_SITE_URL = env.PUBLIC_SITE_URL || 'https://tradinggreats.com';
 
-    // ============================================================================
-    // PROPS (Svelte 5)
-    // ============================================================================
     let { data }: { data: PageData } = $props();
 
-    // ============================================================================
-    // STATE (Svelte 5 Runes)
-    // ============================================================================
     let openFaq = $state<number | null>(null);
-    let mounted = $state(false);
-    let heroRef: HTMLElement;
 
     // ============================================================================
     // DERIVED DATA
@@ -163,50 +155,6 @@
     ];
 
     // ============================================================================
-    // LOGIC & ACTIONS
-    // ============================================================================
-    function toggleFaq(index: number) {
-        openFaq = openFaq === index ? null : index;
-    }
-
-    onMount(() => {
-        mounted = true;
-    });
-
-    // Interaction Observer for Scroll Reveals
-    function reveal(node: HTMLElement, params: { delay?: number } = {}) {
-        const delay = params.delay || 0;
-        node.style.setProperty('--delay', delay.toString());
-        node.classList.add('cinematic-reveal');
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    node.classList.add('visible');
-                    observer.unobserve(node);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-        
-        observer.observe(node);
-        return { destroy() { observer.disconnect(); } };
-    }
-
-    // Animated Counter Logic (Hydration Safe via $effect)
-    function createCounter(target: number, duration: number = 2000, delay: number = 0) {
-        const value = spring(0, { stiffness: 0.05, damping: 0.5 });
-        $effect(() => {
-            const timer = setTimeout(() => value.set(target), delay);
-            return () => clearTimeout(timer);
-        });
-        return value;
-    }
-
-    const countTraders = createCounter(50, 2000, 800);
-    const countYears = createCounter(200, 2000, 1000);
-    const countWorth = createCounter(500, 2000, 1200);
-
-    // ============================================================================
     // JSON-LD CONSTRUCTION (Reactive to data changes)
     // ============================================================================
     const schemaOrg = $derived({
@@ -245,14 +193,11 @@
 />
 
 <svelte:head>
-    {@html `<script type="application/ld+json">${JSON.stringify(schemaOrg.faq)}</script>`}
-    {@html `<script type="application/ld+json">${JSON.stringify(schemaOrg.list)}</script>`}
+    <JsonLdScript data={schemaOrg.faq} />
+    <JsonLdScript data={schemaOrg.list} />
 </svelte:head>
 
-<section
-    bind:this={heroRef}
-    class="relative min-h-dvh w-full overflow-hidden bg-midnight-950"
->
+<section class="relative min-h-dvh w-full overflow-hidden bg-midnight-950">
     <!-- MOBILE-FIRST: Smaller/optimized background orbs for mobile -->
     <div class="absolute inset-0">
         <div class="absolute top-[-20%] left-[-10%] h-[400px] w-[400px] sm:h-[600px] sm:w-[600px] lg:h-[800px] lg:w-[800px] rounded-full bg-[radial-gradient(circle,rgba(234,179,8,0.15)_0%,rgba(234,179,8,0.05)_40%,transparent_70%)] blur-3xl animate-pulse-slower"></div>
@@ -272,7 +217,7 @@
             >
                 <Icon name="sparkles" class="h-4 w-4 text-gold-400" />
                 <span class="text-sm font-semibold tracking-wide text-gold-200">
-                    The Premier Trading Education IconLibrary
+                    The Premier Trading Education Library
                 </span>
             </div>
 
@@ -328,7 +273,7 @@
             >
                 <div class="text-center">
                     <div class="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
-                        {Math.floor($countTraders)}+
+                        <AnimatedCounter value={50} suffix="+" delay={800} />
                     </div>
                     <div class="mt-1 sm:mt-2 text-[10px] sm:text-xs md:text-sm lg:text-base text-slate-400">
                         Trading Legends
@@ -336,7 +281,7 @@
                 </div>
                 <div class="text-center">
                     <div class="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
-                        {Math.floor($countYears)}+
+                        <AnimatedCounter value={200} suffix="+" delay={1000} />
                     </div>
                     <div class="mt-1 sm:mt-2 text-[10px] sm:text-xs md:text-sm lg:text-base text-slate-400">
                         Years of Wisdom
@@ -344,7 +289,7 @@
                 </div>
                 <div class="text-center">
                     <div class="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
-                        ${Math.floor($countWorth)}B+
+                        <AnimatedCounter value={500} prefix="$" suffix="B+" delay={1200} />
                     </div>
                     <div class="mt-1 sm:mt-2 text-[10px] sm:text-xs md:text-sm lg:text-base text-slate-400">
                         Combined Worth
@@ -354,14 +299,12 @@
         </div>
     </div>
 
-    {#if mounted}
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-70">
-            <div class="flex flex-col items-center gap-2 text-slate-500">
-                <span class="text-xs font-medium uppercase tracking-widest">Discover</span>
-                <Icon name="chevron-down" class="h-5 w-5" />
-            </div>
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-70">
+        <div class="flex flex-col items-center gap-2 text-slate-500">
+            <span class="text-xs font-medium uppercase tracking-widest">Discover</span>
+            <Icon name="chevron-down" class="h-5 w-5" />
         </div>
-    {/if}
+    </div>
 </section>
 
 <!-- MOBILE-FIRST: Responsive section spacing -->
@@ -370,8 +313,8 @@
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[800px] lg:w-[1000px] h-[400px] sm:h-[500px] lg:h-[600px] bg-[radial-gradient(circle,rgba(234,179,8,0.05)_0%,transparent_70%)] blur-3xl"></div>
     </div>
 
-    <div class="relative mx-auto max-w-7xl">
-        <div class="mb-10 sm:mb-16 lg:mb-20 text-center" use:reveal={{ delay: 0 }}>
+    <div class="relative mx-auto max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1680px] 4xl:max-w-[2000px]">
+        <ScrollReveal class="mb-10 sm:mb-16 lg:mb-20 text-center">
             <span class="inline-block rounded-full bg-white/5 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-gold-400 mb-4 sm:mb-6 border border-white/10">
                 Why Trading Greats
             </span>
@@ -383,13 +326,13 @@
                 While others chase hot tips and short-term gains, you'll be building
                 a foundation of timeless principles from traders who've already solved the game.
             </p>
-        </div>
+        </ScrollReveal>
 
         <!-- MOBILE-FIRST: Stack on mobile, 3-col on desktop -->
         <div class="grid gap-4 sm:gap-5 lg:gap-6 md:grid-cols-3">
             {#each valueProps as prop, i (prop.title)}
-                <div
-                    use:reveal={{ delay: 0.1 + i * 0.15 }}
+                <ScrollReveal
+                    delay={100 + i * 150}
                     class="group"
                 >
                     <!-- MOBILE-FIRST: Smaller card on mobile, taller on desktop -->
@@ -416,7 +359,7 @@
                             <div class="absolute -inset-full top-0 h-[500%] w-[200%] -translate-x-full rotate-45 bg-linear-to-r from-transparent via-white/5 to-transparent transition-transform duration-1000 group-hover:translate-x-full"></div>
                         </div>
                     </div>
-                </div>
+                </ScrollReveal>
             {/each}
         </div>
     </div>
@@ -432,8 +375,8 @@
         <div class="absolute bottom-0 right-0 w-[250px] sm:w-[350px] lg:w-[400px] h-[250px] sm:h-[350px] lg:h-[400px] bg-[radial-gradient(circle,rgba(139,92,246,0.05)_0%,transparent_70%)] blur-3xl"></div>
     </div>
 
-    <div class="relative mx-auto max-w-7xl">
-        <div class="mb-6 sm:mb-8 lg:mb-10 flex flex-col items-center justify-between gap-4 sm:gap-6 sm:flex-row sm:items-end" use:reveal={{ delay: 0 }}>
+    <div class="relative mx-auto max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1680px] 4xl:max-w-[2000px]">
+        <ScrollReveal class="mb-6 sm:mb-8 lg:mb-10 flex flex-col items-center justify-between gap-4 sm:gap-6 sm:flex-row sm:items-end">
             <div class="text-center sm:text-left">
                 <span class="inline-block rounded-full bg-white/5 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-gold-400 mb-3 sm:mb-4 border border-white/10">
                     Featured Legends
@@ -449,12 +392,12 @@
                 View All Legends
                 <Icon name="arrow-right" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
-        </div>
+        </ScrollReveal>
 
-        <!-- MOBILE-FIRST: 2-col on mobile, 4-col on desktop -->
-        <div class="grid gap-4 sm:gap-5 lg:gap-6 grid-cols-2 lg:grid-cols-4">
+        <!-- MOBILE-FIRST: 2-col mobile, 4-col desktop. On 4K+ screens we go wider. -->
+        <div class="grid gap-4 sm:gap-5 lg:gap-6 grid-cols-2 lg:grid-cols-4 3xl:grid-cols-5 4xl:grid-cols-6">
             {#each displayTraders.slice(0, 4) as trader, i (trader.slug)}
-                <div use:reveal={{ delay: 0.15 + i * 0.1 }}>
+                <ScrollReveal delay={150 + i * 100}>
                     <!-- MOBILE-FIRST: Compact card on mobile -->
                     <a href="/traders/{trader.slug}" class="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 bg-midnight-900 transition-all duration-500 hover:border-gold-500/40 md:hover:-translate-y-2 hover:shadow-2xl block active:scale-[0.98]">
                         <div class="aspect-4/5 w-full bg-slate-800 relative overflow-hidden">
@@ -487,7 +430,7 @@
                             </div>
                         </div>
                     </a>
-                </div>
+                </ScrollReveal>
             {/each}
         </div>
     </div>
@@ -495,8 +438,8 @@
 
 <!-- MOBILE-FIRST: How It Works section -->
 <section id="how-it-works" class="relative z-20 bg-midnight-950 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
-    <div class="mx-auto max-w-7xl">
-        <div class="mb-8 sm:mb-10 lg:mb-12 text-center" use:reveal>
+    <div class="mx-auto max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1680px] 4xl:max-w-[2000px]">
+        <ScrollReveal class="mb-8 sm:mb-10 lg:mb-12 text-center">
             <span class="inline-block rounded-full bg-white/5 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-gold-400 mb-3 sm:mb-4">
                 How It Works
             </span>
@@ -506,12 +449,12 @@
             <p class="mx-auto mt-4 sm:mt-6 max-w-2xl text-sm sm:text-base lg:text-lg text-slate-300 px-2 sm:px-0">
                 Three simple steps to extract decades of market wisdom and apply it to your own journey.
             </p>
-        </div>
+        </ScrollReveal>
 
         <!-- MOBILE-FIRST: Stack on mobile, 3-col on desktop -->
         <div class="grid gap-6 sm:gap-8 lg:grid-cols-3">
             {#each howItWorksSteps as step, i (step.step)}
-                <div use:reveal={{ delay: i * 0.1 }}>
+                <ScrollReveal delay={i * 100}>
                     <div class="group relative">
                         {#if i < howItWorksSteps.length - 1}
                             <div class="hidden lg:block absolute top-16 left-[calc(50%+60px)] w-[calc(100%-60px)] h-px bg-linear-to-r from-gold-500/50 to-transparent"></div>
@@ -538,12 +481,12 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </ScrollReveal>
             {/each}
         </div>
 
         <!-- MOBILE-FIRST: Full-width button on mobile -->
-        <div class="mt-10 sm:mt-16 text-center px-4 sm:px-0" use:reveal={{ delay: 0.6 }}>
+        <ScrollReveal delay={600} class="mt-10 sm:mt-16 text-center px-4 sm:px-0">
             <a
                 href="/traders"
                 class="group inline-flex w-full sm:w-auto items-center justify-center gap-2 sm:gap-3 rounded-full bg-linear-to-r from-gold-500 to-gold-600 px-8 sm:px-10 py-4 sm:py-5 text-sm sm:text-base font-bold text-midnight-950 shadow-xl shadow-gold-500/20 transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-gold-500/30 active:scale-[0.98]"
@@ -551,7 +494,7 @@
                 Start Your Journey
                 <Icon name="arrow-right" class="h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" />
             </a>
-        </div>
+        </ScrollReveal>
     </div>
 </section>
 
@@ -562,8 +505,8 @@
         <div class="absolute bottom-0 right-1/4 w-[350px] sm:w-[450px] lg:w-[500px] h-[200px] sm:h-[250px] lg:h-[300px] bg-[radial-gradient(circle,rgba(234,179,8,0.05)_0%,transparent_70%)] blur-3xl"></div>
     </div>
 
-    <div class="relative mx-auto max-w-7xl">
-        <div class="mb-8 sm:mb-10 text-center" use:reveal={{ delay: 0 }}>
+    <div class="relative mx-auto max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1680px] 4xl:max-w-[2000px]">
+        <ScrollReveal class="mb-8 sm:mb-10 text-center">
             <span class="inline-block rounded-full bg-white/5 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-gold-400 mb-3 sm:mb-4 border border-white/10">
                 Trading Styles
             </span>
@@ -573,12 +516,12 @@
             <p class="mx-auto mt-4 sm:mt-6 lg:mt-8 max-w-2xl text-sm sm:text-base lg:text-lg text-slate-300 leading-relaxed px-2 sm:px-0">
                 Every successful trader has a defined methodology. Explore the major schools of thought and discover which approach resonates with you.
             </p>
-        </div>
+        </ScrollReveal>
 
         <!-- MOBILE-FIRST: 2-col on mobile, 4-col on desktop -->
         <div class="grid gap-4 sm:gap-5 grid-cols-2 lg:grid-cols-4">
             {#each strategies as strategy, i (strategy.name)}
-                <div use:reveal={{ delay: 0.1 + i * 0.1 }}>
+                <ScrollReveal delay={100 + i * 100}>
                     <!-- MOBILE-FIRST: Compact card on mobile -->
                     <a
                         href="/traders?style={encodeURIComponent(strategy.name)}"
@@ -621,18 +564,18 @@
                             <div class="absolute -inset-full top-0 h-[500%] w-[200%] -translate-x-full rotate-45 bg-linear-to-r from-transparent via-white/[0.07] to-transparent transition-transform duration-1000 group-hover:translate-x-full"></div>
                         </div>
                     </a>
-                </div>
+                </ScrollReveal>
             {/each}
         </div>
     </div>
 </section>
 
-<!-- MOBILE-FIRST: The IconLibrary section -->
+<!-- MOBILE-FIRST: The Library section -->
 <section class="relative z-20 bg-midnight-950 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-    <div class="relative mx-auto max-w-7xl">
-        <div class="mb-8 sm:mb-10 text-center" use:reveal={{ delay: 0 }}>
+    <div class="relative mx-auto max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1680px] 4xl:max-w-[2000px]">
+        <ScrollReveal class="mb-8 sm:mb-10 text-center">
             <span class="inline-block rounded-full bg-white/5 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-gold-400 mb-3 sm:mb-4 border border-white/10">
-                The IconLibrary
+                The Library
             </span>
             <h2 class="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
                 Decades of <span class="bg-linear-to-r from-gold-200 via-gold-400 to-gold-500 bg-clip-text text-transparent">Market Wisdom</span>
@@ -640,12 +583,12 @@
             <p class="mt-4 sm:mt-6 text-slate-400 max-w-xl mx-auto text-sm sm:text-base lg:text-lg px-2 sm:px-0">
                 Each profile represents a lifetime of learning, distilled into actionable principles.
             </p>
-        </div>
+        </ScrollReveal>
 
-        <!-- MOBILE-FIRST: 2-col on mobile, 4-col on desktop -->
-        <div class="grid gap-4 sm:gap-5 lg:gap-6 grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <!-- MOBILE-FIRST: 2-col mobile, 3-col lg, 4-col xl, 5-col 2xl, 6-col 3xl+ -->
+        <div class="grid gap-4 sm:gap-5 lg:gap-6 grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 4xl:grid-cols-7">
             {#each displayTraders as trader, i (trader.slug)}
-                <div use:reveal={{ delay: 0.1 + i * 0.08 }}>
+                <ScrollReveal delay={100 + i * 80}>
                     <!-- MOBILE-FIRST: Compact library card -->
                     <div class="group relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-midnight-900 transition-all duration-500 hover:border-gold-500/40 md:hover:-translate-y-2 hover:shadow-2xl active:scale-[0.98]">
                         <div class="p-4 sm:p-5 lg:p-6">
@@ -666,26 +609,26 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </ScrollReveal>
             {/each}
         </div>
 
         <!-- MOBILE-FIRST: Full-width button on mobile -->
-        <div class="mt-8 sm:mt-10 lg:mt-12 text-center px-4 sm:px-0" use:reveal={{ delay: 0.8 }}>
+        <ScrollReveal delay={800} class="mt-8 sm:mt-10 lg:mt-12 text-center px-4 sm:px-0">
             <a
                 href="/traders"
                 class="group inline-flex w-full sm:w-auto items-center justify-center gap-2 sm:gap-3 rounded-full bg-white/5 border border-white/10 px-8 sm:px-12 py-4 sm:py-5 text-sm sm:text-base font-bold text-white backdrop-blur-xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-white/10 hover:border-gold-500/30 hover:shadow-[0_20px_60px_-15px_rgba(234,179,8,0.2)] hover:scale-[1.02] active:scale-[0.98]"
             >
-                View Complete IconLibrary
+                View Complete Library
                 <Icon name="arrow-right" class="h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-300 group-hover:translate-x-2" />
             </a>
-        </div>
+        </ScrollReveal>
     </div>
 </section>
 
 <!-- MOBILE-FIRST: Community/Testimonials section -->
 <section class="relative z-20 bg-linear-to-b from-midnight-950 via-midnight-900/30 to-midnight-950 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
-    <div class="mx-auto max-w-7xl">
+    <div class="mx-auto max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1680px] 4xl:max-w-[2000px]">
         <div class="mb-8 sm:mb-10 text-center">
             <span class="inline-block rounded-full bg-white/5 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-gold-400 mb-3 sm:mb-4">
                 Community
@@ -698,7 +641,7 @@
         <!-- MOBILE-FIRST: Stack on mobile, 3-col on desktop - EQUAL HEIGHT CARDS -->
         <div class="grid gap-4 sm:gap-5 lg:gap-6 lg:grid-cols-3">
             {#each testimonials as testimonial, i (testimonial.author)}
-                <div use:reveal={{ delay: i * 0.1 }} class="h-full">
+                <ScrollReveal delay={i * 100} class="h-full">
                     <!-- MOBILE-FIRST: Equal height testimonial card -->
                     <div class="relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/5 bg-linear-to-b from-midnight-900/60 to-midnight-900/30 p-5 sm:p-6 backdrop-blur-sm h-full flex flex-col">
                         <Icon name="quote" class="absolute top-4 right-4 h-6 w-6 sm:h-7 sm:w-7 text-gold-500/20" />
@@ -725,7 +668,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </ScrollReveal>
             {/each}
         </div>
     </div>
@@ -745,7 +688,7 @@
 
         <div class="space-y-3 sm:space-y-4">
             {#each faqItems as faq, i (faq.question)}
-                <div use:reveal={{ delay: Math.min(i * 0.05, 0.3) }}>
+                <ScrollReveal delay={Math.min(i * 50, 300)}>
                     <!-- MOBILE-FIRST: Touch-friendly FAQ accordion -->
                     <div class="rounded-xl sm:rounded-2xl border border-white/10 bg-midnight-900/50 backdrop-blur-sm overflow-hidden transition-all duration-300 {openFaq === i ? 'border-gold-500/30 bg-midnight-900/70' : 'hover:border-white/20'}">
                         <button 
@@ -764,7 +707,7 @@
                             </div>
                         {/if}
                     </div>
-                </div>
+                </ScrollReveal>
             {/each}
         </div>
     </div>
@@ -824,8 +767,8 @@
     </div>
 </section>
 
-<!-- 
-    Animation styles moved to global app.css for consistency across all pages.
-    Classes available: animate-hero-fade, animate-hero-slide, animate-fade-in,
-    animate-pulse-slow, animate-pulse-slower, cinematic-reveal
+<!--
+    Hero animation classes (animate-hero-fade, animate-hero-slide, animate-fade-in,
+    animate-pulse-slow, animate-pulse-slower) are defined in src/app.css.
+    Scroll-reveal animations are handled by <ScrollReveal> in $lib/components/motion.
 -->

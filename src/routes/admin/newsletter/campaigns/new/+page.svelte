@@ -12,7 +12,7 @@
 	let subject = $state('');
 	let previewText = $state('');
 	let content = $state('');
-	let campaignIconTypography = $state('manual');
+	let campaignType = $state('manual');
 	let showPreview = $state(false);
 	let initialized = $state(false);
 
@@ -26,11 +26,11 @@
 			if (formData.subject) subject = formData.subject;
 			if (formData.previewText) previewText = formData.previewText;
 			if (formData.content) content = formData.content;
-			if (formData.type) campaignIconTypography = formData.type;
+			if (formData.type) campaignType = formData.type;
 		}
 	});
 
-	const campaignIconTypographys = [
+	const campaignTypes = [
 		{ value: 'manual', label: 'Manual Campaign', description: 'One-time email campaign' },
 		{ value: 'weekly_digest', label: 'Weekly Digest', description: 'Weekly newsletter summary' },
 		{ value: 'new_trader', label: 'New Trader Alert', description: 'Notify about new trader profiles' },
@@ -100,13 +100,13 @@
 				}}
 				class="space-y-6"
 			>
-				<!-- Campaign IconTypography -->
+				<!-- Campaign Type -->
 				<fieldset class="rounded-xl border border-midnight-800 bg-midnight-900/50 p-6">
-					<legend class="block text-sm font-medium text-white mb-4">Campaign IconTypography</legend>
+					<legend class="block text-sm font-medium text-white mb-4">Campaign Type</legend>
 					<div class="grid gap-3 sm:grid-cols-2">
-						{#each campaignIconTypographys as type (type.value)}
+						{#each campaignTypes as type (type.value)}
 							<label class="relative flex cursor-pointer rounded-lg border p-4 transition-colors {
-								campaignIconTypography === type.value
+								campaignType === type.value
 									? 'border-gold-500/50 bg-gold-500/5'
 									: 'border-midnight-700 bg-midnight-800/30 hover:border-midnight-600'
 							}">
@@ -114,14 +114,14 @@
 									type="radio"
 									name="type"
 									value={type.value}
-									bind:group={campaignIconTypography}
+									bind:group={campaignType}
 									class="sr-only"
 								/>
 								<div>
 									<p class="font-medium text-white">{type.label}</p>
 									<p class="mt-1 text-xs text-midnight-400">{type.description}</p>
 								</div>
-								{#if campaignIconTypography === type.value}
+								{#if campaignType === type.value}
 									<div class="absolute top-2 right-2 h-2 w-2 rounded-full bg-gold-500"></div>
 								{/if}
 							</label>

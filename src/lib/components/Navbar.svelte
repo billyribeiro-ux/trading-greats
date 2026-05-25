@@ -23,10 +23,10 @@
 	// ============================================================================
 
 	const NAV_LINKS = [
-		{ href: '/', label: 'Home', iconIconTypography: 'home' as const },
-		{ href: '/traders', label: 'Legends', iconIconTypography: 'users' as const },
-		{ href: '/compare', label: 'Compare', iconIconTypography: 'bar-chart' as const },
-		{ href: '/blog', label: 'Blog', iconIconTypography: 'book-open' as const },
+		{ href: '/', label: 'Home', iconType: 'home' as const },
+		{ href: '/traders', label: 'Legends', iconType: 'users' as const },
+		{ href: '/compare', label: 'Compare', iconType: 'bar-chart' as const },
+		{ href: '/blog', label: 'Blog', iconType: 'book-open' as const },
 	] as const;
 
 	const SCROLL_THRESHOLD = 20;
@@ -190,7 +190,7 @@
 						></div>
 					{/if}
 					
-					{#if link.iconIconTypography === 'home'}
+					{#if link.iconType === 'home'}
 						<Icon 
 							name="candlestick"
 							class={cn(
@@ -201,7 +201,7 @@
 							)} 
 							strokeWidth={2}
 						/>
-					{:else if link.iconIconTypography === 'users'}
+					{:else if link.iconType === 'users'}
 						<Icon 
 							name="users"
 							class={cn(
@@ -212,7 +212,7 @@
 							)} 
 							strokeWidth={2}
 						/>
-					{:else if link.iconIconTypography === 'bar-chart'}
+					{:else if link.iconType === 'bar-chart'}
 						<Icon 
 							name="bar-chart"
 							class={cn(
@@ -223,7 +223,7 @@
 							)} 
 							strokeWidth={2}
 						/>
-					{:else if link.iconIconTypography === 'book-open'}
+					{:else if link.iconType === 'book-open'}
 						<Icon 
 							name="book-open"
 							class={cn(
@@ -245,7 +245,7 @@
 			<!-- Theme Toggle -->
 			<ThemeToggle class="hidden sm:flex" />
 
-			<!-- IconSearch Button - MOBILE-FIRST: 44px touch target -->
+			<!-- Search Button - MOBILE-FIRST: 44px touch target -->
 			<button
 				type="button"
 				class={cn(
@@ -356,13 +356,13 @@
 								)}
 								aria-hidden="true"
 							>
-								{#if link.iconIconTypography === 'home'}
+								{#if link.iconType === 'home'}
 									<Icon name="candlestick" class="h-5 w-5" strokeWidth={2} />
-								{:else if link.iconIconTypography === 'users'}
+								{:else if link.iconType === 'users'}
 									<Icon name="users" class="h-5 w-5" strokeWidth={2} />
-								{:else if link.iconIconTypography === 'bar-chart'}
+								{:else if link.iconType === 'bar-chart'}
 									<Icon name="bar-chart" class="h-5 w-5" strokeWidth={2} />
-								{:else if link.iconIconTypography === 'book-open'}
+								{:else if link.iconType === 'book-open'}
 									<Icon name="book-open" class="h-5 w-5" strokeWidth={2} />
 								{/if}
 							</div>
@@ -402,5 +402,5 @@
 <!-- Spacer - MOBILE-FIRST: Match header height -->
 <div class="h-[68px] sm:h-[72px]" aria-hidden="true"></div>
 
-<!-- IconSearch Modal -->
+<!-- Search Modal -->
 <SearchModal bind:open={searchOpen} onClose={() => { searchOpen = false; }} />

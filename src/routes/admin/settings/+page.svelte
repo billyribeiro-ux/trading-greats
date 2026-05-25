@@ -59,7 +59,7 @@
 			ip_blocked: 'IP Blocked',
 			ip_unblocked: 'IP Unblocked',
 			rate_limit_exceeded: 'Rate Limit Hit',
-			suspicious_activity: 'Suspicious IconActivity'
+			suspicious_activity: 'Suspicious Activity'
 		};
 		return labels[action] || action;
 	}
@@ -278,7 +278,7 @@
 						<div class="rounded-xl bg-violet-500/10 border border-violet-500/30 p-4">
 							<p class="text-violet-400 text-sm font-medium mb-3">
 								<IconAlertTriangle class="h-4 w-4 inline mr-1" />
-								IconDeviceFloppy this key NOW! It won't be shown again.
+								Save this key NOW! It won't be shown again.
 							</p>
 
 							<div class="space-y-3">
@@ -385,7 +385,7 @@
 						<tr>
 							<th class="px-4 py-3 text-left text-xs font-medium text-midnight-400 uppercase tracking-wider">Device</th>
 							<th class="px-4 py-3 text-left text-xs font-medium text-midnight-400 uppercase tracking-wider">IP Address</th>
-							<th class="px-4 py-3 text-left text-xs font-medium text-midnight-400 uppercase tracking-wider">Last IconActivity</th>
+							<th class="px-4 py-3 text-left text-xs font-medium text-midnight-400 uppercase tracking-wider">Last Activity</th>
 							<th class="px-4 py-3 text-left text-xs font-medium text-midnight-400 uppercase tracking-wider">Created</th>
 							<th class="px-4 py-3 text-right text-xs font-medium text-midnight-400 uppercase tracking-wider">Action</th>
 						</tr>
