@@ -11,12 +11,10 @@ const config = {
 			$server: 'src/lib/server'
 		}
 	},
-	// Svelte 5.44+ Dec 2025: Enable async SSR for better hydration
-	compilerOptions: {
-		experimental: {
-			async: true
-		}
-	},
+	// Note: experimental async SSR (compilerOptions.experimental.async) is OFF.
+	// Turn it on only when a component genuinely needs top-level <await> or
+	// async load-fn-in-component patterns. Today none do, and leaving experimental
+	// flags on risks surprise behavior on minor Svelte upgrades.
 	// Suppress known SvelteKit internal warnings
 	onwarn: (warning, handler) => {
 		// Ignore warnings from SvelteKit generated files

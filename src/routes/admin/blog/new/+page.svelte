@@ -234,7 +234,7 @@ const hello = 'world';
 								/>
 								{#if heroImage}
 									<div class="mt-4 rounded-xl overflow-hidden border border-midnight-700">
-										<img src={heroImage} alt="Preview" class="w-full h-48 object-cover" />
+										<img src={heroImage} alt="Preview" width="1200" height="384" loading="lazy" decoding="async" class="w-full h-48 object-cover" />
 									</div>
 								{/if}
 							</div>

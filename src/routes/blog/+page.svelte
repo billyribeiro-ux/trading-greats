@@ -184,7 +184,7 @@
 			<div class="absolute inset-0 bg-linear-to-br from-midnight-900 via-midnight-950 to-midnight-900"></div>
 			<!-- Animated gradient orbs - smaller on mobile -->
 			<div class="absolute top-[-20%] left-[-10%] h-[300px] w-[300px] sm:h-[450px] sm:w-[450px] lg:h-[600px] lg:w-[600px] rounded-full bg-gradient-radial from-gold-500/15 via-gold-500/5 to-transparent blur-3xl animate-pulse-slower"></div>
-			<div class="absolute bottom-[-20%] right-[-10%] h-[250px] w-[250px] sm:h-[400px] sm:w-[400px] lg:h-[500px] lg:w-[500px] rounded-full bg-gradient-radial from-violet-500/10 via-violet-500/5 to-transparent blur-3xl animate-pulse-slow" style="animation-delay: 2s;"></div>
+			<div class="absolute bottom-[-20%] right-[-10%] h-[250px] w-[250px] sm:h-[400px] sm:w-[400px] lg:h-[500px] lg:w-[500px] rounded-full bg-gradient-radial from-violet-500/10 via-violet-500/5 to-transparent blur-3xl animate-pulse-slow [animation-delay:2s]"></div>
 			<!-- Grid overlay -->
 			<div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[4rem_4rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_50%,transparent_100%)]"></div>
 		</div>
@@ -192,19 +192,13 @@
 		<div class="relative mx-auto max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1680px] 4xl:max-w-[2000px] px-4 py-16 sm:py-20 lg:py-24 sm:px-6 lg:px-8 lg:py-32">
 			<div class="text-center max-w-4xl mx-auto">
 				<!-- Badge with cinematic entrance - MOBILE-FIRST -->
-				<div
-					class="inline-flex items-center gap-2 sm:gap-2.5 rounded-full border border-gold-500/30 bg-gold-500/10 px-3.5 sm:px-5 py-1.5 sm:py-2 mb-6 sm:mb-8 backdrop-blur-sm opacity-0 animate-hero-fade"
-					style="animation-delay: 100ms;"
-				>
+				<div class="inline-flex items-center gap-2 sm:gap-2.5 rounded-full border border-gold-500/30 bg-gold-500/10 px-3.5 sm:px-5 py-1.5 sm:py-2 mb-6 sm:mb-8 backdrop-blur-sm opacity-0 animate-hero-fade [animation-delay:100ms]">
 					<Icon name="book-open" class="h-3.5 w-3.5 sm:h-4 sm:w-4 text-gold-400" />
 					<span class="text-xs sm:text-sm font-semibold tracking-wide text-gold-300">Trading Insights</span>
 				</div>
 
 				<!-- Main heading with dramatic slide - MOBILE-FIRST -->
-				<h1
-					class="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight opacity-0 animate-hero-slide"
-					style="animation-delay: 200ms;"
-				>
+				<h1 class="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight opacity-0 animate-hero-slide [animation-delay:200ms]">
 					<span class="text-white">Learn from the</span>
 					<br />
 					<span class="relative inline-block">
@@ -212,24 +206,18 @@
 							Legends
 						</span>
 						<!-- Animated underline -->
-						<span class="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-[2px] sm:h-[3px] bg-linear-to-r from-transparent via-gold-500 to-transparent opacity-0 animate-fade-in" style="animation-delay: 1s;"></span>
+						<span class="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-[2px] sm:h-[3px] bg-linear-to-r from-transparent via-gold-500 to-transparent opacity-0 animate-fade-in [animation-delay:1s]"></span>
 					</span>
 				</h1>
 
-				<p
-					class="mt-4 sm:mt-6 lg:mt-8 text-sm sm:text-base lg:text-lg xl:text-xl text-midnight-300 max-w-2xl mx-auto leading-relaxed opacity-0 animate-hero-fade px-2 sm:px-0"
-					style="animation-delay: 400ms;"
-				>
+				<p class="mt-4 sm:mt-6 lg:mt-8 text-sm sm:text-base lg:text-lg xl:text-xl text-midnight-300 max-w-2xl mx-auto leading-relaxed opacity-0 animate-hero-fade px-2 sm:px-0 [animation-delay:400ms]">
 					Dive deep into trading strategies, market psychology, and timeless wisdom from the world's
 					greatest traders. <span class="text-white">Expert analysis for serious investors.</span>
 				</p>
 			</div>
 
 			<!-- Category Filter with staggered entrance - MOBILE-FIRST: Horizontal scroll on mobile -->
-			<div
-				class="mt-8 sm:mt-10 lg:mt-14 flex flex-nowrap sm:flex-wrap items-center sm:justify-center gap-2 sm:gap-3 opacity-0 animate-hero-fade overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide pb-2 sm:pb-0"
-				style="animation-delay: 600ms;"
-			>
+			<div class="mt-8 sm:mt-10 lg:mt-14 flex flex-nowrap sm:flex-wrap items-center sm:justify-center gap-2 sm:gap-3 opacity-0 animate-hero-fade overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide pb-2 sm:pb-0 [animation-delay:600ms]">
 				<a
 					href="/blog"
 					class={cn(

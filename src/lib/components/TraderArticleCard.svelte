@@ -240,7 +240,7 @@
 			{#if trader}
 				<div class="flex items-center gap-2 mb-2">
 					{#if trader.photoUrl}
-						<img src={trader.photoUrl} alt={trader.name} class="h-5 w-5 rounded-full object-cover" />
+						<img src={trader.photoUrl} alt={trader.name} width="20" height="20" loading="lazy" decoding="async" class="h-5 w-5 rounded-full object-cover" />
 					{:else}
 						<div class="h-5 w-5 rounded-full bg-gold-500/20 flex items-center justify-center">
 							<Icon name="user" class="h-3 w-3 text-gold-400" />

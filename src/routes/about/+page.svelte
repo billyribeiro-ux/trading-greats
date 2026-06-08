@@ -47,24 +47,15 @@
 		<div class="absolute top-1/3 left-1/4 w-[250px] h-[250px] sm:w-[350px] sm:h-[350px] lg:w-[500px] lg:h-[500px] bg-gold-500/10 rounded-full blur-[100px] sm:blur-[120px] lg:blur-[150px] pointer-events-none"></div>
 
 		<div class="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-			<div
-				class="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-gold-500/30 bg-gold-500/10 px-3 sm:px-4 py-1 sm:py-1.5 backdrop-blur-md mb-5 sm:mb-6 lg:mb-8 opacity-0 animate-hero-fade"
-				style="animation-delay: 100ms;"
-			>
+			<div class="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-gold-500/30 bg-gold-500/10 px-3 sm:px-4 py-1 sm:py-1.5 backdrop-blur-md mb-5 sm:mb-6 lg:mb-8 opacity-0 animate-hero-fade [animation-delay:100ms]">
 				<span class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-gold-400">Our Mission</span>
 			</div>
 
-			<h1
-				class="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-5 sm:mb-6 lg:mb-8 opacity-0 animate-hero-slide"
-				style="animation-delay: 200ms;"
-			>
+			<h1 class="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-5 sm:mb-6 lg:mb-8 opacity-0 animate-hero-slide [animation-delay:200ms]">
 				Preserving the <span class="text-gold-500">Wisdom</span> of Markets
 			</h1>
 
-			<p
-				class="text-base sm:text-lg lg:text-xl text-midnight-200 leading-relaxed max-w-2xl mx-auto opacity-0 animate-hero-fade px-2 sm:px-0"
-				style="animation-delay: 400ms;"
-			>
+			<p class="text-base sm:text-lg lg:text-xl text-midnight-200 leading-relaxed max-w-2xl mx-auto opacity-0 animate-hero-fade px-2 sm:px-0 [animation-delay:400ms]">
 				We believe that studying the greatest traders in history is the most valuable investment you can make in your own trading education.
 			</p>
 		</div>

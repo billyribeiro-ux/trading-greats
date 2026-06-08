@@ -197,57 +197,45 @@
     <JsonLdScript data={schemaOrg.list} />
 </svelte:head>
 
-<section class="relative min-h-dvh w-full overflow-hidden bg-midnight-950">
+<section class="relative min-h-screen w-full overflow-hidden bg-midnight-950">
     <!-- MOBILE-FIRST: Smaller/optimized background orbs for mobile -->
     <div class="absolute inset-0">
         <div class="absolute top-[-20%] left-[-10%] h-[400px] w-[400px] sm:h-[600px] sm:w-[600px] lg:h-[800px] lg:w-[800px] rounded-full bg-[radial-gradient(circle,rgba(234,179,8,0.15)_0%,rgba(234,179,8,0.05)_40%,transparent_70%)] blur-3xl animate-pulse-slower"></div>
-        <div class="absolute top-[10%] right-[-15%] h-[300px] w-[300px] sm:h-[450px] sm:w-[450px] lg:h-[600px] lg:w-[600px] rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.1)_0%,rgba(139,92,246,0.05)_40%,transparent_70%)] blur-3xl animate-pulse-slow" style="animation-delay: 2s;"></div>
-        <div class="absolute bottom-[-10%] left-[30%] h-[250px] w-[250px] sm:h-[400px] sm:w-[400px] lg:h-[500px] lg:w-[500px] rounded-full bg-[radial-gradient(circle,rgba(14,165,233,0.08)_0%,rgba(14,165,233,0.04)_40%,transparent_70%)] blur-3xl animate-pulse-slower" style="animation-delay: 4s;"></div>
+        <div class="absolute top-[10%] right-[-15%] h-[300px] w-[300px] sm:h-[450px] sm:w-[450px] lg:h-[600px] lg:w-[600px] rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.1)_0%,rgba(139,92,246,0.05)_40%,transparent_70%)] blur-3xl animate-pulse-slow [animation-delay:2s]"></div>
+        <div class="absolute bottom-[-10%] left-[30%] h-[250px] w-[250px] sm:h-[400px] sm:w-[400px] lg:h-[500px] lg:w-[500px] rounded-full bg-[radial-gradient(circle,rgba(14,165,233,0.08)_0%,rgba(14,165,233,0.04)_40%,transparent_70%)] blur-3xl animate-pulse-slower [animation-delay:4s]"></div>
 
         <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[2rem_2rem] sm:bg-size-[3rem_3rem] lg:bg-size-[4rem_4rem] mask-[radial-gradient(ellipse_80%_60%_at_50%_0%,#000_50%,transparent_100%)]"></div>
 
         <div class="absolute inset-0 opacity-[0.02] sm:opacity-[0.03] mix-blend-overlay" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZmZmIi8+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiMwMDAiLz4KPC9zdmc+');"></div>
     </div>
 
-    <div class="relative z-10 mx-auto flex min-h-dvh max-w-7xl flex-col justify-center px-4 sm:px-6 py-16 sm:py-20 lg:px-8 lg:py-24">
+    <div class="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-4 sm:px-6 py-16 sm:py-20 lg:px-8 lg:py-24">
         <div class="mx-auto max-w-5xl text-center">
-            <div
-                class="mb-10 inline-flex items-center gap-2.5 rounded-full border border-gold-500/30 bg-gold-500/10 px-5 py-2 backdrop-blur-sm opacity-0 animate-hero-fade"
-                style="animation-delay: 100ms;"
-            >
+            <div class="mb-10 inline-flex items-center gap-2.5 rounded-full border border-gold-500/30 bg-gold-500/10 px-5 py-2 backdrop-blur-sm opacity-0 animate-hero-fade [animation-delay:100ms]">
                 <Icon name="sparkles" class="h-4 w-4 text-gold-400" />
                 <span class="text-sm font-semibold tracking-wide text-gold-200">
                     The Premier Trading Education Library
                 </span>
             </div>
 
-            <h1
-                class="font-display text-[2.5rem] font-bold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl opacity-0 animate-hero-slide"
-                style="animation-delay: 200ms;"
-            >
+            <h1 class="font-display text-[2.5rem] font-bold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl opacity-0 animate-hero-slide [animation-delay:200ms]">
                 Learn From Traders<br />
                 <span class="relative">
                     <span class="bg-linear-to-r from-gold-200 via-gold-400 to-gold-500 bg-clip-text text-transparent">
                         Who Moved Markets
                     </span>
-                    <span class="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-[2px] sm:h-[3px] bg-linear-to-r from-transparent via-gold-500 to-transparent opacity-0 animate-fade-in" style="animation-delay: 1s;"></span>
+                    <span class="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-[2px] sm:h-[3px] bg-linear-to-r from-transparent via-gold-500 to-transparent opacity-0 animate-fade-in [animation-delay:1s]"></span>
                 </span>
             </h1>
 
-            <p
-                class="mx-auto mt-6 sm:mt-8 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg md:text-xl lg:text-2xl opacity-0 animate-hero-fade"
-                style="animation-delay: 400ms;"
-            >
+            <p class="mx-auto mt-6 sm:mt-8 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg md:text-xl lg:text-2xl opacity-0 animate-hero-fade [animation-delay:400ms]">
                 Study the exact methodologies used by history's most successful investors.
                 <span class="text-slate-100 font-medium">No hype. No shortcuts.</span> Just proven strategies
                 that have generated billions.
             </p>
 
             <!-- MOBILE-FIRST: Full-width buttons on mobile, inline on tablet+ -->
-            <div
-                class="mt-8 sm:mt-12 flex flex-col items-center justify-center gap-3 sm:gap-4 sm:flex-row opacity-0 animate-hero-fade w-full px-4 sm:px-0"
-                style="animation-delay: 600ms;"
-            >
+            <div class="mt-8 sm:mt-12 flex flex-col items-center justify-center gap-3 sm:gap-4 sm:flex-row opacity-0 animate-hero-fade w-full px-4 sm:px-0 [animation-delay:600ms]">
                 <a
                     href="/traders"
                     class="group inline-flex w-full sm:w-auto items-center justify-center gap-2 sm:gap-3 rounded-full bg-linear-to-r from-gold-500 to-gold-600 px-6 sm:px-8 py-3.5 sm:py-4 text-sm sm:text-base font-bold text-midnight-950 shadow-xl shadow-gold-500/20 transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-gold-500/30 active:scale-[0.98]"
@@ -267,10 +255,7 @@
             </div>
 
             <!-- MOBILE-FIRST: Compact stats on mobile -->
-            <div
-                class="mt-12 sm:mt-16 lg:mt-20 grid grid-cols-3 gap-4 sm:gap-6 lg:gap-8 border-t border-white/10 pt-8 sm:pt-10 lg:pt-12 opacity-0 animate-hero-fade"
-                style="animation-delay: 800ms;"
-            >
+            <div class="mt-12 sm:mt-16 lg:mt-20 grid grid-cols-3 gap-4 sm:gap-6 lg:gap-8 border-t border-white/10 pt-8 sm:pt-10 lg:pt-12 opacity-0 animate-hero-fade [animation-delay:800ms]">
                 <div class="text-center">
                     <div class="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
                         <AnimatedCounter value={50} suffix="+" delay={800} />
@@ -400,7 +385,7 @@
                 <ScrollReveal delay={150 + i * 100}>
                     <!-- MOBILE-FIRST: Compact card on mobile -->
                     <a href="/traders/{trader.slug}" class="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 bg-midnight-900 transition-all duration-500 hover:border-gold-500/40 md:hover:-translate-y-2 hover:shadow-2xl block active:scale-[0.98]">
-                        <div class="aspect-4/5 w-full bg-slate-800 relative overflow-hidden">
+                        <div class="aspect-[4/5] w-full bg-slate-800 relative overflow-hidden">
                             {#if trader.photoUrl}
                                 <img
                                     src={trader.photoUrl}

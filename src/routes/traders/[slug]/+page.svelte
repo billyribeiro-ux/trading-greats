@@ -170,7 +170,7 @@
 				<div class="lg:sticky lg:top-24 space-y-4 sm:space-y-6">
 					<!-- Profile Image Card - MOBILE-FIRST -->
 					<div class="group relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-midnight-900/50 backdrop-blur-xl shadow-2xl">
-						<div class="aspect-3/4 sm:aspect-4/5 w-full overflow-hidden">
+						<div class="aspect-[3/4] sm:aspect-[4/5] w-full overflow-hidden">
 							{#if trader.photoUrl}
 								<img
 									src={trader.photoUrl}

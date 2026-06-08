@@ -1,5 +1,10 @@
 @import 'tailwindcss';
-@config '../tailwind.config.ts';
+@plugin "@tailwindcss/typography";
+
+/* Enable class-based dark mode (`<html class="dark">` toggles `dark:` variants).
+   Without this, Tailwind v4 defaults to `@media (prefers-color-scheme: dark)`,
+   which conflicts with our manual ThemeStore. */
+@custom-variant dark (&:where(.dark, .dark *));
 
 /* ============================================================================
    TAILWIND V4 CUSTOM THEME - Gold & Midnight Palette
