@@ -607,8 +607,20 @@
                     <div class="group relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-midnight-900 transition-all duration-500 hover:border-gold-500/40 md:hover:-translate-y-2 hover:shadow-2xl active:scale-[0.98]">
                         <div class="p-4 sm:p-5 lg:p-6">
                             <div class="flex justify-between items-start mb-3 sm:mb-4 gap-2">
-                                <div class="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-white/5 flex items-center justify-center font-bold text-slate-500 select-none text-xs sm:text-sm shrink-0">
+                                <div class="relative h-10 w-10 sm:h-12 sm:w-12 overflow-hidden rounded-full bg-white/5 flex items-center justify-center font-bold text-slate-500 select-none text-xs sm:text-sm shrink-0" aria-hidden="true">
                                     {trader.name.split(' ').map((n: string) => n[0]).join('')}
+                                    {#if trader.photoUrl}
+                                        <img
+                                            src={trader.photoUrl}
+                                            alt=""
+                                            width="48"
+                                            height="48"
+                                            loading="lazy"
+                                            decoding="async"
+                                            class="absolute inset-0 h-full w-full object-cover object-top"
+                                            onerror={(event) => { (event.currentTarget as HTMLImageElement).style.display = 'none'; }}
+                                        />
+                                    {/if}
                                 </div>
                                 <span class="text-[8px] sm:text-[10px] font-bold uppercase tracking-wider text-gold-500 bg-gold-500/10 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded whitespace-nowrap">
                                     {trader.style}
