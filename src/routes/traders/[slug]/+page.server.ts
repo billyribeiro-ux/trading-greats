@@ -5,6 +5,7 @@ import { traders as tradersTable, blogPosts, media, type Trader, type BlogPost, 
 import { eq, and, ne, desc, asc } from 'drizzle-orm';
 import { portraitCredits, traderPhoto } from '#lib/server/trader-portraits.ts';
 import { seedTraders } from '#lib/server/seed.ts';
+import { traderLinks } from '#lib/server/trader-websites.ts';
 
 export const prerender = 'auto';
 
@@ -77,6 +78,7 @@ export const load: PageServerLoad = async ({ params }) => {
 		trader: {
 			...trader,
 			bio: trader.bio?.trim() ? trader.bio : (seed?.bio ?? null),
+			socialLinks: traderLinks(slug, trader.socialLinks),
 			photoUrl
 		},
 		relatedTraders: relatedTraders.map((related) => ({ ...related, photoUrl: traderPhoto(related.slug, related.photoUrl) })),
