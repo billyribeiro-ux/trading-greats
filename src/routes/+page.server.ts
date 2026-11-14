@@ -1,7 +1,8 @@
 import type { PageServerLoad } from './$types';
-import { db } from '$lib/server/db';
-import { traders as tradersTable } from '$lib/server/schema';
+import { db } from '#lib/server/db.ts';
+import { traders as tradersTable } from '#lib/server/schema.ts';
 import { eq } from 'drizzle-orm';
+import { traderPhoto } from '#lib/server/trader-portraits.ts';
 
 // ============================================================================
 // RENDERING CONFIGURATION
@@ -67,7 +68,7 @@ export const load: PageServerLoad = async () => {
             tradingStyle: t.tradingStyle || 'Trading',
             oneLiner: t.oneLiner || 'Legendary Trader',
             netWorth: t.netWorth || 'Exceptional Returns',
-            photoUrl: t.photoUrl || null
+            photoUrl: traderPhoto(t.slug, t.photoUrl)
         }));
 
     const allQuotes: QuoteWithTrader[] = allTraders

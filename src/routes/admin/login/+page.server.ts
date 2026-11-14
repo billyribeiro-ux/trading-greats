@@ -8,7 +8,7 @@ import {
 	logSecurityEvent,
 	getClientIp,
 	sanitizeUserAgent
-} from '$lib/server/auth';
+} from '#lib/server/auth.ts';
 
 export const load: PageServerLoad = async ({ cookies }) => {
 	// If already logged in, redirect to admin

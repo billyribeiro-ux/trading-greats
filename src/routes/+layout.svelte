@@ -1,16 +1,14 @@
 <script lang="ts">
 	import '../app.css';
 	import { page } from '$app/state';
-	import { browser } from '$app/env';
-	import JsonLd from '$lib/components/JsonLd.svelte';
-	import Navbar from '$lib/components/Navbar.svelte';
-	import Footer from '$lib/components/Footer.svelte';
-	import NewsletterPopup from '$lib/components/NewsletterPopup.svelte';
-	import { PUBLIC_SITE_NAME } from '$app/env/public';
+	import JsonLd from '#lib/components/JsonLd.svelte';
+	import Navbar from '#lib/components/Navbar.svelte';
+	import Footer from '#lib/components/Footer.svelte';
+	import NewsletterPopup from '#lib/components/NewsletterPopup.svelte';
+	import { PUBLIC_SITE_NAME as configuredSiteName } from '$app/env/public';
 
-	const PUBLIC_SITE_NAME = PUBLIC_SITE_NAME || 'Trading Greats';
-	import { onNavigate } from '$app/navigation';
-	import { theme } from '$lib/stores/theme.svelte';
+	const PUBLIC_SITE_NAME = configuredSiteName || 'Trading Greats';
+	import { theme } from '#lib/stores/theme.svelte.ts';
 
 	let { children } = $props();
 
@@ -19,24 +17,6 @@
 	// Dynamic theme-color meta tag based on current theme
 	const themeColor = $derived(theme.isDark ? '#020617' : '#f8fafc');
 
-	// Check for reduced motion preference (Dec 2025 a11y best practice)
-	const prefersReducedMotion = $derived(
-		browser ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false
-	);
-
-	// View Transitions for cinematic page navigation (respects reduced motion).
-	// For same-section detail-page navigation that shouldn't grow history,
-	// add data-sveltekit-replacestate to the specific <a> elements instead.
-	onNavigate((navigation) => {
-		if (!browser || !document.startViewTransition || prefersReducedMotion) return;
-
-		return new Promise((resolve) => {
-			document.startViewTransition(async () => {
-				resolve();
-				await navigation.complete;
-			});
-		});
-	});
 </script>
 
 <svelte:head>
@@ -67,24 +47,3 @@
 	<Footer />
 	<NewsletterPopup delay={15000} showOnScroll={true} scrollThreshold={60} />
 {/if}
-
-<style>
-	/* View Transition Animations */
-	:global(::view-transition-old(root)) {
-		animation: 90ms cubic-bezier(0.4, 0, 1, 1) both fade-out;
-	}
-
-	:global(::view-transition-new(root)) {
-		animation: 210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in;
-	}
-
-	@keyframes fade-in {
-		from { opacity: 0; }
-		to { opacity: 1; }
-	}
-
-	@keyframes fade-out {
-		from { opacity: 1; }
-		to { opacity: 0; }
-	}
-</style>

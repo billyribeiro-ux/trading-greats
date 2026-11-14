@@ -1,6 +1,5 @@
-import { json } from '@sveltejs/kit';
-import { db } from '$lib/server/db';
-import { traders } from '$lib/server/schema';
+import { db } from '#lib/server/db.ts';
+import { traders } from '#lib/server/schema.ts';
 import { and, eq, or, ilike } from 'drizzle-orm';
 import type { RequestHandler } from './$types';
 
@@ -36,5 +35,5 @@ export const GET: RequestHandler = async ({ url }) => {
 			.where(eq(traders.status, 'published'))
 			.limit(limit);
 
-	return json(rows);
+	return Response.json(rows);
 };

@@ -1,14 +1,14 @@
 <script lang="ts">
-	import SEO from '$lib/components/SEO.svelte';
-	import JsonLd from '$lib/components/JsonLd.svelte';
-	import TraderCard from '$lib/components/TraderCard.svelte';
-	import TraderArticleCard from '$lib/components/TraderArticleCard.svelte';
-	import SocialShareButtons from '$lib/components/SocialShareButtons.svelte';
-	import { PUBLIC_SITE_URL } from '$app/env/public';
+	import SEO from '#lib/components/SEO.svelte';
+	import JsonLd from '#lib/components/JsonLd.svelte';
+	import TraderCard from '#lib/components/TraderCard.svelte';
+	import TraderArticleCard from '#lib/components/TraderArticleCard.svelte';
+	import SocialShareButtons from '#lib/components/SocialShareButtons.svelte';
+	import { PUBLIC_SITE_URL as configuredSiteUrl } from '$app/env/public';
 	import { parse } from 'marked';
 
-	const PUBLIC_SITE_URL = PUBLIC_SITE_URL || 'https://tradinggreats.com';
-	import { Icon } from '$lib/components/icons';
+	const PUBLIC_SITE_URL = configuredSiteUrl || 'https://tradinggreats.com';
+	import { Icon } from '#lib/components/icons/index.ts';
 	import type { PageData } from './$types';
 
 	// ============================================================================
@@ -44,11 +44,6 @@
 		}
 	}
 
-	const breadcrumbs = $derived([
-		{ name: 'Home', url: PUBLIC_SITE_URL },
-		{ name: 'Traders', url: `${PUBLIC_SITE_URL}/traders` },
-		{ name: trader.name, url: `${PUBLIC_SITE_URL}/traders/${trader.slug}` }
-	]);
 
 	// Parse markdown bio
 	const parsedBio = $derived(trader.bio ? parse(trader.bio) : '');
@@ -199,6 +194,14 @@
 							<p class="mt-1 sm:mt-2 text-sm sm:text-base text-gold-400 font-medium">{trader.tradingStyle}</p>
 						</div>
 					</div>
+
+					{#if data.photoCredit}
+						<p class="text-xs text-midnight-400">
+							Photo: <a href={data.photoCredit.source} class="underline" target="_blank" rel="noopener noreferrer">{data.photoCredit.artist}</a> ·
+							{#if data.photoCredit.licenseUrl}<a href={data.photoCredit.licenseUrl} class="underline" target="_blank" rel="noopener noreferrer">{data.photoCredit.license}</a>{:else}{data.photoCredit.license}{/if}
+							{#if data.photoCredit.modified} · AI-modified by source{/if}
+						</p>
+					{/if}
 
 					<!-- Quick Stats - MOBILE-FIRST: Horizontal on mobile, stacked on desktop -->
 					<div class="rounded-xl sm:rounded-2xl border border-white/5 bg-midnight-900/30 p-4 sm:p-5 lg:p-6 backdrop-blur-sm">

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { IconUpload, IconX, IconLoader2, IconPhoto } from '@tabler/icons-svelte';
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils/index.ts';
 
 	interface Props {
 		value?: string;

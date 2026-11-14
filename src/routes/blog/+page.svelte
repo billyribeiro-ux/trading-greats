@@ -1,7 +1,7 @@
 <script lang="ts">
-	import SEO from '$lib/components/SEO.svelte';
-	import JsonLdScript from '$lib/components/JsonLdScript.svelte';
-	import { Icon, type IconName } from '$lib/components/icons';
+	import SEO from '#lib/components/SEO.svelte';
+	import JsonLdScript from '#lib/components/JsonLdScript.svelte';
+	import { Icon, type IconName } from '#lib/components/icons/index.ts';
 	import {
 		IconCalendar,
 		IconClock,
@@ -20,8 +20,8 @@
 		IconLoader2,
 		IconAlertCircle
 	} from '@tabler/icons-svelte';
-	import { cn } from '$lib/utils';
-	import ScrollReveal from '$lib/components/motion/ScrollReveal.svelte';
+	import { cn } from '#lib/utils/index.ts';
+	import ScrollReveal from '#lib/components/motion/ScrollReveal.svelte';
 
 	let { data } = $props();
 

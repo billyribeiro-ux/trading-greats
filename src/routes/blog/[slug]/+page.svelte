@@ -1,15 +1,15 @@
 <script lang="ts">
-  import { cn, calculateReadingTime } from "$lib/utils";
-  import ScrollReveal from "$lib/components/motion/ScrollReveal.svelte";
-  import { Icon, type IconName } from "$lib/components/icons";
-  import SocialShareButtons from "$lib/components/SocialShareButtons.svelte";
-  import JsonLdScript from "$lib/components/JsonLdScript.svelte";
-  import SEO from "$lib/components/SEO.svelte";
-  import { PUBLIC_SITE_URL } from '$app/env/public';
+  import { cn, calculateReadingTime } from "#lib/utils/index.ts";
+  import ScrollReveal from "#lib/components/motion/ScrollReveal.svelte";
+  import { Icon, type IconName } from "#lib/components/icons/index.ts";
+  import SocialShareButtons from "#lib/components/SocialShareButtons.svelte";
+  import JsonLdScript from "#lib/components/JsonLdScript.svelte";
+  import SEO from "#lib/components/SEO.svelte";
+  import { PUBLIC_SITE_URL as configuredSiteUrl } from '$app/env/public';
   import { parse } from "marked";
   import type { PageData } from "./$types";
 
-  const PUBLIC_SITE_URL = PUBLIC_SITE_URL || "https://tradinggreats.com";
+  const PUBLIC_SITE_URL = configuredSiteUrl || "https://tradinggreats.com";
 
   // ============================================================================
   // PROPS (Svelte 5 - SSR data hydration)

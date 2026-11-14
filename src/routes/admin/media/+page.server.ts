@@ -1,9 +1,9 @@
 import type { PageServerLoad, Actions } from './$types';
 import { fail } from '@sveltejs/kit';
-import { db } from '$lib/server/db';
-import { media } from '$lib/server/schema';
+import { db } from '#lib/server/db.ts';
+import { media } from '#lib/server/schema.ts';
 import { eq, desc, like, or, sql } from 'drizzle-orm';
-import { deleteFromR2 } from '$lib/server/storage';
+import { deleteFromR2 } from '#lib/server/storage.ts';
 
 export const load: PageServerLoad = async ({ url }) => {
 	const page = parseInt(url.searchParams.get('page') || '1');

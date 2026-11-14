@@ -1,7 +1,7 @@
 import type { PageServerLoad, Actions } from './$types';
-import { getSubscriberByToken, updateSubscriberPreferences, unsubscribeByToken } from '$lib/server/newsletter';
+import { getSubscriberByToken, updateSubscriberPreferences, unsubscribeByToken } from '#lib/server/newsletter.ts';
 import { fail } from '@sveltejs/kit';
-import { DEFAULT_SUBSCRIBER_PREFERENCES } from '$lib/server/schema';
+import { DEFAULT_SUBSCRIBER_PREFERENCES } from '#lib/server/schema.ts';
 
 export const load: PageServerLoad = async ({ params }) => {
 	const { token } = params;

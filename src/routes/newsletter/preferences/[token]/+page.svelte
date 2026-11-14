@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PageData, ActionData } from './$types';
-	import SEO from '$lib/components/SEO.svelte';
+	import SEO from '#lib/components/SEO.svelte';
 	import { enhance } from '$app/forms';
 	import { IconCircleCheck, IconCircleX, IconSettings, IconMail, IconBell, IconBook, IconTrendingUp, IconArrowRight } from '@tabler/icons-svelte';
 

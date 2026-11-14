@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { Trader } from '$lib/server/schema';
-	import { cn } from '$lib/utils';
-	import { Icon } from '$lib/components/icons';
+	import type { Trader } from '#lib/server/schema.ts';
+	import { cn } from '#lib/utils/index.ts';
+	import { Icon } from '#lib/components/icons/index.ts';
 	import FavoriteButton from './FavoriteButton.svelte';
 	import CompareButton from './CompareButton.svelte';
 

@@ -1,5 +1,5 @@
 import type { RequestHandler } from './$types';
-import { trackOpen } from '$lib/server/newsletter';
+import { trackOpen } from '#lib/server/newsletter.ts';
 
 // 1x1 transparent GIF pixel
 const TRACKING_PIXEL = Buffer.from(

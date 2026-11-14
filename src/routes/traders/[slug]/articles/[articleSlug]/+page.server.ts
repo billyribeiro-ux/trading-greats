@@ -1,10 +1,10 @@
 import type { PageServerLoad } from './$types';
 import { error } from '@sveltejs/kit';
-import { db } from '$lib/server/db';
-import { blogPosts, type Trader, type BlogPost, type NewTrader } from '$lib/server/schema';
+import { db } from '#lib/server/db.ts';
+import { blogPosts, type Trader, type BlogPost, type NewTrader } from '#lib/server/schema.ts';
 import { eq, and, ne, desc } from 'drizzle-orm';
-import { seedTraders } from '$lib/server/seed';
-import { seedBlogPosts } from '$lib/server/seedBlog';
+import { seedTraders } from '#lib/server/seed.ts';
+import { seedBlogPosts } from '#lib/server/seedBlog.ts';
 
 export const prerender = 'auto';
 

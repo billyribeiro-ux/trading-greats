@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { IconUpload, IconX, IconLoader2, IconPhoto, IconLibrary, IconEdit } from '@tabler/icons-svelte';
-	import { cn } from '$lib/utils';
-	import type { Media } from '$lib/server/schema';
+	import { cn } from '#lib/utils/index.ts';
+	import type { Media } from '#lib/server/schema.ts';
 
 	interface Props {
 		value?: string;

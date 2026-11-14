@@ -2,9 +2,9 @@
 	import { enhance } from '$app/forms';
 	import { goto } from '$app/navigation';
 	import { IconArrowLeft, IconDeviceFloppy, IconPlus, IconX, IconTrendingUp, IconTrendingDown, IconTrash, IconEdit, IconChevronUp, IconChevronDown, IconPhoto, IconLoader2 } from '@tabler/icons-svelte';
-	import MediaUpload from '$lib/components/MediaUpload.svelte';
+	import MediaUpload from '#lib/components/MediaUpload.svelte';
 	import type { PageData, ActionData } from './$types';
-	import type { Media } from '$lib/server/schema';
+	import type { Media } from '#lib/server/schema.ts';
 
 	interface LocalQuote {
 		text: string;

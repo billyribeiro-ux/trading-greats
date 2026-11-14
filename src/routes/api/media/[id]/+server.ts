@@ -1,7 +1,7 @@
-import { json, error } from '@sveltejs/kit';
+import { error } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import { db } from '$lib/server/db';
-import { media } from '$lib/server/schema';
+import { db } from '#lib/server/db.ts';
+import { media } from '#lib/server/schema.ts';
 import { eq } from 'drizzle-orm';
 
 /**
@@ -23,7 +23,7 @@ export const GET: RequestHandler = async ({ params, cookies }) => {
 			throw error(404, 'Media not found');
 		}
 
-		return json(item);
+		return Response.json(item);
 	} catch (err) {
 		console.error('Error fetching media:', err);
 		if (err instanceof Error && 'status' in err) {
@@ -71,7 +71,7 @@ export const PATCH: RequestHandler = async ({ params, request, cookies }) => {
 			throw error(404, 'Media not found');
 		}
 
-		return json({ success: true, media: updated });
+		return Response.json({ success: true, media: updated });
 	} catch (err) {
 		console.error('Error updating media:', err);
 		if (err instanceof Error && 'status' in err) {

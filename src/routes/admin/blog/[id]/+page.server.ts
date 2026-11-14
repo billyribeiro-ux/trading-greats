@@ -1,10 +1,10 @@
 import type { PageServerLoad, Actions } from './$types';
-import { db } from '$lib/server/db';
-import { blogPosts, BLOG_CATEGORIES, type BlogCategory } from '$lib/server/schema';
+import { db } from '#lib/server/db.ts';
+import { blogPosts, BLOG_CATEGORIES, type BlogCategory } from '#lib/server/schema.ts';
 import { fail, redirect, error } from '@sveltejs/kit';
-import { slugify } from '$lib/utils';
+import { slugify } from '#lib/utils/index.ts';
 import { eq, ne, and } from 'drizzle-orm';
-import { seedTraders } from '$lib/server/seed';
+import { seedTraders } from '#lib/server/seed.ts';
 
 export const load: PageServerLoad = async ({ params }) => {
 	const { id } = params;
@@ -133,7 +133,7 @@ export const actions: Actions = {
 					heroImageCaption: heroImageCaption?.trim() || null,
 					author: author?.trim() || 'Trading Greats Team',
 					readingTime,
-					category: (category || null) as import('$lib/server/schema').BlogCategory | null,
+					category: (category || null) as import('#lib/server/schema.ts').BlogCategory | null,
 					tags,
 					seoTitle: seoTitle?.trim() || null,
 					seoDescription: seoDescription?.trim() || null,

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Icon } from '$lib/components/icons';
-	import { cn } from '$lib/utils';
+	import { Icon } from '#lib/components/icons/index.ts';
+	import { cn } from '#lib/utils/index.ts';
 
 	interface Quote {
 		text: string;

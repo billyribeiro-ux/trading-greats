@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
-	import ScrollReveal from '$lib/components/motion/ScrollReveal.svelte';
-	import TraderArticleCard from '$lib/components/TraderArticleCard.svelte';
-	import { Icon, type IconName } from '$lib/components/icons';
-	import SEO from '$lib/components/SEO.svelte';
-	import JsonLdScript from '$lib/components/JsonLdScript.svelte';
-	import { PUBLIC_SITE_URL } from '$app/env/public';
+	import { cn } from '#lib/utils/index.ts';
+	import ScrollReveal from '#lib/components/motion/ScrollReveal.svelte';
+	import TraderArticleCard from '#lib/components/TraderArticleCard.svelte';
+	import { Icon, type IconName } from '#lib/components/icons/index.ts';
+	import SEO from '#lib/components/SEO.svelte';
+	import JsonLdScript from '#lib/components/JsonLdScript.svelte';
+	import { PUBLIC_SITE_URL as configuredSiteUrl } from '$app/env/public';
 	import { parse } from 'marked';
 	import type { PageData } from './$types';
 
-	const PUBLIC_SITE_URL = PUBLIC_SITE_URL || 'https://tradinggreats.com';
+	const PUBLIC_SITE_URL = configuredSiteUrl || 'https://tradinggreats.com';
 
 	// ============================================================================
 	// PROPS (Svelte 5 - SSR data hydration)
@@ -144,7 +144,6 @@
 	modifiedTime={article.updatedAt || undefined}
 	author={trader.name}
 	keywords={article.tags || [trader.name, trader.tradingStyle || 'trading']}
-	preloadImage={true}
 />
 
 <svelte:head>

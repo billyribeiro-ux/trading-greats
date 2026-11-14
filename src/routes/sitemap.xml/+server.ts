@@ -1,6 +1,6 @@
 import type { RequestHandler } from './$types';
-import { db } from '$lib/server/db';
-import { traders as tradersTable, blogPosts as blogPostsTable } from '$lib/server/schema';
+import { db } from '#lib/server/db.ts';
+import { traders as tradersTable, blogPosts as blogPostsTable } from '#lib/server/schema.ts';
 import { eq } from 'drizzle-orm';
 
 const PUBLIC_SITE_URL = 'https://tradinggreats.com';

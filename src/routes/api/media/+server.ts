@@ -1,7 +1,7 @@
-import { json, error } from '@sveltejs/kit';
+import { error } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import { db } from '$lib/server/db';
-import { media } from '$lib/server/schema';
+import { db } from '#lib/server/db.ts';
+import { media } from '#lib/server/schema.ts';
 import {
 	uploadImage,
 	deleteImage,
@@ -9,7 +9,7 @@ import {
 	getActiveProvider,
 	getStorageInfo,
 	type StorageProvider
-} from '$lib/server/storage';
+} from '#lib/server/storage.ts';
 import { eq, desc, asc, like, or, and } from 'drizzle-orm';
 
 /**
@@ -70,7 +70,7 @@ export const GET: RequestHandler = async ({ url, cookies }) => {
 		// Include storage info in response
 		const storageInfo = getStorageInfo();
 
-		return json({
+		return Response.json({
 			items,
 			pagination: {
 				page,
@@ -164,7 +164,7 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 			displayOrder
 		}).returning();
 
-		return json({
+		return Response.json({
 			success: true,
 			media: newMedia,
 			storageProvider: processed.storageProvider,
@@ -221,7 +221,7 @@ export const DELETE: RequestHandler = async ({ request, cookies }) => {
 		// Delete from database
 		await db.delete(media).where(eq(media.id, id));
 
-		return json({ success: true });
+		return Response.json({ success: true });
 	} catch (err) {
 		console.error('Delete error:', err);
 		if (err instanceof Error && 'status' in err) {

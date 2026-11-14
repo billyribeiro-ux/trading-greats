@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { browser } from '$app/env';
 	import { goto } from '$app/navigation';
-	import { Icon } from '$lib/components/icons';
+	import { Icon } from '#lib/components/icons/index.ts';
 	import { fade, scale } from 'svelte/transition';
 	import { cubicOut, backOut } from 'svelte/easing';
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils/index.ts';
 
 	// ============================================================================
 	// PROPS

@@ -1,14 +1,14 @@
 <script lang="ts">
     import { slide } from 'svelte/transition';
-    import SEO from '$lib/components/SEO.svelte';
-    import QuoteOfTheDay from '$lib/components/QuoteOfTheDay.svelte';
-    import { Icon, type IconName } from '$lib/components/icons';
-    import { ScrollReveal, AnimatedCounter } from '$lib/components/motion';
-    import JsonLdScript from '$lib/components/JsonLdScript.svelte';
-    import { PUBLIC_SITE_URL } from '$app/env/public';
+    import SEO from '#lib/components/SEO.svelte';
+    import QuoteOfTheDay from '#lib/components/QuoteOfTheDay.svelte';
+    import { Icon, type IconName } from '#lib/components/icons/index.ts';
+    import { ScrollReveal, AnimatedCounter } from '#lib/components/motion/index.ts';
+    import JsonLdScript from '#lib/components/JsonLdScript.svelte';
+    import { PUBLIC_SITE_URL as configuredSiteUrl } from '$app/env/public';
     import type { PageData } from './$types';
 
-    const PUBLIC_SITE_URL = PUBLIC_SITE_URL || 'https://tradinggreats.com';
+    const PUBLIC_SITE_URL = configuredSiteUrl || 'https://tradinggreats.com';
 
     let { data }: { data: PageData } = $props();
 
@@ -188,7 +188,6 @@
     title={data.meta.title}
     description={data.meta.description}
     keywords={['trading strategies', 'Warren Buffett', 'value investing', 'momentum trading', 'George Soros', 'trading education', 'stock market', 'investment strategies', 'legendary traders', 'trading methodology']}
-    preloadImage={true}
 />
 
 <svelte:head>

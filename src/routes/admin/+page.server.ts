@@ -1,8 +1,8 @@
 import type { PageServerLoad } from './$types';
-import { seedTraders } from '$lib/server/seed';
-import type { Trader, NewTrader, BlogPost } from '$lib/server/schema';
-import { db } from '$lib/server/db';
-import { blogPosts, media } from '$lib/server/schema';
+import { seedTraders } from '#lib/server/seed.ts';
+import type { Trader, NewTrader, BlogPost } from '#lib/server/schema.ts';
+import { db } from '#lib/server/db.ts';
+import { blogPosts, media } from '#lib/server/schema.ts';
 import { desc, eq, sql } from 'drizzle-orm';
 
 function seedToTrader(t: NewTrader, id: string): Trader {

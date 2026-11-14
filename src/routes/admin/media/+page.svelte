@@ -16,8 +16,8 @@
 	} from '@tabler/icons-svelte';
 	import { enhance } from '$app/forms';
 	import { goto } from '$app/navigation';
-	import MediaUpload from '$lib/components/MediaUpload.svelte';
-	import type { Media } from '$lib/server/schema';
+	import MediaUpload from '#lib/components/MediaUpload.svelte';
+	import type { Media } from '#lib/server/schema.ts';
 
 	let { data } = $props();
 
@@ -90,7 +90,7 @@
 	function handleMediaUploaded(media: Media) {
 		showUploadModal = false;
 		// Refresh the page to show new media
-		goto('/admin/media', { invalidateAll: true });
+		goto('/admin/media', { refreshAll: true });
 	}
 </script>
 
@@ -226,7 +226,7 @@
 										return async ({ result }) => {
 											if (result.type === 'success') {
 												deleteConfirm = null;
-												goto('/admin/media', { invalidateAll: true });
+												goto('/admin/media', { refreshAll: true });
 											}
 										};
 									}}>
@@ -382,7 +382,7 @@
 					return async ({ result }) => {
 						if (result.type === 'success') {
 							closeEditModal();
-							goto('/admin/media', { invalidateAll: true });
+							goto('/admin/media', { refreshAll: true });
 						}
 					};
 				}}

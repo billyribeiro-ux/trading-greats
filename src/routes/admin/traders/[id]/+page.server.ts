@@ -1,12 +1,12 @@
 import type { PageServerLoad, Actions } from './$types';
 import { error, fail, redirect } from '@sveltejs/kit';
-import { db } from '$lib/server/db';
-import { traders, media } from '$lib/server/schema';
-import type { FamousTrade, Quote, Book, SocialLink } from '$lib/server/schema';
+import { db } from '#lib/server/db.ts';
+import { traders, media } from '#lib/server/schema.ts';
+import type { FamousTrade, Quote, Book, SocialLink } from '#lib/server/schema.ts';
 import { eq, asc } from 'drizzle-orm';
-import { slugify } from '$lib/utils';
-import { seedTraders } from '$lib/server/seed';
-import type { Trader, NewTrader } from '$lib/server/schema';
+import { slugify } from '#lib/utils/index.ts';
+import { seedTraders } from '#lib/server/seed.ts';
+import type { Trader, NewTrader } from '#lib/server/schema.ts';
 
 // Helper to convert seed data to Trader type
 function seedToTrader(t: NewTrader, id: string): Trader {

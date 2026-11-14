@@ -1,4 +1,5 @@
-import { redirect, type Handle } from '@sveltejs/kit';
+import { redirect } from '@sveltejs/kit';
+import type { Handle } from '@sveltejs/kit/hooks';
 import {
 	validateSession,
 	logSecurityEvent,
@@ -6,7 +7,7 @@ import {
 	getClientIp,
 	sanitizeUserAgent,
 	isIpBlocked
-} from '$lib/server/auth';
+} from '#lib/server/auth.ts';
 
 // Run cleanup periodically (every hour)
 let lastCleanup = 0;
@@ -76,10 +77,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 		};
 	}
 
-	const response = await resolve(event, {
-		// Preload fonts for better performance
-		preload: ({ type }) => type === 'font' || type === 'css' || type === 'js'
-	});
+	const response = await resolve(event);
 
 	// Security headers
 	response.headers.set('X-Frame-Options', 'DENY');

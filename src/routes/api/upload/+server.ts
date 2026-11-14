@@ -1,4 +1,4 @@
-import { json, error } from '@sveltejs/kit';
+import { error } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { v2 as cloudinary } from 'cloudinary';
 
@@ -76,7 +76,7 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 			eager_async: true
 		});
 
-		return json({
+		return Response.json({
 			success: true,
 			url: result.secure_url,
 			publicId: result.public_id,
@@ -128,7 +128,7 @@ export const DELETE: RequestHandler = async ({ request, cookies }) => {
 
 		await cloudinary.uploader.destroy(publicId);
 
-		return json({ success: true });
+		return Response.json({ success: true });
 	} catch (err) {
 		console.error('Delete error:', err);
 		throw error(500, 'Failed to delete image');

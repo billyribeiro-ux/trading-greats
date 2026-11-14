@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { BlogPost, Trader } from '$lib/server/schema';
-	import { cn } from '$lib/utils';
-	import { Icon, type IconName } from '$lib/components/icons';
+	import type { BlogPost, Trader } from '#lib/server/schema.ts';
+	import { cn } from '#lib/utils/index.ts';
+	import { Icon, type IconName } from '#lib/components/icons/index.ts';
 
 	interface Props {
 		article: BlogPost;

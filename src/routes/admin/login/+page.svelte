@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import { Icon } from '$lib/components/icons';
+	import { Icon } from '#lib/components/icons/index.ts';
 
 	let { form } = $props();
 </script>

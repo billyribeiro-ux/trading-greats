@@ -1,6 +1,6 @@
 import { defineEnvVars } from '@sveltejs/kit/env';
 
-// @migration-task Review usage of dynamic environment variables. They fall back to the empty string if not present, which may not be what you want.
+// Optional variables use an empty string when absent; callers apply their existing defaults or disable the relevant integration.
 export const variables = defineEnvVars({
 	PUBLIC_SITE_NAME: { public: true, schema: (input) => input ?? '' },
 	PUBLIC_SITE_URL: { public: true, schema: (input) => input ?? '' },

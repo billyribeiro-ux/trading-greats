@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import SEO from '$lib/components/SEO.svelte';
+	import SEO from '#lib/components/SEO.svelte';
 	import { IconCircleCheck, IconCircleX, IconArrowRight } from '@tabler/icons-svelte';
 
 	let { data }: { data: PageData } = $props();

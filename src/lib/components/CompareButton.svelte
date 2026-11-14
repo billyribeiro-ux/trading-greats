@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { Icon } from '$lib/components/icons';
-	import { comparison } from '$lib/stores/comparison.svelte';
-	import { cn } from '$lib/utils';
+	import { Icon } from '#lib/components/icons/index.ts';
+	import { comparison } from '#lib/stores/comparison.svelte.ts';
+	import { cn } from '#lib/utils/index.ts';
 	import { onMount } from 'svelte';
 
 	interface Props {

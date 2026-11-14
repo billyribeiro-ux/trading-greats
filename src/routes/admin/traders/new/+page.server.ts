@@ -1,9 +1,9 @@
 import type { Actions } from './$types';
 import { fail, redirect } from '@sveltejs/kit';
-import { db } from '$lib/server/db';
-import { traders } from '$lib/server/schema';
-import type { FamousTrade, Quote, Book, SocialLink } from '$lib/server/schema';
-import { slugify } from '$lib/utils';
+import { db } from '#lib/server/db.ts';
+import { traders } from '#lib/server/schema.ts';
+import type { FamousTrade, Quote, Book, SocialLink } from '#lib/server/schema.ts';
+import { slugify } from '#lib/utils/index.ts';
 
 export const actions: Actions = {
 	default: async ({ request }) => {

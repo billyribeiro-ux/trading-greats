@@ -1,12 +1,12 @@
 <script lang="ts">
-  import SEO from "$lib/components/SEO.svelte";
-  import { PUBLIC_SITE_URL } from '$app/env/public';
-  import JsonLd from "$lib/components/JsonLd.svelte";
-  import { Icon } from "$lib/components/icons";
-  import { ScrollReveal } from "$lib/components/motion";
-  import { cn } from "$lib/utils";
+  import SEO from "#lib/components/SEO.svelte";
+  import { PUBLIC_SITE_URL as configuredSiteUrl } from '$app/env/public';
+  import JsonLd from "#lib/components/JsonLd.svelte";
+  import { Icon } from "#lib/components/icons/index.ts";
+  import { ScrollReveal } from "#lib/components/motion/index.ts";
+  import { cn } from "#lib/utils/index.ts";
 
-  const PUBLIC_SITE_URL = PUBLIC_SITE_URL || "https://tradinggreats.com";
+  const PUBLIC_SITE_URL = configuredSiteUrl || "https://tradinggreats.com";
 
   // June 2026: AboutPage + Person schema for E-E-A-T author anchor
   const aboutSchema = $derived(

@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import { IconArrowLeft, IconDeviceFloppy, IconPlus, IconX, IconTrendingUp, IconTrendingDown } from '@tabler/icons-svelte';
-	import MediaUpload from '$lib/components/MediaUpload.svelte';
-	import type { Media } from '$lib/server/schema';
+	import MediaUpload from '#lib/components/MediaUpload.svelte';
+	import type { Media } from '#lib/server/schema.ts';
 
 	let { form } = $props();
 

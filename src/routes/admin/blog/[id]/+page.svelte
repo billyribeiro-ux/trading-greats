@@ -16,7 +16,7 @@
 		IconTrash,
 		IconExternalLink
 	} from '@tabler/icons-svelte';
-	import { slugify } from '$lib/utils';
+	import { slugify } from '#lib/utils/index.ts';
 	import type { PageData } from './$types';
 
 	interface FormResult {

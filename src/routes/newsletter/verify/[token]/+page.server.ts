@@ -1,5 +1,5 @@
 import type { PageServerLoad } from './$types';
-import { verifySubscriber } from '$lib/server/newsletter';
+import { verifySubscriber } from '#lib/server/newsletter.ts';
 
 export const load: PageServerLoad = async ({ params }) => {
 	const { token } = params;

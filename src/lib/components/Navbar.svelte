@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { browser } from '$app/env';
-	import { cn } from '$lib/utils';
-	import { Icon } from '$lib/components/icons';
+	import { cn } from '#lib/utils/index.ts';
+	import { Icon } from '#lib/components/icons/index.ts';
 	import { fade, fly, scale } from 'svelte/transition';
 	import { cubicOut, backOut } from 'svelte/easing';
 	import ThemeToggle from './ThemeToggle.svelte';

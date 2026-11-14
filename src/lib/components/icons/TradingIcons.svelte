@@ -89,7 +89,7 @@
 </script>
 
 <script lang="ts">
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils/index.ts';
 
 	interface Props {
 		name: IconName;

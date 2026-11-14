@@ -1,13 +1,13 @@
 <script lang="ts">
-	import SEO from '$lib/components/SEO.svelte';
-	import TraderCard from '$lib/components/TraderCard.svelte';
-	import JsonLd from '$lib/components/JsonLd.svelte';
-	import { ScrollReveal } from '$lib/components/motion';
-	import { PUBLIC_SITE_URL } from '$app/env/public';
-	import { cn } from '$lib/utils';
+	import SEO from '#lib/components/SEO.svelte';
+	import TraderCard from '#lib/components/TraderCard.svelte';
+	import JsonLd from '#lib/components/JsonLd.svelte';
+	import { ScrollReveal } from '#lib/components/motion/index.ts';
+	import { PUBLIC_SITE_URL as configuredSiteUrl } from '$app/env/public';
+	import { cn } from '#lib/utils/index.ts';
 
-	const PUBLIC_SITE_URL = PUBLIC_SITE_URL || 'https://tradinggreats.com';
-	import { Icon, type IconName } from '$lib/components/icons';
+	const PUBLIC_SITE_URL = configuredSiteUrl || 'https://tradinggreats.com';
+	import { Icon, type IconName } from '#lib/components/icons/index.ts';
 	import type { PageData } from './$types';
 
 	// ============================================================================

@@ -1,5 +1,5 @@
 import type { PageServerLoad, Actions } from './$types';
-import { getSubscriberByToken, unsubscribeByToken } from '$lib/server/newsletter';
+import { getSubscriberByToken, unsubscribeByToken } from '#lib/server/newsletter.ts';
 import { fail } from '@sveltejs/kit';
 
 export const load: PageServerLoad = async ({ params }) => {

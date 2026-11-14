@@ -1,6 +1,6 @@
 import type { RequestHandler } from './$types';
-import { db } from '$lib/server/db';
-import { blogPosts } from '$lib/server/schema';
+import { db } from '#lib/server/db.ts';
+import { blogPosts } from '#lib/server/schema.ts';
 import { eq, desc } from 'drizzle-orm';
 import { PUBLIC_SITE_URL, PUBLIC_SITE_NAME } from '$app/env/public';
 

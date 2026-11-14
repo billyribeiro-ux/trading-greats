@@ -1,13 +1,13 @@
 <script lang="ts">
-	import SEO from '$lib/components/SEO.svelte';
-	import ScrollReveal from '$lib/components/motion/ScrollReveal.svelte';
-	import TraderArticleCard from '$lib/components/TraderArticleCard.svelte';
-	import JsonLdScript from '$lib/components/JsonLdScript.svelte';
-	import { Icon } from '$lib/components/icons';
-	import { PUBLIC_SITE_URL } from '$app/env/public';
+	import SEO from '#lib/components/SEO.svelte';
+	import ScrollReveal from '#lib/components/motion/ScrollReveal.svelte';
+	import TraderArticleCard from '#lib/components/TraderArticleCard.svelte';
+	import JsonLdScript from '#lib/components/JsonLdScript.svelte';
+	import { Icon } from '#lib/components/icons/index.ts';
+	import { PUBLIC_SITE_URL as configuredSiteUrl } from '$app/env/public';
 	import type { PageData } from './$types';
 
-	const PUBLIC_SITE_URL = PUBLIC_SITE_URL || 'https://tradinggreats.com';
+	const PUBLIC_SITE_URL = configuredSiteUrl || 'https://tradinggreats.com';
 
 	// ============================================================================
 	// PROPS (Svelte 5 - SSR data hydration)

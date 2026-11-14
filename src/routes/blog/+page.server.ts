@@ -1,8 +1,8 @@
 import type { PageServerLoad } from './$types';
-import { db } from '$lib/server/db';
-import { blogPosts, BLOG_CATEGORIES, type BlogPost } from '$lib/server/schema';
+import { db } from '#lib/server/db.ts';
+import { blogPosts, BLOG_CATEGORIES, type BlogPost } from '#lib/server/schema.ts';
 import { eq, desc } from 'drizzle-orm';
-import { seedBlogPosts } from '$lib/server/seedBlog';
+import { seedBlogPosts } from '#lib/server/seedBlog.ts';
 
 // Convert seed post to BlogPost format
 function seedToPost(post: typeof seedBlogPosts[0], id: string): BlogPost {

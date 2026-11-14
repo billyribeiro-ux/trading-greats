@@ -1,10 +1,12 @@
 <script lang="ts">
-	import SEO from '$lib/components/SEO.svelte';
-	import { Icon } from '$lib/components/icons';
-	import { comparison } from '$lib/stores/comparison.svelte';
+	import SEO from '#lib/components/SEO.svelte';
+	import { Icon } from '#lib/components/icons/index.ts';
+	import { comparison } from '#lib/stores/comparison.svelte.ts';
 	import { goto } from '$app/navigation';
+	import { page } from '$app/state';
+	import { onMount } from 'svelte';
 	import { browser } from '$app/env';
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils/index.ts';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
@@ -12,14 +14,9 @@
 	let mounted = $state(false);
 	let searchQuery = $state('');
 
-	$effect(() => {
-		if (browser) {
-			mounted = true;
-			// Sync URL with store on mount
-			if (comparison.count > 0 && data.selectedSlugs.length === 0) {
-				updateUrl();
-			}
-		}
+	onMount(() => {
+		mounted = true;
+		if (comparison.count > 0 && data.selectedSlugs.length === 0) updateUrl();
 	});
 
 	const comparedSlugs = $derived(mounted ? comparison.all : data.selectedSlugs);
@@ -32,14 +29,11 @@
 	const availableTraders = $derived(filteredTraders.filter((t) => !comparedSlugs.includes(t.slug)));
 
 	function updateUrl() {
-		if (browser) {
-			const slugs = comparison.all;
-			if (slugs.length > 0) {
-				goto(`/compare?traders=${slugs.join(',')}`, { replaceState: true });
-			} else {
-				goto('/compare', { replaceState: true });
-			}
-		}
+		if (!browser) return;
+		const url = new URL(window.location.href);
+		if (comparison.all.length) url.searchParams.set('traders', comparison.all.join(','));
+		else url.searchParams.delete('traders');
+		void goto(url, { shallow: true, replace: true, state: page.state });
 	}
 
 	function addTrader(slug: string) {

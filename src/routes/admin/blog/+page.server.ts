@@ -1,6 +1,6 @@
 import type { PageServerLoad, Actions } from './$types';
-import { db } from '$lib/server/db';
-import { blogPosts, BLOG_CATEGORIES } from '$lib/server/schema';
+import { db } from '#lib/server/db.ts';
+import { blogPosts, BLOG_CATEGORIES } from '#lib/server/schema.ts';
 import { desc, eq } from 'drizzle-orm';
 import { fail } from '@sveltejs/kit';
 

@@ -1,6 +1,6 @@
 import type { PageServerLoad } from './$types';
-import { seedTraders } from '$lib/server/seed';
-import type { Trader, NewTrader } from '$lib/server/schema';
+import { seedTraders } from '#lib/server/seed.ts';
+import type { Trader, NewTrader } from '#lib/server/schema.ts';
 
 function seedToTrader(t: NewTrader, id: string): Trader {
 	return {

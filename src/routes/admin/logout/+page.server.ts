@@ -5,7 +5,7 @@ import {
 	logSecurityEvent,
 	getClientIp,
 	sanitizeUserAgent
-} from '$lib/server/auth';
+} from '#lib/server/auth.ts';
 
 export const actions: Actions = {
 	default: async ({ cookies, request }) => {

@@ -183,7 +183,7 @@ Minervini also emphasizes the psychological dimension of trading. Most traders l
 	{
 		name: 'Billy Ribeiro',
 		slug: 'billy-ribeiro',
-		photoUrl: null,
+		photoUrl: '/images/traders/billy-ribeiro-cinematic.png',
 		oneLiner: 'Master Price Action, Options, and Market Structure Trader',
 		birthYear: 1985,
 		nationality: 'American',
@@ -366,7 +366,7 @@ Through Simpler Trading, John has trained tens of thousands of traders. The plat
 	{
 		name: 'George Soros',
 		slug: 'george-soros',
-		photoUrl: null,
+		photoUrl: '/images/traders/george-soros.jpg',
 		oneLiner: 'The Man Who Broke the Bank of England',
 		birthYear: 1930,
 		nationality: 'Hungarian-American',
@@ -444,7 +444,7 @@ Soros has given away over $32 billion to philanthropic causes through his Open S
 	{
 		name: 'Warren Buffett',
 		slug: 'warren-buffett',
-		photoUrl: null,
+		photoUrl: '/images/traders/warren-buffett.jpg',
 		oneLiner: 'The Oracle of Omaha',
 		birthYear: 1930,
 		nationality: 'American',
@@ -535,7 +535,7 @@ Before Berkshire, Buffett ran private investment partnerships from 1956 to 1969,
 	{
 		name: 'Paul Tudor Jones',
 		slug: 'paul-tudor-jones',
-		photoUrl: null,
+		photoUrl: '/images/traders/paul-tudor-jones.jpg',
 		oneLiner: 'Predicted the 1987 Crash & Macro Trading Pioneer',
 		birthYear: 1954,
 		nationality: 'American',
@@ -593,7 +593,7 @@ Jones is known for his:
 	{
 		name: 'Ray Dalio',
 		slug: 'ray-dalio',
-		photoUrl: null,
+		photoUrl: '/images/traders/ray-dalio.jpg',
 		oneLiner: 'Founder of World\'s Largest Hedge Fund',
 		birthYear: 1949,
 		nationality: 'American',
@@ -712,7 +712,7 @@ Druckenmiller is known for:
 	{
 		name: 'Jesse Livermore',
 		slug: 'jesse-livermore',
-		photoUrl: null,
+		photoUrl: '/images/traders/jesse-livermore.jpg',
 		oneLiner: 'The Greatest Stock Speculator Who Ever Lived',
 		birthYear: 1877,
 		nationality: 'American',
@@ -838,7 +838,7 @@ Lynch popularized the concept of "invest in what you know":
 	{
 		name: 'Jim Simons',
 		slug: 'jim-simons',
-		photoUrl: null,
+		photoUrl: '/images/traders/jim-simons.jpg',
 		oneLiner: 'Mathematician Who Built the Most Profitable Hedge Fund Ever',
 		birthYear: 1938,
 		nationality: 'American',
@@ -900,7 +900,7 @@ Simons pioneered the use of:
 	{
 		name: 'Carl Icahn',
 		slug: 'carl-icahn',
-		photoUrl: null,
+		photoUrl: '/images/traders/carl-icahn.jpg',
 		oneLiner: 'The Most Feared Activist Investor on Wall Street',
 		birthYear: 1936,
 		nationality: 'American',
@@ -958,7 +958,7 @@ Some of his most notable activist investments include:
 	{
 		name: 'Benjamin Graham',
 		slug: 'benjamin-graham',
-		photoUrl: null,
+		photoUrl: '/images/traders/benjamin-graham.jpg',
 		oneLiner: 'The Father of Value Investing',
 		birthYear: 1894,
 		nationality: 'British-American',
@@ -1320,7 +1320,7 @@ Robertson combined deep fundamental research with macro awareness, going long be
 	{
 		name: 'David Tepper',
 		slug: 'david-tepper',
-		photoUrl: null,
+		photoUrl: '/images/traders/david-tepper.jpg',
 		oneLiner: 'Distressed Debt King with 40% Annual Returns',
 		birthYear: 1957,
 		nationality: 'American',
@@ -1374,7 +1374,7 @@ Tepper combines macro views with deep research on individual securities, often t
 	{
 		name: 'Ken Griffin',
 		slug: 'ken-griffin',
-		photoUrl: null,
+		photoUrl: '/images/traders/ken-griffin.jpg',
 		oneLiner: 'Citadel Founder & Highest Paid Hedge Fund Manager',
 		birthYear: 1968,
 		nationality: 'American',
@@ -1430,7 +1430,7 @@ Citadel employs:
 	{
 		name: 'Steve Cohen',
 		slug: 'steve-cohen',
-		photoUrl: null,
+		photoUrl: '/images/traders/steve-cohen.jpg',
 		oneLiner: 'SAC Capital Legend & Point72 Founder',
 		birthYear: 1956,
 		nationality: 'American',
@@ -1536,7 +1536,7 @@ Between 1957 and 1958, Darvas turned $25,000 into over $2 million—equivalent t
 	{
 		name: 'Larry Williams',
 		slug: 'larry-williams',
-		photoUrl: null,
+		photoUrl: '/images/traders/larry-williams.jpg',
 		oneLiner: 'World Cup Trading Champion with 11,376% Return',
 		birthYear: 1942,
 		nationality: 'American',
@@ -1695,7 +1695,7 @@ Lipschutz is known for his ability to synthesize vast amounts of information and
 	{
 		name: 'Jim Rogers',
 		slug: 'jim-rogers',
-		photoUrl: null,
+		photoUrl: '/images/traders/jim-rogers.jpg',
 		oneLiner: 'Co-founder of Quantum Fund with 4,200% Returns',
 		birthYear: 1942,
 		nationality: 'American',
@@ -2163,7 +2163,7 @@ Burry has Asperger's syndrome, which he credits for his ability to focus intense
 	{
 		name: 'Peter Schiff',
 		slug: 'peter-schiff',
-		photoUrl: null,
+		photoUrl: '/images/traders/peter-schiff.jpg',
 		oneLiner: 'Predicted 2008 Crisis - Gold Bug & Austrian Economist',
 		birthYear: 1963,
 		nationality: 'American',
@@ -2271,7 +2271,7 @@ Short sellers are often vilified, and Cawkwell has faced his share of criticism.
 	{
 		name: 'T. Boone Pickens',
 		slug: 't-boone-pickens',
-		photoUrl: null,
+		photoUrl: '/images/traders/t-boone-pickens.jpg',
 		oneLiner: 'The Oracle of Oil - Corporate Raider Turned Energy Titan',
 		birthYear: 1928,
 		deathYear: 2019,
@@ -2445,7 +2445,7 @@ Warren Buffett has said he is "85% Benjamin Graham and 15% Philip Fisher." While
 	{
 		name: 'Seth Klarman',
 		slug: 'seth-klarman',
-		photoUrl: null,
+		photoUrl: '/images/traders/seth-klarman.jpg',
 		oneLiner: 'The Oracle of Boston - Value Investing\'s Quiet Giant',
 		birthYear: 1957,
 		nationality: 'American',
@@ -2502,7 +2502,7 @@ Unlike many hedge fund managers who use leverage to amplify returns, Klarman foc
 	{
 		name: 'Howard Marks',
 		slug: 'howard-marks',
-		photoUrl: null,
+		photoUrl: '/images/traders/howard-marks.jpg',
 		oneLiner: 'Master of Market Cycles and Risk Assessment',
 		birthYear: 1946,
 		nationality: 'American',
@@ -2675,7 +2675,7 @@ Einhorn is also an accomplished poker player, finishing 18th in the 2006 World S
 	{
 		name: 'Bill Ackman',
 		slug: 'bill-ackman',
-		photoUrl: null,
+		photoUrl: '/images/traders/bill-ackman.jpg',
 		oneLiner: 'Pershing Square Activist and High-Conviction Investor',
 		birthYear: 1966,
 		nationality: 'American',
@@ -2788,7 +2788,7 @@ Third Point employs an event-driven, value-oriented strategy, investing in equit
 	{
 		name: 'John Neff',
 		slug: 'john-neff',
-		photoUrl: null,
+		photoUrl: '/images/traders/john-neff.jpg',
 		oneLiner: 'Windsor Fund Legend with 31 Years of Market-Beating Returns',
 		birthYear: 1931,
 		deathYear: 2019,
@@ -2960,7 +2960,7 @@ Pabrai founded the Dakshana Foundation to help underprivileged students in India
 	{
 		name: 'Charlie Munger',
 		slug: 'charlie-munger',
-		photoUrl: null,
+		photoUrl: '/images/traders/charlie-munger.jpg',
 		oneLiner: 'Berkshire Hathaway Vice Chairman and Buffett\'s Partner',
 		birthYear: 1924,
 		deathYear: 2023,

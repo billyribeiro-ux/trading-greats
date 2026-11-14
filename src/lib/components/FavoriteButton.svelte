@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { Icon } from '$lib/components/icons';
-	import { favorites } from '$lib/stores/favorites.svelte';
-	import { cn } from '$lib/utils';
+	import { Icon } from '#lib/components/icons/index.ts';
+	import { favorites } from '#lib/stores/favorites.svelte.ts';
+	import { cn } from '#lib/utils/index.ts';
 	import { onMount } from 'svelte';
 
 	interface Props {

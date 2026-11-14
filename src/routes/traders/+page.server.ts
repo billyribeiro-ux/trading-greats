@@ -1,15 +1,18 @@
 import type { PageServerLoad } from './$types';
-import { db } from '$lib/server/db';
-import { traders as tradersTable, type Trader } from '$lib/server/schema';
+import { db } from '#lib/server/db.ts';
+import { traders as tradersTable, type Trader } from '#lib/server/schema.ts';
 import { eq } from 'drizzle-orm';
+import { traderPhoto } from '#lib/server/trader-portraits.ts';
 
 export const load: PageServerLoad = async ({ url }) => {
 	const styleFilter = url.searchParams.get('style');
 
-	const allTraders: Trader[] = await db
+	const records: Trader[] = await db
 		.select()
 		.from(tradersTable)
 		.where(eq(tradersTable.status, 'published'));
+
+	const allTraders = records.map((trader) => ({ ...trader, photoUrl: traderPhoto(trader.slug, trader.photoUrl) }));
 
 	// Custom sort: Billy Ribeiro first, Mark Minervini second, John Carter last
 	const priorityFirst = ['billy-ribeiro', 'mark-minervini'];

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { page } from "$app/state";
-  import type { Trader, BlogPost } from "$lib/server/schema";
+  import type { Trader, BlogPost } from "#lib/server/schema.ts";
 
   // Default values that can be overridden by environment variables
   const SITE_NAME = "Trading Greats";

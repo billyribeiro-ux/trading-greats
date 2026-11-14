@@ -1,8 +1,9 @@
 import type { PageServerLoad } from './$types';
 import { error } from '@sveltejs/kit';
-import { db } from '$lib/server/db';
-import { traders as tradersTable, blogPosts, media, type Trader, type BlogPost, type Media } from '$lib/server/schema';
+import { db } from '#lib/server/db.ts';
+import { traders as tradersTable, blogPosts, media, type Trader, type BlogPost, type Media } from '#lib/server/schema.ts';
 import { eq, and, ne, desc, asc } from 'drizzle-orm';
+import { portraitCredits, traderPhoto } from '#lib/server/trader-portraits.ts';
 
 export const prerender = 'auto';
 
@@ -60,9 +61,22 @@ export const load: PageServerLoad = async ({ params }) => {
 		console.error('Failed to fetch trader gallery:', err);
 	}
 
+	const photoUrl = traderPhoto(slug, trader.photoUrl);
+	const credit = portraitCredits[slug];
+
 	return {
-		trader,
-		relatedTraders,
+		photoCredit: credit?.url === photoUrl ? {
+			...credit,
+			licenseUrl: credit.license.startsWith('CC BY-SA ') ? `https://creativecommons.org/licenses/by-sa/${credit.license.slice(9)}/` :
+				credit.license.startsWith('CC BY ') ? `https://creativecommons.org/licenses/by/${credit.license.slice(6)}/` :
+				credit.license === 'CC0' ? 'https://creativecommons.org/publicdomain/zero/1.0/' : null,
+			modified: slug === 'jesse-livermore'
+		} : null,
+		trader: {
+			...trader,
+			photoUrl
+		},
+		relatedTraders: relatedTraders.map((related) => ({ ...related, photoUrl: traderPhoto(related.slug, related.photoUrl) })),
 		articles,
 		gallery
 	};

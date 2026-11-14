@@ -1,6 +1,6 @@
 import { redirect } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import { trackClick } from '$lib/server/newsletter';
+import { trackClick } from '#lib/server/newsletter.ts';
 
 export const GET: RequestHandler = async ({ params, url, request, getClientAddress }) => {
 	const { id } = params;
@@ -18,6 +18,15 @@ export const GET: RequestHandler = async ({ params, url, request, getClientAddre
 		decodedUrl = targetUrl;
 	}
 
+	// Only navigate to web URLs; tracking links may point to other sites.
+	let destination: URL;
+	try {
+		destination = new URL(decodedUrl, url.origin);
+		if (!['http:', 'https:'].includes(destination.protocol)) throw new Error('Invalid protocol');
+	} catch {
+		throw redirect(302, '/');
+	}
+
 	// Track the click asynchronously (don't block redirect)
 	trackClick(id, decodedUrl, {
 		ipAddress: getClientAddress(),
@@ -25,5 +34,5 @@ export const GET: RequestHandler = async ({ params, url, request, getClientAddre
 	}).catch((err) => console.error('[Newsletter] Track click error:', err));
 
 	// Redirect to the target URL
-	throw redirect(302, decodedUrl);
+	throw redirect(302, destination.href, { external: [destination.origin] });
 };

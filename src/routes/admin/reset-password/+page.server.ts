@@ -5,7 +5,7 @@ import {
 	logSecurityEvent,
 	getClientIp,
 	sanitizeUserAgent
-} from '$lib/server/auth';
+} from '#lib/server/auth.ts';
 import { RECOVERY_KEY_HASH } from '$app/env/private';
 
 export const load: PageServerLoad = async () => {

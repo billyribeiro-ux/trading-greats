@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { Icon } from '$lib/components/icons';
+	import { Icon } from '#lib/components/icons/index.ts';
 
 	// Get the error status code
 	const status = $derived(page.status);

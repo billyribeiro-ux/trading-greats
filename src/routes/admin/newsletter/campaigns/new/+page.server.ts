@@ -1,6 +1,6 @@
 import type { PageServerLoad, Actions } from './$types';
 import { redirect, fail } from '@sveltejs/kit';
-import { createCampaign } from '$lib/server/newsletter';
+import { createCampaign } from '#lib/server/newsletter.ts';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	if (!locals.user) {

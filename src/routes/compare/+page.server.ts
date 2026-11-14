@@ -1,7 +1,8 @@
 import type { PageServerLoad } from './$types';
-import { db } from '$lib/server/db';
-import { traders as tradersTable, type Trader } from '$lib/server/schema';
+import { db } from '#lib/server/db.ts';
+import { traders as tradersTable, type Trader } from '#lib/server/schema.ts';
 import { eq, inArray } from 'drizzle-orm';
+import { traderPhoto } from '#lib/server/trader-portraits.ts';
 
 export const load: PageServerLoad = async ({ url }) => {
 	const slugsParam = url.searchParams.get('traders');
@@ -25,8 +26,8 @@ export const load: PageServerLoad = async ({ url }) => {
 		.filter((t): t is Trader => t !== undefined);
 
 	return {
-		allTraders,
-		selectedTraders: orderedSelected,
+		allTraders: allTraders.map((trader) => ({ ...trader, photoUrl: traderPhoto(trader.slug, trader.photoUrl) })),
+		selectedTraders: orderedSelected.map((trader) => ({ ...trader, photoUrl: traderPhoto(trader.slug, trader.photoUrl) })),
 		selectedSlugs: slugs
 	};
 };

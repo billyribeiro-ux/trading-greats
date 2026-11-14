@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { browser } from '$app/env';
-	import { EASING, DURATION, prefersReducedMotion } from '$lib/utils/motion';
-	import { cn } from '$lib/utils';
+	import { EASING, DURATION, prefersReducedMotion } from '#lib/utils/motion.ts';
+	import { cn } from '#lib/utils/index.ts';
 
 	// ============================================================================
 	// TYPES & PROPS

@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { PUBLIC_SITE_URL, PUBLIC_SITE_NAME } from '$app/env/public';
+	import { PUBLIC_SITE_URL as configuredSiteUrl, PUBLIC_SITE_NAME as configuredSiteName } from '$app/env/public';
 
-	const PUBLIC_SITE_URL = PUBLIC_SITE_URL || 'https://tradinggreats.com';
-	const PUBLIC_SITE_NAME = PUBLIC_SITE_NAME || 'Trading Greats';
+	const PUBLIC_SITE_URL = configuredSiteUrl || 'https://tradinggreats.com';
+	const PUBLIC_SITE_NAME = configuredSiteName || 'Trading Greats';
 
 	interface Props {
 		title: string;
@@ -16,7 +16,6 @@
 		noindex?: boolean;
 		// Google Nov 2025 - Enhanced SEO signals
 		keywords?: string[];
-		preloadImage?: boolean;
 	}
 
 	let {
@@ -28,8 +27,7 @@
 		modifiedTime,
 		author,
 		noindex = false,
-		keywords = [],
-		preloadImage = false
+		keywords = []
 	}: Props = $props();
 
 	const fullTitle = $derived(title === PUBLIC_SITE_NAME ? title : `${title} | ${PUBLIC_SITE_NAME}`);
@@ -59,11 +57,6 @@
 		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 	{/if}
 	
-	<!-- Google Nov 2025: Preload LCP image for Core Web Vitals -->
-	{#if preloadImage && image}
-		<link rel="preload" as="image" href={image} fetchpriority="high" />
-	{/if}
-
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content={type} />
 	<meta property="og:url" content={canonicalUrl} />
