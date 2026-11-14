@@ -6,11 +6,11 @@ import {
 	getClientIp,
 	sanitizeUserAgent
 } from '$lib/server/auth';
-import { env } from '$env/dynamic/private';
+import { RECOVERY_KEY_HASH } from '$app/env/private';
 
 export const load: PageServerLoad = async () => {
 	// Check if recovery key is configured
-	const hasRecoveryKey = !!env.RECOVERY_KEY_HASH;
+	const hasRecoveryKey = !!RECOVERY_KEY_HASH;
 
 	return {
 		hasRecoveryKey
@@ -39,7 +39,7 @@ export const actions: Actions = {
 			return fail(400, { error: 'Passwords do not match' });
 		}
 
-		const storedHash = env.RECOVERY_KEY_HASH;
+		const storedHash = RECOVERY_KEY_HASH;
 		if (!storedHash) {
 			await logSecurityEvent('login_failed', ipAddress, userAgent, {
 				action: 'password_reset_attempt',

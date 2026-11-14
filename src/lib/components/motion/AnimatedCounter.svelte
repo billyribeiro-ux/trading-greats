@@ -1,15 +1,5 @@
-<!--
-  AnimatedCounter Component
-
-  Smoothly animates a number from 0 to target value.
-  Uses easing for natural feel, respects reduced motion.
-
-  Usage:
-  <AnimatedCounter value={1234} suffix="+" />
-  <AnimatedCounter value={99.5} prefix="$" decimals={1} />
--->
 <script lang="ts">
-	import { browser } from '$app/environment';
+	import { browser } from '$app/env';
 	import { DURATION, prefersReducedMotion } from '$lib/utils/motion';
 	import { cn } from '$lib/utils';
 
@@ -143,6 +133,17 @@
 		};
 	});
 </script>
+
+<!--
+  AnimatedCounter Component
+
+  Smoothly animates a number from 0 to target value.
+  Uses easing for natural feel, respects reduced motion.
+
+  Usage:
+  <AnimatedCounter value={1234} suffix="+" />
+  <AnimatedCounter value={99.5} prefix="$" decimals={1} />
+-->
 
 <span
 	bind:this={element}

@@ -5,7 +5,7 @@
  * Uses Svelte 5's $state for reactivity.
  */
 
-import { browser } from '$app/environment';
+import { browser } from '$app/env';
 import { SvelteSet } from 'svelte/reactivity';
 
 const STORAGE_KEY = 'trading_greats_favorites';

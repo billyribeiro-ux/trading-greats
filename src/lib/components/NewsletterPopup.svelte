@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Icon } from '$lib/components/icons';
 	import { cn } from '$lib/utils';
-	import { browser } from '$app/environment';
+	import { browser } from '$app/env';
 
 	interface Props {
 		delay?: number;
@@ -119,8 +119,8 @@
 
 		if (showOnScroll) {
 			scrollHandler = () => {
-				const scrollPercent =
-					(window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+				const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+
 				if (scrollPercent >= scrollThreshold && !isDismissed() && !visible) {
 					visible = true;
 					if (scrollHandler) {
@@ -140,7 +140,7 @@
 	});
 </script>
 
-<svelte:window onkeydown={handleKeydown} />
+<svelte:window onkeydown={handleKeydown}></svelte:window>
 
 {#if visible}
 	<!-- Backdrop -->

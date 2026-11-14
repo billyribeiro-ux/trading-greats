@@ -2,10 +2,10 @@ import type { RequestHandler } from './$types';
 import { db } from '$lib/server/db';
 import { blogPosts } from '$lib/server/schema';
 import { eq, desc } from 'drizzle-orm';
-import { env } from '$env/dynamic/public';
+import { PUBLIC_SITE_URL, PUBLIC_SITE_NAME } from '$app/env/public';
 
-const SITE_URL = env.PUBLIC_SITE_URL || 'https://tradinggreats.com';
-const SITE_TITLE = `${env.PUBLIC_SITE_NAME || 'Trading Greats'} Blog`;
+const SITE_URL = PUBLIC_SITE_URL || 'https://tradinggreats.com';
+const SITE_TITLE = `${PUBLIC_SITE_NAME || 'Trading Greats'} Blog`;
 const SITE_DESCRIPTION = 'Insights, strategies, and wisdom from legendary traders. Expert analysis and educational content for serious traders.';
 
 function escapeXml(unsafe: string): string {
@@ -28,9 +28,9 @@ export const GET: RequestHandler = async () => {
 	const items = posts
 		.map((post) => {
 			const pubDate = post.publishedAt ? new Date(post.publishedAt).toUTCString() : new Date().toUTCString();
-			const postUrl = `${SITE_URL}/blog/${escapeXml(post.slug)}`;
+		const postUrl = `${SITE_URL}/blog/${escapeXml(post.slug)}`;
 
-			return `
+		return `
 		<item>
 			<title>${escapeXml(post.title)}</title>
 			<link>${postUrl}</link>

@@ -4,10 +4,10 @@
 	import TraderArticleCard from '$lib/components/TraderArticleCard.svelte';
 	import JsonLdScript from '$lib/components/JsonLdScript.svelte';
 	import { Icon } from '$lib/components/icons';
-	import { env } from '$env/dynamic/public';
+	import { PUBLIC_SITE_URL } from '$app/env/public';
 	import type { PageData } from './$types';
 
-	const PUBLIC_SITE_URL = env.PUBLIC_SITE_URL || 'https://tradinggreats.com';
+	const PUBLIC_SITE_URL = PUBLIC_SITE_URL || 'https://tradinggreats.com';
 
 	// ============================================================================
 	// PROPS (Svelte 5 - SSR data hydration)
@@ -53,7 +53,7 @@
 				"url": `${PUBLIC_SITE_URL}/traders/${trader.slug}`
 			},
 			"numberOfItems": articles.length,
-			"hasPart": articles.slice(0, 10).map(article => ({
+			"hasPart": articles.slice(0, 10).map((article) => ({
 				"@type": "Article",
 				"headline": article.title,
 				"url": `${PUBLIC_SITE_URL}/traders/${trader.slug}/articles/${article.slug}`
@@ -187,9 +187,7 @@
 						</h2>
 						<div class="grid gap-4 sm:gap-5 lg:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
 							{#each remainingArticles as article, i (article.slug)}
-								<ScrollReveal delay={i * 50}>
-									<TraderArticleCard {article} trader={trader} />
-								</ScrollReveal>
+								<ScrollReveal delay={i * 50}><TraderArticleCard article={article} trader={trader} /></ScrollReveal>
 							{/each}
 						</div>
 					</ScrollReveal>

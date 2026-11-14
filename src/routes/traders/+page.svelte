@@ -3,10 +3,10 @@
 	import TraderCard from '$lib/components/TraderCard.svelte';
 	import JsonLd from '$lib/components/JsonLd.svelte';
 	import { ScrollReveal } from '$lib/components/motion';
-	import { env } from '$env/dynamic/public';
+	import { PUBLIC_SITE_URL } from '$app/env/public';
 	import { cn } from '$lib/utils';
 
-	const PUBLIC_SITE_URL = env.PUBLIC_SITE_URL || 'https://tradinggreats.com';
+	const PUBLIC_SITE_URL = PUBLIC_SITE_URL || 'https://tradinggreats.com';
 	import { Icon, type IconName } from '$lib/components/icons';
 	import type { PageData } from './$types';
 
@@ -76,7 +76,7 @@
 	description="Explore comprehensive profiles of legendary traders. From value investors like Warren Buffett to macro traders like George Soros—discover the strategies, philosophies, and famous trades that built fortunes."
 />
 
-<JsonLd type="BreadcrumbList" {breadcrumbs} />
+<JsonLd type="BreadcrumbList" breadcrumbs={breadcrumbs} />
 
 <div class="min-h-screen bg-midnight-950">
 	<!-- ========================================================================
@@ -111,10 +111,19 @@
 			<div class="mt-8 sm:mt-10 lg:mt-12 max-w-3xl mx-auto">
 				<div class="relative group">
 					<!-- Glow effect - hidden on mobile for performance -->
-					<div class="hidden sm:block absolute -inset-1 bg-linear-to-r from-gold-500/20 via-violet-500/20 to-gold-500/20 rounded-xl sm:rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-500"></div>
 
-					<div class="relative flex items-center bg-midnight-900/80 backdrop-blur-xl border border-white/10 rounded-xl p-1.5 sm:p-2 shadow-2xl">
-						<Icon name="search" class="ml-3 sm:ml-4 h-4 w-4 sm:h-5 sm:w-5 text-midnight-400" />
+					<div
+						class="hidden sm:block absolute -inset-1 bg-linear-to-r from-gold-500/20 via-violet-500/20 to-gold-500/20 rounded-xl sm:rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-500"
+					></div>
+
+					<div
+						class="relative flex items-center bg-midnight-900/80 backdrop-blur-xl border border-white/10 rounded-xl p-1.5 sm:p-2 shadow-2xl"
+					>
+						<Icon
+							name="search"
+							class="ml-3 sm:ml-4 h-4 w-4 sm:h-5 sm:w-5 text-midnight-400"
+						/>
+
 						<input
 							type="text"
 							placeholder="Search traders..."
@@ -123,7 +132,7 @@
 						/>
 						{#if searchQuery}
 							<button
-								onclick={() => (searchQuery = '')}
+								onclick={() => searchQuery = ''}
 								class="p-2 hover:bg-white/10 rounded-lg transition-colors mr-1 sm:mr-2 active:bg-white/20"
 								aria-label="Clear search"
 							>
@@ -242,7 +251,7 @@
 							Try adjusting your filters or search terms.
 						</p>
 						<button
-							onclick={() => (searchQuery = '')}
+							onclick={() => searchQuery = ''}
 							class="inline-flex items-center gap-2 rounded-full bg-gold-500 px-6 py-3 text-sm font-bold text-midnight-950 transition-all hover:bg-gold-400"
 						>
 							Clear Search
@@ -255,9 +264,7 @@
 				{#if viewMode === 'grid'}
 					<div class="grid gap-4 sm:gap-5 lg:gap-6 grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 4xl:grid-cols-7">
 						{#each filteredTraders as trader, i (trader.id)}
-							<div class="h-full">
-								<TraderCard {trader} index={i} class="h-full" />
-							</div>
+							<div class="h-full"><TraderCard trader={trader} index={i} class="h-full" /></div>
 						{/each}
 					</div>
 				{:else}

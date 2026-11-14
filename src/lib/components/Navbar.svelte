@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { browser } from '$app/environment';
+	import { browser } from '$app/env';
 	import { cn } from '$lib/utils';
 	import { Icon } from '$lib/components/icons';
 	import { fade, fly, scale } from 'svelte/transition';
@@ -124,7 +124,7 @@
 	}
 </script>
 
-<svelte:window onkeydown={handleWindowKeydown} />
+<svelte:window onkeydown={handleWindowKeydown}></svelte:window>
 
 <header
 	class={cn(

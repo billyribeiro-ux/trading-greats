@@ -1,14 +1,14 @@
 <script lang="ts">
 	import '../app.css';
 	import { page } from '$app/state';
-	import { browser } from '$app/environment';
+	import { browser } from '$app/env';
 	import JsonLd from '$lib/components/JsonLd.svelte';
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import NewsletterPopup from '$lib/components/NewsletterPopup.svelte';
-	import { env } from '$env/dynamic/public';
+	import { PUBLIC_SITE_NAME } from '$app/env/public';
 
-	const PUBLIC_SITE_NAME = env.PUBLIC_SITE_NAME || 'Trading Greats';
+	const PUBLIC_SITE_NAME = PUBLIC_SITE_NAME || 'Trading Greats';
 	import { onNavigate } from '$app/navigation';
 	import { theme } from '$lib/stores/theme.svelte';
 

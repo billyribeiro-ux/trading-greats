@@ -23,19 +23,19 @@ import {
 	type SendStatus
 } from './schema';
 import { eq, and, desc, sql, count, gte } from 'drizzle-orm';
-import { env } from '$env/dynamic/private';
-import { env as publicEnv } from '$env/dynamic/public';
+import { RESEND_API_KEY, NEWSLETTER_FROM_EMAIL, NEWSLETTER_FROM_NAME } from '$app/env/private';
+import { PUBLIC_SITE_URL, PUBLIC_SITE_NAME } from '$app/env/public';
 
 // ============================================================================
 // CONFIGURATION
 // ============================================================================
 
-const resend = env.RESEND_API_KEY ? new Resend(env.RESEND_API_KEY) : null;
+const resend = RESEND_API_KEY ? new Resend(RESEND_API_KEY) : null;
 
-const SITE_URL = publicEnv.PUBLIC_SITE_URL || 'http://localhost:5173';
-const SITE_NAME = publicEnv.PUBLIC_SITE_NAME || 'Trading Greats';
-const FROM_EMAIL = env.NEWSLETTER_FROM_EMAIL || 'newsletter@tradinggreats.com';
-const FROM_NAME = env.NEWSLETTER_FROM_NAME || 'Trading Greats';
+const SITE_URL = PUBLIC_SITE_URL || 'http://localhost:5173';
+const SITE_NAME = PUBLIC_SITE_NAME || 'Trading Greats';
+const FROM_EMAIL = NEWSLETTER_FROM_EMAIL || 'newsletter@tradinggreats.com';
+const FROM_NAME = NEWSLETTER_FROM_NAME || 'Trading Greats';
 
 // ============================================================================
 // HELPER FUNCTIONS
@@ -121,11 +121,11 @@ export async function subscribeEmail(
 			await db
 				.update(newsletterSubscribers)
 				.set({
-					status: 'pending',
-					verificationToken,
-					unsubscribedAt: null,
-					unsubscribeReason: null,
-					updatedAt: new Date().toISOString()
+				status: 'pending',
+				verificationToken,
+				unsubscribedAt: null,
+				unsubscribeReason: null,
+				updatedAt: new Date().toISOString()
 				})
 				.where(eq(newsletterSubscribers.id, existing.id));
 
@@ -733,21 +733,21 @@ async function recordEvent(event: {
 // ============================================================================
 
 export async function createCampaign(data: {
-	subject: string;
-	previewText?: string;
-	content: string;
-	contentText?: string;
+		subject: string;
+		previewText?: string;
+		content: string;
+		contentText?: string;
 	type?: 'manual' | 'weekly_digest' | 'new_trader' | 'blog_post';
 }): Promise<NewsletterCampaign | null> {
 	const campaign = await db
 		.insert(newsletterCampaigns)
 		.values({
-			subject: data.subject,
-			previewText: data.previewText,
-			content: data.content,
-			contentText: data.contentText || stripHtml(data.content),
-			type: data.type || 'manual',
-			status: 'draft'
+		subject: data.subject,
+		previewText: data.previewText,
+		content: data.content,
+		contentText: data.contentText || stripHtml(data.content),
+		type: data.type || 'manual',
+		status: 'draft'
 		})
 		.returning()
 		.get();
@@ -890,8 +890,8 @@ export async function getNewsletterStats(): Promise<{
 		}
 	}
 
-	const avgOpenRate = campaignsWithData > 0 ? (totalOpenRate / campaignsWithData) * 100 : 0;
-	const avgClickRate = campaignsWithData > 0 ? (totalClickRate / campaignsWithData) * 100 : 0;
+	const avgOpenRate = campaignsWithData > 0 ? totalOpenRate / campaignsWithData * 100 : 0;
+	const avgClickRate = campaignsWithData > 0 ? totalClickRate / campaignsWithData * 100 : 0;
 
 	// Last 30 days stats
 	const newSubscribersResult = await db

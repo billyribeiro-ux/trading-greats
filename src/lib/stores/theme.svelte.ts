@@ -6,7 +6,7 @@
  * Uses Svelte 5's $state for reactivity.
  */
 
-import { browser } from '$app/environment';
+import { browser } from '$app/env';
 
 const STORAGE_KEY = 'trading_greats_theme';
 

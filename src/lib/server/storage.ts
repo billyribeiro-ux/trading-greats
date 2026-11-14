@@ -12,7 +12,16 @@
  */
 
 import { S3Client, PutObjectCommand, DeleteObjectCommand } from '@aws-sdk/client-s3';
-import { env } from '$env/dynamic/private';
+
+import {
+	R2_ACCOUNT_ID,
+	R2_ACCESS_KEY_ID,
+	R2_SECRET_ACCESS_KEY,
+	R2_BUCKET_NAME,
+	STORAGE_PROVIDER,
+	R2_PUBLIC_URL
+} from '$app/env/private';
+
 import sharp from 'sharp';
 import { promises as fs } from 'fs';
 import path from 'path';
@@ -20,26 +29,20 @@ import path from 'path';
 // ============================================================================
 // CONFIGURATION
 // ============================================================================
-
-const isR2Configured = Boolean(
-	env.R2_ACCOUNT_ID &&
-	env.R2_ACCESS_KEY_ID &&
-	env.R2_SECRET_ACCESS_KEY &&
-	env.R2_BUCKET_NAME
-);
+const isR2Configured = Boolean(R2_ACCOUNT_ID && R2_ACCESS_KEY_ID && R2_SECRET_ACCESS_KEY && R2_BUCKET_NAME);
 
 // Determine active provider
-const storageProvider = env.STORAGE_PROVIDER || (isR2Configured ? 'r2' : 'local');
+const storageProvider = STORAGE_PROVIDER || (isR2Configured ? 'r2' : 'local');
 
 // R2 Client (initialized only if needed)
 let s3Client: S3Client | null = null;
 if (storageProvider === 'r2' && isR2Configured) {
 	s3Client = new S3Client({
 		region: 'auto',
-		endpoint: `https://${env.R2_ACCOUNT_ID}.r2.cloudflarestorage.com`,
+		endpoint: `https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com`,
 		credentials: {
-			accessKeyId: env.R2_ACCESS_KEY_ID!,
-			secretAccessKey: env.R2_SECRET_ACCESS_KEY!
+			accessKeyId: R2_ACCESS_KEY_ID!,
+			secretAccessKey: R2_SECRET_ACCESS_KEY!
 		}
 	});
 }
@@ -98,44 +101,25 @@ export async function processImage(file: File): Promise<ImageVariants> {
 	// Process variants in parallel for speed
 	const [original, optimized, large, medium, thumbnail] = await Promise.all([
 		// Original - just convert to WebP
-		sharp(buffer)
-			.webp({ quality: 95 })
-			.toBuffer()
-			.then(b => ({ buffer: b, width: originalWidth, height: originalHeight })),
+		sharp(buffer).webp({ quality: 95 }).toBuffer().then((b) => ({ buffer: b, width: originalWidth, height: originalHeight })),
 
 		// Optimized - max 1200px, good quality
-		sharp(buffer)
-			.resize(1200, 1200, { fit: 'inside', withoutEnlargement: true })
-			.webp({ quality: 85 })
-			.toBuffer()
-			.then(async b => {
-				const m = await sharp(b).metadata();
-				return { buffer: b, width: m.width || 1200, height: m.height || 1200 };
-			}),
+		sharp(buffer).resize(1200, 1200, { fit: 'inside', withoutEnlargement: true }).webp({ quality: 85 }).toBuffer().then(async (b) => {
+			const m = await sharp(b).metadata();
+			return { buffer: b, width: m.width || 1200, height: m.height || 1200 };
+		}),
 
 		// Large - 800px
-		sharp(buffer)
-			.resize(800, 800, { fit: 'inside', withoutEnlargement: true })
-			.webp({ quality: 82 })
-			.toBuffer()
-			.then(async b => {
-				const m = await sharp(b).metadata();
-				return { buffer: b, width: m.width || 800, height: m.height || 800 };
-			}),
+		sharp(buffer).resize(800, 800, { fit: 'inside', withoutEnlargement: true }).webp({ quality: 82 }).toBuffer().then(async (b) => {
+			const m = await sharp(b).metadata();
+			return { buffer: b, width: m.width || 800, height: m.height || 800 };
+		}),
 
 		// Medium - 400px, smart cropping for portraits
-		sharp(buffer)
-			.resize(400, 400, { fit: 'cover', position: 'attention' })
-			.webp({ quality: 80 })
-			.toBuffer()
-			.then(b => ({ buffer: b, width: 400, height: 400 })),
+		sharp(buffer).resize(400, 400, { fit: 'cover', position: 'attention' }).webp({ quality: 80 }).toBuffer().then((b) => ({ buffer: b, width: 400, height: 400 })),
 
 		// Thumbnail - 150px
-		sharp(buffer)
-			.resize(150, 150, { fit: 'cover', position: 'attention' })
-			.webp({ quality: 75 })
-			.toBuffer()
-			.then(b => ({ buffer: b, width: 150, height: 150 }))
+		sharp(buffer).resize(150, 150, { fit: 'cover', position: 'attention' }).webp({ quality: 75 }).toBuffer().then((b) => ({ buffer: b, width: 150, height: 150 }))
 	]);
 
 	return { original, optimized, large, medium, thumbnail };
@@ -221,11 +205,7 @@ async function deleteFromLocal(storageKey: string): Promise<void> {
 		`${storageKey}-thumb.webp`
 	];
 
-	await Promise.all(
-		variants.map(key =>
-			fs.unlink(path.join(basePath, key)).catch(() => {})
-		)
-	);
+	await Promise.all(variants.map((key) => fs.unlink(path.join(basePath, key)).catch(() => {})));
 }
 
 // ============================================================================
@@ -256,35 +236,35 @@ async function uploadToR2Cloud(
 	// Upload all variants to R2 in parallel
 	const uploadPromises = [
 		s3Client.send(new PutObjectCommand({
-			Bucket: env.R2_BUCKET_NAME,
+			Bucket: R2_BUCKET_NAME,
 			Key: `${baseKey}-original.webp`,
 			Body: variants.original.buffer,
 			ContentType: 'image/webp',
 			CacheControl: 'public, max-age=31536000, immutable'
 		})),
 		s3Client.send(new PutObjectCommand({
-			Bucket: env.R2_BUCKET_NAME,
+			Bucket: R2_BUCKET_NAME,
 			Key: `${baseKey}.webp`,
 			Body: variants.optimized.buffer,
 			ContentType: 'image/webp',
 			CacheControl: 'public, max-age=31536000, immutable'
 		})),
 		s3Client.send(new PutObjectCommand({
-			Bucket: env.R2_BUCKET_NAME,
+			Bucket: R2_BUCKET_NAME,
 			Key: `${baseKey}-large.webp`,
 			Body: variants.large.buffer,
 			ContentType: 'image/webp',
 			CacheControl: 'public, max-age=31536000, immutable'
 		})),
 		s3Client.send(new PutObjectCommand({
-			Bucket: env.R2_BUCKET_NAME,
+			Bucket: R2_BUCKET_NAME,
 			Key: `${baseKey}-medium.webp`,
 			Body: variants.medium.buffer,
 			ContentType: 'image/webp',
 			CacheControl: 'public, max-age=31536000, immutable'
 		})),
 		s3Client.send(new PutObjectCommand({
-			Bucket: env.R2_BUCKET_NAME,
+			Bucket: R2_BUCKET_NAME,
 			Key: `${baseKey}-thumb.webp`,
 			Body: variants.thumbnail.buffer,
 			ContentType: 'image/webp',
@@ -295,7 +275,7 @@ async function uploadToR2Cloud(
 	await Promise.all(uploadPromises);
 
 	// Build public URLs
-	const publicUrl = env.R2_PUBLIC_URL || `https://${env.R2_BUCKET_NAME}.${env.R2_ACCOUNT_ID}.r2.dev`;
+	const publicUrl = R2_PUBLIC_URL || `https://${R2_BUCKET_NAME}.${R2_ACCOUNT_ID}.r2.dev`;
 
 	return {
 		filename: `${baseName}.webp`,
@@ -331,14 +311,7 @@ async function deleteFromR2Cloud(storageKey: string): Promise<void> {
 		`${storageKey}-thumb.webp`
 	];
 
-	await Promise.all(
-		variants.map(key =>
-			s3Client!.send(new DeleteObjectCommand({
-				Bucket: env.R2_BUCKET_NAME,
-				Key: key
-			})).catch(() => {})
-		)
-	);
+	await Promise.all(variants.map((key) => (s3Client!).send(new DeleteObjectCommand({ Bucket: R2_BUCKET_NAME, Key: key })).catch(() => {})));
 }
 
 // ============================================================================
@@ -395,8 +368,8 @@ export function getStorageInfo(): {
 			provider: 'r2',
 			configured: isR2Configured,
 			details: {
-				bucket: env.R2_BUCKET_NAME || null,
-				publicUrl: env.R2_PUBLIC_URL || null
+				bucket: R2_BUCKET_NAME || null,
+				publicUrl: R2_PUBLIC_URL || null
 			}
 		};
 	}
@@ -438,20 +411,8 @@ export async function initializeLocalStorage(): Promise<void> {
 	const basePath = path.join(process.cwd(), LOCAL_MEDIA_DIR);
 
 	await fs.mkdir(basePath, { recursive: true });
-
-	await Promise.all(
-		folders.map(folder =>
-			fs.mkdir(path.join(basePath, folder), { recursive: true })
-		)
-	);
+	await Promise.all(folders.map((folder) => fs.mkdir(path.join(basePath, folder), { recursive: true })));
 
 	// Create .gitkeep files to ensure folders are tracked
-	await Promise.all(
-		folders.map(folder =>
-			fs.writeFile(
-				path.join(basePath, folder, '.gitkeep'),
-				'# This file ensures the folder is tracked by git\n'
-			).catch(() => {})
-		)
-	);
+	await Promise.all(folders.map((folder) => fs.writeFile(path.join(basePath, folder, '.gitkeep'), '# This file ensures the folder is tracked by git\n').catch(() => {})));
 }

@@ -4,10 +4,10 @@
 	import TraderCard from '$lib/components/TraderCard.svelte';
 	import TraderArticleCard from '$lib/components/TraderArticleCard.svelte';
 	import SocialShareButtons from '$lib/components/SocialShareButtons.svelte';
-	import { env } from '$env/dynamic/public';
+	import { PUBLIC_SITE_URL } from '$app/env/public';
 	import { parse } from 'marked';
 
-	const PUBLIC_SITE_URL = env.PUBLIC_SITE_URL || 'https://tradinggreats.com';
+	const PUBLIC_SITE_URL = PUBLIC_SITE_URL || 'https://tradinggreats.com';
 	import { Icon } from '$lib/components/icons';
 	import type { PageData } from './$types';
 
@@ -91,7 +91,7 @@
 		}
 
 		if (trader.books && trader.books.length > 0) {
-			const bookTitles = trader.books.map(b => b.title).join(', ');
+			const bookTitles = trader.books.map((b) => b.title).join(', ');
 			faqs.push({
 				question: `What books has ${trader.name} written?`,
 				answer: `${trader.name} has authored several books on trading and investing, including: ${bookTitles}.`
@@ -116,10 +116,10 @@
 	type="profile"
 />
 
-<JsonLd type="Person" {trader} />
-<JsonLd type="ProfilePage" {trader} />
-<JsonLd type="Article" {trader} />
-<JsonLd type="FAQPage" {faqItems} />
+<JsonLd type="Person" trader={trader} />
+<JsonLd type="ProfilePage" trader={trader} />
+<JsonLd type="Article" trader={trader} />
+<JsonLd type="FAQPage" faqItems={faqItems} />
 
 <div class="min-h-screen bg-midnight-950 pb-16 sm:pb-20 lg:pb-24">
 	<!-- Hero Background - MOBILE-FIRST: Smaller orbs on mobile -->
@@ -317,40 +317,40 @@
 				{/if}
 
 				<!-- Photo Gallery - MOBILE-FIRST -->
-			{#if gallery.length > 0}
-				<section>
+				{#if gallery.length > 0}
+					<section>
 					<h2 class="mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3 font-display text-lg sm:text-xl lg:text-2xl font-bold text-white">
 						<Icon name="layout-grid" class="h-5 w-5 sm:h-6 sm:w-6 text-gold-500" />
-						Photo Gallery
-					</h2>
+							Photo Gallery
+						</h2>
 					<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3">
-						{#each gallery as image, i (image)}
-							<button
-								type="button"
-								onclick={() => openLightbox(i)}
-								class="group relative aspect-square rounded-lg sm:rounded-xl overflow-hidden border border-white/5 hover:border-gold-500/30 transition-all focus:outline-none focus:ring-2 focus:ring-gold-500/40"
-							>
-								<img
-									src={image.mediumUrl || image.url}
-									alt={image.altText || image.title || `${trader.name} photo ${i + 1}`}
-									class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-									loading="lazy"
-									decoding="async"
-								/>
+							{#each gallery as image, i (image)}
+								<button
+									type="button"
+									onclick={() => openLightbox(i)}
+									class="group relative aspect-square rounded-lg sm:rounded-xl overflow-hidden border border-white/5 hover:border-gold-500/30 transition-all focus:outline-none focus:ring-2 focus:ring-gold-500/40"
+								>
+									<img
+										src={image.mediumUrl || image.url}
+										alt={image.altText || image.title || `${trader.name} photo ${i + 1}`}
+										class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+										loading="lazy"
+										decoding="async"
+									/>
 								<div class="absolute inset-0 bg-linear-to-t from-midnight-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-								{#if image.caption}
+									{#if image.caption}
 									<div class="absolute bottom-0 left-0 right-0 p-2 sm:p-3 opacity-0 group-hover:opacity-100 transition-opacity">
 										<p class="text-[10px] sm:text-xs text-white/90 line-clamp-2">{image.caption}</p>
-									</div>
-								{/if}
-							</button>
-						{/each}
-					</div>
-				</section>
-			{/if}
+										</div>
+									{/if}
+								</button>
+							{/each}
+						</div>
+					</section>
+				{/if}
 
-			<!-- Famous Trades - MOBILE-FIRST -->
-			{#if trader.famousTrades && trader.famousTrades.length > 0}
+				<!-- Famous Trades - MOBILE-FIRST -->
+				{#if trader.famousTrades && trader.famousTrades.length > 0}
 					<section>
 						<h2 class="mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3 font-display text-lg sm:text-xl lg:text-2xl font-bold text-white">
 							<Icon name="trending-up" class="h-5 w-5 sm:h-6 sm:w-6 text-gold-500" />
@@ -451,7 +451,11 @@
 						</div>
 						<div class="grid gap-3 sm:gap-4 lg:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
 							{#each articles as article, i (article.slug)}
-								<TraderArticleCard {article} {trader} variant="compact" />
+								<TraderArticleCard
+									article={article}
+									trader={trader}
+									variant="compact"
+								/>
 							{/each}
 						</div>
 					</section>

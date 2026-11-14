@@ -1,21 +1,5 @@
-<!--
-  ScrollReveal Component
-
-  A performant, GPU-accelerated scroll reveal animation component.
-  Uses Intersection Observer for optimal performance.
-  Fully respects prefers-reduced-motion.
-
-  Usage:
-  <ScrollReveal>
-    <YourContent />
-  </ScrollReveal>
-
-  <ScrollReveal animation="slideUp" delay={200} duration={600}>
-    <YourContent />
-  </ScrollReveal>
--->
 <script lang="ts">
-	import { browser } from '$app/environment';
+	import { browser } from '$app/env';
 	import { EASING, DURATION, prefersReducedMotion } from '$lib/utils/motion';
 	import { cn } from '$lib/utils';
 
@@ -23,15 +7,15 @@
 	// TYPES & PROPS
 	// ============================================================================
 
-	type AnimationType =
-		| 'fadeIn'
-		| 'slideUp'
-		| 'slideDown'
-		| 'slideLeft'
-		| 'slideRight'
-		| 'scaleIn'
-		| 'blur'
-		| 'none';
+	type AnimationType = 
+		'fadeIn' |
+		'slideUp' |
+		'slideDown' |
+		'slideLeft' |
+		'slideRight' |
+		'scaleIn' |
+		'blur' |
+		'none';
 
 	interface Props {
 		/** Animation type */
@@ -195,10 +179,26 @@
 	});
 </script>
 
-<svelte:element
-	this={as}
+<!--
+  ScrollReveal Component
+
+  A performant, GPU-accelerated scroll reveal animation component.
+  Uses Intersection Observer for optimal performance.
+  Fully respects prefers-reduced-motion.
+
+  Usage:
+  <ScrollReveal>
+    <YourContent />
+  </ScrollReveal>
+
+  <ScrollReveal animation="slideUp" delay={200} duration={600}>
+    <YourContent />
+  </ScrollReveal>
+-->
+
+<svelte:element this={as}
 	bind:this={element}
-	{id}
+	id={id}
 	class={cn('will-change-[opacity,transform]', currentClasses, className)}
 	style={transitionStyle}
 >

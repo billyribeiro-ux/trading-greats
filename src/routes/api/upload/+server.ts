@@ -1,16 +1,21 @@
 import { json, error } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { v2 as cloudinary } from 'cloudinary';
-import { env } from '$env/dynamic/private';
+
+import {
+	CLOUDINARY_CLOUD_NAME,
+	CLOUDINARY_API_KEY,
+	CLOUDINARY_API_SECRET
+} from '$app/env/private';
 
 // Configure Cloudinary if credentials are available
-const isCloudinaryConfigured = env.CLOUDINARY_CLOUD_NAME && env.CLOUDINARY_API_KEY && env.CLOUDINARY_API_SECRET;
+const isCloudinaryConfigured = CLOUDINARY_CLOUD_NAME && CLOUDINARY_API_KEY && CLOUDINARY_API_SECRET;
 
 if (isCloudinaryConfigured) {
 	cloudinary.config({
-		cloud_name: env.CLOUDINARY_CLOUD_NAME,
-		api_key: env.CLOUDINARY_API_KEY,
-		api_secret: env.CLOUDINARY_API_SECRET
+		cloud_name: CLOUDINARY_CLOUD_NAME,
+		api_key: CLOUDINARY_API_KEY,
+		api_secret: CLOUDINARY_API_SECRET
 	});
 }
 

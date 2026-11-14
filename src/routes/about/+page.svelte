@@ -1,33 +1,33 @@
 <script lang="ts">
   import SEO from "$lib/components/SEO.svelte";
-  import { env } from "$env/dynamic/public";
+  import { PUBLIC_SITE_URL } from '$app/env/public';
   import JsonLd from "$lib/components/JsonLd.svelte";
   import { Icon } from "$lib/components/icons";
   import { ScrollReveal } from "$lib/components/motion";
   import { cn } from "$lib/utils";
 
-  const PUBLIC_SITE_URL = env.PUBLIC_SITE_URL || "https://tradinggreats.com";
+  const PUBLIC_SITE_URL = PUBLIC_SITE_URL || "https://tradinggreats.com";
 
   // June 2026: AboutPage + Person schema for E-E-A-T author anchor
   const aboutSchema = $derived(
     JSON.stringify({
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "AboutPage",
-          "@id": `${PUBLIC_SITE_URL}/about`,
-          url: `${PUBLIC_SITE_URL}/about`,
-          name: "About Trading Greats",
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "AboutPage",
+        "@id": `${PUBLIC_SITE_URL}/about`,
+        url: `${PUBLIC_SITE_URL}/about`,
+        name: "About Trading Greats",
           description:
             "Learn about Trading Greats — your destination for discovering legendary traders, their strategies, and timeless market wisdom.",
-          isPartOf: { "@id": `${PUBLIC_SITE_URL}/#website` },
+        isPartOf: { "@id": `${PUBLIC_SITE_URL}/#website` },
           about: { "@id": `${PUBLIC_SITE_URL}/#organization` },
-        },
-        {
-          "@type": "Person",
-          "@id": `${PUBLIC_SITE_URL}/about#author`,
-          name: "Bill Kelly",
-          url: `${PUBLIC_SITE_URL}/about`,
+      },
+      {
+        "@type": "Person",
+        "@id": `${PUBLIC_SITE_URL}/about#author`,
+        name: "Bill Kelly",
+        url: `${PUBLIC_SITE_URL}/about`,
           worksFor: { "@id": `${PUBLIC_SITE_URL}/#organization` },
         },
       ],
@@ -81,7 +81,7 @@
   description="Learn about Trading Greats - your destination for discovering legendary traders, their strategies, and timeless wisdom that has shaped financial markets."
 />
 
-<JsonLd type="BreadcrumbList" {breadcrumbs} />
+<JsonLd type="BreadcrumbList" breadcrumbs={breadcrumbs} />
 
 <!-- June 2026: AboutPage + Person schema — anchors the author @id used by all Article schemas (E-E-A-T) -->
 <svelte:head>

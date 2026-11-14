@@ -18,8 +18,8 @@
     "db:update-trader": "tsx scripts/update-trader.ts"
   },
   "devDependencies": {
-    "@sveltejs/adapter-vercel": "^6.3.3",
-    "@sveltejs/kit": "^2.64.0",
+    "@sveltejs/adapter-vercel": "^7.0.0",
+    "@sveltejs/kit": "^3.0.0",
     "@sveltejs/vite-plugin-svelte": "^7.1.2",
     "@tailwindcss/typography": "^0.5.20",
     "@types/node": "^25.9.2",
@@ -32,8 +32,8 @@
     "prettier": "^3.8.3",
     "prettier-plugin-svelte": "^4.1.0",
     "prettier-plugin-tailwindcss": "^0.8.0",
-    "svelte": "^5.56.3",
-    "svelte-check": "^4.6.0",
+    "svelte": "^5.57.2",
+    "svelte-check": "^4.7.5",
     "svelte-render-scan": "^1.1.0",
     "tailwindcss": "^4.3.0",
     "tsx": "^4.22.4",

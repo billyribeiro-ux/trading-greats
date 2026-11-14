@@ -5,10 +5,10 @@
     import { Icon, type IconName } from '$lib/components/icons';
     import { ScrollReveal, AnimatedCounter } from '$lib/components/motion';
     import JsonLdScript from '$lib/components/JsonLdScript.svelte';
-    import { env } from '$env/dynamic/public';
+    import { PUBLIC_SITE_URL } from '$app/env/public';
     import type { PageData } from './$types';
 
-    const PUBLIC_SITE_URL = env.PUBLIC_SITE_URL || 'https://tradinggreats.com';
+    const PUBLIC_SITE_URL = PUBLIC_SITE_URL || 'https://tradinggreats.com';
 
     let { data }: { data: PageData } = $props();
 
@@ -17,14 +17,13 @@
     // ============================================================================
     // DERIVED DATA
     // ============================================================================
-    const displayTraders = $derived(
-        data.traders.slice(0, 8).map(t => ({
-            name: t.name,
-            style: t.tradingStyle || 'Trading',
-            knownFor: t.oneLiner || 'Legendary Trader',
-            returns: t.netWorth || 'Exceptional',
-            slug: t.slug,
-            photoUrl: t.photoUrl
+    const displayTraders = $derived(data.traders.slice(0, 8).map((t) => ({
+        name: t.name,
+        style: t.tradingStyle || 'Trading',
+        knownFor: t.oneLiner || 'Legendary Trader',
+        returns: t.netWorth || 'Exceptional',
+        slug: t.slug,
+        photoUrl: t.photoUrl
         }))
     );
 
@@ -161,7 +160,7 @@
         faq: {
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            "mainEntity": faqItems.map(item => ({
+            "mainEntity": faqItems.map((item) => ({
                 "@type": "Question",
                 "name": item.question,
                 "acceptedAnswer": { "@type": "Answer", "text": item.answer }
@@ -200,13 +199,26 @@
 <section class="relative min-h-screen w-full overflow-hidden bg-midnight-950">
     <!-- MOBILE-FIRST: Smaller/optimized background orbs for mobile -->
     <div class="absolute inset-0">
-        <div class="absolute top-[-20%] left-[-10%] h-[400px] w-[400px] sm:h-[600px] sm:w-[600px] lg:h-[800px] lg:w-[800px] rounded-full bg-[radial-gradient(circle,rgba(234,179,8,0.15)_0%,rgba(234,179,8,0.05)_40%,transparent_70%)] blur-3xl animate-pulse-slower"></div>
-        <div class="absolute top-[10%] right-[-15%] h-[300px] w-[300px] sm:h-[450px] sm:w-[450px] lg:h-[600px] lg:w-[600px] rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.1)_0%,rgba(139,92,246,0.05)_40%,transparent_70%)] blur-3xl animate-pulse-slow [animation-delay:2s]"></div>
-        <div class="absolute bottom-[-10%] left-[30%] h-[250px] w-[250px] sm:h-[400px] sm:w-[400px] lg:h-[500px] lg:w-[500px] rounded-full bg-[radial-gradient(circle,rgba(14,165,233,0.08)_0%,rgba(14,165,233,0.04)_40%,transparent_70%)] blur-3xl animate-pulse-slower [animation-delay:4s]"></div>
+        <div
+            class="absolute top-[-20%] left-[-10%] h-[400px] w-[400px] sm:h-[600px] sm:w-[600px] lg:h-[800px] lg:w-[800px] rounded-full bg-[radial-gradient(circle,rgba(234,179,8,0.15)_0%,rgba(234,179,8,0.05)_40%,transparent_70%)] blur-3xl animate-pulse-slower"
+        ></div>
 
-        <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[2rem_2rem] sm:bg-size-[3rem_3rem] lg:bg-size-[4rem_4rem] mask-[radial-gradient(ellipse_80%_60%_at_50%_0%,#000_50%,transparent_100%)]"></div>
+        <div
+            class="absolute top-[10%] right-[-15%] h-[300px] w-[300px] sm:h-[450px] sm:w-[450px] lg:h-[600px] lg:w-[600px] rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.1)_0%,rgba(139,92,246,0.05)_40%,transparent_70%)] blur-3xl animate-pulse-slow [animation-delay:2s]"
+        ></div>
 
-        <div class="absolute inset-0 opacity-[0.02] sm:opacity-[0.03] mix-blend-overlay" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZmZmIi8+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiMwMDAiLz4KPC9zdmc+');"></div>
+        <div
+            class="absolute bottom-[-10%] left-[30%] h-[250px] w-[250px] sm:h-[400px] sm:w-[400px] lg:h-[500px] lg:w-[500px] rounded-full bg-[radial-gradient(circle,rgba(14,165,233,0.08)_0%,rgba(14,165,233,0.04)_40%,transparent_70%)] blur-3xl animate-pulse-slower [animation-delay:4s]"
+        ></div>
+
+        <div
+            class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[2rem_2rem] sm:bg-size-[3rem_3rem] lg:bg-size-[4rem_4rem] mask-[radial-gradient(ellipse_80%_60%_at_50%_0%,#000_50%,transparent_100%)]"
+        ></div>
+
+        <div
+            class="absolute inset-0 opacity-[0.02] sm:opacity-[0.03] mix-blend-overlay"
+            style="background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZmZmIi8+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiMwMDAiLz4KPC9zdmc+');"
+        ></div>
     </div>
 
     <div class="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-4 sm:px-6 py-16 sm:py-20 lg:px-8 lg:py-24">
@@ -400,16 +412,34 @@
                                     {trader.name.split(' ').map((n: string) => n[0]).join('')}
                                 </div>
                             {/if}
-                            <div class="absolute inset-0 bg-linear-to-t from-midnight-950 via-midnight-950/50 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90"></div>
 
-                            <div class="absolute bottom-0 left-0 w-full p-3 sm:p-4 lg:p-6">
-                                <span class="mb-1 sm:mb-2 inline-block rounded bg-gold-500 px-1.5 sm:px-2 py-0.5 text-[8px] sm:text-[10px] font-bold uppercase tracking-wider text-midnight-950">
-                                    {trader.style}
-                                </span>
-                                <h3 class="mb-0.5 sm:mb-1 text-sm sm:text-base lg:text-xl font-bold text-white group-hover:text-gold-500 transition-colors line-clamp-1">{trader.name}</h3>
-                                <p class="text-[10px] sm:text-xs lg:text-sm text-slate-400 mb-2 sm:mb-3 line-clamp-2">{trader.knownFor}</p>
-                                <div class="flex items-center gap-1.5 sm:gap-2 border-t border-white/10 pt-2 sm:pt-3 text-[10px] sm:text-xs font-medium text-slate-400">
-                                    <Icon name="trending-up" class="h-2.5 w-2.5 sm:h-3 sm:w-3 text-emerald-400" />
+                            <div
+                                class="absolute inset-0 bg-linear-to-t from-midnight-950 via-midnight-950/50 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90"
+                            ></div>
+
+                            <div
+                                class="absolute bottom-0 left-0 w-full p-3 sm:p-4 lg:p-6"
+                            >
+                                <span
+                                    class="mb-1 sm:mb-2 inline-block rounded bg-gold-500 px-1.5 sm:px-2 py-0.5 text-[8px] sm:text-[10px] font-bold uppercase tracking-wider text-midnight-950"
+                                >{trader.style}</span>
+
+                                <h3
+                                    class="mb-0.5 sm:mb-1 text-sm sm:text-base lg:text-xl font-bold text-white group-hover:text-gold-500 transition-colors line-clamp-1"
+                                >{trader.name}</h3>
+
+                                <p
+                                    class="text-[10px] sm:text-xs lg:text-sm text-slate-400 mb-2 sm:mb-3 line-clamp-2"
+                                >{trader.knownFor}</p>
+
+                                <div
+                                    class="flex items-center gap-1.5 sm:gap-2 border-t border-white/10 pt-2 sm:pt-3 text-[10px] sm:text-xs font-medium text-slate-400"
+                                >
+                                    <Icon
+                                        name="trending-up"
+                                        class="h-2.5 w-2.5 sm:h-3 sm:w-3 text-emerald-400"
+                                    />
+
                                     <span>{trader.returns}</span>
                                 </div>
                             </div>
@@ -699,18 +729,36 @@
 </section>
 
 <!-- MOBILE-FIRST: Final CTA section -->
-<section class="relative z-20 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-    <div class="absolute inset-0 bg-linear-to-b from-midnight-950 via-midnight-900 to-midnight-950"></div>
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 h-px w-3/4 sm:w-2/3 bg-linear-to-r from-transparent via-gold-500/50 to-transparent"></div>
 
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[300px] w-[300px] sm:h-[400px] sm:w-[400px] lg:h-[500px] lg:w-[500px] rounded-full bg-gold-500/5 blur-[100px] sm:blur-[120px]"></div>
+<section
+    class="relative z-20 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden"
+>
+    <div
+        class="absolute inset-0 bg-linear-to-b from-midnight-950 via-midnight-900 to-midnight-950"
+    ></div>
 
-    <div class="relative z-10 mx-auto max-w-4xl text-center">
-        <div class="mb-6 sm:mb-8 inline-flex items-center gap-2 sm:gap-2.5 rounded-full border border-gold-500/30 bg-gold-500/10 px-4 sm:px-5 py-1.5 sm:py-2 backdrop-blur-sm">
-            <Icon name="check-circle" class="h-3.5 w-3.5 sm:h-4 sm:w-4 text-gold-400" />
-            <span class="text-xs sm:text-sm font-semibold text-gold-200">
-                100% Free to Explore
-            </span>
+    <div
+        class="absolute top-0 left-1/2 -translate-x-1/2 h-px w-3/4 sm:w-2/3 bg-linear-to-r from-transparent via-gold-500/50 to-transparent"
+    ></div>
+
+    <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[300px] w-[300px] sm:h-[400px] sm:w-[400px] lg:h-[500px] lg:w-[500px] rounded-full bg-gold-500/5 blur-[100px] sm:blur-[120px]"
+    ></div>
+
+    <div
+        class="relative z-10 mx-auto max-w-4xl text-center"
+    >
+        <div
+            class="mb-6 sm:mb-8 inline-flex items-center gap-2 sm:gap-2.5 rounded-full border border-gold-500/30 bg-gold-500/10 px-4 sm:px-5 py-1.5 sm:py-2 backdrop-blur-sm"
+        >
+            <Icon
+                name="check-circle"
+                class="h-3.5 w-3.5 sm:h-4 sm:w-4 text-gold-400"
+            />
+
+            <span
+                class="text-xs sm:text-sm font-semibold text-gold-200"
+            >100% Free to Explore</span>
         </div>
 
         <h2 class="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-white">

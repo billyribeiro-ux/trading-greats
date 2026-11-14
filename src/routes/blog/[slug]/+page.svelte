@@ -5,11 +5,11 @@
   import SocialShareButtons from "$lib/components/SocialShareButtons.svelte";
   import JsonLdScript from "$lib/components/JsonLdScript.svelte";
   import SEO from "$lib/components/SEO.svelte";
-  import { env } from "$env/dynamic/public";
+  import { PUBLIC_SITE_URL } from '$app/env/public';
   import { parse } from "marked";
   import type { PageData } from "./$types";
 
-  const PUBLIC_SITE_URL = env.PUBLIC_SITE_URL || "https://tradinggreats.com";
+  const PUBLIC_SITE_URL = PUBLIC_SITE_URL || "https://tradinggreats.com";
 
   // ============================================================================
   // PROPS (Svelte 5 - SSR data hydration)
@@ -110,7 +110,13 @@
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: SITE_URL
+        },
+
         {
           "@type": "ListItem",
           position: 2,

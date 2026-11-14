@@ -18,7 +18,7 @@ import {
 	securityAuditLog
 } from './schema';
 import { eq, and, gte, lt, desc } from 'drizzle-orm';
-import { env } from '$env/dynamic/private';
+import { ADMIN_PASSWORD_HASH, ADMIN_PASSWORD } from '$app/env/private';
 
 // ============================================================================
 // CONFIGURATION
@@ -42,10 +42,10 @@ const CONFIG = {
 
 	// Lockout escalation
 	LOCKOUT_ESCALATION: [
-		{ attempts: 10, duration: 30 },    // 30 minutes after 10 attempts
-		{ attempts: 20, duration: 120 },   // 2 hours after 20 attempts
-		{ attempts: 30, duration: 1440 },  // 24 hours after 30 attempts
-		{ attempts: 50, duration: 10080 }, // 7 days after 50 attempts
+		{ attempts: 10, duration: 30 }, // 30 minutes after 10 attempts
+		{ attempts: 20, duration: 120 }, // 2 hours after 20 attempts
+		{ attempts: 30, duration: 1440 }, // 24 hours after 30 attempts
+		{ attempts: 50, duration: 10080 } // 7 days after 50 attempts
 	]
 };
 
@@ -59,7 +59,7 @@ const CONFIG = {
 function generateSecureRandom(length: number): string {
 	const array = new Uint8Array(length);
 	crypto.getRandomValues(array);
-	return Array.from(array, byte => byte.toString(16).padStart(2, '0')).join('');
+	return Array.from(array, (byte) => byte.toString(16).padStart(2, '0')).join('');
 }
 
 /**
@@ -70,7 +70,7 @@ async function sha256(data: string): Promise<string> {
 	const dataBuffer = encoder.encode(data);
 	const hashBuffer = await crypto.subtle.digest('SHA-256', dataBuffer);
 	const hashArray = Array.from(new Uint8Array(hashBuffer));
-	return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+	return hashArray.map((b) => b.toString(16).padStart(2, '0')).join('');
 }
 
 /**
@@ -100,7 +100,7 @@ async function hashPassword(password: string, salt: string): Promise<string> {
 		CONFIG.HASH_KEY_LENGTH * 8
 	);
 
-	return Array.from(new Uint8Array(derivedBits), b => b.toString(16).padStart(2, '0')).join('');
+	return Array.from(new Uint8Array(derivedBits), (b) => b.toString(16).padStart(2, '0')).join('');
 }
 
 /**
@@ -138,12 +138,12 @@ export async function generatePasswordHash(password: string): Promise<string> {
  * Verify password against the stored hash in environment
  */
 export async function verifyAdminPassword(password: string): Promise<boolean> {
-	const storedCredential = env.ADMIN_PASSWORD_HASH;
+	const storedCredential = ADMIN_PASSWORD_HASH;
 
 	// Fallback for backwards compatibility with plain text passwords
 	if (!storedCredential?.includes(':')) {
 		// Plain text comparison (legacy mode - insecure)
-		const plainPassword = env.ADMIN_PASSWORD;
+		const plainPassword = ADMIN_PASSWORD;
 		if (!plainPassword) return false;
 
 		// Constant-time comparison even for plain text
@@ -484,17 +484,17 @@ export async function checkRateLimit(ipAddress: string): Promise<{ allowed: bool
 // SECURITY AUDIT LOGGING
 // ============================================================================
 
-export type SecurityAction =
-	| 'login_success'
-	| 'login_failed'
-	| 'logout'
-	| 'session_created'
-	| 'session_revoked'
-	| 'session_expired'
-	| 'ip_blocked'
-	| 'ip_unblocked'
-	| 'rate_limit_exceeded'
-	| 'suspicious_activity';
+export type SecurityAction = 
+	'login_success' |
+	'login_failed' |
+	'logout' |
+	'session_created' |
+	'session_revoked' |
+	'session_expired' |
+	'ip_blocked' |
+	'ip_unblocked' |
+	'rate_limit_exceeded' |
+	'suspicious_activity';
 
 /**
  * Log a security event
@@ -574,10 +574,9 @@ export async function cleanupExpiredData(): Promise<void> {
 
 		// Delete old audit logs (older than 90 days)
 		const ninetyDaysAgo = new Date(Date.now() - 90 * 24 * 60 * 60 * 1000).toISOString();
-		await db.delete(securityAuditLog)
-			.where(lt(securityAuditLog.timestamp, ninetyDaysAgo));
 
-	} catch (error) {
+		await db.delete(securityAuditLog).where(lt(securityAuditLog.timestamp, ninetyDaysAgo));
+	} catch(error) {
 		console.error('Cleanup error:', error);
 	}
 }
@@ -588,11 +587,11 @@ export async function cleanupExpiredData(): Promise<void> {
 export function getClientIp(request: Request): string {
 	// Check common headers (in order of reliability)
 	const headers = [
-		'cf-connecting-ip',      // Cloudflare
-		'x-real-ip',             // Nginx
-		'x-forwarded-for',       // Standard proxy header
-		'x-client-ip',           // Apache
-		'true-client-ip',        // Akamai
+		'cf-connecting-ip', // Cloudflare
+		'x-real-ip', // Nginx
+		'x-forwarded-for', // Standard proxy header
+		'x-client-ip', // Apache
+		'true-client-ip' // Akamai
 	];
 
 	for (const header of headers) {
@@ -617,7 +616,7 @@ function isValidIp(ip: string): boolean {
 	const ipv4Regex = /^(\d{1,3}\.){3}\d{1,3}$/;
 	if (ipv4Regex.test(ip)) {
 		const parts = ip.split('.').map(Number);
-		return parts.every(part => part >= 0 && part <= 255);
+		return parts.every((part) => part >= 0 && part <= 255);
 	}
 
 	// IPv6 (simplified check)
@@ -674,17 +673,33 @@ export function validatePasswordStrength(password: string): { valid: boolean; er
 	if (password.length < 12) {
 		return { valid: false, error: 'Password must be at least 12 characters long' };
 	}
-	if (!/[a-z]/.test(password)) {
-		return { valid: false, error: 'Password must contain at least one lowercase letter' };
+
+	if (!(/[a-z]/).test(password)) {
+		return {
+			valid: false,
+			error: 'Password must contain at least one lowercase letter'
+		};
 	}
-	if (!/[A-Z]/.test(password)) {
-		return { valid: false, error: 'Password must contain at least one uppercase letter' };
+
+	if (!(/[A-Z]/).test(password)) {
+		return {
+			valid: false,
+			error: 'Password must contain at least one uppercase letter'
+		};
 	}
-	if (!/[0-9]/.test(password)) {
-		return { valid: false, error: 'Password must contain at least one number' };
+
+	if (!(/[0-9]/).test(password)) {
+		return {
+			valid: false,
+			error: 'Password must contain at least one number'
+		};
 	}
-	if (!/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)) {
-		return { valid: false, error: 'Password must contain at least one special character' };
+
+	if (!(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/).test(password)) {
+		return {
+			valid: false,
+			error: 'Password must contain at least one special character'
+		};
 	}
 	return { valid: true };
 }
@@ -787,16 +802,15 @@ export async function getActiveSessions(): Promise<{
 
 		// Filter out expired sessions and map to correct types
 		const now = new Date();
-		return sessions
-			.filter(s => new Date(s.expiresAt) > now)
-			.map(s => ({
-				id: s.id,
-				createdAt: s.createdAt ?? now.toISOString(),
-				lastActivityAt: s.lastActivityAt,
-				ipAddress: s.ipAddress,
-				userAgent: s.userAgent,
-				isRevoked: s.isRevoked ?? false
-			}));
+
+		return sessions.filter((s) => new Date(s.expiresAt) > now).map((s) => ({
+			id: s.id,
+			createdAt: s.createdAt ?? now.toISOString(),
+			lastActivityAt: s.lastActivityAt,
+			ipAddress: s.ipAddress,
+			userAgent: s.userAgent,
+			isRevoked: s.isRevoked ?? false
+		}));
 	} catch (error) {
 		console.error('Get active sessions error:', error);
 		return [];
@@ -837,16 +851,15 @@ export async function getBlockedIps(): Promise<{
 
 		// Filter out expired blocks and map to correct types
 		const now = new Date();
-		return blocks
-			.filter(b => !b.expiresAt || new Date(b.expiresAt) > now)
-			.map(b => ({
-				id: b.id,
-				ipAddress: b.ipAddress,
-				reason: b.reason,
-				blockedAt: b.blockedAt ?? now.toISOString(),
-				expiresAt: b.expiresAt,
-				failedAttempts: b.failedAttempts
-			}));
+
+		return blocks.filter((b) => !b.expiresAt || new Date(b.expiresAt) > now).map((b) => ({
+			id: b.id,
+			ipAddress: b.ipAddress,
+			reason: b.reason,
+			blockedAt: b.blockedAt ?? now.toISOString(),
+			expiresAt: b.expiresAt,
+			failedAttempts: b.failedAttempts
+		}));
 	} catch (error) {
 		console.error('Get blocked IPs error:', error);
 		return [];

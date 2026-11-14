@@ -5,7 +5,7 @@
  * Apple-style reactive store with proper Svelte 5 runes support.
  */
 
-import { browser } from '$app/environment';
+import { browser } from '$app/env';
 
 const STORAGE_KEY = 'trading_greats_comparison';
 const MAX_COMPARE = 4; // Maximum traders to compare
@@ -62,7 +62,7 @@ function createComparisonStore() {
 
 		toggle(slug: string): boolean {
 			if (slugs.includes(slug)) {
-				slugs = slugs.filter(s => s !== slug);
+				slugs = slugs.filter((s) => s !== slug);
 			} else if (slugs.length < MAX_COMPARE) {
 				slugs = [...slugs, slug];
 			}
@@ -80,7 +80,7 @@ function createComparisonStore() {
 		},
 
 		remove(slug: string): void {
-			slugs = slugs.filter(s => s !== slug);
+			slugs = slugs.filter((s) => s !== slug);
 			saveComparison(slugs);
 		},
 

@@ -1,10 +1,10 @@
 <script lang="ts">
 	import SEO from '$lib/components/SEO.svelte';
-	import { env } from '$env/dynamic/public';
+	import { PUBLIC_SITE_URL, PUBLIC_SITE_NAME } from '$app/env/public';
 	import JsonLd from '$lib/components/JsonLd.svelte';
 
-	const PUBLIC_SITE_URL = env.PUBLIC_SITE_URL || 'https://tradinggreats.com';
-	const PUBLIC_SITE_NAME = env.PUBLIC_SITE_NAME || 'Trading Greats';
+	const PUBLIC_SITE_URL = PUBLIC_SITE_URL || 'https://tradinggreats.com';
+	const PUBLIC_SITE_NAME = PUBLIC_SITE_NAME || 'Trading Greats';
 
 	const breadcrumbs = [
 		{ name: 'Home', url: PUBLIC_SITE_URL },
@@ -19,7 +19,7 @@
 	description="Privacy Policy for Trading Greats. Learn how we collect, use, and protect your information."
 />
 
-<JsonLd type="BreadcrumbList" {breadcrumbs} />
+<JsonLd type="BreadcrumbList" breadcrumbs={breadcrumbs} />
 
 <div class="min-h-screen bg-midnight-950 pt-32 pb-24">
 	<div class="mx-auto max-w-4xl px-6 lg:px-8">

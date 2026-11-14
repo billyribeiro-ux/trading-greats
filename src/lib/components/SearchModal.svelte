@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { browser } from '$app/environment';
+	import { browser } from '$app/env';
 	import { goto } from '$app/navigation';
 	import { Icon } from '$lib/components/icons';
 	import { fade, scale } from 'svelte/transition';
@@ -276,11 +276,10 @@
 						<div class={cn(
 							'flex h-10 w-10 items-center justify-center rounded-full font-display font-bold text-sm transition-colors',
 							selectedIndex === index 
-								? 'bg-linear-to-br from-gold-500 to-gold-600 text-midnight-950' 
-								: 'bg-white/10 text-white'
-						)}>
-							{trader.name.split(' ').map(n => n[0]).join('')}
-						</div>
+								? 'bg-linear-to-br from-gold-500 to-gold-600 text-midnight-950'
+								: 'bg-white/10 text-white')}
+						>{trader.name.split(' ').map((n) => n[0]).join('')}</div>
+
 						<div class="flex-1 min-w-0">
 							<p class="font-medium truncate">{trader.name}</p>
 							<p class="text-sm text-midnight-400 truncate">{trader.tradingStyle ?? ''}</p>

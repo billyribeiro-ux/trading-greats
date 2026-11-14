@@ -3,7 +3,7 @@
 	import { Icon } from '$lib/components/icons';
 	import { comparison } from '$lib/stores/comparison.svelte';
 	import { goto } from '$app/navigation';
-	import { browser } from '$app/environment';
+	import { browser } from '$app/env';
 	import { cn } from '$lib/utils';
 	import type { PageData } from './$types';
 
@@ -23,25 +23,13 @@
 	});
 
 	const comparedSlugs = $derived(mounted ? comparison.all : data.selectedSlugs);
+	const selectedTraders = $derived(comparedSlugs.map((slug) => data.allTraders.find((t) => t.slug === slug)).filter((t) => t !== undefined));
 
-	const selectedTraders = $derived(
-		comparedSlugs
-			.map(slug => data.allTraders.find(t => t.slug === slug))
-			.filter(t => t !== undefined)
-	);
+	const filteredTraders = $derived(searchQuery
+		? data.allTraders.filter((t) => t.name.toLowerCase().includes(searchQuery.toLowerCase()) || t.tradingStyle?.toLowerCase().includes(searchQuery.toLowerCase()))
+		: data.allTraders);
 
-	const filteredTraders = $derived(
-		searchQuery
-			? data.allTraders.filter(t =>
-					t.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-					t.tradingStyle?.toLowerCase().includes(searchQuery.toLowerCase())
-				)
-			: data.allTraders
-	);
-
-	const availableTraders = $derived(
-		filteredTraders.filter(t => !comparedSlugs.includes(t.slug))
-	);
+	const availableTraders = $derived(filteredTraders.filter((t) => !comparedSlugs.includes(t.slug)));
 
 	function updateUrl() {
 		if (browser) {
@@ -160,9 +148,9 @@
 														class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
 													/>
 												{:else}
-													<div class="w-full h-full flex items-center justify-center text-xl font-bold bg-linear-to-br from-midnight-700 to-midnight-800 text-midnight-400 group-hover:from-violet-900/50 group-hover:to-midnight-800 group-hover:text-violet-300 transition-all duration-300">
-														{trader.name.split(' ').map(n => n[0]).join('')}
-													</div>
+													<div
+														class="w-full h-full flex items-center justify-center text-xl font-bold bg-linear-to-br from-midnight-700 to-midnight-800 text-midnight-400 group-hover:from-violet-900/50 group-hover:to-midnight-800 group-hover:text-violet-300 transition-all duration-300"
+													>{trader.name.split(' ').map((n) => n[0]).join('')}</div>
 												{/if}
 											</div>
 											<span class="font-display font-bold text-white group-hover:text-violet-400 transition-colors">
@@ -293,9 +281,9 @@
 										class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
 									/>
 								{:else}
-									<div class="w-full h-full flex items-center justify-center text-sm font-bold bg-linear-to-br from-midnight-700 to-midnight-800 text-midnight-400 group-hover:from-violet-900/50 group-hover:to-midnight-800 group-hover:text-violet-300 transition-all duration-300">
-										{trader.name.split(' ').map(n => n[0]).join('')}
-									</div>
+									<div
+										class="w-full h-full flex items-center justify-center text-sm font-bold bg-linear-to-br from-midnight-700 to-midnight-800 text-midnight-400 group-hover:from-violet-900/50 group-hover:to-midnight-800 group-hover:text-violet-300 transition-all duration-300"
+									>{trader.name.split(' ').map((n) => n[0]).join('')}</div>
 								{/if}
 							</div>
 							<p class="font-medium text-xs text-white group-hover:text-violet-400 transition-colors line-clamp-1 w-full">

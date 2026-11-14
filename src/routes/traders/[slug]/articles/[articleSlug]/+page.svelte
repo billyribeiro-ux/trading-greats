@@ -5,11 +5,11 @@
 	import { Icon, type IconName } from '$lib/components/icons';
 	import SEO from '$lib/components/SEO.svelte';
 	import JsonLdScript from '$lib/components/JsonLdScript.svelte';
-	import { env } from '$env/dynamic/public';
+	import { PUBLIC_SITE_URL } from '$app/env/public';
 	import { parse } from 'marked';
 	import type { PageData } from './$types';
 
-	const PUBLIC_SITE_URL = env.PUBLIC_SITE_URL || 'https://tradinggreats.com';
+	const PUBLIC_SITE_URL = PUBLIC_SITE_URL || 'https://tradinggreats.com';
 
 	// ============================================================================
 	// PROPS (Svelte 5 - SSR data hydration)
@@ -64,8 +64,8 @@
 		try {
 			await navigator.clipboard.writeText(window.location.href);
 			copied = true;
-			setTimeout(() => (copied = false), 2000);
-		} catch (e) {
+			setTimeout(() => copied = false, 2000);
+		} catch(e) {
 			console.error('Failed to copy link');
 		}
 	}
@@ -341,9 +341,7 @@
 
 					<div class="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
 						{#each relatedArticles as relatedArticle, i (relatedArticle.slug)}
-							<ScrollReveal delay={i * 75}>
-								<TraderArticleCard article={relatedArticle} {trader} />
-							</ScrollReveal>
+							<ScrollReveal delay={i * 75}><TraderArticleCard article={relatedArticle} trader={trader} /></ScrollReveal>
 						{/each}
 					</div>
 				</ScrollReveal>
