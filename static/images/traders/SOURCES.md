@@ -55,3 +55,7 @@ The following portraits are embedded from the source websites; reuse rights have
 - **simon-cawkwell**: [The Standard](https://www.standard.co.uk/business/cityspy/city-spy-evil-knievel-pulls-off-another-big-punt-9633308.html); [hosted image](https://static.standard.co.uk/s3fs-public/thumbnails/image/2014/07/28/13/Standard13.jpg?width=1200).
 - **andy-krieger**: [Mitrade](https://www.mitrade.com/th/insights/forex/basics/top-forex-traders); [hosted image](https://tw.mitrade.com/cms_uploads/uedimg/20230711/1689043192711.jpg).
 - **walter-schloss**: [Suno](https://www.suno.com.br/tudo-sobre/walter-schloss/); [hosted image](https://files.sunoresearch.com.br/p/uploads/2018/08/walter-j-schloss-4.jpg).
+
+## Cinematic portraits
+
+The WebP files in `cinematic/` are AI-edited derivatives of the source portraits credited above. They use transparent backgrounds and reconstructed photographic detail; poses and features may be inferred by the image model. Source-image reuse rights noted as unverified above remain unverified.

@@ -304,7 +304,64 @@ export const portraitCredits: Record<
 };
 
 const seedPhotos = new Map(seedTraders.map((trader) => [trader.slug, trader.photoUrl]));
+const cinematicPortraits = new Set([
+  "benjamin-graham",
+  "bill-ackman",
+  "bill-gross",
+  "bill-lipschutz",
+  "bruce-kovner",
+  "carl-icahn",
+  "charlie-munger",
+  "dan-loeb",
+  "david-einhorn",
+  "david-tepper",
+  "ed-seykota",
+  "george-soros",
+  "howard-marks",
+  "jesse-livermore",
+  "jim-rogers",
+  "jim-simons",
+  "joe-lewis",
+  "joel-greenblatt",
+  "john-carter",
+  "john-neff",
+  "john-paulson",
+  "john-templeton",
+  "julian-robertson",
+  "ken-griffin",
+  "larry-williams",
+  "linda-raschke",
+  "mark-minervini",
+  "michael-burry",
+  "michael-marcus",
+  "michael-steinhardt",
+  "mohnish-pabrai",
+  "nick-leeson",
+  "nicolas-darvas",
+  "paul-tudor-jones",
+  "peter-schiff",
+  "philip-fisher",
+  "ray-dalio",
+  "richard-dennis",
+  "simon-cawkwell",
+  "stanley-druckenmiller",
+  "steve-cohen",
+  "t-boone-pickens",
+  "victor-sperandeo",
+  "walter-schloss",
+  "warren-buffett",
+  "william-oneil",
+]);
+
+// An editor-supplied photo still takes precedence over our enhanced seed images.
+export function isCinematicPortrait(slug: string, photoUrl: string | null | undefined): boolean {
+  return cinematicPortraits.has(slug) && photoUrl === `/images/traders/cinematic/${slug}.webp`;
+}
 
 export function traderPhoto(slug: string, photoUrl: string | null | undefined): string | null {
+  const seedPhoto = seedPhotos.get(slug);
+  if (cinematicPortraits.has(slug) && (!photoUrl || photoUrl === seedPhoto)) {
+    return `/images/traders/cinematic/${slug}.webp`;
+  }
   return photoUrl || seedPhotos.get(slug) || null;
 }
