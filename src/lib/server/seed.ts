@@ -1,16 +1,17 @@
-import type { NewTrader } from './schema';
+import type { NewTrader } from "./schema";
 
 export const seedTraders: NewTrader[] = [
-	{
-		name: 'Mark Minervini',
-		slug: 'mark-minervini',
-		photoUrl: null,
-		oneLiner: 'Two-Time U.S. Investing Champion — Creator of the SEPA Methodology',
-		birthYear: 1960,
-		nationality: 'American',
-		tradingStyle: 'Momentum Growth',
-		netWorth: '$50+ Million',
-		bio: `Mark Minervini is one of America's most successful stock traders, a two-time U.S. Investing Championship winner, and the creator of the SEPA (Specific Entry Point Analysis) methodology — a systematic framework for identifying superperformer stocks before they make their biggest moves. His story is one of the most remarkable self-made success stories in trading history: a high school dropout from Long Island who taught himself to trade and went on to compound money at rates that rivals the best hedge funds in the world.
+  {
+    name: "Mark Minervini",
+    slug: "mark-minervini",
+    photoUrl:
+      "https://cdn.prod.website-files.com/685b82c3380282133dbbe345/68bedf2d775752ddd14b4257_Screenshot_1090.png",
+    oneLiner: "Two-Time U.S. Investing Champion — Creator of the SEPA Methodology",
+    birthYear: 1960,
+    nationality: "American",
+    tradingStyle: "Momentum Growth",
+    netWorth: "$50+ Million",
+    bio: `Mark Minervini is one of America's most successful stock traders, a two-time U.S. Investing Championship winner, and the creator of the SEPA (Specific Entry Point Analysis) methodology — a systematic framework for identifying superperformer stocks before they make their biggest moves. His story is one of the most remarkable self-made success stories in trading history: a high school dropout from Long Island who taught himself to trade and went on to compound money at rates that rivals the best hedge funds in the world.
 
 ## Early Life & The Road to the Market
 
@@ -62,7 +63,7 @@ His Master Trader Program has produced numerous traders who went on to win the U
 
 He remains one of the most influential figures in growth stock trading, and his work continues to shape how serious traders approach momentum investing.`,
 
-		philosophy: `Mark Minervini's philosophy rests on a simple truth that few traders internalize: making money in the market is not about being right — it's about being disciplined. He believes the edge of any great trader is not a secret indicator or privileged information, but a specific, repeatable methodology applied with unbreakable consistency.
+    philosophy: `Mark Minervini's philosophy rests on a simple truth that few traders internalize: making money in the market is not about being right — it's about being disciplined. He believes the edge of any great trader is not a secret indicator or privileged information, but a specific, repeatable methodology applied with unbreakable consistency.
 
 His core principles: buy only stocks that meet every criterion of his Trend Template and VCP setup — no exceptions, no "close enough." Cut every loss at 7–10% with zero hesitation. Let every winner run until the chart tells you to exit. Size positions according to your risk tolerance, never your conviction. And above all — never, ever average down on a loser.
 
@@ -70,126 +71,133 @@ His core principles: buy only stocks that meet every criterion of his Trend Temp
 
 Minervini also emphasizes the psychological dimension of trading. Most traders lose not because their system is wrong, but because they cannot execute it consistently under pressure. The discipline to honor a stop loss when a stock you believe in drops 8%, to sit on your hands when there are no setups, and to hold a winner for weeks when every instinct tells you to lock in profit — these are the real skills that separate elite traders from the rest.`,
 
-		achievements: [
-			'Two-time U.S. Investing Championship winner (1997 & 2021)',
-			'155.69% return in the 1997 championship',
-			'334.8% return in the 2021 championship — highest in modern competition history',
-			'30%+ compounded annual returns sustained over 30+ years',
-			'Author of three bestselling trading books translated worldwide',
-			'Founder of Minervini Private Access — mentor to championship-winning traders',
-			'Only trader to win the U.S. Investing Championship twice',
-			'Featured in Jack Schwager\'s Stock Market Wizards'
-		],
+    achievements: [
+      "Two-time U.S. Investing Championship winner (1997 & 2021)",
+      "155.69% return in the 1997 championship",
+      "334.8% return in the 2021 championship — highest in modern competition history",
+      "30%+ compounded annual returns sustained over 30+ years",
+      "Author of three bestselling trading books translated worldwide",
+      "Founder of Minervini Private Access — mentor to championship-winning traders",
+      "Only trader to win the U.S. Investing Championship twice",
+      "Featured in Jack Schwager's Stock Market Wizards",
+    ],
 
-		famousTrades: [
-			{
-				date: '1997',
-				asset: 'U.S. Investing Championship Portfolio',
-				position: 'long',
-				outcome: 'Championship Victory',
-				profitLoss: '+155.69%',
-				description: 'Traded a diversified portfolio of SEPA-qualified momentum stocks across the full year, cutting losses rapidly and riding multi-week breakouts. Won the U.S. Investing Championship with one of the highest single-year returns in the competition\'s history at that point.'
-			},
-			{
-				date: '1998',
-				asset: 'Dell Computer (DELL)',
-				position: 'long',
-				outcome: 'Major Win',
-				profitLoss: '+300%+',
-				description: 'Identified Dell in a perfect Stage 2 uptrend with multiple VCP setups as the PC boom accelerated. Rode the position through multiple base breakouts, compounding gains as the stock became one of the defining growth stories of the late 1990s.'
-			},
-			{
-				date: 'Late 1990s',
-				asset: 'AOL (America Online)',
-				position: 'long',
-				outcome: 'Major Win',
-				profitLoss: 'Multi-bagger',
-				description: 'Caught AOL early in its explosive growth phase using the SEPA methodology — identifying the Trend Template and VCP setup before the stock became a household name. A textbook example of the kind of superperformer his system is designed to find.'
-			},
-			{
-				date: '2021',
-				asset: 'U.S. Investing Championship Portfolio',
-				position: 'long',
-				outcome: 'Championship Victory',
-				profitLoss: '+334.8%',
-				description: 'Returned to the U.S. Investing Championship after 24 years and posted more than double his 1997 return — navigating a volatile post-pandemic market with precision. The win confirmed that SEPA works across dramatically different market environments and silenced any claims it was era-dependent.'
-			}
-		],
+    famousTrades: [
+      {
+        date: "1997",
+        asset: "U.S. Investing Championship Portfolio",
+        position: "long",
+        outcome: "Championship Victory",
+        profitLoss: "+155.69%",
+        description:
+          "Traded a diversified portfolio of SEPA-qualified momentum stocks across the full year, cutting losses rapidly and riding multi-week breakouts. Won the U.S. Investing Championship with one of the highest single-year returns in the competition's history at that point.",
+      },
+      {
+        date: "1998",
+        asset: "Dell Computer (DELL)",
+        position: "long",
+        outcome: "Major Win",
+        profitLoss: "+300%+",
+        description:
+          "Identified Dell in a perfect Stage 2 uptrend with multiple VCP setups as the PC boom accelerated. Rode the position through multiple base breakouts, compounding gains as the stock became one of the defining growth stories of the late 1990s.",
+      },
+      {
+        date: "Late 1990s",
+        asset: "AOL (America Online)",
+        position: "long",
+        outcome: "Major Win",
+        profitLoss: "Multi-bagger",
+        description:
+          "Caught AOL early in its explosive growth phase using the SEPA methodology — identifying the Trend Template and VCP setup before the stock became a household name. A textbook example of the kind of superperformer his system is designed to find.",
+      },
+      {
+        date: "2021",
+        asset: "U.S. Investing Championship Portfolio",
+        position: "long",
+        outcome: "Championship Victory",
+        profitLoss: "+334.8%",
+        description:
+          "Returned to the U.S. Investing Championship after 24 years and posted more than double his 1997 return — navigating a volatile post-pandemic market with precision. The win confirmed that SEPA works across dramatically different market environments and silenced any claims it was era-dependent.",
+      },
+    ],
 
-		quotes: [
-			{
-				text: 'The goal of a successful trader is to make the best trades. Money is secondary.',
-				source: 'Trade Like a Stock Market Wizard'
-			},
-			{
-				text: 'Losses are a cost of doing business. Take them quickly and move on — never let a small loss become a large one.',
-				source: 'Think & Trade Like a Champion'
-			},
-			{
-				text: 'I look for stocks that are acting right, in the right industry groups, at the right time. If a stock doesn\'t qualify on all fronts, I don\'t trade it.',
-				source: 'Master Trader Program'
-			},
-			{
-				text: 'Your job as a trader is not to predict. Your job is to react to what the market is telling you.',
-				source: 'Minervini Private Access'
-			},
-			{
-				text: 'Most traders lose money because they cut their winners and let their losers run. I do the exact opposite — and that makes all the difference.',
-				source: 'Trade Like a Stock Market Wizard'
-			},
-			{
-				text: 'A superperformer doesn\'t show up without first passing through a proper consolidation. Patience at the base is where the edge is made.',
-				source: 'Master Trader Program'
-			},
-			{
-				text: 'You don\'t need to be in the market every day. You need to be in the right stocks at the right time — and in cash the rest.',
-				source: 'Think & Trade Like a Champion'
-			},
-			{
-				text: 'Risk management isn\'t the boring part of trading. It\'s the only part that keeps you in the game long enough to win.',
-				source: 'Mindset Secrets for Winning'
-			}
-		],
+    quotes: [
+      {
+        text: "The goal of a successful trader is to make the best trades. Money is secondary.",
+        source: "Trade Like a Stock Market Wizard",
+      },
+      {
+        text: "Losses are a cost of doing business. Take them quickly and move on — never let a small loss become a large one.",
+        source: "Think & Trade Like a Champion",
+      },
+      {
+        text: "I look for stocks that are acting right, in the right industry groups, at the right time. If a stock doesn't qualify on all fronts, I don't trade it.",
+        source: "Master Trader Program",
+      },
+      {
+        text: "Your job as a trader is not to predict. Your job is to react to what the market is telling you.",
+        source: "Minervini Private Access",
+      },
+      {
+        text: "Most traders lose money because they cut their winners and let their losers run. I do the exact opposite — and that makes all the difference.",
+        source: "Trade Like a Stock Market Wizard",
+      },
+      {
+        text: "A superperformer doesn't show up without first passing through a proper consolidation. Patience at the base is where the edge is made.",
+        source: "Master Trader Program",
+      },
+      {
+        text: "You don't need to be in the market every day. You need to be in the right stocks at the right time — and in cash the rest.",
+        source: "Think & Trade Like a Champion",
+      },
+      {
+        text: "Risk management isn't the boring part of trading. It's the only part that keeps you in the game long enough to win.",
+        source: "Mindset Secrets for Winning",
+      },
+    ],
 
-		books: [
-			{
-				title: 'Trade Like a Stock Market Wizard',
-				year: 2013,
-				description: 'The definitive guide to the SEPA methodology — covering the Trend Template, Volatility Contraction Pattern, and pivot point entries. Widely regarded as one of the best technical trading books ever written.'
-			},
-			{
-				title: 'Think & Trade Like a Champion',
-				year: 2017,
-				description: 'Advanced trading strategies, position sizing, and the mental frameworks that separate elite traders from the crowd. Dives deeper into the execution and psychology behind SEPA.'
-			},
-			{
-				title: 'Mindset Secrets for Winning',
-				year: 2019,
-				description: 'Minervini\'s framework for building the psychological edge required to trade consistently — addressing fear, discipline, consistency, and the habits of professional traders.'
-			}
-		],
+    books: [
+      {
+        title: "Trade Like a Stock Market Wizard",
+        year: 2013,
+        description:
+          "The definitive guide to the SEPA methodology — covering the Trend Template, Volatility Contraction Pattern, and pivot point entries. Widely regarded as one of the best technical trading books ever written.",
+      },
+      {
+        title: "Think & Trade Like a Champion",
+        year: 2017,
+        description:
+          "Advanced trading strategies, position sizing, and the mental frameworks that separate elite traders from the crowd. Dives deeper into the execution and psychology behind SEPA.",
+      },
+      {
+        title: "Mindset Secrets for Winning",
+        year: 2019,
+        description:
+          "Minervini's framework for building the psychological edge required to trade consistently — addressing fear, discipline, consistency, and the habits of professional traders.",
+      },
+    ],
 
-		socialLinks: [
-			{ platform: 'Website', url: 'https://www.minervini.com' },
-			{ platform: 'Twitter', url: 'https://twitter.com/markminervini' },
-			{ platform: 'Instagram', url: 'https://www.instagram.com/_mark_minervini/' },
-			{ platform: 'YouTube', url: 'https://www.youtube.com/@MarkMinervini' },
-			{ platform: 'Amazon', url: 'https://www.amazon.com/s?k=mark+minervini' },
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Mark_Minervini' }
-		],
+    socialLinks: [
+      { platform: "Website", url: "https://www.minervini.com" },
+      { platform: "Twitter", url: "https://twitter.com/markminervini" },
+      { platform: "Instagram", url: "https://www.instagram.com/_mark_minervini/" },
+      { platform: "YouTube", url: "https://www.youtube.com/@MarkMinervini" },
+      { platform: "Amazon", url: "https://www.amazon.com/s?k=mark+minervini" },
+      { platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Mark_Minervini" },
+    ],
 
-		status: 'published'
-	},
-	{
-		name: 'Billy Ribeiro',
-		slug: 'billy-ribeiro',
-		photoUrl: '/images/traders/billy-ribeiro-cinematic.png',
-		oneLiner: 'Master Price Action, Options, and Market Structure Trader',
-		birthYear: 1985,
-		nationality: 'American',
-		tradingStyle: 'Price Action & Options',
-		netWorth: 'Private',
-		bio: `Billy Ribeiro is a stock and options trader known for his exceptional command of price action and his ability to call major market turning points with unusual precision. He was personally mentored by the late Wall Street legend Mark McGoldrick, the former Goldman Sachs powerhouse investor widely known as "GoldFinger". McGoldrick referred to Billy as "the future of trading", a description that stayed with traders who watched Billy work.
+    status: "published",
+  },
+  {
+    name: "Billy Ribeiro",
+    slug: "billy-ribeiro",
+    photoUrl: "/images/traders/billy-ribeiro-cinematic.png",
+    oneLiner: "Master Price Action, Options, and Market Structure Trader",
+    birthYear: 1985,
+    nationality: "American",
+    tradingStyle: "Price Action & Options",
+    netWorth: "Private",
+    bio: `Billy Ribeiro is a stock and options trader known for his exceptional command of price action and his ability to call major market turning points with unusual precision. He was personally mentored by the late Wall Street legend Mark McGoldrick, the former Goldman Sachs powerhouse investor widely known as "GoldFinger". McGoldrick referred to Billy as "the future of trading", a description that stayed with traders who watched Billy work.
 
 ## The Move Prior to The Move™
 
@@ -230,66 +238,69 @@ Among traders who witnessed him call levels with near tick precision, align macr
 In recent years, Billy has stepped away from the public eye and keeps a very low profile. He is not active on social media, and several profiles that claim to be him have been confirmed as fake. The last widely shared reports suggested that he was working on launching his own hedge fund. As of now, there are no official courses, no official website, and no verified public offerings under his name.
 
 For many serious market participants, Billy Ribeiro represents a rare combination of macro insight, micro precision, price action clarity, and engineered options strategy. He is regarded by those who know his work as one of the greatest traders they have encountered in their careers.`,
-		philosophy: `"I trade the charts and not the noise." Billy believes that price and structure tell the real story long before headlines or popular narratives catch up. His framework rests on three pillars: deep macro understanding, refined micro reading, and disciplined focus on pure price action.`,
-		achievements: [
-			'Creator of The Move Prior to The Move™ system',
-			'Mentored by Goldman Sachs legend Mark McGoldrick "GoldFinger"',
-			'Called Covid crash top and bottom with precision',
-			'Called 2022 bear market top and bottom in advance',
-			'98.7% win rate over 950+ trades at Simpler Trading',
-			'600%+ overnight return on OXY put trade',
-			'Developed algorithmic strategies for institutional teams'
-		],
-		famousTrades: [
-			{
-				date: '2022',
-				asset: 'Occidental Petroleum (OXY)',
-				position: 'short',
-				outcome: 'Legendary Win',
-				profitLoss: '+600%',
-				description: 'Shorted OXY through put options minutes before Buffett buying became known, purely from chart analysis. Position returned over 600% overnight.'
-			},
-			{
-				date: '2020',
-				asset: 'S&P 500 / Market Indices',
-				position: 'short',
-				outcome: 'Historic Call',
-				profitLoss: 'Precise Levels',
-				description: 'Publicly called both the Covid crash top and bottom to remarkably precise levels, live and in real time.'
-			},
-			{
-				date: '2022',
-				asset: 'S&P 500 / Market Indices',
-				position: 'short',
-				outcome: 'Historic Call',
-				profitLoss: 'Precise Levels',
-				description: 'Called both the 2022 bear market top and bottom in advance, again with remarkable precision.'
-			}
-		],
-		quotes: [
-			{ text: 'I trade the charts and not the noise.', source: 'Trading Philosophy' },
-			{ text: 'I do not watch the news, I watch the charts.', source: 'Trading Philosophy' },
-			{ text: 'I do not use indicators, I use my system.', source: 'Trading Philosophy' },
-			{ text: 'I buy into weakness and sell into strength.', source: 'Trading Philosophy' }
-		],
-		books: [],
-		socialLinks: [
-			{ platform: 'Website', url: 'https://www.simplertrading.com' },
-			{ platform: 'Profile', url: 'https://www.simplertrading.com/traders/billy-ribeiro' },
-			{ platform: 'YouTube', url: 'https://www.youtube.com/@SimplerTrading' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'John Carter',
-		slug: 'john-carter',
-		photoUrl: null,
-		oneLiner: 'Squeeze Indicator Creator & Options Trading Legend',
-		birthYear: 1969,
-		nationality: 'American',
-		tradingStyle: 'Options & Technical Analysis',
-		netWorth: '$100+ Million',
-		bio: `John Carter is a legendary options trader best known for creating the "TTM Squeeze" indicator and building Simpler Trading into one of the most recognized trading education platforms in the world. His massive trades and transparent approach have made him a icon in the retail trading community.
+    philosophy: `"I trade the charts and not the noise." Billy believes that price and structure tell the real story long before headlines or popular narratives catch up. His framework rests on three pillars: deep macro understanding, refined micro reading, and disciplined focus on pure price action.`,
+    achievements: [
+      "Creator of The Move Prior to The Move™ system",
+      'Mentored by Goldman Sachs legend Mark McGoldrick "GoldFinger"',
+      "Called Covid crash top and bottom with precision",
+      "Called 2022 bear market top and bottom in advance",
+      "98.7% win rate over 950+ trades at Simpler Trading",
+      "600%+ overnight return on OXY put trade",
+      "Developed algorithmic strategies for institutional teams",
+    ],
+    famousTrades: [
+      {
+        date: "2022",
+        asset: "Occidental Petroleum (OXY)",
+        position: "short",
+        outcome: "Legendary Win",
+        profitLoss: "+600%",
+        description:
+          "Shorted OXY through put options minutes before Buffett buying became known, purely from chart analysis. Position returned over 600% overnight.",
+      },
+      {
+        date: "2020",
+        asset: "S&P 500 / Market Indices",
+        position: "short",
+        outcome: "Historic Call",
+        profitLoss: "Precise Levels",
+        description:
+          "Publicly called both the Covid crash top and bottom to remarkably precise levels, live and in real time.",
+      },
+      {
+        date: "2022",
+        asset: "S&P 500 / Market Indices",
+        position: "short",
+        outcome: "Historic Call",
+        profitLoss: "Precise Levels",
+        description:
+          "Called both the 2022 bear market top and bottom in advance, again with remarkable precision.",
+      },
+    ],
+    quotes: [
+      { text: "I trade the charts and not the noise.", source: "Trading Philosophy" },
+      { text: "I do not watch the news, I watch the charts.", source: "Trading Philosophy" },
+      { text: "I do not use indicators, I use my system.", source: "Trading Philosophy" },
+      { text: "I buy into weakness and sell into strength.", source: "Trading Philosophy" },
+    ],
+    books: [],
+    socialLinks: [
+      { platform: "Website", url: "https://www.simplertrading.com" },
+      { platform: "Profile", url: "https://www.simplertrading.com/traders/billy-ribeiro" },
+      { platform: "YouTube", url: "https://www.youtube.com/@SimplerTrading" },
+    ],
+    status: "published",
+  },
+  {
+    name: "John Carter",
+    slug: "john-carter",
+    photoUrl: "https://cdn.simplertrading.com/2025/06/20091523/Circle-720x720_JohnCarter.png",
+    oneLiner: "Squeeze Indicator Creator & Options Trading Legend",
+    birthYear: 1969,
+    nationality: "American",
+    tradingStyle: "Options & Technical Analysis",
+    netWorth: "$100+ Million",
+    bio: `John Carter is a legendary options trader best known for creating the "TTM Squeeze" indicator and building Simpler Trading into one of the most recognized trading education platforms in the world. His massive trades and transparent approach have made him a icon in the retail trading community.
 
 ## Background
 
@@ -315,64 +326,89 @@ John has documented numerous seven and eight-figure trades throughout his career
 ## Simpler Trading
 
 Through Simpler Trading, John has trained tens of thousands of traders. The platform offers live trading rooms, educational courses, and indicator tools that have helped democratize trading knowledge.`,
-		philosophy: `"The squeeze is the setup. The momentum is the trigger." John believes that most traders fail because they trade too much and too small. He advocates for patience—waiting for the highest probability setups—and then trading with conviction when they appear.`,
-		achievements: [
-			'Created the TTM Squeeze indicator (used by 500,000+ traders)',
-			'Founded Simpler Trading',
-			'Multiple documented 7 and 8-figure trades',
-			'Author of "Mastering the Trade"',
-			'Over 25 years of professional trading',
-			'Pioneered options on futures education'
-		],
-		famousTrades: [
-			{
-				date: '2020',
-				asset: 'Tesla Options',
-				position: 'long',
-				outcome: 'Massive Win',
-				profitLoss: '+$16 Million',
-				description: 'Famously turned a position in Tesla calls into a $16 million profit during the 2020 rally.'
-			},
-			{
-				date: '2021',
-				asset: 'AMC Options',
-				position: 'long',
-				outcome: 'Major Win',
-				profitLoss: '+$11 Million',
-				description: 'Captured the meme stock rally with a perfectly timed options play on AMC.'
-			}
-		],
-		quotes: [
-			{ text: 'The squeeze is the setup. The momentum is the trigger.', source: 'Simpler Trading' },
-			{ text: 'I would rather make 10% on a large position than 100% on a small position.', source: 'Mastering the Trade' },
-			{ text: 'Professional traders spend most of their time waiting. Amateurs spend most of their time trading.', source: 'Interview' },
-			{ text: 'The markets can remain irrational longer than you can remain solvent.', source: 'Trading Room' }
-		],
-		books: [
-			{ title: 'Mastering the Trade', year: 2006, description: 'The complete guide to day and swing trading' },
-			{ title: 'Mastering the Trade (Second Edition)', year: 2012, description: 'Updated strategies for modern markets' },
-			{ title: 'Mastering the Trade (Third Edition)', year: 2019, description: 'Latest techniques including options strategies' }
-		],
-		socialLinks: [
-			{ platform: 'Website', url: 'https://www.simplertrading.com' },
-			{ platform: 'Twitter', url: 'https://twitter.com/johnfcarter' },
-			{ platform: 'YouTube', url: 'https://www.youtube.com/channel/UCukKZsfpQOkj3_L47VbvvSg' },
-			{ platform: 'Medium', url: 'https://simplerjohn.medium.com' },
-			{ platform: 'Amazon', url: 'https://www.amazon.com/Mastering-Trade-Third-Proven-Techniques/dp/1260121593' },
-			{ platform: 'Profile', url: 'https://www.simplertrading.com/traders/john-carter' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'George Soros',
-		slug: 'george-soros',
-		photoUrl: '/images/traders/george-soros.jpg',
-		oneLiner: 'The Man Who Broke the Bank of England',
-		birthYear: 1930,
-		nationality: 'Hungarian-American',
-		tradingStyle: 'Macro & Currency',
-		netWorth: '$6.7 Billion',
-		bio: `George Soros is widely considered one of the most successful investors in history. His Quantum Fund delivered average annual returns exceeding 30% for decades, and his famous bet against the British pound in 1992 earned him over $1 billion in a single day.
+    philosophy: `"The squeeze is the setup. The momentum is the trigger." John believes that most traders fail because they trade too much and too small. He advocates for patience—waiting for the highest probability setups—and then trading with conviction when they appear.`,
+    achievements: [
+      "Created the TTM Squeeze indicator (used by 500,000+ traders)",
+      "Founded Simpler Trading",
+      "Multiple documented 7 and 8-figure trades",
+      'Author of "Mastering the Trade"',
+      "Over 25 years of professional trading",
+      "Pioneered options on futures education",
+    ],
+    famousTrades: [
+      {
+        date: "2020",
+        asset: "Tesla Options",
+        position: "long",
+        outcome: "Massive Win",
+        profitLoss: "+$16 Million",
+        description:
+          "Famously turned a position in Tesla calls into a $16 million profit during the 2020 rally.",
+      },
+      {
+        date: "2021",
+        asset: "AMC Options",
+        position: "long",
+        outcome: "Major Win",
+        profitLoss: "+$11 Million",
+        description: "Captured the meme stock rally with a perfectly timed options play on AMC.",
+      },
+    ],
+    quotes: [
+      { text: "The squeeze is the setup. The momentum is the trigger.", source: "Simpler Trading" },
+      {
+        text: "I would rather make 10% on a large position than 100% on a small position.",
+        source: "Mastering the Trade",
+      },
+      {
+        text: "Professional traders spend most of their time waiting. Amateurs spend most of their time trading.",
+        source: "Interview",
+      },
+      {
+        text: "The markets can remain irrational longer than you can remain solvent.",
+        source: "Trading Room",
+      },
+    ],
+    books: [
+      {
+        title: "Mastering the Trade",
+        year: 2006,
+        description: "The complete guide to day and swing trading",
+      },
+      {
+        title: "Mastering the Trade (Second Edition)",
+        year: 2012,
+        description: "Updated strategies for modern markets",
+      },
+      {
+        title: "Mastering the Trade (Third Edition)",
+        year: 2019,
+        description: "Latest techniques including options strategies",
+      },
+    ],
+    socialLinks: [
+      { platform: "Website", url: "https://www.simplertrading.com" },
+      { platform: "Twitter", url: "https://twitter.com/johnfcarter" },
+      { platform: "YouTube", url: "https://www.youtube.com/channel/UCukKZsfpQOkj3_L47VbvvSg" },
+      { platform: "Medium", url: "https://simplerjohn.medium.com" },
+      {
+        platform: "Amazon",
+        url: "https://www.amazon.com/Mastering-Trade-Third-Proven-Techniques/dp/1260121593",
+      },
+      { platform: "Profile", url: "https://www.simplertrading.com/traders/john-carter" },
+    ],
+    status: "published",
+  },
+  {
+    name: "George Soros",
+    slug: "george-soros",
+    photoUrl: "/images/traders/george-soros.jpg",
+    oneLiner: "The Man Who Broke the Bank of England",
+    birthYear: 1930,
+    nationality: "Hungarian-American",
+    tradingStyle: "Macro & Currency",
+    netWorth: "$6.7 Billion",
+    bio: `George Soros is widely considered one of the most successful investors in history. His Quantum Fund delivered average annual returns exceeding 30% for decades, and his famous bet against the British pound in 1992 earned him over $1 billion in a single day.
 
 ## Early Life
 
@@ -396,61 +432,84 @@ Soros founded the Quantum Fund in 1969. Over the next several decades, the fund 
 ## Philanthropy
 
 Soros has given away over $32 billion to philanthropic causes through his Open Society Foundations, making him one of the most generous philanthropists in history.`,
-		philosophy: `"It's not whether you're right or wrong that's important, but how much money you make when you're right and how much you lose when you're wrong." Soros believes in making asymmetric bets—positions where the potential upside far exceeds the potential downside. He also emphasizes the importance of recognizing and correcting mistakes quickly.`,
-		achievements: [
-			'Made $1 billion in one day shorting the British pound',
-			'Quantum Fund returned 30%+ annually for decades',
-			'Donated over $32 billion to charity',
-			'Developed the theory of reflexivity',
-			'One of the most successful currency traders in history',
-			'Built a fortune from nothing as an immigrant'
-		],
-		famousTrades: [
-			{
-				date: 'September 16, 1992',
-				asset: 'British Pound (GBP)',
-				position: 'short',
-				outcome: 'Legendary Win',
-				profitLoss: '+$1 Billion',
-				description: 'Shorted $10 billion worth of British pounds, forcing the UK to withdraw from the ERM. Made over $1 billion in a single day.'
-			},
-			{
-				date: '1997',
-				asset: 'Thai Baht & Asian Currencies',
-				position: 'short',
-				outcome: 'Major Win',
-				profitLoss: '+$750 Million',
-				description: 'Anticipated and profited from the Asian Financial Crisis by shorting overvalued Asian currencies.'
-			}
-		],
-		quotes: [
-			{ text: "It's not whether you're right or wrong that's important, but how much money you make when you're right and how much you lose when you're wrong.", source: 'The Alchemy of Finance' },
-			{ text: 'The financial markets generally are unpredictable. So that one has to have different scenarios.', source: 'Interview' },
-			{ text: 'I am only rich because I know when I am wrong.', source: 'Soros on Soros' },
-			{ text: 'Markets are constantly in a state of uncertainty and flux, and money is made by discounting the obvious and betting on the unexpected.', source: 'The Alchemy of Finance' }
-		],
-		books: [
-			{ title: 'The Alchemy of Finance', year: 1987, description: 'Soros explains his theory of reflexivity and investment philosophy' },
-			{ title: 'Soros on Soros', year: 1995, description: 'Autobiography and insights into his thinking process' },
-			{ title: 'The New Paradigm for Financial Markets', year: 2008, description: 'Analysis of the 2008 financial crisis' }
-		],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/George_Soros' },
-			{ platform: 'Website', url: 'https://www.georgesoros.com' },
-			{ platform: 'Open Society', url: 'https://www.opensocietyfoundations.org' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Warren Buffett',
-		slug: 'warren-buffett',
-		photoUrl: '/images/traders/warren-buffett.jpg',
-		oneLiner: 'The Oracle of Omaha',
-		birthYear: 1930,
-		nationality: 'American',
-		tradingStyle: 'Value Investing',
-		netWorth: '$130+ Billion',
-		bio: `Warren Buffett is widely regarded as the most successful investor of all time. Through his company Berkshire Hathaway, he has built one of the largest fortunes in history using a disciplined value investing approach that he learned from Benjamin Graham and refined over seven decades.
+    philosophy: `"It's not whether you're right or wrong that's important, but how much money you make when you're right and how much you lose when you're wrong." Soros believes in making asymmetric bets—positions where the potential upside far exceeds the potential downside. He also emphasizes the importance of recognizing and correcting mistakes quickly.`,
+    achievements: [
+      "Made $1 billion in one day shorting the British pound",
+      "Quantum Fund returned 30%+ annually for decades",
+      "Donated over $32 billion to charity",
+      "Developed the theory of reflexivity",
+      "One of the most successful currency traders in history",
+      "Built a fortune from nothing as an immigrant",
+    ],
+    famousTrades: [
+      {
+        date: "September 16, 1992",
+        asset: "British Pound (GBP)",
+        position: "short",
+        outcome: "Legendary Win",
+        profitLoss: "+$1 Billion",
+        description:
+          "Shorted $10 billion worth of British pounds, forcing the UK to withdraw from the ERM. Made over $1 billion in a single day.",
+      },
+      {
+        date: "1997",
+        asset: "Thai Baht & Asian Currencies",
+        position: "short",
+        outcome: "Major Win",
+        profitLoss: "+$750 Million",
+        description:
+          "Anticipated and profited from the Asian Financial Crisis by shorting overvalued Asian currencies.",
+      },
+    ],
+    quotes: [
+      {
+        text: "It's not whether you're right or wrong that's important, but how much money you make when you're right and how much you lose when you're wrong.",
+        source: "The Alchemy of Finance",
+      },
+      {
+        text: "The financial markets generally are unpredictable. So that one has to have different scenarios.",
+        source: "Interview",
+      },
+      { text: "I am only rich because I know when I am wrong.", source: "Soros on Soros" },
+      {
+        text: "Markets are constantly in a state of uncertainty and flux, and money is made by discounting the obvious and betting on the unexpected.",
+        source: "The Alchemy of Finance",
+      },
+    ],
+    books: [
+      {
+        title: "The Alchemy of Finance",
+        year: 1987,
+        description: "Soros explains his theory of reflexivity and investment philosophy",
+      },
+      {
+        title: "Soros on Soros",
+        year: 1995,
+        description: "Autobiography and insights into his thinking process",
+      },
+      {
+        title: "The New Paradigm for Financial Markets",
+        year: 2008,
+        description: "Analysis of the 2008 financial crisis",
+      },
+    ],
+    socialLinks: [
+      { platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/George_Soros" },
+      { platform: "Website", url: "https://www.georgesoros.com" },
+      { platform: "Open Society", url: "https://www.opensocietyfoundations.org" },
+    ],
+    status: "published",
+  },
+  {
+    name: "Warren Buffett",
+    slug: "warren-buffett",
+    photoUrl: "/images/traders/warren-buffett.jpg",
+    oneLiner: "The Oracle of Omaha",
+    birthYear: 1930,
+    nationality: "American",
+    tradingStyle: "Value Investing",
+    netWorth: "$130+ Billion",
+    bio: `Warren Buffett is widely regarded as the most successful investor of all time. Through his company Berkshire Hathaway, he has built one of the largest fortunes in history using a disciplined value investing approach that he learned from Benjamin Graham and refined over seven decades.
 
 ## Early Years
 
@@ -478,70 +537,90 @@ Buffett's approach centers on:
 ## The Buffett Partnership
 
 Before Berkshire, Buffett ran private investment partnerships from 1956 to 1969, generating returns of 29.5% annually (vs. 7.4% for the Dow) with no losing years.`,
-		philosophy: `"Be fearful when others are greedy, and greedy when others are fearful." Buffett believes that successful investing is about temperament, not intelligence. He advocates for buying wonderful businesses at fair prices, holding for the long term, and never investing in something you don't understand.`,
-		achievements: [
-			'Built Berkshire Hathaway into a $780 billion empire',
-			'Delivered 3,787,464% total return since 1965',
-			'Second richest person in the world for decades',
-			'Pledged to give away 99% of wealth to charity',
-			'No losing years in his partnership (1956-1969)',
-			'Most studied investor in history'
-		],
-		famousTrades: [
-			{
-				date: '1988',
-				asset: 'Coca-Cola (KO)',
-				position: 'long',
-				outcome: 'Iconic Investment',
-				profitLoss: '+$25 Billion',
-				description: 'Invested $1 billion in Coca-Cola, a position now worth over $25 billion. Still held in the portfolio today.'
-			},
-			{
-				date: '2016',
-				asset: 'Apple (AAPL)',
-				position: 'long',
-				outcome: 'Largest Position',
-				profitLoss: '+$120 Billion',
-				description: 'Began accumulating Apple shares, eventually becoming Berkshire\'s largest position with over $120 billion in unrealized gains.'
-			},
-			{
-				date: '2008',
-				asset: 'Goldman Sachs / Bank of America',
-				position: 'long',
-				outcome: 'Crisis Bargains',
-				profitLoss: '+$15 Billion',
-				description: 'Invested billions during the financial crisis when others were panicking, securing preferred shares with lucrative terms.'
-			}
-		],
-		quotes: [
-			{ text: 'Be fearful when others are greedy, and greedy when others are fearful.', source: 'Shareholder Letter' },
-			{ text: 'Price is what you pay. Value is what you get.', source: 'Shareholder Letter' },
-			{ text: 'Our favorite holding period is forever.', source: 'Annual Meeting' },
-			{ text: "Rule No. 1: Never lose money. Rule No. 2: Never forget rule No. 1.", source: 'Interview' },
-			{ text: "It's far better to buy a wonderful company at a fair price than a fair company at a wonderful price.", source: 'Shareholder Letter' }
-		],
-		books: [
-			{ title: 'The Essays of Warren Buffett', year: 1997, description: 'Collection of his shareholder letters, edited by Lawrence Cunningham' },
-			{ title: 'Berkshire Hathaway Letters to Shareholders', year: 2023, description: 'Complete collection of annual letters from 1965-present' }
-		],
-		socialLinks: [
-			{ platform: 'Website', url: 'https://www.berkshirehathaway.com' },
-			{ platform: 'Letters', url: 'https://www.berkshirehathaway.com/letters/letters.html' },
-			{ platform: 'Twitter', url: 'https://twitter.com/WarrenBuffett' },
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Warren_Buffett' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Paul Tudor Jones',
-		slug: 'paul-tudor-jones',
-		photoUrl: '/images/traders/paul-tudor-jones.jpg',
-		oneLiner: 'Predicted the 1987 Crash & Macro Trading Pioneer',
-		birthYear: 1954,
-		nationality: 'American',
-		tradingStyle: 'Macro & Currency',
-		netWorth: '$7.5 Billion',
-		bio: `Paul Tudor Jones II is one of the most successful macro traders in history. He is best known for predicting and profiting from the 1987 stock market crash, tripling his money while the market collapsed. His hedge fund, Tudor Investment Corp., has been one of the most consistently profitable funds for over four decades.
+    philosophy: `"Be fearful when others are greedy, and greedy when others are fearful." Buffett believes that successful investing is about temperament, not intelligence. He advocates for buying wonderful businesses at fair prices, holding for the long term, and never investing in something you don't understand.`,
+    achievements: [
+      "Built Berkshire Hathaway into a $780 billion empire",
+      "Delivered 3,787,464% total return since 1965",
+      "Second richest person in the world for decades",
+      "Pledged to give away 99% of wealth to charity",
+      "No losing years in his partnership (1956-1969)",
+      "Most studied investor in history",
+    ],
+    famousTrades: [
+      {
+        date: "1988",
+        asset: "Coca-Cola (KO)",
+        position: "long",
+        outcome: "Iconic Investment",
+        profitLoss: "+$25 Billion",
+        description:
+          "Invested $1 billion in Coca-Cola, a position now worth over $25 billion. Still held in the portfolio today.",
+      },
+      {
+        date: "2016",
+        asset: "Apple (AAPL)",
+        position: "long",
+        outcome: "Largest Position",
+        profitLoss: "+$120 Billion",
+        description:
+          "Began accumulating Apple shares, eventually becoming Berkshire's largest position with over $120 billion in unrealized gains.",
+      },
+      {
+        date: "2008",
+        asset: "Goldman Sachs / Bank of America",
+        position: "long",
+        outcome: "Crisis Bargains",
+        profitLoss: "+$15 Billion",
+        description:
+          "Invested billions during the financial crisis when others were panicking, securing preferred shares with lucrative terms.",
+      },
+    ],
+    quotes: [
+      {
+        text: "Be fearful when others are greedy, and greedy when others are fearful.",
+        source: "Shareholder Letter",
+      },
+      { text: "Price is what you pay. Value is what you get.", source: "Shareholder Letter" },
+      { text: "Our favorite holding period is forever.", source: "Annual Meeting" },
+      {
+        text: "Rule No. 1: Never lose money. Rule No. 2: Never forget rule No. 1.",
+        source: "Interview",
+      },
+      {
+        text: "It's far better to buy a wonderful company at a fair price than a fair company at a wonderful price.",
+        source: "Shareholder Letter",
+      },
+    ],
+    books: [
+      {
+        title: "The Essays of Warren Buffett",
+        year: 1997,
+        description: "Collection of his shareholder letters, edited by Lawrence Cunningham",
+      },
+      {
+        title: "Berkshire Hathaway Letters to Shareholders",
+        year: 2023,
+        description: "Complete collection of annual letters from 1965-present",
+      },
+    ],
+    socialLinks: [
+      { platform: "Website", url: "https://www.berkshirehathaway.com" },
+      { platform: "Letters", url: "https://www.berkshirehathaway.com/letters/letters.html" },
+      { platform: "Twitter", url: "https://twitter.com/WarrenBuffett" },
+      { platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Warren_Buffett" },
+    ],
+    status: "published",
+  },
+  {
+    name: "Paul Tudor Jones",
+    slug: "paul-tudor-jones",
+    photoUrl: "/images/traders/paul-tudor-jones.jpg",
+    oneLiner: "Predicted the 1987 Crash & Macro Trading Pioneer",
+    birthYear: 1954,
+    nationality: "American",
+    tradingStyle: "Macro & Currency",
+    netWorth: "$7.5 Billion",
+    bio: `Paul Tudor Jones II is one of the most successful macro traders in history. He is best known for predicting and profiting from the 1987 stock market crash, tripling his money while the market collapsed. His hedge fund, Tudor Investment Corp., has been one of the most consistently profitable funds for over four decades.
 
 ## Early Career
 
@@ -558,48 +637,55 @@ Jones is known for his:
 - **Technical Analysis**: Using charts to time entries and exits
 - **Macro Approach**: Trading based on global economic themes
 - **Psychological Discipline**: Cutting losses quickly and letting winners run`,
-		philosophy: `"The secret to being successful from a trading perspective is to have an indefatigable and an undying and unquenchable thirst for information and knowledge." Jones emphasizes risk management above all, famously saying he's always thinking about losing money, not making it.`,
-		achievements: [
-			'Made 62% return during 1987 crash',
-			'Tudor Investment Corp manages $11+ billion',
-			'Consistent 20%+ annual returns for decades',
-			'Founder of Robin Hood Foundation',
-			'Featured in "Market Wizards"',
-			'One of the most respected macro traders alive'
-		],
-		famousTrades: [
-			{
-				date: 'October 1987',
-				asset: 'S&P 500 Futures',
-				position: 'short',
-				outcome: 'Legendary Call',
-				profitLoss: '+200%',
-				description: 'Predicted and profited massively from Black Monday crash, reportedly tripling his fund.'
-			}
-		],
-		quotes: [
-			{ text: 'The secret to being successful from a trading perspective is to have an indefatigable and an undying and unquenchable thirst for information and knowledge.', source: 'Market Wizards' },
-			{ text: "Don't focus on making money; focus on protecting what you have.", source: 'Interview' },
-			{ text: 'Losers average losers.', source: 'Trading Wisdom' }
-		],
-		books: [],
-		socialLinks: [
-			{ platform: 'Website', url: 'https://www.tudorinvestmentcorp.com' },
-			{ platform: 'Twitter', url: 'https://twitter.com/ptj_official' },
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Paul_Tudor_Jones' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Ray Dalio',
-		slug: 'ray-dalio',
-		photoUrl: '/images/traders/ray-dalio.jpg',
-		oneLiner: 'Founder of World\'s Largest Hedge Fund',
-		birthYear: 1949,
-		nationality: 'American',
-		tradingStyle: 'Macro & Currency',
-		netWorth: '$19.1 Billion',
-		bio: `Ray Dalio is the founder of Bridgewater Associates, the world's largest hedge fund with over $150 billion in assets under management. His "All Weather" portfolio strategy and principles-based approach to management have made him one of the most influential figures in finance.
+    philosophy: `"The secret to being successful from a trading perspective is to have an indefatigable and an undying and unquenchable thirst for information and knowledge." Jones emphasizes risk management above all, famously saying he's always thinking about losing money, not making it.`,
+    achievements: [
+      "Made 62% return during 1987 crash",
+      "Tudor Investment Corp manages $11+ billion",
+      "Consistent 20%+ annual returns for decades",
+      "Founder of Robin Hood Foundation",
+      'Featured in "Market Wizards"',
+      "One of the most respected macro traders alive",
+    ],
+    famousTrades: [
+      {
+        date: "October 1987",
+        asset: "S&P 500 Futures",
+        position: "short",
+        outcome: "Legendary Call",
+        profitLoss: "+200%",
+        description:
+          "Predicted and profited massively from Black Monday crash, reportedly tripling his fund.",
+      },
+    ],
+    quotes: [
+      {
+        text: "The secret to being successful from a trading perspective is to have an indefatigable and an undying and unquenchable thirst for information and knowledge.",
+        source: "Market Wizards",
+      },
+      {
+        text: "Don't focus on making money; focus on protecting what you have.",
+        source: "Interview",
+      },
+      { text: "Losers average losers.", source: "Trading Wisdom" },
+    ],
+    books: [],
+    socialLinks: [
+      { platform: "Website", url: "https://www.tudorinvestmentcorp.com" },
+      { platform: "Twitter", url: "https://twitter.com/ptj_official" },
+      { platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Paul_Tudor_Jones" },
+    ],
+    status: "published",
+  },
+  {
+    name: "Ray Dalio",
+    slug: "ray-dalio",
+    photoUrl: "/images/traders/ray-dalio.jpg",
+    oneLiner: "Founder of World's Largest Hedge Fund",
+    birthYear: 1949,
+    nationality: "American",
+    tradingStyle: "Macro & Currency",
+    netWorth: "$19.1 Billion",
+    bio: `Ray Dalio is the founder of Bridgewater Associates, the world's largest hedge fund with over $150 billion in assets under management. His "All Weather" portfolio strategy and principles-based approach to management have made him one of the most influential figures in finance.
 
 ## Building Bridgewater
 
@@ -616,53 +702,65 @@ Dalio developed the "All Weather" portfolio, designed to perform well across all
 ## Principles
 
 Dalio is famous for his company culture based on "radical transparency" and "radical truth," documented in his bestselling book "Principles."`,
-		philosophy: `"He who lives by the crystal ball will eat shattered glass." Dalio believes in systematic, rules-based investing and radical transparency in all aspects of life and business.`,
-		achievements: [
-			'Founded world\'s largest hedge fund ($150B+ AUM)',
-			'Pioneer of risk parity investing',
-			'Author of bestselling "Principles"',
-			'All Weather portfolio strategy',
-			'Predicted 2008 financial crisis',
-			'Built systematic trading culture at Bridgewater'
-		],
-		famousTrades: [
-			{
-				date: '2008',
-				asset: 'Credit Default Swaps',
-				position: 'long',
-				outcome: 'Crisis Profit',
-				profitLoss: '+9.5%',
-				description: 'Bridgewater\'s Pure Alpha fund gained 9.5% in 2008 while most funds lost heavily.'
-			}
-		],
-		quotes: [
-			{ text: 'He who lives by the crystal ball will eat shattered glass.', source: 'Principles' },
-			{ text: 'Pain + Reflection = Progress', source: 'Principles' },
-			{ text: 'Embrace reality and deal with it.', source: 'Principles' }
-		],
-		books: [
-			{ title: 'Principles: Life and Work', year: 2017, description: 'Dalio\'s framework for decision-making and management' },
-			{ title: 'Principles for Dealing with the Changing World Order', year: 2021, description: 'Analysis of empire cycles and economic patterns' }
-		],
-		socialLinks: [
-			{ platform: 'Twitter', url: 'https://twitter.com/raydalio' },
-			{ platform: 'LinkedIn', url: 'https://www.linkedin.com/in/raydalio' },
-			{ platform: 'Website', url: 'https://www.bridgewater.com' },
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Ray_Dalio' },
-			{ platform: 'Amazon', url: 'https://www.amazon.com/Principles-Life-Work-Ray-Dalio/dp/1501124021' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Stanley Druckenmiller',
-		slug: 'stanley-druckenmiller',
-		photoUrl: null,
-		oneLiner: 'Soros\'s Right Hand with 30% Annual Returns',
-		birthYear: 1953,
-		nationality: 'American',
-		tradingStyle: 'Macro & Currency',
-		netWorth: '$6.4 Billion',
-		bio: `Stanley Druckenmiller is considered one of the greatest money managers in history. He managed money for George Soros's Quantum Fund from 1988 to 2000, achieving an average annual return of 30% with no losing years. He was the strategist behind the famous British pound trade.
+    philosophy: `"He who lives by the crystal ball will eat shattered glass." Dalio believes in systematic, rules-based investing and radical transparency in all aspects of life and business.`,
+    achievements: [
+      "Founded world's largest hedge fund ($150B+ AUM)",
+      "Pioneer of risk parity investing",
+      'Author of bestselling "Principles"',
+      "All Weather portfolio strategy",
+      "Predicted 2008 financial crisis",
+      "Built systematic trading culture at Bridgewater",
+    ],
+    famousTrades: [
+      {
+        date: "2008",
+        asset: "Credit Default Swaps",
+        position: "long",
+        outcome: "Crisis Profit",
+        profitLoss: "+9.5%",
+        description:
+          "Bridgewater's Pure Alpha fund gained 9.5% in 2008 while most funds lost heavily.",
+      },
+    ],
+    quotes: [
+      { text: "He who lives by the crystal ball will eat shattered glass.", source: "Principles" },
+      { text: "Pain + Reflection = Progress", source: "Principles" },
+      { text: "Embrace reality and deal with it.", source: "Principles" },
+    ],
+    books: [
+      {
+        title: "Principles: Life and Work",
+        year: 2017,
+        description: "Dalio's framework for decision-making and management",
+      },
+      {
+        title: "Principles for Dealing with the Changing World Order",
+        year: 2021,
+        description: "Analysis of empire cycles and economic patterns",
+      },
+    ],
+    socialLinks: [
+      { platform: "Twitter", url: "https://twitter.com/raydalio" },
+      { platform: "LinkedIn", url: "https://www.linkedin.com/in/raydalio" },
+      { platform: "Website", url: "https://www.bridgewater.com" },
+      { platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Ray_Dalio" },
+      {
+        platform: "Amazon",
+        url: "https://www.amazon.com/Principles-Life-Work-Ray-Dalio/dp/1501124021",
+      },
+    ],
+    status: "published",
+  },
+  {
+    name: "Stanley Druckenmiller",
+    slug: "stanley-druckenmiller",
+    photoUrl: "https://www.grantspub.com/images/speakers/Druckenmiller.jpg",
+    oneLiner: "Soros's Right Hand with 30% Annual Returns",
+    birthYear: 1953,
+    nationality: "American",
+    tradingStyle: "Macro & Currency",
+    netWorth: "$6.4 Billion",
+    bio: `Stanley Druckenmiller is considered one of the greatest money managers in history. He managed money for George Soros's Quantum Fund from 1988 to 2000, achieving an average annual return of 30% with no losing years. He was the strategist behind the famous British pound trade.
 
 ## The Soros Partnership
 
@@ -678,47 +776,57 @@ Druckenmiller is known for:
 - **Concentration**: Making big bets when conviction is high
 - **Flexibility**: Changing positions rapidly based on new information
 - **Top-down macro**: Starting with the big picture and working down`,
-		philosophy: `"The way to build long-term returns is through preservation of capital and home runs... When you have tremendous conviction on a trade, you have to go for the jugular."`,
-		achievements: [
-			'30% average annual returns for 30 years',
-			'No losing years at Duquesne Capital',
-			'Co-architected £10B pound short with Soros',
-			'Managed Quantum Fund 1988-2000',
-			'One of the most consistent track records ever',
-			'Returned all outside capital in 2010'
-		],
-		famousTrades: [
-			{
-				date: '1992',
-				asset: 'British Pound',
-				position: 'short',
-				outcome: 'Historic Trade',
-				profitLoss: '+$1 Billion',
-				description: 'Urged Soros to increase the pound short position, co-architecting the trade that broke the Bank of England.'
-			}
-		],
-		quotes: [
-			{ text: 'The way to build long-term returns is through preservation of capital and home runs.', source: 'Interview' },
-			{ text: 'When you have tremendous conviction on a trade, you have to go for the jugular.', source: 'The New Market Wizards' },
-			{ text: 'I\'ve learned many things from George Soros, but perhaps the most significant is that it\'s not whether you\'re right or wrong that\'s important, but how much money you make when you\'re right.', source: 'Interview' }
-		],
-		books: [],
-		socialLinks: [
-			{ platform: 'Website', url: 'https://www.duquesne.com' },
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Stanley_Druckenmiller' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Jesse Livermore',
-		slug: 'jesse-livermore',
-		photoUrl: '/images/traders/jesse-livermore.jpg',
-		oneLiner: 'The Greatest Stock Speculator Who Ever Lived',
-		birthYear: 1877,
-		nationality: 'American',
-		tradingStyle: 'Momentum Growth',
-		netWorth: '$100 Million (1929)',
-		bio: `Jesse Lauriston Livermore is considered by many to be the greatest stock trader who ever lived. Starting with nothing, he made and lost several fortunes, with his peak net worth of $100 million in 1929 (equivalent to $1.5 billion today). His trading rules and psychology insights remain relevant nearly a century later.
+    philosophy: `"The way to build long-term returns is through preservation of capital and home runs... When you have tremendous conviction on a trade, you have to go for the jugular."`,
+    achievements: [
+      "30% average annual returns for 30 years",
+      "No losing years at Duquesne Capital",
+      "Co-architected £10B pound short with Soros",
+      "Managed Quantum Fund 1988-2000",
+      "One of the most consistent track records ever",
+      "Returned all outside capital in 2010",
+    ],
+    famousTrades: [
+      {
+        date: "1992",
+        asset: "British Pound",
+        position: "short",
+        outcome: "Historic Trade",
+        profitLoss: "+$1 Billion",
+        description:
+          "Urged Soros to increase the pound short position, co-architecting the trade that broke the Bank of England.",
+      },
+    ],
+    quotes: [
+      {
+        text: "The way to build long-term returns is through preservation of capital and home runs.",
+        source: "Interview",
+      },
+      {
+        text: "When you have tremendous conviction on a trade, you have to go for the jugular.",
+        source: "The New Market Wizards",
+      },
+      {
+        text: "I've learned many things from George Soros, but perhaps the most significant is that it's not whether you're right or wrong that's important, but how much money you make when you're right.",
+        source: "Interview",
+      },
+    ],
+    books: [],
+    socialLinks: [
+      { platform: "Website", url: "https://www.duquesne.com" },
+      { platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Stanley_Druckenmiller" },
+    ],
+    status: "published",
+  },
+  {
+    name: "Jesse Livermore",
+    slug: "jesse-livermore",
+    photoUrl: "/images/traders/jesse-livermore.jpg",
+    oneLiner: "The Greatest Stock Speculator Who Ever Lived",
+    birthYear: 1877,
+    nationality: "American",
+    tradingStyle: "Momentum Growth",
+    netWorth: "$100 Million (1929)",
+    bio: `Jesse Lauriston Livermore is considered by many to be the greatest stock trader who ever lived. Starting with nothing, he made and lost several fortunes, with his peak net worth of $100 million in 1929 (equivalent to $1.5 billion today). His trading rules and psychology insights remain relevant nearly a century later.
 
 ## The Boy Plunger
 
@@ -736,57 +844,72 @@ Livermore pioneered many concepts still used today:
 - Using pivot points
 - Adding to winning positions
 - Cutting losses quickly`,
-		philosophy: `"There is nothing new in Wall Street. There can't be because speculation is as old as the hills. Whatever happens in the stock market today has happened before and will happen again."`,
-		achievements: [
-			'Made $100 million in the 1929 crash',
-			'Called both the 1907 and 1929 crashes',
-			'Pioneer of technical analysis',
-			'Trading rules still used today',
-			'Subject of "Reminiscences of a Stock Operator"',
-			'Made and lost fortunes multiple times'
-		],
-		famousTrades: [
-			{
-				date: '1929',
-				asset: 'US Stocks',
-				position: 'short',
-				outcome: 'Greatest Trade',
-				profitLoss: '+$100 Million',
-				description: 'Shorted the entire market before the 1929 crash, making the equivalent of over $1.5 billion in today\'s money.'
-			},
-			{
-				date: '1907',
-				asset: 'Union Pacific',
-				position: 'short',
-				outcome: 'Major Win',
-				profitLoss: '+$1 Million',
-				description: 'Made $1 million in a single day during the Panic of 1907.'
-			}
-		],
-		quotes: [
-			{ text: 'There is nothing new in Wall Street. There can\'t be because speculation is as old as the hills.', source: 'Reminiscences of a Stock Operator' },
-			{ text: 'The market is never wrong. Opinions often are.', source: 'How to Trade in Stocks' },
-			{ text: 'It never was my thinking that made the big money for me. It always was my sitting.', source: 'Reminiscences of a Stock Operator' }
-		],
-		books: [
-			{ title: 'How to Trade in Stocks', year: 1940, description: 'Livermore\'s own trading methodology' }
-		],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Jesse_Livermore' },
-			{ platform: 'Amazon', url: 'https://www.amazon.com/Reminiscences-Stock-Operator-Edwin-Lefevre/dp/0471770094' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Peter Lynch',
-		slug: 'peter-lynch',
-		photoUrl: null,
-		oneLiner: 'Grew Fidelity Magellan Fund from $18M to $14B',
-		birthYear: 1944,
-		nationality: 'American',
-		tradingStyle: 'Value Investing',
-		netWorth: '$450 Million',
-		bio: `Peter Lynch is one of the most successful mutual fund managers in history. During his tenure at Fidelity Magellan Fund from 1977 to 1990, he achieved an average annual return of 29.2%, making it the best-performing mutual fund in the world.
+    philosophy: `"There is nothing new in Wall Street. There can't be because speculation is as old as the hills. Whatever happens in the stock market today has happened before and will happen again."`,
+    achievements: [
+      "Made $100 million in the 1929 crash",
+      "Called both the 1907 and 1929 crashes",
+      "Pioneer of technical analysis",
+      "Trading rules still used today",
+      'Subject of "Reminiscences of a Stock Operator"',
+      "Made and lost fortunes multiple times",
+    ],
+    famousTrades: [
+      {
+        date: "1929",
+        asset: "US Stocks",
+        position: "short",
+        outcome: "Greatest Trade",
+        profitLoss: "+$100 Million",
+        description:
+          "Shorted the entire market before the 1929 crash, making the equivalent of over $1.5 billion in today's money.",
+      },
+      {
+        date: "1907",
+        asset: "Union Pacific",
+        position: "short",
+        outcome: "Major Win",
+        profitLoss: "+$1 Million",
+        description: "Made $1 million in a single day during the Panic of 1907.",
+      },
+    ],
+    quotes: [
+      {
+        text: "There is nothing new in Wall Street. There can't be because speculation is as old as the hills.",
+        source: "Reminiscences of a Stock Operator",
+      },
+      { text: "The market is never wrong. Opinions often are.", source: "How to Trade in Stocks" },
+      {
+        text: "It never was my thinking that made the big money for me. It always was my sitting.",
+        source: "Reminiscences of a Stock Operator",
+      },
+    ],
+    books: [
+      {
+        title: "How to Trade in Stocks",
+        year: 1940,
+        description: "Livermore's own trading methodology",
+      },
+    ],
+    socialLinks: [
+      { platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Jesse_Livermore" },
+      {
+        platform: "Amazon",
+        url: "https://www.amazon.com/Reminiscences-Stock-Operator-Edwin-Lefevre/dp/0471770094",
+      },
+    ],
+    status: "published",
+  },
+  {
+    name: "Peter Lynch",
+    slug: "peter-lynch",
+    photoUrl:
+      "https://cf-images.us-east-1.prod.boltdns.net/v1/static/854081161001/5ed7be5e-b861-42ec-b85f-1a0b6e9edec8/d8d1249c-6682-4683-b9ee-73426691559c/1280x720/match/image.jpg",
+    oneLiner: "Grew Fidelity Magellan Fund from $18M to $14B",
+    birthYear: 1944,
+    nationality: "American",
+    tradingStyle: "Value Investing",
+    netWorth: "$450 Million",
+    bio: `Peter Lynch is one of the most successful mutual fund managers in history. During his tenure at Fidelity Magellan Fund from 1977 to 1990, he achieved an average annual return of 29.2%, making it the best-performing mutual fund in the world.
 
 ## Fidelity Magellan
 
@@ -799,52 +922,70 @@ Lynch popularized the concept of "invest in what you know":
 - **Ten Bagger**: Stocks that increase 10x in value
 - **Stalwarts vs. Fast Growers**: Different strategies for different company types
 - **Do Your Homework**: Thoroughly research every investment`,
-		philosophy: `"Know what you own, and know why you own it." Lynch believes individual investors have advantages over professionals if they stick to what they know and do their research.`,
-		achievements: [
-			'29.2% average annual returns for 13 years',
-			'Grew Magellan from $18M to $14B',
-			'Best-performing mutual fund in the world',
-			'Coined the term "ten bagger"',
-			'Bestselling author on investing',
-			'Made investing accessible to everyday people'
-		],
-		famousTrades: [
-			{
-				date: '1980s',
-				asset: 'Dunkin\' Donuts',
-				position: 'long',
-				outcome: 'Ten Bagger',
-				profitLoss: '+1000%',
-				description: 'Lynch\'s classic "invest in what you know" pick—he noticed the long lines at Dunkin\' Donuts.'
-			}
-		],
-		quotes: [
-			{ text: 'Know what you own, and know why you own it.', source: 'One Up On Wall Street' },
-			{ text: 'Go for a business that any idiot can run – because sooner or later, any idiot is probably going to run it.', source: 'One Up On Wall Street' },
-			{ text: 'In the long run, it\'s not just how much money you make that will determine your future prosperity. It\'s how much of that money you put to work.', source: 'Learn to Earn' }
-		],
-		books: [
-			{ title: 'One Up On Wall Street', year: 1989, description: 'How to use what you already know to make money in the market' },
-			{ title: 'Beating the Street', year: 1993, description: 'More insights on stock picking' },
-			{ title: 'Learn to Earn', year: 1995, description: 'Introduction to investing for beginners' }
-		],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Peter_Lynch' },
-			{ platform: 'Fidelity', url: 'https://www.fidelity.com/learning-center/trading-investing/peter-lynch' },
-			{ platform: 'Amazon', url: 'https://www.amazon.com/s?k=peter+lynch+books' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Jim Simons',
-		slug: 'jim-simons',
-		photoUrl: '/images/traders/jim-simons.jpg',
-		oneLiner: 'Mathematician Who Built the Most Profitable Hedge Fund Ever',
-		birthYear: 1938,
-		nationality: 'American',
-		tradingStyle: 'Quantitative Trading',
-		netWorth: '$28.1 Billion',
-		bio: `James Harris Simons is a mathematician and hedge fund manager who founded Renaissance Technologies, arguably the most successful hedge fund in history. His Medallion Fund has generated average annual returns of 66% before fees since 1988—an unprecedented track record.
+    philosophy: `"Know what you own, and know why you own it." Lynch believes individual investors have advantages over professionals if they stick to what they know and do their research.`,
+    achievements: [
+      "29.2% average annual returns for 13 years",
+      "Grew Magellan from $18M to $14B",
+      "Best-performing mutual fund in the world",
+      'Coined the term "ten bagger"',
+      "Bestselling author on investing",
+      "Made investing accessible to everyday people",
+    ],
+    famousTrades: [
+      {
+        date: "1980s",
+        asset: "Dunkin' Donuts",
+        position: "long",
+        outcome: "Ten Bagger",
+        profitLoss: "+1000%",
+        description:
+          "Lynch's classic \"invest in what you know\" pick—he noticed the long lines at Dunkin' Donuts.",
+      },
+    ],
+    quotes: [
+      { text: "Know what you own, and know why you own it.", source: "One Up On Wall Street" },
+      {
+        text: "Go for a business that any idiot can run – because sooner or later, any idiot is probably going to run it.",
+        source: "One Up On Wall Street",
+      },
+      {
+        text: "In the long run, it's not just how much money you make that will determine your future prosperity. It's how much of that money you put to work.",
+        source: "Learn to Earn",
+      },
+    ],
+    books: [
+      {
+        title: "One Up On Wall Street",
+        year: 1989,
+        description: "How to use what you already know to make money in the market",
+      },
+      { title: "Beating the Street", year: 1993, description: "More insights on stock picking" },
+      {
+        title: "Learn to Earn",
+        year: 1995,
+        description: "Introduction to investing for beginners",
+      },
+    ],
+    socialLinks: [
+      { platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Peter_Lynch" },
+      {
+        platform: "Fidelity",
+        url: "https://www.fidelity.com/learning-center/trading-investing/peter-lynch",
+      },
+      { platform: "Amazon", url: "https://www.amazon.com/s?k=peter+lynch+books" },
+    ],
+    status: "published",
+  },
+  {
+    name: "Jim Simons",
+    slug: "jim-simons",
+    photoUrl: "/images/traders/jim-simons.jpg",
+    oneLiner: "Mathematician Who Built the Most Profitable Hedge Fund Ever",
+    birthYear: 1938,
+    nationality: "American",
+    tradingStyle: "Quantitative Trading",
+    netWorth: "$28.1 Billion",
+    bio: `James Harris Simons is a mathematician and hedge fund manager who founded Renaissance Technologies, arguably the most successful hedge fund in history. His Medallion Fund has generated average annual returns of 66% before fees since 1988—an unprecedented track record.
 
 ## From Academia to Trading
 
@@ -865,48 +1006,49 @@ Simons pioneered the use of:
 - Pattern recognition
 - Statistical arbitrage
 - High-frequency trading strategies`,
-		philosophy: `"We don't start with models. We start with data. We don't have any theories. We look for things that can be replicated thousands of times."`,
-		achievements: [
-			'66% average annual returns (Medallion Fund)',
-			'Created the most profitable hedge fund ever',
-			'Revolutionized quantitative trading',
-			'Donated billions to mathematics and science',
-			'Never had a losing year in Medallion',
-			'Hired scientists instead of Wall Street traders'
-		],
-		famousTrades: [
-			{
-				date: '1988-Present',
-				asset: 'Multiple Markets',
-				position: 'long',
-				outcome: 'Consistent Alpha',
-				profitLoss: '+66% annually',
-				description: 'Medallion Fund has generated unmatched returns using quantitative strategies across markets.'
-			}
-		],
-		quotes: [
-			{ text: 'We don\'t start with models. We start with data.', source: 'Interview' },
-			{ text: 'Past performance is the best predictor of future success.', source: 'TED Talk' },
-			{ text: 'Great scientists are skeptical. Period.', source: 'The Man Who Solved the Market' }
-		],
-		books: [],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Jim_Simons_(mathematician)' },
-			{ platform: 'Simons Foundation', url: 'https://www.simonsfoundation.org' },
-			{ platform: 'Renaissance Technologies', url: 'https://www.rentec.com' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Carl Icahn',
-		slug: 'carl-icahn',
-		photoUrl: '/images/traders/carl-icahn.jpg',
-		oneLiner: 'The Most Feared Activist Investor on Wall Street',
-		birthYear: 1936,
-		nationality: 'American',
-		tradingStyle: 'Value Investing',
-		netWorth: '$24 Billion',
-		bio: `Carl Icahn is a legendary activist investor known for taking large stakes in companies and pushing for changes to unlock shareholder value. His aggressive tactics have earned him billions and made him one of the most feared names in corporate boardrooms.
+    philosophy: `"We don't start with models. We start with data. We don't have any theories. We look for things that can be replicated thousands of times."`,
+    achievements: [
+      "66% average annual returns (Medallion Fund)",
+      "Created the most profitable hedge fund ever",
+      "Revolutionized quantitative trading",
+      "Donated billions to mathematics and science",
+      "Never had a losing year in Medallion",
+      "Hired scientists instead of Wall Street traders",
+    ],
+    famousTrades: [
+      {
+        date: "1988-Present",
+        asset: "Multiple Markets",
+        position: "long",
+        outcome: "Consistent Alpha",
+        profitLoss: "+66% annually",
+        description:
+          "Medallion Fund has generated unmatched returns using quantitative strategies across markets.",
+      },
+    ],
+    quotes: [
+      { text: "We don't start with models. We start with data.", source: "Interview" },
+      { text: "Past performance is the best predictor of future success.", source: "TED Talk" },
+      { text: "Great scientists are skeptical. Period.", source: "The Man Who Solved the Market" },
+    ],
+    books: [],
+    socialLinks: [
+      { platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Jim_Simons_(mathematician)" },
+      { platform: "Simons Foundation", url: "https://www.simonsfoundation.org" },
+      { platform: "Renaissance Technologies", url: "https://www.rentec.com" },
+    ],
+    status: "published",
+  },
+  {
+    name: "Carl Icahn",
+    slug: "carl-icahn",
+    photoUrl: "/images/traders/carl-icahn.jpg",
+    oneLiner: "The Most Feared Activist Investor on Wall Street",
+    birthYear: 1936,
+    nationality: "American",
+    tradingStyle: "Value Investing",
+    netWorth: "$24 Billion",
+    bio: `Carl Icahn is a legendary activist investor known for taking large stakes in companies and pushing for changes to unlock shareholder value. His aggressive tactics have earned him billions and made him one of the most feared names in corporate boardrooms.
 
 ## Investment Style
 
@@ -924,47 +1066,54 @@ Some of his most notable activist investments include:
 - Apple (2013-2016)
 - Netflix (2012)
 - eBay/PayPal (2014)`,
-		philosophy: `"In life and business, there are two cardinal sins. The first is to act precipitously without thought and the second is to not act at all."`,
-		achievements: [
-			'Built $24 billion fortune through activism',
-			'Transformed corporate governance in America',
-			'Major wins at Apple, Netflix, eBay',
-			'Pioneered hostile takeover strategies',
-			'Has influenced hundreds of companies',
-			'One of the most successful investors ever'
-		],
-		famousTrades: [
-			{
-				date: '2013-2016',
-				asset: 'Apple (AAPL)',
-				position: 'long',
-				outcome: 'Major Win',
-				profitLoss: '+$2 Billion',
-				description: 'Pushed for buybacks and dividends, making roughly $2 billion on Apple shares.'
-			}
-		],
-		quotes: [
-			{ text: 'In life and business, there are two cardinal sins. The first is to act precipitously without thought and the second is to not act at all.', source: 'Interview' },
-			{ text: 'I\'m not the type of person that does well in a company structure, where I\'m given an office and have to knock on the door of the guy with the bigger office.', source: 'Biography' }
-		],
-		books: [],
-		socialLinks: [
-			{ platform: 'Website', url: 'https://www.icahn.com' },
-			{ platform: 'Twitter', url: 'https://twitter.com/carlicahn' },
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Carl_Icahn' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Benjamin Graham',
-		slug: 'benjamin-graham',
-		photoUrl: '/images/traders/benjamin-graham.jpg',
-		oneLiner: 'The Father of Value Investing',
-		birthYear: 1894,
-		nationality: 'British-American',
-		tradingStyle: 'Value Investing',
-		netWorth: '$10 Million (1976)',
-		bio: `Benjamin Graham is universally regarded as the father of value investing and security analysis. His teachings at Columbia Business School and his writings shaped the investment philosophy of Warren Buffett, among many others.
+    philosophy: `"In life and business, there are two cardinal sins. The first is to act precipitously without thought and the second is to not act at all."`,
+    achievements: [
+      "Built $24 billion fortune through activism",
+      "Transformed corporate governance in America",
+      "Major wins at Apple, Netflix, eBay",
+      "Pioneered hostile takeover strategies",
+      "Has influenced hundreds of companies",
+      "One of the most successful investors ever",
+    ],
+    famousTrades: [
+      {
+        date: "2013-2016",
+        asset: "Apple (AAPL)",
+        position: "long",
+        outcome: "Major Win",
+        profitLoss: "+$2 Billion",
+        description:
+          "Pushed for buybacks and dividends, making roughly $2 billion on Apple shares.",
+      },
+    ],
+    quotes: [
+      {
+        text: "In life and business, there are two cardinal sins. The first is to act precipitously without thought and the second is to not act at all.",
+        source: "Interview",
+      },
+      {
+        text: "I'm not the type of person that does well in a company structure, where I'm given an office and have to knock on the door of the guy with the bigger office.",
+        source: "Biography",
+      },
+    ],
+    books: [],
+    socialLinks: [
+      { platform: "Website", url: "https://www.icahn.com" },
+      { platform: "Twitter", url: "https://twitter.com/carlicahn" },
+      { platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Carl_Icahn" },
+    ],
+    status: "published",
+  },
+  {
+    name: "Benjamin Graham",
+    slug: "benjamin-graham",
+    photoUrl: "/images/traders/benjamin-graham.jpg",
+    oneLiner: "The Father of Value Investing",
+    birthYear: 1894,
+    nationality: "British-American",
+    tradingStyle: "Value Investing",
+    netWorth: "$10 Million (1976)",
+    bio: `Benjamin Graham is universally regarded as the father of value investing and security analysis. His teachings at Columbia Business School and his writings shaped the investment philosophy of Warren Buffett, among many others.
 
 ## The Graham Approach
 
@@ -977,50 +1126,72 @@ Graham developed the fundamental framework for value investing:
 ## Columbia & Mentorship
 
 Graham taught at Columbia Business School for nearly three decades, where his students included Warren Buffett. His courses on security analysis became legendary.`,
-		philosophy: `"The intelligent investor is a realist who sells to optimists and buys from pessimists."`,
-		achievements: [
-			'Father of value investing',
-			'Mentored Warren Buffett',
-			'Wrote the "bible" of investing',
-			'Created security analysis framework',
-			'Graham-Newman Corp achieved 20% annual returns',
-			'Influenced generations of investors'
-		],
-		famousTrades: [
-			{
-				date: '1948',
-				asset: 'GEICO',
-				position: 'long',
-				outcome: 'Legendary Investment',
-				profitLoss: '+5000%',
-				description: 'Graham\'s partnership purchased a large stake in GEICO for $712,000, eventually worth over $400 million.'
-			}
-		],
-		quotes: [
-			{ text: 'The intelligent investor is a realist who sells to optimists and buys from pessimists.', source: 'The Intelligent Investor' },
-			{ text: 'In the short run, the market is a voting machine but in the long run, it is a weighing machine.', source: 'Security Analysis' },
-			{ text: 'The essence of investment management is the management of risks, not the management of returns.', source: 'Lectures' }
-		],
-		books: [
-			{ title: 'Security Analysis', year: 1934, description: 'The foundational text on fundamental analysis' },
-			{ title: 'The Intelligent Investor', year: 1949, description: 'The definitive book on value investing for individuals' }
-		],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Benjamin_Graham' },
-			{ platform: 'Amazon', url: 'https://www.amazon.com/Intelligent-Investor-Definitive-Investing-Essentials/dp/0060555661' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'William O\'Neil',
-		slug: 'william-oneil',
-		photoUrl: null,
-		oneLiner: 'Creator of CANSLIM & Investor\'s Business Daily',
-		birthYear: 1933,
-		nationality: 'American',
-		tradingStyle: 'Momentum Growth',
-		netWorth: '$500 Million',
-		bio: `William J. O'Neil is the founder of Investor's Business Daily and creator of the CAN SLIM investment strategy. His systematic approach to growth stock investing has influenced millions of traders worldwide.
+    philosophy: `"The intelligent investor is a realist who sells to optimists and buys from pessimists."`,
+    achievements: [
+      "Father of value investing",
+      "Mentored Warren Buffett",
+      'Wrote the "bible" of investing',
+      "Created security analysis framework",
+      "Graham-Newman Corp achieved 20% annual returns",
+      "Influenced generations of investors",
+    ],
+    famousTrades: [
+      {
+        date: "1948",
+        asset: "GEICO",
+        position: "long",
+        outcome: "Legendary Investment",
+        profitLoss: "+5000%",
+        description:
+          "Graham's partnership purchased a large stake in GEICO for $712,000, eventually worth over $400 million.",
+      },
+    ],
+    quotes: [
+      {
+        text: "The intelligent investor is a realist who sells to optimists and buys from pessimists.",
+        source: "The Intelligent Investor",
+      },
+      {
+        text: "In the short run, the market is a voting machine but in the long run, it is a weighing machine.",
+        source: "Security Analysis",
+      },
+      {
+        text: "The essence of investment management is the management of risks, not the management of returns.",
+        source: "Lectures",
+      },
+    ],
+    books: [
+      {
+        title: "Security Analysis",
+        year: 1934,
+        description: "The foundational text on fundamental analysis",
+      },
+      {
+        title: "The Intelligent Investor",
+        year: 1949,
+        description: "The definitive book on value investing for individuals",
+      },
+    ],
+    socialLinks: [
+      { platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Benjamin_Graham" },
+      {
+        platform: "Amazon",
+        url: "https://www.amazon.com/Intelligent-Investor-Definitive-Investing-Essentials/dp/0060555661",
+      },
+    ],
+    status: "published",
+  },
+  {
+    name: "William O'Neil",
+    slug: "william-oneil",
+    photoUrl:
+      "https://cdn.prod.website-files.com/68e3e66b6f19f8a55f6dddee/68edabd93490d8b818847ee1_william_oneil_bio.png",
+    oneLiner: "Creator of CANSLIM & Investor's Business Daily",
+    birthYear: 1933,
+    nationality: "American",
+    tradingStyle: "Momentum Growth",
+    netWorth: "$500 Million",
+    bio: `William J. O'Neil is the founder of Investor's Business Daily and creator of the CAN SLIM investment strategy. His systematic approach to growth stock investing has influenced millions of traders worldwide.
 
 ## CAN SLIM
 
@@ -1036,50 +1207,68 @@ O'Neil developed the CAN SLIM system after studying every great stock of the 20t
 ## Investor's Business Daily
 
 In 1984, O'Neil founded Investor's Business Daily to compete with The Wall Street Journal, focusing on growth investing and technical analysis.`,
-		philosophy: `"What seems too high and risky to the majority generally goes higher and what seems low and cheap generally goes lower."`,
-		achievements: [
-			'Created CAN SLIM methodology',
-			'Founded Investor\'s Business Daily',
-			'First to use computer databases for stock analysis',
-			'Made 5,000% in 1962-1963',
-			'Bought seat on NYSE at age 30',
-			'Trained thousands of successful investors'
-		],
-		famousTrades: [
-			{
-				date: '1962-1963',
-				asset: 'Syntex',
-				position: 'long',
-				outcome: 'Early Career Win',
-				profitLoss: '+5000%',
-				description: 'O\'Neil\'s early massive winner that helped develop his CAN SLIM methodology.'
-			}
-		],
-		quotes: [
-			{ text: 'What seems too high and risky to the majority generally goes higher and what seems low and cheap generally goes lower.', source: 'How to Make Money in Stocks' },
-			{ text: 'The whole secret to winning in the stock market is to lose the least amount possible when you\'re not right.', source: 'Interview' }
-		],
-		books: [
-			{ title: 'How to Make Money in Stocks', year: 1988, description: 'The complete guide to CAN SLIM investing' },
-			{ title: '24 Essential Lessons for Investment Success', year: 2000, description: 'Condensed wisdom on growth investing' }
-		],
-		socialLinks: [
-			{ platform: 'Website', url: 'https://www.investors.com' },
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/William_O%27Neil' },
-			{ platform: 'Amazon', url: 'https://www.amazon.com/How-Make-Money-Stocks-Winning/dp/0071614133' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Linda Raschke',
-		slug: 'linda-raschke',
-		photoUrl: null,
-		oneLiner: 'Champion Day Trader & Pattern Recognition Expert',
-		birthYear: 1959,
-		nationality: 'American',
-		tradingStyle: 'Options & Technical Analysis',
-		netWorth: '$50+ Million',
-		bio: `Linda Bradford Raschke is one of the most respected short-term traders in the world. Featured in Jack Schwager's "The New Market Wizards," she has been trading professionally since 1981 and is known for her systematic approach to pattern recognition.
+    philosophy: `"What seems too high and risky to the majority generally goes higher and what seems low and cheap generally goes lower."`,
+    achievements: [
+      "Created CAN SLIM methodology",
+      "Founded Investor's Business Daily",
+      "First to use computer databases for stock analysis",
+      "Made 5,000% in 1962-1963",
+      "Bought seat on NYSE at age 30",
+      "Trained thousands of successful investors",
+    ],
+    famousTrades: [
+      {
+        date: "1962-1963",
+        asset: "Syntex",
+        position: "long",
+        outcome: "Early Career Win",
+        profitLoss: "+5000%",
+        description: "O'Neil's early massive winner that helped develop his CAN SLIM methodology.",
+      },
+    ],
+    quotes: [
+      {
+        text: "What seems too high and risky to the majority generally goes higher and what seems low and cheap generally goes lower.",
+        source: "How to Make Money in Stocks",
+      },
+      {
+        text: "The whole secret to winning in the stock market is to lose the least amount possible when you're not right.",
+        source: "Interview",
+      },
+    ],
+    books: [
+      {
+        title: "How to Make Money in Stocks",
+        year: 1988,
+        description: "The complete guide to CAN SLIM investing",
+      },
+      {
+        title: "24 Essential Lessons for Investment Success",
+        year: 2000,
+        description: "Condensed wisdom on growth investing",
+      },
+    ],
+    socialLinks: [
+      { platform: "Website", url: "https://www.investors.com" },
+      { platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/William_O%27Neil" },
+      {
+        platform: "Amazon",
+        url: "https://www.amazon.com/How-Make-Money-Stocks-Winning/dp/0071614133",
+      },
+    ],
+    status: "published",
+  },
+  {
+    name: "Linda Raschke",
+    slug: "linda-raschke",
+    photoUrl:
+      "https://i0.wp.com/jgo.zef.mybluehost.me/website_62e097df/wp-content/uploads/2026/01/linda-image.jpg?resize=1080%2C675&ssl=1",
+    oneLiner: "Champion Day Trader & Pattern Recognition Expert",
+    birthYear: 1959,
+    nationality: "American",
+    tradingStyle: "Options & Technical Analysis",
+    netWorth: "$50+ Million",
+    bio: `Linda Bradford Raschke is one of the most respected short-term traders in the world. Featured in Jack Schwager's "The New Market Wizards," she has been trading professionally since 1981 and is known for her systematic approach to pattern recognition.
 
 ## Trading Career
 
@@ -1096,39 +1285,50 @@ Raschke is known for:
 ## Education
 
 Linda runs LBR Group, teaching traders her systematic approach to the markets. She is known for making complex concepts accessible.`,
-		philosophy: `"Trading is not about being right. It's about making money when you're right and losing small when you're wrong."`,
-		achievements: [
-			'Featured in "The New Market Wizards"',
-			'Over 40 years of profitable trading',
-			'Pioneered systematic short-term trading',
-			'Former floor trader',
-			'Respected trading educator',
-			'One of the most successful female traders'
-		],
-		famousTrades: [],
-		quotes: [
-			{ text: 'Trading is not about being right. It\'s about making money when you\'re right and losing small when you\'re wrong.', source: 'The New Market Wizards' },
-			{ text: 'Most traders never get past the starting gate because they\'re too busy looking for the Holy Grail.', source: 'Interview' }
-		],
-		books: [
-			{ title: 'Street Smarts: High Probability Short-Term Trading Strategies', year: 1995, description: 'Co-authored with Laurence Connors' }
-		],
-		socialLinks: [
-			{ platform: 'Twitter', url: 'https://twitter.com/lindaraschke' },
-			{ platform: 'Website', url: 'https://www.lbrgroup.com' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Ed Seykota',
-		slug: 'ed-seykota',
-		photoUrl: null,
-		oneLiner: 'Trend Following Pioneer with 250,000% Returns',
-		birthYear: 1946,
-		nationality: 'American',
-		tradingStyle: 'Momentum Growth',
-		netWorth: '$100+ Million',
-		bio: `Ed Seykota is a pioneer of computerized trading systems and trend following. He reportedly turned $5,000 into $15,000,000 over a 12-year period—a return of approximately 250,000%.
+    philosophy: `"Trading is not about being right. It's about making money when you're right and losing small when you're wrong."`,
+    achievements: [
+      'Featured in "The New Market Wizards"',
+      "Over 40 years of profitable trading",
+      "Pioneered systematic short-term trading",
+      "Former floor trader",
+      "Respected trading educator",
+      "One of the most successful female traders",
+    ],
+    famousTrades: [],
+    quotes: [
+      {
+        text: "Trading is not about being right. It's about making money when you're right and losing small when you're wrong.",
+        source: "The New Market Wizards",
+      },
+      {
+        text: "Most traders never get past the starting gate because they're too busy looking for the Holy Grail.",
+        source: "Interview",
+      },
+    ],
+    books: [
+      {
+        title: "Street Smarts: High Probability Short-Term Trading Strategies",
+        year: 1995,
+        description: "Co-authored with Laurence Connors",
+      },
+    ],
+    socialLinks: [
+      { platform: "Twitter", url: "https://twitter.com/lindaraschke" },
+      { platform: "Website", url: "https://www.lbrgroup.com" },
+    ],
+    status: "published",
+  },
+  {
+    name: "Ed Seykota",
+    slug: "ed-seykota",
+    photoUrl:
+      "https://img.etimg.com/thumb/width-1600,height-900,imgsize-1065171,resizemode-75,msid-87815893/markets/stocks/news/timeless-trading-lessons-from-reclusive-market-wizard-ed-seykota.jpg",
+    oneLiner: "Trend Following Pioneer with 250,000% Returns",
+    birthYear: 1946,
+    nationality: "American",
+    tradingStyle: "Momentum Growth",
+    netWorth: "$100+ Million",
+    bio: `Ed Seykota is a pioneer of computerized trading systems and trend following. He reportedly turned $5,000 into $15,000,000 over a 12-year period—a return of approximately 250,000%.
 
 ## Computerized Trading Pioneer
 
@@ -1141,47 +1341,57 @@ Seykota is also known for his work on trading psychology through "The Trading Tr
 ## Influence
 
 Ed has mentored many successful traders, including Michael Marcus, who went on to make legendary returns himself.`,
-		philosophy: `"Win or lose, everybody gets what they want out of the market. Some people seem to like to lose, so they win by losing money."`,
-		achievements: [
-			'250,000% returns over 12 years',
-			'Pioneer of computerized trading',
-			'Developed trend following systems',
-			'Mentored Michael Marcus and others',
-			'Featured in original "Market Wizards"',
-			'Created "The Trading Tribe" methodology'
-		],
-		famousTrades: [
-			{
-				date: '1972-1984',
-				asset: 'Commodities',
-				position: 'long',
-				outcome: 'Legendary Returns',
-				profitLoss: '+250,000%',
-				description: 'Turned $5,000 into $15 million using systematic trend following strategies.'
-			}
-		],
-		quotes: [
-			{ text: 'Win or lose, everybody gets what they want out of the market. Some people seem to like to lose, so they win by losing money.', source: 'Market Wizards' },
-			{ text: 'The elements of good trading are: (1) cutting losses, (2) cutting losses, and (3) cutting losses.', source: 'Market Wizards' },
-			{ text: 'Fundamentals that you read about are typically useless as the market has already discounted the price.', source: 'Interview' }
-		],
-		books: [],
-		socialLinks: [
-			{ platform: 'Website', url: 'https://www.seykota.com' },
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Ed_Seykota' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Richard Dennis',
-		slug: 'richard-dennis',
-		photoUrl: null,
-		oneLiner: 'The Prince of the Pit & Creator of the Turtle Traders',
-		birthYear: 1949,
-		nationality: 'American',
-		tradingStyle: 'Momentum Growth',
-		netWorth: '$300 Million',
-		bio: `Richard Dennis, known as the "Prince of the Pit," is a legendary commodities trader who reportedly turned $400 into $200 million. He is famous for the "Turtle Trading" experiment, which proved that trading could be taught.
+    philosophy: `"Win or lose, everybody gets what they want out of the market. Some people seem to like to lose, so they win by losing money."`,
+    achievements: [
+      "250,000% returns over 12 years",
+      "Pioneer of computerized trading",
+      "Developed trend following systems",
+      "Mentored Michael Marcus and others",
+      'Featured in original "Market Wizards"',
+      'Created "The Trading Tribe" methodology',
+    ],
+    famousTrades: [
+      {
+        date: "1972-1984",
+        asset: "Commodities",
+        position: "long",
+        outcome: "Legendary Returns",
+        profitLoss: "+250,000%",
+        description: "Turned $5,000 into $15 million using systematic trend following strategies.",
+      },
+    ],
+    quotes: [
+      {
+        text: "Win or lose, everybody gets what they want out of the market. Some people seem to like to lose, so they win by losing money.",
+        source: "Market Wizards",
+      },
+      {
+        text: "The elements of good trading are: (1) cutting losses, (2) cutting losses, and (3) cutting losses.",
+        source: "Market Wizards",
+      },
+      {
+        text: "Fundamentals that you read about are typically useless as the market has already discounted the price.",
+        source: "Interview",
+      },
+    ],
+    books: [],
+    socialLinks: [
+      { platform: "Website", url: "https://www.seykota.com" },
+      { platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Ed_Seykota" },
+    ],
+    status: "published",
+  },
+  {
+    name: "Richard Dennis",
+    slug: "richard-dennis",
+    photoUrl:
+      "https://prod-asset-ch3awt.traderknows.com/images/2799eb081592462d9c94d66dfb7eda9a.width-500.jpg",
+    oneLiner: "The Prince of the Pit & Creator of the Turtle Traders",
+    birthYear: 1949,
+    nationality: "American",
+    tradingStyle: "Momentum Growth",
+    netWorth: "$300 Million",
+    bio: `Richard Dennis, known as the "Prince of the Pit," is a legendary commodities trader who reportedly turned $400 into $200 million. He is famous for the "Turtle Trading" experiment, which proved that trading could be taught.
 
 ## The Prince of the Pit
 
@@ -1198,45 +1408,50 @@ Dennis's system was based on:
 - Strict position sizing
 - Pyramiding into winners
 - Quick loss cutting`,
-		philosophy: `"I always say you could publish trading rules in the newspaper and no one would follow them. The key is consistency and discipline."`,
-		achievements: [
-			'Turned $400 into $200 million',
-			'Created the famous Turtle Trading experiment',
-			'Proved trading can be taught',
-			'Trained traders who made $175 million',
-			'Pioneer of systematic trend following',
-			'One of the youngest traders on CME'
-		],
-		famousTrades: [
-			{
-				date: '1970s-1980s',
-				asset: 'Commodities',
-				position: 'long',
-				outcome: 'Career Returns',
-				profitLoss: '+50,000,000%',
-				description: 'Built a fortune from almost nothing using trend following breakout strategies.'
-			}
-		],
-		quotes: [
-			{ text: 'I always say you could publish trading rules in the newspaper and no one would follow them. The key is consistency and discipline.', source: 'Market Wizards' },
-			{ text: 'Whatever method you use to enter trades, the most critical thing is that if there is a major trend, your approach should assure that you get in that trend.', source: 'Interview' }
-		],
-		books: [],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Richard_Dennis' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Michael Steinhardt',
-		slug: 'michael-steinhardt',
-		photoUrl: null,
-		oneLiner: 'Hedge Fund Pioneer with 24% Average Returns',
-		birthYear: 1940,
-		nationality: 'American',
-		tradingStyle: 'Value Investing',
-		netWorth: '$1.2 Billion',
-		bio: `Michael Steinhardt is a hedge fund pioneer who delivered an average annual return of 24% over a 28-year period. His fund, Steinhardt Partners, was one of the most successful hedge funds of its era.
+    philosophy: `"I always say you could publish trading rules in the newspaper and no one would follow them. The key is consistency and discipline."`,
+    achievements: [
+      "Turned $400 into $200 million",
+      "Created the famous Turtle Trading experiment",
+      "Proved trading can be taught",
+      "Trained traders who made $175 million",
+      "Pioneer of systematic trend following",
+      "One of the youngest traders on CME",
+    ],
+    famousTrades: [
+      {
+        date: "1970s-1980s",
+        asset: "Commodities",
+        position: "long",
+        outcome: "Career Returns",
+        profitLoss: "+50,000,000%",
+        description:
+          "Built a fortune from almost nothing using trend following breakout strategies.",
+      },
+    ],
+    quotes: [
+      {
+        text: "I always say you could publish trading rules in the newspaper and no one would follow them. The key is consistency and discipline.",
+        source: "Market Wizards",
+      },
+      {
+        text: "Whatever method you use to enter trades, the most critical thing is that if there is a major trend, your approach should assure that you get in that trend.",
+        source: "Interview",
+      },
+    ],
+    books: [],
+    socialLinks: [{ platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Richard_Dennis" }],
+    status: "published",
+  },
+  {
+    name: "Michael Steinhardt",
+    slug: "michael-steinhardt",
+    photoUrl: "https://files.sunoresearch.com.br/p/uploads/2019/11/michael-steinhardt.jpg",
+    oneLiner: "Hedge Fund Pioneer with 24% Average Returns",
+    birthYear: 1940,
+    nationality: "American",
+    tradingStyle: "Value Investing",
+    netWorth: "$1.2 Billion",
+    bio: `Michael Steinhardt is a hedge fund pioneer who delivered an average annual return of 24% over a 28-year period. His fund, Steinhardt Partners, was one of the most successful hedge funds of its era.
 
 ## Steinhardt Partners
 
@@ -1249,38 +1464,48 @@ Steinhardt was known for:
 - Aggressive trading
 - Both long and short positions
 - Macro and micro analysis combined`,
-		philosophy: `"The hardest thing over the years has been having the courage to go against the dominant wisdom of the time."`,
-		achievements: [
-			'24% annual returns for 28 years',
-			'Pioneer of modern hedge fund industry',
-			'$462 vs $19 S&P 500 dollar-for-dollar comparison',
-			'Successful philanthropy after retirement',
-			'Influenced generation of fund managers',
-			'Closed fund in 1995 after stellar career'
-		],
-		famousTrades: [],
-		quotes: [
-			{ text: 'The hardest thing over the years has been having the courage to go against the dominant wisdom of the time.', source: 'No Bull' },
-			{ text: 'Good trading is a peculiar balance between the conviction to follow your ideas and the flexibility to recognize when you have made a mistake.', source: 'Interview' }
-		],
-		books: [
-			{ title: 'No Bull: My Life In and Out of Markets', year: 2001, description: 'Autobiography and investment insights' }
-		],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Michael_Steinhardt' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Julian Robertson',
-		slug: 'julian-robertson',
-		photoUrl: null,
-		oneLiner: 'Legendary Tiger Management Founder',
-		birthYear: 1932,
-		nationality: 'American',
-		tradingStyle: 'Value Investing',
-		netWorth: '$4.8 Billion',
-		bio: `Julian Hart Robertson Jr. founded Tiger Management, which became one of the earliest and most successful hedge funds. His disciples, known as "Tiger Cubs," have gone on to manage hundreds of billions of dollars.
+    philosophy: `"The hardest thing over the years has been having the courage to go against the dominant wisdom of the time."`,
+    achievements: [
+      "24% annual returns for 28 years",
+      "Pioneer of modern hedge fund industry",
+      "$462 vs $19 S&P 500 dollar-for-dollar comparison",
+      "Successful philanthropy after retirement",
+      "Influenced generation of fund managers",
+      "Closed fund in 1995 after stellar career",
+    ],
+    famousTrades: [],
+    quotes: [
+      {
+        text: "The hardest thing over the years has been having the courage to go against the dominant wisdom of the time.",
+        source: "No Bull",
+      },
+      {
+        text: "Good trading is a peculiar balance between the conviction to follow your ideas and the flexibility to recognize when you have made a mistake.",
+        source: "Interview",
+      },
+    ],
+    books: [
+      {
+        title: "No Bull: My Life In and Out of Markets",
+        year: 2001,
+        description: "Autobiography and investment insights",
+      },
+    ],
+    socialLinks: [
+      { platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Michael_Steinhardt" },
+    ],
+    status: "published",
+  },
+  {
+    name: "Julian Robertson",
+    slug: "julian-robertson",
+    photoUrl: "https://images.wsj.net/im-609309/social",
+    oneLiner: "Legendary Tiger Management Founder",
+    birthYear: 1932,
+    nationality: "American",
+    tradingStyle: "Value Investing",
+    netWorth: "$4.8 Billion",
+    bio: `Julian Hart Robertson Jr. founded Tiger Management, which became one of the earliest and most successful hedge funds. His disciples, known as "Tiger Cubs," have gone on to manage hundreds of billions of dollars.
 
 ## Tiger Management
 
@@ -1297,36 +1522,40 @@ Robertson is perhaps best known for mentoring the next generation of hedge fund 
 ## Investment Approach
 
 Robertson combined deep fundamental research with macro awareness, going long best-in-class companies while shorting weak competitors.`,
-		philosophy: `"Our mandate is to find the 200 best companies in the world and invest in them, and find the 200 worst companies in the world and go short on them."`,
-		achievements: [
-			'32% annual returns at Tiger Management',
-			'Grew fund from $8 million to $22 billion',
-			'Mentored "Tiger Cubs" who manage $200B+',
-			'Pioneer of long/short equity strategy',
-			'Created a dynasty of successful managers',
-			'Influenced modern hedge fund industry'
-		],
-		famousTrades: [],
-		quotes: [
-			{ text: 'Our mandate is to find the 200 best companies in the world and invest in them, and find the 200 worst companies in the world and go short on them.', source: 'Interview' },
-			{ text: 'I\'m looking for people who are passionate about what they do and have the ability to focus.', source: 'On hiring' }
-		],
-		books: [],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Julian_Robertson' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'David Tepper',
-		slug: 'david-tepper',
-		photoUrl: '/images/traders/david-tepper.jpg',
-		oneLiner: 'Distressed Debt King with 40% Annual Returns',
-		birthYear: 1957,
-		nationality: 'American',
-		tradingStyle: 'Value Investing',
-		netWorth: '$20.6 Billion',
-		bio: `David Tepper is the founder of Appaloosa Management, one of the most successful hedge funds in history. He is known for his aggressive bets on distressed assets and financial stocks during crises.
+    philosophy: `"Our mandate is to find the 200 best companies in the world and invest in them, and find the 200 worst companies in the world and go short on them."`,
+    achievements: [
+      "32% annual returns at Tiger Management",
+      "Grew fund from $8 million to $22 billion",
+      'Mentored "Tiger Cubs" who manage $200B+',
+      "Pioneer of long/short equity strategy",
+      "Created a dynasty of successful managers",
+      "Influenced modern hedge fund industry",
+    ],
+    famousTrades: [],
+    quotes: [
+      {
+        text: "Our mandate is to find the 200 best companies in the world and invest in them, and find the 200 worst companies in the world and go short on them.",
+        source: "Interview",
+      },
+      {
+        text: "I'm looking for people who are passionate about what they do and have the ability to focus.",
+        source: "On hiring",
+      },
+    ],
+    books: [],
+    socialLinks: [{ platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Julian_Robertson" }],
+    status: "published",
+  },
+  {
+    name: "David Tepper",
+    slug: "david-tepper",
+    photoUrl: "/images/traders/david-tepper.jpg",
+    oneLiner: "Distressed Debt King with 40% Annual Returns",
+    birthYear: 1957,
+    nationality: "American",
+    tradingStyle: "Value Investing",
+    netWorth: "$20.6 Billion",
+    bio: `David Tepper is the founder of Appaloosa Management, one of the most successful hedge funds in history. He is known for his aggressive bets on distressed assets and financial stocks during crises.
 
 ## Appaloosa Management
 
@@ -1342,45 +1571,50 @@ Tepper made his biggest gains during financial crises:
 ## Investment Style
 
 Tepper combines macro views with deep research on individual securities, often taking large, concentrated positions.`,
-		philosophy: `"The key is to wait. Sometimes the hardest thing to do is to do nothing."`,
-		achievements: [
-			'40% average annual returns',
-			'Made $7 billion in 2009 crisis bet',
-			'One of the highest-paid fund managers ever',
-			'Owner of Carolina Panthers NFL team',
-			'Consistently successful for 30+ years',
-			'Known for massive returns during panics'
-		],
-		famousTrades: [
-			{
-				date: '2009',
-				asset: 'Bank of America, Citigroup',
-				position: 'long',
-				outcome: 'Crisis Profits',
-				profitLoss: '+$7 Billion',
-				description: 'Bought bank stocks when everyone was panicking about financial system collapse.'
-			}
-		],
-		quotes: [
-			{ text: 'The key is to wait. Sometimes the hardest thing to do is to do nothing.', source: 'Interview' },
-			{ text: 'I\'m telling you, this is a really simple thing. You know, the markets adapt. Humans adapt. Don\'t listen to all the crap out there.', source: 'CNBC Interview' }
-		],
-		books: [],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/David_Tepper' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Ken Griffin',
-		slug: 'ken-griffin',
-		photoUrl: '/images/traders/ken-griffin.jpg',
-		oneLiner: 'Citadel Founder & Highest Paid Hedge Fund Manager',
-		birthYear: 1968,
-		nationality: 'American',
-		tradingStyle: 'Quantitative Trading',
-		netWorth: '$35 Billion',
-		bio: `Kenneth Griffin is the founder and CEO of Citadel, one of the world's largest and most successful hedge funds. He started trading from his Harvard dorm room and built a financial empire that includes both Citadel the hedge fund and Citadel Securities, a major market maker.
+    philosophy: `"The key is to wait. Sometimes the hardest thing to do is to do nothing."`,
+    achievements: [
+      "40% average annual returns",
+      "Made $7 billion in 2009 crisis bet",
+      "One of the highest-paid fund managers ever",
+      "Owner of Carolina Panthers NFL team",
+      "Consistently successful for 30+ years",
+      "Known for massive returns during panics",
+    ],
+    famousTrades: [
+      {
+        date: "2009",
+        asset: "Bank of America, Citigroup",
+        position: "long",
+        outcome: "Crisis Profits",
+        profitLoss: "+$7 Billion",
+        description:
+          "Bought bank stocks when everyone was panicking about financial system collapse.",
+      },
+    ],
+    quotes: [
+      {
+        text: "The key is to wait. Sometimes the hardest thing to do is to do nothing.",
+        source: "Interview",
+      },
+      {
+        text: "I'm telling you, this is a really simple thing. You know, the markets adapt. Humans adapt. Don't listen to all the crap out there.",
+        source: "CNBC Interview",
+      },
+    ],
+    books: [],
+    socialLinks: [{ platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/David_Tepper" }],
+    status: "published",
+  },
+  {
+    name: "Ken Griffin",
+    slug: "ken-griffin",
+    photoUrl: "/images/traders/ken-griffin.jpg",
+    oneLiner: "Citadel Founder & Highest Paid Hedge Fund Manager",
+    birthYear: 1968,
+    nationality: "American",
+    tradingStyle: "Quantitative Trading",
+    netWorth: "$35 Billion",
+    bio: `Kenneth Griffin is the founder and CEO of Citadel, one of the world's largest and most successful hedge funds. He started trading from his Harvard dorm room and built a financial empire that includes both Citadel the hedge fund and Citadel Securities, a major market maker.
 
 ## From Dorm Room to Empire
 
@@ -1397,46 +1631,52 @@ Citadel employs:
 - World-class technology infrastructure
 - Quantitative and fundamental analysis
 - Global macro and equity market making`,
-		philosophy: `"I know the markets are very hard to time. But if you're an investor, you can do quite well in periods of uncertainty."`,
-		achievements: [
-			'Built Citadel into $60 billion fund',
-			'Citadel Securities handles 25% of US equity trades',
-			'Started trading in Harvard dorm room',
-			'19% annual returns since inception',
-			'Highest-paid hedge fund manager multiple years',
-			'Major philanthropist in education'
-		],
-		famousTrades: [
-			{
-				date: '2022',
-				asset: 'Multiple strategies',
-				position: 'long',
-				outcome: 'Record Year',
-				profitLoss: '+38%',
-				description: 'Citadel\'s flagship fund returned 38% in 2022 while most funds struggled.'
-			}
-		],
-		quotes: [
-			{ text: 'I know the markets are very hard to time. But if you\'re an investor, you can do quite well in periods of uncertainty.', source: 'Interview' },
-			{ text: 'Success is the product of hard work, talent, and luck.', source: 'Commencement Speech' }
-		],
-		books: [],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Kenneth_C._Griffin' },
-			{ platform: 'Citadel', url: 'https://www.citadel.com' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Steve Cohen',
-		slug: 'steve-cohen',
-		photoUrl: '/images/traders/steve-cohen.jpg',
-		oneLiner: 'SAC Capital Legend & Point72 Founder',
-		birthYear: 1956,
-		nationality: 'American',
-		tradingStyle: 'Momentum Growth',
-		netWorth: '$17.5 Billion',
-		bio: `Steven A. Cohen is one of the most successful traders in Wall Street history. He founded SAC Capital, which became legendary for its trading prowess and information edge. He now runs Point72 Asset Management.
+    philosophy: `"I know the markets are very hard to time. But if you're an investor, you can do quite well in periods of uncertainty."`,
+    achievements: [
+      "Built Citadel into $60 billion fund",
+      "Citadel Securities handles 25% of US equity trades",
+      "Started trading in Harvard dorm room",
+      "19% annual returns since inception",
+      "Highest-paid hedge fund manager multiple years",
+      "Major philanthropist in education",
+    ],
+    famousTrades: [
+      {
+        date: "2022",
+        asset: "Multiple strategies",
+        position: "long",
+        outcome: "Record Year",
+        profitLoss: "+38%",
+        description: "Citadel's flagship fund returned 38% in 2022 while most funds struggled.",
+      },
+    ],
+    quotes: [
+      {
+        text: "I know the markets are very hard to time. But if you're an investor, you can do quite well in periods of uncertainty.",
+        source: "Interview",
+      },
+      {
+        text: "Success is the product of hard work, talent, and luck.",
+        source: "Commencement Speech",
+      },
+    ],
+    books: [],
+    socialLinks: [
+      { platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Kenneth_C._Griffin" },
+      { platform: "Citadel", url: "https://www.citadel.com" },
+    ],
+    status: "published",
+  },
+  {
+    name: "Steve Cohen",
+    slug: "steve-cohen",
+    photoUrl: "/images/traders/steve-cohen.jpg",
+    oneLiner: "SAC Capital Legend & Point72 Founder",
+    birthYear: 1956,
+    nationality: "American",
+    tradingStyle: "Momentum Growth",
+    netWorth: "$17.5 Billion",
+    bio: `Steven A. Cohen is one of the most successful traders in Wall Street history. He founded SAC Capital, which became legendary for its trading prowess and information edge. He now runs Point72 Asset Management.
 
 ## SAC Capital
 
@@ -1459,37 +1699,44 @@ Cohen is known for his ability to:
 - Make rapid trading decisions
 - Manage multiple portfolio managers
 - Identify market-moving catalysts`,
-		philosophy: `"I don't like to lose. I'm not good at losing. When I lose, I learn from it."`,
-		achievements: [
-			'30% annual returns at SAC Capital',
-			'Built SAC into $14 billion fund',
-			'Point72 manages $30+ billion',
-			'Owner of New York Mets',
-			'One of the great tape readers',
-			'Known for exceptional trading instincts'
-		],
-		famousTrades: [],
-		quotes: [
-			{ text: 'I don\'t like to lose. I\'m not good at losing. When I lose, I learn from it.', source: 'Interview' },
-			{ text: 'I look for situations that have a high probability of being right.', source: '60 Minutes' }
-		],
-		books: [],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Steve_Cohen_(businessman)' },
-			{ platform: 'Twitter', url: 'https://twitter.com/StevenACohen2' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Nicolas Darvas',
-		slug: 'nicolas-darvas',
-		photoUrl: null,
-		oneLiner: 'Dancer Who Made $2 Million with the Box System',
-		birthYear: 1920,
-		nationality: 'Hungarian-American',
-		tradingStyle: 'Momentum Growth',
-		netWorth: '$2 Million (1959)',
-		bio: `Nicolas Darvas was a world-famous dancer who turned $25,000 into over $2 million in the stock market while touring the world. His "Darvas Box" system became one of the most influential technical trading methods ever developed.
+    philosophy: `"I don't like to lose. I'm not good at losing. When I lose, I learn from it."`,
+    achievements: [
+      "30% annual returns at SAC Capital",
+      "Built SAC into $14 billion fund",
+      "Point72 manages $30+ billion",
+      "Owner of New York Mets",
+      "One of the great tape readers",
+      "Known for exceptional trading instincts",
+    ],
+    famousTrades: [],
+    quotes: [
+      {
+        text: "I don't like to lose. I'm not good at losing. When I lose, I learn from it.",
+        source: "Interview",
+      },
+      {
+        text: "I look for situations that have a high probability of being right.",
+        source: "60 Minutes",
+      },
+    ],
+    books: [],
+    socialLinks: [
+      { platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Steve_Cohen_(businessman)" },
+      { platform: "Twitter", url: "https://twitter.com/StevenACohen2" },
+    ],
+    status: "published",
+  },
+  {
+    name: "Nicolas Darvas",
+    slug: "nicolas-darvas",
+    photoUrl:
+      "https://1.bp.blogspot.com/-sNCRhX2h6Ks/X6L1JxFfv7I/AAAAAAAAjwM/n_4Q3eKffg0AmUZZXUc6Pb52swI3fDvpgCLcBGAsYHQ/w1200-h630-p-k-no-nu/1.jpg",
+    oneLiner: "Dancer Who Made $2 Million with the Box System",
+    birthYear: 1920,
+    nationality: "Hungarian-American",
+    tradingStyle: "Momentum Growth",
+    netWorth: "$2 Million (1959)",
+    bio: `Nicolas Darvas was a world-famous dancer who turned $25,000 into over $2 million in the stock market while touring the world. His "Darvas Box" system became one of the most influential technical trading methods ever developed.
 
 ## The Dancing Trader
 
@@ -1502,47 +1749,56 @@ His method identified stocks making new highs and forming "boxes" (trading range
 ## Remarkable Results
 
 Between 1957 and 1958, Darvas turned $25,000 into over $2 million—equivalent to about $20 million today.`,
-		philosophy: `"I was never afraid of buying high and selling low. I was afraid of buying too low and being stopped out."`,
-		achievements: [
-			'Turned $25,000 into $2+ million',
-			'Developed the Darvas Box system',
-			'Traded while touring as a dancer',
-			'Wrote bestselling trading book',
-			'Pioneer of momentum/breakout trading',
-			'Inspired generations of traders'
-		],
-		famousTrades: [
-			{
-				date: '1957-1958',
-				asset: 'Various Growth Stocks',
-				position: 'long',
-				outcome: 'Life-Changing',
-				profitLoss: '+$2 Million',
-				description: 'Used his box system to ride momentum stocks to massive gains while touring as a dancer.'
-			}
-		],
-		quotes: [
-			{ text: 'I was never afraid of buying high and selling low. I was afraid of buying too low and being stopped out.', source: 'How I Made $2,000,000 in the Stock Market' },
-			{ text: 'There are no good or bad stocks, there are only rising and falling stocks.', source: 'Book' }
-		],
-		books: [
-			{ title: 'How I Made $2,000,000 in the Stock Market', year: 1960, description: 'The classic account of his trading journey' }
-		],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Nicolas_Darvas' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Larry Williams',
-		slug: 'larry-williams',
-		photoUrl: '/images/traders/larry-williams.jpg',
-		oneLiner: 'World Cup Trading Champion with 11,376% Return',
-		birthYear: 1942,
-		nationality: 'American',
-		tradingStyle: 'Options & Technical Analysis',
-		netWorth: '$50+ Million',
-		bio: `Larry Williams is a legendary futures trader best known for winning the World Cup Championship of Futures Trading in 1987 with an astounding 11,376% return, turning $10,000 into over $1.1 million in just 12 months.
+    philosophy: `"I was never afraid of buying high and selling low. I was afraid of buying too low and being stopped out."`,
+    achievements: [
+      "Turned $25,000 into $2+ million",
+      "Developed the Darvas Box system",
+      "Traded while touring as a dancer",
+      "Wrote bestselling trading book",
+      "Pioneer of momentum/breakout trading",
+      "Inspired generations of traders",
+    ],
+    famousTrades: [
+      {
+        date: "1957-1958",
+        asset: "Various Growth Stocks",
+        position: "long",
+        outcome: "Life-Changing",
+        profitLoss: "+$2 Million",
+        description:
+          "Used his box system to ride momentum stocks to massive gains while touring as a dancer.",
+      },
+    ],
+    quotes: [
+      {
+        text: "I was never afraid of buying high and selling low. I was afraid of buying too low and being stopped out.",
+        source: "How I Made $2,000,000 in the Stock Market",
+      },
+      {
+        text: "There are no good or bad stocks, there are only rising and falling stocks.",
+        source: "Book",
+      },
+    ],
+    books: [
+      {
+        title: "How I Made $2,000,000 in the Stock Market",
+        year: 1960,
+        description: "The classic account of his trading journey",
+      },
+    ],
+    socialLinks: [{ platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Nicolas_Darvas" }],
+    status: "published",
+  },
+  {
+    name: "Larry Williams",
+    slug: "larry-williams",
+    photoUrl: "/images/traders/larry-williams.jpg",
+    oneLiner: "World Cup Trading Champion with 11,376% Return",
+    birthYear: 1942,
+    nationality: "American",
+    tradingStyle: "Options & Technical Analysis",
+    netWorth: "$50+ Million",
+    bio: `Larry Williams is a legendary futures trader best known for winning the World Cup Championship of Futures Trading in 1987 with an astounding 11,376% return, turning $10,000 into over $1.1 million in just 12 months.
 
 ## World Cup Victory
 
@@ -1559,49 +1815,64 @@ Williams developed several widely-used indicators:
 ## Trading Career
 
 Larry has been trading since the 1960s and continues to trade and teach today. His daughter, actress Michelle Williams, also briefly competed in the World Cup.`,
-		philosophy: `"You make money in the markets by capturing the big move. You have to be willing to let profits run."`,
-		achievements: [
-			'11,376% return in World Cup 1987',
-			'Created Williams %R indicator',
-			'Over 50 years of trading',
-			'Multiple bestselling books',
-			'Developed COT analysis techniques',
-			'Continues trading and teaching'
-		],
-		famousTrades: [
-			{
-				date: '1987',
-				asset: 'Futures',
-				position: 'long',
-				outcome: 'World Cup Win',
-				profitLoss: '+11,376%',
-				description: 'Turned $10,000 into $1.1 million in the Robbins World Cup Championship.'
-			}
-		],
-		quotes: [
-			{ text: 'You make money in the markets by capturing the big move. You have to be willing to let profits run.', source: 'Interview' },
-			{ text: 'The market is always right. The trader who argues with the market will always lose.', source: 'Book' }
-		],
-		books: [
-			{ title: 'Long-Term Secrets to Short-Term Trading', year: 1999, description: 'Comprehensive guide to short-term trading' },
-			{ title: 'Trade Stocks & Commodities with the Insiders', year: 2005, description: 'Using COT data for trading edge' }
-		],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Larry_Williams_(trader)' },
-			{ platform: 'Website', url: 'https://www.ireallytrade.com' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Victor Sperandeo',
-		slug: 'victor-sperandeo',
-		photoUrl: null,
-		oneLiner: 'Trader Vic - 18 Consecutive Profitable Years',
-		birthYear: 1945,
-		nationality: 'American',
-		tradingStyle: 'Options & Technical Analysis',
-		netWorth: '$100+ Million',
-		bio: `Victor Sperandeo, known as "Trader Vic," is a Wall Street legend who achieved 18 consecutive profitable years with an average annual return of 72%. His work on trend analysis and market psychology has influenced countless traders.
+    philosophy: `"You make money in the markets by capturing the big move. You have to be willing to let profits run."`,
+    achievements: [
+      "11,376% return in World Cup 1987",
+      "Created Williams %R indicator",
+      "Over 50 years of trading",
+      "Multiple bestselling books",
+      "Developed COT analysis techniques",
+      "Continues trading and teaching",
+    ],
+    famousTrades: [
+      {
+        date: "1987",
+        asset: "Futures",
+        position: "long",
+        outcome: "World Cup Win",
+        profitLoss: "+11,376%",
+        description: "Turned $10,000 into $1.1 million in the Robbins World Cup Championship.",
+      },
+    ],
+    quotes: [
+      {
+        text: "You make money in the markets by capturing the big move. You have to be willing to let profits run.",
+        source: "Interview",
+      },
+      {
+        text: "The market is always right. The trader who argues with the market will always lose.",
+        source: "Book",
+      },
+    ],
+    books: [
+      {
+        title: "Long-Term Secrets to Short-Term Trading",
+        year: 1999,
+        description: "Comprehensive guide to short-term trading",
+      },
+      {
+        title: "Trade Stocks & Commodities with the Insiders",
+        year: 2005,
+        description: "Using COT data for trading edge",
+      },
+    ],
+    socialLinks: [
+      { platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Larry_Williams_(trader)" },
+      { platform: "Website", url: "https://www.ireallytrade.com" },
+    ],
+    status: "published",
+  },
+  {
+    name: "Victor Sperandeo",
+    slug: "victor-sperandeo",
+    photoUrl:
+      "https://static.wixstatic.com/media/98a14b_cdc5e9fb0fcd432e90b687940b075179~mv2_d_1327_1531_s_2.jpg",
+    oneLiner: "Trader Vic - 18 Consecutive Profitable Years",
+    birthYear: 1945,
+    nationality: "American",
+    tradingStyle: "Options & Technical Analysis",
+    netWorth: "$100+ Million",
+    bio: `Victor Sperandeo, known as "Trader Vic," is a Wall Street legend who achieved 18 consecutive profitable years with an average annual return of 72%. His work on trend analysis and market psychology has influenced countless traders.
 
 ## Remarkable Consistency
 
@@ -1618,39 +1889,51 @@ Trader Vic is known for:
 ## Beyond Trading
 
 Sperandeo has worked as a trader, fund manager, and consultant. He is also known for his libertarian economic views and analysis of government policy impacts on markets.`,
-		philosophy: `"The key to trading success is emotional discipline. If intelligence were the key, there would be a lot more people making money trading."`,
-		achievements: [
-			'18 consecutive profitable years',
-			'72% average annual return',
-			'Developed 1-2-3 reversal pattern',
-			'Author of "Trader Vic" books',
-			'Respected technical analyst',
-			'Featured in trading publications'
-		],
-		famousTrades: [],
-		quotes: [
-			{ text: 'The key to trading success is emotional discipline. If intelligence were the key, there would be a lot more people making money trading.', source: 'Trader Vic - Methods of a Wall Street Master' },
-			{ text: 'The most important rule of trading is to play great defense, not great offense.', source: 'Book' }
-		],
-		books: [
-			{ title: 'Trader Vic - Methods of a Wall Street Master', year: 1991, description: 'His complete trading methodology' },
-			{ title: 'Trader Vic II - Principles of Professional Speculation', year: 1994, description: 'Advanced trading concepts' }
-		],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Victor_Sperandeo' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Bill Lipschutz',
-		slug: 'bill-lipschutz',
-		photoUrl: null,
-		oneLiner: 'The Sultan of Currencies - Turned $12,000 into $250 Million',
-		birthYear: 1956,
-		nationality: 'American',
-		tradingStyle: 'Forex & Macro',
-		netWorth: '$2+ Billion',
-		bio: `Bill Lipschutz is one of the most successful forex traders in history. While still a student at Cornell, he turned a $12,000 inheritance into $250,000, then lost it all—a lesson that shaped his risk management philosophy forever.
+    philosophy: `"The key to trading success is emotional discipline. If intelligence were the key, there would be a lot more people making money trading."`,
+    achievements: [
+      "18 consecutive profitable years",
+      "72% average annual return",
+      "Developed 1-2-3 reversal pattern",
+      'Author of "Trader Vic" books',
+      "Respected technical analyst",
+      "Featured in trading publications",
+    ],
+    famousTrades: [],
+    quotes: [
+      {
+        text: "The key to trading success is emotional discipline. If intelligence were the key, there would be a lot more people making money trading.",
+        source: "Trader Vic - Methods of a Wall Street Master",
+      },
+      {
+        text: "The most important rule of trading is to play great defense, not great offense.",
+        source: "Book",
+      },
+    ],
+    books: [
+      {
+        title: "Trader Vic - Methods of a Wall Street Master",
+        year: 1991,
+        description: "His complete trading methodology",
+      },
+      {
+        title: "Trader Vic II - Principles of Professional Speculation",
+        year: 1994,
+        description: "Advanced trading concepts",
+      },
+    ],
+    socialLinks: [{ platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Victor_Sperandeo" }],
+    status: "published",
+  },
+  {
+    name: "Bill Lipschutz",
+    slug: "bill-lipschutz",
+    photoUrl: "https://www.hathersage.com/hathersage/images/wlipschutz.jpg",
+    oneLiner: "The Sultan of Currencies - Turned $12,000 into $250 Million",
+    birthYear: 1956,
+    nationality: "American",
+    tradingStyle: "Forex & Macro",
+    netWorth: "$2+ Billion",
+    bio: `Bill Lipschutz is one of the most successful forex traders in history. While still a student at Cornell, he turned a $12,000 inheritance into $250,000, then lost it all—a lesson that shaped his risk management philosophy forever.
 
 ## The Cornell Years
 
@@ -1663,45 +1946,50 @@ After graduating, Lipschutz joined Salomon Brothers' newly formed forex departme
 ## Trading Philosophy
 
 Lipschutz is known for his ability to synthesize vast amounts of information and his willingness to take large positions when conviction is high. He emphasizes the importance of understanding market psychology and maintaining emotional discipline.`,
-		philosophy: `"When you have a position, you put it on for a reason, and you've got to keep it until the reason no longer exists."`,
-		achievements: [
-			'Generated $300M annually at Salomon Brothers',
-			'Turned $12,000 into $250,000 as a student',
-			'Co-founder of Hathersage Capital',
-			'Featured in "The New Market Wizards"',
-			'One of the most successful forex traders ever',
-			'Pioneer in institutional forex trading'
-		],
-		famousTrades: [
-			{
-				date: '1980s',
-				asset: 'Currency Pairs',
-				position: 'long',
-				outcome: 'Consistent Profits',
-				profitLoss: '+$300M/year',
-				description: 'Generated approximately $300 million per year for Salomon Brothers through forex trading.'
-			}
-		],
-		quotes: [
-			{ text: 'When you have a position, you put it on for a reason, and you\'ve got to keep it until the reason no longer exists.', source: 'The New Market Wizards' },
-			{ text: 'I don\'t think you can consistently be a winning trader if you\'re banking on being right more than 50% of the time.', source: 'Interview' }
-		],
-		books: [],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Bill_Lipschutz' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Jim Rogers',
-		slug: 'jim-rogers',
-		photoUrl: '/images/traders/jim-rogers.jpg',
-		oneLiner: 'Co-founder of Quantum Fund with 4,200% Returns',
-		birthYear: 1942,
-		nationality: 'American',
-		tradingStyle: 'Macro & Commodities',
-		netWorth: '$300+ Million',
-		bio: `Jim Rogers is a legendary investor who co-founded the Quantum Fund with George Soros. The fund returned an astounding 4,200% over 10 years while the S&P 500 rose only 47%. Rogers retired at 37 and has since become famous for his global investment adventures.
+    philosophy: `"When you have a position, you put it on for a reason, and you've got to keep it until the reason no longer exists."`,
+    achievements: [
+      "Generated $300M annually at Salomon Brothers",
+      "Turned $12,000 into $250,000 as a student",
+      "Co-founder of Hathersage Capital",
+      'Featured in "The New Market Wizards"',
+      "One of the most successful forex traders ever",
+      "Pioneer in institutional forex trading",
+    ],
+    famousTrades: [
+      {
+        date: "1980s",
+        asset: "Currency Pairs",
+        position: "long",
+        outcome: "Consistent Profits",
+        profitLoss: "+$300M/year",
+        description:
+          "Generated approximately $300 million per year for Salomon Brothers through forex trading.",
+      },
+    ],
+    quotes: [
+      {
+        text: "When you have a position, you put it on for a reason, and you've got to keep it until the reason no longer exists.",
+        source: "The New Market Wizards",
+      },
+      {
+        text: "I don't think you can consistently be a winning trader if you're banking on being right more than 50% of the time.",
+        source: "Interview",
+      },
+    ],
+    books: [],
+    socialLinks: [{ platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Bill_Lipschutz" }],
+    status: "published",
+  },
+  {
+    name: "Jim Rogers",
+    slug: "jim-rogers",
+    photoUrl: "/images/traders/jim-rogers.jpg",
+    oneLiner: "Co-founder of Quantum Fund with 4,200% Returns",
+    birthYear: 1942,
+    nationality: "American",
+    tradingStyle: "Macro & Commodities",
+    netWorth: "$300+ Million",
+    bio: `Jim Rogers is a legendary investor who co-founded the Quantum Fund with George Soros. The fund returned an astounding 4,200% over 10 years while the S&P 500 rose only 47%. Rogers retired at 37 and has since become famous for his global investment adventures.
 
 ## The Quantum Fund
 
@@ -1714,49 +2002,56 @@ After retiring, Rogers embarked on two record-setting trips around the world—o
 ## Commodities Bull
 
 Rogers has been one of the most vocal advocates for commodities investing. He created the Rogers International Commodity Index and has consistently predicted major moves in agricultural and energy markets.`,
-		philosophy: `"I just wait until there is money lying in the corner, and all I have to do is go over there and pick it up. I do nothing in the meantime."`,
-		achievements: [
-			'Co-founded Quantum Fund with Soros',
-			'4,200% returns over 10 years',
-			'Retired at age 37',
-			'Created Rogers International Commodity Index',
-			'Two Guinness World Record trips',
-			'Bestselling author'
-		],
-		famousTrades: [
-			{
-				date: '1973-1980',
-				asset: 'Quantum Fund',
-				position: 'long',
-				outcome: 'Legendary Returns',
-				profitLoss: '+4,200%',
-				description: 'Co-managed Quantum Fund to extraordinary returns while S&P 500 gained only 47%.'
-			}
-		],
-		quotes: [
-			{ text: 'I just wait until there is money lying in the corner, and all I have to do is go over there and pick it up.', source: 'Interview' },
-			{ text: 'If you want to be rich, you must learn to be patient.', source: 'Investment Biker' }
-		],
-		books: [
-			{ title: 'Investment Biker', year: 1994, description: 'Around the world on a motorcycle' },
-			{ title: 'Adventure Capitalist', year: 2003, description: 'The ultimate road trip' },
-			{ title: 'Hot Commodities', year: 2004, description: 'How anyone can invest profitably in commodities' }
-		],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Jim_Rogers' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'John Paulson',
-		slug: 'john-paulson',
-		photoUrl: null,
-		oneLiner: 'Made $15 Billion Betting Against Subprime Mortgages',
-		birthYear: 1955,
-		nationality: 'American',
-		tradingStyle: 'Event-Driven & Macro',
-		netWorth: '$3+ Billion',
-		bio: `John Paulson made the greatest trade in financial history by betting against subprime mortgages before the 2008 financial crisis. His fund made $15 billion in profits, with Paulson personally earning $4 billion in a single year.
+    philosophy: `"I just wait until there is money lying in the corner, and all I have to do is go over there and pick it up. I do nothing in the meantime."`,
+    achievements: [
+      "Co-founded Quantum Fund with Soros",
+      "4,200% returns over 10 years",
+      "Retired at age 37",
+      "Created Rogers International Commodity Index",
+      "Two Guinness World Record trips",
+      "Bestselling author",
+    ],
+    famousTrades: [
+      {
+        date: "1973-1980",
+        asset: "Quantum Fund",
+        position: "long",
+        outcome: "Legendary Returns",
+        profitLoss: "+4,200%",
+        description:
+          "Co-managed Quantum Fund to extraordinary returns while S&P 500 gained only 47%.",
+      },
+    ],
+    quotes: [
+      {
+        text: "I just wait until there is money lying in the corner, and all I have to do is go over there and pick it up.",
+        source: "Interview",
+      },
+      { text: "If you want to be rich, you must learn to be patient.", source: "Investment Biker" },
+    ],
+    books: [
+      { title: "Investment Biker", year: 1994, description: "Around the world on a motorcycle" },
+      { title: "Adventure Capitalist", year: 2003, description: "The ultimate road trip" },
+      {
+        title: "Hot Commodities",
+        year: 2004,
+        description: "How anyone can invest profitably in commodities",
+      },
+    ],
+    socialLinks: [{ platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Jim_Rogers" }],
+    status: "published",
+  },
+  {
+    name: "John Paulson",
+    slug: "john-paulson",
+    photoUrl:
+      "https://image.cnbcfm.com/api/v1/image/28816362-paulson_john.jpg?h=405&v=1354732729&w=720",
+    oneLiner: "Made $15 Billion Betting Against Subprime Mortgages",
+    birthYear: 1955,
+    nationality: "American",
+    tradingStyle: "Event-Driven & Macro",
+    netWorth: "$3+ Billion",
+    bio: `John Paulson made the greatest trade in financial history by betting against subprime mortgages before the 2008 financial crisis. His fund made $15 billion in profits, with Paulson personally earning $4 billion in a single year.
 
 ## The Greatest Trade Ever
 
@@ -1769,45 +2064,50 @@ When the housing market collapsed in 2007-2008, Paulson's bet paid off spectacul
 ## Investment Philosophy
 
 Paulson's approach combines deep fundamental research with the patience to wait for asymmetric opportunities. He looks for situations where the downside is limited but the upside is enormous.`,
-		philosophy: `"Many investors make the mistake of buying high and selling low while the exact opposite is the right strategy."`,
-		achievements: [
-			'$15 billion profit from subprime short',
-			'$4 billion personal earnings in 2007',
-			'Subject of "The Greatest Trade Ever"',
-			'Founded Paulson & Co. in 1994',
-			'Peak AUM of $38 billion',
-			'One of the most successful macro trades ever'
-		],
-		famousTrades: [
-			{
-				date: '2007-2008',
-				asset: 'Subprime Mortgages (CDS)',
-				position: 'short',
-				outcome: 'Historic Profit',
-				profitLoss: '+$15 Billion',
-				description: 'Shorted subprime mortgage securities through credit default swaps, generating the largest single-year profit in hedge fund history.'
-			}
-		],
-		quotes: [
-			{ text: 'Many investors make the mistake of buying high and selling low while the exact opposite is the right strategy.', source: 'Interview' },
-			{ text: 'The key to success is to identify trends early and position yourself accordingly.', source: 'Conference' }
-		],
-		books: [],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/John_Paulson' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Michael Marcus',
-		slug: 'michael-marcus',
-		photoUrl: null,
-		oneLiner: 'Turned $30,000 into $80 Million in 20 Years',
-		birthYear: 1949,
-		nationality: 'American',
-		tradingStyle: 'Commodities & Futures',
-		netWorth: '$100+ Million',
-		bio: `Michael Marcus is a legendary commodities trader who turned $30,000 into $80 million over a 20-year period. He was one of the original "Market Wizards" and mentored many successful traders including Bruce Kovner.
+    philosophy: `"Many investors make the mistake of buying high and selling low while the exact opposite is the right strategy."`,
+    achievements: [
+      "$15 billion profit from subprime short",
+      "$4 billion personal earnings in 2007",
+      'Subject of "The Greatest Trade Ever"',
+      "Founded Paulson & Co. in 1994",
+      "Peak AUM of $38 billion",
+      "One of the most successful macro trades ever",
+    ],
+    famousTrades: [
+      {
+        date: "2007-2008",
+        asset: "Subprime Mortgages (CDS)",
+        position: "short",
+        outcome: "Historic Profit",
+        profitLoss: "+$15 Billion",
+        description:
+          "Shorted subprime mortgage securities through credit default swaps, generating the largest single-year profit in hedge fund history.",
+      },
+    ],
+    quotes: [
+      {
+        text: "Many investors make the mistake of buying high and selling low while the exact opposite is the right strategy.",
+        source: "Interview",
+      },
+      {
+        text: "The key to success is to identify trends early and position yourself accordingly.",
+        source: "Conference",
+      },
+    ],
+    books: [],
+    socialLinks: [{ platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/John_Paulson" }],
+    status: "published",
+  },
+  {
+    name: "Michael Marcus",
+    slug: "michael-marcus",
+    photoUrl: "https://miro.medium.com/v2/resize:fit:988/1*Mb7enlOxXo_ViwMKtUyAtw.png",
+    oneLiner: "Turned $30,000 into $80 Million in 20 Years",
+    birthYear: 1949,
+    nationality: "American",
+    tradingStyle: "Commodities & Futures",
+    netWorth: "$100+ Million",
+    bio: `Michael Marcus is a legendary commodities trader who turned $30,000 into $80 million over a 20-year period. He was one of the original "Market Wizards" and mentored many successful traders including Bruce Kovner.
 
 ## Early Career
 
@@ -1820,45 +2120,52 @@ Marcus joined Commodities Corporation, a legendary trading firm that incubated m
 ## Mentorship Legacy
 
 Beyond his own trading success, Marcus is known for mentoring Bruce Kovner, who went on to become one of the world's most successful macro traders. This mentorship chain demonstrates the importance of learning from experienced traders.`,
-		philosophy: `"Every trader has strengths and weaknesses. Some are good holders of winners but may hold their losers a little too long. Others may cut their losses well but sell their winners too quickly."`,
-		achievements: [
-			'Turned $30,000 into $80 million',
-			'Featured in original "Market Wizards"',
-			'Mentored Bruce Kovner',
-			'Pioneer at Commodities Corporation',
-			'20+ years of successful trading',
-			'Influential in commodities trading'
-		],
-		famousTrades: [
-			{
-				date: '1970s-1990s',
-				asset: 'Commodities',
-				position: 'long',
-				outcome: 'Exceptional Returns',
-				profitLoss: '+$80 Million',
-				description: 'Built $30,000 into $80 million through disciplined commodities trading over two decades.'
-			}
-		],
-		quotes: [
-			{ text: 'Every trader has strengths and weaknesses. Some are good holders of winners but may hold their losers a little too long.', source: 'Market Wizards' },
-			{ text: 'The best trades are the ones in which you have all three things going for you: fundamentals, technicals, and market tone.', source: 'Interview' }
-		],
-		books: [],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Michael_Marcus_(trader)' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Andy Krieger',
-		slug: 'andy-krieger',
-		photoUrl: null,
-		oneLiner: 'Made $300 Million Shorting the New Zealand Dollar',
-		birthYear: 1956,
-		nationality: 'American',
-		tradingStyle: 'Forex & Macro',
-		netWorth: '$100+ Million',
-		bio: `Andy Krieger is famous for one of the most aggressive currency trades in history. In 1987, he shorted the New Zealand dollar with such size that his position exceeded New Zealand's entire money supply.
+    philosophy: `"Every trader has strengths and weaknesses. Some are good holders of winners but may hold their losers a little too long. Others may cut their losses well but sell their winners too quickly."`,
+    achievements: [
+      "Turned $30,000 into $80 million",
+      'Featured in original "Market Wizards"',
+      "Mentored Bruce Kovner",
+      "Pioneer at Commodities Corporation",
+      "20+ years of successful trading",
+      "Influential in commodities trading",
+    ],
+    famousTrades: [
+      {
+        date: "1970s-1990s",
+        asset: "Commodities",
+        position: "long",
+        outcome: "Exceptional Returns",
+        profitLoss: "+$80 Million",
+        description:
+          "Built $30,000 into $80 million through disciplined commodities trading over two decades.",
+      },
+    ],
+    quotes: [
+      {
+        text: "Every trader has strengths and weaknesses. Some are good holders of winners but may hold their losers a little too long.",
+        source: "Market Wizards",
+      },
+      {
+        text: "The best trades are the ones in which you have all three things going for you: fundamentals, technicals, and market tone.",
+        source: "Interview",
+      },
+    ],
+    books: [],
+    socialLinks: [
+      { platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Michael_Marcus_(trader)" },
+    ],
+    status: "published",
+  },
+  {
+    name: "Andy Krieger",
+    slug: "andy-krieger",
+    photoUrl: "https://tw.mitrade.com/cms_uploads/uedimg/20230711/1689043192711.jpg",
+    oneLiner: "Made $300 Million Shorting the New Zealand Dollar",
+    birthYear: 1956,
+    nationality: "American",
+    tradingStyle: "Forex & Macro",
+    netWorth: "$100+ Million",
+    bio: `Andy Krieger is famous for one of the most aggressive currency trades in history. In 1987, he shorted the New Zealand dollar with such size that his position exceeded New Zealand's entire money supply.
 
 ## The Kiwi Trade
 
@@ -1871,45 +2178,50 @@ The trade generated approximately $300 million in profits for Bankers Trust. Kri
 ## Trading Approach
 
 Krieger is known for his aggressive use of leverage and options to express macro views. His willingness to take enormous positions when conviction is high sets him apart from more conservative traders.`,
-		philosophy: `"When you see an opportunity, you have to be willing to bet big. The biggest mistake is not sizing up when you're right."`,
-		achievements: [
-			'$300 million profit on NZD short',
-			'Position exceeded NZ money supply',
-			'Worked at Bankers Trust and Soros Fund',
-			'Pioneer in currency options trading',
-			'One of the most aggressive forex trades ever',
-			'Featured in trading literature'
-		],
-		famousTrades: [
-			{
-				date: '1987',
-				asset: 'New Zealand Dollar',
-				position: 'short',
-				outcome: 'Massive Profit',
-				profitLoss: '+$300 Million',
-				description: 'Shorted the New Zealand dollar with a position larger than the country\'s entire money supply after the 1987 crash.'
-			}
-		],
-		quotes: [
-			{ text: 'When you see an opportunity, you have to be willing to bet big.', source: 'Interview' },
-			{ text: 'The currency markets are the most efficient way to express a macro view.', source: 'Trading Conference' }
-		],
-		books: [],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Andy_Krieger' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Bruce Kovner',
-		slug: 'bruce-kovner',
-		photoUrl: null,
-		oneLiner: 'From Taxi Driver to Billionaire Macro Trader',
-		birthYear: 1945,
-		nationality: 'American',
-		tradingStyle: 'Macro & Forex',
-		netWorth: '$6.6 Billion',
-		bio: `Bruce Kovner went from driving a taxi to becoming one of the world's most successful macro traders. He founded Caxton Associates, which at its peak managed over $14 billion and generated average annual returns of 21% over 28 years.
+    philosophy: `"When you see an opportunity, you have to be willing to bet big. The biggest mistake is not sizing up when you're right."`,
+    achievements: [
+      "$300 million profit on NZD short",
+      "Position exceeded NZ money supply",
+      "Worked at Bankers Trust and Soros Fund",
+      "Pioneer in currency options trading",
+      "One of the most aggressive forex trades ever",
+      "Featured in trading literature",
+    ],
+    famousTrades: [
+      {
+        date: "1987",
+        asset: "New Zealand Dollar",
+        position: "short",
+        outcome: "Massive Profit",
+        profitLoss: "+$300 Million",
+        description:
+          "Shorted the New Zealand dollar with a position larger than the country's entire money supply after the 1987 crash.",
+      },
+    ],
+    quotes: [
+      {
+        text: "When you see an opportunity, you have to be willing to bet big.",
+        source: "Interview",
+      },
+      {
+        text: "The currency markets are the most efficient way to express a macro view.",
+        source: "Trading Conference",
+      },
+    ],
+    books: [],
+    socialLinks: [{ platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Andy_Krieger" }],
+    status: "published",
+  },
+  {
+    name: "Bruce Kovner",
+    slug: "bruce-kovner",
+    photoUrl: "https://www.brucekovner.com/BruceKovnerHeadshot.jpg",
+    oneLiner: "From Taxi Driver to Billionaire Macro Trader",
+    birthYear: 1945,
+    nationality: "American",
+    tradingStyle: "Macro & Forex",
+    netWorth: "$6.6 Billion",
+    bio: `Bruce Kovner went from driving a taxi to becoming one of the world's most successful macro traders. He founded Caxton Associates, which at its peak managed over $14 billion and generated average annual returns of 21% over 28 years.
 
 ## Humble Beginnings
 
@@ -1922,45 +2234,50 @@ In 1983, Kovner founded Caxton Associates. The fund became one of the most succe
 ## Mentorship
 
 Kovner was mentored by Michael Marcus at Commodities Corporation. He has since become a mentor himself and is known for his analytical approach to global macro trading.`,
-		philosophy: `"Undertake each trade with a clear plan for getting out if you're wrong. The inability to deal with losses is the most common cause of trading failure."`,
-		achievements: [
-			'Founded Caxton Associates',
-			'21% average annual returns over 28 years',
-			'Peak AUM of $14 billion',
-			'Turned $3,000 into billions',
-			'Featured in "Market Wizards"',
-			'Major philanthropist'
-		],
-		famousTrades: [
-			{
-				date: '1977',
-				asset: 'Soybean Futures',
-				position: 'long',
-				outcome: 'First Big Win',
-				profitLoss: '+$45,000',
-				description: 'First trade using $3,000 credit card advance eventually grew to $45,000, launching his trading career.'
-			}
-		],
-		quotes: [
-			{ text: 'Undertake each trade with a clear plan for getting out if you\'re wrong.', source: 'Market Wizards' },
-			{ text: 'The inability to deal with losses is the most common cause of trading failure.', source: 'Interview' }
-		],
-		books: [],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Bruce_Kovner' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Nick Leeson',
-		slug: 'nick-leeson',
-		photoUrl: null,
-		oneLiner: 'The Rogue Trader Who Broke Barings Bank',
-		birthYear: 1967,
-		nationality: 'British',
-		tradingStyle: 'Derivatives & Arbitrage',
-		netWorth: 'N/A',
-		bio: `Nick Leeson is the infamous trader whose unauthorized speculative trades caused the collapse of Barings Bank, Britain's oldest merchant bank. His story serves as a cautionary tale about risk management and oversight failures.
+    philosophy: `"Undertake each trade with a clear plan for getting out if you're wrong. The inability to deal with losses is the most common cause of trading failure."`,
+    achievements: [
+      "Founded Caxton Associates",
+      "21% average annual returns over 28 years",
+      "Peak AUM of $14 billion",
+      "Turned $3,000 into billions",
+      'Featured in "Market Wizards"',
+      "Major philanthropist",
+    ],
+    famousTrades: [
+      {
+        date: "1977",
+        asset: "Soybean Futures",
+        position: "long",
+        outcome: "First Big Win",
+        profitLoss: "+$45,000",
+        description:
+          "First trade using $3,000 credit card advance eventually grew to $45,000, launching his trading career.",
+      },
+    ],
+    quotes: [
+      {
+        text: "Undertake each trade with a clear plan for getting out if you're wrong.",
+        source: "Market Wizards",
+      },
+      {
+        text: "The inability to deal with losses is the most common cause of trading failure.",
+        source: "Interview",
+      },
+    ],
+    books: [],
+    socialLinks: [{ platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Bruce_Kovner" }],
+    status: "published",
+  },
+  {
+    name: "Nick Leeson",
+    slug: "nick-leeson",
+    photoUrl: "https://www.nickleeson.com/wp-content/uploads/2017/01/nick-1-1.jpg",
+    oneLiner: "The Rogue Trader Who Broke Barings Bank",
+    birthYear: 1967,
+    nationality: "British",
+    tradingStyle: "Derivatives & Arbitrage",
+    netWorth: "N/A",
+    bio: `Nick Leeson is the infamous trader whose unauthorized speculative trades caused the collapse of Barings Bank, Britain's oldest merchant bank. His story serves as a cautionary tale about risk management and oversight failures.
 
 ## Rise at Barings
 
@@ -1973,47 +2290,52 @@ After the 1995 Kobe earthquake, Leeson's hidden losses spiraled out of control. 
 ## Lessons Learned
 
 Leeson's story highlights the dangers of inadequate risk controls, the importance of separating trading from back-office functions, and how small losses can compound into catastrophic ones when hidden.`,
-		philosophy: `"I was gambling, not trading. The moment you start hiding losses, you've already lost."`,
-		achievements: [
-			'Cautionary tale in risk management',
-			'Subject of book and film "Rogue Trader"',
-			'Caused collapse of 233-year-old bank',
-			'£827 million in losses',
-			'Changed banking risk management globally',
-			'Now a speaker on risk and ethics'
-		],
-		famousTrades: [
-			{
-				date: '1995',
-				asset: 'Nikkei Futures',
-				position: 'long',
-				outcome: 'Catastrophic Loss',
-				profitLoss: '-£827 Million',
-				description: 'Unauthorized positions in Nikkei futures collapsed after the Kobe earthquake, destroying Barings Bank.'
-			}
-		],
-		quotes: [
-			{ text: 'I was gambling, not trading. The moment you start hiding losses, you\'ve already lost.', source: 'Rogue Trader' },
-			{ text: 'The physical act of hiding the losses was easy. Living with it was the hard part.', source: 'Interview' }
-		],
-		books: [
-			{ title: 'Rogue Trader', year: 1996, description: 'His account of the Barings collapse' }
-		],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Nick_Leeson' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Bill Gross',
-		slug: 'bill-gross',
-		photoUrl: null,
-		oneLiner: 'The Bond King - Built PIMCO into $2 Trillion Giant',
-		birthYear: 1944,
-		nationality: 'American',
-		tradingStyle: 'Fixed Income & Bonds',
-		netWorth: '$1.5 Billion',
-		bio: `Bill Gross is known as "The Bond King" for his unparalleled success in fixed income investing. He co-founded PIMCO and built it into the world's largest bond fund manager with over $2 trillion in assets.
+    philosophy: `"I was gambling, not trading. The moment you start hiding losses, you've already lost."`,
+    achievements: [
+      "Cautionary tale in risk management",
+      'Subject of book and film "Rogue Trader"',
+      "Caused collapse of 233-year-old bank",
+      "£827 million in losses",
+      "Changed banking risk management globally",
+      "Now a speaker on risk and ethics",
+    ],
+    famousTrades: [
+      {
+        date: "1995",
+        asset: "Nikkei Futures",
+        position: "long",
+        outcome: "Catastrophic Loss",
+        profitLoss: "-£827 Million",
+        description:
+          "Unauthorized positions in Nikkei futures collapsed after the Kobe earthquake, destroying Barings Bank.",
+      },
+    ],
+    quotes: [
+      {
+        text: "I was gambling, not trading. The moment you start hiding losses, you've already lost.",
+        source: "Rogue Trader",
+      },
+      {
+        text: "The physical act of hiding the losses was easy. Living with it was the hard part.",
+        source: "Interview",
+      },
+    ],
+    books: [
+      { title: "Rogue Trader", year: 1996, description: "His account of the Barings collapse" },
+    ],
+    socialLinks: [{ platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Nick_Leeson" }],
+    status: "published",
+  },
+  {
+    name: "Bill Gross",
+    slug: "bill-gross",
+    photoUrl: "https://s.wsj.net/public/resources/images/ON-AZ888_BillGr_KS_20130129134900.jpg",
+    oneLiner: "The Bond King - Built PIMCO into $2 Trillion Giant",
+    birthYear: 1944,
+    nationality: "American",
+    tradingStyle: "Fixed Income & Bonds",
+    netWorth: "$1.5 Billion",
+    bio: `Bill Gross is known as "The Bond King" for his unparalleled success in fixed income investing. He co-founded PIMCO and built it into the world's largest bond fund manager with over $2 trillion in assets.
 
 ## PIMCO Years
 
@@ -2026,47 +2348,53 @@ Gross pioneered "total return" bond investing, which focuses on capital apprecia
 ## Later Career
 
 After leaving PIMCO in 2014, Gross joined Janus Henderson. He retired from active fund management in 2019, leaving behind a legacy as the most successful bond investor in history.`,
-		philosophy: `"Finding the best person or the best organization to invest your money is one of the most important financial decisions you'll ever make."`,
-		achievements: [
-			'Co-founded PIMCO',
-			'Built largest bond fund ($2T+ AUM)',
-			'Known as "The Bond King"',
-			'Pioneered total return investing',
-			'Morningstar Fixed Income Manager of Decade',
-			'Influential market commentator'
-		],
-		famousTrades: [
-			{
-				date: '2011',
-				asset: 'US Treasuries',
-				position: 'short',
-				outcome: 'Missed Rally',
-				profitLoss: 'Underperformed',
-				description: 'Famously bet against US Treasuries expecting rates to rise, but QE2 pushed bonds higher.'
-			}
-		],
-		quotes: [
-			{ text: 'Finding the best person or the best organization to invest your money is one of the most important financial decisions you\'ll ever make.', source: 'Investment Outlook' },
-			{ text: 'The bond market is far more important than the stock market.', source: 'Interview' }
-		],
-		books: [
-			{ title: 'Bill Gross on Investing', year: 1998, description: 'His approach to bond investing' }
-		],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Bill_Gross' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Joe Lewis',
-		slug: 'joe-lewis',
-		photoUrl: null,
-		oneLiner: 'Partnered with Soros to Break the Bank of England',
-		birthYear: 1937,
-		nationality: 'British',
-		tradingStyle: 'Forex & Macro',
-		netWorth: '$6+ Billion',
-		bio: `Joe Lewis is a British businessman and currency trader who partnered with George Soros in the famous 1992 trade that broke the Bank of England. He built his fortune through currency trading and has since diversified into numerous businesses.
+    philosophy: `"Finding the best person or the best organization to invest your money is one of the most important financial decisions you'll ever make."`,
+    achievements: [
+      "Co-founded PIMCO",
+      "Built largest bond fund ($2T+ AUM)",
+      'Known as "The Bond King"',
+      "Pioneered total return investing",
+      "Morningstar Fixed Income Manager of Decade",
+      "Influential market commentator",
+    ],
+    famousTrades: [
+      {
+        date: "2011",
+        asset: "US Treasuries",
+        position: "short",
+        outcome: "Missed Rally",
+        profitLoss: "Underperformed",
+        description:
+          "Famously bet against US Treasuries expecting rates to rise, but QE2 pushed bonds higher.",
+      },
+    ],
+    quotes: [
+      {
+        text: "Finding the best person or the best organization to invest your money is one of the most important financial decisions you'll ever make.",
+        source: "Investment Outlook",
+      },
+      { text: "The bond market is far more important than the stock market.", source: "Interview" },
+    ],
+    books: [
+      {
+        title: "Bill Gross on Investing",
+        year: 1998,
+        description: "His approach to bond investing",
+      },
+    ],
+    socialLinks: [{ platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Bill_Gross" }],
+    status: "published",
+  },
+  {
+    name: "Joe Lewis",
+    slug: "joe-lewis",
+    photoUrl: "https://www.suno.com.br/wp-content/uploads/2019/05/joe-lewis1.jpg",
+    oneLiner: "Partnered with Soros to Break the Bank of England",
+    birthYear: 1937,
+    nationality: "British",
+    tradingStyle: "Forex & Macro",
+    netWorth: "$6+ Billion",
+    bio: `Joe Lewis is a British businessman and currency trader who partnered with George Soros in the famous 1992 trade that broke the Bank of England. He built his fortune through currency trading and has since diversified into numerous businesses.
 
 ## Black Wednesday
 
@@ -2079,45 +2407,52 @@ Lewis has used his trading profits to build a diverse business empire including 
 ## Private Trader
 
 Unlike many famous traders, Lewis maintains an extremely low profile. He conducts most of his trading from his yacht and rarely gives interviews.`,
-		philosophy: `"Stay patient, stay private, and strike when the opportunity is overwhelming."`,
-		achievements: [
-			'Partnered with Soros on pound short',
-			'$1+ billion from Black Wednesday',
-			'Owner of Tottenham Hotspur',
-			'Built Tavistock Group empire',
-			'One of UK\'s wealthiest individuals',
-			'Successful currency trader for decades'
-		],
-		famousTrades: [
-			{
-				date: '1992',
-				asset: 'British Pound',
-				position: 'short',
-				outcome: 'Massive Profit',
-				profitLoss: '+$1 Billion',
-				description: 'Partnered with George Soros to short the British pound on Black Wednesday.'
-			}
-		],
-		quotes: [
-			{ text: 'Stay patient, stay private, and strike when the opportunity is overwhelming.', source: 'Attributed' },
-			{ text: 'The best trades are the ones where the risk-reward is so obvious that you have to act.', source: 'Interview' }
-		],
-		books: [],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Joe_Lewis_(businessman)' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Michael Burry',
-		slug: 'michael-burry',
-		photoUrl: null,
-		oneLiner: 'The Big Short - Predicted the 2008 Housing Crash',
-		birthYear: 1971,
-		nationality: 'American',
-		tradingStyle: 'Value Investing & Macro',
-		netWorth: '$300+ Million',
-		bio: `Michael Burry is the hedge fund manager who famously predicted and profited from the 2008 subprime mortgage crisis. His story was chronicled in Michael Lewis's book "The Big Short" and the subsequent Academy Award-winning film.
+    philosophy: `"Stay patient, stay private, and strike when the opportunity is overwhelming."`,
+    achievements: [
+      "Partnered with Soros on pound short",
+      "$1+ billion from Black Wednesday",
+      "Owner of Tottenham Hotspur",
+      "Built Tavistock Group empire",
+      "One of UK's wealthiest individuals",
+      "Successful currency trader for decades",
+    ],
+    famousTrades: [
+      {
+        date: "1992",
+        asset: "British Pound",
+        position: "short",
+        outcome: "Massive Profit",
+        profitLoss: "+$1 Billion",
+        description: "Partnered with George Soros to short the British pound on Black Wednesday.",
+      },
+    ],
+    quotes: [
+      {
+        text: "Stay patient, stay private, and strike when the opportunity is overwhelming.",
+        source: "Attributed",
+      },
+      {
+        text: "The best trades are the ones where the risk-reward is so obvious that you have to act.",
+        source: "Interview",
+      },
+    ],
+    books: [],
+    socialLinks: [
+      { platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Joe_Lewis_(businessman)" },
+    ],
+    status: "published",
+  },
+  {
+    name: "Michael Burry",
+    slug: "michael-burry",
+    photoUrl:
+      "https://imageio.forbes.com/specials-images/dam/imageserve/38497369/0x0.jpg?format=jpg&width=1200",
+    oneLiner: "The Big Short - Predicted the 2008 Housing Crash",
+    birthYear: 1971,
+    nationality: "American",
+    tradingStyle: "Value Investing & Macro",
+    netWorth: "$300+ Million",
+    bio: `Michael Burry is the hedge fund manager who famously predicted and profited from the 2008 subprime mortgage crisis. His story was chronicled in Michael Lewis's book "The Big Short" and the subsequent Academy Award-winning film.
 
 ## Scion Capital
 
@@ -2130,46 +2465,53 @@ Starting in 2005, Burry began purchasing credit default swaps against subprime m
 ## Unique Perspective
 
 Burry has Asperger's syndrome, which he credits for his ability to focus intensely on data and see patterns others miss. He continues to make contrarian calls that often prove prescient.`,
-		philosophy: `"I look for value wherever it can be found. I don't care what the crowd thinks."`,
-		achievements: [
-			'489% returns from subprime short',
-			'Subject of "The Big Short"',
-			'Founded Scion Capital',
-			'Predicted 2008 financial crisis',
-			'Pioneered CDS against mortgage bonds',
-			'Continues making prescient calls'
-		],
-		famousTrades: [
-			{
-				date: '2005-2008',
-				asset: 'Subprime Mortgage CDS',
-				position: 'short',
-				outcome: 'Legendary Profit',
-				profitLoss: '+489%',
-				description: 'Purchased credit default swaps against subprime mortgages years before the housing crash, generating extraordinary returns.'
-			}
-		],
-		quotes: [
-			{ text: 'I look for value wherever it can be found. I don\'t care what the crowd thinks.', source: 'Interview' },
-			{ text: 'The late 90s almost forced me to identify myself as a value investor.', source: 'Letter to Investors' }
-		],
-		books: [],
-		socialLinks: [
-			{ platform: 'Twitter', url: 'https://twitter.com/michaeljburry' },
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Michael_Burry' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Peter Schiff',
-		slug: 'peter-schiff',
-		photoUrl: '/images/traders/peter-schiff.jpg',
-		oneLiner: 'Predicted 2008 Crisis - Gold Bug & Austrian Economist',
-		birthYear: 1963,
-		nationality: 'American',
-		tradingStyle: 'Macro & Commodities',
-		netWorth: '$70+ Million',
-		bio: `Peter Schiff is an economist, financial commentator, and CEO of Euro Pacific Capital. He gained fame for accurately predicting the 2008 financial crisis and is known for his bearish views on the US dollar and bullish stance on gold.
+    philosophy: `"I look for value wherever it can be found. I don't care what the crowd thinks."`,
+    achievements: [
+      "489% returns from subprime short",
+      'Subject of "The Big Short"',
+      "Founded Scion Capital",
+      "Predicted 2008 financial crisis",
+      "Pioneered CDS against mortgage bonds",
+      "Continues making prescient calls",
+    ],
+    famousTrades: [
+      {
+        date: "2005-2008",
+        asset: "Subprime Mortgage CDS",
+        position: "short",
+        outcome: "Legendary Profit",
+        profitLoss: "+489%",
+        description:
+          "Purchased credit default swaps against subprime mortgages years before the housing crash, generating extraordinary returns.",
+      },
+    ],
+    quotes: [
+      {
+        text: "I look for value wherever it can be found. I don't care what the crowd thinks.",
+        source: "Interview",
+      },
+      {
+        text: "The late 90s almost forced me to identify myself as a value investor.",
+        source: "Letter to Investors",
+      },
+    ],
+    books: [],
+    socialLinks: [
+      { platform: "Twitter", url: "https://twitter.com/michaeljburry" },
+      { platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Michael_Burry" },
+    ],
+    status: "published",
+  },
+  {
+    name: "Peter Schiff",
+    slug: "peter-schiff",
+    photoUrl: "/images/traders/peter-schiff.jpg",
+    oneLiner: "Predicted 2008 Crisis - Gold Bug & Austrian Economist",
+    birthYear: 1963,
+    nationality: "American",
+    tradingStyle: "Macro & Commodities",
+    netWorth: "$70+ Million",
+    bio: `Peter Schiff is an economist, financial commentator, and CEO of Euro Pacific Capital. He gained fame for accurately predicting the 2008 financial crisis and is known for his bearish views on the US dollar and bullish stance on gold.
 
 ## Prescient Predictions
 
@@ -2182,49 +2524,58 @@ Schiff advocates for Austrian economics and believes in hard assets like gold an
 ## Media Presence
 
 Through his podcast, books, and frequent media appearances, Schiff has become one of the most recognized voices in contrarian investing and sound money advocacy.`,
-		philosophy: `"The government can't give you anything it doesn't first take from someone else."`,
-		achievements: [
-			'Predicted 2008 financial crisis',
-			'CEO of Euro Pacific Capital',
-			'Bestselling author',
-			'Popular financial commentator',
-			'Advocate for sound money',
-			'Ran for US Senate in 2010'
-		],
-		famousTrades: [
-			{
-				date: '2006-2008',
-				asset: 'Gold & Foreign Stocks',
-				position: 'long',
-				outcome: 'Crisis Protection',
-				profitLoss: 'Outperformed',
-				description: 'Positioned clients in gold and foreign assets ahead of the 2008 crisis, protecting against dollar weakness.'
-			}
-		],
-		quotes: [
-			{ text: 'The government can\'t give you anything it doesn\'t first take from someone else.', source: 'The Peter Schiff Show' },
-			{ text: 'Gold is money. Everything else is credit.', source: 'Interview' }
-		],
-		books: [
-			{ title: 'Crash Proof', year: 2007, description: 'How to profit from the coming economic collapse' },
-			{ title: 'The Real Crash', year: 2012, description: 'America\'s coming bankruptcy' }
-		],
-		socialLinks: [
-			{ platform: 'Twitter', url: 'https://twitter.com/PeterSchiff' },
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Peter_Schiff' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Simon Cawkwell',
-		slug: 'simon-cawkwell',
-		photoUrl: null,
-		oneLiner: 'Evil Knievil - Britain\'s Most Famous Short Seller',
-		birthYear: 1946,
-		nationality: 'British',
-		tradingStyle: 'Short Selling',
-		netWorth: '$50+ Million',
-		bio: `Simon Cawkwell, known by his trading pseudonym "Evil Knievil," is Britain's most famous short seller. He has made millions by identifying overvalued and fraudulent companies, often facing legal threats and public criticism for his bearish calls.
+    philosophy: `"The government can't give you anything it doesn't first take from someone else."`,
+    achievements: [
+      "Predicted 2008 financial crisis",
+      "CEO of Euro Pacific Capital",
+      "Bestselling author",
+      "Popular financial commentator",
+      "Advocate for sound money",
+      "Ran for US Senate in 2010",
+    ],
+    famousTrades: [
+      {
+        date: "2006-2008",
+        asset: "Gold & Foreign Stocks",
+        position: "long",
+        outcome: "Crisis Protection",
+        profitLoss: "Outperformed",
+        description:
+          "Positioned clients in gold and foreign assets ahead of the 2008 crisis, protecting against dollar weakness.",
+      },
+    ],
+    quotes: [
+      {
+        text: "The government can't give you anything it doesn't first take from someone else.",
+        source: "The Peter Schiff Show",
+      },
+      { text: "Gold is money. Everything else is credit.", source: "Interview" },
+    ],
+    books: [
+      {
+        title: "Crash Proof",
+        year: 2007,
+        description: "How to profit from the coming economic collapse",
+      },
+      { title: "The Real Crash", year: 2012, description: "America's coming bankruptcy" },
+    ],
+    socialLinks: [
+      { platform: "Twitter", url: "https://twitter.com/PeterSchiff" },
+      { platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Peter_Schiff" },
+    ],
+    status: "published",
+  },
+  {
+    name: "Simon Cawkwell",
+    slug: "simon-cawkwell",
+    photoUrl:
+      "https://static.standard.co.uk/s3fs-public/thumbnails/image/2014/07/28/13/Standard13.jpg?width=1200",
+    oneLiner: "Evil Knievil - Britain's Most Famous Short Seller",
+    birthYear: 1946,
+    nationality: "British",
+    tradingStyle: "Short Selling",
+    netWorth: "$50+ Million",
+    bio: `Simon Cawkwell, known by his trading pseudonym "Evil Knievil," is Britain's most famous short seller. He has made millions by identifying overvalued and fraudulent companies, often facing legal threats and public criticism for his bearish calls.
 
 ## The Evil Knievil Persona
 
@@ -2237,48 +2588,54 @@ Cawkwell has successfully shorted numerous companies that later collapsed, inclu
 ## Controversial Figure
 
 Short sellers are often vilified, and Cawkwell has faced his share of criticism. However, he argues that short sellers perform a valuable service by identifying overvalued and fraudulent companies.`,
-		philosophy: `"The market is full of overvalued rubbish. My job is to find it and profit when reality catches up."`,
-		achievements: [
-			'Britain\'s most famous short seller',
-			'Shorted Northern Rock before collapse',
-			'Decades of successful short selling',
-			'Uncovered numerous frauds',
-			'Known as "Evil Knievil"',
-			'Influential market commentator'
-		],
-		famousTrades: [
-			{
-				date: '2007',
-				asset: 'Northern Rock',
-				position: 'short',
-				outcome: 'Major Profit',
-				profitLoss: 'Significant',
-				description: 'Shorted Northern Rock before its collapse and subsequent nationalization during the financial crisis.'
-			}
-		],
-		quotes: [
-			{ text: 'The market is full of overvalued rubbish. My job is to find it and profit when reality catches up.', source: 'Interview' },
-			{ text: 'Short sellers are the market\'s immune system.', source: 'Financial Times' }
-		],
-		books: [
-			{ title: 'Evil\'s Good: A Worse-Selling Book', year: 2012, description: 'His approach to short selling' }
-		],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Simon_Cawkwell' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'T. Boone Pickens',
-		slug: 't-boone-pickens',
-		photoUrl: '/images/traders/t-boone-pickens.jpg',
-		oneLiner: 'The Oracle of Oil - Corporate Raider Turned Energy Titan',
-		birthYear: 1928,
-		deathYear: 2019,
-		nationality: 'American',
-		tradingStyle: 'Value Investing',
-		netWorth: '$500 Million (Peak: $1.4 Billion)',
-		bio: `T. Boone Pickens was an American business magnate and financier who made his fortune in the oil industry. He founded Mesa Petroleum and became famous as a corporate raider in the 1980s, later becoming an advocate for alternative energy.
+    philosophy: `"The market is full of overvalued rubbish. My job is to find it and profit when reality catches up."`,
+    achievements: [
+      "Britain's most famous short seller",
+      "Shorted Northern Rock before collapse",
+      "Decades of successful short selling",
+      "Uncovered numerous frauds",
+      'Known as "Evil Knievil"',
+      "Influential market commentator",
+    ],
+    famousTrades: [
+      {
+        date: "2007",
+        asset: "Northern Rock",
+        position: "short",
+        outcome: "Major Profit",
+        profitLoss: "Significant",
+        description:
+          "Shorted Northern Rock before its collapse and subsequent nationalization during the financial crisis.",
+      },
+    ],
+    quotes: [
+      {
+        text: "The market is full of overvalued rubbish. My job is to find it and profit when reality catches up.",
+        source: "Interview",
+      },
+      { text: "Short sellers are the market's immune system.", source: "Financial Times" },
+    ],
+    books: [
+      {
+        title: "Evil's Good: A Worse-Selling Book",
+        year: 2012,
+        description: "His approach to short selling",
+      },
+    ],
+    socialLinks: [{ platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Simon_Cawkwell" }],
+    status: "published",
+  },
+  {
+    name: "T. Boone Pickens",
+    slug: "t-boone-pickens",
+    photoUrl: "/images/traders/t-boone-pickens.jpg",
+    oneLiner: "The Oracle of Oil - Corporate Raider Turned Energy Titan",
+    birthYear: 1928,
+    deathYear: 2019,
+    nationality: "American",
+    tradingStyle: "Value Investing",
+    netWorth: "$500 Million (Peak: $1.4 Billion)",
+    bio: `T. Boone Pickens was an American business magnate and financier who made his fortune in the oil industry. He founded Mesa Petroleum and became famous as a corporate raider in the 1980s, later becoming an advocate for alternative energy.
 
 ## Early Career
 
@@ -2295,48 +2652,57 @@ Later in life, Pickens became a vocal advocate for American energy independence 
 ## Trading Philosophy
 
 Pickens was known for his contrarian bets on energy prices and his willingness to take massive positions when he saw value. He made and lost several fortunes, demonstrating remarkable resilience throughout his career.`,
-		philosophy: `"The older I get, the more I see a straight path where I want to go. If you're going to hunt elephants, don't get off the trail for a rabbit."`,
-		achievements: [
-			'Founded Mesa Petroleum',
-			'Pioneer of shareholder activism',
-			'Made billions in corporate raids',
-			'Donated over $1 billion to charity',
-			'Advocate for energy independence',
-			'Built and lost multiple fortunes'
-		],
-		famousTrades: [
-			{
-				date: '1984',
-				asset: 'Gulf Oil',
-				position: 'long',
-				outcome: 'Major Profit',
-				profitLoss: '+$760 Million',
-				description: 'His takeover attempt of Gulf Oil led to its acquisition by Chevron, generating massive profits for shareholders.'
-			}
-		],
-		quotes: [
-			{ text: 'The older I get, the more I see a straight path where I want to go. If you\'re going to hunt elephants, don\'t get off the trail for a rabbit.', source: 'Interview' },
-			{ text: 'A fool with a plan can beat a genius without one.', source: 'The First Billion Is the Hardest' }
-		],
-		books: [
-			{ title: 'The First Billion Is the Hardest', year: 2008, description: 'Reflections on a life of comebacks and America\'s energy future' }
-		],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/T._Boone_Pickens' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'John Templeton',
-		slug: 'john-templeton',
-		photoUrl: null,
-		oneLiner: 'Pioneer of Global Investing and Maximum Pessimism',
-		birthYear: 1912,
-		deathYear: 2008,
-		nationality: 'American/British',
-		tradingStyle: 'Value Investing',
-		netWorth: '$500 Million',
-		bio: `Sir John Templeton was a legendary investor and mutual fund pioneer who created some of the world's largest and most successful international investment funds. He was known for his contrarian approach and his famous strategy of buying at the "point of maximum pessimism."
+    philosophy: `"The older I get, the more I see a straight path where I want to go. If you're going to hunt elephants, don't get off the trail for a rabbit."`,
+    achievements: [
+      "Founded Mesa Petroleum",
+      "Pioneer of shareholder activism",
+      "Made billions in corporate raids",
+      "Donated over $1 billion to charity",
+      "Advocate for energy independence",
+      "Built and lost multiple fortunes",
+    ],
+    famousTrades: [
+      {
+        date: "1984",
+        asset: "Gulf Oil",
+        position: "long",
+        outcome: "Major Profit",
+        profitLoss: "+$760 Million",
+        description:
+          "His takeover attempt of Gulf Oil led to its acquisition by Chevron, generating massive profits for shareholders.",
+      },
+    ],
+    quotes: [
+      {
+        text: "The older I get, the more I see a straight path where I want to go. If you're going to hunt elephants, don't get off the trail for a rabbit.",
+        source: "Interview",
+      },
+      {
+        text: "A fool with a plan can beat a genius without one.",
+        source: "The First Billion Is the Hardest",
+      },
+    ],
+    books: [
+      {
+        title: "The First Billion Is the Hardest",
+        year: 2008,
+        description: "Reflections on a life of comebacks and America's energy future",
+      },
+    ],
+    socialLinks: [{ platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/T._Boone_Pickens" }],
+    status: "published",
+  },
+  {
+    name: "John Templeton",
+    slug: "john-templeton",
+    photoUrl: "https://www.templeton.org/wp-content/uploads/2017/01/Sir-John-3-1.jpg",
+    oneLiner: "Pioneer of Global Investing and Maximum Pessimism",
+    birthYear: 1912,
+    deathYear: 2008,
+    nationality: "American/British",
+    tradingStyle: "Value Investing",
+    netWorth: "$500 Million",
+    bio: `Sir John Templeton was a legendary investor and mutual fund pioneer who created some of the world's largest and most successful international investment funds. He was known for his contrarian approach and his famous strategy of buying at the "point of maximum pessimism."
 
 ## Early Brilliance
 
@@ -2353,48 +2719,58 @@ Templeton was one of the first investors to look beyond U.S. borders, investing 
 ## Philanthropy
 
 After selling his funds to Franklin Resources in 1992, Templeton devoted his wealth to philanthropy, particularly through the Templeton Foundation, which supports research on the intersection of science and spirituality.`,
-		philosophy: `"The time of maximum pessimism is the best time to buy, and the time of maximum optimism is the best time to sell."`,
-		achievements: [
-			'Created Templeton Growth Fund',
-			'Pioneer of international investing',
-			'Knighted by Queen Elizabeth II',
-			'Turned $10,000 into $2 million for investors',
-			'Founded Templeton Foundation',
-			'Named "greatest stock picker of the century" by Money magazine'
-		],
-		famousTrades: [
-			{
-				date: '1939',
-				asset: '104 Stocks Under $1',
-				position: 'long',
-				outcome: 'Major Profit',
-				profitLoss: '+400%',
-				description: 'Bought every NYSE stock under $1 at the outbreak of WWII, quadrupling his money as the economy recovered.'
-			}
-		],
-		quotes: [
-			{ text: 'The time of maximum pessimism is the best time to buy, and the time of maximum optimism is the best time to sell.', source: 'Investment Philosophy' },
-			{ text: 'Bull markets are born on pessimism, grow on skepticism, mature on optimism, and die on euphoria.', source: 'Interview' }
-		],
-		books: [
-			{ title: 'Investing the Templeton Way', year: 2008, description: 'The market-beating strategies of value investing\'s legendary bargain hunter' }
-		],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/John_Templeton' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Philip Fisher',
-		slug: 'philip-fisher',
-		photoUrl: null,
-		oneLiner: 'Father of Growth Investing and Scuttlebutt Research',
-		birthYear: 1907,
-		deathYear: 2004,
-		nationality: 'American',
-		tradingStyle: 'Momentum Growth',
-		netWorth: '$100+ Million',
-		bio: `Philip Fisher was one of the most influential investors of all time and the father of growth stock investing. His book "Common Stocks and Uncommon Profits" is considered essential reading for serious investors, and Warren Buffett credits Fisher as a major influence on his investment philosophy.
+    philosophy: `"The time of maximum pessimism is the best time to buy, and the time of maximum optimism is the best time to sell."`,
+    achievements: [
+      "Created Templeton Growth Fund",
+      "Pioneer of international investing",
+      "Knighted by Queen Elizabeth II",
+      "Turned $10,000 into $2 million for investors",
+      "Founded Templeton Foundation",
+      'Named "greatest stock picker of the century" by Money magazine',
+    ],
+    famousTrades: [
+      {
+        date: "1939",
+        asset: "104 Stocks Under $1",
+        position: "long",
+        outcome: "Major Profit",
+        profitLoss: "+400%",
+        description:
+          "Bought every NYSE stock under $1 at the outbreak of WWII, quadrupling his money as the economy recovered.",
+      },
+    ],
+    quotes: [
+      {
+        text: "The time of maximum pessimism is the best time to buy, and the time of maximum optimism is the best time to sell.",
+        source: "Investment Philosophy",
+      },
+      {
+        text: "Bull markets are born on pessimism, grow on skepticism, mature on optimism, and die on euphoria.",
+        source: "Interview",
+      },
+    ],
+    books: [
+      {
+        title: "Investing the Templeton Way",
+        year: 2008,
+        description: "The market-beating strategies of value investing's legendary bargain hunter",
+      },
+    ],
+    socialLinks: [{ platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/John_Templeton" }],
+    status: "published",
+  },
+  {
+    name: "Philip Fisher",
+    slug: "philip-fisher",
+    photoUrl:
+      "https://i0.wp.com/investidoremvalor.com/wp-content/uploads/2022/01/philip-fisher-04.jpg?resize=760%2C570&ssl=1",
+    oneLiner: "Father of Growth Investing and Scuttlebutt Research",
+    birthYear: 1907,
+    deathYear: 2004,
+    nationality: "American",
+    tradingStyle: "Momentum Growth",
+    netWorth: "$100+ Million",
+    bio: `Philip Fisher was one of the most influential investors of all time and the father of growth stock investing. His book "Common Stocks and Uncommon Profits" is considered essential reading for serious investors, and Warren Buffett credits Fisher as a major influence on his investment philosophy.
 
 ## The Scuttlebutt Method
 
@@ -2411,47 +2787,56 @@ Fisher's most famous investment was Motorola, which he bought in 1955 and held u
 ## Influence on Buffett
 
 Warren Buffett has said he is "85% Benjamin Graham and 15% Philip Fisher." While Graham taught Buffett about value, Fisher taught him about quality—the importance of buying great businesses, not just cheap stocks.`,
-		philosophy: `"The stock market is filled with individuals who know the price of everything, but the value of nothing."`,
-		achievements: [
-			'Father of growth investing',
-			'Author of "Common Stocks and Uncommon Profits"',
-			'Pioneered scuttlebutt research method',
-			'Major influence on Warren Buffett',
-			'Held Motorola for 50+ years',
-			'Founded Fisher & Company in 1931'
-		],
-		famousTrades: [
-			{
-				date: '1955-2004',
-				asset: 'Motorola',
-				position: 'long',
-				outcome: 'Legendary Hold',
-				profitLoss: 'Multi-thousand %',
-				description: 'Bought Motorola in 1955 and held until his death, demonstrating the power of long-term growth investing.'
-			}
-		],
-		quotes: [
-			{ text: 'The stock market is filled with individuals who know the price of everything, but the value of nothing.', source: 'Common Stocks and Uncommon Profits' },
-			{ text: 'I don\'t want a lot of good investments; I want a few outstanding ones.', source: 'Interview' }
-		],
-		books: [
-			{ title: 'Common Stocks and Uncommon Profits', year: 1958, description: 'The classic guide to growth stock investing' }
-		],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Philip_Fisher' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Seth Klarman',
-		slug: 'seth-klarman',
-		photoUrl: '/images/traders/seth-klarman.jpg',
-		oneLiner: 'The Oracle of Boston - Value Investing\'s Quiet Giant',
-		birthYear: 1957,
-		nationality: 'American',
-		tradingStyle: 'Value Investing',
-		netWorth: '$1.5 Billion',
-		bio: `Seth Klarman is the founder and CEO of Baupost Group, one of the largest and most successful hedge funds in the world. Known for his patient, value-oriented approach and his willingness to hold large cash positions, Klarman has generated exceptional returns while taking below-average risk.
+    philosophy: `"The stock market is filled with individuals who know the price of everything, but the value of nothing."`,
+    achievements: [
+      "Father of growth investing",
+      'Author of "Common Stocks and Uncommon Profits"',
+      "Pioneered scuttlebutt research method",
+      "Major influence on Warren Buffett",
+      "Held Motorola for 50+ years",
+      "Founded Fisher & Company in 1931",
+    ],
+    famousTrades: [
+      {
+        date: "1955-2004",
+        asset: "Motorola",
+        position: "long",
+        outcome: "Legendary Hold",
+        profitLoss: "Multi-thousand %",
+        description:
+          "Bought Motorola in 1955 and held until his death, demonstrating the power of long-term growth investing.",
+      },
+    ],
+    quotes: [
+      {
+        text: "The stock market is filled with individuals who know the price of everything, but the value of nothing.",
+        source: "Common Stocks and Uncommon Profits",
+      },
+      {
+        text: "I don't want a lot of good investments; I want a few outstanding ones.",
+        source: "Interview",
+      },
+    ],
+    books: [
+      {
+        title: "Common Stocks and Uncommon Profits",
+        year: 1958,
+        description: "The classic guide to growth stock investing",
+      },
+    ],
+    socialLinks: [{ platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Philip_Fisher" }],
+    status: "published",
+  },
+  {
+    name: "Seth Klarman",
+    slug: "seth-klarman",
+    photoUrl: "/images/traders/seth-klarman.jpg",
+    oneLiner: "The Oracle of Boston - Value Investing's Quiet Giant",
+    birthYear: 1957,
+    nationality: "American",
+    tradingStyle: "Value Investing",
+    netWorth: "$1.5 Billion",
+    bio: `Seth Klarman is the founder and CEO of Baupost Group, one of the largest and most successful hedge funds in the world. Known for his patient, value-oriented approach and his willingness to hold large cash positions, Klarman has generated exceptional returns while taking below-average risk.
 
 ## Baupost Group
 
@@ -2468,47 +2853,56 @@ Klarman is known for investing in distressed debt, liquidations, and other compl
 ## Risk Management
 
 Unlike many hedge fund managers who use leverage to amplify returns, Klarman focuses obsessively on avoiding losses. His willingness to hold cash when opportunities are scarce has been key to his long-term success.`,
-		philosophy: `"The stock market is the story of cycles and of the human behavior that is responsible for overreactions in both directions."`,
-		achievements: [
-			'Founded Baupost Group',
-			'Manages $30+ billion',
-			'~20% annual returns since 1982',
-			'Author of "Margin of Safety"',
-			'One of the most respected value investors',
-			'Known for holding large cash positions'
-		],
-		famousTrades: [
-			{
-				date: '2008-2009',
-				asset: 'Distressed Debt',
-				position: 'long',
-				outcome: 'Major Profit',
-				profitLoss: 'Exceptional',
-				description: 'Deployed cash reserves into distressed securities during the financial crisis, generating exceptional returns.'
-			}
-		],
-		quotes: [
-			{ text: 'The stock market is the story of cycles and of the human behavior that is responsible for overreactions in both directions.', source: 'Margin of Safety' },
-			{ text: 'Value investing is at its core the marriage of a contrarian streak and a calculator.', source: 'Baupost Letters' }
-		],
-		books: [
-			{ title: 'Margin of Safety', year: 1991, description: 'Risk-averse value investing strategies for the thoughtful investor' }
-		],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Seth_Klarman' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Howard Marks',
-		slug: 'howard-marks',
-		photoUrl: '/images/traders/howard-marks.jpg',
-		oneLiner: 'Master of Market Cycles and Risk Assessment',
-		birthYear: 1946,
-		nationality: 'American',
-		tradingStyle: 'Value Investing',
-		netWorth: '$2.2 Billion',
-		bio: `Howard Marks is the co-founder and co-chairman of Oaktree Capital Management, one of the largest investors in distressed securities worldwide. He is renowned for his insightful memos to clients, which have become must-read material for investors globally.
+    philosophy: `"The stock market is the story of cycles and of the human behavior that is responsible for overreactions in both directions."`,
+    achievements: [
+      "Founded Baupost Group",
+      "Manages $30+ billion",
+      "~20% annual returns since 1982",
+      'Author of "Margin of Safety"',
+      "One of the most respected value investors",
+      "Known for holding large cash positions",
+    ],
+    famousTrades: [
+      {
+        date: "2008-2009",
+        asset: "Distressed Debt",
+        position: "long",
+        outcome: "Major Profit",
+        profitLoss: "Exceptional",
+        description:
+          "Deployed cash reserves into distressed securities during the financial crisis, generating exceptional returns.",
+      },
+    ],
+    quotes: [
+      {
+        text: "The stock market is the story of cycles and of the human behavior that is responsible for overreactions in both directions.",
+        source: "Margin of Safety",
+      },
+      {
+        text: "Value investing is at its core the marriage of a contrarian streak and a calculator.",
+        source: "Baupost Letters",
+      },
+    ],
+    books: [
+      {
+        title: "Margin of Safety",
+        year: 1991,
+        description: "Risk-averse value investing strategies for the thoughtful investor",
+      },
+    ],
+    socialLinks: [{ platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Seth_Klarman" }],
+    status: "published",
+  },
+  {
+    name: "Howard Marks",
+    slug: "howard-marks",
+    photoUrl: "/images/traders/howard-marks.jpg",
+    oneLiner: "Master of Market Cycles and Risk Assessment",
+    birthYear: 1946,
+    nationality: "American",
+    tradingStyle: "Value Investing",
+    netWorth: "$2.2 Billion",
+    bio: `Howard Marks is the co-founder and co-chairman of Oaktree Capital Management, one of the largest investors in distressed securities worldwide. He is renowned for his insightful memos to clients, which have become must-read material for investors globally.
 
 ## Oaktree Capital
 
@@ -2525,48 +2919,61 @@ Marks popularized the concept of "second-level thinking"—the idea that success
 ## Market Cycles
 
 His book "Mastering the Market Cycle" explains how understanding where we are in various cycles can improve investment results. Marks emphasizes that while we can't predict cycles, we can prepare for them.`,
-		philosophy: `"The most important thing is to be aware of the pendulum of investor psychology and to position yourself accordingly."`,
-		achievements: [
-			'Co-founded Oaktree Capital',
-			'Manages $150+ billion',
-			'Author of influential investor memos',
-			'Bestselling author',
-			'Pioneer in distressed debt investing',
-			'Trusted advisor to major institutions'
-		],
-		famousTrades: [
-			{
-				date: '2008',
-				asset: 'Distressed Debt',
-				position: 'long',
-				outcome: 'Exceptional Returns',
-				profitLoss: '+50%+ in 2009',
-				description: 'Aggressively deployed capital into distressed securities during the financial crisis, capturing the recovery.'
-			}
-		],
-		quotes: [
-			{ text: 'The most important thing is to be aware of the pendulum of investor psychology and to position yourself accordingly.', source: 'The Most Important Thing' },
-			{ text: 'You can\'t predict. You can prepare.', source: 'Mastering the Market Cycle' }
-		],
-		books: [
-			{ title: 'The Most Important Thing', year: 2011, description: 'Uncommon sense for the thoughtful investor' },
-			{ title: 'Mastering the Market Cycle', year: 2018, description: 'Getting the odds on your side' }
-		],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Howard_Marks_(investor)' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Joel Greenblatt',
-		slug: 'joel-greenblatt',
-		photoUrl: null,
-		oneLiner: 'Creator of the Magic Formula and Gotham Capital Legend',
-		birthYear: 1957,
-		nationality: 'American',
-		tradingStyle: 'Value Investing',
-		netWorth: '$500 Million',
-		bio: `Joel Greenblatt is an American investor, hedge fund manager, and professor at Columbia Business School. He is best known for his "Magic Formula" investing strategy and for generating extraordinary returns at Gotham Capital.
+    philosophy: `"The most important thing is to be aware of the pendulum of investor psychology and to position yourself accordingly."`,
+    achievements: [
+      "Co-founded Oaktree Capital",
+      "Manages $150+ billion",
+      "Author of influential investor memos",
+      "Bestselling author",
+      "Pioneer in distressed debt investing",
+      "Trusted advisor to major institutions",
+    ],
+    famousTrades: [
+      {
+        date: "2008",
+        asset: "Distressed Debt",
+        position: "long",
+        outcome: "Exceptional Returns",
+        profitLoss: "+50%+ in 2009",
+        description:
+          "Aggressively deployed capital into distressed securities during the financial crisis, capturing the recovery.",
+      },
+    ],
+    quotes: [
+      {
+        text: "The most important thing is to be aware of the pendulum of investor psychology and to position yourself accordingly.",
+        source: "The Most Important Thing",
+      },
+      { text: "You can't predict. You can prepare.", source: "Mastering the Market Cycle" },
+    ],
+    books: [
+      {
+        title: "The Most Important Thing",
+        year: 2011,
+        description: "Uncommon sense for the thoughtful investor",
+      },
+      {
+        title: "Mastering the Market Cycle",
+        year: 2018,
+        description: "Getting the odds on your side",
+      },
+    ],
+    socialLinks: [
+      { platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Howard_Marks_(investor)" },
+    ],
+    status: "published",
+  },
+  {
+    name: "Joel Greenblatt",
+    slug: "joel-greenblatt",
+    photoUrl:
+      "https://images.squarespace-cdn.com/content/v1/65d4bd883a496c3da7bbd799/25b33a5b-1b68-4fcb-9bb4-dbb7027bc688/Joel_Greenblatt-1.jpg",
+    oneLiner: "Creator of the Magic Formula and Gotham Capital Legend",
+    birthYear: 1957,
+    nationality: "American",
+    tradingStyle: "Value Investing",
+    netWorth: "$500 Million",
+    bio: `Joel Greenblatt is an American investor, hedge fund manager, and professor at Columbia Business School. He is best known for his "Magic Formula" investing strategy and for generating extraordinary returns at Gotham Capital.
 
 ## Gotham Capital
 
@@ -2583,48 +2990,62 @@ Greenblatt has taught at Columbia Business School for over 20 years, sharing his
 ## Special Situations
 
 Much of Gotham's success came from special situations investing—spinoffs, restructurings, and other corporate events that create mispricings. Greenblatt's book "You Can Be a Stock Market Genius" details these strategies.`,
-		philosophy: `"Choosing individual stocks without any idea of what you're looking for is like running through a dynamite factory with a burning match."`,
-		achievements: [
-			'40% annual returns at Gotham Capital',
-			'Created the Magic Formula',
-			'Professor at Columbia Business School',
-			'Bestselling author',
-			'Turned $7 million into $1 billion',
-			'Pioneer in special situations investing'
-		],
-		famousTrades: [
-			{
-				date: '1985-2005',
-				asset: 'Special Situations',
-				position: 'long',
-				outcome: 'Legendary Returns',
-				profitLoss: '+40% annually',
-				description: 'Generated 40% annual returns through spinoffs, restructurings, and other special situations.'
-			}
-		],
-		quotes: [
-			{ text: 'Choosing individual stocks without any idea of what you\'re looking for is like running through a dynamite factory with a burning match.', source: 'The Little Book That Beats the Market' },
-			{ text: 'Prices fluctuate more than values—so therein lies opportunity.', source: 'You Can Be a Stock Market Genius' }
-		],
-		books: [
-			{ title: 'You Can Be a Stock Market Genius', year: 1997, description: 'Uncover the secret hiding places of stock market profits' },
-			{ title: 'The Little Book That Beats the Market', year: 2005, description: 'The Magic Formula for investing' }
-		],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Joel_Greenblatt' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'David Einhorn',
-		slug: 'david-einhorn',
-		photoUrl: null,
-		oneLiner: 'Greenlight Capital Founder and Legendary Short Seller',
-		birthYear: 1968,
-		nationality: 'American',
-		tradingStyle: 'Value Investing',
-		netWorth: '$600 Million',
-		bio: `David Einhorn is the founder and president of Greenlight Capital, a long-short value-oriented hedge fund. He is known for his detailed research, his willingness to take controversial positions, and his famous short of Lehman Brothers before its collapse.
+    philosophy: `"Choosing individual stocks without any idea of what you're looking for is like running through a dynamite factory with a burning match."`,
+    achievements: [
+      "40% annual returns at Gotham Capital",
+      "Created the Magic Formula",
+      "Professor at Columbia Business School",
+      "Bestselling author",
+      "Turned $7 million into $1 billion",
+      "Pioneer in special situations investing",
+    ],
+    famousTrades: [
+      {
+        date: "1985-2005",
+        asset: "Special Situations",
+        position: "long",
+        outcome: "Legendary Returns",
+        profitLoss: "+40% annually",
+        description:
+          "Generated 40% annual returns through spinoffs, restructurings, and other special situations.",
+      },
+    ],
+    quotes: [
+      {
+        text: "Choosing individual stocks without any idea of what you're looking for is like running through a dynamite factory with a burning match.",
+        source: "The Little Book That Beats the Market",
+      },
+      {
+        text: "Prices fluctuate more than values—so therein lies opportunity.",
+        source: "You Can Be a Stock Market Genius",
+      },
+    ],
+    books: [
+      {
+        title: "You Can Be a Stock Market Genius",
+        year: 1997,
+        description: "Uncover the secret hiding places of stock market profits",
+      },
+      {
+        title: "The Little Book That Beats the Market",
+        year: 2005,
+        description: "The Magic Formula for investing",
+      },
+    ],
+    socialLinks: [{ platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Joel_Greenblatt" }],
+    status: "published",
+  },
+  {
+    name: "David Einhorn",
+    slug: "david-einhorn",
+    photoUrl:
+      "https://image.cnbcfm.com/api/v1/image/102624319-748530a75baa43f0d85c49ec6a7957e464bed438.jpg?h=1080&v=1529468317&w=1920",
+    oneLiner: "Greenlight Capital Founder and Legendary Short Seller",
+    birthYear: 1968,
+    nationality: "American",
+    tradingStyle: "Value Investing",
+    netWorth: "$600 Million",
+    bio: `David Einhorn is the founder and president of Greenlight Capital, a long-short value-oriented hedge fund. He is known for his detailed research, his willingness to take controversial positions, and his famous short of Lehman Brothers before its collapse.
 
 ## Greenlight Capital
 
@@ -2641,47 +3062,58 @@ Before Lehman, Einhorn waged a years-long battle against Allied Capital, a busin
 ## Poker Player
 
 Einhorn is also an accomplished poker player, finishing 18th in the 2006 World Series of Poker Main Event and donating his $659,730 winnings to charity.`,
-		philosophy: `"The key to long-term survival and prosperity has a lot to do with the money management techniques incorporated into the technical system."`,
-		achievements: [
-			'Founded Greenlight Capital',
-			'Famous Lehman Brothers short',
-			'Exposed Allied Capital fraud',
-			'Bestselling author',
-			'Professional poker player',
-			'16% annualized returns'
-		],
-		famousTrades: [
-			{
-				date: '2008',
-				asset: 'Lehman Brothers',
-				position: 'short',
-				outcome: 'Major Profit',
-				profitLoss: 'Exceptional',
-				description: 'Publicly shorted Lehman Brothers months before its collapse, citing accounting concerns.'
-			}
-		],
-		quotes: [
-			{ text: 'The key to long-term survival and prosperity has a lot to do with the money management techniques incorporated into the technical system.', source: 'Interview' },
-			{ text: 'Sometimes the market gives you lemons. The key is to make lemonade.', source: 'Greenlight Letters' }
-		],
-		books: [
-			{ title: 'Fooling Some of the People All of the Time', year: 2008, description: 'A long short story about Allied Capital' }
-		],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/David_Einhorn_(businessman)' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Bill Ackman',
-		slug: 'bill-ackman',
-		photoUrl: '/images/traders/bill-ackman.jpg',
-		oneLiner: 'Pershing Square Activist and High-Conviction Investor',
-		birthYear: 1966,
-		nationality: 'American',
-		tradingStyle: 'Value Investing',
-		netWorth: '$3.6 Billion',
-		bio: `Bill Ackman is the founder and CEO of Pershing Square Capital Management, a hedge fund known for taking large, concentrated positions in companies and pushing for changes to unlock value. He is one of the most prominent activist investors of his generation.
+    philosophy: `"The key to long-term survival and prosperity has a lot to do with the money management techniques incorporated into the technical system."`,
+    achievements: [
+      "Founded Greenlight Capital",
+      "Famous Lehman Brothers short",
+      "Exposed Allied Capital fraud",
+      "Bestselling author",
+      "Professional poker player",
+      "16% annualized returns",
+    ],
+    famousTrades: [
+      {
+        date: "2008",
+        asset: "Lehman Brothers",
+        position: "short",
+        outcome: "Major Profit",
+        profitLoss: "Exceptional",
+        description:
+          "Publicly shorted Lehman Brothers months before its collapse, citing accounting concerns.",
+      },
+    ],
+    quotes: [
+      {
+        text: "The key to long-term survival and prosperity has a lot to do with the money management techniques incorporated into the technical system.",
+        source: "Interview",
+      },
+      {
+        text: "Sometimes the market gives you lemons. The key is to make lemonade.",
+        source: "Greenlight Letters",
+      },
+    ],
+    books: [
+      {
+        title: "Fooling Some of the People All of the Time",
+        year: 2008,
+        description: "A long short story about Allied Capital",
+      },
+    ],
+    socialLinks: [
+      { platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/David_Einhorn_(businessman)" },
+    ],
+    status: "published",
+  },
+  {
+    name: "Bill Ackman",
+    slug: "bill-ackman",
+    photoUrl: "/images/traders/bill-ackman.jpg",
+    oneLiner: "Pershing Square Activist and High-Conviction Investor",
+    birthYear: 1966,
+    nationality: "American",
+    tradingStyle: "Value Investing",
+    netWorth: "$3.6 Billion",
+    bio: `Bill Ackman is the founder and CEO of Pershing Square Capital Management, a hedge fund known for taking large, concentrated positions in companies and pushing for changes to unlock value. He is one of the most prominent activist investors of his generation.
 
 ## Pershing Square
 
@@ -2698,48 +3130,59 @@ Ackman's $1 billion short of Herbalife became one of the most public hedge fund 
 ## Transparency
 
 Unlike most hedge fund managers, Ackman is unusually public about his positions and reasoning. He regularly presents his investment theses at conferences and on social media.`,
-		philosophy: `"I look for simple businesses with high barriers to entry, predictable growth, and strong free cash flow."`,
-		achievements: [
-			'Founded Pershing Square Capital',
-			'$2.6 billion COVID hedge profit',
-			'Successful Canadian Pacific investment',
-			'Prominent activist investor',
-			'Transparent investment approach',
-			'Major philanthropist'
-		],
-		famousTrades: [
-			{
-				date: 'March 2020',
-				asset: 'Credit Default Swaps',
-				position: 'long',
-				outcome: 'Legendary Trade',
-				profitLoss: '+$2.6 Billion',
-				description: 'Turned $27 million into $2.6 billion in three weeks by hedging against COVID market crash.'
-			}
-		],
-		quotes: [
-			{ text: 'I look for simple businesses with high barriers to entry, predictable growth, and strong free cash flow.', source: 'Interview' },
-			{ text: 'Activism is really about buying a stake in a company and working to improve it.', source: 'CNBC' }
-		],
-		books: [
-			{ title: 'Confidence Game', year: 2010, description: 'How a hedge fund manager called Wall Street\'s bluff (about Ackman)' }
-		],
-		socialLinks: [
-			{ platform: 'Twitter', url: 'https://twitter.com/BillAckman' },
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Bill_Ackman' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Dan Loeb',
-		slug: 'dan-loeb',
-		photoUrl: null,
-		oneLiner: 'Third Point Founder and Activist Investor Extraordinaire',
-		birthYear: 1961,
-		nationality: 'American',
-		tradingStyle: 'Value Investing',
-		netWorth: '$4.4 Billion',
-		bio: `Daniel Loeb is the founder and CEO of Third Point LLC, a New York-based hedge fund with approximately $15 billion in assets under management. He is known for his activist campaigns, his sharp pen in investor letters, and his ability to generate strong returns across market cycles.
+    philosophy: `"I look for simple businesses with high barriers to entry, predictable growth, and strong free cash flow."`,
+    achievements: [
+      "Founded Pershing Square Capital",
+      "$2.6 billion COVID hedge profit",
+      "Successful Canadian Pacific investment",
+      "Prominent activist investor",
+      "Transparent investment approach",
+      "Major philanthropist",
+    ],
+    famousTrades: [
+      {
+        date: "March 2020",
+        asset: "Credit Default Swaps",
+        position: "long",
+        outcome: "Legendary Trade",
+        profitLoss: "+$2.6 Billion",
+        description:
+          "Turned $27 million into $2.6 billion in three weeks by hedging against COVID market crash.",
+      },
+    ],
+    quotes: [
+      {
+        text: "I look for simple businesses with high barriers to entry, predictable growth, and strong free cash flow.",
+        source: "Interview",
+      },
+      {
+        text: "Activism is really about buying a stake in a company and working to improve it.",
+        source: "CNBC",
+      },
+    ],
+    books: [
+      {
+        title: "Confidence Game",
+        year: 2010,
+        description: "How a hedge fund manager called Wall Street's bluff (about Ackman)",
+      },
+    ],
+    socialLinks: [
+      { platform: "Twitter", url: "https://twitter.com/BillAckman" },
+      { platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Bill_Ackman" },
+    ],
+    status: "published",
+  },
+  {
+    name: "Dan Loeb",
+    slug: "dan-loeb",
+    photoUrl: "https://img2.storyblok.com/768x835/f/124960/3047x1827/b8a4d86887/dan-loeb-1.jpg",
+    oneLiner: "Third Point Founder and Activist Investor Extraordinaire",
+    birthYear: 1961,
+    nationality: "American",
+    tradingStyle: "Value Investing",
+    netWorth: "$4.4 Billion",
+    bio: `Daniel Loeb is the founder and CEO of Third Point LLC, a New York-based hedge fund with approximately $15 billion in assets under management. He is known for his activist campaigns, his sharp pen in investor letters, and his ability to generate strong returns across market cycles.
 
 ## Third Point
 
@@ -2756,46 +3199,48 @@ Loeb is known for his colorful, sometimes scathing letters to company management
 ## Investment Style
 
 Third Point employs an event-driven, value-oriented strategy, investing in equities, credit, and structured products. Loeb is known for his ability to identify catalysts that will unlock value.`,
-		philosophy: `"We seek to invest in companies where we can identify a catalyst that will unlock value."`,
-		achievements: [
-			'Founded Third Point LLC',
-			'Manages $15+ billion',
-			'~15% annualized returns',
-			'Successful activist campaigns',
-			'Famous investor letters',
-			'Yahoo board seat victory'
-		],
-		famousTrades: [
-			{
-				date: '2011-2012',
-				asset: 'Yahoo',
-				position: 'long',
-				outcome: 'Major Profit',
-				profitLoss: '+100%+',
-				description: 'Activist campaign led to CEO change and board seats, unlocking significant value.'
-			}
-		],
-		quotes: [
-			{ text: 'We seek to invest in companies where we can identify a catalyst that will unlock value.', source: 'Third Point Letters' },
-			{ text: 'The best investments are often the most uncomfortable.', source: 'Interview' }
-		],
-		books: [],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Daniel_Loeb' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'John Neff',
-		slug: 'john-neff',
-		photoUrl: '/images/traders/john-neff.jpg',
-		oneLiner: 'Windsor Fund Legend with 31 Years of Market-Beating Returns',
-		birthYear: 1931,
-		deathYear: 2019,
-		nationality: 'American',
-		tradingStyle: 'Value Investing',
-		netWorth: '$100+ Million',
-		bio: `John Neff was one of the greatest mutual fund managers in history, managing the Vanguard Windsor Fund for 31 years and beating the S&P 500 in 22 of those years. His low P/E, contrarian approach made him a legend among value investors.
+    philosophy: `"We seek to invest in companies where we can identify a catalyst that will unlock value."`,
+    achievements: [
+      "Founded Third Point LLC",
+      "Manages $15+ billion",
+      "~15% annualized returns",
+      "Successful activist campaigns",
+      "Famous investor letters",
+      "Yahoo board seat victory",
+    ],
+    famousTrades: [
+      {
+        date: "2011-2012",
+        asset: "Yahoo",
+        position: "long",
+        outcome: "Major Profit",
+        profitLoss: "+100%+",
+        description:
+          "Activist campaign led to CEO change and board seats, unlocking significant value.",
+      },
+    ],
+    quotes: [
+      {
+        text: "We seek to invest in companies where we can identify a catalyst that will unlock value.",
+        source: "Third Point Letters",
+      },
+      { text: "The best investments are often the most uncomfortable.", source: "Interview" },
+    ],
+    books: [],
+    socialLinks: [{ platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Daniel_Loeb" }],
+    status: "published",
+  },
+  {
+    name: "John Neff",
+    slug: "john-neff",
+    photoUrl: "/images/traders/john-neff.jpg",
+    oneLiner: "Windsor Fund Legend with 31 Years of Market-Beating Returns",
+    birthYear: 1931,
+    deathYear: 2019,
+    nationality: "American",
+    tradingStyle: "Value Investing",
+    netWorth: "$100+ Million",
+    bio: `John Neff was one of the greatest mutual fund managers in history, managing the Vanguard Windsor Fund for 31 years and beating the S&P 500 in 22 of those years. His low P/E, contrarian approach made him a legend among value investors.
 
 ## Windsor Fund
 
@@ -2812,48 +3257,54 @@ Neff often bought stocks that others were selling, including Citicorp during the
 ## Quiet Legend
 
 Unlike many star fund managers, Neff shunned publicity and focused on his craft. He was known for his disciplined approach and his refusal to chase hot stocks or trends.`,
-		philosophy: `"It's not always easy to do what's not popular, but that's where you make your money."`,
-		achievements: [
-			'Managed Windsor Fund for 31 years',
-			'Beat S&P 500 in 22 of 31 years',
-			'Grew fund from $75M to $11B',
-			'5,546% total return vs 2,230% for S&P',
-			'Pioneer of low P/E investing',
-			'Vanguard legend'
-		],
-		famousTrades: [
-			{
-				date: '1991',
-				asset: 'Citicorp',
-				position: 'long',
-				outcome: 'Major Profit',
-				profitLoss: 'Multi-bagger',
-				description: 'Bought Citicorp during the Latin American debt crisis when others were fleeing, capturing the recovery.'
-			}
-		],
-		quotes: [
-			{ text: 'It\'s not always easy to do what\'s not popular, but that\'s where you make your money.', source: 'John Neff on Investing' },
-			{ text: 'Get \'em while they\'re cold.', source: 'Investment Philosophy' }
-		],
-		books: [
-			{ title: 'John Neff on Investing', year: 1999, description: 'Lessons from a legendary investor' }
-		],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/John_Neff' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Walter Schloss',
-		slug: 'walter-schloss',
-		photoUrl: null,
-		oneLiner: 'Ben Graham\'s Disciple with 50 Years of Value Investing',
-		birthYear: 1916,
-		deathYear: 2012,
-		nationality: 'American',
-		tradingStyle: 'Value Investing',
-		netWorth: '$100+ Million',
-		bio: `Walter Schloss was a legendary value investor who worked for Benjamin Graham and later ran his own partnership for nearly 50 years. His simple, disciplined approach to buying cheap stocks generated remarkable returns with minimal risk.
+    philosophy: `"It's not always easy to do what's not popular, but that's where you make your money."`,
+    achievements: [
+      "Managed Windsor Fund for 31 years",
+      "Beat S&P 500 in 22 of 31 years",
+      "Grew fund from $75M to $11B",
+      "5,546% total return vs 2,230% for S&P",
+      "Pioneer of low P/E investing",
+      "Vanguard legend",
+    ],
+    famousTrades: [
+      {
+        date: "1991",
+        asset: "Citicorp",
+        position: "long",
+        outcome: "Major Profit",
+        profitLoss: "Multi-bagger",
+        description:
+          "Bought Citicorp during the Latin American debt crisis when others were fleeing, capturing the recovery.",
+      },
+    ],
+    quotes: [
+      {
+        text: "It's not always easy to do what's not popular, but that's where you make your money.",
+        source: "John Neff on Investing",
+      },
+      { text: "Get 'em while they're cold.", source: "Investment Philosophy" },
+    ],
+    books: [
+      {
+        title: "John Neff on Investing",
+        year: 1999,
+        description: "Lessons from a legendary investor",
+      },
+    ],
+    socialLinks: [{ platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/John_Neff" }],
+    status: "published",
+  },
+  {
+    name: "Walter Schloss",
+    slug: "walter-schloss",
+    photoUrl: "https://files.sunoresearch.com.br/p/uploads/2018/08/walter-j-schloss-4.jpg",
+    oneLiner: "Ben Graham's Disciple with 50 Years of Value Investing",
+    birthYear: 1916,
+    deathYear: 2012,
+    nationality: "American",
+    tradingStyle: "Value Investing",
+    netWorth: "$100+ Million",
+    bio: `Walter Schloss was a legendary value investor who worked for Benjamin Graham and later ran his own partnership for nearly 50 years. His simple, disciplined approach to buying cheap stocks generated remarkable returns with minimal risk.
 
 ## Graham-Newman
 
@@ -2870,45 +3321,51 @@ Schloss's approach was remarkably simple: buy stocks trading below book value, d
 ## Warren Buffett's Endorsement
 
 In his famous 1984 essay "The Superinvestors of Graham-and-Doddsville," Buffett highlighted Schloss as proof that value investing works. Schloss was one of the "superinvestors" who consistently beat the market using Graham's principles.`,
-		philosophy: `"Try to buy assets at a discount rather than buying earnings. Earnings can change dramatically in a short time. Usually assets change slowly."`,
-		achievements: [
-			'Worked for Benjamin Graham',
-			'50 years of successful investing',
-			'16% annual returns vs 10% S&P',
-			'Featured in Buffett\'s Superinvestors essay',
-			'Never lost more than 10% in a year',
-			'Simple, disciplined approach'
-		],
-		famousTrades: [
-			{
-				date: '1955-2000',
-				asset: 'Diversified Value Stocks',
-				position: 'long',
-				outcome: 'Consistent Outperformance',
-				profitLoss: '+16% annually',
-				description: 'Consistently bought stocks below book value, generating market-beating returns for 45 years.'
-			}
-		],
-		quotes: [
-			{ text: 'Try to buy assets at a discount rather than buying earnings. Earnings can change dramatically in a short time. Usually assets change slowly.', source: 'Interview' },
-			{ text: 'I try to buy stocks that are unpopular. I like to buy stocks that nobody wants.', source: 'Outstanding Investor Digest' }
-		],
-		books: [],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Walter_Schloss' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Mohnish Pabrai',
-		slug: 'mohnish-pabrai',
-		photoUrl: null,
-		oneLiner: 'The Dhandho Investor - Buffett Disciple and Philanthropist',
-		birthYear: 1964,
-		nationality: 'American/Indian',
-		tradingStyle: 'Value Investing',
-		netWorth: '$200 Million',
-		bio: `Mohnish Pabrai is a value investor, author, and philanthropist who has achieved remarkable returns by following the investment principles of Warren Buffett and Charlie Munger. He is known for his "Dhandho" approach and his charitable work through the Dakshana Foundation.
+    philosophy: `"Try to buy assets at a discount rather than buying earnings. Earnings can change dramatically in a short time. Usually assets change slowly."`,
+    achievements: [
+      "Worked for Benjamin Graham",
+      "50 years of successful investing",
+      "16% annual returns vs 10% S&P",
+      "Featured in Buffett's Superinvestors essay",
+      "Never lost more than 10% in a year",
+      "Simple, disciplined approach",
+    ],
+    famousTrades: [
+      {
+        date: "1955-2000",
+        asset: "Diversified Value Stocks",
+        position: "long",
+        outcome: "Consistent Outperformance",
+        profitLoss: "+16% annually",
+        description:
+          "Consistently bought stocks below book value, generating market-beating returns for 45 years.",
+      },
+    ],
+    quotes: [
+      {
+        text: "Try to buy assets at a discount rather than buying earnings. Earnings can change dramatically in a short time. Usually assets change slowly.",
+        source: "Interview",
+      },
+      {
+        text: "I try to buy stocks that are unpopular. I like to buy stocks that nobody wants.",
+        source: "Outstanding Investor Digest",
+      },
+    ],
+    books: [],
+    socialLinks: [{ platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Walter_Schloss" }],
+    status: "published",
+  },
+  {
+    name: "Mohnish Pabrai",
+    slug: "mohnish-pabrai",
+    photoUrl:
+      "https://cdn.prod.website-files.com/6913ba09c594c4cd77f9d47f/691c3c499915d5878e9e12f0_20251009-mp-profile-picture-vf_orig.jpg",
+    oneLiner: "The Dhandho Investor - Buffett Disciple and Philanthropist",
+    birthYear: 1964,
+    nationality: "American/Indian",
+    tradingStyle: "Value Investing",
+    netWorth: "$200 Million",
+    bio: `Mohnish Pabrai is a value investor, author, and philanthropist who has achieved remarkable returns by following the investment principles of Warren Buffett and Charlie Munger. He is known for his "Dhandho" approach and his charitable work through the Dakshana Foundation.
 
 ## Pabrai Investment Funds
 
@@ -2925,49 +3382,59 @@ In 2007, Pabrai and Guy Spier paid $650,100 at a charity auction to have lunch w
 ## Dakshana Foundation
 
 Pabrai founded the Dakshana Foundation to help underprivileged students in India gain admission to top engineering schools. The foundation has helped thousands of students transform their lives.`,
-		philosophy: `"Heads I win, tails I don't lose much. That's the Dhandho framework."`,
-		achievements: [
-			'1,100%+ returns from 2000-2018',
-			'Author of "The Dhandho Investor"',
-			'Paid $650,100 for lunch with Buffett',
-			'Founded Dakshana Foundation',
-			'Helped thousands of students',
-			'Prominent Buffett disciple'
-		],
-		famousTrades: [
-			{
-				date: '2002-2007',
-				asset: 'Various Value Stocks',
-				position: 'long',
-				outcome: 'Exceptional Returns',
-				profitLoss: '+600%+',
-				description: 'Concentrated portfolio of undervalued stocks generated exceptional returns during this period.'
-			}
-		],
-		quotes: [
-			{ text: 'Heads I win, tails I don\'t lose much. That\'s the Dhandho framework.', source: 'The Dhandho Investor' },
-			{ text: 'Investing is simple, but not easy.', source: 'Interview' }
-		],
-		books: [
-			{ title: 'The Dhandho Investor', year: 2007, description: 'The low-risk value method to high returns' },
-			{ title: 'Mosaic: Perspectives on Investing', year: 2004, description: 'Collection of investment insights' }
-		],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Mohnish_Pabrai' }
-		],
-		status: 'published'
-	},
-	{
-		name: 'Charlie Munger',
-		slug: 'charlie-munger',
-		photoUrl: '/images/traders/charlie-munger.jpg',
-		oneLiner: 'Berkshire Hathaway Vice Chairman and Buffett\'s Partner',
-		birthYear: 1924,
-		deathYear: 2023,
-		nationality: 'American',
-		tradingStyle: 'Value Investing',
-		netWorth: '$2.6 Billion',
-		bio: `Charlie Munger was the Vice Chairman of Berkshire Hathaway and Warren Buffett's longtime business partner. Known for his wit, wisdom, and multidisciplinary approach to investing, Munger was instrumental in transforming Buffett's investment philosophy from pure Graham-style value investing to buying wonderful businesses at fair prices.
+    philosophy: `"Heads I win, tails I don't lose much. That's the Dhandho framework."`,
+    achievements: [
+      "1,100%+ returns from 2000-2018",
+      'Author of "The Dhandho Investor"',
+      "Paid $650,100 for lunch with Buffett",
+      "Founded Dakshana Foundation",
+      "Helped thousands of students",
+      "Prominent Buffett disciple",
+    ],
+    famousTrades: [
+      {
+        date: "2002-2007",
+        asset: "Various Value Stocks",
+        position: "long",
+        outcome: "Exceptional Returns",
+        profitLoss: "+600%+",
+        description:
+          "Concentrated portfolio of undervalued stocks generated exceptional returns during this period.",
+      },
+    ],
+    quotes: [
+      {
+        text: "Heads I win, tails I don't lose much. That's the Dhandho framework.",
+        source: "The Dhandho Investor",
+      },
+      { text: "Investing is simple, but not easy.", source: "Interview" },
+    ],
+    books: [
+      {
+        title: "The Dhandho Investor",
+        year: 2007,
+        description: "The low-risk value method to high returns",
+      },
+      {
+        title: "Mosaic: Perspectives on Investing",
+        year: 2004,
+        description: "Collection of investment insights",
+      },
+    ],
+    socialLinks: [{ platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Mohnish_Pabrai" }],
+    status: "published",
+  },
+  {
+    name: "Charlie Munger",
+    slug: "charlie-munger",
+    photoUrl: "/images/traders/charlie-munger.jpg",
+    oneLiner: "Berkshire Hathaway Vice Chairman and Buffett's Partner",
+    birthYear: 1924,
+    deathYear: 2023,
+    nationality: "American",
+    tradingStyle: "Value Investing",
+    netWorth: "$2.6 Billion",
+    bio: `Charlie Munger was the Vice Chairman of Berkshire Hathaway and Warren Buffett's longtime business partner. Known for his wit, wisdom, and multidisciplinary approach to investing, Munger was instrumental in transforming Buffett's investment philosophy from pure Graham-style value investing to buying wonderful businesses at fair prices.
 
 ## Partnership with Buffett
 
@@ -2984,36 +3451,45 @@ Beyond Berkshire, Munger served as Chairman of Daily Journal Corporation, where 
 ## Wisdom and Wit
 
 Munger was celebrated for his sharp wit and memorable quotes. His annual speeches at Berkshire meetings and Daily Journal meetings became must-attend events for investors seeking wisdom on business, life, and investing.`,
-		philosophy: `"It's far better to buy a wonderful company at a fair price than a fair company at a wonderful price."`,
-		achievements: [
-			'Vice Chairman of Berkshire Hathaway',
-			'Buffett\'s partner for 60+ years',
-			'Popularized mental models approach',
-			'Chairman of Daily Journal Corporation',
-			'Early investor in BYD',
-			'One of the most quoted investors ever'
-		],
-		famousTrades: [
-			{
-				date: '2008',
-				asset: 'BYD Company',
-				position: 'long',
-				outcome: 'Major Profit',
-				profitLoss: '+3,000%+',
-				description: 'Invested in Chinese EV maker BYD at $1 per share through Daily Journal, shares later traded above $30.'
-			}
-		],
-		quotes: [
-			{ text: 'It\'s far better to buy a wonderful company at a fair price than a fair company at a wonderful price.', source: 'Berkshire Annual Meeting' },
-			{ text: 'Invert, always invert.', source: 'Poor Charlie\'s Almanack' },
-			{ text: 'The big money is not in the buying and selling, but in the waiting.', source: 'Interview' }
-		],
-		books: [
-			{ title: 'Poor Charlie\'s Almanack', year: 2005, description: 'The wit and wisdom of Charles T. Munger' }
-		],
-		socialLinks: [
-			{ platform: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Charlie_Munger' }
-		],
-		status: 'published'
-	}
+    philosophy: `"It's far better to buy a wonderful company at a fair price than a fair company at a wonderful price."`,
+    achievements: [
+      "Vice Chairman of Berkshire Hathaway",
+      "Buffett's partner for 60+ years",
+      "Popularized mental models approach",
+      "Chairman of Daily Journal Corporation",
+      "Early investor in BYD",
+      "One of the most quoted investors ever",
+    ],
+    famousTrades: [
+      {
+        date: "2008",
+        asset: "BYD Company",
+        position: "long",
+        outcome: "Major Profit",
+        profitLoss: "+3,000%+",
+        description:
+          "Invested in Chinese EV maker BYD at $1 per share through Daily Journal, shares later traded above $30.",
+      },
+    ],
+    quotes: [
+      {
+        text: "It's far better to buy a wonderful company at a fair price than a fair company at a wonderful price.",
+        source: "Berkshire Annual Meeting",
+      },
+      { text: "Invert, always invert.", source: "Poor Charlie's Almanack" },
+      {
+        text: "The big money is not in the buying and selling, but in the waiting.",
+        source: "Interview",
+      },
+    ],
+    books: [
+      {
+        title: "Poor Charlie's Almanack",
+        year: 2005,
+        description: "The wit and wisdom of Charles T. Munger",
+      },
+    ],
+    socialLinks: [{ platform: "Wikipedia", url: "https://en.wikipedia.org/wiki/Charlie_Munger" }],
+    status: "published",
+  },
 ];
