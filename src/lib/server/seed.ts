@@ -285,9 +285,7 @@ For many serious market participants, Billy Ribeiro represents a rare combinatio
     ],
     books: [],
     socialLinks: [
-      { platform: "Website", url: "https://www.simplertrading.com" },
-      { platform: "Profile", url: "https://www.simplertrading.com/traders/billy-ribeiro" },
-      { platform: "YouTube", url: "https://www.youtube.com/@SimplerTrading" },
+      { platform: "Profile", url: "https://www.simplertrading.com/images/billy-ribeiro" },
     ],
     status: "published",
   },
