@@ -4,6 +4,19 @@ export const portraitCredits: Record<
   string,
   { url: string; source: string; artist: string; license: string }
 > = {
+  "warren-buffett": {
+    url: "/images/traders/warren-buffett.jpg",
+    source:
+      "https://commons.wikimedia.org/wiki/File:Warren_Buffett_at_the_2015_SelectUSA_Investment_Summit_(cropped).jpg",
+    artist: "U.S. International Trade Administration",
+    license: "Public domain",
+  },
+  "paul-tudor-jones": {
+    url: "/images/traders/paul-tudor-jones.jpg",
+    source: "https://commons.wikimedia.org/wiki/File:Paul_Tudor_Jones_2006.jpg",
+    artist: "U.S. Department of the Interior",
+    license: "Public domain",
+  },
   "andy-krieger": {
     url: "https://tw.mitrade.com/cms_uploads/uedimg/20230711/1689043192711.jpg",
     source: "https://www.mitrade.com/th/insights/forex/basics/top-forex-traders",
