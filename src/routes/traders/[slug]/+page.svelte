@@ -186,10 +186,10 @@
 									</span>
 								</div>
 							{/if}
-							<div class="absolute inset-0 bg-linear-to-t from-midnight-950 via-transparent to-transparent opacity-60"></div>
+							<div class="profile-portrait-overlay absolute inset-0 bg-linear-to-t from-midnight-950 via-transparent to-transparent opacity-60"></div>
 						</div>
 
-						<div class="absolute bottom-0 left-0 right-0 p-4 sm:p-5 lg:p-6">
+						<div class="profile-portrait-label absolute bottom-0 left-0 right-0 p-4 sm:p-5 lg:p-6">
 							<h1 class="font-display text-xl sm:text-2xl lg:text-3xl font-bold text-white">{trader.name}</h1>
 							<p class="mt-1 sm:mt-2 text-sm sm:text-base text-gold-400 font-medium">{trader.tradingStyle}</p>
 						</div>
@@ -483,7 +483,7 @@
 <!-- Lightbox Modal -->
 {#if lightboxImage}
 	<div
-		class="fixed inset-0 z-50 flex items-center justify-center bg-midnight-950/95 backdrop-blur-md"
+		class="photo-lightbox fixed inset-0 z-50 flex items-center justify-center bg-midnight-950/95 backdrop-blur-md"
 		role="dialog"
 		aria-modal="true"
 		aria-label="Image lightbox"

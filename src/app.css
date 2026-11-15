@@ -118,11 +118,16 @@
   background-color: #f1f5f9;
 }
 
-:root:not(.dark) .bg-midnight-800\/50 {
+:root:not(.dark) .bg-midnight-800\/20,
+:root:not(.dark) .bg-midnight-800\/30,
+:root:not(.dark) .bg-midnight-800\/50,
+:root:not(.dark) .bg-midnight-800\/60 {
   background-color: rgba(241, 245, 249, 0.8);
 }
 
-:root:not(.dark) .bg-midnight-700 {
+:root:not(.dark) .bg-midnight-700,
+:root:not(.dark) .bg-midnight-700\/50,
+:root:not(.dark) .bg-midnight-700\/80 {
   background-color: #e2e8f0;
 }
 
@@ -156,11 +161,11 @@
 }
 
 :root:not(.dark) .text-midnight-500 {
-  color: #64748b;
+  color: #526276;
 }
 
 :root:not(.dark) .text-midnight-600 {
-  color: #94a3b8;
+  color: #526276;
 }
 
 /* Gold colors - darken for light mode visibility */
@@ -185,7 +190,7 @@
 /* Slate colors */
 :root:not(.dark) .text-slate-400,
 :root:not(.dark) .text-slate-500 {
-  color: #64748b;
+  color: #475569;
 }
 
 /* ============================================================================
@@ -275,14 +280,8 @@
 /* ============================================================================
    LIGHT MODE - Backdrop and Blur
    ============================================================================ */
-:root:not(.dark) .backdrop-blur-xl,
-:root:not(.dark) .backdrop-blur-2xl,
-:root:not(.dark) .backdrop-blur-3xl {
-  background-color: rgba(255, 255, 255, 0.85);
-}
-
 :root:not(.dark) .bg-midnight-950\/80 {
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(2, 6, 23, 0.72);
 }
 
 /* ============================================================================
@@ -397,9 +396,12 @@
   color: #7c3aed;
 }
 
-:root:not(.dark) .group:hover .group-hover\:text-gold-400,
+:root:not(.dark) .group:hover .group-hover\:text-gold-400 {
+  color: #92400e;
+}
+
 :root:not(.dark) .group:hover .group-hover\:text-violet-400 {
-  color: #7c3aed;
+  color: #6d28d9;
 }
 
 :root:not(.dark) .group:hover .group-hover\:text-violet-300 {
@@ -483,6 +485,71 @@
 
 :root:not(.dark) .bg-gradient-radial {
   opacity: 0.5;
+}
+
+/* Light surfaces and text that cannot be inferred from a dark utility alone. */
+:root:not(.dark) .bg-midnight-950\/98 {
+  background-color: rgba(248, 250, 252, 0.98);
+}
+
+/* Image badges and the photo viewer deliberately retain their dark backdrop. */
+:root:not(.dark) .bg-black\/60.text-white {
+  color: #fff;
+}
+:root:not(.dark) .profile-portrait-overlay {
+  background: linear-gradient(transparent, rgba(2, 6, 23, 0.9));
+}
+:root:not(.dark) .profile-portrait-label .text-white {
+  color: #fff;
+}
+:root:not(.dark) .profile-portrait-label .text-gold-400 {
+  color: #f1d9ab;
+}
+:root:not(.dark) .photo-lightbox {
+  background-color: rgba(2, 6, 23, 0.95);
+  color: #fff;
+}
+:root:not(.dark) .photo-lightbox .text-white {
+  color: #fff;
+}
+:root:not(.dark) .photo-lightbox .bg-white\/10 {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Typography plugin's prose-invert and prose-* variants color descendants,
+   so changing the wrapper text color alone does not restore legibility. */
+:root:not(.dark) .prose {
+  --tw-prose-body: #334155;
+  --tw-prose-headings: #0f172a;
+  --tw-prose-lead: #334155;
+  --tw-prose-links: #92400e;
+  --tw-prose-bold: #0f172a;
+  --tw-prose-counters: #475569;
+  --tw-prose-bullets: #64748b;
+  --tw-prose-hr: #cbd5e1;
+  --tw-prose-quotes: #334155;
+  --tw-prose-quote-borders: #a16207;
+  --tw-prose-captions: #475569;
+  --tw-prose-code: #92400e;
+  --tw-prose-pre-code: #e2e8f0;
+  --tw-prose-pre-bg: #1e293b;
+}
+:root:not(.dark)
+  .prose
+  :where(p, li, blockquote, em):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  color: #334155;
+}
+:root:not(.dark)
+  .prose
+  :where(h1, h2, h3, h4, strong):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  color: #0f172a;
+}
+:root:not(.dark) .prose :where(a, code):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  color: #92400e;
+}
+:root:not(.dark) .prose pre code {
+  color: #e2e8f0;
+  background: transparent;
 }
 
 /* ============================================================================
