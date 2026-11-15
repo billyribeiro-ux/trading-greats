@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 128" role="img" aria-labelledby="title">
+  <title id="title">Trading Greats</title>
+  <rect x="1" y="1" width="126" height="126" rx="20" fill="#111c27" stroke="#b8a17b" stroke-width="2"/>
+  <path d="M24 29h80M64 29v61M42 101h44" fill="none" stroke="#e5dac5" stroke-width="5" stroke-linecap="square"/>
+  <path d="M27 82 46 63 59 72 84 45 100 45M92 37l8 8-8 8" fill="none" stroke="#c4a775" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter"/>
+  <text x="155" y="58" fill="#f2f0e9" font-family="Georgia,serif" font-size="44" letter-spacing=".5">Trading Greats</text>
+  <text x="158" y="91" fill="#c4a775" font-family="Arial,sans-serif" font-size="13" font-weight="600" letter-spacing="4.4">THE STUDY OF MARKETS</text>
+</svg>

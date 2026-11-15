@@ -11,7 +11,7 @@
 	<!-- Background decoration - MOBILE-FIRST: Smaller on mobile -->
 	<div class="absolute bottom-0 right-0 w-[300px] h-[200px] sm:w-[450px] sm:h-[300px] lg:w-[600px] lg:h-[400px] rounded-full bg-gold-500/3 blur-[80px] sm:blur-[100px] lg:blur-[120px] pointer-events-none"></div>
 
-	<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+	<div class="relative mx-auto max-w-[var(--layout-max)] px-4 sm:px-6 lg:px-8">
 		<div class="grid gap-8 sm:gap-10 lg:gap-12 md:grid-cols-4 lg:gap-16">
 			<!-- Brand - MOBILE-FIRST -->
 			<div class="md:col-span-2">
@@ -19,15 +19,7 @@
 					href="/"
 					class="group inline-flex items-center gap-2.5 sm:gap-3 transition-all duration-300 active:scale-95"
 				>
-					<div class={cn(
-						'flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-lg sm:rounded-xl',
-						'bg-linear-to-br from-gold-500 to-gold-600',
-						'shadow-lg shadow-gold-500/20',
-						'transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]',
-						'group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-gold-500/30'
-					)}>
-						<Icon name="candlestick" class="h-4 w-4 sm:h-5 sm:w-5 text-midnight-950 transition-transform duration-300 group-hover:scale-110" />
-					</div>
+					<img src="/brand/mark.svg" width="44" height="44" alt="" class="h-10 w-10 sm:h-11 sm:w-11" />
 					<span class="font-display text-lg sm:text-xl font-bold tracking-tight text-midnight-50 transition-colors duration-300 group-hover:text-white">
 						Trading<span class="text-gold-400 transition-colors duration-300 group-hover:text-gold-300">Greats</span>
 					</span>

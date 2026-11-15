@@ -68,15 +68,13 @@
 <a
 	href="/traders/{trader.slug}"
 	class={cn(
-		'group relative flex flex-col overflow-hidden rounded-2xl md:rounded-3xl',
+		'group relative flex flex-col overflow-hidden rounded-md',
 		// MOBILE-FIRST: Consistent fixed height across all breakpoints
 		'h-[280px] sm:h-[320px] md:h-[380px]',
 		'bg-midnight-900/80',
 		'border border-white/8',
 		'transition-all duration-300',
-		'active:scale-[0.98]',
-		// Desktop hover effects
-		'md:hover:scale-[1.02] md:hover:border-gold-500/40 md:hover:shadow-xl',
+		'hover:border-gold-500/40',
 		className
 	)}
 >
@@ -88,7 +86,7 @@
 				alt={trader.name}
 				class={cn(
 					'h-full w-full object-cover object-top transition-all duration-500',
-					'md:group-hover:scale-105',
+					'md:group-hover:scale-[1.02]',
 					imageLoaded ? 'opacity-100' : 'opacity-0'
 				)}
 				loading={index === 0 ? 'eager' : 'lazy'}
@@ -121,7 +119,7 @@
 		{#if trader.tradingStyle}
 			<div class="absolute top-3 left-3 z-10">
 				<span class={cn(
-					'inline-flex items-center gap-1 rounded-full px-2 py-1',
+					'inline-flex items-center gap-1 rounded-sm px-2 py-1',
 					'bg-black/60 backdrop-blur-sm',
 					'text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-white'
 				)}>

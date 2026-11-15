@@ -1,11 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <defs>
-    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#fde047"/>
-      <stop offset="100%" style="stop-color:#ca8a04"/>
-    </linearGradient>
-  </defs>
-  <rect width="100" height="100" rx="20" fill="#0f172a"/>
-  <path d="M25 65 L40 35 L55 50 L70 25 L75 25 L75 30 L60 55 L45 40 L30 70 L25 70 Z" fill="url(#gold)"/>
-  <circle cx="75" cy="25" r="5" fill="url(#gold)"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Trading Greats mark">
+  <rect x="1" y="1" width="126" height="126" rx="20" fill="#111c27" stroke="#b8a17b" stroke-width="2"/>
+  <path d="M24 29h80M64 29v61M42 101h44" fill="none" stroke="#e5dac5" stroke-width="5" stroke-linecap="square"/>
+  <path d="M27 82 46 63 59 72 84 45 100 45M92 37l8 8-8 8" fill="none" stroke="#c4a775" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter"/>
 </svg>

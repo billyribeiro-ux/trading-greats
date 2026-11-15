@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0b121b"/>
+  <path d="M62 64h1076v502H62z" fill="none" stroke="#5b5447"/>
+  <path d="M75 94h1050" stroke="#9b8561" stroke-opacity=".5"/>
+  <g transform="translate(76 125)"><rect width="100" height="100" rx="15" fill="#111c27" stroke="#b8a17b"/><path d="M19 23h62M50 23v48M33 79h34" fill="none" stroke="#e5dac5" stroke-width="4"/><path d="m21 64 15-15 10 7 19-21h13m-6-6 6 6-6 6" fill="none" stroke="#c4a775" stroke-width="4"/></g>
+  <text x="76" y="313" fill="#c4a775" font-family="Arial, sans-serif" font-size="18" letter-spacing="5">TRADING GREATS</text>
+  <text x="76" y="390" fill="#f3f1eb" font-family="Georgia, serif" font-size="56">The people behind the markets.</text>
+  <text x="79" y="452" fill="#acbbc0" font-family="Arial, sans-serif" font-size="22">Explore the ideas and disciplines that shaped investing.</text>
+  <text x="78" y="535" fill="#c4a775" font-family="Arial, sans-serif" font-size="14" letter-spacing="3">TRADINGGREATS.COM</text>
+</svg>

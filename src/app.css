@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
 /* Enable class-based dark mode (`<html class="dark">` toggles `dark:` variants).
@@ -10,48 +10,48 @@
    TAILWIND V4 CUSTOM THEME - Gold & Midnight Palette
    ============================================================================ */
 @theme {
-	/* Gold palette */
-	--color-gold-50: #fefce8;
-	--color-gold-100: #fef9c3;
-	--color-gold-200: #fef08a;
-	--color-gold-300: #fde047;
-	--color-gold-400: #facc15;
-	--color-gold-500: #eab308;
-	--color-gold-600: #ca8a04;
-	--color-gold-700: #a16207;
-	--color-gold-800: #854d0e;
-	--color-gold-900: #713f12;
-	--color-gold-950: #422006;
+  /* Gold palette */
+  --color-gold-50: #fefce8;
+  --color-gold-100: #fef9c3;
+  --color-gold-200: #fef08a;
+  --color-gold-300: #fde047;
+  --color-gold-400: #facc15;
+  --color-gold-500: #eab308;
+  --color-gold-600: #ca8a04;
+  --color-gold-700: #a16207;
+  --color-gold-800: #854d0e;
+  --color-gold-900: #713f12;
+  --color-gold-950: #422006;
 
-	/* Midnight palette */
-	--color-midnight-50: #f8fafc;
-	--color-midnight-100: #f1f5f9;
-	--color-midnight-200: #e2e8f0;
-	--color-midnight-300: #cbd5e1;
-	--color-midnight-400: #94a3b8;
-	--color-midnight-500: #64748b;
-	--color-midnight-600: #475569;
-	--color-midnight-700: #334155;
-	--color-midnight-800: #1e293b;
-	--color-midnight-900: #0f172a;
-	--color-midnight-950: #020617;
+  /* Midnight palette */
+  --color-midnight-50: #f8fafc;
+  --color-midnight-100: #f1f5f9;
+  --color-midnight-200: #e2e8f0;
+  --color-midnight-300: #cbd5e1;
+  --color-midnight-400: #94a3b8;
+  --color-midnight-500: #64748b;
+  --color-midnight-600: #475569;
+  --color-midnight-700: #334155;
+  --color-midnight-800: #1e293b;
+  --color-midnight-900: #0f172a;
+  --color-midnight-950: #020617;
 
-	/* Typography */
-	--font-display: 'Playfair Display', Georgia, serif;
-	--font-sans: 'DM Sans', system-ui, sans-serif;
-	--font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  /* Typography */
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-sans: "DM Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
 
-	/* Extra-large monitor breakpoints (Tailwind v4 fluid scale).
+  /* Extra-large monitor breakpoints (Tailwind v4 fluid scale).
 	   Defaults: sm 640 / md 768 / lg 1024 / xl 1280 / 2xl 1536.
 	   Adds 3xl/4xl for 4K/5K monitors where the 1280-1536px content cap
 	   leaves big empty side margins. */
-	--breakpoint-3xl: 1920px;
-	--breakpoint-4xl: 2560px;
+  --breakpoint-3xl: 1920px;
+  --breakpoint-4xl: 2560px;
 
-	/* Fluid container widths used by .container-fluid below */
-	--container-2xl: 1440px;
-	--container-3xl: 1680px;
-	--container-4xl: 2000px;
+  /* Fluid container widths used by .container-fluid below */
+  --container-2xl: 1440px;
+  --container-3xl: 1680px;
+  --container-4xl: 2000px;
 }
 
 /* ============================================================================
@@ -62,114 +62,130 @@
 
 /* Color scheme declarations */
 :root {
-	color-scheme: dark;
+  --layout-max: 99rem;
+  color-scheme: dark;
+}
+
+/* Keep the site content's accent palette muted without changing the navigation. */
+#main-content {
+  --color-gold-400: #d0b78d;
+  --color-gold-500: #bd9f70;
+  --color-gold-600: #9d7c4e;
+}
+
+#main-content :is(.rounded-2xl, .rounded-3xl) {
+  border-radius: 0.625rem;
+}
+
+#main-content :is(.animate-pulse-slow, .animate-pulse-slower, .animate-bounce) {
+  animation: none;
 }
 
 :root:not(.dark) {
-	color-scheme: light;
+  color-scheme: light;
 }
 
 /* Light mode specific overrides */
 :root:not(.dark) body,
 :root:not(.dark) main,
 :root:not(.dark) #main-content {
-	background-color: #f8fafc;
-	color: #0f172a;
+  background-color: #f8fafc;
+  color: #0f172a;
 }
 
 /* ============================================================================
    LIGHT MODE - Background Colors
    ============================================================================ */
 :root:not(.dark) .bg-midnight-950 {
-	background-color: #ffffff;
+  background-color: #ffffff;
 }
 
 :root:not(.dark) .bg-midnight-900 {
-	background-color: #f8fafc;
+  background-color: #f8fafc;
 }
 
 :root:not(.dark) .bg-midnight-900\/95 {
-	background-color: rgba(248, 250, 252, 0.98);
+  background-color: rgba(248, 250, 252, 0.98);
 }
 
 :root:not(.dark) .bg-midnight-900\/80,
 :root:not(.dark) .bg-midnight-900\/50,
 :root:not(.dark) .bg-midnight-900\/30 {
-	background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255, 0.95);
 }
 
 :root:not(.dark) .bg-midnight-800 {
-	background-color: #f1f5f9;
+  background-color: #f1f5f9;
 }
 
 :root:not(.dark) .bg-midnight-800\/50 {
-	background-color: rgba(241, 245, 249, 0.8);
+  background-color: rgba(241, 245, 249, 0.8);
 }
 
 :root:not(.dark) .bg-midnight-700 {
-	background-color: #e2e8f0;
+  background-color: #e2e8f0;
 }
 
-:root:not(.dark) [class*='bg-[#020617]'],
-:root:not(.dark) [class*='bg-[#0f172a]'] {
-	background-color: #ffffff;
+:root:not(.dark) [class*="bg-[#020617]"],
+:root:not(.dark) [class*="bg-[#0f172a]"] {
+  background-color: #ffffff;
 }
 
 /* ============================================================================
    LIGHT MODE - Text Colors
    ============================================================================ */
 :root:not(.dark) .text-white {
-	color: #0f172a;
+  color: #0f172a;
 }
 
 :root:not(.dark) .text-midnight-50 {
-	color: #0f172a;
+  color: #0f172a;
 }
 
 :root:not(.dark) .text-midnight-100,
 :root:not(.dark) .text-midnight-200 {
-	color: #1e293b;
+  color: #1e293b;
 }
 
 :root:not(.dark) .text-midnight-300 {
-	color: #334155;
+  color: #334155;
 }
 
 :root:not(.dark) .text-midnight-400 {
-	color: #475569;
+  color: #475569;
 }
 
 :root:not(.dark) .text-midnight-500 {
-	color: #64748b;
+  color: #64748b;
 }
 
 :root:not(.dark) .text-midnight-600 {
-	color: #94a3b8;
+  color: #94a3b8;
 }
 
 /* Gold colors - darken for light mode visibility */
 :root:not(.dark) .text-gold-400 {
-	color: #b45309;
+  color: #b45309;
 }
 
 :root:not(.dark) .text-gold-500 {
-	color: #a16207;
+  color: #a16207;
 }
 
 :root:not(.dark) .text-\[#FACC15\],
 :root:not(.dark) .text-\[#EAB308\] {
-	color: #a16207;
+  color: #a16207;
 }
 
 /* Violet colors for compare page */
 :root:not(.dark) .text-violet-400 {
-	color: #7c3aed;
+  color: #7c3aed;
 }
 
 /* Slate colors */
 :root:not(.dark) .text-slate-400,
 :root:not(.dark) .text-slate-500 {
-	color: #64748b;
+  color: #64748b;
 }
 
 /* ============================================================================
@@ -178,82 +194,82 @@
 :root:not(.dark) .border-white\/5,
 :root:not(.dark) .border-white\/10,
 :root:not(.dark) .border-white\/\[0\.08\] {
-	border-color: rgba(15, 23, 42, 0.1);
+  border-color: rgba(15, 23, 42, 0.1);
 }
 
 :root:not(.dark) .border-midnight-800,
 :root:not(.dark) .border-midnight-800\/50 {
-	border-color: rgba(15, 23, 42, 0.1);
+  border-color: rgba(15, 23, 42, 0.1);
 }
 
 :root:not(.dark) .ring-white\/10 {
-	--tw-ring-color: rgba(15, 23, 42, 0.1);
+  --tw-ring-color: rgba(15, 23, 42, 0.1);
 }
 
 :root:not(.dark) .ring-gold-500\/20,
 :root:not(.dark) .ring-gold-500\/30,
 :root:not(.dark) .ring-gold-500\/40 {
-	--tw-ring-color: rgba(180, 83, 9, 0.3);
+  --tw-ring-color: rgba(180, 83, 9, 0.3);
 }
 
 :root:not(.dark) .border-gold-500\/20,
 :root:not(.dark) .border-gold-500\/30 {
-	border-color: rgba(180, 83, 9, 0.25);
+  border-color: rgba(180, 83, 9, 0.25);
 }
 
 :root:not(.dark) .border-violet-500\/30,
 :root:not(.dark) .border-violet-500\/40 {
-	border-color: rgba(124, 58, 237, 0.3);
+  border-color: rgba(124, 58, 237, 0.3);
 }
 
 :root:not(.dark) .border-red-500\/20 {
-	border-color: rgba(239, 68, 68, 0.25);
+  border-color: rgba(239, 68, 68, 0.25);
 }
 
 /* ============================================================================
    LIGHT MODE - Navbar
    ============================================================================ */
 :root:not(.dark) .bg-midnight-950\/85 {
-	background-color: rgba(255, 255, 255, 0.95);
-	border-color: rgba(15, 23, 42, 0.1);
+  background-color: rgba(255, 255, 255, 0.95);
+  border-color: rgba(15, 23, 42, 0.1);
 }
 
 :root:not(.dark) header {
-	background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 /* ============================================================================
    LIGHT MODE - Cards and Containers
    ============================================================================ */
 :root:not(.dark) .bg-midnight-950\/50 {
-	background-color: rgba(248, 250, 252, 0.95);
+  background-color: rgba(248, 250, 252, 0.95);
 }
 
 :root:not(.dark) .bg-gold-500\/10 {
-	background-color: rgba(180, 83, 9, 0.1);
+  background-color: rgba(180, 83, 9, 0.1);
 }
 
 :root:not(.dark) .bg-violet-500\/10,
 :root:not(.dark) .bg-violet-900\/50 {
-	background-color: rgba(124, 58, 237, 0.1);
+  background-color: rgba(124, 58, 237, 0.1);
 }
 
 :root:not(.dark) .bg-red-500\/10,
 :root:not(.dark) .bg-red-500\/20 {
-	background-color: rgba(239, 68, 68, 0.1);
+  background-color: rgba(239, 68, 68, 0.1);
 }
 
 :root:not(.dark) .bg-green-500\/10 {
-	background-color: rgba(34, 197, 94, 0.1);
+  background-color: rgba(34, 197, 94, 0.1);
 }
 
 :root:not(.dark) .bg-blue-500\/10 {
-	background-color: rgba(59, 130, 246, 0.1);
+  background-color: rgba(59, 130, 246, 0.1);
 }
 
 :root:not(.dark) .bg-white\/5,
 :root:not(.dark) .bg-white\/10 {
-	background-color: rgba(15, 23, 42, 0.05);
+  background-color: rgba(15, 23, 42, 0.05);
 }
 
 /* ============================================================================
@@ -262,103 +278,103 @@
 :root:not(.dark) .backdrop-blur-xl,
 :root:not(.dark) .backdrop-blur-2xl,
 :root:not(.dark) .backdrop-blur-3xl {
-	background-color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(255, 255, 255, 0.85);
 }
 
 :root:not(.dark) .bg-midnight-950\/80 {
-	background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 /* ============================================================================
    LIGHT MODE - Gradients
    ============================================================================ */
 :root:not(.dark) .from-midnight-950 {
-	--tw-gradient-from: #f8fafc;
+  --tw-gradient-from: #f8fafc;
 }
 
 :root:not(.dark) .from-midnight-900 {
-	--tw-gradient-from: #ffffff;
+  --tw-gradient-from: #ffffff;
 }
 
 :root:not(.dark) .to-midnight-950 {
-	--tw-gradient-to: #f8fafc;
+  --tw-gradient-to: #f8fafc;
 }
 
 :root:not(.dark) .to-midnight-800 {
-	--tw-gradient-to: #f1f5f9;
+  --tw-gradient-to: #f1f5f9;
 }
 
 :root:not(.dark) .via-midnight-950\/80,
 :root:not(.dark) .via-midnight-950\/60,
 :root:not(.dark) .via-midnight-950\/40,
 :root:not(.dark) .via-transparent {
-	--tw-gradient-via: rgba(248, 250, 252, 0.6);
+  --tw-gradient-via: rgba(248, 250, 252, 0.6);
 }
 
 :root:not(.dark) .from-midnight-700,
 :root:not(.dark) .from-midnight-800 {
-	--tw-gradient-from: #e2e8f0;
+  --tw-gradient-from: #e2e8f0;
 }
 
 :root:not(.dark) .from-gold-500 {
-	--tw-gradient-from: #b45309;
+  --tw-gradient-from: #b45309;
 }
 
 :root:not(.dark) .to-gold-600 {
-	--tw-gradient-to: #a16207;
+  --tw-gradient-to: #a16207;
 }
 
 /* Gradient backgrounds */
 :root:not(.dark) .bg-gradient-to-b.from-midnight-900,
 :root:not(.dark) .bg-gradient-to-t.from-midnight-950 {
-	background: linear-gradient(to bottom, #ffffff, #f8fafc);
+  background: linear-gradient(to bottom, #ffffff, #f8fafc);
 }
 
 :root:not(.dark) .bg-gradient-to-br.from-midnight-700 {
-	background: linear-gradient(to bottom right, #e2e8f0, #f1f5f9);
+  background: linear-gradient(to bottom right, #e2e8f0, #f1f5f9);
 }
 
 /* ============================================================================
    LIGHT MODE - Quote of the Day Section
    ============================================================================ */
-:root:not(.dark) section[class*='bg-[#020617]'] {
-	background-color: #f8fafc;
+:root:not(.dark) section[class*="bg-[#020617]"] {
+  background-color: #f8fafc;
 }
 
 :root:not(.dark) .from-\[#EAB308\]\/20,
 :root:not(.dark) .to-\[#CA8A04\]\/10 {
-	--tw-gradient-from: rgba(180, 83, 9, 0.15);
-	--tw-gradient-to: rgba(161, 98, 7, 0.1);
+  --tw-gradient-from: rgba(180, 83, 9, 0.15);
+  --tw-gradient-to: rgba(161, 98, 7, 0.1);
 }
 
 :root:not(.dark) .ring-\[#EAB308\]\/30 {
-	--tw-ring-color: rgba(180, 83, 9, 0.3);
+  --tw-ring-color: rgba(180, 83, 9, 0.3);
 }
 
 /* ============================================================================
    LIGHT MODE - Search Modal
    ============================================================================ */
 :root:not(.dark) .bg-midnight-900\/95 {
-	background-color: rgba(255, 255, 255, 0.98);
+  background-color: rgba(255, 255, 255, 0.98);
 }
 
 :root:not(.dark) .placeholder-midnight-500::placeholder {
-	color: #94a3b8;
+  color: #94a3b8;
 }
 
 /* ============================================================================
    LIGHT MODE - Footer
    ============================================================================ */
 :root:not(.dark) footer {
-	background-color: #f1f5f9;
+  background-color: #f1f5f9;
 }
 
 :root:not(.dark) footer .text-white {
-	color: #0f172a;
+  color: #0f172a;
 }
 
 :root:not(.dark) footer .text-midnight-400 {
-	color: #64748b;
+  color: #64748b;
 }
 
 /* ============================================================================
@@ -366,81 +382,81 @@
    ============================================================================ */
 :root:not(.dark) .hover\:bg-white\/5:hover,
 :root:not(.dark) .hover\:bg-white\/10:hover {
-	background-color: rgba(15, 23, 42, 0.05);
+  background-color: rgba(15, 23, 42, 0.05);
 }
 
 :root:not(.dark) .hover\:text-white:hover {
-	color: #0f172a;
+  color: #0f172a;
 }
 
 :root:not(.dark) .hover\:text-gold-400:hover {
-	color: #b45309;
+  color: #b45309;
 }
 
 :root:not(.dark) .hover\:text-violet-400:hover {
-	color: #7c3aed;
+  color: #7c3aed;
 }
 
 :root:not(.dark) .group:hover .group-hover\:text-gold-400,
 :root:not(.dark) .group:hover .group-hover\:text-violet-400 {
-	color: #7c3aed;
+  color: #7c3aed;
 }
 
 :root:not(.dark) .group:hover .group-hover\:text-violet-300 {
-	color: #8b5cf6;
+  color: #8b5cf6;
 }
 
 :root:not(.dark) .group:hover .group-hover\:from-violet-900\/50 {
-	--tw-gradient-from: rgba(124, 58, 237, 0.15);
+  --tw-gradient-from: rgba(124, 58, 237, 0.15);
 }
 
 /* ============================================================================
    LIGHT MODE - Selection
    ============================================================================ */
 :root:not(.dark) ::selection {
-	background: rgba(180, 83, 9, 0.25);
-	color: #713f12;
+  background: rgba(180, 83, 9, 0.25);
+  color: #713f12;
 }
 
 /* ============================================================================
    LIGHT MODE - Scrollbar
    ============================================================================ */
 :root:not(.dark) ::-webkit-scrollbar-thumb {
-	background: #cbd5e1;
+  background: #cbd5e1;
 }
 
 :root:not(.dark) ::-webkit-scrollbar-thumb:hover {
-	background: #94a3b8;
+  background: #94a3b8;
 }
 
 /* ============================================================================
    LIGHT MODE - Focus Ring
    ============================================================================ */
 :root:not(.dark) :focus-visible {
-	box-shadow:
-		0 0 0 2px #ffffff,
-		0 0 0 4px #b45309,
-		0 0 15px rgba(180, 83, 9, 0.2);
+  box-shadow:
+    0 0 0 2px #ffffff,
+    0 0 0 4px #b45309,
+    0 0 15px rgba(180, 83, 9, 0.2);
 }
 
 /* ============================================================================
    LIGHT MODE - Shadows
    ============================================================================ */
 :root:not(.dark) .shadow-2xl {
-	box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.15);
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.15);
 }
 
 :root:not(.dark) .shadow-xl {
-	box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.1);
+  box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.1);
 }
 
 :root:not(.dark) .shadow-lg {
-	box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.08);
 }
 
 :root:not(.dark) .shadow-gold-500\/20,
 :root:not(.dark) .shadow-gold-500\/25 {
-	--tw-shadow-color: rgba(180, 83, 9, 0.15);
+  --tw-shadow-color: rgba(180, 83, 9, 0.15);
 }
 
 /* ============================================================================
@@ -448,24 +464,25 @@
    ============================================================================ */
 :root:not(.dark) .bg-gold-500\/5,
 :root:not(.dark) .bg-blue-500\/5 {
-	background-color: transparent;
+  background-color: transparent;
 }
 
 :root:not(.dark) [class*="blur-\[80px\]"],
 :root:not(.dark) [class*="blur-\[100px\]"],
 :root:not(.dark) .blur-3xl {
-	opacity: 0.3;
+  opacity: 0.3;
 }
 
 /* ============================================================================
    LIGHT MODE - Radial Gradients
    ============================================================================ */
-:root:not(.dark) .bg-\[radial-gradient\(circle\,rgba\(234\,179\,8\,0\.08\)_0\%\,transparent_60\%\)\] {
-	background: radial-gradient(circle, rgba(180, 83, 9, 0.06) 0%, transparent 60%);
+:root:not(.dark)
+  .bg-\[radial-gradient\(circle\,rgba\(234\,179\,8\,0\.08\)_0\%\,transparent_60\%\)\] {
+  background: radial-gradient(circle, rgba(180, 83, 9, 0.06) 0%, transparent 60%);
 }
 
 :root:not(.dark) .bg-gradient-radial {
-	opacity: 0.5;
+  opacity: 0.5;
 }
 
 /* ============================================================================
@@ -478,70 +495,70 @@
    CSS CUSTOM PROPERTIES - Animation & Mobile Tokens
    ============================================================================ */
 :root {
-	/* Timing */
-	--duration-instant: 50ms;
-	--duration-fast: 100ms;
-	--duration-normal: 200ms;
-	--duration-medium: 300ms;
-	--duration-slow: 400ms;
-	--duration-slower: 500ms;
-	--duration-cinematic: 600ms;
-	--duration-dramatic: 800ms;
-	--duration-epic: 1000ms;
+  /* Timing */
+  --duration-instant: 50ms;
+  --duration-fast: 100ms;
+  --duration-normal: 200ms;
+  --duration-medium: 300ms;
+  --duration-slow: 400ms;
+  --duration-slower: 500ms;
+  --duration-cinematic: 600ms;
+  --duration-dramatic: 800ms;
+  --duration-epic: 1000ms;
 
-	/* Easing - Cinematic curves */
-	--ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-	--ease-spring-smooth: cubic-bezier(0.34, 1.56, 0.64, 1);
-	--ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
-	--ease-cinematic-out: cubic-bezier(0, 0.55, 0.45, 1);
-	--ease-expressive: cubic-bezier(0.19, 1, 0.22, 1);
-	--ease-smooth-out: cubic-bezier(0, 0, 0.2, 1);
-	--ease-smooth-in: cubic-bezier(0.4, 0, 1, 1);
+  /* Easing - Cinematic curves */
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ease-spring-smooth: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-cinematic-out: cubic-bezier(0, 0.55, 0.45, 1);
+  --ease-expressive: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-smooth-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-smooth-in: cubic-bezier(0.4, 0, 1, 1);
 
-	/* Card dimensions - Consistent sizing */
-	--card-aspect-ratio: 4 / 5;
-	--card-image-aspect: 3 / 4;
-	--card-border-radius: 1rem;
-	--card-padding: 1.25rem;
+  /* Card dimensions - Consistent sizing */
+  --card-aspect-ratio: 4 / 5;
+  --card-image-aspect: 3 / 4;
+  --card-border-radius: 1rem;
+  --card-padding: 1.25rem;
 
-	/* MOBILE-FIRST: Touch & Accessibility */
-	--touch-target-min: 44px;
-	--touch-target-comfortable: 48px;
-	--safe-area-inset-top: env(safe-area-inset-top, 0px);
-	--safe-area-inset-right: env(safe-area-inset-right, 0px);
-	--safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
-	--safe-area-inset-left: env(safe-area-inset-left, 0px);
+  /* MOBILE-FIRST: Touch & Accessibility */
+  --touch-target-min: 44px;
+  --touch-target-comfortable: 48px;
+  --safe-area-inset-top: env(safe-area-inset-top, 0px);
+  --safe-area-inset-right: env(safe-area-inset-right, 0px);
+  --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-inset-left: env(safe-area-inset-left, 0px);
 
-	/* MOBILE-FIRST: Container & Spacing */
-	--container-padding: 1rem;
-	--section-spacing: 4rem;
+  /* MOBILE-FIRST: Container & Spacing */
+  --container-padding: 1rem;
+  --section-spacing: 4rem;
 
-	/* MOBILE-FIRST: Typography Scale (fluid) */
-	--font-size-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-	--font-size-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
-	--font-size-base: clamp(1rem, 0.925rem + 0.375vw, 1.125rem);
-	--font-size-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
-	--font-size-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
-	--font-size-2xl: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);
-	--font-size-3xl: clamp(1.875rem, 1.5rem + 1.875vw, 2.5rem);
-	--font-size-4xl: clamp(2.25rem, 1.75rem + 2.5vw, 3rem);
-	--font-size-5xl: clamp(2.75rem, 2rem + 3.75vw, 4rem);
-	--font-size-hero: clamp(2.5rem, 1.5rem + 5vw, 5rem);
+  /* MOBILE-FIRST: Typography Scale (fluid) */
+  --font-size-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --font-size-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  --font-size-base: clamp(1rem, 0.925rem + 0.375vw, 1.125rem);
+  --font-size-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
+  --font-size-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  --font-size-2xl: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);
+  --font-size-3xl: clamp(1.875rem, 1.5rem + 1.875vw, 2.5rem);
+  --font-size-4xl: clamp(2.25rem, 1.75rem + 2.5vw, 3rem);
+  --font-size-5xl: clamp(2.75rem, 2rem + 3.75vw, 4rem);
+  --font-size-hero: clamp(2.5rem, 1.5rem + 5vw, 5rem);
 }
 
 /* Larger spacing on tablet+ */
 @media (min-width: 640px) {
-	:root {
-		--container-padding: 1.5rem;
-		--section-spacing: 6rem;
-	}
+  :root {
+    --container-padding: 1.5rem;
+    --section-spacing: 6rem;
+  }
 }
 
 @media (min-width: 1024px) {
-	:root {
-		--container-padding: 2rem;
-		--section-spacing: 8rem;
-	}
+  :root {
+    --container-padding: 2rem;
+    --section-spacing: 8rem;
+  }
 }
 
 /* ============================================================================
@@ -550,31 +567,31 @@
 
 /* MOBILE-FIRST: Core document setup */
 html {
-	scroll-behavior: smooth;
-	/* Prevent font size adjustment on iOS */
-	-webkit-text-size-adjust: 100%;
-	text-size-adjust: 100%;
-	/* Smoother font rendering */
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	/* Prevent horizontal scroll */
-	overflow-x: hidden;
+  scroll-behavior: smooth;
+  /* Prevent font size adjustment on iOS */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  /* Smoother font rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Prevent horizontal scroll */
+  overflow-x: hidden;
 }
 
 /* MOBILE-FIRST: Body optimizations */
 body {
-	/* Prevent horizontal scroll */
-	overflow-x: hidden;
-	/* Better touch scrolling */
-	-webkit-overflow-scrolling: touch;
-	/* Minimum height with dynamic viewport for mobile browsers */
-	min-height: 100vh;
-	min-height: 100dvh;
+  /* Prevent horizontal scroll */
+  overflow-x: hidden;
+  /* Better touch scrolling */
+  -webkit-overflow-scrolling: touch;
+  /* Minimum height with dynamic viewport for mobile browsers */
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 /* MOBILE-FIRST: Remove tap highlight on iOS/Android */
 * {
-	-webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* MOBILE-FIRST: Touch responsiveness on all interactive elements.
@@ -589,206 +606,211 @@ select,
 textarea,
 [role="button"],
 [tabindex]:not([tabindex="-1"]) {
-	touch-action: manipulation;
+  touch-action: manipulation;
 }
 
 /* Standalone touch targets (buttons, icon buttons, segmented controls).
    WCAG 2.5.5 (AAA) minimum: 44x44 CSS pixels. */
 .touch-target {
-	min-height: var(--touch-target-min);
-	min-width: var(--touch-target-min);
+  min-height: var(--touch-target-min);
+  min-width: var(--touch-target-min);
 }
 
 @media (pointer: coarse) {
-	/* On touch devices only, give all standalone buttons (not <a>) the
+  /* On touch devices only, give all standalone buttons (not <a>) the
 	   minimum target. Inline <a> in prose is excluded — they're not buttons. */
-	button:not(.btn-inline),
-	[role="button"]:not(.btn-inline) {
-		min-height: var(--touch-target-min);
-	}
+  button:not(.btn-inline),
+  [role="button"]:not(.btn-inline) {
+    min-height: var(--touch-target-min);
+  }
 }
 
 /* MOBILE-FIRST: Better button defaults */
 button {
-	cursor: pointer;
-	/* Prevent text selection on double-tap */
-	user-select: none;
-	-webkit-user-select: none;
+  cursor: pointer;
+  /* Prevent text selection on double-tap */
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 /* MOBILE-FIRST: Prevent zoom on input focus (iOS) */
 @media screen and (max-width: 767px) {
-	input[type="text"],
-	input[type="email"],
-	input[type="search"],
-	input[type="password"],
-	input[type="tel"],
-	input[type="url"],
-	textarea,
-	select {
-		font-size: 16px;
-	}
+  input[type="text"],
+  input[type="email"],
+  input[type="search"],
+  input[type="password"],
+  input[type="tel"],
+  input[type="url"],
+  textarea,
+  select {
+    font-size: 16px;
+  }
 }
 
 /* MOBILE-FIRST: Safe area padding utility classes */
 .safe-top {
-	padding-top: var(--safe-area-inset-top);
+  padding-top: var(--safe-area-inset-top);
 }
 
 .safe-bottom {
-	padding-bottom: var(--safe-area-inset-bottom);
+  padding-bottom: var(--safe-area-inset-bottom);
 }
 
 .safe-left {
-	padding-left: var(--safe-area-inset-left);
+  padding-left: var(--safe-area-inset-left);
 }
 
 .safe-right {
-	padding-right: var(--safe-area-inset-right);
+  padding-right: var(--safe-area-inset-right);
 }
 
 .safe-x {
-	padding-left: var(--safe-area-inset-left);
-	padding-right: var(--safe-area-inset-right);
+  padding-left: var(--safe-area-inset-left);
+  padding-right: var(--safe-area-inset-right);
 }
 
 .safe-y {
-	padding-top: var(--safe-area-inset-top);
-	padding-bottom: var(--safe-area-inset-bottom);
+  padding-top: var(--safe-area-inset-top);
+  padding-bottom: var(--safe-area-inset-bottom);
 }
 
 .safe-all {
-	padding: var(--safe-area-inset-top) var(--safe-area-inset-right) var(--safe-area-inset-bottom) var(--safe-area-inset-left);
+  padding: var(--safe-area-inset-top) var(--safe-area-inset-right) var(--safe-area-inset-bottom)
+    var(--safe-area-inset-left);
 }
 
 /* MOBILE-FIRST: Container with responsive padding (caps at 80rem = 1280px) */
 .container-mobile {
-	width: 100%;
-	max-width: 80rem;
-	margin-left: auto;
-	margin-right: auto;
-	padding-left: var(--container-padding);
-	padding-right: var(--container-padding);
+  width: 100%;
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
 }
 
 /* Fluid container that scales up on extra-large monitors.
    Use in place of `mx-auto max-w-7xl` on grids and content sections that
    should fill more of a 4K/5K monitor. */
 .container-fluid {
-	width: 100%;
-	max-width: 80rem; /* 1280px — matches Tailwind max-w-7xl */
-	margin-left: auto;
-	margin-right: auto;
-	padding-left: var(--container-padding);
-	padding-right: var(--container-padding);
+  width: 100%;
+  max-width: 80rem; /* 1280px — matches Tailwind max-w-7xl */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
 }
 
 @media (min-width: 1536px) {
-	.container-fluid { max-width: var(--container-2xl); }
+  .container-fluid {
+    max-width: var(--container-2xl);
+  }
 }
 
 @media (min-width: 1920px) {
-	.container-fluid {
-		max-width: var(--container-3xl);
-		padding-left: 3rem;
-		padding-right: 3rem;
-	}
+  .container-fluid {
+    max-width: var(--container-3xl);
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
 }
 
 @media (min-width: 2560px) {
-	.container-fluid {
-		max-width: var(--container-4xl);
-		padding-left: 4rem;
-		padding-right: 4rem;
-	}
+  .container-fluid {
+    max-width: var(--container-4xl);
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
 }
 
 /* MOBILE-FIRST: Touch feedback for interactive elements */
 .touch-feedback {
-	transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+  transition:
+    transform 0.1s ease-out,
+    opacity 0.1s ease-out;
 }
 
 .touch-feedback:active {
-	transform: scale(0.97);
-	opacity: 0.9;
+  transform: scale(0.97);
+  opacity: 0.9;
 }
 
 /* MOBILE-FIRST: Hide elements on touch vs non-touch */
 @media (hover: none) and (pointer: coarse) {
-	.hide-touch {
-		display: none;
-	}
+  .hide-touch {
+    display: none;
+  }
 }
 
 @media (hover: hover) and (pointer: fine) {
-	.hide-desktop {
-		display: none;
-	}
+  .hide-desktop {
+    display: none;
+  }
 }
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
-	html {
-		scroll-behavior: auto;
-	}
+  html {
+    scroll-behavior: auto;
+  }
 
-	*,
-	*::before,
-	*::after {
-		animation-duration: 0.01ms;
-		animation-iteration-count: 1;
-		transition-duration: 0.01ms;
-		scroll-behavior: auto;
-	}
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    transition-duration: 0.01ms;
+    scroll-behavior: auto;
+  }
 
-	/* Ensure hero animations are visible with reduced motion */
-	.animate-hero-fade,
-	.animate-hero-slide,
-	.animate-fade-in,
-	.animate-pulse-slow,
-	.animate-pulse-slower {
-		animation: none;
-		opacity: 1;
-		transform: none;
-		filter: none;
-		transition: none;
-	}
+  /* Ensure hero animations are visible with reduced motion */
+  .animate-hero-fade,
+  .animate-hero-slide,
+  .animate-fade-in,
+  .animate-pulse-slow,
+  .animate-pulse-slower {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
 }
 
 /* Custom scrollbar - Minimal, elegant */
 ::-webkit-scrollbar {
-	width: 6px;
-	height: 6px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-	background: transparent;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-	background: var(--color-midnight-700);
-	border-radius: 3px;
-	transition: background var(--duration-normal) var(--ease-smooth-out);
+  background: var(--color-midnight-700);
+  border-radius: 3px;
+  transition: background var(--duration-normal) var(--ease-smooth-out);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background: var(--color-midnight-500);
+  background: var(--color-midnight-500);
 }
 
 /* Selection */
 ::selection {
-	background: oklch(from var(--color-gold-500) l c h / 30%);
-	color: var(--color-gold-100);
+  background: oklch(from var(--color-gold-500) l c h / 30%);
+  color: var(--color-gold-100);
 }
 
 /* Focus styles - Cinematic glow */
 :focus-visible {
-	outline: none;
-	box-shadow: 
-		0 0 0 2px var(--color-midnight-950),
-		0 0 0 4px var(--color-gold-500),
-		0 0 20px oklch(from var(--color-gold-500) l c h / 30%);
-	transition: box-shadow var(--duration-normal) var(--ease-cinematic);
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--color-midnight-950),
+    0 0 0 4px var(--color-gold-500),
+    0 0 20px oklch(from var(--color-gold-500) l c h / 30%);
+  transition: box-shadow var(--duration-normal) var(--ease-cinematic);
 }
 
 /* ============================================================================
@@ -796,43 +818,50 @@ button {
    ============================================================================ */
 
 .prose {
-	--tw-prose-body: var(--color-midnight-200);
-	--tw-prose-headings: var(--color-midnight-50);
-	--tw-prose-links: var(--color-gold-400);
-	--tw-prose-bold: var(--color-midnight-50);
-	--tw-prose-quotes: var(--color-midnight-300);
-	--tw-prose-quote-borders: var(--color-gold-500);
-	--tw-prose-code: var(--color-gold-300);
-	--tw-prose-hr: var(--color-midnight-700);
+  --tw-prose-body: var(--color-midnight-200);
+  --tw-prose-headings: var(--color-midnight-50);
+  --tw-prose-links: var(--color-gold-400);
+  --tw-prose-bold: var(--color-midnight-50);
+  --tw-prose-quotes: var(--color-midnight-300);
+  --tw-prose-quote-borders: var(--color-gold-500);
+  --tw-prose-code: var(--color-gold-300);
+  --tw-prose-hr: var(--color-midnight-700);
 }
 
 /* Gradient text with shimmer */
 .gradient-text {
-	background: linear-gradient(135deg, var(--color-gold-300), var(--color-gold-500), var(--color-gold-300));
-	background-size: 200% auto;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
+  background: linear-gradient(
+    135deg,
+    var(--color-gold-300),
+    var(--color-gold-500),
+    var(--color-gold-300)
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .gradient-text-animated {
-	background: linear-gradient(
-		90deg,
-		var(--color-gold-400) 0%,
-		var(--color-gold-200) 25%,
-		var(--color-gold-400) 50%,
-		var(--color-gold-200) 75%,
-		var(--color-gold-400) 100%
-	);
-	background-size: 200% auto;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
-	animation: shimmer-text 3s linear infinite;
+  background: linear-gradient(
+    90deg,
+    var(--color-gold-400) 0%,
+    var(--color-gold-200) 25%,
+    var(--color-gold-400) 50%,
+    var(--color-gold-200) 75%,
+    var(--color-gold-400) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer-text 3s linear infinite;
 }
 
 @keyframes shimmer-text {
-	to { background-position: 200% center; }
+  to {
+    background-position: 200% center;
+  }
 }
 
 /* ============================================================================
@@ -841,134 +870,131 @@ button {
 
 /* Base card - GPU accelerated */
 .card {
-	--card-translate-y: 0;
-	--card-scale: 1;
-	--card-rotate: 0deg;
-	--card-glow-opacity: 0;
-	--card-border-opacity: 0.05;
-	--card-bg-opacity: 0.4;
-	
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	overflow: hidden;
-	border-radius: var(--card-border-radius);
-	background: oklch(from var(--color-midnight-900) l c h / var(--card-bg-opacity));
-	border: 1px solid oklch(from white l c h / var(--card-border-opacity));
-	backdrop-filter: blur(8px);
-	transform: 
-		translateY(var(--card-translate-y))
-		scale(var(--card-scale))
-		rotate(var(--card-rotate))
-		translateZ(0);
-	transition: 
-		transform var(--duration-cinematic) var(--ease-cinematic),
-		box-shadow var(--duration-cinematic) var(--ease-cinematic),
-		border-color var(--duration-medium) var(--ease-smooth-out);
-	will-change: transform, box-shadow;
+  --card-translate-y: 0;
+  --card-scale: 1;
+  --card-rotate: 0deg;
+  --card-glow-opacity: 0;
+  --card-border-opacity: 0.05;
+  --card-bg-opacity: 0.4;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--card-border-radius);
+  background: oklch(from var(--color-midnight-900) l c h / var(--card-bg-opacity));
+  border: 1px solid oklch(from white l c h / var(--card-border-opacity));
+  backdrop-filter: blur(8px);
+  transform: translateY(var(--card-translate-y)) scale(var(--card-scale)) rotate(var(--card-rotate))
+    translateZ(0);
+  transition:
+    transform var(--duration-cinematic) var(--ease-cinematic),
+    box-shadow var(--duration-cinematic) var(--ease-cinematic),
+    border-color var(--duration-medium) var(--ease-smooth-out);
+  will-change: transform, box-shadow;
 }
 
 .card::before {
-	content: '';
-	position: absolute;
-	inset: 0;
-	border-radius: inherit;
-	background: radial-gradient(
-		circle at 50% 0%,
-		oklch(from var(--color-gold-500) l c h / var(--card-glow-opacity)),
-		transparent 60%
-	);
-	pointer-events: none;
-	transition: opacity var(--duration-cinematic) var(--ease-cinematic);
-	z-index: 1;
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at 50% 0%,
+    oklch(from var(--color-gold-500) l c h / var(--card-glow-opacity)),
+    transparent 60%
+  );
+  pointer-events: none;
+  transition: opacity var(--duration-cinematic) var(--ease-cinematic);
+  z-index: 1;
 }
 
 .card:hover {
-	--card-translate-y: -8px;
-	--card-glow-opacity: 0.15;
-	--card-border-opacity: 0.2;
-	--card-bg-opacity: 0.6;
-	box-shadow: 
-		0 20px 40px -12px oklch(from var(--color-gold-500) l c h / 0.15),
-		0 8px 16px -8px oklch(from black l c h / 0.3);
-	border-color: oklch(from var(--color-gold-500) l c h / 0.3);
+  --card-translate-y: -8px;
+  --card-glow-opacity: 0.15;
+  --card-border-opacity: 0.2;
+  --card-bg-opacity: 0.6;
+  box-shadow:
+    0 20px 40px -12px oklch(from var(--color-gold-500) l c h / 0.15),
+    0 8px 16px -8px oklch(from black l c h / 0.3);
+  border-color: oklch(from var(--color-gold-500) l c h / 0.3);
 }
 
 .card:active {
-	--card-translate-y: -4px;
-	--card-scale: 0.98;
-	transition-duration: var(--duration-fast);
+  --card-translate-y: -4px;
+  --card-scale: 0.98;
+  transition-duration: var(--duration-fast);
 }
 
 /* Card image container - Consistent aspect ratio */
 .card-image {
-	position: relative;
-	aspect-ratio: var(--card-image-aspect);
-	overflow: hidden;
-	flex-shrink: 0;
+  position: relative;
+  aspect-ratio: var(--card-image-aspect);
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
 .card-image img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	transition: transform var(--duration-dramatic) var(--ease-cinematic);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-dramatic) var(--ease-cinematic);
 }
 
 .card:hover .card-image img {
-	transform: scale(1.08);
+  transform: scale(1.08);
 }
 
 /* Card image overlay - Cinematic gradient */
 .card-image::after {
-	content: '';
-	position: absolute;
-	inset: 0;
-	background: linear-gradient(
-		to top,
-		var(--color-midnight-950) 0%,
-		oklch(from var(--color-midnight-950) l c h / 0.6) 30%,
-		oklch(from var(--color-midnight-950) l c h / 0.2) 60%,
-		transparent 100%
-	);
-	opacity: 0.8;
-	transition: opacity var(--duration-cinematic) var(--ease-cinematic);
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    var(--color-midnight-950) 0%,
+    oklch(from var(--color-midnight-950) l c h / 0.6) 30%,
+    oklch(from var(--color-midnight-950) l c h / 0.2) 60%,
+    transparent 100%
+  );
+  opacity: 0.8;
+  transition: opacity var(--duration-cinematic) var(--ease-cinematic);
 }
 
 .card:hover .card-image::after {
-	opacity: 0.6;
+  opacity: 0.6;
 }
 
 /* Card content */
 .card-content {
-	position: relative;
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	padding: var(--card-padding);
-	z-index: 2;
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: var(--card-padding);
+  z-index: 2;
 }
 
 /* Card glow effect */
 .card-glow {
-	position: absolute;
-	top: -50%;
-	right: -50%;
-	width: 100%;
-	height: 100%;
-	border-radius: 50%;
-	background: radial-gradient(
-		circle,
-		oklch(from var(--color-gold-500) l c h / 0.1),
-		transparent 70%
-	);
-	opacity: 0;
-	transition: opacity var(--duration-cinematic) var(--ease-cinematic);
-	pointer-events: none;
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    oklch(from var(--color-gold-500) l c h / 0.1),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity var(--duration-cinematic) var(--ease-cinematic);
+  pointer-events: none;
 }
 
 .card:hover .card-glow {
-	opacity: 1;
+  opacity: 1;
 }
 
 /* ============================================================================
@@ -976,75 +1002,71 @@ button {
    ============================================================================ */
 
 .btn {
-	--btn-scale: 1;
-	--btn-glow: 0;
-	
-	position: relative;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	gap: 0.5rem;
-	padding: 0.75rem 1.5rem;
-	font-weight: 600;
-	border-radius: 9999px;
-	transform: scale(var(--btn-scale)) translateZ(0);
-	transition: 
-		transform var(--duration-normal) var(--ease-spring),
-		box-shadow var(--duration-normal) var(--ease-cinematic),
-		background var(--duration-normal) var(--ease-smooth-out);
-	will-change: transform;
-	overflow: hidden;
+  --btn-scale: 1;
+  --btn-glow: 0;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  transform: scale(var(--btn-scale)) translateZ(0);
+  transition:
+    transform var(--duration-normal) var(--ease-spring),
+    box-shadow var(--duration-normal) var(--ease-cinematic),
+    background var(--duration-normal) var(--ease-smooth-out);
+  will-change: transform;
+  overflow: hidden;
 }
 
 .btn::before {
-	content: '';
-	position: absolute;
-	inset: 0;
-	background: linear-gradient(
-		135deg,
-		oklch(from white l c h / 0.2),
-		transparent 50%
-	);
-	opacity: 0;
-	transition: opacity var(--duration-normal) var(--ease-smooth-out);
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, oklch(from white l c h / 0.2), transparent 50%);
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-smooth-out);
 }
 
 .btn:hover::before {
-	opacity: 1;
+  opacity: 1;
 }
 
 .btn:hover {
-	--btn-scale: 1.02;
+  --btn-scale: 1.02;
 }
 
 .btn:active {
-	--btn-scale: 0.97;
-	transition-duration: var(--duration-fast);
+  --btn-scale: 0.97;
+  transition-duration: var(--duration-fast);
 }
 
 /* Primary button - Gold gradient */
 .btn-primary {
-	background: linear-gradient(135deg, var(--color-gold-500), var(--color-gold-600));
-	color: var(--color-midnight-950);
-	box-shadow: 0 4px 12px oklch(from var(--color-gold-500) l c h / 0.25);
+  background: linear-gradient(135deg, var(--color-gold-500), var(--color-gold-600));
+  color: var(--color-midnight-950);
+  box-shadow: 0 4px 12px oklch(from var(--color-gold-500) l c h / 0.25);
 }
 
 .btn-primary:hover {
-	box-shadow: 
-		0 8px 24px oklch(from var(--color-gold-500) l c h / 0.35),
-		0 0 0 1px oklch(from var(--color-gold-400) l c h / 0.5);
+  box-shadow:
+    0 8px 24px oklch(from var(--color-gold-500) l c h / 0.35),
+    0 0 0 1px oklch(from var(--color-gold-400) l c h / 0.5);
 }
 
 /* Ghost button */
 .btn-ghost {
-	background: oklch(from white l c h / 0.05);
-	color: white;
-	border: 1px solid oklch(from white l c h / 0.1);
+  background: oklch(from white l c h / 0.05);
+  color: white;
+  border: 1px solid oklch(from white l c h / 0.1);
 }
 
 .btn-ghost:hover {
-	background: oklch(from white l c h / 0.1);
-	border-color: oklch(from white l c h / 0.2);
+  background: oklch(from white l c h / 0.1);
+  border-color: oklch(from white l c h / 0.2);
 }
 
 /* ============================================================================
@@ -1052,37 +1074,37 @@ button {
    ============================================================================ */
 
 .link-hover {
-	position: relative;
-	color: var(--color-gold-400);
-	transition: color var(--duration-normal) var(--ease-smooth-out);
+  position: relative;
+  color: var(--color-gold-400);
+  transition: color var(--duration-normal) var(--ease-smooth-out);
 }
 
 .link-hover::after {
-	content: '';
-	position: absolute;
-	bottom: -2px;
-	left: 0;
-	width: 100%;
-	height: 2px;
-	background: currentColor;
-	transform: scaleX(0);
-	transform-origin: right;
-	transition: transform var(--duration-medium) var(--ease-cinematic);
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--duration-medium) var(--ease-cinematic);
 }
 
 .link-hover:hover::after {
-	transform: scaleX(1);
-	transform-origin: left;
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 /* Arrow animation */
 .arrow-animate {
-	transition: transform var(--duration-normal) var(--ease-spring);
+  transition: transform var(--duration-normal) var(--ease-spring);
 }
 
 .group:hover .arrow-animate,
 .link-hover:hover .arrow-animate {
-	transform: translateX(4px);
+  transform: translateX(4px);
 }
 
 /* ============================================================================
@@ -1090,24 +1112,29 @@ button {
    ============================================================================ */
 
 .icon-spin {
-	transition: transform var(--duration-medium) var(--ease-spring);
+  transition: transform var(--duration-medium) var(--ease-spring);
 }
 
 .group:hover .icon-spin {
-	transform: rotate(12deg) scale(1.1);
+  transform: rotate(12deg) scale(1.1);
 }
 
 .icon-bounce {
-	transition: transform var(--duration-medium) var(--ease-spring);
+  transition: transform var(--duration-medium) var(--ease-spring);
 }
 
 .group:hover .icon-bounce {
-	animation: icon-bounce 0.5s var(--ease-spring);
+  animation: icon-bounce 0.5s var(--ease-spring);
 }
 
 @keyframes icon-bounce {
-	0%, 100% { transform: translateY(0); }
-	50% { transform: translateY(-4px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
 }
 
 /* ============================================================================
@@ -1115,47 +1142,77 @@ button {
    ============================================================================ */
 
 @keyframes heroFade {
-	0% { opacity: 0; transform: translateY(20px); }
-	100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes heroSlide {
-	0% { opacity: 0; transform: translateY(40px); filter: blur(10px); }
-	100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }
 
 @keyframes fadeIn {
-	to { opacity: 1; }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes pulseSlow {
-	0%, 100% { opacity: 1; transform: scale(1); }
-	50% { opacity: 0.8; transform: scale(1.05); }
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
 }
 
 @keyframes pulseSlower {
-	0%, 100% { opacity: 1; transform: scale(1); }
-	50% { opacity: 0.7; transform: scale(1.1); }
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
 }
 
 .animate-hero-fade {
-	animation: heroFade 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: heroFade 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .animate-hero-slide {
-	animation: heroSlide 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: heroSlide 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .animate-fade-in {
-	animation: fadeIn 1s ease-out forwards;
+  animation: fadeIn 1s ease-out forwards;
 }
 
 .animate-pulse-slow {
-	animation: pulseSlow 4s ease-in-out infinite;
+  animation: pulseSlow 4s ease-in-out infinite;
 }
 
 .animate-pulse-slower {
-	animation: pulseSlower 6s ease-in-out infinite;
+  animation: pulseSlower 6s ease-in-out infinite;
 }
 
 /* Scroll reveals are owned by <ScrollReveal>/<Stagger> components — no global classes needed. */
@@ -1165,29 +1222,33 @@ button {
    ============================================================================ */
 
 .glow {
-	box-shadow: 
-		0 0 20px oklch(from var(--color-gold-500) l c h / 0.2),
-		0 0 40px oklch(from var(--color-gold-500) l c h / 0.1);
+  box-shadow:
+    0 0 20px oklch(from var(--color-gold-500) l c h / 0.2),
+    0 0 40px oklch(from var(--color-gold-500) l c h / 0.1);
 }
 
 .glow-soft {
-	box-shadow: 0 0 30px oklch(from var(--color-gold-500) l c h / 0.15);
+  box-shadow: 0 0 30px oklch(from var(--color-gold-500) l c h / 0.15);
 }
 
 .glow-intense {
-	box-shadow: 
-		0 0 30px oklch(from var(--color-gold-500) l c h / 0.3),
-		0 0 60px oklch(from var(--color-gold-500) l c h / 0.2);
+  box-shadow:
+    0 0 30px oklch(from var(--color-gold-500) l c h / 0.3),
+    0 0 60px oklch(from var(--color-gold-500) l c h / 0.2);
 }
 
 /* Pulsing glow */
 .glow-pulse {
-	animation: glow-pulse 2s var(--ease-smooth-out) infinite alternate;
+  animation: glow-pulse 2s var(--ease-smooth-out) infinite alternate;
 }
 
 @keyframes glow-pulse {
-	from { box-shadow: 0 0 20px oklch(from var(--color-gold-500) l c h / 0.2); }
-	to { box-shadow: 0 0 40px oklch(from var(--color-gold-500) l c h / 0.4); }
+  from {
+    box-shadow: 0 0 20px oklch(from var(--color-gold-500) l c h / 0.2);
+  }
+  to {
+    box-shadow: 0 0 40px oklch(from var(--color-gold-500) l c h / 0.4);
+  }
 }
 
 /* ============================================================================
@@ -1195,32 +1256,36 @@ button {
    ============================================================================ */
 
 .border-glow {
-	position: relative;
+  position: relative;
 }
 
 .border-glow::before {
-	content: '';
-	position: absolute;
-	inset: -1px;
-	border-radius: inherit;
-	background: linear-gradient(
-		135deg,
-		oklch(from var(--color-gold-500) l c h / 0.5),
-		transparent 40%,
-		transparent 60%,
-		oklch(from var(--color-gold-500) l c h / 0.5)
-	);
-	-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-	mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-	-webkit-mask-composite: xor;
-	mask-composite: exclude;
-	padding: 1px;
-	opacity: 0;
-	transition: opacity var(--duration-medium) var(--ease-smooth-out);
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    oklch(from var(--color-gold-500) l c h / 0.5),
+    transparent 40%,
+    transparent 60%,
+    oklch(from var(--color-gold-500) l c h / 0.5)
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1px;
+  opacity: 0;
+  transition: opacity var(--duration-medium) var(--ease-smooth-out);
 }
 
 .border-glow:hover::before {
-	opacity: 1;
+  opacity: 1;
 }
 
 /* ============================================================================
@@ -1228,17 +1293,17 @@ button {
    ============================================================================ */
 
 .noise-overlay {
-	position: relative;
+  position: relative;
 }
 
 .noise-overlay::before {
-	content: '';
-	position: absolute;
-	inset: 0;
-	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-	opacity: 0.03;
-	pointer-events: none;
-	z-index: 1;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* ============================================================================
@@ -1246,8 +1311,8 @@ button {
    ============================================================================ */
 
 .parallax-slow {
-	will-change: transform;
-	transition: transform 0.1s linear;
+  will-change: transform;
+  transition: transform 0.1s linear;
 }
 
 /* ============================================================================
@@ -1255,20 +1320,24 @@ button {
    ============================================================================ */
 
 .skeleton {
-	background: linear-gradient(
-		90deg,
-		oklch(from white l c h / 0.03) 25%,
-		oklch(from white l c h / 0.08) 50%,
-		oklch(from white l c h / 0.03) 75%
-	);
-	background-size: 400% 100%;
-	animation: skeleton-wave 2s linear infinite;
-	border-radius: 4px;
+  background: linear-gradient(
+    90deg,
+    oklch(from white l c h / 0.03) 25%,
+    oklch(from white l c h / 0.08) 50%,
+    oklch(from white l c h / 0.03) 75%
+  );
+  background-size: 400% 100%;
+  animation: skeleton-wave 2s linear infinite;
+  border-radius: 4px;
 }
 
 @keyframes skeleton-wave {
-	from { background-position: 200% 0; }
-	to { background-position: -200% 0; }
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
 }
 
 /* ============================================================================
@@ -1276,12 +1345,12 @@ button {
    ============================================================================ */
 
 .backdrop-blur-premium {
-	backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(16px) saturate(180%);
 }
 
 .backdrop-blur-glass {
-	backdrop-filter: blur(12px) saturate(150%);
-	background: oklch(from var(--color-midnight-950) l c h / 0.8);
+  backdrop-filter: blur(12px) saturate(150%);
+  background: oklch(from var(--color-midnight-950) l c h / 0.8);
 }
 
 /* ============================================================================
@@ -1289,16 +1358,16 @@ button {
    ============================================================================ */
 
 .input-focus {
-	transition: 
-		border-color var(--duration-normal) var(--ease-smooth-out),
-		box-shadow var(--duration-normal) var(--ease-smooth-out);
+  transition:
+    border-color var(--duration-normal) var(--ease-smooth-out),
+    box-shadow var(--duration-normal) var(--ease-smooth-out);
 }
 
 .input-focus:focus {
-	border-color: oklch(from var(--color-gold-500) l c h / 0.5);
-	box-shadow: 
-		0 0 0 3px oklch(from var(--color-gold-500) l c h / 0.1),
-		0 0 20px oklch(from var(--color-gold-500) l c h / 0.1);
+  border-color: oklch(from var(--color-gold-500) l c h / 0.5);
+  box-shadow:
+    0 0 0 3px oklch(from var(--color-gold-500) l c h / 0.1),
+    0 0 20px oklch(from var(--color-gold-500) l c h / 0.1);
 }
 
 /* ============================================================================
@@ -1306,146 +1375,170 @@ button {
    ============================================================================ */
 
 details {
-	overflow: hidden;
+  overflow: hidden;
 }
 
 details[open] summary ~ * {
-	animation: accordion-open var(--duration-medium) var(--ease-cinematic);
+  animation: accordion-open var(--duration-medium) var(--ease-cinematic);
 }
 
 @keyframes accordion-open {
-	from {
-		opacity: 0;
-		transform: translateY(-8px);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 details summary {
-	cursor: pointer;
-	user-select: none;
+  cursor: pointer;
+  user-select: none;
 }
 
 details summary::-webkit-details-marker {
-	display: none;
+  display: none;
 }
 
 /* ============================================================================
    STAGGER ANIMATION DELAYS
    ============================================================================ */
 
-.stagger-1 { animation-delay: 50ms; }
-.stagger-2 { animation-delay: 100ms; }
-.stagger-3 { animation-delay: 150ms; }
-.stagger-4 { animation-delay: 200ms; }
-.stagger-5 { animation-delay: 250ms; }
-.stagger-6 { animation-delay: 300ms; }
-.stagger-7 { animation-delay: 350ms; }
-.stagger-8 { animation-delay: 400ms; }
+.stagger-1 {
+  animation-delay: 50ms;
+}
+.stagger-2 {
+  animation-delay: 100ms;
+}
+.stagger-3 {
+  animation-delay: 150ms;
+}
+.stagger-4 {
+  animation-delay: 200ms;
+}
+.stagger-5 {
+  animation-delay: 250ms;
+}
+.stagger-6 {
+  animation-delay: 300ms;
+}
+.stagger-7 {
+  animation-delay: 350ms;
+}
+.stagger-8 {
+  animation-delay: 400ms;
+}
 
 /* ============================================================================
    PRINT STYLES - Trader Profile Optimized
    ============================================================================ */
 
 @media print {
-	/* Disable animations and transitions */
-	* {
-		animation: none;
-		transition: none;
-	}
+  /* Disable animations and transitions */
+  * {
+    animation: none;
+    transition: none;
+  }
 
-	/* Hide non-essential elements */
-	.no-print,
-	nav,
-	footer,
-	.newsletter-popup,
-	button:not(.print-show),
-	[data-no-print],
-	.fixed,
-	.sticky {
-		display: none;
-	}
+  /* Hide non-essential elements */
+  .no-print,
+  nav,
+  footer,
+  .newsletter-popup,
+  button:not(.print-show),
+  [data-no-print],
+  .fixed,
+  .sticky {
+    display: none;
+  }
 
-	/* Reset backgrounds for printing */
-	body,
-	.bg-midnight-950,
-	.bg-midnight-900,
-	.bg-midnight-800,
-	[class*="bg-gradient"] {
-		background: white;
-		color: black;
-	}
+  /* Reset backgrounds for printing */
+  body,
+  .bg-midnight-950,
+  .bg-midnight-900,
+  .bg-midnight-800,
+  [class*="bg-gradient"] {
+    background: white;
+    color: black;
+  }
 
-	/* Optimize text colors for printing */
-	h1, h2, h3, h4, h5, h6 {
-		color: black;
-		page-break-after: avoid;
-	}
+  /* Optimize text colors for printing */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: black;
+    page-break-after: avoid;
+  }
 
-	p, li, span, div {
-		color: #333;
-	}
+  p,
+  li,
+  span,
+  div {
+    color: #333;
+  }
 
-	a {
-		color: #1a0dab;
-		text-decoration: underline;
-	}
+  a {
+    color: #1a0dab;
+    text-decoration: underline;
+  }
 
-	/* Add URL after links for reference */
-	a[href^="http"]:after {
-		content: " (" attr(href) ")";
-		font-size: 0.8em;
-		color: #666;
-	}
+  /* Add URL after links for reference */
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
 
-	/* Ensure images print properly */
-	img {
-		max-width: 100%;
-		page-break-inside: avoid;
-	}
+  /* Ensure images print properly */
+  img {
+    max-width: 100%;
+    page-break-inside: avoid;
+  }
 
-	/* Page break optimization */
-	section {
-		page-break-inside: avoid;
-	}
+  /* Page break optimization */
+  section {
+    page-break-inside: avoid;
+  }
 
-	article {
-		page-break-before: auto;
-	}
+  article {
+    page-break-before: auto;
+  }
 
-	/* Trader profile specific */
-	.trader-profile-image {
-		max-height: 300px;
-		object-fit: contain;
-	}
+  /* Trader profile specific */
+  .trader-profile-image {
+    max-height: 300px;
+    object-fit: contain;
+  }
 
-	/* Optimize grid layouts for single column */
-	.grid {
-		display: block;
-	}
+  /* Optimize grid layouts for single column */
+  .grid {
+    display: block;
+  }
 
-	.grid > * {
-		margin-bottom: 1rem;
-	}
+  .grid > * {
+    margin-bottom: 1rem;
+  }
 
-	/* Quote styling for print */
-	blockquote {
-		border-left: 3px solid #ccc;
-		padding-left: 1rem;
-		background: none;
-		font-style: italic;
-		color: #444;
-	}
+  /* Quote styling for print */
+  blockquote {
+    border-left: 3px solid #ccc;
+    padding-left: 1rem;
+    background: none;
+    font-style: italic;
+    color: #444;
+  }
 
-	/* Add print header */
-	@page {
-		margin: 1.5cm;
-	}
+  /* Add print header */
+  @page {
+    margin: 1.5cm;
+  }
 
-	@page :first {
-		margin-top: 2cm;
-	}
+  @page :first {
+    margin-top: 2cm;
+  }
 }
