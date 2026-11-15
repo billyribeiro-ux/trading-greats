@@ -3,6 +3,7 @@ import { db } from "#lib/server/db.ts";
 import { traders as tradersTable } from "#lib/server/schema.ts";
 import { eq } from "drizzle-orm";
 import { traderPhoto } from "#lib/server/trader-portraits.ts";
+import { selectDailyQuote } from "#lib/utils/daily-quote.ts";
 
 // ============================================================================
 // RENDERING CONFIGURATION
@@ -20,13 +21,6 @@ interface TraderProfile {
   oneLiner: string;
   netWorth: string;
   photoUrl: string | null;
-}
-
-interface QuoteWithTrader {
-  text: string;
-  source?: string;
-  traderName: string;
-  traderSlug: string;
 }
 
 // ============================================================================
@@ -78,14 +72,7 @@ export const load: PageServerLoad = async () => {
     photoUrl: traderPhoto(t.slug, t.photoUrl),
   }));
 
-  const allQuotes: QuoteWithTrader[] = allTraders.flatMap((trader) =>
-    (trader.quotes || []).map((quote) => ({
-      text: quote.text,
-      source: quote.source,
-      traderName: trader.name,
-      traderSlug: trader.slug,
-    })),
-  );
+  const dailyQuote = selectDailyQuote(allTraders, new Date());
 
   const meta = {
     title: "Trading Greats - Study Strategies From The World's Greatest Traders",
@@ -94,5 +81,5 @@ export const load: PageServerLoad = async () => {
     canonical: "https://tradinggreats.com",
   };
 
-  return { traders, allQuotes, meta };
+  return { traders, dailyQuote, meta };
 };

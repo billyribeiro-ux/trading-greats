@@ -251,7 +251,7 @@
         </div>
     </section>
 
-    <QuoteOfTheDay quotes={data.allQuotes} />
+    <QuoteOfTheDay quote={data.dailyQuote} />
 
     <section class="approaches-section" id="how-it-works" aria-labelledby="approaches-title">
         <div class="site-container">

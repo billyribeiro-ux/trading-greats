@@ -1,41 +1,22 @@
 <script lang="ts">
 	import { cn } from '#lib/utils/index.ts';
 
-	interface Quote {
-		text: string;
-		source?: string;
-		traderName: string;
-		traderSlug: string;
-	}
+	import type { DailyQuote } from '#lib/utils/daily-quote.ts';
 
 	interface Props {
-		quotes: Quote[];
+		quote: DailyQuote | null;
 		class?: string;
 	}
 
-	let { quotes, class: className }: Props = $props();
-
-	// Get a deterministic quote based on the current date
-	// This ensures all users see the same quote on the same day
-	const todayQuote = $derived.by(() => {
-		if (!quotes || quotes.length === 0) return null;
-
-		// Use date to create a deterministic index
-		const today = new Date();
-		const dayOfYear = Math.floor(
-			(today.getTime() - new Date(today.getFullYear(), 0, 0).getTime()) / (1000 * 60 * 60 * 24)
-		);
-		const index = dayOfYear % quotes.length;
-		return quotes[index];
-	});
+	let { quote, class: className }: Props = $props();
 </script>
 
-{#if todayQuote}
+{#if quote}
 	<section class={cn('daily-quote', className)}>
 		<div class="site-container daily-inner">
 			<div class="daily-label"><span>FROM THE ARCHIVE</span><span> / QUOTE OF THE DAY</span></div>
-			<blockquote>“{todayQuote.text}”</blockquote>
-			<div class="daily-author"><span></span><div><a href="/traders/{todayQuote.traderSlug}">{todayQuote.traderName} ↗</a>{#if todayQuote.source}<p>{todayQuote.source}</p>{/if}</div></div>
+			<blockquote>“{quote.text}”</blockquote>
+			<div class="daily-author"><span></span><div><a href="/traders/{quote.traderSlug}">{quote.traderName} ↗</a>{#if quote.source}<p>{quote.source}</p>{/if}</div></div>
 		</div>
 	</section>
 {/if}
