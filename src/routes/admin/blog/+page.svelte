@@ -72,7 +72,7 @@
 <div class="min-h-screen bg-midnight-950">
 	<!-- Header -->
 	<header class="border-b border-midnight-800/50 bg-midnight-900/50 backdrop-blur-xl sticky top-0 z-50">
-		<div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+		<div class="mx-auto flex h-16 site-container items-center justify-between">
 			<div class="flex items-center gap-4">
 				<a href="/admin" class="text-midnight-400 hover:text-midnight-200 transition-colors">
 					← Dashboard
@@ -88,7 +88,7 @@
 		</div>
 	</header>
 
-	<main class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+	<main class="mx-auto site-container py-8">
 		<!-- Page Header -->
 		<div class="flex items-center justify-between mb-8">
 			<div>

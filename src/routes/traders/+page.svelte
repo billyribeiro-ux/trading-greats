@@ -90,7 +90,7 @@
 			<div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[2rem_2rem] sm:bg-size-[3rem_3rem] lg:bg-size-[4rem_4rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_50%,transparent_100%)]"></div>
 		</div>
 
-		<div class="relative z-10 mx-auto max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1680px] 4xl:max-w-[2000px] px-4 sm:px-6 lg:px-8">
+		<div class="relative z-10 mx-auto site-container">
 			<div class="text-center max-w-4xl mx-auto">
 				<span class="inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-white/5 border border-white/10 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-gold-400 mb-4 sm:mb-6">
 					<Icon name="sparkles" class="h-3 w-3 sm:h-3.5 sm:w-3.5" />
@@ -185,8 +185,8 @@
 	<!-- ========================================================================
 	     RESULTS HEADER - MOBILE-FIRST
 	======================================================================== -->
-	<section class="relative z-20 px-4 sm:px-6 lg:px-8 pb-4 sm:pb-6">
-		<div class="mx-auto max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1680px] 4xl:max-w-[2000px]">
+	<section class="relative z-20 pb-4 sm:pb-6">
+		<div class="mx-auto site-container">
 			<div class="flex items-center justify-between border-b border-white/5 pb-4 sm:pb-6">
 				<div class="flex items-center gap-2 sm:gap-4">
 					<p class="text-xs sm:text-sm text-midnight-400">
@@ -236,8 +236,8 @@
 	<!-- ========================================================================
 	     TRADERS GRID - MOBILE-FIRST
 	======================================================================== -->
-	<section class="relative z-20 pb-16 sm:pb-20 lg:pb-24 px-4 sm:px-6 lg:px-8">
-		<div class="mx-auto max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1680px] 4xl:max-w-[2000px]">
+	<section class="relative z-20 pb-16 sm:pb-20 lg:pb-24">
+		<div class="mx-auto site-container">
 			{#if filteredTraders.length === 0}
 				<!-- Empty State -->
 				<ScrollReveal class="py-20">

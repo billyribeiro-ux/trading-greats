@@ -32,7 +32,7 @@
 
 {#if todayQuote}
 	<section class={cn('daily-quote', className)}>
-		<div class="daily-inner">
+		<div class="site-container daily-inner">
 			<div class="daily-label"><span>FROM THE ARCHIVE</span><span> / QUOTE OF THE DAY</span></div>
 			<blockquote>“{todayQuote.text}”</blockquote>
 			<div class="daily-author"><span></span><div><a href="/traders/{todayQuote.traderSlug}">{todayQuote.traderName} ↗</a>{#if todayQuote.source}<p>{todayQuote.source}</p>{/if}</div></div>
@@ -41,9 +41,7 @@
 {/if}
 <style>
 .daily-quote { background:#e8e3d9; color:#16232b; padding:clamp(4.5rem,8vw,8rem) 0; }
-.daily-inner { width:min(100% - 3rem,68rem); margin-inline:auto; }
 .daily-label { display:flex; flex-wrap:wrap; gap:.4rem; color:#705632; font-size:.7rem; font-weight:700; letter-spacing:.14em; }
 blockquote { margin:2rem 0; max-width:60rem; font-family:'Playfair Display',Georgia,serif; font-size:clamp(1.8rem,2.5vw + 1rem,3.4rem); line-height:1.3; letter-spacing:-.025em; }
 .daily-author { display:flex; gap:1rem; align-items:start; }.daily-author > span { margin-top:.65rem; width:2.2rem; height:1px; background:#987b4e; }.daily-author a { color:#293c46; font-size:.95rem; font-weight:700; text-decoration:none; }.daily-author p { margin:.35rem 0 0; font-size:.8rem; color:#58666a; }
-@media(min-width:48rem) { .daily-inner { width:min(100% - 5rem,68rem); } }
 </style>

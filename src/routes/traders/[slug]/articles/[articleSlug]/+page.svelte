@@ -331,7 +331,7 @@
 	<!-- Related Articles - MOBILE-FIRST -->
 	{#if relatedArticles.length > 0}
 		<section class="border-t border-midnight-800/50 bg-midnight-900/30">
-			<div class="mx-auto max-w-7xl px-4 py-10 sm:py-12 lg:py-16 sm:px-6 lg:px-8">
+			<div class="mx-auto site-container py-10 sm:py-12 lg:py-16">
 				<ScrollReveal>
 					<h2 class="font-display text-xl sm:text-2xl font-bold text-white mb-5 sm:mb-6 flex items-center gap-2">
 						<Icon name="book-open" class="h-5 w-5 sm:h-6 sm:w-6 text-gold-500" />
@@ -350,7 +350,7 @@
 
 	<!-- Back to Trader CTA - MOBILE-FIRST -->
 	<section class="border-t border-midnight-800/50">
-		<div class="mx-auto max-w-7xl px-4 py-8 sm:py-10 lg:py-12 sm:px-6 lg:px-8">
+		<div class="mx-auto site-container py-8 sm:py-10 lg:py-12">
 			<div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
 				<a
 					href="/traders/{trader.slug}/articles"

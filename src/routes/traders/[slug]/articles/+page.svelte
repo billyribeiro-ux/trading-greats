@@ -84,7 +84,7 @@
 			<div class="absolute bottom-0 right-1/4 h-48 w-48 sm:h-72 sm:w-72 rounded-full bg-gold-500/5 blur-3xl"></div>
 		</div>
 
-		<div class="relative mx-auto max-w-7xl px-4 pt-20 sm:pt-24 lg:pt-28 pb-10 sm:pb-12 sm:px-6 lg:px-8">
+		<div class="relative mx-auto site-container pt-20 sm:pt-24 lg:pt-28 pb-10 sm:pb-12">
 			<ScrollReveal>
 				<!-- Trader info header -->
 				<div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 mb-6 sm:mb-8">
@@ -136,7 +136,7 @@
 
 	<!-- Articles Section - MOBILE-FIRST -->
 	<section class="relative py-10 sm:py-12 lg:py-16">
-		<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+		<div class="mx-auto site-container">
 			{#if articles.length === 0}
 				<!-- Empty state -->
 				<ScrollReveal>
@@ -198,7 +198,7 @@
 
 	<!-- Back to Trader CTA - MOBILE-FIRST -->
 	<section class="border-t border-midnight-800/50">
-		<div class="mx-auto max-w-7xl px-4 py-8 sm:py-10 lg:py-12 sm:px-6 lg:px-8">
+		<div class="mx-auto site-container py-8 sm:py-10 lg:py-12">
 			<div class="flex flex-col sm:flex-row items-center justify-between gap-4">
 				<div class="text-center sm:text-left">
 					<p class="text-sm text-midnight-400">Explore more about</p>

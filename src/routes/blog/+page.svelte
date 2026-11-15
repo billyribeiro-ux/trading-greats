@@ -189,7 +189,7 @@
 			<div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[4rem_4rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_50%,transparent_100%)]"></div>
 		</div>
 
-		<div class="relative mx-auto max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1680px] 4xl:max-w-[2000px] px-4 py-16 sm:py-20 lg:py-24 sm:px-6 lg:px-8 lg:py-32">
+		<div class="relative mx-auto site-container py-16 sm:py-20 lg:py-24 lg:py-32">
 			<div class="text-center max-w-4xl mx-auto">
 				<!-- Badge with cinematic entrance - MOBILE-FIRST -->
 				<div class="inline-flex items-center gap-2 sm:gap-2.5 rounded-full border border-gold-500/30 bg-gold-500/10 px-3.5 sm:px-5 py-1.5 sm:py-2 mb-6 sm:mb-8 backdrop-blur-sm opacity-0 animate-hero-fade [animation-delay:100ms]">
@@ -253,7 +253,7 @@
 	     FEATURED POST - Netflix-style hero card (MOBILE-FIRST)
 	============================================================================ -->
 	{#if data.featuredPost && !data.currentCategory}
-		<section class="mx-auto max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1680px] 4xl:max-w-[2000px] px-4 py-10 sm:py-14 lg:py-16 sm:px-6 lg:px-8 lg:py-20">
+		<section class="mx-auto site-container py-10 sm:py-14 lg:py-16 lg:py-20">
 			<ScrollReveal animation="slideUp" duration={800}>
 				<a
 					href="/blog/{data.featuredPost.slug}"
@@ -341,7 +341,7 @@
 	<!-- ============================================================================
 	     POSTS GRID - Cinematic card animations (MOBILE-FIRST)
 	============================================================================ -->
-	<section class="mx-auto max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1680px] 4xl:max-w-[2000px] px-4 pb-16 sm:pb-20 lg:pb-24 sm:px-6 lg:px-8">
+	<section class="mx-auto site-container pb-16 sm:pb-20 lg:pb-24">
 		{#if data.posts.length > 0}
 			<div class="grid gap-4 sm:gap-6 lg:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5">
 				{#each data.posts as post, i (post.slug)}
@@ -464,7 +464,7 @@
 		<div class="absolute inset-0 bg-linear-to-b from-midnight-900/50 to-midnight-950"></div>
 		<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] sm:w-[450px] sm:h-[450px] lg:w-[600px] lg:h-[600px] rounded-full bg-gold-500/5 blur-[100px] sm:blur-[150px]"></div>
 
-		<div class="relative mx-auto max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1680px] 4xl:max-w-[2000px] px-4 py-16 sm:py-20 lg:py-24 sm:px-6 lg:px-8">
+		<div class="relative mx-auto site-container py-16 sm:py-20 lg:py-24">
 			<ScrollReveal animation="scaleIn">
 				<div class="text-center max-w-2xl mx-auto">
 					<div class="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-gold-500/30 bg-gold-500/10 px-3 sm:px-4 py-1 sm:py-1.5 mb-4 sm:mb-6">

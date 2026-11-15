@@ -2,6 +2,7 @@
   import SEO from "#lib/components/SEO.svelte";
   import { PUBLIC_SITE_URL as configuredSiteUrl } from '$app/env/public';
   import JsonLd from "#lib/components/JsonLd.svelte";
+  import JsonLdScript from "#lib/components/JsonLdScript.svelte";
   import { Icon } from "#lib/components/icons/index.ts";
   import { ScrollReveal } from "#lib/components/motion/index.ts";
   import { cn } from "#lib/utils/index.ts";
@@ -85,7 +86,7 @@
 
 <!-- June 2026: AboutPage + Person schema — anchors the author @id used by all Article schemas (E-E-A-T) -->
 <svelte:head>
-  {@html `<script type="application/ld+json">${aboutSchema}</script>`}
+  <JsonLdScript data={JSON.parse(aboutSchema)} />
 </svelte:head>
 
 <div class="min-h-screen bg-midnight-950">
@@ -138,8 +139,8 @@
   </section>
 
   <!-- Content Grid - MOBILE-FIRST -->
-  <section class="relative z-20 pb-16 sm:pb-20 lg:pb-24 px-4 sm:px-6 lg:px-8">
-    <div class="mx-auto max-w-5xl">
+  <section class="relative z-20 pb-16 sm:pb-20 lg:pb-24">
+    <div class="site-container">
       <!-- Mission & Approach - MOBILE-FIRST -->
       <div
         class="grid gap-4 sm:gap-6 lg:gap-8 md:grid-cols-2 mb-10 sm:mb-12 lg:mb-16"

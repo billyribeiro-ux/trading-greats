@@ -1,6 +1,7 @@
 <script lang="ts">
     import { slide } from 'svelte/transition';
     import { onMount } from 'svelte';
+    import emblaCarouselSvelte from 'embla-carousel-svelte';
     import SEO from '#lib/components/SEO.svelte';
     import QuoteOfTheDay from '#lib/components/QuoteOfTheDay.svelte';
     import { Icon, type IconName } from '#lib/components/icons/index.ts';
@@ -15,6 +16,9 @@
     let openFaq = $state<number | null>(null);
     let carouselPage = $state(0);
     let carouselPlaying = $state(false);
+    let carouselHovered = $state(false);
+    type CarouselApi = { scrollNext: () => void; scrollPrev: () => void; scrollTo: (index: number) => void; selectedScrollSnap: () => number; on: (event: 'select' | 'pointerDown', callback: () => void) => unknown };
+    let carouselApi: CarouselApi | undefined;
     const carouselPages = $derived(Math.min(data.traders.length, 8));
 
     onMount(() => {
@@ -25,8 +29,8 @@
         };
         reducedMotion.addEventListener('change', stopForReducedMotion);
         const timer = window.setInterval(() => {
-            if (carouselPlaying && carouselPages > 1 && !document.hidden) {
-                carouselPage = (carouselPage + 1) % carouselPages;
+            if (carouselPlaying && !carouselHovered && carouselPages > 1 && !document.hidden) {
+                carouselApi?.scrollNext();
             }
         }, 6000);
         return () => {
@@ -37,7 +41,8 @@
 
     function moveCarousel(direction: number) {
         carouselPlaying = false;
-        carouselPage = (carouselPage + direction + carouselPages) % carouselPages;
+        if (direction < 0) carouselApi?.scrollPrev();
+        else carouselApi?.scrollNext();
     }
 
     // ============================================================================
@@ -167,7 +172,7 @@
 
 <div class="home-page">
     <section class="hero" aria-labelledby="hero-title">
-        <div class="home-container hero-grid">
+        <div class="site-container hero-grid">
             <div class="hero-copy">
                 <p class="eyebrow"><span></span> An independent trading library</p>
                 <h1 id="hero-title">Study the people<br />behind the <em>markets.</em></h1>
@@ -179,10 +184,10 @@
                 <div class="hero-note"><span>01 / THE LIBRARY</span><p>People. Principles. Perspective.</p></div>
             </div>
             {#if displayTraders.length}
-                <div class="hero-visual" role="region" aria-roledescription="carousel" aria-label="Featured trader profiles" onfocusin={() => carouselPlaying = false} onmouseenter={() => carouselPlaying = false}>
+                <div class="hero-visual" role="region" aria-roledescription="carousel" aria-label="Featured trader profiles" onfocusin={(event) => { if ((event.target as HTMLElement).matches(':focus-visible')) carouselPlaying = false; }} onmouseenter={() => carouselHovered = true} onmouseleave={() => carouselHovered = false}>
                     <div class="visual-top"><span>THE TRADING GREATS</span><span>PEOPLE &amp; PERSPECTIVES</span></div>
-                    <div class="carousel-window">
-                        <div class="carousel-track" style:transform="translateX(-{carouselPage * 100}%)">
+                    <div class="carousel-window" use:emblaCarouselSvelte={{ options: { loop: true, duration: 35, breakpoints: { '(prefers-reduced-motion: reduce)': { duration: 0 } } }, plugins: [] }} onemblaInit={(event) => { carouselApi = event.detail; carouselPage = carouselApi.selectedScrollSnap(); carouselApi.on('select', () => { if (carouselApi) carouselPage = carouselApi.selectedScrollSnap(); }); carouselApi.on('pointerDown', () => { carouselPlaying = false; }); }}>
+                        <div class="carousel-track">
                             {#each displayTraders as trader, i (trader.slug)}
                                 <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label={trader.name} inert={carouselPage !== i}>
                                     <span class="portrait-initials">{trader.name.split(' ').map((n: string) => n[0]).join('')}</span>
@@ -201,7 +206,7 @@
                         <div class="carousel-footer">
                             <div class="portrait-picker" aria-label="Choose a trader">
                                 {#each displayTraders as trader, i (trader.slug)}
-                                    <button type="button" class:active={carouselPage === i} aria-label="Show {trader.name}" aria-pressed={carouselPage === i} onclick={() => { carouselPlaying = false; carouselPage = i; }}>
+                                    <button type="button" class:active={carouselPage === i} aria-label="Show {trader.name}" aria-pressed={carouselPage === i} onclick={() => { carouselPlaying = false; carouselApi?.scrollTo(i); }}>
                                         <span>{trader.name.split(' ').map((n: string) => n[0]).join('')}</span>
                                         {#if trader.photoUrl}<img src={trader.photoUrl} alt="" loading="lazy" onerror={(event) => { (event.currentTarget as HTMLImageElement).style.display = 'none'; }} />{/if}
                                     </button>
@@ -220,11 +225,11 @@
     </section>
 
     <section class="intro-section" aria-labelledby="intro-title">
-        <div class="home-container intro-grid">
+        <div class="site-container intro-grid">
             <div><p class="eyebrow">THE PURPOSE</p><h2 id="intro-title">Perspective built<br /><em>over time.</em></h2></div>
             <div class="intro-copy"><p>Markets change. The value of understanding how great traders think does not.</p><p>Go beyond the headlines and explore the people, approaches, and defining decisions behind a range of market philosophies.</p></div>
         </div>
-        <div class="home-container principles">
+        <div class="site-container principles">
             <article><span>01</span><h3>Know the person</h3><p>Explore the experiences that shaped each trader’s approach.</p></article>
             <article><span>02</span><h3>Understand the process</h3><p>Study the ideas, methods, and decisions behind their work.</p></article>
             <article><span>03</span><h3>Find perspective</h3><p>Compare different schools of thought and draw your own lessons.</p></article>
@@ -232,7 +237,7 @@
     </section>
 
     <section class="featured-section" aria-labelledby="featured-title">
-        <div class="home-container">
+        <div class="site-container">
             <div class="section-heading"><div><p class="eyebrow">SELECTED PROFILES <span>/ 01</span></p><h2 id="featured-title">Meet the <em>greats.</em></h2><p>Get to know the people and principles behind the trades.</p></div><a class="text-link" href="/traders">View all profiles <Icon name="arrow-right" class="h-4 w-4" /></a></div>
             <div class="featured-grid">
                 {#each displayTraders.slice(0, 4) as trader (trader.slug)}
@@ -248,7 +253,7 @@
     <QuoteOfTheDay quotes={data.allQuotes} />
 
     <section class="approaches-section" id="how-it-works" aria-labelledby="approaches-title">
-        <div class="home-container">
+        <div class="site-container">
             <div class="section-heading"><div><p class="eyebrow">A WORLD OF APPROACHES <span>/ 02</span></p><h2 id="approaches-title">Different paths.<br /><em>Enduring ideas.</em></h2><p>Find an approach that speaks to the way you think about markets.</p></div><a class="text-link" href="/traders">Explore all traders <Icon name="arrow-right" class="h-4 w-4" /></a></div>
             <div class="approach-grid">
                 {#each strategies as strategy, i (strategy.name)}
@@ -259,7 +264,7 @@
     </section>
 
     <section class="library-section" aria-labelledby="library-title">
-        <div class="home-container">
+        <div class="site-container">
             <div class="section-heading"><div><p class="eyebrow">THE LIBRARY <span>/ 03</span></p><h2 id="library-title">Decades of <em>market wisdom.</em></h2><p>Every profile is a starting point for a deeper study.</p></div><a class="text-link" href="/traders">View the complete library <Icon name="arrow-right" class="h-4 w-4" /></a></div>
             <div class="library-grid">
                 {#each displayTraders as trader (trader.slug)}
@@ -273,7 +278,7 @@
     </section>
 
     <section class="questions-section" aria-labelledby="questions-title">
-        <div class="home-container questions-grid"><div><p class="eyebrow">GETTING STARTED</p><h2 id="questions-title">A few good<br /><em>questions.</em></h2><p>Everything you need to begin exploring the library.</p></div>
+        <div class="site-container questions-grid"><div><p class="eyebrow">GETTING STARTED</p><h2 id="questions-title">A few good<br /><em>questions.</em></h2><p>Everything you need to begin exploring the library.</p></div>
             <div class="questions-list">
                 {#each faqItems as faq, i (faq.question)}
                     <div class="question"><button type="button" aria-expanded={openFaq === i} onclick={() => { openFaq = openFaq === i ? null : i; }}><span>{faq.question}</span><span aria-hidden="true">{openFaq === i ? '−' : '+'}</span></button>{#if openFaq === i}<p transition:slide={{ duration: 180 }}>{faq.answer}</p>{/if}</div>
@@ -281,13 +286,12 @@
             </div>
         </div>
     </section>
-    <section class="closing-section"><div class="home-container closing-inner"><div><p class="eyebrow">THE LONG VIEW</p><h2>There is always<br /><em>more to learn.</em></h2><p>Start with a profile. Follow an idea. Build your perspective.</p></div><a class="action action-primary" href="/traders">Explore the library <Icon name="arrow-right" class="h-4 w-4" /></a></div></section>
+    <section class="closing-section"><div class="site-container closing-inner"><div><p class="eyebrow">THE LONG VIEW</p><h2>There is always<br /><em>more to learn.</em></h2><p>Start with a profile. Follow an idea. Build your perspective.</p></div><a class="action action-primary" href="/traders">Explore the library <Icon name="arrow-right" class="h-4 w-4" /></a></div></section>
 </div>
 
 <style>
 .home-page { --page-bg: #0b121b; --page-panel: #101b27; --page-line: rgba(218, 222, 219, .14); --page-text: #f3f1eb; --page-muted: #aeb9c0; --page-gold: #c9ad7d; background: var(--page-bg); color: var(--page-text); }
 .home-page :global(a) { text-decoration: none; }
-.home-container { width: min(100% - 3rem, var(--layout-max, 99rem)); margin-inline: auto; }
 .hero { position: relative; overflow: hidden; padding: clamp(8rem, 13vw, 12rem) 0 clamp(4.5rem, 8vw, 8rem); background: radial-gradient(ellipse at 75% 10%, #1d2b36 0, #0d1721 38%, #0b121b 72%); }
 .hero-grid { display: grid; gap: 4rem; align-items: center; }
 .eyebrow { display: flex; align-items: center; gap: .75rem; color: var(--page-gold); font-size: .7rem; font-weight: 700; letter-spacing: .17em; text-transform: uppercase; }
@@ -302,11 +306,12 @@ em { color: var(--page-gold); font-weight: 400; }
 .hero-note { display: flex; gap: 1.5rem; align-items: center; margin-top: 3.5rem; border-top: 1px solid var(--page-line); padding-top: 1.2rem; font-size: .7rem; letter-spacing: .13em; color: #c9ad7d; } .hero-note p { color: #9aa8af; letter-spacing: .02em; }
 .hero-visual { min-width: 0; padding: .9rem; border: 1px solid rgba(201,173,125,.28); background: #111e28; box-shadow: 0 32px 80px rgba(0,0,0,.22); }
 .visual-top { display: flex; justify-content: space-between; gap: 1rem; padding: .45rem .15rem 1rem; color: #c9b895; font-size: .62rem; font-weight: 700; letter-spacing: .15em; }
-.carousel-window { overflow: hidden; background: #263741; }
-.carousel-track { display: flex; transition: transform .75s cubic-bezier(.22, 1, .36, 1); }
+.carousel-window { overflow: hidden; background: #263741; cursor: grab; }
+.carousel-window:active { cursor: grabbing; }
+.carousel-track { display: flex; touch-action: pan-y pinch-zoom; }
 .carousel-slide { position: relative; flex: 0 0 100%; min-width: 0; aspect-ratio: 1.16; overflow: hidden; background: linear-gradient(135deg,#41515a,#172631); }
 .carousel-slide::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg,rgba(7,16,23,.7),transparent 70%), linear-gradient(0deg,rgba(7,16,23,.97),rgba(7,16,23,.05) 75%); pointer-events: none; }
-.slide-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+.slide-image { user-select: none; -webkit-user-drag: none; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
 .portrait-initials { position: absolute; inset: 0; display: grid; place-items: center; color: #a9b8be; font-family: Georgia,serif; font-size: 5rem; }
 .slide-content { position: absolute; z-index: 1; left: clamp(1.25rem, 4vw, 2.75rem); right: 1.25rem; bottom: clamp(1.5rem, 4vw, 2.75rem); color: #fff; }
 .slide-kicker { display: flex; align-items: center; flex-wrap: wrap; gap: .65rem; color: #dfcba7; font-size: .65rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
@@ -335,8 +340,8 @@ em { color: var(--page-gold); font-weight: 400; }
 .closing-section { padding: 0 0 clamp(4.5rem,8vw,8rem); }.closing-inner { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 2rem; padding: clamp(2rem,5vw,5rem); border: 1px solid rgba(201,173,125,.25); background: #15232d; }.closing-inner p:last-child { margin-top: 1rem; color: #bdc8ca; line-height: 1.6; }
 :global(html:not(.dark)) .home-page { --page-bg:#f7f5f0; --page-panel:#eeece6; --page-line:rgba(18,30,37,.16); --page-text:#17232b; --page-muted:#53636c; --page-gold:#806336; }
 :global(html:not(.dark)) .hero { background: linear-gradient(135deg,#e9e6dd,#d4dbd8); }:global(html:not(.dark)) .hero-intro { color:#40535c; }:global(html:not(.dark)) .hero-note p { color:#4c5e65; }:global(html:not(.dark)) .action-secondary { color:#263941; border-color:#8a999b; }:global(html:not(.dark)) .featured-card { background:#f8f6f0; }:global(html:not(.dark)) .closing-inner { background:#e6e9e4; }:global(html:not(.dark)) .closing-inner p:last-child { color:#53636c; }
-@media (min-width: 48rem) { .home-container { width: min(100% - 5rem,var(--layout-max,99rem)); }.principles { grid-template-columns: repeat(3,1fr); }.principles article { padding: 1.8rem 2rem 1.8rem 0; }.principles article + article { padding-left: 2rem; border-left: 1px solid var(--page-line); }.featured-grid { grid-template-columns: repeat(4,minmax(0,1fr)); }.library-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }.approach-card { padding: 1.8rem; }.card-arrow { display:block; } }
+@media (min-width: 48rem) { .principles { grid-template-columns: repeat(3,1fr); }.principles article { padding: 1.8rem 2rem 1.8rem 0; }.principles article + article { padding-left: 2rem; border-left: 1px solid var(--page-line); }.featured-grid { grid-template-columns: repeat(4,minmax(0,1fr)); }.library-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }.approach-card { padding: 1.8rem; }.card-arrow { display:block; } }
 @media (min-width: 64rem) { .hero-grid { grid-template-columns: 1fr 1.05fr; gap: clamp(3rem,6vw,7rem); }.intro-grid { grid-template-columns: 1fr 1fr; align-items: end; }.questions-grid { grid-template-columns: .8fr 1.2fr; gap: 5rem; }.approach-grid { grid-template-columns: repeat(4,minmax(0,1fr)); }.featured-details { padding: 1.4rem; } }
-@media (max-width: 25rem) { .home-container { width: calc(100% - 2rem); }.hero { padding-top: 7rem; }.hero-grid { gap: 2.5rem; }.hero-actions .action { width: 100%; }.visual-top span:last-child { display: none; }.carousel-slide { aspect-ratio: 4 / 5; }.slide-content p { font-size: .8rem; }.carousel-footer { gap: .5rem; }.carousel-controls button { width: 2.5rem; height: 2.5rem; }.approach-grid { grid-template-columns: 1fr; }.approach-card { min-height: 12rem; } }
+@media (max-width: 25rem) { .hero { padding-top: 7rem; }.hero-grid { gap: 2.5rem; }.hero-actions .action { width: 100%; }.visual-top span:last-child { display: none; }.carousel-slide { aspect-ratio: 4 / 5; }.slide-content p { font-size: .8rem; }.carousel-footer { gap: .5rem; }.carousel-controls button { width: 2.5rem; height: 2.5rem; }.approach-grid { grid-template-columns: 1fr; }.approach-card { min-height: 12rem; } }
 @media (prefers-reduced-motion: reduce) { .home-page * { transition-duration: .01ms !important; animation-duration: .01ms !important; } }
 </style>

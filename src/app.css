@@ -746,47 +746,25 @@ button {
     var(--safe-area-inset-left);
 }
 
-/* MOBILE-FIRST: Container with responsive padding (caps at 80rem = 1280px) */
-.container-mobile {
-  width: 100%;
-  max-width: 80rem;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: var(--container-padding);
-  padding-right: var(--container-padding);
-}
-
-/* Fluid container that scales up on extra-large monitors.
-   Use in place of `mx-auto max-w-7xl` on grids and content sections that
-   should fill more of a 4K/5K monitor. */
+/* Shared outer content width. Keep gutters aligned with the homepage at every size. */
+.site-container,
+.container-mobile,
 .container-fluid {
-  width: 100%;
-  max-width: 80rem; /* 1280px — matches Tailwind max-w-7xl */
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: var(--container-padding);
-  padding-right: var(--container-padding);
+  width: min(calc(100% - 3rem), var(--layout-max));
+  margin-inline: auto;
 }
-
-@media (min-width: 1536px) {
+@media (max-width: 25rem) {
+  .site-container,
+  .container-mobile,
   .container-fluid {
-    max-width: var(--container-2xl);
+    width: min(calc(100% - 2rem), var(--layout-max));
   }
 }
-
-@media (min-width: 1920px) {
+@media (min-width: 48rem) {
+  .site-container,
+  .container-mobile,
   .container-fluid {
-    max-width: var(--container-3xl);
-    padding-left: 3rem;
-    padding-right: 3rem;
-  }
-}
-
-@media (min-width: 2560px) {
-  .container-fluid {
-    max-width: var(--container-4xl);
-    padding-left: 4rem;
-    padding-right: 4rem;
+    width: min(calc(100% - 5rem), var(--layout-max));
   }
 }
 

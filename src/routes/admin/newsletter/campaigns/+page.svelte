@@ -82,7 +82,7 @@
 	<title>Campaigns - Newsletter Admin | Trading Greats</title>
 </svelte:head>
 
-<div class="space-y-6">
+<div class="site-container space-y-6 py-8">
 	<!-- Header -->
 	<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
 		<div class="flex items-center gap-4">

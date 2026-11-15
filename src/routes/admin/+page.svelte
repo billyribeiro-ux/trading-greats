@@ -25,7 +25,7 @@
 <div class="min-h-screen bg-midnight-950">
 	<!-- Header -->
 	<header class="border-b border-midnight-800/50 bg-midnight-900/50 backdrop-blur-xl sticky top-0 z-50">
-		<div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+		<div class="mx-auto flex h-16 site-container items-center justify-between">
 			<div class="flex items-center gap-3">
 				<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-linear-to-br from-gold-500 to-gold-600 shadow-lg shadow-gold-500/20">
 					<IconTrendingUp class="h-5 w-5 text-midnight-950" />
@@ -72,7 +72,7 @@
 		</div>
 	</header>
 
-	<main class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+	<main class="mx-auto site-container py-8">
 		<!-- Welcome -->
 		<div class="mb-8">
 			<h1 class="font-display text-3xl font-bold text-midnight-50">Dashboard</h1>

@@ -225,7 +225,7 @@
 <div class="min-h-screen bg-midnight-950">
 	<!-- Header -->
 	<header class="border-b border-midnight-800/50 bg-midnight-900/50 sticky top-0 z-50">
-		<div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+		<div class="mx-auto flex h-16 site-container items-center justify-between">
 			<a href="/admin/traders" class="flex items-center gap-2 text-midnight-400 hover:text-midnight-200 min-h-[44px]">
 				<IconArrowLeft class="h-4 w-4" />
 				Back to Traders
@@ -236,7 +236,7 @@
 		</div>
 	</header>
 
-	<main class="mx-auto max-w-4xl px-4 py-6 sm:py-8 sm:px-6 lg:px-8">
+	<main class="site-container py-6 sm:py-8">
 		<h1 class="font-display text-2xl sm:text-3xl font-bold text-midnight-50">Edit {trader.name}</h1>
 		<p class="mt-2 text-sm sm:text-base text-midnight-400">Update trader profile information</p>
 

@@ -392,7 +392,7 @@
   {#if data.relatedPosts.length > 0}
     <section class="border-t border-midnight-800/50 bg-midnight-900/30">
       <div
-        class="mx-auto max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1680px] 4xl:max-w-[2000px] px-4 py-10 sm:py-12 lg:py-16 sm:px-6 lg:px-8"
+        class="mx-auto site-container py-10 sm:py-12 lg:py-16"
       >
         <ScrollReveal>
           <h2
@@ -467,7 +467,7 @@
   <!-- Back to Blog CTA - MOBILE-FIRST -->
   <section class="border-t border-midnight-800/50">
     <div
-      class="mx-auto max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1680px] 4xl:max-w-[2000px] px-4 py-8 sm:py-10 lg:py-12 sm:px-6 lg:px-8"
+      class="mx-auto site-container py-8 sm:py-10 lg:py-12"
     >
       <div class="flex items-center justify-center">
         <a

@@ -87,7 +87,7 @@
 	<title>Newsletter - Admin | Trading Greats</title>
 </svelte:head>
 
-<div class="space-y-8">
+<div class="site-container space-y-8 py-8">
 	<!-- Header -->
 	<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
 		<div>

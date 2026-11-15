@@ -11,7 +11,7 @@
 	<!-- Background decoration - MOBILE-FIRST: Smaller on mobile -->
 	<div class="absolute bottom-0 right-0 w-[300px] h-[200px] sm:w-[450px] sm:h-[300px] lg:w-[600px] lg:h-[400px] rounded-full bg-gold-500/3 blur-[80px] sm:blur-[100px] lg:blur-[120px] pointer-events-none"></div>
 
-	<div class="relative mx-auto max-w-[var(--layout-max)] px-4 sm:px-6 lg:px-8">
+	<div class="relative mx-auto site-container">
 		<div class="grid gap-8 sm:gap-10 lg:gap-12 md:grid-cols-4 lg:gap-16">
 			<!-- Brand - MOBILE-FIRST -->
 			<div class="md:col-span-2">

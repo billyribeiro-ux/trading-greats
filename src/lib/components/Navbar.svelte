@@ -79,6 +79,17 @@
 		}
 	});
 
+	// Close the compact menu when the desktop navigation becomes visible.
+	$effect(() => {
+		if (!browser) return;
+		const desktop = window.matchMedia('(min-width: 64rem)');
+		const handleChange = (event: MediaQueryListEvent) => {
+			if (event.matches) mobileMenuOpen = false;
+		};
+		desktop.addEventListener('change', handleChange);
+		return () => desktop.removeEventListener('change', handleChange);
+	});
+
 	// Focus management for accessibility
 	$effect(() => {
 		if (!browser) return;
@@ -137,7 +148,7 @@
 	)}
 >
 	<nav 
-		class="mx-auto flex h-12 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"
+		class="site-container flex h-12 items-center justify-between lg:grid lg:grid-cols-[1fr_auto_1fr]"
 		aria-label="Main navigation"
 	>
 		<!-- Logo with cinematic hover -->
@@ -168,7 +179,7 @@
 		</a>
 
 		<!-- Desktop Navigation -->
-		<div class="hidden items-center gap-1 md:flex" role="navigation">
+		<div class="hidden items-center gap-1 lg:flex" role="navigation">
 			{#each NAV_LINKS as link (link.href)}
 				{@const active = isActive(link.href)}
 				<a
@@ -241,7 +252,7 @@
 		</div>
 
 		<!-- Actions -->
-		<div class="flex items-center gap-1 sm:gap-2">
+		<div class="flex items-center justify-end gap-1 sm:gap-2">
 			<!-- Theme Toggle -->
 			<ThemeToggle class="hidden sm:flex" />
 
@@ -273,7 +284,7 @@
 			<a
 				href="/about"
 				class={cn(
-					'hidden items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold md:flex',
+					'hidden items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold lg:flex',
 					'bg-white text-midnight-950',
 					'shadow-lg shadow-white/10',
 					'outline-none ring-gold-500 ring-offset-2 ring-offset-midnight-950',
@@ -301,7 +312,7 @@
 					'hover:bg-white/5 hover:text-white',
 					'focus-visible:ring-2',
 					'active:scale-95 active:bg-white/10', /* MOBILE-FIRST: Touch feedback */
-					'md:hidden'
+					'lg:hidden'
 				)}
 				aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
 				aria-expanded={mobileMenuOpen}
@@ -321,7 +332,7 @@
 	{#if mobileMenuOpen}
 		<div
 			id="mobile-menu"
-			class="fixed inset-x-0 top-[68px] sm:top-[72px] bottom-0 z-40 overflow-y-auto overscroll-contain bg-midnight-950/98 backdrop-blur-3xl md:hidden safe-bottom"
+			class="fixed inset-x-0 top-[68px] sm:top-[72px] bottom-0 z-40 overflow-y-auto overscroll-contain bg-midnight-950/98 backdrop-blur-3xl lg:hidden safe-bottom"
 			transition:fade={{ duration: 200, easing: cubicOut }}
 			role="dialog"
 			aria-modal="true"
