@@ -77,7 +77,7 @@
 	noindex={true}
 />
 
-<div class="min-h-screen bg-midnight-950 flex items-center justify-center px-4 py-12">
+<div class="editorial-page min-h-screen bg-midnight-950 flex items-center justify-center px-4 py-12">
 	<div class="max-w-lg w-full">
 		{#if !data.valid}
 			<!-- Invalid token -->

@@ -174,11 +174,11 @@
 	<JsonLdScript data={schemaOrg.breadcrumb} />
 </svelte:head>
 
-<div class="min-h-screen bg-midnight-950">
+<div class="editorial-page min-h-screen bg-midnight-950">
 	<!-- ============================================================================
 	     HERO SECTION - Apple-style dramatic entrance (MOBILE-FIRST)
 	============================================================================ -->
-	<section class="relative overflow-hidden border-b border-midnight-800/50">
+	<section class="editorial-hero relative overflow-hidden border-b border-midnight-800/50">
 		<!-- Animated Background - MOBILE-FIRST: Smaller orbs on mobile -->
 		<div class="absolute inset-0">
 			<div class="absolute inset-0 bg-linear-to-br from-midnight-900 via-midnight-950 to-midnight-900"></div>

@@ -116,7 +116,7 @@
 <JsonLd type="Article" trader={trader} />
 <JsonLd type="FAQPage" faqItems={faqItems} />
 
-<div class="min-h-screen bg-midnight-950 pb-16 sm:pb-20 lg:pb-24">
+<div class="editorial-page min-h-screen bg-midnight-950 pb-16 sm:pb-20 lg:pb-24">
 	<!-- Hero Background - MOBILE-FIRST: Smaller orbs on mobile -->
 	<div class="fixed inset-0 z-0 pointer-events-none">
 		<div class="absolute top-0 left-0 right-0 h-[40vh] sm:h-[50vh] bg-linear-to-b from-midnight-900 to-midnight-950 opacity-50"></div>
@@ -468,9 +468,9 @@
 				{#if relatedTraders && relatedTraders.length > 0}
 					<section class="pt-8 sm:pt-10 lg:pt-12 border-t border-white/5">
 						<h2 class="mb-4 sm:mb-6 lg:mb-8 font-display text-lg sm:text-xl lg:text-2xl font-bold text-white">Similar Legends</h2>
-						<div class="grid gap-3 sm:gap-4 lg:gap-6 grid-cols-2">
+						<div class="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3 lg:gap-6">
 							{#each relatedTraders as related, i (related.slug)}
-								<TraderCard trader={related} index={i} />
+								<TraderCard trader={related} index={i} portrait />
 							{/each}
 						</div>
 					</section>

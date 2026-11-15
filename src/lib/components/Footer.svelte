@@ -1,108 +1,42 @@
 <script lang="ts">
-	import { Icon } from '#lib/components/icons/index.ts';
-	import { cn } from '#lib/utils/index.ts';
+	import { IconArrowUpRight, IconBrandGithub, IconBrandX, IconMail } from '@tabler/icons-svelte';
+	const explore = [
+		{ href: '/traders', label: 'All traders' },
+		{ href: '/compare', label: 'Compare traders' },
+		{ href: '/blog', label: 'Journal' },
+		{ href: '/about', label: 'About us' }
+	];
+	const legal = [{ href: '/privacy', label: 'Privacy' }, { href: '/terms', label: 'Terms' }];
 </script>
 
-<!-- MOBILE-FIRST Footer with safe areas and touch targets -->
-<footer class="relative border-t border-midnight-800/50 bg-midnight-950 pt-12 sm:pt-16 lg:pt-20 pb-8 sm:pb-10 lg:pb-12 overflow-hidden safe-bottom">
-	<!-- Ambient Glow -->
-	<div class="absolute top-0 left-1/2 -translate-x-1/2 h-px w-2/3 bg-linear-to-r from-transparent via-gold-500/50 to-transparent"></div>
-
-	<!-- Background decoration - MOBILE-FIRST: Smaller on mobile -->
-	<div class="absolute bottom-0 right-0 w-[300px] h-[200px] sm:w-[450px] sm:h-[300px] lg:w-[600px] lg:h-[400px] rounded-full bg-gold-500/3 blur-[80px] sm:blur-[100px] lg:blur-[120px] pointer-events-none"></div>
-
-	<div class="relative mx-auto site-container">
-		<div class="grid gap-8 sm:gap-10 lg:gap-12 md:grid-cols-4 lg:gap-16">
-			<!-- Brand - MOBILE-FIRST -->
-			<div class="md:col-span-2">
-				<a
-					href="/"
-					class="group inline-flex items-center gap-2.5 sm:gap-3 transition-all duration-300 active:scale-95"
-				>
-					<img src="/brand/mark.svg" width="44" height="44" alt="" class="h-10 w-10 sm:h-11 sm:w-11" />
-					<span class="font-display text-lg sm:text-xl font-bold tracking-tight text-midnight-50 transition-colors duration-300 group-hover:text-white">
-						Trading<span class="text-gold-400 transition-colors duration-300 group-hover:text-gold-300">Greats</span>
-					</span>
-				</a>
-				<p class="mt-4 sm:mt-5 lg:mt-6 max-w-md text-sm sm:text-base leading-relaxed text-midnight-400">
-					Explore the minds that moved markets. Discover legendary traders, their strategies,
-					and the timeless wisdom that has generated billions.
-				</p>
+<footer class="site-footer">
+	<div class="site-container">
+		<div class="footer-main">
+			<div class="footer-brand">
+				<a href="/" class="brand"><img src="/brand/mark.svg" width="44" height="44" alt="" /><span>Trading Greats</span></a>
+				<p>An independent library for curious minds. Explore the people, principles, and perspectives that shaped the markets.</p>
+				<a class="contact" href="mailto:hello@tradinggreats.com">Get in touch <IconArrowUpRight size={16} stroke={1.6} /></a>
 			</div>
-
-			<!-- Links - MOBILE-FIRST: Side-by-side on mobile -->
-			<div class="grid grid-cols-2 gap-6 md:contents">
-				<div>
-					<h3 class="font-display text-xs sm:text-sm font-semibold tracking-wider uppercase text-midnight-100">Explore</h3>
-					<ul class="mt-4 sm:mt-5 lg:mt-6 space-y-3 sm:space-y-4">
-						{#each [
-							{ href: '/traders', label: 'All Traders' },
-							{ href: '/traders?style=Macro', label: 'Macro Traders' },
-							{ href: '/traders?style=Value', label: 'Value Investors' },
-							{ href: '/traders?style=Momentum', label: 'Momentum Traders' }
-						] as link (link.href)}
-							<li>
-								<a
-									href={link.href}
-									class="group inline-flex items-center gap-1.5 sm:gap-2 py-2 text-xs sm:text-sm text-midnight-400 transition-all duration-300 hover:text-gold-400 active:scale-95"
-								>
-									<span class="w-0 h-px bg-gold-500 transition-all duration-300 group-hover:w-2 sm:group-hover:w-3"></span>
-									{link.label}
-								</a>
-							</li>
-						{/each}
-					</ul>
-				</div>
-
-				<!-- Legal -->
-				<div>
-					<h3 class="font-display text-xs sm:text-sm font-semibold tracking-wider uppercase text-midnight-100">Legal</h3>
-					<ul class="mt-4 sm:mt-5 lg:mt-6 space-y-3 sm:space-y-4">
-						{#each [
-							{ href: '/about', label: 'About' },
-							{ href: '/privacy', label: 'Privacy' },
-							{ href: '/terms', label: 'Terms' }
-						] as link (link.href)}
-							<li>
-								<a
-									href={link.href}
-									class="group inline-flex items-center gap-1.5 sm:gap-2 py-2 text-xs sm:text-sm text-midnight-400 transition-all duration-300 hover:text-gold-400 active:scale-95"
-								>
-									<span class="w-0 h-px bg-gold-500 transition-all duration-300 group-hover:w-2 sm:group-hover:w-3"></span>
-									{link.label}
-								</a>
-							</li>
-						{/each}
-					</ul>
-				</div>
+			<div class="footer-links">
+				<div><h2>Explore</h2><ul>{#each explore as link (link.href)}<li><a href={link.href}>{link.label}</a></li>{/each}</ul></div>
+				<div><h2>Information</h2><ul>{#each legal as link (link.href)}<li><a href={link.href}>{link.label}</a></li>{/each}</ul></div>
 			</div>
 		</div>
-
-		<div class="mt-10 sm:mt-12 lg:mt-16 flex flex-col items-center justify-between gap-4 sm:gap-6 border-t border-midnight-800/50 pt-6 sm:pt-8 sm:flex-row">
-			<p class="text-xs sm:text-sm text-midnight-500 order-2 sm:order-1">
-				© {new Date().getFullYear()} Trading Greats. All rights reserved.
-			</p>
-			<div class="flex items-center gap-2 sm:gap-4 order-1 sm:order-2">
-				{#each [
-					{ href: 'https://twitter.com', icon: 'twitter' as const, label: 'Twitter' },
-					{ href: 'https://github.com', icon: 'github' as const, label: 'GitHub' },
-					{ href: 'mailto:hello@tradinggreats.com', icon: 'mail' as const, label: 'Email' }
-				] as social (social.label)}
-					<a
-						href={social.href}
-						class={cn(
-							'group flex h-11 w-11 items-center justify-center rounded-full', /* MOBILE-FIRST: 44px touch target */
-							'bg-white/0 text-midnight-500',
-							'transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]',
-							'hover:bg-gold-500/10 hover:text-gold-400 hover:scale-110',
-							'active:scale-95 active:bg-gold-500/10'
-						)}
-						aria-label={social.label}
-					>
-						<Icon name={social.icon} class="h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
-					</a>
-				{/each}
-			</div>
-		</div>
+		<div class="footer-bottom"><p>© {new Date().getFullYear()} Trading Greats. All rights reserved.</p><div class="socials"><a href="https://twitter.com" aria-label="Twitter"><IconBrandX size={19} stroke={1.6} /></a><a href="https://github.com" aria-label="GitHub"><IconBrandGithub size={20} stroke={1.6} /></a><a href="mailto:hello@tradinggreats.com" aria-label="Email"><IconMail size={20} stroke={1.6} /></a></div></div>
 	</div>
 </footer>
+<style>
+	.site-footer { --footer-bg:#0b151e; --footer-text:#f3f1eb; --footer-muted:#aeb9c0; --footer-line:rgba(218,222,219,.14); background:var(--footer-bg); color:var(--footer-text); border-top:1px solid var(--footer-line); padding:clamp(3.5rem,6vw,6rem) 0 1.5rem; }
+	.footer-main { display:grid; gap:3rem; }
+	.brand { display:inline-flex; align-items:center; gap:.8rem; color:var(--footer-text); text-decoration:none; font:400 1.35rem 'Playfair Display',Georgia,serif; letter-spacing:-.03em; }
+	.footer-brand p { max-width:27rem; margin:1.25rem 0; color:var(--footer-muted); line-height:1.75; }
+	.contact { display:inline-flex; gap:.7rem; align-items:center; color:#c9ad7d; border-bottom:1px solid currentColor; padding-bottom:.4rem; text-decoration:none; font-size:.875rem; font-weight:600; }
+	.footer-links { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:2rem; }
+	h2 { margin:0 0 1.2rem; color:#c9ad7d; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; }
+	ul { list-style:none; margin:0; padding:0; } li + li { margin-top:.8rem; } li a { color:var(--footer-muted); text-decoration:none; font-size:.9rem; line-height:1.5; } li a:hover { color:var(--footer-text); }
+	.footer-bottom { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:1rem; margin-top:3.5rem; padding-top:1.25rem; border-top:1px solid var(--footer-line); color:var(--footer-muted); font-size:.75rem; }
+	.footer-bottom p { margin:0; }.socials { display:flex; gap:.25rem; }.socials a { display:grid; place-items:center; width:2.75rem; height:2.75rem; color:var(--footer-muted); }.socials a:hover { color:var(--footer-text); }
+	:global(html:not(.dark)) .site-footer { --footer-bg:#eeece6; --footer-text:#17232b; --footer-muted:#53636c; --footer-line:rgba(18,30,37,.16); background:var(--footer-bg); }
+	:global(html:not(.dark)) .contact,:global(html:not(.dark)) h2 { color:#806336; }
+	@media (min-width:48rem) { .footer-main { grid-template-columns:1.5fr 1fr; gap:4rem; } }
+</style>

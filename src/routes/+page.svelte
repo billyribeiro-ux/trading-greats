@@ -28,15 +28,16 @@
             if (event.matches) carouselPlaying = false;
         };
         reducedMotion.addEventListener('change', stopForReducedMotion);
+        return () => reducedMotion.removeEventListener('change', stopForReducedMotion);
+    });
+
+    // Give each profile a full reading interval, including after a hover pause.
+    $effect(() => {
+        if (!carouselPlaying || carouselHovered || carouselPages < 2) return;
         const timer = window.setInterval(() => {
-            if (carouselPlaying && !carouselHovered && carouselPages > 1 && !document.hidden) {
-                carouselApi?.scrollNext();
-            }
-        }, 6000);
-        return () => {
-            window.clearInterval(timer);
-            reducedMotion.removeEventListener('change', stopForReducedMotion);
-        };
+            if (!document.hidden) carouselApi?.scrollNext();
+        }, 9000);
+        return () => window.clearInterval(timer);
     });
 
     function moveCarousel(direction: number) {
@@ -184,12 +185,12 @@
                 <div class="hero-note"><span>01 / THE LIBRARY</span><p>People. Principles. Perspective.</p></div>
             </div>
             {#if displayTraders.length}
-                <div class="hero-visual" role="region" aria-roledescription="carousel" aria-label="Featured trader profiles" onfocusin={(event) => { if ((event.target as HTMLElement).matches(':focus-visible')) carouselPlaying = false; }} onmouseenter={() => carouselHovered = true} onmouseleave={() => carouselHovered = false}>
+                <div class="hero-visual" class:motion-paused={!carouselPlaying || carouselHovered} role="region" aria-roledescription="carousel" aria-label="Featured trader profiles" onfocusin={(event) => { if ((event.target as HTMLElement).matches(':focus-visible')) carouselPlaying = false; }} onmouseenter={() => carouselHovered = true} onmouseleave={() => carouselHovered = false}>
                     <div class="visual-top"><span>THE TRADING GREATS</span><span>PEOPLE &amp; PERSPECTIVES</span></div>
-                    <div class="carousel-window" use:emblaCarouselSvelte={{ options: { loop: true, duration: 35, breakpoints: { '(prefers-reduced-motion: reduce)': { duration: 0 } } }, plugins: [] }} onemblaInit={(event) => { carouselApi = event.detail; carouselPage = carouselApi.selectedScrollSnap(); carouselApi.on('select', () => { if (carouselApi) carouselPage = carouselApi.selectedScrollSnap(); }); carouselApi.on('pointerDown', () => { carouselPlaying = false; }); }}>
+                    <div class="carousel-window" use:emblaCarouselSvelte={{ options: { loop: true, duration: 55, breakpoints: { '(prefers-reduced-motion: reduce)': { duration: 0 } } }, plugins: [] }} onemblaInit={(event) => { carouselApi = event.detail; carouselPage = carouselApi.selectedScrollSnap(); carouselApi.on('select', () => { if (carouselApi) carouselPage = carouselApi.selectedScrollSnap(); }); carouselApi.on('pointerDown', () => { carouselPlaying = false; }); }}>
                         <div class="carousel-track">
                             {#each displayTraders as trader, i (trader.slug)}
-                                <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label={trader.name} inert={carouselPage !== i}>
+                                <div class="carousel-slide" class:active={carouselPage === i} role="group" aria-roledescription="slide" aria-label={trader.name} inert={carouselPage !== i}>
                                     <span class="portrait-initials">{trader.name.split(' ').map((n: string) => n[0]).join('')}</span>
                                     {#if trader.photoUrl}<img class="slide-image" src={trader.photoUrl} alt="" loading={i === 0 ? 'eager' : 'lazy'} onerror={(event) => { (event.currentTarget as HTMLImageElement).style.display = 'none'; }} />{/if}
                                     <div class="slide-content">
@@ -313,6 +314,11 @@ em { color: var(--page-gold); font-weight: 400; }
 .carousel-slide::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg,rgba(7,16,23,.7),transparent 70%), linear-gradient(0deg,rgba(7,16,23,.97),rgba(7,16,23,.05) 75%); pointer-events: none; }
 .slide-image { user-select: none; -webkit-user-drag: none; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
 .portrait-initials { position: absolute; inset: 0; display: grid; place-items: center; color: #a9b8be; font-family: Georgia,serif; font-size: 5rem; }
+.carousel-slide.active .slide-image { animation: portrait-settle 9s ease-out both; }
+.motion-paused .carousel-slide.active .slide-image { animation-play-state: paused; }
+.carousel-slide.active .slide-content { animation: slide-copy-enter .9s cubic-bezier(.22,1,.36,1) both; }
+@keyframes portrait-settle { from { transform: scale(1.045); } to { transform: scale(1); } }
+@keyframes slide-copy-enter { from { opacity:0; transform:translateY(.8rem); } to { opacity:1; transform:translateY(0); } }
 .slide-content { position: absolute; z-index: 1; left: clamp(1.25rem, 4vw, 2.75rem); right: 1.25rem; bottom: clamp(1.5rem, 4vw, 2.75rem); color: #fff; }
 .slide-kicker { display: flex; align-items: center; flex-wrap: wrap; gap: .65rem; color: #dfcba7; font-size: .65rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
 .slide-kicker span { width: 1.5rem; height: 1px; background: #c9ad7d; }

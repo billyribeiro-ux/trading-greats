@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { theme } from '#lib/stores/theme.svelte.ts';
-	import { Icon } from '#lib/components/icons/index.ts';
+	import { IconDeviceDesktop, IconMoon, IconSun } from '@tabler/icons-svelte';
 	import { cn } from '#lib/utils/index.ts';
 
 	interface Props {
@@ -8,15 +8,6 @@
 	}
 
 	let { class: className }: Props = $props();
-
-	// Get icon based on current theme
-	const iconName = $derived(
-		theme.current === 'system'
-			? 'monitor'
-			: theme.current === 'dark'
-				? 'moon'
-				: 'sun'
-	);
 
 	// Accessible label
 	const label = $derived(
@@ -48,10 +39,10 @@
 
 	<!-- Icon with smooth transition -->
 	{#if theme.current === 'system'}
-		<Icon name="monitor" class="h-5 w-5 transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:scale-110" strokeWidth={2} />
+		<IconDeviceDesktop size={20} stroke={1.6} />
 	{:else if theme.current === 'dark'}
-		<Icon name="moon" class="h-5 w-5 transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:scale-110" strokeWidth={2} />
+		<IconMoon size={20} stroke={1.6} />
 	{:else}
-		<Icon name="sun" class="h-5 w-5 transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:scale-110" strokeWidth={2} />
+		<IconSun size={20} stroke={1.6} />
 	{/if}
 </button>

@@ -170,7 +170,7 @@
 	<JsonLdScript data={schemaOrg.breadcrumb} />
 </svelte:head>
 
-<div class="min-h-screen bg-midnight-950">
+<div class="editorial-page min-h-screen bg-midnight-950">
 	<!-- Hero Section - MOBILE-FIRST -->
 	<section class="relative overflow-hidden">
 		<!-- Background -->

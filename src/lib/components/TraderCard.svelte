@@ -10,9 +10,10 @@
 		class?: string;
 		index?: number;
 		featured?: boolean;
+		portrait?: boolean;
 	}
 
-	let { trader, class: className, index = 0, featured = false }: Props = $props();
+	let { trader, class: className, index = 0, featured = false, portrait = false }: Props = $props();
 
 	// Image load state
 	let imageLoaded = $state(false);
@@ -70,7 +71,7 @@
 	class={cn(
 		'group relative flex flex-col overflow-hidden rounded-md',
 		// MOBILE-FIRST: Consistent fixed height across all breakpoints
-		'h-[280px] sm:h-[320px] md:h-[380px]',
+		portrait ? 'h-full' : 'h-[280px] sm:h-[320px] md:h-[380px]',
 		'bg-midnight-900/80',
 		'border border-white/8',
 		'transition-all duration-300',
@@ -79,7 +80,7 @@
 	)}
 >
 	<!-- Image Container - Responsive height -->
-	<div class="relative h-[140px] sm:h-[160px] md:h-[200px] shrink-0 overflow-hidden bg-midnight-800">
+	<div class={cn('relative shrink-0 overflow-hidden bg-midnight-800', portrait ? 'aspect-[4/3]' : 'h-[140px] sm:h-[160px] md:h-[200px]')}>
 		{#if trader.photoUrl && !imageError}
 			<img
 				src={trader.photoUrl}
@@ -113,10 +114,10 @@
 		</div>
 		
 		<!-- Gradient overlay -->
-		<div class="absolute inset-0 bg-linear-to-t from-midnight-900 via-midnight-900/40 to-transparent" aria-hidden="true"></div>
+		<div class="card-image-shade absolute inset-0" aria-hidden="true"></div>
 		
 		<!-- Trading style badge -->
-		{#if trader.tradingStyle}
+		{#if trader.tradingStyle && !portrait}
 			<div class="absolute top-3 left-3 z-10">
 				<span class={cn(
 					'inline-flex items-center gap-1 rounded-sm px-2 py-1',
@@ -138,8 +139,11 @@
 
 	<!-- Content Section - Fixed layout -->
 	<div class="flex flex-1 flex-col p-3 sm:p-4">
+		{#if portrait && trader.tradingStyle}
+			<p class="mb-2 text-[10px] font-semibold uppercase tracking-wide text-gold-400">{trader.tradingStyle}</p>
+		{/if}
 		<!-- Name -->
-		<h3 class="font-display text-base sm:text-lg font-bold text-white line-clamp-1 md:group-hover:text-gold-400 transition-colors">
+		<h3 class={cn('font-display text-base sm:text-lg font-bold text-white md:group-hover:text-gold-400 transition-colors', portrait ? 'line-clamp-2' : 'line-clamp-1')}>
 			{trader.name}
 		</h3>
 		
@@ -161,3 +165,7 @@
 		</div>
 	</div>
 </a>
+
+<style>
+	.card-image-shade { background: linear-gradient(to top, rgba(11,18,27,.62), transparent 62%); pointer-events: none; }
+</style>

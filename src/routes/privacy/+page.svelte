@@ -21,7 +21,7 @@
 
 <JsonLd type="BreadcrumbList" breadcrumbs={breadcrumbs} />
 
-<div class="min-h-screen bg-midnight-950 pt-32 pb-24">
+<div class="editorial-page min-h-screen bg-midnight-950 pt-32 pb-24">
 	<div class="mx-auto max-w-4xl px-6 lg:px-8">
 		<!-- Header -->
 		<div class="mb-16 text-center">

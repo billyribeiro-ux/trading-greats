@@ -89,10 +89,10 @@
   <JsonLdScript data={JSON.parse(aboutSchema)} />
 </svelte:head>
 
-<div class="min-h-screen bg-midnight-950">
+<div class="editorial-page min-h-screen bg-midnight-950">
   <!-- Hero Section - MOBILE-FIRST -->
   <section
-    class="relative pt-20 sm:pt-24 lg:pt-32 pb-16 sm:pb-20 lg:pb-24 overflow-hidden"
+    class="editorial-hero relative pt-20 sm:pt-24 lg:pt-32 pb-16 sm:pb-20 lg:pb-24 overflow-hidden"
   >
     <!-- Background - Decorative gradient pattern (no external images) -->
     <div

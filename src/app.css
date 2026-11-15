@@ -93,6 +93,65 @@
   color: #0f172a;
 }
 
+/* Interior pages share the homepage's editorial palette and type hierarchy. */
+.editorial-page {
+  --color-midnight-950: #0b121b;
+  --color-midnight-900: #101b27;
+  --color-midnight-800: #1b2a34;
+  --color-midnight-700: #34454e;
+  --color-midnight-400: #aeb9c0;
+  --color-midnight-300: #c5cdcf;
+  --color-gold-300: #dfc99f;
+  --color-gold-400: #c9ad7d;
+  --color-gold-500: #bd9f70;
+  --color-gold-600: #9d7c4e;
+  background: #0b121b;
+  color: #f3f1eb;
+}
+.editorial-page .editorial-hero {
+  background: radial-gradient(ellipse at 75% 10%, #1d2b36, #0b121b 75%);
+}
+.editorial-page .editorial-hero > .absolute {
+  visibility: hidden;
+}
+.editorial-page .editorial-hero h1,
+.editorial-page > div > header h1,
+.editorial-page > div > h1 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+}
+.editorial-page .editorial-hero h1 {
+  font-size: clamp(2.5rem, 3.8vw + 1rem, 4.5rem);
+  line-height: 1.1;
+}
+.editorial-page .editorial-hero h1 .bg-clip-text {
+  background: none;
+  color: #c9ad7d;
+  -webkit-text-fill-color: currentColor;
+}
+.editorial-page .editorial-hero :is(.animate-hero-fade, .animate-hero-slide) {
+  opacity: 1;
+  animation: none;
+}
+.editorial-page :is(.rounded-2xl, .rounded-3xl) {
+  border-radius: 0.625rem;
+}
+:root:not(.dark) .editorial-page {
+  background: #f7f5f0;
+  color: #17232b;
+}
+:root:not(.dark) .editorial-page .editorial-hero {
+  background: linear-gradient(135deg, #e9e6dd, #d4dbd8);
+}
+:root:not(.dark) .editorial-page .editorial-hero h1 .bg-clip-text,
+:root:not(.dark) .editorial-page .text-gold-300 {
+  color: #806336;
+}
+:root:not(.dark) .editorial-page .text-emerald-400 {
+  color: #047857;
+}
+
 /* ============================================================================
    LIGHT MODE - Background Colors
    ============================================================================ */

@@ -12,7 +12,7 @@
 	noindex={true}
 />
 
-<div class="min-h-screen bg-midnight-950 flex items-center justify-center px-4">
+<div class="editorial-page min-h-screen bg-midnight-950 flex items-center justify-center px-4">
 	<div class="max-w-md w-full">
 		<div class="bg-midnight-900/50 border border-midnight-800 rounded-2xl p-8 text-center">
 			{#if data.success}

@@ -1,417 +1,90 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { browser } from '$app/env';
-	import { cn } from '#lib/utils/index.ts';
-	import { Icon } from '#lib/components/icons/index.ts';
-	import { fade, fly, scale } from 'svelte/transition';
-	import { cubicOut, backOut } from 'svelte/easing';
+	import { IconSearch, IconMenu2, IconX, IconArrowUpRight } from '@tabler/icons-svelte';
 	import ThemeToggle from './ThemeToggle.svelte';
 	import SearchModal from './SearchModal.svelte';
 
-	// ============================================================================
-	// STATE
-	// ============================================================================
-	
+	const links = [
+		{ href: '/', label: 'Home' },
+		{ href: '/traders', label: 'Traders' },
+		{ href: '/compare', label: 'Compare' },
+		{ href: '/blog', label: 'Journal' },
+		{ href: '/about', label: 'About' }
+	];
 	let mobileMenuOpen = $state(false);
-	let scrolled = $state(false);
 	let searchOpen = $state(false);
-	let menuButtonRef = $state<HTMLButtonElement | undefined>(undefined);
-	let mobileNavRefs = $state<(HTMLAnchorElement | undefined)[]>([]);
+	let menuButton = $state<HTMLButtonElement>();
+	let mobileNav = $state<HTMLElement>();
+	const active = (href: string) => href === '/' ? page.url.pathname === '/' : page.url.pathname.startsWith(href);
 
-	// ============================================================================
-	// CONSTANTS
-	// ============================================================================
-
-	const NAV_LINKS = [
-		{ href: '/', label: 'Home', iconType: 'home' as const },
-		{ href: '/traders', label: 'Legends', iconType: 'users' as const },
-		{ href: '/compare', label: 'Compare', iconType: 'bar-chart' as const },
-		{ href: '/blog', label: 'Blog', iconType: 'book-open' as const },
-	] as const;
-
-	const SCROLL_THRESHOLD = 20;
-	const TRANSITION_DURATION = 300;
-
-	// ============================================================================
-	// DERIVED STATE
-	// ============================================================================
-
-	const currentPath = $derived(page.url.pathname);
-
-	// ============================================================================
-	// EFFECTS
-	// ============================================================================
-
-	// Scroll detection with passive listener for performance
 	$effect(() => {
-		if (!browser) return;
-
-		const handleScroll = () => {
-			scrolled = window.scrollY > SCROLL_THRESHOLD;
-		};
-
-		handleScroll();
-
-		window.addEventListener('scroll', handleScroll, { passive: true });
-		return () => window.removeEventListener('scroll', handleScroll);
+		if (!browser || !mobileMenuOpen) return;
+		const previousOverflow = document.body.style.overflow;
+		document.body.style.overflow = 'hidden';
+		mobileNav?.querySelector<HTMLAnchorElement>('a')?.focus();
+		return () => { document.body.style.overflow = previousOverflow; };
 	});
-
-	// Body scroll lock when mobile menu is open
-	$effect(() => {
-		if (!browser) return;
-
-		if (mobileMenuOpen) {
-			const scrollY = window.scrollY;
-			document.body.style.position = 'fixed';
-			document.body.style.top = `-${scrollY}px`;
-			document.body.style.left = '0';
-			document.body.style.right = '0';
-			document.body.style.overflow = 'hidden';
-
-			return () => {
-				document.body.style.position = '';
-				document.body.style.top = '';
-				document.body.style.left = '';
-				document.body.style.right = '';
-				document.body.style.overflow = '';
-				window.scrollTo(0, scrollY);
-			};
-		}
-	});
-
-	// Close the compact menu when the desktop navigation becomes visible.
 	$effect(() => {
 		if (!browser) return;
 		const desktop = window.matchMedia('(min-width: 64rem)');
-		const handleChange = (event: MediaQueryListEvent) => {
-			if (event.matches) mobileMenuOpen = false;
-		};
-		desktop.addEventListener('change', handleChange);
-		return () => desktop.removeEventListener('change', handleChange);
+		const onChange = (event: MediaQueryListEvent) => { if (event.matches) mobileMenuOpen = false; };
+		desktop.addEventListener('change', onChange);
+		return () => desktop.removeEventListener('change', onChange);
 	});
-
-	// Focus management for accessibility
-	$effect(() => {
-		if (!browser) return;
-		
-		if (mobileMenuOpen && mobileNavRefs[0]) {
-			requestAnimationFrame(() => {
-				mobileNavRefs[0]?.focus();
-			});
+	function onKeydown(event: KeyboardEvent) {
+		if (event.key === 'Escape' && mobileMenuOpen) { mobileMenuOpen = false; menuButton?.focus(); }
+		if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
+			event.preventDefault(); mobileMenuOpen = false; searchOpen = true;
 		}
-	});
-
-	// ============================================================================
-	// HANDLERS
-	// ============================================================================
-
-	function handleWindowKeydown(event: KeyboardEvent): void {
-		if (event.key === 'Escape' && mobileMenuOpen) {
-			event.preventDefault();
-			closeMenu();
-		}
-		if ((event.metaKey || event.ctrlKey) && event.key === 'k') {
-			event.preventDefault();
-			searchOpen = true;
-		}
-	}
-
-	function isActive(href: string): boolean {
-		if (href === '/') return currentPath === '/';
-		return currentPath.startsWith(href);
-	}
-
-	function toggleMenu(): void {
-		mobileMenuOpen = !mobileMenuOpen;
-	}
-
-	function closeMenu(): void {
-		mobileMenuOpen = false;
-		menuButtonRef?.focus();
-	}
-
-	function handleNavClick(): void {
-		closeMenu();
 	}
 </script>
 
-<svelte:window onkeydown={handleWindowKeydown}></svelte:window>
-
-<header
-	class={cn(
-		'fixed top-0 left-0 right-0 z-50',
-		'transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]',
-		'safe-top', /* MOBILE-FIRST: Support notched devices */
-		scrolled
-			? 'border-b border-white/8 bg-midnight-950/85 py-2 sm:py-3 shadow-2xl shadow-black/20 backdrop-blur-2xl backdrop-saturate-150'
-			: 'border-b border-transparent bg-transparent py-3 sm:py-5'
-	)}
->
-	<nav 
-		class="site-container flex h-12 items-center justify-between lg:grid lg:grid-cols-[1fr_auto_1fr]"
-		aria-label="Main navigation"
-	>
-		<!-- Logo with cinematic hover -->
-		<a 
-			href="/" 
-			class="group flex items-center gap-3 rounded-lg outline-none ring-gold-500/50 transition-all duration-300 focus-visible:ring-2"
-			aria-label="Trading Greats - Home"
-		>
-			<div 
-				class={cn(
-					'relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl',
-					'bg-linear-to-br from-gold-500 to-gold-600',
-					'shadow-lg shadow-gold-500/25',
-					'transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]',
-					'will-change-transform',
-					'group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-gold-500/40',
-					'group-active:scale-95'
-				)}
-				aria-hidden="true"
-			>
-				<!-- Shine effect -->
-				<div class="absolute inset-0 bg-linear-to-tr from-white/0 via-white/20 to-white/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
-				<Icon name="candlestick" class="relative h-5 w-5 text-midnight-950 transition-transform duration-300 group-hover:scale-110" strokeWidth={2.5} />
-			</div>
-			<span class="font-display text-xl font-bold tracking-tight text-white transition-colors duration-300 group-hover:text-gold-100">
-				Trading<span class="text-gold-400 transition-colors duration-300 group-hover:text-gold-300">Greats</span>
-			</span>
-		</a>
-
-		<!-- Desktop Navigation -->
-		<div class="hidden items-center gap-1 lg:flex" role="navigation">
-			{#each NAV_LINKS as link (link.href)}
-				{@const active = isActive(link.href)}
-				<a
-					href={link.href}
-					class={cn(
-						'group relative flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium',
-						'outline-none ring-gold-500/50 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]',
-						'focus-visible:ring-2',
-						active
-							? 'text-gold-400'
-							: 'text-midnight-300 hover:text-white'
-					)}
-					aria-current={active ? 'page' : undefined}
-				>
-					{#if active}
-						<div 
-							class="absolute inset-0 rounded-full bg-gold-500/10 border border-gold-500/20"
-							transition:scale={{ duration: TRANSITION_DURATION, easing: backOut, start: 0.9 }}
-						></div>
-					{/if}
-					
-					{#if link.iconType === 'home'}
-						<Icon 
-							name="candlestick"
-							class={cn(
-								'relative h-4 w-4 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]',
-								active 
-									? 'text-gold-400' 
-									: 'text-midnight-400 group-hover:text-gold-400 group-hover:scale-110 group-hover:rotate-3'
-							)} 
-							strokeWidth={2}
-						/>
-					{:else if link.iconType === 'users'}
-						<Icon 
-							name="users"
-							class={cn(
-								'relative h-4 w-4 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]',
-								active 
-									? 'text-gold-400' 
-									: 'text-midnight-400 group-hover:text-gold-400 group-hover:scale-110'
-							)} 
-							strokeWidth={2}
-						/>
-					{:else if link.iconType === 'bar-chart'}
-						<Icon 
-							name="bar-chart"
-							class={cn(
-								'relative h-4 w-4 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]',
-								active 
-									? 'text-gold-400' 
-									: 'text-midnight-400 group-hover:text-gold-400 group-hover:scale-110'
-							)} 
-							strokeWidth={2}
-						/>
-					{:else if link.iconType === 'book-open'}
-						<Icon 
-							name="book-open"
-							class={cn(
-								'relative h-4 w-4 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]',
-								active 
-									? 'text-gold-400' 
-									: 'text-midnight-400 group-hover:text-gold-400 group-hover:scale-110'
-							)} 
-							strokeWidth={2}
-						/>
-					{/if}
-					<span class="relative">{link.label}</span>
-				</a>
-			{/each}
+<svelte:window onkeydown={onKeydown} />
+<header class="site-header">
+	<nav class="site-container header-inner" aria-label="Main navigation">
+		<a href="/" class="brand" aria-label="Trading Greats home"><img src="/brand/mark.svg" width="40" height="40" alt="" /><span>Trading Greats</span></a>
+		<div class="desktop-links">
+			{#each links as link (link.href)}<a href={link.href} aria-current={active(link.href) ? 'page' : undefined}>{link.label}</a>{/each}
 		</div>
-
-		<!-- Actions -->
-		<div class="flex items-center justify-end gap-1 sm:gap-2">
-			<!-- Theme Toggle -->
-			<ThemeToggle class="hidden sm:flex" />
-
-			<!-- Search Button - MOBILE-FIRST: 44px touch target -->
-			<button
-				type="button"
-				class={cn(
-					'group relative flex h-11 items-center justify-center rounded-full px-3', /* MOBILE-FIRST: 44px touch target */
-					'text-midnight-400 outline-none ring-gold-500/50',
-					'transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]',
-					'hover:bg-white/5 hover:text-white',
-					'focus-visible:ring-2',
-					'active:scale-95 active:bg-white/10' /* MOBILE-FIRST: Touch feedback */
-				)}
-				aria-label="Search traders (⌘K)"
-				onclick={() => { searchOpen = true; }}
-			>
-				<Icon 
-					name="search"
-					class="h-5 w-5 transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:scale-110" 
-					strokeWidth={2}
-				/>
-				<kbd class="ml-2 hidden lg:inline-flex h-5 items-center justify-center rounded bg-white/10 px-1.5 text-[10px] font-medium text-midnight-400 group-hover:bg-white/15 group-hover:text-midnight-300">
-					⌘K
-				</kbd>
-			</button>
-
-			<!-- Desktop CTA with shimmer -->
-			<a
-				href="/about"
-				class={cn(
-					'hidden items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold lg:flex',
-					'bg-white text-midnight-950',
-					'shadow-lg shadow-white/10',
-					'outline-none ring-gold-500 ring-offset-2 ring-offset-midnight-950',
-					'transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]',
-					'hover:bg-gold-50 hover:shadow-xl hover:shadow-gold-500/20 hover:scale-[1.02]',
-					'focus-visible:ring-2',
-					'active:scale-95',
-					'relative overflow-hidden group'
-				)}
-			>
-				<!-- Shimmer effect -->
-				<div class="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-gold-200/50 to-transparent transition-transform duration-700 group-hover:translate-x-full"></div>
-				<span class="relative">Learn More</span>
-				<Icon name="arrow-right" class="relative h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" strokeWidth={2.5} />
-			</a>
-
-			<!-- Mobile Menu Toggle - MOBILE-FIRST: 44px touch target -->
-			<button
-				bind:this={menuButtonRef}
-				type="button"
-				class={cn(
-					'relative flex h-11 w-11 items-center justify-center rounded-full', /* MOBILE-FIRST: 44px minimum touch target */
-					'text-midnight-400 outline-none ring-gold-500/50',
-					'transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]',
-					'hover:bg-white/5 hover:text-white',
-					'focus-visible:ring-2',
-					'active:scale-95 active:bg-white/10', /* MOBILE-FIRST: Touch feedback */
-					'lg:hidden'
-				)}
-				aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
-				aria-expanded={mobileMenuOpen}
-				aria-controls="mobile-menu"
-				onclick={() => { mobileMenuOpen = !mobileMenuOpen; }}
-			>
-				{#if mobileMenuOpen}
-					<Icon name="x" class="h-6 w-6 transition-transform duration-300" strokeWidth={2} />
-				{:else}
-					<Icon name="menu" class="h-6 w-6 transition-transform duration-300" strokeWidth={2} />
-				{/if}
-			</button>
+		<div class="header-actions">
+			<ThemeToggle />
+			<button class="icon-button" type="button" aria-label="Search traders" onclick={() => searchOpen = true}><IconSearch size={20} stroke={1.6} /></button>
+			<a class="header-cta" href="/traders">Explore profiles <IconArrowUpRight size={16} stroke={1.7} /></a>
+			<button class="icon-button menu-toggle" type="button" bind:this={menuButton} aria-expanded={mobileMenuOpen} aria-controls="mobile-menu" aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'} onclick={() => mobileMenuOpen = !mobileMenuOpen}>{#if mobileMenuOpen}<IconX size={22} stroke={1.6} />{:else}<IconMenu2 size={22} stroke={1.6} />{/if}</button>
 		</div>
 	</nav>
-
-	<!-- Mobile Menu Overlay - MOBILE-FIRST: Full screen with safe areas -->
 	{#if mobileMenuOpen}
-		<div
-			id="mobile-menu"
-			class="fixed inset-x-0 top-[68px] sm:top-[72px] bottom-0 z-40 overflow-y-auto overscroll-contain bg-midnight-950/98 backdrop-blur-3xl lg:hidden safe-bottom"
-			transition:fade={{ duration: 200, easing: cubicOut }}
-			role="dialog"
-			aria-modal="true"
-			aria-label="Mobile navigation menu"
-		>
-			<nav class="flex flex-col p-4 pb-8" aria-label="Mobile navigation">
-				{#each NAV_LINKS as link, index (link.href)}
-					{@const active = isActive(link.href)}
-					<div 
-						transition:fly={{ y: 20, duration: 300, delay: index * 50, easing: backOut }}
-					>
-						<a
-							bind:this={mobileNavRefs[index]}
-							href={link.href}
-							class={cn(
-								'flex items-center gap-4 rounded-2xl p-4 text-lg font-medium',
-								'outline-none ring-gold-500/50',
-								'transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]',
-								'focus-visible:ring-2',
-								'active:scale-[0.98]',
-								active
-									? 'bg-gold-500/10 text-gold-400 border border-gold-500/20'
-									: 'text-midnight-200 hover:bg-white/5 hover:text-white border border-transparent'
-							)}
-							aria-current={active ? 'page' : undefined}
-							onclick={() => { mobileMenuOpen = false; }}
-						>
-							<div 
-								class={cn(
-									'flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-300',
-									active ? 'bg-gold-500/20 shadow-lg shadow-gold-500/10' : 'bg-white/5'
-								)}
-								aria-hidden="true"
-							>
-								{#if link.iconType === 'home'}
-									<Icon name="candlestick" class="h-5 w-5" strokeWidth={2} />
-								{:else if link.iconType === 'users'}
-									<Icon name="users" class="h-5 w-5" strokeWidth={2} />
-								{:else if link.iconType === 'bar-chart'}
-									<Icon name="bar-chart" class="h-5 w-5" strokeWidth={2} />
-								{:else if link.iconType === 'book-open'}
-									<Icon name="book-open" class="h-5 w-5" strokeWidth={2} />
-								{/if}
-							</div>
-							<span>{link.label}</span>
-						</a>
-					</div>
-				{/each}
-				
-				<div 
-					class="mt-6 border-t border-white/10 pt-6"
-					transition:fly={{ y: 20, duration: 300, delay: 150, easing: backOut }}
-				>
-					<a
-						href="/about"
-						class={cn(
-							'group flex w-full items-center justify-center gap-3 rounded-2xl p-4 text-lg font-bold',
-							'bg-linear-to-r from-gold-500 to-gold-600 text-midnight-950',
-							'shadow-xl shadow-gold-500/20',
-							'outline-none ring-gold-500 ring-offset-2 ring-offset-midnight-950',
-							'transition-all duration-300',
-							'focus-visible:ring-2',
-							'active:scale-[0.98]',
-							'relative overflow-hidden'
-						)}
-						onclick={() => { mobileMenuOpen = false; }}
-					>
-						<div class="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full"></div>
-						<span class="relative">Learn More</span>
-						<Icon name="arrow-right" class="relative h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={2.5} />
-					</a>
-				</div>
-			</nav>
-		</div>
+		<nav id="mobile-menu" bind:this={mobileNav} class="mobile-menu" aria-label="Mobile navigation">
+			<div class="site-container mobile-links">
+				{#each links as link (link.href)}<a href={link.href} aria-current={active(link.href) ? 'page' : undefined} onclick={() => mobileMenuOpen = false}>{link.label}<IconArrowUpRight size={18} stroke={1.6} /></a>{/each}
+			</div>
+		</nav>
 	{/if}
 </header>
-
-<!-- Spacer - MOBILE-FIRST: Match header height -->
-<div class="h-[68px] sm:h-[72px]" aria-hidden="true"></div>
-
-<!-- Search Modal -->
+<div class="header-spacer" aria-hidden="true"></div>
 <SearchModal bind:open={searchOpen} onClose={() => { searchOpen = false; }} />
+
+<style>
+	.site-header { --header-bg:#0b151e; --header-text:#f3f1eb; --header-muted:#b6c0c2; --header-line:rgba(218,222,219,.14); position:fixed; z-index:50; inset:0 0 auto; background:var(--header-bg); color:var(--header-text); border-bottom:1px solid var(--header-line); }
+	.header-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; height:5rem; }
+	.header-spacer { height:5rem; }
+	.brand { display:inline-flex; align-items:center; gap:.7rem; color:var(--header-text); text-decoration:none; white-space:nowrap; font-family:'Playfair Display',Georgia,serif; font-size:1.2rem; letter-spacing:-.03em; }
+	.brand img { width:2.5rem; height:2.5rem; }
+	.desktop-links { display:none; align-items:center; justify-content:center; gap:clamp(1rem,2vw,2rem); }
+	.desktop-links a { color:var(--header-muted); font-size:.875rem; font-weight:600; text-decoration:none; padding:.6rem 0; border-bottom:1px solid transparent; }
+	.desktop-links a:hover,.desktop-links a[aria-current='page'] { color:var(--header-text); border-color:#c9ad7d; }
+	.header-actions { display:flex; align-items:center; justify-content:flex-end; gap:.15rem; }
+	.icon-button { display:grid; place-items:center; width:2.75rem; height:2.75rem; border:0; background:transparent; color:var(--header-muted); cursor:pointer; }
+	.icon-button:hover { color:var(--header-text); }
+	.header-cta { display:none; align-items:center; gap:.8rem; margin-left:.8rem; padding:.65rem .9rem; border:1px solid rgba(201,173,125,.5); color:var(--header-text); font-size:.8rem; font-weight:600; text-decoration:none; white-space:nowrap; }
+	.header-cta:hover { background:#c9ad7d; color:#111b23; }
+	.mobile-menu { position:fixed; inset:5rem 0 0; overflow-y:auto; background:var(--header-bg); }
+	.mobile-links { display:flex; flex-direction:column; padding-top:1rem; }
+	.mobile-links a { display:flex; justify-content:space-between; align-items:center; min-height:3.75rem; color:var(--header-text); text-decoration:none; border-bottom:1px solid var(--header-line); font-size:1.1rem; }
+	.mobile-links a[aria-current='page'] { color:#d5bc91; }
+	:global(html:not(.dark)) .site-header { --header-bg:#f7f5f0; --header-text:#17232b; --header-muted:#53636c; --header-line:rgba(18,30,37,.16); background:var(--header-bg); }
+	:global(html:not(.dark)) .mobile-links a[aria-current='page'] { color:#806336; }
+	@media (min-width:64rem) { .header-inner { display:grid; grid-template-columns:1fr auto 1fr; } .desktop-links,.header-cta { display:flex; } .menu-toggle,.mobile-menu { display:none; } }
+	@media (max-width:25rem) { .brand { font-size:1rem; gap:.45rem; } .brand img { width:2.2rem; height:2.2rem; } .header-inner { gap:.25rem; } }
+</style>

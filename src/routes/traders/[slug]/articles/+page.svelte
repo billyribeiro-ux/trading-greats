@@ -74,9 +74,9 @@
 	<JsonLdScript data={schemaOrg.collection} />
 </svelte:head>
 
-<div class="min-h-screen bg-midnight-950">
+<div class="editorial-page min-h-screen bg-midnight-950">
 	<!-- Hero Section - MOBILE-FIRST -->
-	<section class="relative overflow-hidden">
+	<section class="editorial-hero relative overflow-hidden">
 		<!-- Background -->
 		<div class="absolute inset-0 h-[35vh] sm:h-[40vh] min-h-[280px]">
 			<div class="absolute inset-0 bg-linear-to-br from-midnight-900 via-midnight-950 to-midnight-900"></div>

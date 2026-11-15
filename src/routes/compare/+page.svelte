@@ -66,17 +66,17 @@
 	description="Compare legendary traders side-by-side. Analyze their trading styles, philosophies, and achievements to find the strategies that resonate with you."
 />
 
-<div class="min-h-screen bg-midnight-950">
+<div class="editorial-page min-h-screen bg-midnight-950">
 	<!-- Header -->
-	<section class="relative pt-6 sm:pt-8 pb-4 sm:pb-6 overflow-hidden">
+	<section class="editorial-hero relative pt-6 sm:pt-8 pb-4 sm:pb-6 overflow-hidden">
 		<div class="absolute inset-0">
-			<div class="absolute top-[-20%] right-[-10%] h-[400px] w-[400px] rounded-full bg-gradient-radial from-violet-500/10 via-violet-500/5 to-transparent blur-3xl"></div>
+			<div class="absolute top-[-20%] right-[-10%] h-[400px] w-[400px] rounded-full bg-gradient-radial from-gold-500/10 via-gold-500/5 to-transparent blur-3xl"></div>
 		</div>
 
 		<div class="relative z-10 mx-auto site-container">
 			<div class="flex flex-col items-center text-center">
 				<h1 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
-					Compare <span class="text-violet-400">Traders</span>
+					Compare <span class="text-gold-400">Traders</span>
 				</h1>
 				<p class="mt-2 text-midnight-300">
 					Select up to {comparison.maxCompare} traders to compare side-by-side
@@ -134,7 +134,7 @@
 											<Icon name="x" class="h-3 w-3" />
 										</button>
 										<a href="/traders/{trader.slug}" class="group block">
-											<div class="w-16 h-16 mx-auto rounded-2xl overflow-hidden mb-3 ring-2 ring-white/10 group-hover:ring-violet-500/40 transition-all shadow-lg">
+											<div class="w-16 h-16 mx-auto rounded-2xl overflow-hidden mb-3 ring-2 ring-white/10 group-hover:ring-gold-500/40 transition-all shadow-lg">
 												{#if trader.photoUrl}
 													<img
 														src={trader.photoUrl}
@@ -143,11 +143,11 @@
 													/>
 												{:else}
 													<div
-														class="w-full h-full flex items-center justify-center text-xl font-bold bg-linear-to-br from-midnight-700 to-midnight-800 text-midnight-400 group-hover:from-violet-900/50 group-hover:to-midnight-800 group-hover:text-violet-300 transition-all duration-300"
+														class="w-full h-full flex items-center justify-center text-xl font-bold bg-linear-to-br from-midnight-700 to-midnight-800 text-midnight-400 group-hover:from-gold-900/50 group-hover:to-midnight-800 group-hover:text-gold-300 transition-all duration-300"
 													>{trader.name.split(' ').map((n) => n[0]).join('')}</div>
 												{/if}
 											</div>
-											<span class="font-display font-bold text-white group-hover:text-violet-400 transition-colors">
+											<span class="font-display font-bold text-white group-hover:text-gold-400 transition-colors">
 												{trader.name}
 											</span>
 										</a>
@@ -256,7 +256,7 @@
 						type="text"
 						placeholder="Search traders..."
 						bind:value={searchQuery}
-						class="w-full bg-midnight-900/50 border border-white/10 rounded-lg pl-10 pr-4 py-2.5 text-sm text-white placeholder-midnight-500 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50"
+						class="w-full bg-midnight-900/50 border border-white/10 rounded-lg pl-10 pr-4 py-2.5 text-sm text-white placeholder-midnight-500 focus:outline-none focus:ring-2 focus:ring-gold-500/50 focus:border-gold-500/50"
 					/>
 				</div>
 
@@ -265,9 +265,9 @@
 					{#each availableTraders.slice(0, 12) as trader (trader.slug)}
 						<button
 							onclick={() => addTrader(trader.slug)}
-							class="group p-3 rounded-lg border border-white/10 bg-midnight-900/30 hover:border-violet-500/30 hover:bg-midnight-800/50 transition-all text-center flex flex-col items-center"
+							class="group p-3 rounded-lg border border-white/10 bg-midnight-900/30 hover:border-gold-500/30 hover:bg-midnight-800/50 transition-all text-center flex flex-col items-center"
 						>
-							<div class="w-11 h-11 rounded-full overflow-hidden mb-2 ring-2 ring-white/10 group-hover:ring-violet-500/40 transition-all">
+							<div class="w-11 h-11 rounded-full overflow-hidden mb-2 ring-2 ring-white/10 group-hover:ring-gold-500/40 transition-all">
 								{#if trader.photoUrl}
 									<img
 										src={trader.photoUrl}
@@ -276,11 +276,11 @@
 									/>
 								{:else}
 									<div
-										class="w-full h-full flex items-center justify-center text-sm font-bold bg-linear-to-br from-midnight-700 to-midnight-800 text-midnight-400 group-hover:from-violet-900/50 group-hover:to-midnight-800 group-hover:text-violet-300 transition-all duration-300"
+										class="w-full h-full flex items-center justify-center text-sm font-bold bg-linear-to-br from-midnight-700 to-midnight-800 text-midnight-400 group-hover:from-gold-900/50 group-hover:to-midnight-800 group-hover:text-gold-300 transition-all duration-300"
 									>{trader.name.split(' ').map((n) => n[0]).join('')}</div>
 								{/if}
 							</div>
-							<p class="font-medium text-xs text-white group-hover:text-violet-400 transition-colors line-clamp-1 w-full">
+							<p class="font-medium text-xs text-white group-hover:text-gold-400 transition-colors line-clamp-1 w-full">
 								{trader.name}
 							</p>
 							<p class="text-[10px] text-midnight-500 line-clamp-1 leading-tight w-full">

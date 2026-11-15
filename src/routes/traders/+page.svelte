@@ -78,11 +78,11 @@
 
 <JsonLd type="BreadcrumbList" breadcrumbs={breadcrumbs} />
 
-<div class="min-h-screen bg-midnight-950">
+<div class="editorial-page min-h-screen bg-midnight-950">
 	<!-- ========================================================================
 	     HERO HEADER - MOBILE-FIRST
 	======================================================================== -->
-	<section class="relative pt-20 sm:pt-24 lg:pt-28 pb-10 sm:pb-12 lg:pb-16 overflow-hidden">
+	<section class="editorial-hero relative pt-20 sm:pt-24 lg:pt-28 pb-10 sm:pb-12 lg:pb-16 overflow-hidden">
 		<!-- Background Elements - MOBILE-FIRST: Smaller orbs on mobile -->
 		<div class="absolute inset-0">
 			<div class="absolute top-[-20%] right-[-10%] h-[300px] w-[300px] sm:h-[450px] sm:w-[450px] lg:h-[600px] lg:w-[600px] rounded-full bg-gradient-radial from-gold-500/10 via-gold-500/5 to-transparent blur-3xl"></div>
@@ -264,7 +264,7 @@
 				{#if viewMode === 'grid'}
 					<div class="grid gap-4 sm:gap-5 lg:gap-6 grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 4xl:grid-cols-7">
 						{#each filteredTraders as trader, i (trader.id)}
-							<div class="h-full"><TraderCard trader={trader} index={i} class="h-full" /></div>
+							<div class="h-full"><TraderCard trader={trader} index={i} class="h-full" portrait /></div>
 						{/each}
 					</div>
 				{:else}
