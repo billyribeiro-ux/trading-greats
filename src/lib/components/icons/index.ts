@@ -1,9 +1,4 @@
-/**
- * Trading Icons
- *
- * A custom SVG icon library designed for financial/trading applications.
- * Replaces lucide-svelte with trading-specific icons.
- */
+/** Shared named interface backed by the installed Tabler icon library. */
 
-export { default as Icon, type IconName } from './TradingIcons.svelte';
-
+export { default as Icon } from "./TradingIcons.svelte";
+export type { IconName } from "./types.ts";
