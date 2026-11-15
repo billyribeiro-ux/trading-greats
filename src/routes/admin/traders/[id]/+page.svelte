@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { IconArrowRight as TablerArrowRight } from '@tabler/icons-svelte';
 	import { enhance } from '$app/forms';
 	import { goto } from '$app/navigation';
 	import { IconArrowLeft, IconDeviceFloppy, IconPlus, IconX, IconTrendingUp, IconTrendingDown, IconTrash, IconEdit, IconChevronUp, IconChevronDown, IconPhoto, IconLoader2 } from '@tabler/icons-svelte';
@@ -231,7 +232,7 @@
 				Back to Traders
 			</a>
 			<a href="/traders/{trader.slug}" class="text-sm text-midnight-400 hover:text-midnight-200 min-h-[44px] flex items-center" target="_blank">
-				View Profile →
+				View Profile <TablerArrowRight size={16} stroke={1.6} aria-hidden="true" />
 			</a>
 		</div>
 	</header>

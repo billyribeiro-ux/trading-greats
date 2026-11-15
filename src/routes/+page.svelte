@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { IconArrowUpRight, IconPlayerPause, IconPlayerPlay, IconPlus, IconMinus } from '@tabler/icons-svelte';
     import { slide } from 'svelte/transition';
     import { onMount } from 'svelte';
     import emblaCarouselSvelte from 'embla-carousel-svelte';
@@ -196,7 +197,7 @@
                                         <span class="slide-kicker">FEATURED PROFILE <span></span> {trader.style}</span>
                                         <h2>{trader.name}</h2>
                                         <p>{trader.knownFor}</p>
-                                        <a href="/traders/{trader.slug}" class="slide-link">Discover the profile <span aria-hidden="true">↗</span></a>
+                                        <a href="/traders/{trader.slug}" class="slide-link">Discover the profile <IconArrowUpRight size={18} stroke={1.6} aria-hidden="true" /></a>
                                     </div>
                                 </div>
                             {/each}
@@ -213,9 +214,9 @@
                                 {/each}
                             </div>
                             <div class="carousel-controls" aria-label="Carousel controls">
-                                <button type="button" onclick={() => moveCarousel(-1)} aria-label="Previous trader">←</button>
-                                <button type="button" class="carousel-play" onclick={() => carouselPlaying = !carouselPlaying} aria-label={carouselPlaying ? 'Pause carousel' : 'Play carousel'}>{carouselPlaying ? 'Ⅱ' : '▶'}</button>
-                                <button type="button" onclick={() => moveCarousel(1)} aria-label="Next trader">→</button>
+                                <button type="button" onclick={() => moveCarousel(-1)} aria-label="Previous trader"><Icon name="arrow-left" size={18} strokeWidth={1.6} /></button>
+                                <button type="button" class="carousel-play" onclick={() => carouselPlaying = !carouselPlaying} aria-label={carouselPlaying ? 'Pause carousel' : 'Play carousel'}>{#if carouselPlaying}<IconPlayerPause size={17} stroke={1.6} aria-hidden="true" />{:else}<IconPlayerPlay size={17} stroke={1.6} aria-hidden="true" />{/if}</button>
+                                <button type="button" onclick={() => moveCarousel(1)} aria-label="Next trader"><Icon name="arrow-right" size={18} strokeWidth={1.6} /></button>
                             </div>
                         </div>
                     {/if}
@@ -243,7 +244,7 @@
                 {#each displayTraders.slice(0, 4) as trader (trader.slug)}
                     <a class="featured-card" href="/traders/{trader.slug}">
                         <div class="featured-image">{#if trader.photoUrl}<img src={trader.photoUrl} alt="" loading="lazy" onerror={(event) => { (event.currentTarget as HTMLImageElement).style.display = 'none'; }} />{:else}<span class="image-initials">{trader.name.split(' ').map((n: string) => n[0]).join('')}</span>{/if}</div>
-                        <div class="featured-details"><span class="card-type">{trader.style}</span><h3>{trader.name}</h3><p>{trader.knownFor}</p><span class="card-arrow" aria-hidden="true">↗</span></div>
+                        <div class="featured-details"><span class="card-type">{trader.style}</span><h3>{trader.name}</h3><p>{trader.knownFor}</p><span class="card-arrow"><IconArrowUpRight size={18} stroke={1.6} aria-hidden="true" /></span></div>
                     </a>
                 {/each}
             </div>
@@ -257,7 +258,7 @@
             <div class="section-heading"><div><p class="eyebrow">A WORLD OF APPROACHES <span>/ 02</span></p><h2 id="approaches-title">Different paths.<br /><em>Enduring ideas.</em></h2><p>Find an approach that speaks to the way you think about markets.</p></div><a class="text-link" href="/traders">Explore all traders <Icon name="arrow-right" class="h-4 w-4" /></a></div>
             <div class="approach-grid">
                 {#each strategies as strategy, i (strategy.name)}
-                    <a class="approach-card" href="/traders?style={encodeURIComponent(strategy.filter || strategy.name)}"><div class="approach-top"><span>0{i + 1}</span><span aria-hidden="true">↗</span></div><h3>{strategy.name}</h3><p>{strategy.description}</p><div class="approach-names">{strategy.traders.slice(0, 2).join('  /  ')}</div></a>
+                    <a class="approach-card" href="/traders?style={encodeURIComponent(strategy.filter || strategy.name)}"><div class="approach-top"><span>0{i + 1}</span><IconArrowUpRight size={18} stroke={1.6} aria-hidden="true" /></div><h3>{strategy.name}</h3><p>{strategy.description}</p><div class="approach-names">{strategy.traders.slice(0, 2).join('  /  ')}</div></a>
                 {/each}
             </div>
         </div>
@@ -270,7 +271,7 @@
                 {#each displayTraders as trader (trader.slug)}
                     <a href="/traders/{trader.slug}" class="library-card">
                         <div class="library-avatar"><span>{trader.name.split(' ').map((n: string) => n[0]).join('')}</span>{#if trader.photoUrl}<img src={trader.photoUrl} alt="" loading="lazy" onerror={(event) => { (event.currentTarget as HTMLImageElement).style.display = 'none'; }} />{/if}</div>
-                        <div class="library-info"><h3>{trader.name}</h3><p>{trader.style}</p></div><span class="library-arrow" aria-hidden="true">↗</span>
+                        <div class="library-info"><h3>{trader.name}</h3><p>{trader.style}</p></div><span class="library-arrow"><IconArrowUpRight size={18} stroke={1.6} aria-hidden="true" /></span>
                     </a>
                 {/each}
             </div>
@@ -281,7 +282,7 @@
         <div class="site-container questions-grid"><div><p class="eyebrow">GETTING STARTED</p><h2 id="questions-title">A few good<br /><em>questions.</em></h2><p>Everything you need to begin exploring the library.</p></div>
             <div class="questions-list">
                 {#each faqItems as faq, i (faq.question)}
-                    <div class="question"><button type="button" aria-expanded={openFaq === i} onclick={() => { openFaq = openFaq === i ? null : i; }}><span>{faq.question}</span><span aria-hidden="true">{openFaq === i ? '−' : '+'}</span></button>{#if openFaq === i}<p transition:slide={{ duration: 180 }}>{faq.answer}</p>{/if}</div>
+                    <div class="question"><button type="button" aria-expanded={openFaq === i} onclick={() => { openFaq = openFaq === i ? null : i; }}><span>{faq.question}</span>{#if openFaq === i}<IconMinus size={20} stroke={1.6} aria-hidden="true" />{:else}<IconPlus size={20} stroke={1.6} aria-hidden="true" />{/if}</button>{#if openFaq === i}<p transition:slide={{ duration: 180 }}>{faq.answer}</p>{/if}</div>
                 {/each}
             </div>
         </div>
@@ -309,14 +310,14 @@ em { color: var(--page-gold); font-weight: 400; }
 .carousel-window { overflow: hidden; background: #263741; cursor: grab; }
 .carousel-window:active { cursor: grabbing; }
 .carousel-track { display: flex; touch-action: pan-y pinch-zoom; }
-.carousel-slide { position: relative; flex: 0 0 100%; min-width: 0; aspect-ratio: 1.16; overflow: hidden; background: linear-gradient(135deg,#41515a,#172631); }
+.carousel-slide { position: relative; flex: 0 0 100%; min-width: 0; aspect-ratio: 15 / 16; overflow: hidden; background: linear-gradient(135deg,#41515a,#172631); }
 .carousel-slide::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg,rgba(7,16,23,.7),transparent 70%), linear-gradient(0deg,rgba(7,16,23,.97),rgba(7,16,23,.05) 75%); pointer-events: none; }
-.slide-image { user-select: none; -webkit-user-drag: none; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+.slide-image { user-select: none; -webkit-user-drag: none; position: absolute; inset: 4% 0 0; width: 100%; height: 96%; object-fit: contain; object-position: center top; transform-origin: center top; }
 .portrait-initials { position: absolute; inset: 0; display: grid; place-items: center; color: #a9b8be; font-family: Georgia,serif; font-size: 5rem; }
 .carousel-slide.active .slide-image { animation: portrait-settle 9s ease-out both; }
 .motion-paused .carousel-slide.active .slide-image { animation-play-state: paused; }
 .carousel-slide.active .slide-content { animation: slide-copy-enter .9s cubic-bezier(.22,1,.36,1) both; }
-@keyframes portrait-settle { from { transform: scale(1.045); } to { transform: scale(1); } }
+@keyframes portrait-settle { from { transform: scale(.985); } to { transform: scale(1); } }
 @keyframes slide-copy-enter { from { opacity:0; transform:translateY(.8rem); } to { opacity:1; transform:translateY(0); } }
 .slide-content { position: absolute; z-index: 1; left: clamp(1.25rem, 4vw, 2.75rem); right: 1.25rem; bottom: clamp(1.5rem, 4vw, 2.75rem); color: #fff; }
 .slide-kicker { display: flex; align-items: center; flex-wrap: wrap; gap: .65rem; color: #dfcba7; font-size: .65rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
@@ -324,7 +325,7 @@ em { color: var(--page-gold); font-weight: 400; }
 .slide-content h2 { margin-top: .7rem; font-size: clamp(2rem, 3vw + 1rem, 3.6rem); line-height: 1.05; }
 .slide-content p { max-width: 27rem; margin-top: .75rem; color: #d2d9d8; font-size: .875rem; line-height: 1.5; }
 .slide-link { display: inline-flex; align-items: center; gap: 1rem; margin-top: 1.25rem; padding-bottom: .4rem; border-bottom: 1px solid #c9ad7d; color: #fff; font-size: .8rem; font-weight: 600; }
-.slide-link span { color: #d7bd91; font-size: 1.1rem; }
+.slide-link :global(svg) { color: #d7bd91; }
 .carousel-footer { display: flex; align-items: center; gap: 1rem; padding-top: 1rem; }
 .portrait-picker { display: flex; flex: 1; min-width: 0; gap: .4rem; overflow-x: auto; scrollbar-width: thin; scrollbar-color: #7e7059 transparent; padding: .15rem .1rem .4rem; }
 .portrait-picker button { position: relative; flex: 0 0 2.75rem; height: 2.75rem; overflow: hidden; border: 1px solid transparent; background: #344650; color: #d6dfdf; cursor: pointer; opacity: .55; font-size: .6rem; transition: opacity .2s, border-color .2s; }

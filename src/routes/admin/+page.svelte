@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { IconArrowRight as TablerArrowRight } from '@tabler/icons-svelte';
 	import {
 		IconUsers,
 		IconFileText,
@@ -218,7 +219,7 @@
 				<div class="flex items-center justify-between mb-4">
 					<h2 class="text-lg font-semibold text-midnight-100">Recent Traders</h2>
 					<a href="/admin/traders" class="text-sm text-gold-400 hover:text-gold-300 transition-colors">
-						View all →
+						View all <TablerArrowRight size={16} stroke={1.6} aria-hidden="true" />
 					</a>
 				</div>
 				<div class="overflow-hidden rounded-2xl border border-midnight-800/50 bg-midnight-900/30">
@@ -268,7 +269,7 @@
 				<div class="flex items-center justify-between mb-4">
 					<h2 class="text-lg font-semibold text-midnight-100">Recent Posts</h2>
 					<a href="/admin/blog" class="text-sm text-gold-400 hover:text-gold-300 transition-colors">
-						View all →
+						View all <TablerArrowRight size={16} stroke={1.6} aria-hidden="true" />
 					</a>
 				</div>
 				<div class="overflow-hidden rounded-2xl border border-midnight-800/50 bg-midnight-900/30">

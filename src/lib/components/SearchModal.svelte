@@ -3,8 +3,7 @@
 	import { goto } from '$app/navigation';
 	import { Icon } from '#lib/components/icons/index.ts';
 	import { fade, scale } from 'svelte/transition';
-	import { cubicOut, backOut } from 'svelte/easing';
-	import { cn } from '#lib/utils/index.ts';
+	import { cubicOut } from 'svelte/easing';
 
 	// ============================================================================
 	// PROPS
@@ -23,6 +22,7 @@
 
 	let searchQuery = $state('');
 	let searchInputRef = $state<HTMLInputElement | undefined>(undefined);
+	let dialogRef = $state<HTMLDivElement | undefined>(undefined);
 	let selectedIndex = $state(0);
 	let isLoading = $state(false);
 	let traders = $state<{ name: string; slug: string; tradingStyle: string | null; oneLiner: string | null }[]>([]);
@@ -44,35 +44,37 @@
 	// EFFECTS
 	// ============================================================================
 
-	let debounceTimer: ReturnType<typeof setTimeout>;
-
-	// Fetch traders from API whenever query or open state changes
+	// Cancel pending searches so an older response cannot replace newer results.
 	$effect(() => {
 		if (!open) {
 			traders = [];
 			return;
 		}
-		clearTimeout(debounceTimer);
+		const query = searchQuery.trim();
+		const controller = new AbortController();
 		isLoading = true;
-		debounceTimer = setTimeout(async () => {
+		const timer = setTimeout(async () => {
 			try {
 				const params = new URLSearchParams();
-				if (searchQuery.trim()) params.set('q', searchQuery.trim());
-				params.set('limit', searchQuery.trim() ? '8' : '6');
-				const res = await fetch(`/api/traders?${params}`);
+				if (query) params.set('q', query);
+				params.set('limit', query ? '8' : '6');
+				const res = await fetch(`/api/traders?${params}`, { signal: controller.signal });
 				if (res.ok) traders = await res.json();
+			} catch (error) {
+				if (!controller.signal.aborted) console.error('Trader search failed:', error);
 			} finally {
-				isLoading = false;
+				if (!controller.signal.aborted) isLoading = false;
 			}
-		}, searchQuery.trim() ? 200 : 0);
+		}, query ? 200 : 0);
+		return () => { clearTimeout(timer); controller.abort(); };
 	});
 
 	// Focus input when modal opens
 	$effect(() => {
 		if (open && browser) {
-			requestAnimationFrame(() => {
-				searchInputRef?.focus();
-			});
+			const previousFocus = document.activeElement as HTMLElement | null;
+			const frame = requestAnimationFrame(() => searchInputRef?.focus());
+			return () => { cancelAnimationFrame(frame); previousFocus?.focus(); };
 		}
 	});
 
@@ -103,13 +105,19 @@
 		if (event.key === 'Escape') {
 			event.preventDefault();
 			onClose();
-		} else if (event.key === 'ArrowDown') {
+		} else if (event.key === 'Tab' && dialogRef) {
+			const focusable = Array.from(dialogRef.querySelectorAll<HTMLElement>('input, button:not(:disabled), a[href]'));
+			const first = focusable[0];
+			const last = focusable[focusable.length - 1];
+			if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+			else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+		} else if (event.target === searchInputRef && event.key === 'ArrowDown') {
 			event.preventDefault();
-			selectedIndex = Math.min(selectedIndex + 1, totalResults - 1);
-		} else if (event.key === 'ArrowUp') {
+			selectedIndex = Math.max(0, Math.min(selectedIndex + 1, totalResults - 1));
+		} else if (event.target === searchInputRef && event.key === 'ArrowUp') {
 			event.preventDefault();
 			selectedIndex = Math.max(selectedIndex - 1, 0);
-		} else if (event.key === 'Enter') {
+		} else if (event.target === searchInputRef && event.key === 'Enter') {
 			event.preventDefault();
 			selectCurrentItem();
 		}
@@ -153,165 +161,76 @@
 </script>
 
 {#if open}
-	<!-- Backdrop -->
-	<div
-		class="fixed inset-0 z-100 flex items-start justify-center pt-[10vh] sm:pt-[15vh] px-4"
-		transition:fade={{ duration: 200, easing: cubicOut }}
-		onclick={handleBackdropClick}
-		onkeydown={handleKeydown}
-		role="dialog"
-		aria-modal="true"
-		aria-label="Search traders"
-		tabindex="-1"
-	>
-		<!-- Backdrop blur -->
-		<div class="absolute inset-0 bg-midnight-950/80 backdrop-blur-xl"></div>
-
-		<!-- Search Modal -->
-		<div
-			class="relative w-full max-w-2xl overflow-hidden rounded-2xl border border-white/10 bg-midnight-900/95 shadow-2xl shadow-black/50 backdrop-blur-2xl"
-			transition:scale={{ duration: 300, easing: backOut, start: 0.95 }}
-		>
-			<!-- Search Input -->
-			<div class="relative border-b border-white/10">
-				<div class="absolute left-5 top-1/2 -translate-y-1/2">
-					<Icon name="search" class="h-5 w-5 text-midnight-400" strokeWidth={2} />
-				</div>
-				<input
-					bind:this={searchInputRef}
-					bind:value={searchQuery}
-					type="text"
-					placeholder="Search legendary traders..."
-					class={cn(
-						'w-full bg-transparent py-5 pl-14 pr-14 text-lg text-white placeholder-midnight-500',
-						'outline-none focus:ring-0',
-						'font-medium'
-					)}
-					autocomplete="off"
-					autocorrect="off"
-					autocapitalize="off"
-					spellcheck="false"
-				/>
-				{#if searchQuery}
-					<button
-						type="button"
-						class="absolute right-5 top-1/2 -translate-y-1/2 rounded-full p-1 text-midnight-400 transition-colors hover:bg-white/10 hover:text-white"
-						onclick={() => { searchQuery = ''; searchInputRef?.focus(); }}
-						aria-label="Clear search"
-					>
-						<Icon name="x" class="h-4 w-4" strokeWidth={2} />
-					</button>
-				{:else}
-					<div class="absolute right-5 top-1/2 -translate-y-1/2 flex items-center gap-1">
-						<kbd class="hidden sm:inline-flex h-6 items-center justify-center rounded bg-white/10 px-2 text-xs font-medium text-midnight-400">
-							ESC
-						</kbd>
-					</div>
-				{/if}
+	<div class="search-overlay" transition:fade={{ duration: 180, easing: cubicOut }} onclick={handleBackdropClick} onkeydown={handleKeydown} role="dialog" aria-modal="true" aria-labelledby="search-title" tabindex="-1">
+		<div class="search-panel" bind:this={dialogRef} transition:scale={{ duration: 200, easing: cubicOut, start: 0.98 }}>
+			<div class="search-heading">
+				<div><p class="search-eyebrow">THE TRADING GREATS</p><h2 id="search-title">Explore the library</h2></div>
+				<button type="button" class="close-button" onclick={onClose} aria-label="Close search"><Icon name="x" class="h-5 w-5" strokeWidth={1.7} /></button>
 			</div>
-
-			<!-- Results -->
-			<div class="max-h-[60vh] overflow-y-auto overscroll-contain p-2">
+			<div class="search-field">
+				<Icon name="search" class="search-icon" strokeWidth={1.7} />
+				<input bind:this={searchInputRef} bind:value={searchQuery} oninput={() => { selectedIndex = 0; }} type="search" aria-label="Search traders" placeholder="Search legendary traders..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+				{#if searchQuery}<button type="button" class="clear-button" onclick={() => { searchQuery = ''; selectedIndex = 0; searchInputRef?.focus(); }} aria-label="Clear search"><Icon name="x" class="h-4 w-4" strokeWidth={1.7} /></button>{/if}
+			</div>
+			<div class="search-results">
 				{#if !searchQuery}
-					<!-- Quick Actions -->
-					<div class="mb-2 px-3 py-2">
-						<p class="text-xs font-semibold uppercase tracking-wider text-midnight-500">Quick Actions</p>
-					</div>
+					<p class="section-label">Quick actions</p>
 					{#each quickActions as action, i (action.href)}
-						<button
-							type="button"
-							class={cn(
-								'flex w-full items-center gap-4 rounded-xl px-4 py-3 text-left transition-all duration-150',
-								selectedIndex === i
-									? 'bg-gold-500/10 text-white'
-									: 'text-midnight-300 hover:bg-white/5 hover:text-white'
-							)}
-							onclick={() => handleActionClick(action.href)}
-							onmouseenter={() => { selectedIndex = i; }}
-						>
-							<div class={cn(
-								'flex h-10 w-10 items-center justify-center rounded-lg transition-colors',
-								selectedIndex === i ? 'bg-gold-500/20 text-gold-400' : 'bg-white/5 text-midnight-400'
-							)}>
-								<Icon name={action.icon} class="h-5 w-5" strokeWidth={2} />
-							</div>
-							<span class="font-medium">{action.label}</span>
-							<Icon name="arrow-right" class="ml-auto h-4 w-4 text-midnight-500" strokeWidth={2} />
+						<button type="button" class="result-row" class:selected={selectedIndex === i} onclick={() => handleActionClick(action.href)} onmouseenter={() => { selectedIndex = i; }}>
+							<span class="result-icon"><Icon name={action.icon} class="h-5 w-5" strokeWidth={1.6} /></span>
+							<span class="result-name">{action.label}</span><Icon name="arrow-right" class="result-arrow" strokeWidth={1.6} />
 						</button>
 					{/each}
-
-					<!-- Divider -->
-					<div class="my-3 border-t border-white/5"></div>
-
-					<!-- Popular Traders -->
-					<div class="mb-2 px-3 py-2">
-						<p class="text-xs font-semibold uppercase tracking-wider text-midnight-500">Popular Legends</p>
-					</div>
+					<p class="section-label section-divider">Popular legends</p>
 				{:else if traders.length === 0 && !isLoading}
-					<!-- No Results -->
-					<div class="flex flex-col items-center justify-center py-12 text-center">
-						<div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-white/5">
-							<Icon name="search" class="h-8 w-8 text-midnight-500" strokeWidth={1.5} />
-						</div>
-						<p class="text-lg font-medium text-white">No traders found</p>
-						<p class="mt-1 text-sm text-midnight-400">Try a different search term</p>
-					</div>
+					<div class="empty-state"><Icon name="search" class="h-7 w-7" strokeWidth={1.5} /><p>No traders found</p><span>Try a different search term.</span></div>
 				{/if}
-
-				<!-- Trader Results -->
 				{#each traders as trader, i (trader.slug)}
 					{@const index = searchQuery ? i : i + quickActions.length}
-					<button
-						type="button"
-						class={cn(
-							'flex w-full items-center gap-4 rounded-xl px-4 py-3 text-left transition-all duration-150',
-							selectedIndex === index
-								? 'bg-gold-500/10 text-white'
-								: 'text-midnight-300 hover:bg-white/5 hover:text-white'
-						)}
-						onclick={() => handleTraderClick(trader.slug)}
-						onmouseenter={() => { selectedIndex = index; }}
-					>
-						<!-- Avatar placeholder -->
-						<div class={cn(
-							'flex h-10 w-10 items-center justify-center rounded-full font-display font-bold text-sm transition-colors',
-							selectedIndex === index 
-								? 'bg-linear-to-br from-gold-500 to-gold-600 text-midnight-950'
-								: 'bg-white/10 text-white')}
-						>{trader.name.split(' ').map((n) => n[0]).join('')}</div>
-
-						<div class="flex-1 min-w-0">
-							<p class="font-medium truncate">{trader.name}</p>
-							<p class="text-sm text-midnight-400 truncate">{trader.tradingStyle ?? ''}</p>
-						</div>
-						<Icon name="arrow-right" class="h-4 w-4 text-midnight-500 shrink-0" strokeWidth={2} />
+					<button type="button" class="result-row" class:selected={selectedIndex === index} onclick={() => handleTraderClick(trader.slug)} onmouseenter={() => { selectedIndex = index; }}>
+						<span class="result-avatar">{trader.name.split(' ').map((n) => n[0]).join('')}</span>
+						<span class="result-detail"><span class="result-name">{trader.name}</span><span class="result-style">{trader.tradingStyle ?? ''}</span></span>
+						<Icon name="arrow-right" class="result-arrow" strokeWidth={1.6} />
 					</button>
 				{/each}
 			</div>
-
-			<!-- Footer -->
-			<div class="border-t border-white/10 px-4 py-3">
-				<div class="flex items-center justify-between text-xs text-midnight-500">
-					<div class="flex items-center gap-4">
-						<span class="flex items-center gap-1.5">
-							<kbd class="inline-flex h-5 items-center justify-center rounded bg-white/10 px-1.5 font-mono text-[10px]">↑</kbd>
-							<kbd class="inline-flex h-5 items-center justify-center rounded bg-white/10 px-1.5 font-mono text-[10px]">↓</kbd>
-							<span>Navigate</span>
-						</span>
-						<span class="flex items-center gap-1.5">
-							<kbd class="inline-flex h-5 items-center justify-center rounded bg-white/10 px-1.5 font-mono text-[10px]">↵</kbd>
-							<span>Select</span>
-						</span>
-					</div>
-					<span class="hidden sm:inline">
-						{#if isLoading}
-					Searching...
-				{:else}
-					{traders.length} {traders.length === 1 ? 'result' : 'results'}
-				{/if}
-					</span>
-				</div>
-			</div>
+			<div class="search-footer"><span class="keyboard-help"><kbd>↑</kbd><kbd>↓</kbd> Navigate <kbd>↵</kbd> Select <kbd>esc</kbd> Close</span><span aria-live="polite">{#if isLoading}Searching…{:else}{traders.length} {traders.length === 1 ? 'result' : 'results'}{/if}</span></div>
 		</div>
 	</div>
 {/if}
+
+<style>
+	.search-overlay { --search-bg:#101d27; --search-text:#f3f1eb; --search-muted:#aeb9c0; --search-line:rgba(218,222,219,.15); --search-accent:#d7bd91; --search-hover:rgba(201,173,125,.1); --search-icon-bg:#1b2b35; position:fixed; inset:0; z-index:100; display:flex; justify-content:center; align-items:flex-start; overflow-y:auto; padding:clamp(1rem, 10vh, 6rem) 1rem; background:rgba(5,13,19,.76); backdrop-filter:blur(8px); }
+	.search-panel { width:min(100%, 42rem); max-height:calc(100dvh - 2rem); display:flex; flex-direction:column; overflow:hidden; border:1px solid rgba(201,173,125,.35); background:var(--search-bg); color:var(--search-text); box-shadow:0 32px 80px rgba(0,0,0,.35); }
+	.search-heading { display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; padding:1.5rem 1.5rem 1rem; }
+	.search-eyebrow { margin:0 0 .5rem; color:var(--search-accent); font-size:.65rem; font-weight:700; letter-spacing:.16em; }
+	.search-heading h2 { margin:0; font-family:'Playfair Display',Georgia,serif; font-size:clamp(1.55rem, 1.2rem + 1vw, 2rem); font-weight:400; line-height:1.2; letter-spacing:-.03em; }
+	.close-button,.clear-button { display:grid; place-items:center; flex:none; width:2.75rem; height:2.75rem; border:1px solid var(--search-line); background:transparent; color:var(--search-muted); cursor:pointer; }
+	.close-button:hover,.clear-button:hover { color:var(--search-text); border-color:var(--search-accent); }
+	.search-field { display:flex; align-items:center; gap:.85rem; margin:0 1.5rem 1rem; padding:0 .8rem; border:1px solid var(--search-line); background:var(--search-hover); }
+	.search-field:focus-within { border-color:var(--search-accent); }
+	.search-field :global(.search-icon) { flex:none; width:1.25rem; height:1.25rem; color:var(--search-accent); }
+	.search-field input { flex:1; min-width:0; height:3.25rem; padding:0; border:0; outline:0; background:transparent; color:var(--search-text); font-size:1rem; }
+	.search-field input::placeholder { color:var(--search-muted); opacity:1; }
+	.search-field input::-webkit-search-cancel-button { display:none; }
+	.clear-button { width:2.25rem; height:2.25rem; border:0; }
+	.search-results { flex:1; min-height:0; overflow-y:auto; overscroll-behavior:contain; padding:0 .75rem .75rem; }
+	.section-label { margin:0; padding:.75rem .75rem .5rem; color:var(--search-accent); font-size:.65rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
+	.section-divider { margin-top:.5rem; border-top:1px solid var(--search-line); }
+	.result-row { display:flex; align-items:center; gap:.9rem; width:100%; min-height:3.65rem; padding:.55rem .75rem; border:0; background:transparent; color:var(--search-text); text-align:left; cursor:pointer; }
+	.result-row:hover,.result-row.selected,.result-row:focus-visible { background:var(--search-hover); outline:0; }
+	.result-row:focus-visible,.close-button:focus-visible,.clear-button:focus-visible { outline:2px solid var(--search-accent); outline-offset:-2px; }
+	.result-icon,.result-avatar { display:grid; place-items:center; flex:none; width:2.5rem; height:2.5rem; background:var(--search-icon-bg); color:var(--search-accent); }
+	.result-avatar { font-family:'Playfair Display',Georgia,serif; font-size:.9rem; }
+	.result-detail { display:grid; flex:1; min-width:0; gap:.1rem; }
+	.result-name { flex:1; min-width:0; overflow:hidden; color:var(--search-text); font-size:.9rem; font-weight:600; text-overflow:ellipsis; white-space:nowrap; }
+	.result-style { overflow:hidden; color:var(--search-muted); font-size:.75rem; text-overflow:ellipsis; white-space:nowrap; }
+	.result-row :global(.result-arrow) { flex:none; width:1rem; height:1rem; margin-left:auto; color:var(--search-muted); }
+	.empty-state { display:grid; justify-items:center; gap:.5rem; padding:3rem 1rem; color:var(--search-muted); text-align:center; }
+	.empty-state p { margin:0; color:var(--search-text); font-weight:600; }.empty-state span { font-size:.875rem; }
+	.search-footer { display:flex; justify-content:space-between; align-items:center; gap:.75rem; padding:.85rem 1.5rem; border-top:1px solid var(--search-line); color:var(--search-muted); font-size:.75rem; }
+	.keyboard-help { display:flex; align-items:center; gap:.3rem; }.keyboard-help kbd { padding:.1rem .3rem; border:1px solid var(--search-line); font:inherit; }
+	:global(html:not(.dark)) .search-overlay { --search-bg:#f7f5f0; --search-text:#17232b; --search-muted:#53636c; --search-line:rgba(18,30,37,.19); --search-accent:#806336; --search-hover:rgba(128,99,54,.09); --search-icon-bg:#e9e6dd; }
+	@media (max-width:25rem) { .search-heading { padding:1.1rem 1rem .8rem; }.search-field { margin:0 1rem .75rem; }.search-footer { padding:.75rem 1rem; }.keyboard-help { display:none; } }
+	@media (prefers-reduced-motion:reduce) { .search-overlay,.search-panel { animation-duration:.01ms !important; transition-duration:.01ms !important; } }
+</style>

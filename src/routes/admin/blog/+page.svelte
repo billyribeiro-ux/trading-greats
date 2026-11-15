@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { IconArrowLeft as TablerArrowLeft, IconArrowRight as TablerArrowRight } from '@tabler/icons-svelte';
 	import {
 		IconPlus,
 		IconEdit,
@@ -75,7 +76,7 @@
 		<div class="mx-auto flex h-16 site-container items-center justify-between">
 			<div class="flex items-center gap-4">
 				<a href="/admin" class="text-midnight-400 hover:text-midnight-200 transition-colors">
-					← Dashboard
+					<TablerArrowLeft size={16} stroke={1.6} aria-hidden="true" /> Dashboard
 				</a>
 			</div>
 			<a
@@ -83,7 +84,7 @@
 				target="_blank"
 				class="text-sm text-midnight-400 hover:text-midnight-200 transition-colors"
 			>
-				View Site →
+				View Site <TablerArrowRight size={16} stroke={1.6} aria-hidden="true" />
 			</a>
 		</div>
 	</header>

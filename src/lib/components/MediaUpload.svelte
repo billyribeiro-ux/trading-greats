@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { IconArrowRight as TablerArrowRight } from '@tabler/icons-svelte';
 	import { IconUpload, IconX, IconLoader2, IconPhoto, IconLibrary, IconEdit } from '@tabler/icons-svelte';
 	import { cn } from '#lib/utils/index.ts';
 	import type { Media } from '#lib/server/schema.ts';
@@ -398,7 +399,7 @@
 				<p class="text-center text-midnight-400 py-12">
 					Media library will load here.<br />
 					<a href="/admin/media" class="text-gold-400 hover:text-gold-300">
-						Open full Media Library →
+						Open full Media Library <TablerArrowRight size={16} stroke={1.6} aria-hidden="true" />
 					</a>
 				</p>
 			</div>

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { IconArrowLeft as TablerArrowLeft } from '@tabler/icons-svelte';
 	import { enhance } from '$app/forms';
 	import { Icon } from '#lib/components/icons/index.ts';
 
@@ -51,7 +52,7 @@
 		</form>
 
 		<div class="mt-8 flex items-center justify-between text-sm text-midnight-500">
-			<a href="/" class="text-gold-400 hover:text-gold-300">← Back to site</a>
+			<a href="/" class="text-gold-400 hover:text-gold-300"><TablerArrowLeft size={16} stroke={1.6} aria-hidden="true" /> Back to site</a>
 			<a href="/admin/reset-password" class="text-midnight-400 hover:text-midnight-200">Forgot password?</a>
 		</div>
 	</div>

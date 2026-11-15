@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { IconArrowLeft as TablerArrowLeft, IconArrowRight as TablerArrowRight } from '@tabler/icons-svelte';
 	import { IconPlus, IconEdit, IconTrash, IconEye, IconSearch } from '@tabler/icons-svelte';
 
 	let { data } = $props();
@@ -22,10 +23,10 @@
 	<header class="border-b border-midnight-800/50 bg-midnight-900/50">
 		<div class="mx-auto flex h-16 site-container items-center justify-between">
 			<div class="flex items-center gap-4">
-				<a href="/admin" class="text-midnight-400 hover:text-midnight-200">← Back to Dashboard</a>
+				<a href="/admin" class="text-midnight-400 hover:text-midnight-200"><TablerArrowLeft size={16} stroke={1.6} aria-hidden="true" /> Back to Dashboard</a>
 			</div>
 			<a href="/" class="text-sm text-midnight-400 hover:text-midnight-200" target="_blank">
-				View Site →
+				View Site <TablerArrowRight size={16} stroke={1.6} aria-hidden="true" />
 			</a>
 		</div>
 	</header>
