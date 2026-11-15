@@ -352,6 +352,7 @@ const cinematicPortraits = new Set([
   "nick-leeson",
   "nicolas-darvas",
   "paul-tudor-jones",
+  "peter-lynch",
   "peter-schiff",
   "philip-fisher",
   "ray-dalio",
