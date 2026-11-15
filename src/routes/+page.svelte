@@ -1,5 +1,6 @@
 <script lang="ts">
     import { slide } from 'svelte/transition';
+    import { onMount } from 'svelte';
     import SEO from '#lib/components/SEO.svelte';
     import QuoteOfTheDay from '#lib/components/QuoteOfTheDay.svelte';
     import { Icon, type IconName } from '#lib/components/icons/index.ts';
@@ -12,6 +13,32 @@
     let { data }: { data: PageData } = $props();
 
     let openFaq = $state<number | null>(null);
+    let carouselPage = $state(0);
+    let carouselPlaying = $state(false);
+    const carouselPages = $derived(Math.min(data.traders.length, 8));
+
+    onMount(() => {
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        carouselPlaying = !reducedMotion.matches;
+        const stopForReducedMotion = (event: MediaQueryListEvent) => {
+            if (event.matches) carouselPlaying = false;
+        };
+        reducedMotion.addEventListener('change', stopForReducedMotion);
+        const timer = window.setInterval(() => {
+            if (carouselPlaying && carouselPages > 1 && !document.hidden) {
+                carouselPage = (carouselPage + 1) % carouselPages;
+            }
+        }, 6000);
+        return () => {
+            window.clearInterval(timer);
+            reducedMotion.removeEventListener('change', stopForReducedMotion);
+        };
+    });
+
+    function moveCarousel(direction: number) {
+        carouselPlaying = false;
+        carouselPage = (carouselPage + direction + carouselPages) % carouselPages;
+    }
 
     // ============================================================================
     // DERIVED DATA
@@ -151,19 +178,44 @@
                 </div>
                 <div class="hero-note"><span>01 / THE LIBRARY</span><p>People. Principles. Perspective.</p></div>
             </div>
-            <div class="hero-visual" aria-label="Featured traders">
-                <div class="visual-top"><span>TRADING GREATS</span><span>THE PEOPLE BEHIND THE MARKETS</span></div>
-                <div class="hero-portraits">
-                    {#each displayTraders.slice(0, 3) as trader, i (trader.slug)}
-                        <a href="/traders/{trader.slug}" class="hero-person" aria-label="Explore {trader.name}'s profile">
-                            {#if trader.photoUrl}<img src={trader.photoUrl} alt="" loading={i === 0 ? 'eager' : 'lazy'} />{/if}
-                            <span class="person-index">0{i + 1}</span>
-                            <span class="person-label">{trader.name}<small>{trader.style}</small></span>
-                        </a>
-                    {/each}
+            {#if displayTraders.length}
+                <div class="hero-visual" role="region" aria-roledescription="carousel" aria-label="Featured trader profiles" onfocusin={() => carouselPlaying = false} onmouseenter={() => carouselPlaying = false}>
+                    <div class="visual-top"><span>THE TRADING GREATS</span><span>PEOPLE &amp; PERSPECTIVES</span></div>
+                    <div class="carousel-window">
+                        <div class="carousel-track" style:transform="translateX(-{carouselPage * 100}%)">
+                            {#each displayTraders as trader, i (trader.slug)}
+                                <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label={trader.name} inert={carouselPage !== i}>
+                                    <span class="portrait-initials">{trader.name.split(' ').map((n: string) => n[0]).join('')}</span>
+                                    {#if trader.photoUrl}<img class="slide-image" src={trader.photoUrl} alt="" loading={i === 0 ? 'eager' : 'lazy'} onerror={(event) => { (event.currentTarget as HTMLImageElement).style.display = 'none'; }} />{/if}
+                                    <div class="slide-content">
+                                        <span class="slide-kicker">FEATURED PROFILE <span></span> {trader.style}</span>
+                                        <h2>{trader.name}</h2>
+                                        <p>{trader.knownFor}</p>
+                                        <a href="/traders/{trader.slug}" class="slide-link">Discover the profile <span aria-hidden="true">↗</span></a>
+                                    </div>
+                                </div>
+                            {/each}
+                        </div>
+                    </div>
+                    {#if carouselPages > 1}
+                        <div class="carousel-footer">
+                            <div class="portrait-picker" aria-label="Choose a trader">
+                                {#each displayTraders as trader, i (trader.slug)}
+                                    <button type="button" class:active={carouselPage === i} aria-label="Show {trader.name}" aria-pressed={carouselPage === i} onclick={() => { carouselPlaying = false; carouselPage = i; }}>
+                                        <span>{trader.name.split(' ').map((n: string) => n[0]).join('')}</span>
+                                        {#if trader.photoUrl}<img src={trader.photoUrl} alt="" loading="lazy" onerror={(event) => { (event.currentTarget as HTMLImageElement).style.display = 'none'; }} />{/if}
+                                    </button>
+                                {/each}
+                            </div>
+                            <div class="carousel-controls" aria-label="Carousel controls">
+                                <button type="button" onclick={() => moveCarousel(-1)} aria-label="Previous trader">←</button>
+                                <button type="button" class="carousel-play" onclick={() => carouselPlaying = !carouselPlaying} aria-label={carouselPlaying ? 'Pause carousel' : 'Play carousel'}>{carouselPlaying ? 'Ⅱ' : '▶'}</button>
+                                <button type="button" onclick={() => moveCarousel(1)} aria-label="Next trader">→</button>
+                            </div>
+                        </div>
+                    {/if}
                 </div>
-                <div class="visual-bottom"><span>A REFERENCE FOR CURIOUS MINDS</span><span>FOR THE LONG VIEW</span></div>
-            </div>
+            {/if}
         </div>
     </section>
 
@@ -183,9 +235,9 @@
         <div class="home-container">
             <div class="section-heading"><div><p class="eyebrow">SELECTED PROFILES <span>/ 01</span></p><h2 id="featured-title">Meet the <em>greats.</em></h2><p>Get to know the people and principles behind the trades.</p></div><a class="text-link" href="/traders">View all profiles <Icon name="arrow-right" class="h-4 w-4" /></a></div>
             <div class="featured-grid">
-                {#each displayTraders.slice(0, 4) as trader, i (trader.slug)}
+                {#each displayTraders.slice(0, 4) as trader (trader.slug)}
                     <a class="featured-card" href="/traders/{trader.slug}">
-                        <div class="featured-image"><span class="image-number">0{i + 1}</span>{#if trader.photoUrl}<img src={trader.photoUrl} alt="" loading="lazy" onerror={(event) => { (event.currentTarget as HTMLImageElement).style.display = 'none'; }} />{:else}<span class="image-initials">{trader.name.split(' ').map((n: string) => n[0]).join('')}</span>{/if}</div>
+                        <div class="featured-image">{#if trader.photoUrl}<img src={trader.photoUrl} alt="" loading="lazy" onerror={(event) => { (event.currentTarget as HTMLImageElement).style.display = 'none'; }} />{:else}<span class="image-initials">{trader.name.split(' ').map((n: string) => n[0]).join('')}</span>{/if}</div>
                         <div class="featured-details"><span class="card-type">{trader.style}</span><h3>{trader.name}</h3><p>{trader.knownFor}</p><span class="card-arrow" aria-hidden="true">↗</span></div>
                     </a>
                 {/each}
@@ -248,18 +300,35 @@ em { color: var(--page-gold); font-weight: 400; }
 .action { min-height: 3.35rem; display: inline-flex; align-items: center; justify-content: center; gap: 1.25rem; padding: .85rem 1.3rem; border: 1px solid #c9ad7d; font-size: .875rem; font-weight: 700; transition: background .2s, color .2s, border-color .2s; }
 .action-primary { background: #c9ad7d; color: #111b23; } .action-primary:hover { background: #e0c99e; border-color: #e0c99e; } .action-secondary { color: #e7e9e7; border-color: #52606a; } .action-secondary:hover { border-color: #c9ad7d; }
 .hero-note { display: flex; gap: 1.5rem; align-items: center; margin-top: 3.5rem; border-top: 1px solid var(--page-line); padding-top: 1.2rem; font-size: .7rem; letter-spacing: .13em; color: #c9ad7d; } .hero-note p { color: #9aa8af; letter-spacing: .02em; }
-.hero-visual { border: 1px solid rgba(201, 173, 125, .3); background: #101d27; padding: .85rem; box-shadow: 0 30px 80px rgba(0,0,0,.2); }
-.visual-top,.visual-bottom { display: flex; justify-content: space-between; gap: 1rem; padding: .5rem .25rem .85rem; color: #c2ad8b; font-size: .57rem; font-weight: 700; letter-spacing: .13em; } .visual-bottom { padding: .85rem .25rem .4rem; color: #84939a; }
-.hero-portraits { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: .25rem; }
-.hero-person { position: relative; min-width: 0; aspect-ratio: 3 / 5; overflow: hidden; background: linear-gradient(160deg,#36454e,#172631); }
-.hero-person:after { content: ''; position: absolute; inset: 35% 0 0; background: linear-gradient(transparent, rgba(8,16,23,.93)); pointer-events: none; }
-.hero-person img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform .4s ease; } .hero-person:hover img { transform: scale(1.025); }
-.person-index { position: absolute; z-index: 1; top: .8rem; left: .8rem; color: #e2d8c8; font-size: .65rem; letter-spacing: .15em; }.person-label { position: absolute; z-index: 1; bottom: 1rem; left: .8rem; right: .5rem; color: white; font-size: clamp(.72rem, 1vw, 1rem); font-weight: 600; line-height: 1.25; }.person-label small { display: block; margin-top: .35rem; color: #c2c6c3; font-size: .64rem; font-weight: 400; }
+.hero-visual { min-width: 0; padding: .9rem; border: 1px solid rgba(201,173,125,.28); background: #111e28; box-shadow: 0 32px 80px rgba(0,0,0,.22); }
+.visual-top { display: flex; justify-content: space-between; gap: 1rem; padding: .45rem .15rem 1rem; color: #c9b895; font-size: .62rem; font-weight: 700; letter-spacing: .15em; }
+.carousel-window { overflow: hidden; background: #263741; }
+.carousel-track { display: flex; transition: transform .75s cubic-bezier(.22, 1, .36, 1); }
+.carousel-slide { position: relative; flex: 0 0 100%; min-width: 0; aspect-ratio: 1.16; overflow: hidden; background: linear-gradient(135deg,#41515a,#172631); }
+.carousel-slide::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg,rgba(7,16,23,.7),transparent 70%), linear-gradient(0deg,rgba(7,16,23,.97),rgba(7,16,23,.05) 75%); pointer-events: none; }
+.slide-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+.portrait-initials { position: absolute; inset: 0; display: grid; place-items: center; color: #a9b8be; font-family: Georgia,serif; font-size: 5rem; }
+.slide-content { position: absolute; z-index: 1; left: clamp(1.25rem, 4vw, 2.75rem); right: 1.25rem; bottom: clamp(1.5rem, 4vw, 2.75rem); color: #fff; }
+.slide-kicker { display: flex; align-items: center; flex-wrap: wrap; gap: .65rem; color: #dfcba7; font-size: .65rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.slide-kicker span { width: 1.5rem; height: 1px; background: #c9ad7d; }
+.slide-content h2 { margin-top: .7rem; font-size: clamp(2rem, 3vw + 1rem, 3.6rem); line-height: 1.05; }
+.slide-content p { max-width: 27rem; margin-top: .75rem; color: #d2d9d8; font-size: .875rem; line-height: 1.5; }
+.slide-link { display: inline-flex; align-items: center; gap: 1rem; margin-top: 1.25rem; padding-bottom: .4rem; border-bottom: 1px solid #c9ad7d; color: #fff; font-size: .8rem; font-weight: 600; }
+.slide-link span { color: #d7bd91; font-size: 1.1rem; }
+.carousel-footer { display: flex; align-items: center; gap: 1rem; padding-top: 1rem; }
+.portrait-picker { display: flex; flex: 1; min-width: 0; gap: .4rem; overflow-x: auto; scrollbar-width: thin; scrollbar-color: #7e7059 transparent; padding: .15rem .1rem .4rem; }
+.portrait-picker button { position: relative; flex: 0 0 2.75rem; height: 2.75rem; overflow: hidden; border: 1px solid transparent; background: #344650; color: #d6dfdf; cursor: pointer; opacity: .55; font-size: .6rem; transition: opacity .2s, border-color .2s; }
+.portrait-picker button.active, .portrait-picker button:hover, .portrait-picker button:focus-visible { opacity: 1; border-color: #e0c79d; }
+.portrait-picker img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.carousel-controls { display: flex; flex: none; gap: .25rem; }
+.carousel-controls button { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; color: #e9ddc9; border: 1px solid rgba(201,173,125,.35); cursor: pointer; font-size: 1.15rem; }
+.carousel-controls button:hover, .carousel-controls button:focus-visible { border-color: #e9ddc9; background: rgba(201,173,125,.12); }
+.carousel-controls .carousel-play { font-size: .72rem; }
 .intro-section,.featured-section,.approaches-section,.library-section,.questions-section { padding: clamp(4.5rem, 8vw, 8rem) 0; }
 .intro-grid,.questions-grid { display: grid; gap: 2rem; } h2 { font-size: clamp(2.25rem, 2.8vw + 1rem, 4rem); line-height: 1.12; margin-top: 1.2rem; } .intro-copy { color: var(--page-muted); max-width: 39rem; font-size: 1rem; line-height: 1.8; } .intro-copy p + p { margin-top: 1rem; }.intro-copy p:first-child { font-size: 1.25rem; color: var(--page-text); line-height: 1.5; }
 .principles { display: grid; margin-top: 3.5rem; border-top: 1px solid var(--page-line); }.principles article { padding: 1.6rem 0; border-bottom: 1px solid var(--page-line); }.principles span,.approach-top { color: var(--page-gold); font-size: .75rem; letter-spacing: .13em; }.principles h3 { margin-top: 1.3rem; font-size: 1.05rem; font-weight: 600; }.principles p { max-width: 23rem; margin-top: .6rem; color: var(--page-muted); font-size: .9rem; line-height: 1.7; }
 .featured-section,.library-section { background: var(--page-panel); }.section-heading { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1.5rem; align-items: end; margin-bottom: 2.4rem; }.section-heading h2 { margin-top: 1rem; }.section-heading div > p:last-child { margin-top: .9rem; color: var(--page-muted); line-height: 1.65; }.text-link { display: inline-flex; align-items: center; gap: .8rem; padding-bottom: .45rem; color: var(--page-gold); border-bottom: 1px solid rgba(201,173,125,.5); font-size: .85rem; font-weight: 600; }.text-link:hover { color: var(--page-text); }
-.featured-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; }.featured-card { min-width: 0; border: 1px solid var(--page-line); background: #111d27; color: var(--page-text); transition: border-color .2s; }.featured-card:hover { border-color: #af9976; }.featured-image { position: relative; overflow: hidden; aspect-ratio: 4 / 4.2; background: linear-gradient(145deg,#31414c,#172530); }.featured-image img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform .35s; }.featured-card:hover img { transform: scale(1.025); }.image-number { position: absolute; z-index: 1; top: .9rem; left: .9rem; color: #ecdfc8; font-size: .68rem; letter-spacing: .13em; }.image-initials { position: absolute; inset: 0; display: grid; place-items: center; font-family: Georgia,serif; font-size: 3rem; color: #70828d; }.featured-details { position: relative; padding: 1.1rem; }.card-type { color: var(--page-gold); font-size: .65rem; letter-spacing: .09em; text-transform: uppercase; }.featured-details h3 { margin-top: .6rem; font-size: 1.05rem; font-weight: 600; }.featured-details p { margin-top: .45rem; color: var(--page-muted); font-size: .78rem; line-height: 1.55; }.card-arrow { display: none; position: absolute; right: 1.2rem; top: 1.2rem; color: var(--page-gold); }
+.featured-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; }.featured-card { min-width: 0; border: 1px solid var(--page-line); background: #111d27; color: var(--page-text); transition: border-color .2s; }.featured-card:hover { border-color: #af9976; }.featured-image { position: relative; overflow: hidden; aspect-ratio: 4 / 4.2; background: linear-gradient(145deg,#31414c,#172530); }.featured-image img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform .35s; }.featured-card:hover img { transform: scale(1.025); }.image-initials { position: absolute; inset: 0; display: grid; place-items: center; font-family: Georgia,serif; font-size: 3rem; color: #70828d; }.featured-details { position: relative; padding: 1.1rem; }.card-type { color: var(--page-gold); font-size: .65rem; letter-spacing: .09em; text-transform: uppercase; }.featured-details h3 { margin-top: .6rem; font-size: 1.05rem; font-weight: 600; }.featured-details p { margin-top: .45rem; color: var(--page-muted); font-size: .78rem; line-height: 1.55; }.card-arrow { display: none; position: absolute; right: 1.2rem; top: 1.2rem; color: var(--page-gold); }
 .approach-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); border-top: 1px solid var(--page-line); border-left: 1px solid var(--page-line); }.approach-card { display: flex; flex-direction: column; min-height: 15rem; padding: 1.25rem; border-right: 1px solid var(--page-line); border-bottom: 1px solid var(--page-line); color: var(--page-text); transition: background .2s; }.approach-card:hover { background: rgba(201,173,125,.06); }.approach-top { display: flex; justify-content: space-between; }.approach-card h3 { margin-top: 2rem; font-family: Georgia,serif; font-size: clamp(1.2rem,1.3vw,1.55rem); line-height: 1.2; font-weight: 400; }.approach-card p { margin-top: .8rem; color: var(--page-muted); font-size: .85rem; line-height: 1.65; }.approach-names { margin-top: auto; padding-top: 1.5rem; color: #c4b59d; font-size: .7rem; line-height: 1.5; }
 .library-grid { display: grid; gap: 0 1.5rem; }.library-card { display: flex; align-items: center; min-width: 0; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--page-line); color: var(--page-text); }.library-avatar { position: relative; width: 3.5rem; height: 3.5rem; flex: none; display: grid; place-items: center; overflow: hidden; background: #2b3b45; color: #b5c1c5; font-size: .8rem; }.library-avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }.library-info { min-width: 0; flex: 1; }.library-info h3 { font-size: .95rem; font-weight: 600; }.library-info p { margin-top: .3rem; color: var(--page-muted); font-size: .78rem; }.library-arrow { color: var(--page-gold); transition: transform .2s; }.library-card:hover .library-arrow { transform: translate(3px,-3px); }
 .questions-grid > div:first-child > p:last-child { margin-top: 1rem; color: var(--page-muted); line-height: 1.7; }.question { border-top: 1px solid var(--page-line); }.question:last-child { border-bottom: 1px solid var(--page-line); }.question button { width: 100%; display: flex; justify-content: space-between; gap: 1rem; padding: 1.25rem 0; text-align: left; font-size: .95rem; font-weight: 600; cursor: pointer; }.question button span:last-child { color: var(--page-gold); font-size: 1.3rem; }.question p { padding: 0 2rem 1.25rem 0; color: var(--page-muted); font-size: .9rem; line-height: 1.75; }
@@ -268,6 +337,6 @@ em { color: var(--page-gold); font-weight: 400; }
 :global(html:not(.dark)) .hero { background: linear-gradient(135deg,#e9e6dd,#d4dbd8); }:global(html:not(.dark)) .hero-intro { color:#40535c; }:global(html:not(.dark)) .hero-note p { color:#4c5e65; }:global(html:not(.dark)) .action-secondary { color:#263941; border-color:#8a999b; }:global(html:not(.dark)) .featured-card { background:#f8f6f0; }:global(html:not(.dark)) .closing-inner { background:#e6e9e4; }:global(html:not(.dark)) .closing-inner p:last-child { color:#53636c; }
 @media (min-width: 48rem) { .home-container { width: min(100% - 5rem,var(--layout-max,99rem)); }.principles { grid-template-columns: repeat(3,1fr); }.principles article { padding: 1.8rem 2rem 1.8rem 0; }.principles article + article { padding-left: 2rem; border-left: 1px solid var(--page-line); }.featured-grid { grid-template-columns: repeat(4,minmax(0,1fr)); }.library-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }.approach-card { padding: 1.8rem; }.card-arrow { display:block; } }
 @media (min-width: 64rem) { .hero-grid { grid-template-columns: 1fr 1.05fr; gap: clamp(3rem,6vw,7rem); }.intro-grid { grid-template-columns: 1fr 1fr; align-items: end; }.questions-grid { grid-template-columns: .8fr 1.2fr; gap: 5rem; }.approach-grid { grid-template-columns: repeat(4,minmax(0,1fr)); }.featured-details { padding: 1.4rem; } }
-@media (max-width: 25rem) { .home-container { width: calc(100% - 2rem); }.hero { padding-top: 7rem; }.hero-grid { gap: 2.5rem; }.hero-actions .action { width: 100%; }.visual-top span:last-child,.visual-bottom span:last-child { display: none; }.person-label { font-size: .65rem; }.person-label small { font-size: .58rem; }.approach-grid { grid-template-columns: 1fr; }.approach-card { min-height: 12rem; } }
-@media (prefers-reduced-motion: reduce) { .home-page * { transition-duration: .01ms !important; } }
+@media (max-width: 25rem) { .home-container { width: calc(100% - 2rem); }.hero { padding-top: 7rem; }.hero-grid { gap: 2.5rem; }.hero-actions .action { width: 100%; }.visual-top span:last-child { display: none; }.carousel-slide { aspect-ratio: 4 / 5; }.slide-content p { font-size: .8rem; }.carousel-footer { gap: .5rem; }.carousel-controls button { width: 2.5rem; height: 2.5rem; }.approach-grid { grid-template-columns: 1fr; }.approach-card { min-height: 12rem; } }
+@media (prefers-reduced-motion: reduce) { .home-page * { transition-duration: .01ms !important; animation-duration: .01ms !important; } }
 </style>
