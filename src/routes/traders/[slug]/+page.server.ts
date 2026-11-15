@@ -1,3 +1,4 @@
+import { withNetWorthEstimate } from "#lib/server/net-worth.ts";
 import type { PageServerLoad } from "./$types";
 import { error } from "@sveltejs/kit";
 import { db } from "#lib/server/db.ts";
@@ -93,13 +94,17 @@ export const load: PageServerLoad = async ({ params }) => {
           }
         : null,
     trader: {
-      ...trader,
-      bio: trader.bio?.trim() ? trader.bio : (seed?.bio ?? null),
+      ...withNetWorthEstimate(trader),
+      bio:
+        (trader.bio?.trim() ? trader.bio : (seed?.bio ?? null))?.replace(
+          "Starting with nothing, he made and lost several fortunes, with his peak net worth of $100 million in 1929 (equivalent to $1.5 billion today).",
+          "Starting with nothing, he made and lost several fortunes over his career.",
+        ) ?? null,
       socialLinks: traderLinks(slug, trader.socialLinks),
       photoUrl,
     },
     relatedTraders: relatedTraders.map((related) => ({
-      ...related,
+      ...withNetWorthEstimate(related),
       photoUrl: traderPhoto(related.slug, related.photoUrl),
     })),
     articles,

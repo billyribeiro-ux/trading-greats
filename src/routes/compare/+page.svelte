@@ -54,7 +54,7 @@
 	// Comparison rows
 	const comparisonFields = [
 		{ key: 'tradingStyle', label: 'Trading Style', icon: 'trending-up' as const },
-		{ key: 'netWorth', label: 'Net Worth', icon: 'dollar-sign' as const },
+		{ key: 'netWorth', label: 'Estimated Net Worth', icon: 'dollar-sign' as const },
 		{ key: 'nationality', label: 'Nationality', icon: 'globe' as const },
 		{ key: 'birthYear', label: 'Birth Year', icon: 'calendar' as const },
 		{ key: 'philosophy', label: 'Philosophy', icon: 'lightbulb' as const }
@@ -170,7 +170,14 @@
 								</td>
 								{#each selectedTraders as trader (trader.slug)}
 									<td class="p-4 text-center">
-										{#if field.key === 'philosophy'}
+										{#if field.key === 'netWorth'}
+											{#if trader.netWorthEstimate}
+												<p class="text-sm text-white">{trader.netWorthEstimate.amount}</p>
+												<a class="text-xs text-gold-400 underline" href={trader.netWorthEstimate.url} target="_blank" rel="noopener noreferrer">{trader.netWorthEstimate.source} · {trader.netWorthEstimate.date}</a>
+											{:else}
+												<span class="text-sm text-midnight-400">Not reliably reported</span>
+											{/if}
+										{:else if field.key === 'philosophy'}
 											<p class="text-xs text-midnight-300 line-clamp-3 max-w-[200px] mx-auto">
 												{trader[field.key] || '—'}
 											</p>

@@ -138,92 +138,19 @@
     </div>
   </section>
 
-  <!-- Content Grid - MOBILE-FIRST -->
-  <section class="relative z-20 pb-16 sm:pb-20 lg:pb-24">
-    <div class="site-container">
-      <!-- Mission & Approach - MOBILE-FIRST -->
-      <div
-        class="grid gap-4 sm:gap-6 lg:gap-8 md:grid-cols-2 mb-10 sm:mb-12 lg:mb-16"
-      >
-        <ScrollReveal delay={0}>
-          <div
-            class={cn(
-              "group relative overflow-hidden rounded-xl sm:rounded-2xl lg:rounded-3xl border border-white/10 bg-midnight-900/30 p-5 sm:p-6 lg:p-8 backdrop-blur-sm h-full",
-              "transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
-              "hover:bg-midnight-900/50 hover:border-gold-500/20 md:hover:-translate-y-1 hover:shadow-2xl hover:shadow-gold-500/5",
-              "active:scale-[0.99]",
-            )}
-          >
-            <!-- Glow - hidden on mobile for performance -->
-            <div
-              class="hidden sm:block absolute top-0 right-0 -mt-4 -mr-4 h-32 w-32 rounded-full bg-gold-500/5 blur-3xl transition-all duration-700 group-hover:bg-gold-500/15 group-hover:scale-150"
-            ></div>
-
-            <div class="relative z-10">
-              <div
-                class="flex h-10 w-10 sm:h-11 sm:w-11 lg:h-12 lg:w-12 items-center justify-center rounded-lg sm:rounded-xl bg-gold-500/10 mb-4 sm:mb-5 lg:mb-6 transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:scale-110"
-              >
-                <Icon
-                  name="target"
-                  class="h-5 w-5 sm:h-6 sm:w-6 text-gold-500"
-                />
-              </div>
-              <h2
-                class="font-display text-lg sm:text-xl lg:text-2xl font-bold text-white mb-2 sm:mb-3 lg:mb-4 transition-colors duration-300 group-hover:text-gold-400"
-              >
-                Our Mission
-              </h2>
-              <p
-                class="text-sm sm:text-base text-midnight-300 leading-relaxed transition-colors duration-300 group-hover:text-midnight-200"
-              >
-                To document the stories, strategies, and philosophies of
-                legendary traders so that current and future generations can
-                learn from the masters who came before them.
-              </p>
-            </div>
-          </div>
-        </ScrollReveal>
-
-        <ScrollReveal delay={100}>
-          <div
-            class={cn(
-              "group relative overflow-hidden rounded-xl sm:rounded-2xl lg:rounded-3xl border border-white/10 bg-midnight-900/30 p-5 sm:p-6 lg:p-8 backdrop-blur-sm h-full",
-              "transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
-              "hover:bg-midnight-900/50 hover:border-sky-500/20 md:hover:-translate-y-1 hover:shadow-2xl hover:shadow-sky-500/5",
-              "active:scale-[0.99]",
-            )}
-          >
-            <!-- Glow - hidden on mobile for performance -->
-            <div
-              class="hidden sm:block absolute top-0 right-0 -mt-4 -mr-4 h-32 w-32 rounded-full bg-blue-500/5 blur-3xl transition-all duration-700 group-hover:bg-blue-500/15 group-hover:scale-150"
-            ></div>
-
-            <div class="relative z-10">
-              <div
-                class="flex h-10 w-10 sm:h-11 sm:w-11 lg:h-12 lg:w-12 items-center justify-center rounded-lg sm:rounded-xl bg-blue-500/10 mb-4 sm:mb-5 lg:mb-6 transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:scale-110"
-              >
-                <Icon
-                  name="book-open"
-                  class="h-5 w-5 sm:h-6 sm:w-6 text-blue-500"
-                />
-              </div>
-              <h2
-                class="font-display text-lg sm:text-xl lg:text-2xl font-bold text-white mb-2 sm:mb-3 lg:mb-4 transition-colors duration-300 group-hover:text-sky-400"
-              >
-                Our Approach
-              </h2>
-              <p
-                class="text-sm sm:text-base text-midnight-300 leading-relaxed transition-colors duration-300 group-hover:text-midnight-200"
-              >
-                Every profile is meticulously researched. We go beyond the
-                biography to extract actionable lessons, analyzing the specific
-                trades and mindset shifts that led to their success.
-              </p>
-            </div>
-          </div>
-        </ScrollReveal>
+  <section class="light-section" aria-labelledby="mission-title">
+    <div class="site-container light-mission">
+      <div><p class="light-eyebrow">THE PURPOSE</p><h2 id="mission-title" class="light-heading">A library built<br /><em>for perspective.</em></h2></div>
+      <div class="light-mission-copy">
+        <div><h3>Our mission</h3><p>To document the stories, strategies, and philosophies of legendary traders so that current and future generations can learn from the masters who came before them.</p></div>
+        <div><h3>Our approach</h3><p>Every profile is researched to go beyond the biography, exploring the decisions, methods, and experiences that shaped each trader’s perspective.</p></div>
       </div>
+    </div>
+  </section>
 
+  <!-- What we cover -->
+  <section class="relative z-20 py-16 sm:py-20 lg:py-24">
+    <div class="site-container">
       <!-- What We Cover - MOBILE-FIRST -->
       <ScrollReveal>
         <div class="text-center mb-6 sm:mb-8 lg:mb-12">

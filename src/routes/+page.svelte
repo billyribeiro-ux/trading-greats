@@ -53,7 +53,6 @@
         name: t.name,
         style: t.tradingStyle || 'Trading',
         knownFor: t.oneLiner || 'Legendary Trader',
-        returns: t.netWorth || 'Exceptional',
         slug: t.slug,
         photoUrl: t.photoUrl
         }))

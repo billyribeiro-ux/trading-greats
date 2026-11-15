@@ -316,9 +316,6 @@
 												{trader.nationality}
 											</span>
 										{/if}
-										{#if trader.netWorth}
-											<span class="text-emerald-400">{trader.netWorth}</span>
-										{/if}
 									</div>
 								</div>
 
@@ -332,34 +329,12 @@
 		</div>
 	</section>
 
-	<!-- ========================================================================
-	     BOTTOM CTA
-	======================================================================== -->
 	{#if filteredTraders.length > 0}
-		<ScrollReveal as="section" class="relative z-20 pb-24 px-6 lg:px-8">
-			<div class="mx-auto max-w-4xl">
-				<div class="relative overflow-hidden rounded-3xl border border-white/10 bg-linear-to-br from-midnight-900/80 to-midnight-900/40 p-8 sm:p-12 backdrop-blur-xl">
-					<!-- Glow -->
-					<div class="absolute top-0 right-0 h-64 w-64 rounded-full bg-gold-500/10 blur-3xl"></div>
-
-					<div class="relative z-10 text-center">
-						<h3 class="font-display text-2xl font-bold text-white sm:text-3xl mb-4">
-							Can't find what you're looking for?
-						</h3>
-						<p class="text-midnight-300 max-w-xl mx-auto mb-8">
-							We're constantly adding new legendary traders to our library.
-							If you know of a trading legend we should feature, let us know.
-						</p>
-						<a
-							href="mailto:suggest@tradinggreats.com"
-							class="inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-white/10 hover:border-white/20"
-						>
-							Suggest a Legend
-							<Icon name="arrow-right" class="h-4 w-4" />
-						</a>
-					</div>
-				</div>
+		<section class="light-section" aria-labelledby="suggest-trader-title">
+			<div class="site-container light-invitation">
+				<div><p class="light-eyebrow">THE LIBRARY KEEPS GROWING</p><h2 class="light-heading" id="suggest-trader-title">Have someone<br /><em>in mind?</em></h2><p class="light-description">Know a trader whose story belongs in the library? We’d love to hear your suggestion.</p></div>
+				<a class="light-button" href="mailto:suggest@tradinggreats.com">Suggest a trader <Icon name="arrow-right" class="h-4 w-4" /></a>
 			</div>
-		</ScrollReveal>
+		</section>
 	{/if}
 </div>

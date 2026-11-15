@@ -824,7 +824,7 @@ Druckenmiller is known for:
     nationality: "American",
     tradingStyle: "Momentum Growth",
     netWorth: "$100 Million (1929)",
-    bio: `Jesse Lauriston Livermore is considered by many to be the greatest stock trader who ever lived. Starting with nothing, he made and lost several fortunes, with his peak net worth of $100 million in 1929 (equivalent to $1.5 billion today). His trading rules and psychology insights remain relevant nearly a century later.
+    bio: `Jesse Lauriston Livermore is considered by many to be the greatest stock trader who ever lived. Starting with nothing, he made and lost several fortunes over his career. His trading rules and psychology insights remain relevant nearly a century later.
 
 ## The Boy Plunger
 

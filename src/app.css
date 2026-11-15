@@ -1646,3 +1646,204 @@ details summary::-webkit-details-marker {
     margin-top: 2cm;
   }
 }
+
+/* Warm editorial breaks, shared with the homepage's quote section. */
+.light-section,
+.light-quote-panel {
+  --light-ink: #16232b;
+  --light-muted: #485a61;
+  --light-accent: #705632;
+  --light-rule: rgba(22, 35, 43, 0.2);
+  background: #e8e3d9;
+  color: var(--light-ink);
+}
+.light-section {
+  padding-block: clamp(4.5rem, 8vw, 8rem);
+}
+.light-eyebrow {
+  margin: 0;
+  color: var(--light-accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.light-heading {
+  margin: 1.15rem 0 0;
+  color: var(--light-ink);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(2.25rem, 2.8vw + 1rem, 4rem);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 1.12;
+}
+.light-heading em {
+  color: var(--light-accent);
+  font-weight: 400;
+}
+.light-description {
+  max-width: 35rem;
+  margin: 1.2rem 0 0;
+  color: var(--light-muted);
+  line-height: 1.7;
+}
+.light-mission,
+.light-invitation,
+.light-newsletter {
+  display: grid;
+  gap: 2.5rem;
+}
+.light-mission-copy {
+  max-width: 40rem;
+  border-top: 1px solid var(--light-rule);
+}
+.light-mission-copy > div {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--light-rule);
+}
+.light-mission-copy h3 {
+  margin: 0 0 0.65rem;
+  color: var(--light-ink);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+.light-mission-copy p {
+  margin: 0;
+  color: var(--light-muted);
+  line-height: 1.7;
+}
+.light-invitation {
+  align-items: end;
+}
+.light-button {
+  display: inline-flex;
+  justify-self: start;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 3.35rem;
+  padding: 0.85rem 1.25rem;
+  background: #172831;
+  border: 1px solid #172831;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.light-button:hover {
+  background: #304651;
+}
+.light-quote-panel {
+  padding: clamp(1.5rem, 3vw, 3rem);
+}
+.light-quote-panel .light-heading {
+  font-size: clamp(2rem, 2vw + 1rem, 3rem);
+}
+.light-quotes {
+  margin-top: 2rem;
+  border-top: 1px solid var(--light-rule);
+}
+.light-quotes figure {
+  margin: 0;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--light-rule);
+}
+.light-quotes blockquote {
+  margin: 0;
+  color: var(--light-ink);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(1.15rem, 0.65vw + 1rem, 1.55rem);
+  line-height: 1.5;
+}
+.light-quotes figcaption {
+  margin-top: 0.8rem;
+  color: var(--light-muted);
+  font-size: 0.8rem;
+}
+.light-newsletter {
+  align-items: end;
+}
+.light-newsletter-action {
+  width: min(100%, 34rem);
+}
+.light-form label {
+  display: block;
+  margin-bottom: 0.6rem;
+  color: var(--light-ink);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.light-form > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+.light-form input {
+  flex: 1 1 13rem;
+  min-width: 0;
+  min-height: 3.35rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(22, 35, 43, 0.35);
+  background: #f9f7f2;
+  color: var(--light-ink);
+  font-size: 1rem;
+}
+.light-form input::placeholder {
+  color: #53636c;
+}
+.light-form button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  min-height: 3.35rem;
+  padding: 0.8rem 1.2rem;
+  border: 1px solid #172831;
+  background: #172831;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.light-form button:hover {
+  background: #304651;
+}
+.light-form button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.light-form :focus-visible,
+.light-button:focus-visible {
+  outline: 2px solid #705632;
+  outline-offset: 3px;
+}
+.light-error,
+.light-success {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0 0;
+  font-size: 0.875rem;
+}
+.light-error {
+  color: #9d2c20;
+}
+.light-success {
+  color: #176043;
+}
+.light-fine-print {
+  margin: 0.9rem 0 0;
+  color: var(--light-muted);
+  font-size: 0.75rem;
+}
+@media (min-width: 48rem) {
+  .light-mission,
+  .light-newsletter {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+  .light-invitation {
+    grid-template-columns: 1fr auto;
+    gap: 4rem;
+  }
+}

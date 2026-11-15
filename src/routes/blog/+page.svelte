@@ -456,71 +456,21 @@
 		{/if}
 	</section>
 
-	<!-- ============================================================================
-	     NEWSLETTER CTA - Premium section (MOBILE-FIRST)
-	============================================================================ -->
-	<section class="relative border-t border-midnight-800/50 overflow-hidden">
-		<!-- Background effects - MOBILE-FIRST: Smaller on mobile -->
-		<div class="absolute inset-0 bg-linear-to-b from-midnight-900/50 to-midnight-950"></div>
-		<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] sm:w-[450px] sm:h-[450px] lg:w-[600px] lg:h-[600px] rounded-full bg-gold-500/5 blur-[100px] sm:blur-[150px]"></div>
-
-		<div class="relative mx-auto site-container py-16 sm:py-20 lg:py-24">
-			<ScrollReveal animation="scaleIn">
-				<div class="text-center max-w-2xl mx-auto">
-					<div class="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-gold-500/30 bg-gold-500/10 px-3 sm:px-4 py-1 sm:py-1.5 mb-4 sm:mb-6">
-						<Icon name="mail" class="h-3.5 w-3.5 sm:h-4 sm:w-4 text-gold-400" />
-						<span class="text-xs sm:text-sm font-medium text-gold-300">Newsletter</span>
-					</div>
-
-					<h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
-						Never Miss an <span class="text-gold-400">Insight</span>
-					</h2>
-					<p class="mt-3 sm:mt-4 text-sm sm:text-base lg:text-lg text-midnight-400 px-2 sm:px-0">
-						Join thousands of traders receiving our weekly digest of strategies, analysis, and wisdom
-						from legendary traders.
-					</p>
-
-					{#if subscribeSuccess}
-						<div class="mt-8 flex items-center justify-center gap-3 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 max-w-md mx-auto">
-							<IconCircleCheck class="h-5 w-5 text-emerald-400 shrink-0" />
-							<p class="text-emerald-400">{subscribeMessage}</p>
-						</div>
-					{:else}
-						<form onsubmit={handleSubscribe} class="mt-8 flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-							<input
-								type="email"
-								bind:value={email}
-								placeholder="Enter your email"
-								disabled={isSubscribing}
-								aria-label="Email address for newsletter subscription" class="flex-1 rounded-xl border border-midnight-700 bg-midnight-800/50 px-4 py-3 text-midnight-100 placeholder-midnight-500 outline-none transition-all focus:border-gold-500/50 focus:ring-2 focus:ring-gold-500/20 disabled:opacity-50"
-							/>
-							<button
-								type="submit"
-								disabled={isSubscribing || !email}
-								class="rounded-xl bg-linear-to-r from-gold-500 to-gold-600 px-6 py-3 font-semibold text-midnight-950 shadow-lg shadow-gold-500/25 transition-all hover:shadow-xl hover:shadow-gold-500/30 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-							>
-								{#if isSubscribing}
-									<IconLoader2 class="h-4 w-4 animate-spin" />
-									Subscribing...
-								{:else}
-									Subscribe
-								{/if}
-							</button>
-						</form>
-
-						{#if subscribeError && subscribeMessage}
-							<div class="mt-4 flex items-center justify-center gap-2 text-red-400 text-sm">
-								<IconAlertCircle class="h-4 w-4" />
-								{subscribeMessage}
-							</div>
-						{/if}
-					{/if}
-
-					<p class="mt-4 text-xs text-midnight-600">
-						No spam. Unsubscribe anytime.
-					</p>
-				</div>
-			</ScrollReveal>
+	<section class="light-section" aria-labelledby="journal-newsletter-title">
+		<div class="site-container light-newsletter">
+			<div><p class="light-eyebrow">A NOTE FROM THE LIBRARY</p><h2 id="journal-newsletter-title" class="light-heading">A little perspective,<br /><em>in your inbox.</em></h2><p class="light-description">Ideas and stories from the traders who shaped the markets, delivered to your inbox.</p></div>
+			<div class="light-newsletter-action">
+				{#if subscribeSuccess}
+					<p class="light-success" role="status"><IconCircleCheck class="h-5 w-5" /> {subscribeMessage}</p>
+				{:else}
+					<form onsubmit={handleSubscribe} class="light-form">
+						<label for="journal-email">Email address</label>
+						<div><input id="journal-email" type="email" bind:value={email} placeholder="you@example.com" disabled={isSubscribing} required autocomplete="email" /><button type="submit" disabled={isSubscribing || !email}>{#if isSubscribing}<IconLoader2 class="h-4 w-4 animate-spin" /> Subscribing…{:else}Subscribe <Icon name="arrow-right" class="h-4 w-4" />{/if}</button></div>
+					</form>
+					{#if subscribeError && subscribeMessage}<p class="light-error" role="alert"><IconAlertCircle class="h-4 w-4" /> {subscribeMessage}</p>{/if}
+				{/if}
+				<p class="light-fine-print">No spam. Unsubscribe anytime.</p>
+			</div>
 		</div>
 	</section>
 </div>

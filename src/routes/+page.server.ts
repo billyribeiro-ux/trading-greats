@@ -19,7 +19,6 @@ interface TraderProfile {
   slug: string;
   tradingStyle: string;
   oneLiner: string;
-  netWorth: string;
   photoUrl: string | null;
 }
 
@@ -45,7 +44,6 @@ export const load: PageServerLoad = async () => {
       slug: tradersTable.slug,
       tradingStyle: tradersTable.tradingStyle,
       oneLiner: tradersTable.oneLiner,
-      netWorth: tradersTable.netWorth,
       photoUrl: tradersTable.photoUrl,
       quotes: tradersTable.quotes,
     })
@@ -68,7 +66,6 @@ export const load: PageServerLoad = async () => {
     slug: t.slug,
     tradingStyle: t.tradingStyle || "Trading",
     oneLiner: t.oneLiner || "Legendary Trader",
-    netWorth: t.netWorth || "Exceptional Returns",
     photoUrl: traderPhoto(t.slug, t.photoUrl),
   }));
 

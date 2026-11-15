@@ -152,17 +152,6 @@
 			{trader.oneLiner}
 		</p>
 
-		<!-- Footer - Always at bottom -->
-		<div class="mt-auto pt-2 sm:pt-3 flex items-center justify-between border-t border-white/5">
-			<span class="text-[10px] font-medium text-midnight-500 uppercase tracking-wide">
-				Track Record
-			</span>
-			{#if trader.netWorth}
-				<span class="text-xs sm:text-sm font-bold text-emerald-400">
-					{trader.netWorth}
-				</span>
-			{/if}
-		</div>
 	</div>
 </a>
 

@@ -78,13 +78,6 @@
 			});
 		}
 
-		if (trader.netWorth) {
-			faqs.push({
-				question: `What is ${trader.name}'s net worth?`,
-				answer: `${trader.name}'s estimated net worth is ${trader.netWorth}. This wealth was accumulated through their successful ${trader.tradingStyle?.toLowerCase() || 'trading'} strategies.`
-			});
-		}
-
 		if (trader.books && trader.books.length > 0) {
 			const bookTitles = trader.books.map((b) => b.title).join(', ');
 			faqs.push({
@@ -139,12 +132,6 @@
 						<div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-gold-500/10 border border-gold-500/20">
 							<span class="h-1.5 w-1.5 rounded-full bg-gold-500 animate-pulse"></span>
 							<span class="text-sm font-medium text-gold-400">{trader.tradingStyle}</span>
-						</div>
-					{/if}
-					{#if trader.netWorth}
-						<div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-midnight-800/50 border border-white/5">
-							<Icon name="trending-up" class="h-4 w-4 text-green-400" />
-							<span class="text-sm font-medium text-white">{trader.netWorth}</span>
 						</div>
 					{/if}
 					{#if trader.nationality}
@@ -207,14 +194,15 @@
 					<div class="rounded-xl sm:rounded-2xl border border-white/5 bg-midnight-900/30 p-4 sm:p-5 lg:p-6 backdrop-blur-sm">
 						<h3 class="mb-3 sm:mb-4 text-xs sm:text-sm font-bold uppercase tracking-wider text-midnight-400">Key Stats</h3>
 						<div class="grid grid-cols-3 lg:grid-cols-1 gap-3 sm:gap-4">
-							{#if trader.netWorth}
+							{#if trader.netWorthEstimate}
 								<div class="flex flex-col lg:flex-row items-center lg:items-center gap-1 lg:gap-3 text-center lg:text-left">
 									<div class="flex h-8 w-8 sm:h-9 sm:w-9 lg:h-10 lg:w-10 items-center justify-center rounded-full bg-green-500/10 text-green-500">
 										<Icon name="dollar-sign" class="h-4 w-4 lg:h-5 lg:w-5" />
 									</div>
 									<div>
-										<p class="text-[10px] sm:text-xs text-midnight-400 lg:mb-0">Net Worth</p>
-										<p class="text-xs sm:text-sm lg:text-base font-medium text-white">{trader.netWorth}</p>
+										<p class="text-[10px] sm:text-xs text-midnight-400 lg:mb-0">Estimated net worth</p>
+										<p class="text-xs sm:text-sm lg:text-base font-medium text-white">{trader.netWorthEstimate.amount}</p>
+										<a href={trader.netWorthEstimate.url} target="_blank" rel="noopener noreferrer" class="text-xs text-gold-400 underline">{trader.netWorthEstimate.source} · {trader.netWorthEstimate.date}</a>
 									</div>
 								</div>
 							{/if}
@@ -384,25 +372,15 @@
 					</section>
 				{/if}
 
-				<!-- Quotes - MOBILE-FIRST -->
 				{#if trader.quotes && trader.quotes.length > 0}
-					<section>
-						<h2 class="mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3 font-display text-lg sm:text-xl lg:text-2xl font-bold text-white">
-							<Icon name="quote" class="h-5 w-5 sm:h-6 sm:w-6 text-gold-500" />
-							Legendary Quotes
-						</h2>
-						<div class="grid gap-4 sm:gap-6">
+					<section class="light-quote-panel" aria-labelledby="legendary-quotes-title">
+						<p class="light-eyebrow">IN THEIR OWN WORDS</p>
+						<h2 id="legendary-quotes-title" class="light-heading">Legendary <em>quotes.</em></h2>
+						<div class="light-quotes">
 							{#each trader.quotes as quote, i (i)}
-								<figure class="relative rounded-xl sm:rounded-2xl bg-white/5 p-5 sm:p-6 lg:p-8">
-									<Icon name="quote" class="absolute top-3 left-3 sm:top-4 sm:left-4 h-6 w-6 sm:h-8 sm:w-8 text-white/10 rotate-180" />
-									<blockquote class="relative z-10 text-base sm:text-lg font-medium italic text-midnight-100">
-										"{quote.text}"
-									</blockquote>
-									{#if quote.source}
-										<figcaption class="mt-3 sm:mt-4 text-xs sm:text-sm text-midnight-400">
-											— {quote.source}
-										</figcaption>
-									{/if}
+								<figure>
+									<blockquote>“{quote.text}”</blockquote>
+									{#if quote.source}<figcaption>— {quote.source}</figcaption>{/if}
 								</figure>
 							{/each}
 						</div>
