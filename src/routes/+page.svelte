@@ -191,8 +191,10 @@
                         <div class="carousel-track">
                             {#each displayTraders as trader, i (trader.slug)}
                                 <div class="carousel-slide" class:active={carouselPage === i} role="group" aria-roledescription="slide" aria-label={trader.name} inert={carouselPage !== i}>
-                                    <span class="portrait-initials">{trader.name.split(' ').map((n: string) => n[0]).join('')}</span>
-                                    {#if trader.photoUrl}<img class="slide-image" src={trader.photoUrl} alt="" loading={i === 0 ? 'eager' : 'lazy'} onerror={(event) => { (event.currentTarget as HTMLImageElement).style.display = 'none'; }} />{/if}
+                                    <div class="portrait-frame">
+                                        <span class="portrait-initials">{trader.name.split(' ').map((n: string) => n[0]).join('')}</span>
+                                        {#if trader.photoUrl}<img class="slide-image" src={trader.photoUrl} alt="" loading={i === 0 ? 'eager' : 'lazy'} onerror={(event) => { (event.currentTarget as HTMLImageElement).style.display = 'none'; }} />{/if}
+                                    </div>
                                     <div class="slide-content">
                                         <span class="slide-kicker">FEATURED PROFILE <span></span> {trader.style}</span>
                                         <h2>{trader.name}</h2>
@@ -310,16 +312,17 @@ em { color: var(--page-gold); font-weight: 400; }
 .carousel-window { overflow: hidden; background: #263741; cursor: grab; }
 .carousel-window:active { cursor: grabbing; }
 .carousel-track { display: flex; touch-action: pan-y pinch-zoom; }
-.carousel-slide { position: relative; flex: 0 0 100%; min-width: 0; aspect-ratio: 15 / 16; overflow: hidden; background: linear-gradient(135deg,#41515a,#172631); }
-.carousel-slide::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg,rgba(7,16,23,.7),transparent 70%), linear-gradient(0deg,rgba(7,16,23,.97),rgba(7,16,23,.05) 75%); pointer-events: none; }
-.slide-image { user-select: none; -webkit-user-drag: none; position: absolute; inset: 4% 0 0; width: 100%; height: 96%; object-fit: contain; object-position: center top; transform-origin: center top; }
+.carousel-slide { position: relative; display: flex; flex-direction: column; flex: 0 0 100%; min-width: 0; background: #111e28; }
+.portrait-frame { position: relative; flex: none; aspect-ratio: 1.16; overflow: hidden; background: linear-gradient(135deg,#41515a,#172631); }
+.portrait-frame::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg,rgba(7,16,23,.42),transparent 40%); pointer-events: none; }
+.slide-image { user-select: none; -webkit-user-drag: none; position: absolute; inset: 0; width: 100%; height: 100%; padding: 4% 4% 0; object-fit: contain; object-position: center bottom; transform-origin: center bottom; }
 .portrait-initials { position: absolute; inset: 0; display: grid; place-items: center; color: #a9b8be; font-family: Georgia,serif; font-size: 5rem; }
 .carousel-slide.active .slide-image { animation: portrait-settle 9s ease-out both; }
 .motion-paused .carousel-slide.active .slide-image { animation-play-state: paused; }
 .carousel-slide.active .slide-content { animation: slide-copy-enter .9s cubic-bezier(.22,1,.36,1) both; }
 @keyframes portrait-settle { from { transform: scale(.985); } to { transform: scale(1); } }
 @keyframes slide-copy-enter { from { opacity:0; transform:translateY(.8rem); } to { opacity:1; transform:translateY(0); } }
-.slide-content { position: absolute; z-index: 1; left: clamp(1.25rem, 4vw, 2.75rem); right: 1.25rem; bottom: clamp(1.5rem, 4vw, 2.75rem); color: #fff; }
+.slide-content { position: relative; display: flex; flex: 1; flex-direction: column; align-items: flex-start; padding: clamp(1.25rem, 3vw, 2.25rem); color: #fff; }
 .slide-kicker { display: flex; align-items: center; flex-wrap: wrap; gap: .65rem; color: #dfcba7; font-size: .65rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
 .slide-kicker span { width: 1.5rem; height: 1px; background: #c9ad7d; }
 .slide-content h2 { margin-top: .7rem; font-size: clamp(2rem, 3vw + 1rem, 3.6rem); line-height: 1.05; }
@@ -348,6 +351,6 @@ em { color: var(--page-gold); font-weight: 400; }
 :global(html:not(.dark)) .hero { background: linear-gradient(135deg,#e9e6dd,#d4dbd8); }:global(html:not(.dark)) .hero-intro { color:#40535c; }:global(html:not(.dark)) .hero-note p { color:#4c5e65; }:global(html:not(.dark)) .action-secondary { color:#263941; border-color:#8a999b; }:global(html:not(.dark)) .featured-card { background:#f8f6f0; }:global(html:not(.dark)) .closing-inner { background:#e6e9e4; }:global(html:not(.dark)) .closing-inner p:last-child { color:#53636c; }
 @media (min-width: 48rem) { .principles { grid-template-columns: repeat(3,1fr); }.principles article { padding: 1.8rem 2rem 1.8rem 0; }.principles article + article { padding-left: 2rem; border-left: 1px solid var(--page-line); }.featured-grid { grid-template-columns: repeat(4,minmax(0,1fr)); }.library-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }.approach-card { padding: 1.8rem; }.card-arrow { display:block; } }
 @media (min-width: 64rem) { .hero-grid { grid-template-columns: 1fr 1.05fr; gap: clamp(3rem,6vw,7rem); }.intro-grid { grid-template-columns: 1fr 1fr; align-items: end; }.questions-grid { grid-template-columns: .8fr 1.2fr; gap: 5rem; }.approach-grid { grid-template-columns: repeat(4,minmax(0,1fr)); }.featured-details { padding: 1.4rem; } }
-@media (max-width: 25rem) { .hero { padding-top: 7rem; }.hero-grid { gap: 2.5rem; }.hero-actions .action { width: 100%; }.visual-top span:last-child { display: none; }.carousel-slide { aspect-ratio: 4 / 5; }.slide-content p { font-size: .8rem; }.carousel-footer { gap: .5rem; }.carousel-controls button { width: 2.5rem; height: 2.5rem; }.approach-grid { grid-template-columns: 1fr; }.approach-card { min-height: 12rem; } }
+@media (max-width: 25rem) { .hero { padding-top: 7rem; }.hero-grid { gap: 2.5rem; }.hero-actions .action { width: 100%; }.visual-top span:last-child { display: none; }.portrait-frame { aspect-ratio: 1 / 1; }.slide-content p { font-size: .8rem; }.carousel-footer { gap: .5rem; }.carousel-controls button { width: 2.5rem; height: 2.5rem; }.approach-grid { grid-template-columns: 1fr; }.approach-card { min-height: 12rem; } }
 @media (prefers-reduced-motion: reduce) { .home-page * { transition-duration: .01ms !important; animation-duration: .01ms !important; } }
 </style>
